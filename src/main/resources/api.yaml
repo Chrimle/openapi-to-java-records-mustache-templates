@@ -1,0 +1,44 @@
+openapi: 3.0.0
+info:
+  title: Example OpenAPI Spec.
+  description: An example OpenAPI-spec to generate example Java records.
+  version: 0.0.1
+
+servers:
+  - url: http://localhost/
+    description: Irrelevant
+
+paths:
+  /ignore:
+    get:
+      summary: Ignore
+      description: Irrelevant
+      responses:
+        '200':
+          description: OK
+
+components:
+  schemas:
+    ExampleDeprecatedObject:
+      description: Example Deprecated object
+      deprecated: true
+      type: object
+      required:
+        - id
+        - text
+      properties:
+        id:
+          type: integer
+        text:
+          type: string
+    ExampleObject:
+      description: Example Object
+      type: object
+      required:
+        - id
+        - text
+      properties:
+        id:
+          type: integer
+        text:
+          type: string

@@ -1,0 +1,63 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.chrimle</groupId>
+    <artifactId>openapi-to-java-records-mustache-templates</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <name>OpenAPI to Java records :: Mustache Templates</name>
+    <url>
+        http://www.github.com/Chrimle/openapi-to-java-records-mustache-templates
+    </url>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.release>17</maven.compiler.release>
+        <openapi-generator-maven-plugin.version>7.7.0
+        </openapi-generator-maven-plugin.version>
+        <maven.plugin.validation>VERBOSE</maven.plugin.validation>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+        </dependencies>
+    </dependencyManagement>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.openapitools</groupId>
+                <artifactId>openapi-generator-maven-plugin</artifactId>
+                <version>${openapi-generator-maven-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <modelPackage>${project.groupId}.example</modelPackage>
+                            <generateModels>true</generateModels>
+                            <generateApis>false</generateApis>
+                            <generateSupportingFiles>false</generateSupportingFiles>
+                            <generateModelTests>false</generateModelTests>
+                            <generateModelDocumentation>false</generateModelDocumentation>
+                            <inputSpec>
+                                ${project.basedir}/src/main/resources/api.yaml
+                            </inputSpec>
+                            <templateDirectory>
+                                ${project.basedir}/src/main/resources/templates
+                            </templateDirectory>
+                            <generatorName>java</generatorName>
+                            <configOptions>
+                                <sourceFolder>src/gen/java/main</sourceFolder>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
