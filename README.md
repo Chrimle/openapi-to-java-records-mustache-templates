@@ -4,7 +4,9 @@ Aims to
 generate [Java Records](https://docs.oracle.com/en/java/javase/17/language/records.html)
 from [OpenAPI Specifications](https://swagger.io/specification/)
 via [openapi-generator-maven-plugin](https://github.com/OpenAPITools/openapi-generator/blob/master/modules/openapi-generator-maven-plugin/README.md)
-and [mustache templates](https://mustache.github.io/). This project contains the
+and [mustache templates](https://mustache.github.io/).
+
+This project contains the
 mustache templates, and an example OpenAPI Specification which will generate
 example Java classes (Records & Enums).
 
