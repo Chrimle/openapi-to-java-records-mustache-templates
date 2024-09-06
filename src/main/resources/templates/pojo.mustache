@@ -4,8 +4,4 @@
  * @param {{name}} {{description}}{{/vars}}
  */{{#isDeprecated}}
 @Deprecated{{/isDeprecated}}
-public record {{classname}}(
-    {{#vars}}{{datatypeWithEnum}} {{name}}{{^-last}},
-    {{/-last}}{{/vars}}) {
-
-}
+{{^isEnum}}{{>record}}{{/isEnum}}{{#isEnum}}{{>enum}}{{/isEnum}}

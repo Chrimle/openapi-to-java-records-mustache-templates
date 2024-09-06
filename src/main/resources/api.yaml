@@ -19,6 +19,12 @@ paths:
 
 components:
   schemas:
+    ExampleEnum:
+      description: Example Enum
+      type: string
+      enum:
+        - FIRST_ENUM
+        - SECOND_ENUM
     ExampleDeprecatedObject:
       description: Example Deprecated object
       deprecated: true
