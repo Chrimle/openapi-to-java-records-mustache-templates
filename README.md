@@ -76,12 +76,17 @@ properties may be ignored, or may cause problems. Please refer to
 the [pom.xml](./pom.xml) for the version currently
 used. [Full list of available configurations](https://github.com/OpenAPITools/openapi-generator/blob/master/modules/openapi-generator-maven-plugin/README.md).
 
-| Property                                         | Required | Default                         | Description                                          |
-|--------------------------------------------------|:--------:|---------------------------------|------------------------------------------------------|
-| `openapi.generator.maven.plugin.generateModels`  |    no    | `true`                          | Generates Java classes, if `true`.                   |
-| `openapi.generator.maven.plugin.modelPackage`    |    no    | `org.openapitools.client.model` | The `package` of generated Java classes.             |
-| `openapi.generator.maven.plugin.modelNamePrefix` |    no    |                                 | Adds a prefix to the name of generated Java classes. |
-| `openapi.generator.maven.plugin.modelNameSuffix` |    no    |                                 | Adds a suffix to the name of generated Java classes. |
+> [!NOTE]
+> The following properties can be set either in the build `<configuration>`-tag,
+> or by the complete property name prefixed
+> by `openapi.generator.maven.plugin.{property}`.
+
+| Property          | Required | Default                         | Description                                          |
+|-------------------|:--------:|---------------------------------|------------------------------------------------------|
+| `generateModels`  |    no    | `true`                          | Generates Java classes, if `true`.                   |
+| `modelPackage`    |    no    | `org.openapitools.client.model` | The `package` of generated Java classes.             |
+| `modelNamePrefix` |    no    |                                 | Adds a prefix to the name of generated Java classes. |
+| `modelNameSuffix` |    no    |                                 | Adds a suffix to the name of generated Java classes. |
 
 ## Supported OpenAPI Specification properties
 
