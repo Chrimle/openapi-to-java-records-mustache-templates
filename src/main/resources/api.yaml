@@ -50,3 +50,14 @@ components:
           type: integer
         text:
           type: string
+    ExampleObjectWithArray:
+      description: Example Object with Array
+      type: object
+      required:
+        - collection
+      properties:
+        collection:
+          description: Collection
+          type: array
+          items:
+            type: integer

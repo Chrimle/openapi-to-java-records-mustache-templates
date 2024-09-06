@@ -1,7 +1,3 @@
-/**
- * {{description}}{{#isDeprecated}}
- * @deprecated{{/isDeprecated}}{{#vars}}
- * @param {{name}} {{description}}{{/vars}}
- */{{#isDeprecated}}
+{{>javadoc}}{{#isDeprecated}}
 @Deprecated{{/isDeprecated}}
 {{^isEnum}}{{>record}}{{/isEnum}}{{#isEnum}}{{>enum}}{{/isEnum}}
