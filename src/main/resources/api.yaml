@@ -28,6 +28,7 @@ components:
         - text
       properties:
         id:
+          description: Identifier
           type: integer
         text:
           type: string
@@ -39,6 +40,7 @@ components:
         - text
       properties:
         id:
+          description: Identifier
           type: integer
         text:
           type: string
