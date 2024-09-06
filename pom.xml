@@ -18,6 +18,8 @@
         <openapi-generator-maven-plugin.version>7.7.0
         </openapi-generator-maven-plugin.version>
         <maven.plugin.validation>VERBOSE</maven.plugin.validation>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
     </properties>
 
     <dependencyManagement>
