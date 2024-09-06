@@ -61,3 +61,11 @@ components:
           type: array
           items:
             type: integer
+    ExampleCompositeObject:
+      description: Example Composite Object
+      type: object
+      required:
+        - composite
+      properties:
+        composite:
+          $ref: '#/components/schemas/ExampleObject'
