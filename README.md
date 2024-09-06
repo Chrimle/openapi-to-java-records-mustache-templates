@@ -44,8 +44,7 @@ components:
 
 > [!TIP]
 > See the complete list
->
-of [Supported OpenAPI Specification properties](#supported-openapi-specification-properties).
+> of [Supported OpenAPI Specification properties](#supported-openapi-specification-properties).
 
 ### Java Record
 
