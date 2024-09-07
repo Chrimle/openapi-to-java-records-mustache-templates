@@ -92,6 +92,15 @@ components:
           $ref: '#/components/schemas/ExampleRecord'
         field3:
           $ref: '#/components/schemas/ExampleRecord'
+    ExampleRecordWithExampleEnumFields:
+      type: object
+      properties:
+        field1:
+          $ref: '#/components/schemas/ExampleEnum'
+        field2:
+          $ref: '#/components/schemas/ExampleEnum'
+        field3:
+          $ref: '#/components/schemas/ExampleEnum'
     ExampleEnum:
       description: Example Enum
       type: string
