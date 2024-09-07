@@ -19,53 +19,98 @@ paths:
 
 components:
   schemas:
-    ExampleEnum:
-      description: Example Enum
-      type: string
-      enum:
-        - FIRST_ENUM
-        - SECOND_ENUM
-    ExampleDeprecatedObject:
-      description: Example Deprecated object
+    ExampleRecord:
+      type: object
+      properties:
+        field:
+          type: boolean
+    DeprecatedExampleRecord:
+      type: object
       deprecated: true
-      type: object
-      required:
-        - id
-        - text
       properties:
-        id:
-          description: Identifier
-          type: integer
-        text:
+        field:
+          type: boolean
+    ExampleRecordWithStringFields:
+      type: object
+      properties:
+        field1:
           type: string
-    ExampleObject:
-      description: Example Object
-      type: object
-      required:
-        - id
-        - text
-      properties:
-        id:
-          description: Identifier
-          type: integer
-        text:
+        field2:
           type: string
-    ExampleObjectWithArray:
-      description: Example Object with Array
+        field3:
+          type: string
+    ExampleRecordWithIntegerFields:
       type: object
-      required:
-        - collection
       properties:
-        collection:
-          description: Collection
+        field1:
+          type: integer
+        field2:
+          type: integer
+        field3:
+          type: integer
+    ExampleRecordWithBooleanFields:
+      type: object
+      properties:
+        field1:
+          type: boolean
+        field2:
+          type: boolean
+        field3:
+          type: boolean
+    ExampleRecordWithArrayFields:
+      type: object
+      properties:
+        field1:
           type: array
           items:
-            type: integer
-    ExampleCompositeObject:
-      description: Example Composite Object
+            type: boolean
+        field2:
+          type: array
+          items:
+            type: boolean
+        field3:
+          type: array
+          items:
+            type: boolean
+    ###### NOT SUPPORTED YET ######
+    #ExampleRecordWithNumberFields:
+    #  type: object
+    #  properties:
+    #    field1:
+    #      type: number
+    #    field2:
+    #      type: number
+    #    field3:
+    #      type: number
+    ###############################
+    ExampleRecordWithExampleRecordFields:
       type: object
-      required:
-        - composite
       properties:
-        composite:
-          $ref: '#/components/schemas/ExampleObject'
+        field1:
+          $ref: '#/components/schemas/ExampleRecord'
+        field2:
+          $ref: '#/components/schemas/ExampleRecord'
+        field3:
+          $ref: '#/components/schemas/ExampleRecord'
+    ExampleRecordWithExampleEnumFields:
+      type: object
+      properties:
+        field1:
+          $ref: '#/components/schemas/ExampleEnum'
+        field2:
+          $ref: '#/components/schemas/ExampleEnum'
+        field3:
+          $ref: '#/components/schemas/ExampleEnum'
+    ExampleEnum:
+      type: string
+      enum:
+        - ENUM1
+        - ENUM2
+        - ENUM3
+    DeprecatedExampleEnum:
+      type: string
+      deprecated: true
+      enum:
+        - ENUM1
+        - ENUM2
+        - ENUM3
