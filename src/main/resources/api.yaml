@@ -48,6 +48,15 @@ components:
           type: integer
         field3:
           type: integer
+    ExampleRecordWithBooleanFields:
+      type: object
+      properties:
+        field1:
+          type: boolean
+        field2:
+          type: boolean
+        field3:
+          type: boolean
     ExampleEnum:
       description: Example Enum
       type: string
