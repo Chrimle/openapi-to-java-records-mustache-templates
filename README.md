@@ -7,13 +7,12 @@ via [openapi-generator-maven-plugin](https://github.com/OpenAPITools/openapi-gen
 and [mustache templates](https://mustache.github.io/).
 
 This project contains the
-mustache templates, and an example OpenAPI Specification which will generate
-example Java classes (Records & Enums).
+mustache templates, and an example OpenAPI Specification which will generate example Java
+classes (Records & Enums).
 
 ## Example
 
-The following is an example of a Java record generated from an OpenAPI
-Specification.
+The following is an example of a Java record generated from an OpenAPI Specification.
 
 ### OpenAPI Specification
 
@@ -45,8 +44,8 @@ components:
 ```
 
 > [!TIP]
-> See the complete list
-> of [Supported OpenAPI Specification properties](#supported-openapi-specification-properties).
+> See the complete list of Supported OpenAPI Specification
+> properties [here](#supported-openapi-specification-properties).
 
 ### Java Record
 
@@ -73,9 +72,9 @@ public record Example(
 
 ## Supported `openapi-generator-maven-plugin` configurations
 
-The following are `<configuration>`-properties which are supported. Other
-properties may be ignored, or may cause problems. Please refer to
-the [pom.xml](./pom.xml) for the version currently
+The following are `<configuration>`-properties which are supported. Other properties may
+be ignored, or may cause problems. Please refer to the [pom.xml](./pom.xml) for the
+version currently
 used. [Full list of available configurations](https://github.com/OpenAPITools/openapi-generator/blob/master/modules/openapi-generator-maven-plugin/README.md).
 
 > [!NOTE]
@@ -83,29 +82,41 @@ used. [Full list of available configurations](https://github.com/OpenAPITools/op
 > or by the complete property name prefixed
 > by `openapi.generator.maven.plugin.{property}`.
 
-| Property          | Required | Default                         | Description                                          |
-|-------------------|:--------:|---------------------------------|------------------------------------------------------|
-| `generateModels`  |    no    | `true`                          | Generates Java classes, if `true`.                   |
-| `modelPackage`    |    no    | `org.openapitools.client.model` | The `package` of generated Java classes.             |
-| `modelNamePrefix` |    no    |                                 | Adds a prefix to the name of generated Java classes. |
-| `modelNameSuffix` |    no    |                                 | Adds a suffix to the name of generated Java classes. |
+| Property          | Required? |             Default             | Description                                                                      |
+|-------------------|:---------:|:-------------------------------:|----------------------------------------------------------------------------------|
+| `generateModels`  |    :x:    |             `true`              | Generates Java classes when `true`.                                              |
+| `modelPackage`    |    :x:    | `org.openapitools.client.model` | The `package` name of generated Java classes.                                    |
+| `modelNamePrefix` |    :x:    |                                 | Adds a prefix to the name of generated Java classes (useful for naming schemes). |
+| `modelNameSuffix` |    :x:    |                                 | Adds a suffix to the name of generated Java classes (useful for naming schemes). |
 
 ## Supported OpenAPI Specification properties
 
 The following are OpenAPI Specification properties which are supported. Other
 properties may be ignored, or may cause problems.
 
-| Property                                                        |             Supported values              | Description                                                                                          |
-|-----------------------------------------------------------------|:-----------------------------------------:|------------------------------------------------------------------------------------------------------|
-| `components.schemas.{schema}`                                   |                    any                    | Name of the generated Java class.                                                                    |
-| `components.schemas.{schema}.type`                              |             `object` / `enum`             | Type of the generated Java class.                                                                    |
-| `components.schemas.{schema}.description`                       |                    any                    | JavaDoc description of the generated Java class.                                                     |
-| `components.schemas.{schema}.deprecated`                        |             `true` / `false`              | Annotates the class with `@Deprecated` and adds `@deprecated` to the JavaDoc description.            |
-| `components.schemas.{schema}.properties`                        |                    any                    | The fields of the generated Java Record.                                                             |
-| `components.schemas.{schema}.properties.{property}`             |                    any                    | The name of the field in the generated Java Record. This is also added as a `@param` in the JavaDoc. |
-| `components.schemas.{schema}.properties.{property}.description` |                    any                    | The description of the `@param` in the JavaDoc.                                                      |
-| `components.schemas.{schema}.properties.{property}.type`        | `array` / `string` / `integer` / `number` | The type of the field in the generated Java Record.                                                  |
-| `components.schemas.{schema}.properties.{property}.$ref`        |                    any                    | The type of the field in the generated Java Record. Can refer to another generated Java class.       |
+> [!NOTE]
+> The following properties are referring to the schema definitions, prefixed
+> by `components.schemas.{schema}`.
+
+| Property                                     | Description                                      |       Value       | Value Description                                                                                                        |
+|----------------------------------------------|--------------------------------------------------|:-----------------:|--------------------------------------------------------------------------------------------------------------------------|
+| `{schema}`                                   | Name of the generated Java class.                |         *         |                                                                                                                          |
+| `{schema}.type`                              | Type of the generated Java class.                |     `object`      | Generates a Record class.                                                                                                |
+|                                              |                                                  |      `enum`       | Generates an Enum class.                                                                                                 |
+| `{schema}.description`                       | JavaDoc description of the generated Java class. |         *         |                                                                                                                          |
+| `{schema}.deprecated`                        | Marks the generated Java class as Deprecated.    |      `true`       | Annotates the class with `@Deprecated` and adds `@deprecated` to the JavaDoc description.                                |
+|                                              |                                                  | `false` (default) | Does nothing.                                                                                                            |
+| `{schema}.properties`                        | Fields of the generated Record class.            |         *         |                                                                                                                          |
+| `{schema}.properties.{property}`             | Name of the field.                               |         *         | Added as a `@param` in the JavaDoc.                                                                                      |
+| `{schema}.properties.{property}.description` | Description of the field.                        |         *         | Description of the `@param` in the JavaDoc.                                                                              |
+| `{schema}.properties.{property}.$ref`        | Type of the field is another Java class.         |         *         |                                                                                                                          |
+| `{schema}.properties.{property}.type`        | Type of the field.                               |      `array`      | Generates the field as `List<{items.type}>`.                                                                             |
+|                                              |                                                  |     `boolean`     | Generates the field as `Boolean`.                                                                                        |
+|                                              |                                                  |      `enum`       | **Not supported yet** - See [Issue #5](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/issues/5)   |
+|                                              |                                                  |     `integer`     | Generates the field as `Integer`.                                                                                        |
+|                                              |                                                  |     `number`      | **Not supported yet** - See [Issue #15](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/issues/15) |
+|                                              |                                                  |     `object`      | **Not supported yet** - See [Issue #4](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/issues/4)   |
+|                                              |                                                  |     `string`      | Generates the field as `String`.                                                                                         |
 
 ### Useful Resources
 
