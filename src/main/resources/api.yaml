@@ -19,6 +19,35 @@ paths:
 
 components:
   schemas:
+    ExampleRecord:
+      type: object
+      properties:
+        field:
+          type: boolean
+    DeprecatedExampleRecord:
+      type: object
+      deprecated: true
+      properties:
+        field:
+          type: boolean
+    ExampleRecordWithStringFields:
+      type: object
+      properties:
+        field1:
+          type: string
+        field2:
+          type: string
+        field3:
+          type: string
+    ExampleRecordWithIntegerFields:
+      type: object
+      properties:
+        field1:
+          type: integer
+        field2:
+          type: integer
+        field3:
+          type: integer
     ExampleEnum:
       description: Example Enum
       type: string
