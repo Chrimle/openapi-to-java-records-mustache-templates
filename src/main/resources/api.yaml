@@ -83,6 +83,15 @@ components:
     #    field3:
     #      type: number
     ###############################
+    ExampleRecordWithExampleRecordFields:
+      type: object
+      properties:
+        field1:
+          $ref: '#/components/schemas/ExampleRecord'
+        field2:
+          $ref: '#/components/schemas/ExampleRecord'
+        field3:
+          $ref: '#/components/schemas/ExampleRecord'
     ExampleEnum:
       description: Example Enum
       type: string
