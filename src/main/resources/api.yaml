@@ -72,6 +72,17 @@ components:
           type: array
           items:
             type: boolean
+    ###### NOT SUPPORTED YET ######
+    #ExampleRecordWithNumberFields:
+    #  type: object
+    #  properties:
+    #    field1:
+    #      type: number
+    #    field2:
+    #      type: number
+    #    field3:
+    #      type: number
+    ###############################
     ExampleEnum:
       description: Example Enum
       type: string
