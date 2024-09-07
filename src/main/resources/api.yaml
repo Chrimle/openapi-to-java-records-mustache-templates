@@ -107,6 +107,13 @@ components:
         - ENUM1
         - ENUM2
         - ENUM3
+    DeprecatedExampleEnum:
+      type: string
+      deprecated: true
+      enum:
+        - ENUM1
+        - ENUM2
+        - ENUM3
     ExampleDeprecatedObject:
       description: Example Deprecated object
       deprecated: true
