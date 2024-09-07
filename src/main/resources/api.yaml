@@ -57,6 +57,21 @@ components:
           type: boolean
         field3:
           type: boolean
+    ExampleRecordWithArrayFields:
+      type: object
+      properties:
+        field1:
+          type: array
+          items:
+            type: boolean
+        field2:
+          type: array
+          items:
+            type: boolean
+        field3:
+          type: array
+          items:
+            type: boolean
     ExampleEnum:
       description: Example Enum
       type: string
