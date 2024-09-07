@@ -11,14 +11,18 @@ public class AssertionUtils {
     Assertions.assertTrue(clazz.isRecord());
   }
 
-  public static void assertRecordIsAnnotatedAsDeprecated(final Class<?> clazz) {
+  public static void assertIsEnum(final Class<?> clazz) {
+    Assertions.assertTrue(clazz.isEnum());
+  }
+
+  public static void assertClassIsAnnotatedAsDeprecated(final Class<?> clazz) {
     Assertions.assertTrue(
         Arrays.stream(clazz.getAnnotations())
             .map(Annotation::annotationType)
             .anyMatch(annotation -> annotation.equals(Deprecated.class)));
   }
 
-  public static void assertRecordIsNotAnnotatedAsDeprecated(
+  public static void assertClassIsNotAnnotatedAsDeprecated(
       final Class<?> clazz) {
     Assertions.assertTrue(
         Arrays.stream(clazz.getAnnotations())

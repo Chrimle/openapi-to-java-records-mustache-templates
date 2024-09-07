@@ -19,7 +19,7 @@ public class TestExampleRecordWithArrayFields {
   @Test
   @DisplayName("Testing generated Record is not annotated as @Deprecated")
   public void testRecordIsNotAnnotatedAsDeprecated() {
-    AssertionUtils.assertRecordIsNotAnnotatedAsDeprecated(classUnderTest);
+    AssertionUtils.assertClassIsNotAnnotatedAsDeprecated(classUnderTest);
   }
 
   @Test

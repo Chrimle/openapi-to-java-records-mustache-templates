@@ -102,11 +102,11 @@ components:
         field3:
           $ref: '#/components/schemas/ExampleEnum'
     ExampleEnum:
-      description: Example Enum
       type: string
       enum:
-        - FIRST_ENUM
-        - SECOND_ENUM
+        - ENUM1
+        - ENUM2
+        - ENUM3
     ExampleDeprecatedObject:
       description: Example Deprecated object
       deprecated: true
