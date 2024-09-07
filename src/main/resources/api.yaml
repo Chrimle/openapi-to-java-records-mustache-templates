@@ -21,55 +21,75 @@ components:
   schemas:
     ExampleRecord:
       type: object
+      description: Example of a Record
       properties:
         field:
           type: boolean
+          description: a boolean field
     DeprecatedExampleRecord:
       type: object
       deprecated: true
+      description: Example of a deprecated Record
       properties:
         field:
           type: boolean
+          description: a boolean field
     ExampleRecordWithStringFields:
       type: object
+      description: Example of a Record with String fields
       properties:
         field1:
           type: string
+          description: a String field
         field2:
           type: string
+          description: another String field
         field3:
           type: string
+          description: yet another String field
     ExampleRecordWithIntegerFields:
       type: object
+      description: Example of a Record with Integer fields
       properties:
         field1:
           type: integer
+          description: a Integer field
         field2:
           type: integer
+          description: another Integer field
         field3:
           type: integer
+          description: yet another Integer field
     ExampleRecordWithBooleanFields:
       type: object
+      description: Example of a Record with Boolean fields
       properties:
         field1:
           type: boolean
+          description: a Boolean field
         field2:
           type: boolean
+          description: another Boolean field
         field3:
           type: boolean
+          description: yet another Boolean field
     ExampleRecordWithArrayFields:
       type: object
+      description: Example of a Record with Array fields
       properties:
         field1:
           type: array
+          description: an Array field
           items:
             type: boolean
         field2:
           type: array
+          description: another Array field
           items:
             type: boolean
         field3:
           type: array
+          description: yet another Array field
           items:
             type: boolean
     ###### NOT SUPPORTED YET ######
@@ -85,6 +105,7 @@ components:
     ###############################
     ExampleRecordWithExampleRecordFields:
       type: object
+      description: Example of a Record with Record fields
       properties:
         field1:
           $ref: '#/components/schemas/ExampleRecord'
@@ -94,6 +115,7 @@ components:
           $ref: '#/components/schemas/ExampleRecord'
     ExampleRecordWithExampleEnumFields:
       type: object
+      description: Example of a Record with Enum fields
       properties:
         field1:
           $ref: '#/components/schemas/ExampleEnum'
@@ -103,6 +125,7 @@ components:
           $ref: '#/components/schemas/ExampleEnum'
     ExampleEnum:
       type: string
+      description: Example of an Enum
       enum:
         - ENUM1
         - ENUM2
@@ -110,6 +133,7 @@ components:
     DeprecatedExampleEnum:
       type: string
       deprecated: true
+      description: Example of a deprecated Enum
       enum:
         - ENUM1
         - ENUM2
