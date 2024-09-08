@@ -18,24 +18,24 @@
 package com.chrimle.example;
 
 import java.util.Objects;
-import com.chrimle.example.ExampleEnum;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.Arrays;
 
 /**
- * Example of a Record with Enum fields
- * @param field1 
- * @param field2 
- * @param field3 
+ * Example of a Record with Number fields
+ * @param field1 a Number field
+ * @param field2 another Number field
+ * @param field3 yet another Number field
  */
-public record ExampleRecordWithExampleEnumFields(
-    ExampleEnum field1,
-    ExampleEnum field2,
-    ExampleEnum field3) {
+public record ExampleRecordWithNumberFields(
+    BigDecimal field1,
+    BigDecimal field2,
+    BigDecimal field3) {
 
 }

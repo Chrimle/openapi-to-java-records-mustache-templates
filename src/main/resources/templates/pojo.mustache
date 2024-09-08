@@ -1,3 +1,6 @@
-{{>javadoc}}{{#isDeprecated}}
-@Deprecated{{/isDeprecated}}
-{{^isEnum}}{{>record}}{{/isEnum}}{{#isEnum}}{{>enum}}{{/isEnum}}
+{{>javadoc}}{{>deprecation}}
+public record {{classname}}(
+    {{#vars}}{{{datatypeWithEnum}}} {{name}}{{^-last}},
+    {{/-last}}{{/vars}}) {
+
+}

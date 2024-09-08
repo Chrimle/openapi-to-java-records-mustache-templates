@@ -92,17 +92,19 @@ components:
           description: yet another Array field
           items:
             type: boolean
-    ###### NOT SUPPORTED YET ######
-    #ExampleRecordWithNumberFields:
-    #  type: object
-    #  properties:
-    #    field1:
-    #      type: number
-    #    field2:
-    #      type: number
-    #    field3:
-    #      type: number
-    ###############################
+    ExampleRecordWithNumberFields:
+      type: object
+      description: Example of a Record with Number fields
+      properties:
+        field1:
+          type: number
+          description: a Number field
+        field2:
+          type: number
+          description: another Number field
+        field3:
+          type: number
+          description: yet another Number field
     ExampleRecordWithExampleRecordFields:
       type: object
       description: Example of a Record with Record fields
