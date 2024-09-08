@@ -29,9 +29,9 @@ import java.util.Arrays;
 
 /**
  * Example of a Record with Enum fields
- * @param field1 
- * @param field2 
- * @param field3 
+ * @param field1 ExampleEnum
+ * @param field2 ExampleEnum
+ * @param field3 ExampleEnum
  */
 public record ExampleRecordWithExampleEnumFields(
     ExampleEnum field1,

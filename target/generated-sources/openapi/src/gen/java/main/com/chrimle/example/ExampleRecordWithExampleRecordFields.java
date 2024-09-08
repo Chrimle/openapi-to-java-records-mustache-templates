@@ -29,9 +29,9 @@ import java.util.Arrays;
 
 /**
  * Example of a Record with Record fields
- * @param field1 
- * @param field2 
- * @param field3 
+ * @param field1 ExampleRecord
+ * @param field2 ExampleRecord
+ * @param field3 ExampleRecord
  */
 public record ExampleRecordWithExampleRecordFields(
     ExampleRecord field1,
