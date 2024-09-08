@@ -14,9 +14,11 @@
  * https://github.com/Chrimle/openapi-to-java-records-mustache-templates.
  *
  */
+
 package com.chrimle.example;
 
-import java.util.List;
+import java.util.Objects;
+import com.google.gson.annotations.SerializedName;
 
 /**
  * Example of an Enum

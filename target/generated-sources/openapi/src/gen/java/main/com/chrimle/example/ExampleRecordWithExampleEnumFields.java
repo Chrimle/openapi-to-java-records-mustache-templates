@@ -14,9 +14,18 @@
  * https://github.com/Chrimle/openapi-to-java-records-mustache-templates.
  *
  */
+
 package com.chrimle.example;
 
-import java.util.List;
+import java.util.Objects;
+import com.chrimle.example.ExampleEnum;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.Arrays;
 
 /**
  * Example of a Record with Enum fields
