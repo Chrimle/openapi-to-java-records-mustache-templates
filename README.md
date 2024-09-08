@@ -77,7 +77,7 @@ public record Example(
     public Example(
             @javax.annotation.Nonnull final String text,
             @javax.annotation.Nullable final String nullableText,
-            @javax.annotation.Nonnull final List<Integer> collection,
+            @javax.annotation.Nullable final List<Integer> collection,
             @javax.annotation.Nonnull final Composite composite) {
         this.text = text;
         this.nullableText = Objects.requireNonNullElse(nullableText, "someDefaultValue");
@@ -133,8 +133,8 @@ properties may be ignored, or may cause problems.
 | `{schema}.properties.{property}`             | Name of the field.                               |         *         | Added as a `@param` in the JavaDoc.                                                                                    |
 | `{schema}.properties.{property}.description` | Description of the field.                        |         *         | Description of the `@param` in the JavaDoc. If not set, the class name of the field will be added as a description.    |
 | `{schema}.properties.{property}.default`     | Default value of the field.                      |         *         | If set, the field is set to the default value if the provided value is null. (Using `Objects.requireNonNullElse()`)    |
-| `{schema}.properties.{property}.nullable`    | Marks the field with `@Nullable`-annotations.    |      `true`       | Annotates the field with `@Nullable`. This *may* be required if `default` has been set.                                |
-|                                              |                                                  | `false` (default) | Annotates the field with `@Nonnull`.                                                                                   |
+| `{schema}.properties.{property}.nullable`    | Marks the field with `@Nullable`-annotations.    |      `true`       | Annotates the field with `@Nullable`.                                                                                  |
+|                                              |                                                  | `false` (default) | Annotates the field with `@Nonnull`. This will be annotated `@Nullable` in the constructor, if `default` has been set. |
 | `{schema}.properties.{property}.$ref`        | Type of the field is another Java class.         |         *         |                                                                                                                        |
 | `{schema}.properties.{property}.type`        | Type of the field.                               |      `array`      | Generates the field as `List<{items.type}>`.                                                                           |
 |                                              |                                                  |     `boolean`     | Generates the field as `Boolean`.                                                                                      |

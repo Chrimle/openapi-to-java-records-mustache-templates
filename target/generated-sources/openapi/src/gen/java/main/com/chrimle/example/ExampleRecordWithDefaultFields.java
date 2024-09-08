@@ -39,7 +39,7 @@ public record ExampleRecordWithDefaultFields(
 
     public ExampleRecordWithDefaultFields(
             @javax.annotation.Nullable final String nullableStringField,
-            @javax.annotation.Nonnull final String defaultStringField) { 
+            @javax.annotation.Nullable final String defaultStringField) { 
         this.nullableStringField = nullableStringField;
         this.defaultStringField = Objects.requireNonNullElse(defaultStringField, "someDefaultValue");
     }
