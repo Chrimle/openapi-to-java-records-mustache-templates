@@ -67,6 +67,7 @@
                             <generatorName>java</generatorName>
                             <configOptions>
                                 <sourceFolder>src/gen/java/main</sourceFolder>
+                                <useEnumCaseInsensitive>true</useEnumCaseInsensitive>
                             </configOptions>
                         </configuration>
                     </execution>
