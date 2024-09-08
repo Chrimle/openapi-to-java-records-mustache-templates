@@ -35,14 +35,14 @@ import java.util.Arrays;
  * @param field3 ExampleEnum
  */
 public record ExampleRecordWithExampleEnumFields(
-        ExampleEnum field1,
-        ExampleEnum field2,
-        ExampleEnum field3) {
+        @javax.annotation.Nonnull ExampleEnum field1,
+        @javax.annotation.Nonnull ExampleEnum field2,
+        @javax.annotation.Nonnull ExampleEnum field3) {
 
     public ExampleRecordWithExampleEnumFields(
-            final ExampleEnum field1,
-            final ExampleEnum field2,
-            final ExampleEnum field3) { 
+            @javax.annotation.Nonnull final ExampleEnum field1,
+            @javax.annotation.Nonnull final ExampleEnum field2,
+            @javax.annotation.Nonnull final ExampleEnum field3) { 
         this.field1 = field1;
         this.field2 = field2;
         this.field3 = field3;

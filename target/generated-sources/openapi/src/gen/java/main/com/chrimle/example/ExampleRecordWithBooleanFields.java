@@ -34,14 +34,14 @@ import java.util.Arrays;
  * @param field3 yet another Boolean field
  */
 public record ExampleRecordWithBooleanFields(
-        Boolean field1,
-        Boolean field2,
-        Boolean field3) {
+        @javax.annotation.Nonnull Boolean field1,
+        @javax.annotation.Nonnull Boolean field2,
+        @javax.annotation.Nonnull Boolean field3) {
 
     public ExampleRecordWithBooleanFields(
-            final Boolean field1,
-            final Boolean field2,
-            final Boolean field3) { 
+            @javax.annotation.Nonnull final Boolean field1,
+            @javax.annotation.Nonnull final Boolean field2,
+            @javax.annotation.Nonnull final Boolean field3) { 
         this.field1 = field1;
         this.field2 = field2;
         this.field3 = field3;

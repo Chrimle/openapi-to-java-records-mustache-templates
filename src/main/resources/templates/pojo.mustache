@@ -1,10 +1,10 @@
 {{>javadoc}}{{>deprecation}}
 public record {{classname}}(
-        {{#vars}}{{{datatypeWithEnum}}} {{name}}{{^-last}},
+        {{#vars}}@{{javaxPackage}}.annotation.{{#isNullable}}Nullable{{/isNullable}}{{^isNullable}}Nonnull{{/isNullable}} {{{datatypeWithEnum}}} {{name}}{{^-last}},
         {{/-last}}{{/vars}}) {
 
     public {{classname}}(
-            {{#vars}}final {{{datatypeWithEnum}}} {{name}}{{^-last}},
+            {{#vars}}@{{javaxPackage}}.annotation.{{#isNullable}}Nullable{{/isNullable}}{{^isNullable}}Nonnull{{/isNullable}} final {{{datatypeWithEnum}}} {{name}}{{^-last}},
             {{/-last}}{{/vars}}) { {{#vars}}
         this.{{name}} = {{^defaultValue}}{{name}}{{/defaultValue}}{{#defaultValue}}Objects.requireNonNullElse({{name}}, {{{.}}}){{/defaultValue}};{{/vars}}
     }

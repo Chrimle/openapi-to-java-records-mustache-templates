@@ -132,6 +132,7 @@ components:
         nullableStringField:
           type: string
           description: a nullable String field
+          nullable: true
         defaultStringField:
           type: string
           description: a String field with a default value

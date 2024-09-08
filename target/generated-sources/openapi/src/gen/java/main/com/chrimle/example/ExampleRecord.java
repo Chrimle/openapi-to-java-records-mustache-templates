@@ -32,10 +32,10 @@ import java.util.Arrays;
  * @param field a boolean field
  */
 public record ExampleRecord(
-        Boolean field) {
+        @javax.annotation.Nonnull Boolean field) {
 
     public ExampleRecord(
-            final Boolean field) { 
+            @javax.annotation.Nonnull final Boolean field) { 
         this.field = field;
     }
 }

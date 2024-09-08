@@ -35,14 +35,14 @@ import java.util.Arrays;
  * @param field3 ExampleRecord
  */
 public record ExampleRecordWithExampleRecordFields(
-        ExampleRecord field1,
-        ExampleRecord field2,
-        ExampleRecord field3) {
+        @javax.annotation.Nonnull ExampleRecord field1,
+        @javax.annotation.Nonnull ExampleRecord field2,
+        @javax.annotation.Nonnull ExampleRecord field3) {
 
     public ExampleRecordWithExampleRecordFields(
-            final ExampleRecord field1,
-            final ExampleRecord field2,
-            final ExampleRecord field3) { 
+            @javax.annotation.Nonnull final ExampleRecord field1,
+            @javax.annotation.Nonnull final ExampleRecord field2,
+            @javax.annotation.Nonnull final ExampleRecord field3) { 
         this.field1 = field1;
         this.field2 = field2;
         this.field3 = field3;

@@ -34,10 +34,10 @@ import java.util.Arrays;
  */
 @Deprecated
 public record DeprecatedExampleRecord(
-        Boolean field) {
+        @javax.annotation.Nonnull Boolean field) {
 
     public DeprecatedExampleRecord(
-            final Boolean field) { 
+            @javax.annotation.Nonnull final Boolean field) { 
         this.field = field;
     }
 }
