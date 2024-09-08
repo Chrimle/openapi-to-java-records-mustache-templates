@@ -31,6 +31,7 @@ components:
           description: Example nullable text property with default value
           type: string
           default: someDefaultValue
+          nullable: true
         collection:
           description: Example list property
           type: array
@@ -56,12 +57,7 @@ components:
 ```java
 package com.chrimle.example;
 
-import java.util.Objects;
-import com.chrimle.example.Composite;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import ...;
 
 /**
  * This is an example
@@ -73,16 +69,16 @@ import java.util.List;
  */
 @Deprecated
 public record Example(
-        String text,
-        String nullableText,
-        List<Integer> collection,
-        Composite composite) {
+        @javax.annotation.Nonnull String text,
+        @javax.annotation.Nullable String nullableText,
+        @javax.annotation.Nonnull List<Integer> collection,
+        @javax.annotation.Nonnull Composite composite) {
 
     public Example(
-            final String text,
-            final String nullableText,
-            final List<Integer> collection,
-            final Composite composite) {
+            @javax.annotation.Nonnull final String text,
+            @javax.annotation.Nullable final String nullableText,
+            @javax.annotation.Nullable final List<Integer> collection,
+            @javax.annotation.Nonnull final Composite composite) {
         this.text = text;
         this.nullableText = Objects.requireNonNullElse(nullableText, "someDefaultValue");
         this.collection = Objects.requireNonNullElse(collection, new ArrayList<>());
@@ -90,6 +86,10 @@ public record Example(
     }
 }
 ```
+
+> [!NOTE]
+> The annotations `@javax.annotation.*` can be changed to `@jakarta.annotation.*`
+> by setting the `configOptions`-property `useJakartaEe` to `true`.
 
 ## Supported `openapi-generator-maven-plugin` configurations
 
@@ -103,13 +103,14 @@ used. [Full list of available configurations](https://github.com/OpenAPITools/op
 > or by the complete property name prefixed
 > by `openapi.generator.maven.plugin.{property}`.
 
-| Property                               | Required? |             Default             | Description                                                                             |
-|----------------------------------------|:---------:|:-------------------------------:|-----------------------------------------------------------------------------------------|
-| `generateModels`                       |    :x:    |             `true`              | Generates Java classes, if `true`.                                                      |
-| `modelPackage`                         |    :x:    | `org.openapitools.client.model` | The `package` name of generated Java classes.                                           |
-| `modelNamePrefix`                      |    :x:    |                                 | Adds a prefix to the name of generated Java classes (useful for naming schemes).        |
-| `modelNameSuffix`                      |    :x:    |                                 | Adds a suffix to the name of generated Java classes (useful for naming schemes).        |
-| `configOptions.useEnumCaseInsensitive` |    :x:    |             `false`             | Adds a case-insensitive parse-method `fromValue(String)` to each Enum class, if `true`. |
+| Property                               | Required? |             Default             | Description                                                                                  |
+|----------------------------------------|:---------:|:-------------------------------:|----------------------------------------------------------------------------------------------|
+| `generateModels`                       |    :x:    |             `true`              | Generates Java classes, if `true`.                                                           |
+| `modelPackage`                         |    :x:    | `org.openapitools.client.model` | The `package` name of generated Java classes.                                                |
+| `modelNamePrefix`                      |    :x:    |                                 | Adds a prefix to the name of generated Java classes (useful for naming schemes).             |
+| `modelNameSuffix`                      |    :x:    |                                 | Adds a suffix to the name of generated Java classes (useful for naming schemes).             |
+| `configOptions.useEnumCaseInsensitive` |    :x:    |             `false`             | Adds a case-insensitive parse-method `fromValue(String)` to each Enum class, if `true`.      |
+| `configOptions.useJakartaEe`           |    :x:    |             `false`             | Annotates fields with `@Nullable`/`@Nonnull`. Uses `@jakarta` if `true`, otherwise `@javax`. |
 
 ## Supported OpenAPI Specification properties
 
@@ -132,6 +133,8 @@ properties may be ignored, or may cause problems.
 | `{schema}.properties.{property}`             | Name of the field.                               |         *         | Added as a `@param` in the JavaDoc.                                                                                    |
 | `{schema}.properties.{property}.description` | Description of the field.                        |         *         | Description of the `@param` in the JavaDoc. If not set, the class name of the field will be added as a description.    |
 | `{schema}.properties.{property}.default`     | Default value of the field.                      |         *         | If set, the field is set to the default value if the provided value is null. (Using `Objects.requireNonNullElse()`)    |
+| `{schema}.properties.{property}.nullable`    | Marks the field with `@Nullable`-annotations.    |      `true`       | Annotates the field with `@Nullable`.                                                                                  |
+|                                              |                                                  | `false` (default) | Annotates the field with `@Nonnull`. This will be annotated `@Nullable` in the constructor, if `default` has been set. |
 | `{schema}.properties.{property}.$ref`        | Type of the field is another Java class.         |         *         |                                                                                                                        |
 | `{schema}.properties.{property}.type`        | Type of the field.                               |      `array`      | Generates the field as `List<{items.type}>`.                                                                           |
 |                                              |                                                  |     `boolean`     | Generates the field as `Boolean`.                                                                                      |

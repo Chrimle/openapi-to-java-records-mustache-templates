@@ -12,7 +12,7 @@
  * openapi-to-java-records-mustache-templates. For further information,
  * questions, requesting features or reporting issues, please visit:
  * https://github.com/Chrimle/openapi-to-java-records-mustache-templates.
- * Generated with Version: 1.2.1
+ * Generated with Version: 1.3.0
  *
  */
 
@@ -26,6 +26,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * Example of a Record with default fields
@@ -33,12 +34,12 @@ import java.util.Arrays;
  * @param defaultStringField a String field with a default value
  */
 public record ExampleRecordWithDefaultFields(
-        String nullableStringField,
-        String defaultStringField) {
+        @javax.annotation.Nullable String nullableStringField,
+        @javax.annotation.Nonnull String defaultStringField) {
 
     public ExampleRecordWithDefaultFields(
-            final String nullableStringField,
-            final String defaultStringField) { 
+            @javax.annotation.Nullable final String nullableStringField,
+            @javax.annotation.Nullable final String defaultStringField) { 
         this.nullableStringField = nullableStringField;
         this.defaultStringField = Objects.requireNonNullElse(defaultStringField, "someDefaultValue");
     }

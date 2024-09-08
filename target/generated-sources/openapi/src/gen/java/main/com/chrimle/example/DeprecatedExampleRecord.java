@@ -12,7 +12,7 @@
  * openapi-to-java-records-mustache-templates. For further information,
  * questions, requesting features or reporting issues, please visit:
  * https://github.com/Chrimle/openapi-to-java-records-mustache-templates.
- * Generated with Version: 1.2.1
+ * Generated with Version: 1.3.0
  *
  */
 
@@ -34,10 +34,10 @@ import java.util.Arrays;
  */
 @Deprecated
 public record DeprecatedExampleRecord(
-        Boolean field) {
+        @javax.annotation.Nonnull Boolean field) {
 
     public DeprecatedExampleRecord(
-            final Boolean field) { 
+            @javax.annotation.Nonnull final Boolean field) { 
         this.field = field;
     }
 }
