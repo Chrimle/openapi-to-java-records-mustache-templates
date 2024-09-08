@@ -18,7 +18,6 @@
 package com.chrimle.example;
 
 import java.util.Objects;
-import com.chrimle.example.ExampleEnum;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -28,22 +27,18 @@ import java.io.IOException;
 import java.util.Arrays;
 
 /**
- * Example of a Record with Enum fields
- * @param field1 ExampleEnum
- * @param field2 ExampleEnum
- * @param field3 ExampleEnum
+ * Example of a Record with default fields
+ * @param nullableStringField a nullable String field
+ * @param defaultStringField a String field with a default value
  */
-public record ExampleRecordWithExampleEnumFields(
-        ExampleEnum field1,
-        ExampleEnum field2,
-        ExampleEnum field3) {
+public record ExampleRecordWithDefaultFields(
+        String nullableStringField,
+        String defaultStringField) {
 
-    public ExampleRecordWithExampleEnumFields(
-            final ExampleEnum field1,
-            final ExampleEnum field2,
-            final ExampleEnum field3) { 
-        this.field1 = field1;
-        this.field2 = field2;
-        this.field3 = field3;
+    public ExampleRecordWithDefaultFields(
+            final String nullableStringField,
+            final String defaultStringField) { 
+        this.nullableStringField = nullableStringField;
+        this.defaultStringField = Objects.requireNonNullElse(defaultStringField, "someDefaultValue");
     }
 }

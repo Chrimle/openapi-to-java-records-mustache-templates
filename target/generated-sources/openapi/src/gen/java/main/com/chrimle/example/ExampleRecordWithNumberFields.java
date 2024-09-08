@@ -34,8 +34,16 @@ import java.util.Arrays;
  * @param field3 yet another Number field
  */
 public record ExampleRecordWithNumberFields(
-    BigDecimal field1,
-    BigDecimal field2,
-    BigDecimal field3) {
+        BigDecimal field1,
+        BigDecimal field2,
+        BigDecimal field3) {
 
+    public ExampleRecordWithNumberFields(
+            final BigDecimal field1,
+            final BigDecimal field2,
+            final BigDecimal field3) { 
+        this.field1 = field1;
+        this.field2 = field2;
+        this.field3 = field3;
+    }
 }

@@ -1,6 +1,11 @@
 {{>javadoc}}{{>deprecation}}
 public record {{classname}}(
-    {{#vars}}{{{datatypeWithEnum}}} {{name}}{{^-last}},
-    {{/-last}}{{/vars}}) {
+        {{#vars}}{{{datatypeWithEnum}}} {{name}}{{^-last}},
+        {{/-last}}{{/vars}}) {
 
+    public {{classname}}(
+            {{#vars}}final {{{datatypeWithEnum}}} {{name}}{{^-last}},
+            {{/-last}}{{/vars}}) { {{#vars}}
+        this.{{name}} = {{^defaultValue}}{{name}}{{/defaultValue}}{{#defaultValue}}Objects.requireNonNullElse({{name}}, {{{.}}}){{/defaultValue}};{{/vars}}
+    }
 }
