@@ -27,6 +27,10 @@ components:
         text:
           description: Example text property
           type: string
+        nullableText:
+          description: Example nullable text property with default value
+          type: string
+          default: someDefaultValue
         collection:
           description: Example list property
           type: array
@@ -52,21 +56,38 @@ components:
 ```java
 package com.chrimle.example;
 
+import java.util.Objects;
+import com.chrimle.example.Composite;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
  * This is an example
  * @deprecated
- * @param text Example text property  
- * @param collection Example list property  
- * @param composite
+ * @param text Example text property
+ * @param nullableText Example nullable text property with default value
+ * @param collection Example list property
+ * @param composite Composite
  */
 @Deprecated
 public record Example(
-    String text,
-    List<Integer> collection,
-    Composite composite) {
+        String text,
+        String nullableText,
+        List<Integer> collection,
+        Composite composite) {
 
+    public Example(
+            final String text,
+            final String nullableText,
+            final List<Integer> collection,
+            final Composite composite) {
+        this.text = text;
+        this.nullableText = Objects.requireNonNullElse(nullableText, "someDefaultValue");
+        this.collection = Objects.requireNonNullElse(collection, new ArrayList<>());
+        this.composite = composite;
+    }
 }
 ```
 
