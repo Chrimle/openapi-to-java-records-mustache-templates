@@ -82,12 +82,13 @@ used. [Full list of available configurations](https://github.com/OpenAPITools/op
 > or by the complete property name prefixed
 > by `openapi.generator.maven.plugin.{property}`.
 
-| Property          | Required? |             Default             | Description                                                                      |
-|-------------------|:---------:|:-------------------------------:|----------------------------------------------------------------------------------|
-| `generateModels`  |    :x:    |             `true`              | Generates Java classes when `true`.                                              |
-| `modelPackage`    |    :x:    | `org.openapitools.client.model` | The `package` name of generated Java classes.                                    |
-| `modelNamePrefix` |    :x:    |                                 | Adds a prefix to the name of generated Java classes (useful for naming schemes). |
-| `modelNameSuffix` |    :x:    |                                 | Adds a suffix to the name of generated Java classes (useful for naming schemes). |
+| Property                               | Required? |             Default             | Description                                                                             |
+|----------------------------------------|:---------:|:-------------------------------:|-----------------------------------------------------------------------------------------|
+| `generateModels`                       |    :x:    |             `true`              | Generates Java classes, if `true`.                                                      |
+| `modelPackage`                         |    :x:    | `org.openapitools.client.model` | The `package` name of generated Java classes.                                           |
+| `modelNamePrefix`                      |    :x:    |                                 | Adds a prefix to the name of generated Java classes (useful for naming schemes).        |
+| `modelNameSuffix`                      |    :x:    |                                 | Adds a suffix to the name of generated Java classes (useful for naming schemes).        |
+| `configOptions.useEnumCaseInsensitive` |    :x:    |             `false`             | Adds a case-insensitive parse-method `fromValue(String)` to each Enum class, if `true`. |
 
 ## Supported OpenAPI Specification properties
 

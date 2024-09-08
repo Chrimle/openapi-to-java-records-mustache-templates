@@ -2,4 +2,21 @@
 public enum {{classname}} {
     {{#allowableValues}}{{#enumVars}}{{{name}}}{{^-last}},
     {{/-last}}{{#-last}};{{/-last}}{{/enumVars}}{{/allowableValues}}
+    {{#useEnumCaseInsensitive}}
+
+    /**
+     * Parses the given string to a matching Enum name, Case-insensitive.
+     * @param name of the Enum
+     * @return a {@link {{classname}} } with the matching name
+     * @throws IllegalArgumentException if no Enum name matches the string
+     */
+    public static {{classname}} fromValue(final String name) {
+        for (final {{classname}} b : {{classname}}.values()) {
+            if (b.name().equalsIgnoreCase(name)) {
+                return b;
+            }
+        }
+        throw new IllegalArgumentException("Unexpected value '" + name + "'");
+    }
+{{/useEnumCaseInsensitive}}
 }
