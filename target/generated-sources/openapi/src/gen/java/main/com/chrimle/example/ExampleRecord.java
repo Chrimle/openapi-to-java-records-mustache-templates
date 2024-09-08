@@ -31,6 +31,10 @@ import java.util.Arrays;
  * @param field a boolean field
  */
 public record ExampleRecord(
-    Boolean field) {
+        Boolean field) {
 
+    public ExampleRecord(
+            final Boolean field) { 
+        this.field = field;
+    }
 }

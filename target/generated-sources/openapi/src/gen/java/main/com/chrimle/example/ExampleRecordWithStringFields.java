@@ -33,8 +33,16 @@ import java.util.Arrays;
  * @param field3 yet another String field
  */
 public record ExampleRecordWithStringFields(
-    String field1,
-    String field2,
-    String field3) {
+        String field1,
+        String field2,
+        String field3) {
 
+    public ExampleRecordWithStringFields(
+            final String field1,
+            final String field2,
+            final String field3) { 
+        this.field1 = field1;
+        this.field2 = field2;
+        this.field3 = field3;
+    }
 }

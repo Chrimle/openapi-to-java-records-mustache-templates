@@ -33,6 +33,10 @@ import java.util.Arrays;
  */
 @Deprecated
 public record DeprecatedExampleRecord(
-    Boolean field) {
+        Boolean field) {
 
+    public DeprecatedExampleRecord(
+            final Boolean field) { 
+        this.field = field;
+    }
 }

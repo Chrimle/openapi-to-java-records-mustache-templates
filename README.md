@@ -27,6 +27,10 @@ components:
         text:
           description: Example text property
           type: string
+        nullableText:
+          description: Example nullable text property with default value
+          type: string
+          default: someDefaultValue
         collection:
           description: Example list property
           type: array
@@ -52,21 +56,38 @@ components:
 ```java
 package com.chrimle.example;
 
+import java.util.Objects;
+import com.chrimle.example.Composite;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
  * This is an example
  * @deprecated
- * @param text Example text property  
- * @param collection Example list property  
- * @param composite
+ * @param text Example text property
+ * @param nullableText Example nullable text property with default value
+ * @param collection Example list property
+ * @param composite Composite
  */
 @Deprecated
 public record Example(
-    String text,
-    List<Integer> collection,
-    Composite composite) {
+        String text,
+        String nullableText,
+        List<Integer> collection,
+        Composite composite) {
 
+    public Example(
+            final String text,
+            final String nullableText,
+            final List<Integer> collection,
+            final Composite composite) {
+        this.text = text;
+        this.nullableText = Objects.requireNonNullElse(nullableText, "someDefaultValue");
+        this.collection = Objects.requireNonNullElse(collection, new ArrayList<>());
+        this.composite = composite;
+    }
 }
 ```
 
@@ -104,12 +125,13 @@ properties may be ignored, or may cause problems.
 | `{schema}`                                   | Name of the generated Java class.                |         *         |                                                                                                                        |
 | `{schema}.type`                              | Type of the generated Java class.                |     `object`      | Generates a Record class.                                                                                              |
 |                                              |                                                  |      `enum`       | Generates an Enum class.                                                                                               |
-| `{schema}.description`                       | JavaDoc description of the generated Java class. |         *         | If not set, adds the class name as a placeholder in the JavaDoc description.                                                                                                                       |
+| `{schema}.description`                       | JavaDoc description of the generated Java class. |         *         | If not set, adds the class name as a placeholder in the JavaDoc description.                                           |
 | `{schema}.deprecated`                        | Marks the generated Java class as Deprecated.    |      `true`       | Annotates the class with `@Deprecated` and adds `@deprecated` to the JavaDoc description.                              |
 |                                              |                                                  | `false` (default) | Does nothing.                                                                                                          |
 | `{schema}.properties`                        | Fields of the generated Record class.            |         *         |                                                                                                                        |
 | `{schema}.properties.{property}`             | Name of the field.                               |         *         | Added as a `@param` in the JavaDoc.                                                                                    |
-| `{schema}.properties.{property}.description` | Description of the field.                        |         *         | Description of the `@param` in the JavaDoc. If not set, the class name of the field will be added as a description.                                                                            |
+| `{schema}.properties.{property}.description` | Description of the field.                        |         *         | Description of the `@param` in the JavaDoc. If not set, the class name of the field will be added as a description.    |
+| `{schema}.properties.{property}.default`     | Default value of the field.                      |         *         | If set, the field is set to the default value if the provided value is null. (Using `Objects.requireNonNullElse()`)    |
 | `{schema}.properties.{property}.$ref`        | Type of the field is another Java class.         |         *         |                                                                                                                        |
 | `{schema}.properties.{property}.type`        | Type of the field.                               |      `array`      | Generates the field as `List<{items.type}>`.                                                                           |
 |                                              |                                                  |     `boolean`     | Generates the field as `Boolean`.                                                                                      |

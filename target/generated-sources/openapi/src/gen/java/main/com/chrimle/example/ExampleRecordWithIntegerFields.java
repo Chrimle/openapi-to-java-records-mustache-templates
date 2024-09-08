@@ -33,8 +33,16 @@ import java.util.Arrays;
  * @param field3 yet another Integer field
  */
 public record ExampleRecordWithIntegerFields(
-    Integer field1,
-    Integer field2,
-    Integer field3) {
+        Integer field1,
+        Integer field2,
+        Integer field3) {
 
+    public ExampleRecordWithIntegerFields(
+            final Integer field1,
+            final Integer field2,
+            final Integer field3) { 
+        this.field1 = field1;
+        this.field2 = field2;
+        this.field3 = field3;
+    }
 }

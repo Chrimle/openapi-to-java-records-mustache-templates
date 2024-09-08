@@ -35,8 +35,16 @@ import java.util.List;
  * @param field3 yet another Array field
  */
 public record ExampleRecordWithArrayFields(
-    List<Boolean> field1,
-    List<Boolean> field2,
-    List<Boolean> field3) {
+        List<Boolean> field1,
+        List<Boolean> field2,
+        List<Boolean> field3) {
 
+    public ExampleRecordWithArrayFields(
+            final List<Boolean> field1,
+            final List<Boolean> field2,
+            final List<Boolean> field3) { 
+        this.field1 = Objects.requireNonNullElse(field1, new ArrayList<>());
+        this.field2 = Objects.requireNonNullElse(field2, new ArrayList<>());
+        this.field3 = Objects.requireNonNullElse(field3, new ArrayList<>());
+    }
 }
