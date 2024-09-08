@@ -28,10 +28,10 @@ import java.math.BigDecimal;
 import java.util.Arrays;
 
 /**
- * 
- * @param field1 
- * @param field2 
- * @param field3 
+ * Example of a Record with Number fields
+ * @param field1 a Number field
+ * @param field2 another Number field
+ * @param field3 yet another Number field
  */
 public record ExampleRecordWithNumberFields(
     BigDecimal field1,
