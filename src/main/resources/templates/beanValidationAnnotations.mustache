@@ -1,0 +1,57 @@
+{{!
+if useBeanValidation
+}}{{#useBeanValidation}}{{!
+  if required && !isNullable
+  }}{{#required}}{{^isNullable}}{{!
+    if isEnum
+    }}{{#isEnum}} @NotNull{{/isEnum}}{{!
+    if isString
+    }}{{#isString}}{{!
+      if pattern is set
+      }}{{#pattern}}{{!
+        if !isByteArray
+        }}{{^isByteArray}} @Pattern(regexp="{{{pattern}}}"){{/isByteArray}}{{!
+      }}{{/pattern}}{{!
+      if pattern is not set && minLength is not set && maxLength is not set
+      }}{{^pattern}}{{^minLength}}{{^maxLength}} @NotNull{{/maxLength}}{{/minLength}}{{/pattern}}{{!
+    }}{{/isString}}{{!
+    if isInteger
+    }}{{#isInteger}}{{!
+      if minimum is set
+      }}{{#minimum}} @Min({{.}}){{/minimum}}{{!
+      if maximum is set
+      }}{{#maximum}} @Max({{.}}){{/maximum}}{{!
+    }}{{/isInteger}}{{!
+    if isLong
+    }}{{#isLong}}{{!
+      if minimum is set
+      }}{{#minimum}} @Min({{.}}L){{/minimum}}{{!
+      if maximum is set
+      }}{{#maximum}} @Max({{.}}L){{/maximum}}{{!
+    }}{{/isLong}}{{!
+    if !isInteger && !isLong
+    }}{{^isInteger}}{{^isLong}}{{!
+      if minimum is set
+      }}{{#minimum}} @DecimalMin({{#exclusiveMinimum}}value={{/exclusiveMinimum}}"{{minimum}}"{{#exclusiveMinimum}},inclusive=false{{/exclusiveMinimum}}){{/minimum}}{{!
+      if maximum is set
+      }}{{#maximum}} @DecimalMax({{#exclusiveMaximum}}value={{/exclusiveMaximum}}"{{maximum}}"{{#exclusiveMaximum}},inclusive=false{{/exclusiveMaximum}}){{/maximum}}{{!
+    }}{{/isLong}}{{/isInteger}}{{!
+    @Size based on minLength & maxLength
+    }}{{!
+      if minLength is set && maxLength is set
+      }}{{#minLength}}{{#maxLength}} @Size(min={{minLength}},max={{maxLength}}){{/maxLength}}{{/minLength}}{{!
+      if minLength is set && maxLength is not set
+      }}{{#minLength}}{{^maxLength}} @Size(min={{minLength}}){{/maxLength}}{{/minLength}}{{!
+      if minLength is not set && maxLength is set
+      }}{{^minLength}}{{#maxLength}} @Size(max={{.}}){{/maxLength}}{{/minLength}}{{!
+    @Size based on minItems & maxItems
+    }}{{!
+      if minItems is set && maxItems is set
+      }}{{#minItems}}{{#maxItems}} @Size(min={{minItems}},max={{maxItems}}){{/maxItems}}{{/minItems}}{{!
+      if minItems is set && maxItems is not set
+      }}{{#minItems}}{{^maxItems}} @Size(min={{minItems}}){{/maxItems}}{{/minItems}}{{!
+      if minItems is not set && maxItems is set
+      }}{{^minItems}}{{#maxItems}} @Size(max={{.}}){{/maxItems}}{{/minItems}}{{!
+    }}{{!
+  }}{{/isNullable}}{{/required}}{{!
+}}{{/useBeanValidation}}
