@@ -16,7 +16,7 @@
  *
  */
 
-package com.chrimle.example.useEnumCaseInsensitive;
+package com.chrimle.example.serializableModel;
 
 import java.util.Objects;
 import com.google.gson.TypeAdapter;
@@ -25,19 +25,29 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.Arrays;
+import java.io.Serializable;
 
 /**
- * Example of a deprecated Record
- * @deprecated
- * @param field a boolean field
+ * Example of a Record with Number fields
+ * @param field1 a Number field
+ * @param field2 another Number field
+ * @param field3 yet another Number field
  */
-@Deprecated
-public record DeprecatedExampleRecord(
-        @javax.annotation.Nonnull Boolean field) {
+public record ExampleRecordWithNumberFields(
+        @javax.annotation.Nonnull BigDecimal field1,
+        @javax.annotation.Nonnull BigDecimal field2,
+        @javax.annotation.Nonnull BigDecimal field3) {
 
-    public DeprecatedExampleRecord(
-            @javax.annotation.Nonnull final Boolean field) { 
-        this.field = field;
+    private static final long serialVersionUID = 1L;
+
+    public ExampleRecordWithNumberFields(
+            @javax.annotation.Nonnull final BigDecimal field1,
+            @javax.annotation.Nonnull final BigDecimal field2,
+            @javax.annotation.Nonnull final BigDecimal field3) { 
+        this.field1 = field1;
+        this.field2 = field2;
+        this.field3 = field3;
     }
 }

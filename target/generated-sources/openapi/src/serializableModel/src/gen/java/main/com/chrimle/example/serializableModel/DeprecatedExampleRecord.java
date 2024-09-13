@@ -16,31 +16,31 @@
  *
  */
 
-package com.chrimle.example.useEnumCaseInsensitive;
+package com.chrimle.example.serializableModel;
 
 import java.util.Objects;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.Arrays;
+import java.io.Serializable;
 
 /**
- * Example of an Enum
+ * Example of a deprecated Record
+ * @deprecated
+ * @param field a boolean field
  */
-public enum ExampleEnum {
-    ENUM1,
-    ENUM2,
-    ENUM3;
+@Deprecated
+public record DeprecatedExampleRecord(
+        @javax.annotation.Nonnull Boolean field) {
 
-    /**
-     * Parses the given string to a matching Enum name, Case-insensitive.
-     * @param name of the Enum
-     * @return a {@link ExampleEnum } with the matching name
-     * @throws IllegalArgumentException if no Enum name matches the string
-     */
-    public static ExampleEnum fromValue(final String name) {
-        for (final ExampleEnum b : ExampleEnum.values()) {
-            if (b.name().equalsIgnoreCase(name)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + name + "'");
+    private static final long serialVersionUID = 1L;
+
+    public DeprecatedExampleRecord(
+            @javax.annotation.Nonnull final Boolean field) { 
+        this.field = field;
     }
 }

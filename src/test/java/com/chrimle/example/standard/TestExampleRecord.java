@@ -1,6 +1,7 @@
 package com.chrimle.example.standard;
 
 import com.chrimle.example.utils.AssertionUtils;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -27,5 +28,11 @@ public class TestExampleRecord {
     AssertionUtils.assertClassIsNotAnnotatedWith(classUnderTest, com.chrimle.example.annotations.TestAnnotationOne.class);
     AssertionUtils.assertClassIsNotAnnotatedWith(classUnderTest, com.chrimle.example.annotations.TestAnnotationTwo.class);
     AssertionUtils.assertClassIsNotAnnotatedWith(classUnderTest, com.chrimle.example.annotations.TestAnnotationThree.class);
+  }
+
+  @Test
+  @DisplayName("Testing generated Record does not have field 'serialVersionUID'")
+  public void testRecordHasFieldSerialVersionUID() {
+    Assertions.assertThrows(NoSuchFieldException.class, () -> classUnderTest.getDeclaredField("serialVersionUID"));
   }
 }

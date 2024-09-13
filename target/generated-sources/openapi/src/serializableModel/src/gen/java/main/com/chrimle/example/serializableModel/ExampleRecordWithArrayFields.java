@@ -16,7 +16,7 @@
  *
  */
 
-package com.chrimle.example.additionalModelTypeAnnotations;
+package com.chrimle.example.serializableModel;
 
 import java.util.Objects;
 import com.google.gson.TypeAdapter;
@@ -28,6 +28,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.io.Serializable;
 
 /**
  * Example of a Record with Array fields
@@ -35,13 +36,12 @@ import java.util.List;
  * @param field2 another Array field
  * @param field3 yet another Array field
  */
-@com.chrimle.example.annotations.TestAnnotationOne
-@com.chrimle.example.annotations.TestAnnotationTwo
-@com.chrimle.example.annotations.TestAnnotationThree
 public record ExampleRecordWithArrayFields(
         @javax.annotation.Nonnull List<Boolean> field1,
         @javax.annotation.Nonnull List<Boolean> field2,
         @javax.annotation.Nonnull List<Boolean> field3) {
+
+    private static final long serialVersionUID = 1L;
 
     public ExampleRecordWithArrayFields(
             @javax.annotation.Nullable final List<Boolean> field1,

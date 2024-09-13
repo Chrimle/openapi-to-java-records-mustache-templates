@@ -16,7 +16,7 @@
  *
  */
 
-package com.chrimle.example.useEnumCaseInsensitive;
+package com.chrimle.example.serializableModel;
 
 import java.util.Objects;
 import com.google.gson.TypeAdapter;
@@ -26,18 +26,24 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.io.Serializable;
 
 /**
- * Example of a deprecated Record
- * @deprecated
- * @param field a boolean field
+ * Example of a Record with default fields
+ * @param nullableStringField a nullable String field
+ * @param defaultStringField a String field with a default value
  */
-@Deprecated
-public record DeprecatedExampleRecord(
-        @javax.annotation.Nonnull Boolean field) {
+public record ExampleRecordWithDefaultFields(
+        @javax.annotation.Nullable String nullableStringField,
+        @javax.annotation.Nonnull String defaultStringField) {
 
-    public DeprecatedExampleRecord(
-            @javax.annotation.Nonnull final Boolean field) { 
-        this.field = field;
+    private static final long serialVersionUID = 1L;
+
+    public ExampleRecordWithDefaultFields(
+            @javax.annotation.Nullable final String nullableStringField,
+            @javax.annotation.Nullable final String defaultStringField) { 
+        this.nullableStringField = nullableStringField;
+        this.defaultStringField = Objects.requireNonNullElse(defaultStringField, "someDefaultValue");
     }
 }

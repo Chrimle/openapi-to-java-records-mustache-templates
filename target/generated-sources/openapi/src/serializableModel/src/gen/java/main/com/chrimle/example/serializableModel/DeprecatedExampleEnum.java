@@ -16,31 +16,19 @@
  *
  */
 
-package com.chrimle.example.useEnumCaseInsensitive;
+package com.chrimle.example.serializableModel;
 
 import java.util.Objects;
 import com.google.gson.annotations.SerializedName;
+import java.io.Serializable;
 
 /**
- * Example of an Enum
+ * Example of a deprecated Enum
+ * @deprecated
  */
-public enum ExampleEnum {
+@Deprecated
+public enum DeprecatedExampleEnum {
     ENUM1,
     ENUM2,
     ENUM3;
-
-    /**
-     * Parses the given string to a matching Enum name, Case-insensitive.
-     * @param name of the Enum
-     * @return a {@link ExampleEnum } with the matching name
-     * @throws IllegalArgumentException if no Enum name matches the string
-     */
-    public static ExampleEnum fromValue(final String name) {
-        for (final ExampleEnum b : ExampleEnum.values()) {
-            if (b.name().equalsIgnoreCase(name)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + name + "'");
-    }
 }

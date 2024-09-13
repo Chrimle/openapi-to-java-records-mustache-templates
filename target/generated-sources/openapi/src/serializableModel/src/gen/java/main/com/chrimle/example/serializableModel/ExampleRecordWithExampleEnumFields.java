@@ -16,9 +16,10 @@
  *
  */
 
-package com.chrimle.example.useEnumCaseInsensitive;
+package com.chrimle.example.serializableModel;
 
 import java.util.Objects;
+import com.chrimle.example.serializableModel.ExampleEnum;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -26,18 +27,27 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import java.io.Serializable;
 
 /**
- * Example of a deprecated Record
- * @deprecated
- * @param field a boolean field
+ * Example of a Record with Enum fields
+ * @param field1 ExampleEnum
+ * @param field2 ExampleEnum
+ * @param field3 ExampleEnum
  */
-@Deprecated
-public record DeprecatedExampleRecord(
-        @javax.annotation.Nonnull Boolean field) {
+public record ExampleRecordWithExampleEnumFields(
+        @javax.annotation.Nonnull ExampleEnum field1,
+        @javax.annotation.Nonnull ExampleEnum field2,
+        @javax.annotation.Nonnull ExampleEnum field3) {
 
-    public DeprecatedExampleRecord(
-            @javax.annotation.Nonnull final Boolean field) { 
-        this.field = field;
+    private static final long serialVersionUID = 1L;
+
+    public ExampleRecordWithExampleEnumFields(
+            @javax.annotation.Nonnull final ExampleEnum field1,
+            @javax.annotation.Nonnull final ExampleEnum field2,
+            @javax.annotation.Nonnull final ExampleEnum field3) { 
+        this.field1 = field1;
+        this.field2 = field2;
+        this.field3 = field3;
     }
 }

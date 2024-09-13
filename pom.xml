@@ -5,7 +5,7 @@
 
     <groupId>com.chrimle</groupId>
     <artifactId>openapi-to-java-records-mustache-templates</artifactId>
-    <version>1.4.0</version>
+    <version>1.5.0</version>
 
     <name>OpenAPI to Java records :: Mustache Templates</name>
     <url>
@@ -52,6 +52,8 @@
         <execution.useEnumCaseInsensitive>useEnumCaseInsensitive</execution.useEnumCaseInsensitive>
         <!-- The Plugin Execution with additionalModelTypeAnnotations set -->
         <execution.additionalModelTypeAnnotations>additionalModelTypeAnnotations</execution.additionalModelTypeAnnotations>
+        <!-- The Plugin Executino with serializableModel=true -->
+        <execution.serializableModel>serializableModel</execution.serializableModel>
     </properties>
 
 
@@ -164,7 +166,30 @@
                             <configOptions>
                                 <additionalModelTypeAnnotations>@com.chrimle.example.annotations.TestAnnotationOne;@com.chrimle.example.annotations.TestAnnotationTwo;@com.chrimle.example.annotations.TestAnnotationThree;</additionalModelTypeAnnotations>
                                 <sourceFolder>${sourceFolder.default}</sourceFolder>
-                                <useEnumCaseInsensitive>true</useEnumCaseInsensitive>
+                                <useEnumCaseInsensitive>${useEnumCaseInsensitive.default}</useEnumCaseInsensitive>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>generate-${execution.serializableModel}</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <output>${output.default}/${execution.serializableModel}</output>
+                            <modelPackage>${modelPackage.default}.${execution.serializableModel}</modelPackage>
+                            <generateModels>${generateModels.default}</generateModels>
+                            <generateApis>${generateApis.default}</generateApis>
+                            <generateSupportingFiles>${generateSupportingFiles.default}</generateSupportingFiles>
+                            <generateModelTests>${generateModelTests.default}</generateModelTests>
+                            <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
+                            <inputSpec>${inputSpec.default}</inputSpec>
+                            <templateDirectory>${templateDirectory.default}</templateDirectory>
+                            <generatorName>${generatorName.default}</generatorName>
+                            <configOptions>
+                                <sourceFolder>${sourceFolder.default}</sourceFolder>
+                                <useEnumCaseInsensitive>${useEnumCaseInsensitive.default}</useEnumCaseInsensitive>
+                                <serializableModel>true</serializableModel>
                             </configOptions>
                         </configuration>
                     </execution>
