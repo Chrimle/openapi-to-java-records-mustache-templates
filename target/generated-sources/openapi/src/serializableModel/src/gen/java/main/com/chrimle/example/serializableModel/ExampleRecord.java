@@ -16,18 +16,29 @@
  *
  */
 
-package com.chrimle.example.additionalModelTypeAnnotations;
+package com.chrimle.example.serializableModel;
 
 import java.util.Objects;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.Arrays;
+import java.io.Serializable;
 
 /**
- * Example of a deprecated Enum
- * @deprecated
+ * Example of a Record
+ * @param field a boolean field
  */
-@Deprecated
-public enum DeprecatedExampleEnum {
-    ENUM1,
-    ENUM2,
-    ENUM3;
+public record ExampleRecord(
+        @javax.annotation.Nonnull Boolean field) {
+
+    private static final long serialVersionUID = 1L;
+
+    public ExampleRecord(
+            @javax.annotation.Nonnull final Boolean field) { 
+        this.field = field;
+    }
 }

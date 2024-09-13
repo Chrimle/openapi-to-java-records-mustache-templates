@@ -16,17 +16,16 @@
  *
  */
 
-package com.chrimle.example.additionalModelTypeAnnotations;
+package com.chrimle.example.serializableModel;
 
 import java.util.Objects;
 import com.google.gson.annotations.SerializedName;
+import java.io.Serializable;
 
 /**
- * Example of a deprecated Enum
- * @deprecated
+ * Example of an Enum
  */
-@Deprecated
-public enum DeprecatedExampleEnum {
+public enum ExampleEnum {
     ENUM1,
     ENUM2,
     ENUM3;

@@ -14,7 +14,7 @@
 }}public record {{classname}}(
         {{#vars}}@{{javaxPackage}}.annotation.{{#isNullable}}Nullable{{/isNullable}}{{^isNullable}}Nonnull{{/isNullable}} {{{datatypeWithEnum}}} {{name}}{{^-last}},
         {{/-last}}{{/vars}}) {
-
+{{>serializableModel}}
     public {{classname}}(
             {{#vars}}@{{javaxPackage}}.annotation.{{#isNullable}}Nullable{{/isNullable}}{{^isNullable}}{{#defaultValue}}Nullable{{/defaultValue}}{{^defaultValue}}Nonnull{{/defaultValue}}{{/isNullable}} final {{{datatypeWithEnum}}} {{name}}{{^-last}},
             {{/-last}}{{/vars}}) { {{#vars}}
