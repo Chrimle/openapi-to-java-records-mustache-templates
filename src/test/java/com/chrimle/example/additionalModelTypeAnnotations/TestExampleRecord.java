@@ -1,6 +1,7 @@
-package com.chrimle.example.standard;
+package com.chrimle.example.additionalModelTypeAnnotations;
 
 import com.chrimle.example.utils.AssertionUtils;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -22,10 +23,12 @@ public class TestExampleRecord {
   }
 
   @Test
-  @DisplayName("Testing generated Record is not annotated with AdditionalModelTypeAnnotations")
-  public void testRecordIsNotAnnotatedWithAdditionalModelTypeAnnotations() {
-    AssertionUtils.assertClassIsNotAnnotatedWith(classUnderTest, com.chrimle.example.annotations.TestAnnotationOne.class);
-    AssertionUtils.assertClassIsNotAnnotatedWith(classUnderTest, com.chrimle.example.annotations.TestAnnotationTwo.class);
-    AssertionUtils.assertClassIsNotAnnotatedWith(classUnderTest, com.chrimle.example.annotations.TestAnnotationThree.class);
+  @DisplayName("Testing generated Record is annotated with AdditionalModelTypeAnnotations")
+  public void testRecordIsAnnotatedWithAdditionalModelTypeAnnotations() {
+    AssertionUtils.assertClassIsAnnotatedWith(classUnderTest, com.chrimle.example.annotations.TestAnnotationOne.class);
+    AssertionUtils.assertClassIsAnnotatedWith(classUnderTest, com.chrimle.example.annotations.TestAnnotationTwo.class);
+    AssertionUtils.assertClassIsAnnotatedWith(classUnderTest, com.chrimle.example.annotations.TestAnnotationThree.class);
+
   }
+
 }

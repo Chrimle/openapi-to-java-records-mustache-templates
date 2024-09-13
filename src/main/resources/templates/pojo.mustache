@@ -1,5 +1,17 @@
-{{>javadoc}}{{>deprecation}}
-public record {{classname}}(
+{{!
+  Source: openapi-to-java-records-mustache-templates
+  Version: 1.3.0
+
+  Required imports:
+    - none
+
+  Optional imports:
+    - `deprecation.mustache`
+    - `javadoc.mustache`
+    - `additionalModelTypeAnnotations.mustache` (Official)
+
+}}{{>javadoc}}{{>deprecation}}{{>additionalModelTypeAnnotations}}{{!
+}}public record {{classname}}(
         {{#vars}}@{{javaxPackage}}.annotation.{{#isNullable}}Nullable{{/isNullable}}{{^isNullable}}Nonnull{{/isNullable}} {{{datatypeWithEnum}}} {{name}}{{^-last}},
         {{/-last}}{{/vars}}) {
 

@@ -30,6 +30,25 @@ public class AssertionUtils {
             .noneMatch(annotation -> annotation.equals(Deprecated.class)));
   }
 
+  public static void assertClassIsAnnotatedWith(final Class<?> clazz,
+      final Class<?> annotation) {
+    Assertions.assertTrue(
+        Arrays.stream(clazz.getAnnotations())
+            .map(Annotation::annotationType)
+            .anyMatch(aClass -> aClass.equals(annotation))
+    );
+  }
+
+  public static void assertClassIsNotAnnotatedWith(final Class<?> clazz,
+      final Class<?> annotation) {
+    Assertions.assertTrue(
+        Arrays.stream(clazz.getAnnotations())
+            .map(Annotation::annotationType)
+            .noneMatch(aClass -> aClass.equals(annotation))
+    );
+  }
+
+
   public static void assertRecordHasNumberOfFieldsOfType(final Class<?> clazz,
       final int count, final Class<?> type) {
     for (int i = 1; i <= count; i++) {
