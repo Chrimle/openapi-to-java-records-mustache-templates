@@ -27,6 +27,23 @@
         <jsr305.version>3.0.2</jsr305.version>
         <jakarta.annotation-api.version>2.1.1</jakarta.annotation-api.version>
         <jackson-annotations.version>2.17.1</jackson-annotations.version>
+        <hibernate-validator.version>8.0.0.Final</hibernate-validator.version>
+
+
+        <!-- Default `configuration`-option values -->
+        <modelPackage.default>${project.groupId}.example</modelPackage.default>
+        <generateModels.default>true</generateModels.default>
+        <generateApis.default>false</generateApis.default>
+        <generateSupportingFiles.default>false</generateSupportingFiles.default>
+        <generateModelTests.default>false</generateModelTests.default>
+        <generateModelDocumentation.default>false</generateModelDocumentation.default>
+        <generatorName.default>java</generatorName.default>
+        <sourceFolder.default>src/gen/java/main</sourceFolder.default>
+        <templateDirectory.default>${project.basedir}/src/main/resources/templates</templateDirectory.default>
+        <inputSpec.default>${project.basedir}/src/main/resources/api.yaml</inputSpec.default>
+        <!-- Default `configuration.configOptions`-option values -->
+        <output.default>target/generated-sources/openapi/src</output.default>
+        <useEnumCaseInsensitive.default>false</useEnumCaseInsensitive.default>
     </properties>
 
 
@@ -81,21 +98,18 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <modelPackage>${project.groupId}.example</modelPackage>
-                            <generateModels>true</generateModels>
-                            <generateApis>false</generateApis>
-                            <generateSupportingFiles>false</generateSupportingFiles>
-                            <generateModelTests>false</generateModelTests>
-                            <generateModelDocumentation>false</generateModelDocumentation>
-                            <inputSpec>
-                                ${project.basedir}/src/main/resources/api.yaml
-                            </inputSpec>
-                            <templateDirectory>
-                                ${project.basedir}/src/main/resources/templates
-                            </templateDirectory>
-                            <generatorName>java</generatorName>
+                            <output>${output.default}/default</output>
+                            <modelPackage>${modelPackage.default}</modelPackage>
+                            <generateModels>${generateModels.default}</generateModels>
+                            <generateApis>${generateApis.default}</generateApis>
+                            <generateSupportingFiles>${generateSupportingFiles.default}</generateSupportingFiles>
+                            <generateModelTests>${generateModelTests.default}</generateModelTests>
+                            <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
+                            <inputSpec>${inputSpec.default}</inputSpec>
+                            <templateDirectory>${templateDirectory.default}</templateDirectory>
+                            <generatorName>${generatorName.default}</generatorName>
                             <configOptions>
-                                <sourceFolder>src/gen/java/main</sourceFolder>
+                                <sourceFolder>${sourceFolder.default}</sourceFolder>
                                 <useEnumCaseInsensitive>true</useEnumCaseInsensitive>
                             </configOptions>
                         </configuration>
