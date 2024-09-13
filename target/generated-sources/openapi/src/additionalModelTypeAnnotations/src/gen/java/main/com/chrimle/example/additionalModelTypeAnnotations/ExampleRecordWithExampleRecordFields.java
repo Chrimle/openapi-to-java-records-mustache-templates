@@ -16,9 +16,10 @@
  *
  */
 
-package com.chrimle.example.useEnumCaseInsensitive;
+package com.chrimle.example.additionalModelTypeAnnotations;
 
 import java.util.Objects;
+import com.chrimle.example.additionalModelTypeAnnotations.ExampleRecord;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -28,20 +29,23 @@ import java.io.IOException;
 import java.util.Arrays;
 
 /**
- * Example of a Record with String fields
- * @param field1 a String field
- * @param field2 another String field
- * @param field3 yet another String field
+ * Example of a Record with Record fields
+ * @param field1 ExampleRecord
+ * @param field2 ExampleRecord
+ * @param field3 ExampleRecord
  */
-public record ExampleRecordWithStringFields(
-        @javax.annotation.Nonnull String field1,
-        @javax.annotation.Nonnull String field2,
-        @javax.annotation.Nonnull String field3) {
+@com.chrimle.example.annotations.TestAnnotationOne
+@com.chrimle.example.annotations.TestAnnotationTwo
+@com.chrimle.example.annotations.TestAnnotationThree
+public record ExampleRecordWithExampleRecordFields(
+        @javax.annotation.Nonnull ExampleRecord field1,
+        @javax.annotation.Nonnull ExampleRecord field2,
+        @javax.annotation.Nonnull ExampleRecord field3) {
 
-    public ExampleRecordWithStringFields(
-            @javax.annotation.Nonnull final String field1,
-            @javax.annotation.Nonnull final String field2,
-            @javax.annotation.Nonnull final String field3) { 
+    public ExampleRecordWithExampleRecordFields(
+            @javax.annotation.Nonnull final ExampleRecord field1,
+            @javax.annotation.Nonnull final ExampleRecord field2,
+            @javax.annotation.Nonnull final ExampleRecord field3) { 
         this.field1 = field1;
         this.field2 = field2;
         this.field3 = field3;

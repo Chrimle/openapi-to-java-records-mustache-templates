@@ -16,7 +16,7 @@
  *
  */
 
-package com.chrimle.example.useEnumCaseInsensitive;
+package com.chrimle.example.additionalModelTypeAnnotations;
 
 import java.util.Objects;
 import com.google.gson.TypeAdapter;
@@ -25,27 +25,28 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 /**
- * Example of a Record with Array fields
- * @param field1 an Array field
- * @param field2 another Array field
- * @param field3 yet another Array field
+ * Example of a Record with Boolean fields
+ * @param field1 a Boolean field
+ * @param field2 another Boolean field
+ * @param field3 yet another Boolean field
  */
-public record ExampleRecordWithArrayFields(
-        @javax.annotation.Nonnull List<Boolean> field1,
-        @javax.annotation.Nonnull List<Boolean> field2,
-        @javax.annotation.Nonnull List<Boolean> field3) {
+@com.chrimle.example.annotations.TestAnnotationOne
+@com.chrimle.example.annotations.TestAnnotationTwo
+@com.chrimle.example.annotations.TestAnnotationThree
+public record ExampleRecordWithBooleanFields(
+        @javax.annotation.Nonnull Boolean field1,
+        @javax.annotation.Nonnull Boolean field2,
+        @javax.annotation.Nonnull Boolean field3) {
 
-    public ExampleRecordWithArrayFields(
-            @javax.annotation.Nullable final List<Boolean> field1,
-            @javax.annotation.Nullable final List<Boolean> field2,
-            @javax.annotation.Nullable final List<Boolean> field3) { 
-        this.field1 = Objects.requireNonNullElse(field1, new ArrayList<>());
-        this.field2 = Objects.requireNonNullElse(field2, new ArrayList<>());
-        this.field3 = Objects.requireNonNullElse(field3, new ArrayList<>());
+    public ExampleRecordWithBooleanFields(
+            @javax.annotation.Nonnull final Boolean field1,
+            @javax.annotation.Nonnull final Boolean field2,
+            @javax.annotation.Nonnull final Boolean field3) { 
+        this.field1 = field1;
+        this.field2 = field2;
+        this.field3 = field3;
     }
 }

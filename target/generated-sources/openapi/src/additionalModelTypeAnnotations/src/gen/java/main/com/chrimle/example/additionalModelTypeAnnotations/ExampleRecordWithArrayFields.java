@@ -16,7 +16,7 @@
  *
  */
 
-package com.chrimle.example.useEnumCaseInsensitive;
+package com.chrimle.example.additionalModelTypeAnnotations;
 
 import java.util.Objects;
 import com.google.gson.TypeAdapter;
@@ -35,6 +35,9 @@ import java.util.List;
  * @param field2 another Array field
  * @param field3 yet another Array field
  */
+@com.chrimle.example.annotations.TestAnnotationOne
+@com.chrimle.example.annotations.TestAnnotationTwo
+@com.chrimle.example.annotations.TestAnnotationThree
 public record ExampleRecordWithArrayFields(
         @javax.annotation.Nonnull List<Boolean> field1,
         @javax.annotation.Nonnull List<Boolean> field2,

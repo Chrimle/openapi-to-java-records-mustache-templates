@@ -16,7 +16,7 @@
  *
  */
 
-package com.chrimle.example.standard;
+package com.chrimle.example.additionalModelTypeAnnotations;
 
 import java.util.Objects;
 import com.google.gson.TypeAdapter;
@@ -33,6 +33,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * @param nullableStringField a nullable String field
  * @param defaultStringField a String field with a default value
  */
+@com.chrimle.example.annotations.TestAnnotationOne
+@com.chrimle.example.annotations.TestAnnotationTwo
+@com.chrimle.example.annotations.TestAnnotationThree
 public record ExampleRecordWithDefaultFields(
         @javax.annotation.Nullable String nullableStringField,
         @javax.annotation.Nonnull String defaultStringField) {
