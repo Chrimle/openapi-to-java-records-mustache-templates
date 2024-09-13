@@ -44,6 +44,12 @@
         <!-- Default `configuration.configOptions`-option values -->
         <output.default>target/generated-sources/openapi/src</output.default>
         <useEnumCaseInsensitive.default>false</useEnumCaseInsensitive.default>
+
+        <!-- Plugin Executions -->
+        <!-- The Plugin Execution with Standard Configurations -->
+        <execution.standard>standard</execution.standard>
+        <!-- The Plugin Execution with useEnumCaseInsensitive=true -->
+        <execution.useEnumCaseInsensitive>useEnumCaseInsensitive</execution.useEnumCaseInsensitive>
     </properties>
 
 
@@ -94,13 +100,35 @@
                 <version>${openapi-generator-maven-plugin.version}</version>
                 <executions>
                     <execution>
-                        <id>generate-standard</id>
+                        <id>generate-${execution.standard}</id>
                         <goals>
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <output>${output.default}/standard</output>
-                            <modelPackage>${modelPackage.default}.standard</modelPackage>
+                            <output>${output.default}/${execution.standard}</output>
+                            <modelPackage>${modelPackage.default}.${execution.standard}</modelPackage>
+                            <generateModels>${generateModels.default}</generateModels>
+                            <generateApis>${generateApis.default}</generateApis>
+                            <generateSupportingFiles>${generateSupportingFiles.default}</generateSupportingFiles>
+                            <generateModelTests>${generateModelTests.default}</generateModelTests>
+                            <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
+                            <inputSpec>${inputSpec.default}</inputSpec>
+                            <templateDirectory>${templateDirectory.default}</templateDirectory>
+                            <generatorName>${generatorName.default}</generatorName>
+                            <configOptions>
+                                <sourceFolder>${sourceFolder.default}</sourceFolder>
+                                <useEnumCaseInsensitive>${useEnumCaseInsensitive.default}</useEnumCaseInsensitive>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>generate-${execution.useEnumCaseInsensitive}</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <output>${output.default}/${execution.useEnumCaseInsensitive}</output>
+                            <modelPackage>${modelPackage.default}.${execution.useEnumCaseInsensitive}</modelPackage>
                             <generateModels>${generateModels.default}</generateModels>
                             <generateApis>${generateApis.default}</generateApis>
                             <generateSupportingFiles>${generateSupportingFiles.default}</generateSupportingFiles>

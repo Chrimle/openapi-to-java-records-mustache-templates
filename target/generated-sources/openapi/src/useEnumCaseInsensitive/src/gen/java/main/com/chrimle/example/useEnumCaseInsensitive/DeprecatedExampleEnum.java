@@ -16,7 +16,7 @@
  *
  */
 
-package com.chrimle.example.standard;
+package com.chrimle.example.useEnumCaseInsensitive;
 
 import java.util.Objects;
 import com.google.gson.annotations.SerializedName;
@@ -30,4 +30,19 @@ public enum DeprecatedExampleEnum {
     ENUM1,
     ENUM2,
     ENUM3;
+
+    /**
+     * Parses the given string to a matching Enum name, Case-insensitive.
+     * @param name of the Enum
+     * @return a {@link DeprecatedExampleEnum } with the matching name
+     * @throws IllegalArgumentException if no Enum name matches the string
+     */
+    public static DeprecatedExampleEnum fromValue(final String name) {
+        for (final DeprecatedExampleEnum b : DeprecatedExampleEnum.values()) {
+            if (b.name().equalsIgnoreCase(name)) {
+                return b;
+            }
+        }
+        throw new IllegalArgumentException("Unexpected value '" + name + "'");
+    }
 }
