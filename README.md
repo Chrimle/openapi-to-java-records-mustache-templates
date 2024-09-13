@@ -93,7 +93,9 @@ public record Example(
 
 ## Supported `openapi-generator-maven-plugin` configurations
 
-> [!NOTE]
+> [!IMPORTANT]
+> Some `<configuration>`-options have not yet been verified. By using them, they may either be ignored or may even cause issues.
+> 
 > Due to the sheer number of `<configuration>`-options, this section has been moved to the Wiki-page: [Supported 'openapi‐generator‐maven‐plugin' Configuration options
 ](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/wiki/Supported-%27openapi‐generator‐maven‐plugin%27-Configuration-options)
 
