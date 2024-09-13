@@ -94,12 +94,13 @@
                 <version>${openapi-generator-maven-plugin.version}</version>
                 <executions>
                     <execution>
+                        <id>generate-standard</id>
                         <goals>
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <output>${output.default}/default</output>
-                            <modelPackage>${modelPackage.default}</modelPackage>
+                            <output>${output.default}/standard</output>
+                            <modelPackage>${modelPackage.default}.standard</modelPackage>
                             <generateModels>${generateModels.default}</generateModels>
                             <generateApis>${generateApis.default}</generateApis>
                             <generateSupportingFiles>${generateSupportingFiles.default}</generateSupportingFiles>
