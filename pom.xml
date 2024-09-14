@@ -181,6 +181,30 @@
                         </configuration>
                     </execution>
                     <execution>
+                        <id>generate-${execution.additionalEnumTypeAnnotations}</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <output>${output.default}/${execution.additionalEnumTypeAnnotations}</output>
+                            <modelPackage>${modelPackage.default}.${execution.additionalEnumTypeAnnotations}</modelPackage>
+                            <generateModels>${generateModels.default}</generateModels>
+                            <generateApis>${generateApis.default}</generateApis>
+                            <generateSupportingFiles>${generateSupportingFiles.default}</generateSupportingFiles>
+                            <generateModelTests>${generateModelTests.default}</generateModelTests>
+                            <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
+                            <inputSpec>${inputSpec.default}</inputSpec>
+                            <templateDirectory>${templateDirectory.default}</templateDirectory>
+                            <generatorName>${generatorName.default}</generatorName>
+                            <configOptions>
+                                <additionalEnumTypeAnnotations>@com.chrimle.example.annotations.TestAnnotationOne;@com.chrimle.example.annotations.TestAnnotationTwo;@com.chrimle.example.annotations.TestAnnotationThree;</additionalEnumTypeAnnotations>
+                                <sourceFolder>${sourceFolder.default}</sourceFolder>
+                                <useEnumCaseInsensitive>${useEnumCaseInsensitive.default}</useEnumCaseInsensitive>
+                                <serializableModel>${serializableModel.default}</serializableModel>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+                    <execution>
                         <id>generate-${execution.serializableModel}</id>
                         <goals>
                             <goal>generate</goal>

@@ -1,4 +1,4 @@
-package com.chrimle.example.standard;
+package com.chrimle.example.additionalEnumTypeAnnotations;
 
 import com.chrimle.example.utils.AssertionUtils;
 import org.junit.jupiter.api.Assertions;
@@ -31,9 +31,9 @@ public class TestExampleEnum {
   }
 
   @Test
-  public void testEnumIsNotAnnotatedWithAdditionalEnumTypeAnnotations() {
-    AssertionUtils.assertClassIsNotAnnotatedWith(classUnderTest, com.chrimle.example.annotations.TestAnnotationOne.class);
-    AssertionUtils.assertClassIsNotAnnotatedWith(classUnderTest, com.chrimle.example.annotations.TestAnnotationTwo.class);
-    AssertionUtils.assertClassIsNotAnnotatedWith(classUnderTest, com.chrimle.example.annotations.TestAnnotationThree.class);
+  public void testEnumIsAnnotatedWithAdditionalEnumTypeAnnotations() {
+    AssertionUtils.assertClassIsAnnotatedWith(classUnderTest, com.chrimle.example.annotations.TestAnnotationOne.class);
+    AssertionUtils.assertClassIsAnnotatedWith(classUnderTest, com.chrimle.example.annotations.TestAnnotationTwo.class);
+    AssertionUtils.assertClassIsAnnotatedWith(classUnderTest, com.chrimle.example.annotations.TestAnnotationThree.class);
   }
 }

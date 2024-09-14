@@ -1,7 +1,6 @@
 package com.chrimle.example.additionalModelTypeAnnotations;
 
 import com.chrimle.example.utils.AssertionUtils;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
