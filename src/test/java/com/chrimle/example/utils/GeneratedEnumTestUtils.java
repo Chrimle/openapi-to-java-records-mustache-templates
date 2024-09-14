@@ -5,6 +5,9 @@ import java.lang.reflect.Method;
 import java.util.List;
 import org.junit.jupiter.api.Assertions;
 
+/**
+ * Generalized Test-class for testing Generated Enum-classes
+ */
 public class GeneratedEnumTestUtils {
 
   public static <E extends Enum<E>> void assertEnumClass(

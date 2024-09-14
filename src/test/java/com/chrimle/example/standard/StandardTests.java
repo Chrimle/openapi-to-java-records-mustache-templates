@@ -1,11 +1,13 @@
 package com.chrimle.example.standard;
 
 import com.chrimle.example.utils.GeneratedEnumTestUtils;
+import com.chrimle.example.utils.GeneratedRecordTestUtils;
 import org.junit.jupiter.api.Test;
 
 /**
  * Tests for the 'standard' plugin-execution.
  */
+@SuppressWarnings("deprecation")
 public class StandardTests {
 
   final Class<DeprecatedExampleEnum> deprecatedExampleEnum = DeprecatedExampleEnum.class;
@@ -24,6 +26,7 @@ public class StandardTests {
   final boolean HAS_ADDITIONAL_MODEL_TYPE_ANNOTATIONS = false;
   final boolean HAS_ADDITIONAL_ENUM_TYPE_ANNOTATIONS = false;
   final boolean USE_ENUM_CASE_INSENSITIVE = false;
+  final boolean IS_MODEL_SERIALIZABLE = false;
 
   @Test
   public void testAllGeneratedClasses() {
@@ -31,5 +34,9 @@ public class StandardTests {
         HAS_ADDITIONAL_ENUM_TYPE_ANNOTATIONS, USE_ENUM_CASE_INSENSITIVE);
     GeneratedEnumTestUtils.assertEnumClass(deprecatedExampleEnum, true,
         HAS_ADDITIONAL_ENUM_TYPE_ANNOTATIONS, USE_ENUM_CASE_INSENSITIVE);
+    GeneratedRecordTestUtils.assertRecord(exampleRecord, false,
+        HAS_ADDITIONAL_MODEL_TYPE_ANNOTATIONS, IS_MODEL_SERIALIZABLE);
+    GeneratedRecordTestUtils.assertRecord(deprecatedExampleRecord, true,
+        HAS_ADDITIONAL_MODEL_TYPE_ANNOTATIONS, IS_MODEL_SERIALIZABLE);
   }
 }
