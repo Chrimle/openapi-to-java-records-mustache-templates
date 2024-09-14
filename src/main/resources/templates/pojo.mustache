@@ -1,6 +1,6 @@
 {{>javadoc}}{{>deprecation}}
 public record {{classname}}(
-        {{#vars}}@{{javaxPackage}}.annotation.{{#isNullable}}Nullable{{/isNullable}}{{^isNullable}}Nonnull{{/isNullable}}{{>beanValidationAnnotations}} {{{datatypeWithEnum}}} {{name}}{{^-last}},
+        {{#vars}}@{{javaxPackage}}.annotation.{{#isNullable}}Nullable{{/isNullable}}{{^isNullable}}Nonnull{{/isNullable}} {{{datatypeWithEnum}}} {{name}}{{^-last}},
         {{/-last}}{{/vars}}) {
 
     public {{classname}}(
