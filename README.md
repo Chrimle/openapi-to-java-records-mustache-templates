@@ -93,24 +93,11 @@ public record Example(
 
 ## Supported `openapi-generator-maven-plugin` configurations
 
-The following are `<configuration>`-properties which are supported. Other properties may
-be ignored, or may cause problems. Please refer to the [pom.xml](./pom.xml) for the
-version currently
-used. [Full list of available configurations](https://github.com/OpenAPITools/openapi-generator/blob/master/modules/openapi-generator-maven-plugin/README.md).
-
-> [!NOTE]
-> The following properties can be set either in the build `<configuration>`-tag,
-> or by the complete property name prefixed
-> by `openapi.generator.maven.plugin.{property}`.
-
-| Property                               | Required? |             Default             | Description                                                                                  |
-|----------------------------------------|:---------:|:-------------------------------:|----------------------------------------------------------------------------------------------|
-| `generateModels`                       |    :x:    |             `true`              | Generates Java classes, if `true`.                                                           |
-| `modelPackage`                         |    :x:    | `org.openapitools.client.model` | The `package` name of generated Java classes.                                                |
-| `modelNamePrefix`                      |    :x:    |                                 | Adds a prefix to the name of generated Java classes (useful for naming schemes).             |
-| `modelNameSuffix`                      |    :x:    |                                 | Adds a suffix to the name of generated Java classes (useful for naming schemes).             |
-| `configOptions.useEnumCaseInsensitive` |    :x:    |             `false`             | Adds a case-insensitive parse-method `fromValue(String)` to each Enum class, if `true`.      |
-| `configOptions.useJakartaEe`           |    :x:    |             `false`             | Annotates fields with `@Nullable`/`@Nonnull`. Uses `@jakarta` if `true`, otherwise `@javax`. |
+> [!IMPORTANT]
+> Some `<configuration>`-options have not yet been verified. By using them, they may either be ignored or may even cause issues.
+> 
+> Due to the sheer number of `<configuration>`-options, this section has been moved to the Wiki-page: [Supported 'openapi‐generator‐maven‐plugin' Configuration options
+](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/wiki/Supported-%27openapi‐generator‐maven‐plugin%27-Configuration-options)
 
 ## Supported OpenAPI Specification properties
 

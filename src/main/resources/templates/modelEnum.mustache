@@ -1,5 +1,5 @@
-{{>javadoc}}{{>deprecation}}
-public enum {{classname}} {
+{{>javadoc}}{{>deprecation}}{{!
+}}public enum {{classname}} {
     {{#allowableValues}}{{#enumVars}}{{{name}}}{{^-last}},
     {{/-last}}{{#-last}};{{/-last}}{{/enumVars}}{{/allowableValues}}
     {{#useEnumCaseInsensitive}}
