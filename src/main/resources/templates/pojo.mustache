@@ -13,7 +13,7 @@
 
 }}{{>javadoc}}{{>deprecation}}{{>additionalModelTypeAnnotations}}{{!
 }}public record {{classname}}(
-        {{#vars}}@{{javaxPackage}}.annotation.{{#isNullable}}Nullable{{/isNullable}}{{^isNullable}}Nonnull{{/isNullable}} {{{datatypeWithEnum}}} {{name}}{{^-last}},
+        {{#vars}}@{{javaxPackage}}.annotation.{{#isNullable}}Nullable{{/isNullable}}{{^isNullable}}Nonnull{{/isNullable}}{{>beanValidationAnnotations}} {{{datatypeWithEnum}}} {{name}}{{^-last}},
         {{/-last}}{{/vars}}) {
 {{>serializableModel}}
     public {{classname}}(
