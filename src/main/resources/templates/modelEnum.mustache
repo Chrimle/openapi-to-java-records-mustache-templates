@@ -1,4 +1,16 @@
-{{>javadoc}}{{>deprecation}}{{!
+{{!
+  Source: openapi-to-java-records-mustache-templates
+  Version: 1.6.0
+
+  Required imports:
+    - none
+
+  Optional imports:
+    - `deprecation.mustache`
+    - `javadoc.mustache`
+    - `additionalEnumTypeAnnotations.mustache` (Official)
+
+}}{{>javadoc}}{{>deprecation}}{{>additionalEnumTypeAnnotations}}{{!
 }}public enum {{classname}} {
     {{#allowableValues}}{{#enumVars}}{{{name}}}{{^-last}},
     {{/-last}}{{#-last}};{{/-last}}{{/enumVars}}{{/allowableValues}}

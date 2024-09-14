@@ -1,7 +1,6 @@
 package com.chrimle.example.standard;
 
 import com.chrimle.example.utils.AssertionUtils;
-import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -29,5 +28,12 @@ public class TestExampleEnum {
     for (int i = 1; i <= 3; i++) {
       Assertions.assertEquals("ENUM" + i, ExampleEnum.values()[i - 1].name());
     }
+  }
+
+  @Test
+  public void testEnumIsNotAnnotatedWithAdditionalEnumTypeAnnotations() {
+    AssertionUtils.assertClassIsNotAnnotatedWith(classUnderTest, com.chrimle.example.annotations.TestAnnotationOne.class);
+    AssertionUtils.assertClassIsNotAnnotatedWith(classUnderTest, com.chrimle.example.annotations.TestAnnotationTwo.class);
+    AssertionUtils.assertClassIsNotAnnotatedWith(classUnderTest, com.chrimle.example.annotations.TestAnnotationThree.class);
   }
 }

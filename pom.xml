@@ -5,7 +5,7 @@
 
     <groupId>com.chrimle</groupId>
     <artifactId>openapi-to-java-records-mustache-templates</artifactId>
-    <version>1.5.0</version>
+    <version>1.6.0</version>
 
     <name>OpenAPI to Java records :: Mustache Templates</name>
     <url>
@@ -44,6 +44,7 @@
         <!-- Default `configuration.configOptions`-option values -->
         <output.default>target/generated-sources/openapi/src</output.default>
         <useEnumCaseInsensitive.default>false</useEnumCaseInsensitive.default>
+        <serializableModel.default>false</serializableModel.default>
 
         <!-- Plugin Executions -->
         <!-- The Plugin Execution with Standard Configurations -->
@@ -52,8 +53,10 @@
         <execution.useEnumCaseInsensitive>useEnumCaseInsensitive</execution.useEnumCaseInsensitive>
         <!-- The Plugin Execution with additionalModelTypeAnnotations set -->
         <execution.additionalModelTypeAnnotations>additionalModelTypeAnnotations</execution.additionalModelTypeAnnotations>
-        <!-- The Plugin Executino with serializableModel=true -->
+        <!-- The Plugin Execution with serializableModel=true -->
         <execution.serializableModel>serializableModel</execution.serializableModel>
+        <!-- The Plugin Execution with additionalEnumTypeAnnotations set -->
+        <execution.additionalEnumTypeAnnotations>additionalEnumTypeAnnotations</execution.additionalEnumTypeAnnotations>
     </properties>
 
 
@@ -122,6 +125,7 @@
                             <configOptions>
                                 <sourceFolder>${sourceFolder.default}</sourceFolder>
                                 <useEnumCaseInsensitive>${useEnumCaseInsensitive.default}</useEnumCaseInsensitive>
+                                <serializableModel>${serializableModel.default}</serializableModel>
                             </configOptions>
                         </configuration>
                     </execution>
@@ -144,6 +148,7 @@
                             <configOptions>
                                 <sourceFolder>${sourceFolder.default}</sourceFolder>
                                 <useEnumCaseInsensitive>true</useEnumCaseInsensitive>
+                                <serializableModel>${serializableModel.default}</serializableModel>
                             </configOptions>
                         </configuration>
                     </execution>
@@ -164,9 +169,38 @@
                             <templateDirectory>${templateDirectory.default}</templateDirectory>
                             <generatorName>${generatorName.default}</generatorName>
                             <configOptions>
-                                <additionalModelTypeAnnotations>@com.chrimle.example.annotations.TestAnnotationOne;@com.chrimle.example.annotations.TestAnnotationTwo;@com.chrimle.example.annotations.TestAnnotationThree;</additionalModelTypeAnnotations>
+                                <additionalModelTypeAnnotations>
+                                    @com.chrimle.example.annotations.TestAnnotationOne
+                                    @com.chrimle.example.annotations.TestAnnotationTwo
+                                    @com.chrimle.example.annotations.TestAnnotationThree
+                                </additionalModelTypeAnnotations>
                                 <sourceFolder>${sourceFolder.default}</sourceFolder>
                                 <useEnumCaseInsensitive>${useEnumCaseInsensitive.default}</useEnumCaseInsensitive>
+                                <serializableModel>${serializableModel.default}</serializableModel>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>generate-${execution.additionalEnumTypeAnnotations}</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <output>${output.default}/${execution.additionalEnumTypeAnnotations}</output>
+                            <modelPackage>${modelPackage.default}.${execution.additionalEnumTypeAnnotations}</modelPackage>
+                            <generateModels>${generateModels.default}</generateModels>
+                            <generateApis>${generateApis.default}</generateApis>
+                            <generateSupportingFiles>${generateSupportingFiles.default}</generateSupportingFiles>
+                            <generateModelTests>${generateModelTests.default}</generateModelTests>
+                            <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
+                            <inputSpec>${inputSpec.default}</inputSpec>
+                            <templateDirectory>${templateDirectory.default}</templateDirectory>
+                            <generatorName>${generatorName.default}</generatorName>
+                            <configOptions>
+                                <additionalEnumTypeAnnotations>@com.chrimle.example.annotations.TestAnnotationOne;@com.chrimle.example.annotations.TestAnnotationTwo;@com.chrimle.example.annotations.TestAnnotationThree;</additionalEnumTypeAnnotations>
+                                <sourceFolder>${sourceFolder.default}</sourceFolder>
+                                <useEnumCaseInsensitive>${useEnumCaseInsensitive.default}</useEnumCaseInsensitive>
+                                <serializableModel>${serializableModel.default}</serializableModel>
                             </configOptions>
                         </configuration>
                     </execution>
