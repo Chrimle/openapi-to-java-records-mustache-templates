@@ -15,20 +15,14 @@ public class AssertionUtils {
     Assertions.assertTrue(clazz.isEnum());
   }
 
-  public static void assertClassIsAnnotatedAsDeprecated(final Class<?> clazz) {
-    Assertions.assertTrue(
-        Arrays.stream(clazz.getAnnotations())
-            .map(Annotation::annotationType)
-            .anyMatch(annotation -> annotation.equals(Deprecated.class)));
+  public static void assertClassIsAnnotatedAsDeprecated(final Class<?> classUnderTest, final boolean isDeprecated) {
+    if (isDeprecated) {
+      assertClassIsAnnotatedWith(classUnderTest, Deprecated.class);
+    } else {
+      assertClassIsNotAnnotatedWith(classUnderTest, Deprecated.class);
+    }
   }
 
-  public static void assertClassIsNotAnnotatedAsDeprecated(
-      final Class<?> clazz) {
-    Assertions.assertTrue(
-        Arrays.stream(clazz.getAnnotations())
-            .map(Annotation::annotationType)
-            .noneMatch(annotation -> annotation.equals(Deprecated.class)));
-  }
 
   public static void assertClassIsAnnotatedWith(final Class<?> clazz,
       final Class<?> annotation) {

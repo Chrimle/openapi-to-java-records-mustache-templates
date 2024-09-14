@@ -20,7 +20,7 @@ class TestDeprecatedExampleEnum {
   @Test
   @DisplayName("Testing generated Enum is annotated as @Deprecated")
   public void testEnumIsAnnotatedAsDeprecated() {
-    AssertionUtils.assertClassIsAnnotatedAsDeprecated(classUnderTest);
+    AssertionUtils.assertClassIsAnnotatedAsDeprecated(classUnderTest, true);
   }
 
   @Test
