@@ -8,11 +8,13 @@ import org.junit.jupiter.api.Assertions;
 public class AssertionUtils {
 
   public static void assertIsRecord(final Class<?> clazz) {
-    Assertions.assertTrue(clazz.isRecord());
+    Assertions.assertTrue(clazz.isRecord(),
+        clazz.getCanonicalName() + " is NOT a record class!");
   }
 
   public static void assertIsEnum(final Class<?> clazz) {
-    Assertions.assertTrue(clazz.isEnum());
+    Assertions.assertTrue(clazz.isEnum(),
+        clazz.getCanonicalName() + " is NOT an enum class!");
   }
 
   public static void assertClassIsAnnotatedWithAdditionalTypeAnnotations(
@@ -50,7 +52,9 @@ public class AssertionUtils {
     Assertions.assertTrue(
         Arrays.stream(clazz.getAnnotations())
             .map(Annotation::annotationType)
-            .anyMatch(aClass -> aClass.equals(annotation))
+            .anyMatch(aClass -> aClass.equals(annotation)),
+        clazz.getCanonicalName() + " is NOT annotated with "
+            + annotation.getCanonicalName()
     );
   }
 
@@ -59,7 +63,9 @@ public class AssertionUtils {
     Assertions.assertTrue(
         Arrays.stream(clazz.getAnnotations())
             .map(Annotation::annotationType)
-            .noneMatch(aClass -> aClass.equals(annotation))
+            .noneMatch(aClass -> aClass.equals(annotation)),
+        clazz.getCanonicalName() + " IS annotated with "
+            + annotation.getCanonicalName()
     );
   }
 
