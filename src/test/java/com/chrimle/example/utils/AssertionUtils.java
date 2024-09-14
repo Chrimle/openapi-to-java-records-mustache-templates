@@ -59,4 +59,30 @@ public class AssertionUtils {
     }
   }
 
+  public static void assertModelIsSerializable(final Class<?> classUnderTest,
+      final boolean isModelSerializable) {
+    if (isModelSerializable) {
+      assertModelHasSerialVersionField(classUnderTest);
+    } else {
+      assertModelDoesNotHaveSerialVersionField(classUnderTest);
+    }
+  }
+
+  private static void assertModelDoesNotHaveSerialVersionField(
+      final Class<?> classUnderTest) {
+    Assertions.assertThrows(NoSuchFieldException.class,
+        () -> classUnderTest.getDeclaredField("serialVersionUID"),
+        classUnderTest.getCanonicalName() + " HAS 'serialVersionUID'-field!"
+    );
+  }
+
+
+  private static void assertModelHasSerialVersionField(
+      final Class<?> classUnderTest) {
+    Assertions.assertDoesNotThrow(
+        () -> classUnderTest.getDeclaredField("serialVersionUID"),
+        classUnderTest.getCanonicalName()
+            + " does NOT have 'serialVersionUID'-field!");
+  }
+
 }

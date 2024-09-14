@@ -1,7 +1,6 @@
 package com.chrimle.example.standard;
 
 import com.chrimle.example.utils.AssertionUtils;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -32,7 +31,7 @@ public class TestExampleRecord {
 
   @Test
   @DisplayName("Testing generated Record does not have field 'serialVersionUID'")
-  public void testRecordHasFieldSerialVersionUID() {
-    Assertions.assertThrows(NoSuchFieldException.class, () -> classUnderTest.getDeclaredField("serialVersionUID"));
+  public void testRecordDoesNotHaveFieldSerialVersionUID() {
+    AssertionUtils.assertModelIsSerializable(classUnderTest, false);
   }
 }

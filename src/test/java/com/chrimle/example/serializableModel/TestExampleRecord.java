@@ -24,9 +24,8 @@ public class TestExampleRecord {
 
   @Test
   @DisplayName("Testing generated Record has field 'serialVersionUID'")
-  public void testRecordHasFieldSerialVersionUID()
-      throws NoSuchFieldException {
-    Assertions.assertNotNull(classUnderTest.getDeclaredField("serialVersionUID"));
+  public void testRecordHasFieldSerialVersionUID() {
+    AssertionUtils.assertModelIsSerializable(classUnderTest, true);
   }
 
 }
