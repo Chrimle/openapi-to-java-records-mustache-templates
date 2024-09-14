@@ -15,11 +15,32 @@ public class AssertionUtils {
     Assertions.assertTrue(clazz.isEnum());
   }
 
-  public static void assertClassIsAnnotatedAsDeprecated(final Class<?> classUnderTest, final boolean isDeprecated) {
-    if (isDeprecated) {
-      assertClassIsAnnotatedWith(classUnderTest, Deprecated.class);
+  public static void assertClassIsAnnotatedWithAdditionalTypeAnnotations(
+      final Class<?> classUnderTest,
+      final boolean hasAdditionalTypeAnnotations) {
+    assertClassIsAnnotatedWith(classUnderTest,
+        com.chrimle.example.annotations.TestAnnotationOne.class,
+        hasAdditionalTypeAnnotations);
+    assertClassIsAnnotatedWith(classUnderTest,
+        com.chrimle.example.annotations.TestAnnotationTwo.class,
+        hasAdditionalTypeAnnotations);
+    assertClassIsAnnotatedWith(classUnderTest,
+        com.chrimle.example.annotations.TestAnnotationThree.class,
+        hasAdditionalTypeAnnotations);
+
+  }
+
+  public static void assertClassIsAnnotatedAsDeprecated(
+      final Class<?> classUnderTest, final boolean isDeprecated) {
+    assertClassIsAnnotatedWith(classUnderTest, Deprecated.class, isDeprecated);
+  }
+
+  public static void assertClassIsAnnotatedWith(final Class<?> classUnderTest,
+      final Class<?> annotation, final boolean hasAnnotation) {
+    if (hasAnnotation) {
+      assertClassIsAnnotatedWith(classUnderTest, annotation);
     } else {
-      assertClassIsNotAnnotatedWith(classUnderTest, Deprecated.class);
+      assertClassIsNotAnnotatedWith(classUnderTest, annotation);
     }
   }
 
@@ -33,7 +54,7 @@ public class AssertionUtils {
     );
   }
 
-  public static void assertClassIsNotAnnotatedWith(final Class<?> clazz,
+  private static void assertClassIsNotAnnotatedWith(final Class<?> clazz,
       final Class<?> annotation) {
     Assertions.assertTrue(
         Arrays.stream(clazz.getAnnotations())

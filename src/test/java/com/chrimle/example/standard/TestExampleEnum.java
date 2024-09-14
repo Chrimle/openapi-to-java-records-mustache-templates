@@ -32,8 +32,7 @@ public class TestExampleEnum {
 
   @Test
   public void testEnumIsNotAnnotatedWithAdditionalEnumTypeAnnotations() {
-    AssertionUtils.assertClassIsNotAnnotatedWith(classUnderTest, com.chrimle.example.annotations.TestAnnotationOne.class);
-    AssertionUtils.assertClassIsNotAnnotatedWith(classUnderTest, com.chrimle.example.annotations.TestAnnotationTwo.class);
-    AssertionUtils.assertClassIsNotAnnotatedWith(classUnderTest, com.chrimle.example.annotations.TestAnnotationThree.class);
+    AssertionUtils.assertClassIsAnnotatedWithAdditionalTypeAnnotations(
+        classUnderTest, false);
   }
 }

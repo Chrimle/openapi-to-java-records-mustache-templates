@@ -24,10 +24,8 @@ public class TestExampleRecord {
   @Test
   @DisplayName("Testing generated Record is annotated with AdditionalModelTypeAnnotations")
   public void testRecordIsAnnotatedWithAdditionalModelTypeAnnotations() {
-    AssertionUtils.assertClassIsAnnotatedWith(classUnderTest, com.chrimle.example.annotations.TestAnnotationOne.class);
-    AssertionUtils.assertClassIsAnnotatedWith(classUnderTest, com.chrimle.example.annotations.TestAnnotationTwo.class);
-    AssertionUtils.assertClassIsAnnotatedWith(classUnderTest, com.chrimle.example.annotations.TestAnnotationThree.class);
-
+    AssertionUtils.assertClassIsAnnotatedWithAdditionalTypeAnnotations(
+        classUnderTest, true);
   }
 
 }
