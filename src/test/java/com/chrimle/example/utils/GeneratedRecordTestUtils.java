@@ -9,7 +9,8 @@ public class GeneratedRecordTestUtils {
       final Class<?> classUnderTest,
       final boolean isDeprecated,
       final boolean hasAdditionalTypeAnnotations,
-      final boolean isSerializableModel) {
+      final boolean isSerializableModel,
+      final Class<?>... fieldClasses) {
     AssertionUtils.assertIsRecord(classUnderTest);
     AssertionUtils.assertClassIsAnnotatedAsDeprecated(classUnderTest,
         isDeprecated);
@@ -17,6 +18,7 @@ public class GeneratedRecordTestUtils {
         classUnderTest, hasAdditionalTypeAnnotations);
     AssertionUtils.assertModelIsSerializable(classUnderTest,
         isSerializableModel);
+    AssertionUtils.assertRecordHasFieldsOfType(classUnderTest, fieldClasses);
   }
 
 }

@@ -69,6 +69,27 @@ public class AssertionUtils {
     );
   }
 
+  public static void assertRecordHasFieldsOfType(final Class<?> classUnderTest,
+      final Class<?>... fieldClasses) {
+
+    Assertions.assertEquals(fieldClasses.length,
+        classUnderTest.getDeclaredFields().length,
+        classUnderTest.getCanonicalName()
+            + " does not have the expected number of fields!");
+
+    for (int i = 1; i <= fieldClasses.length; i++) {
+      final String fieldName = "field" + i;
+      final Field field = Assertions.assertDoesNotThrow(
+          () -> classUnderTest.getDeclaredField(fieldName),
+          classUnderTest.getCanonicalName() + " does NOT have the field "
+              + fieldName
+      );
+      Assertions.assertEquals(fieldClasses[i - 1], field.getType(),
+          classUnderTest.getCanonicalName() + ".field" + i + " was NOT of type "
+              + fieldClasses[i - 1]);
+    }
+  }
+
 
   public static void assertRecordHasNumberOfFieldsOfType(final Class<?> clazz,
       final int count, final Class<?> type) {

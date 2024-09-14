@@ -35,8 +35,8 @@ public class StandardTests {
     GeneratedEnumTestUtils.assertEnumClass(deprecatedExampleEnum, true,
         HAS_ADDITIONAL_ENUM_TYPE_ANNOTATIONS, USE_ENUM_CASE_INSENSITIVE);
     GeneratedRecordTestUtils.assertRecord(exampleRecord, false,
-        HAS_ADDITIONAL_MODEL_TYPE_ANNOTATIONS, IS_MODEL_SERIALIZABLE);
+        HAS_ADDITIONAL_MODEL_TYPE_ANNOTATIONS, IS_MODEL_SERIALIZABLE, Boolean.class);
     GeneratedRecordTestUtils.assertRecord(deprecatedExampleRecord, true,
-        HAS_ADDITIONAL_MODEL_TYPE_ANNOTATIONS, IS_MODEL_SERIALIZABLE);
+        HAS_ADDITIONAL_MODEL_TYPE_ANNOTATIONS, IS_MODEL_SERIALIZABLE, Boolean.class);
   }
 }

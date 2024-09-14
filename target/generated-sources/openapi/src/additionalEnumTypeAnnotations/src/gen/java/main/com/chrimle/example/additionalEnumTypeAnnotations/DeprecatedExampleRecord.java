@@ -30,14 +30,14 @@ import java.util.Arrays;
 /**
  * Example of a deprecated Record
  * @deprecated
- * @param field a boolean field
+ * @param field1 a boolean field
  */
 @Deprecated
 public record DeprecatedExampleRecord(
-        @javax.annotation.Nonnull Boolean field) {
+        @javax.annotation.Nonnull Boolean field1) {
 
     public DeprecatedExampleRecord(
-            @javax.annotation.Nonnull final Boolean field) { 
-        this.field = field;
+            @javax.annotation.Nonnull final Boolean field1) { 
+        this.field1 = field1;
     }
 }

@@ -23,7 +23,7 @@ components:
       type: object
       description: Example of a Record
       properties:
-        field:
+        field1:
           type: boolean
           description: a boolean field
     DeprecatedExampleRecord:
@@ -31,7 +31,7 @@ components:
       deprecated: true
       description: Example of a deprecated Record
       properties:
-        field:
+        field1:
           type: boolean
           description: a boolean field
     ExampleRecordWithStringFields:

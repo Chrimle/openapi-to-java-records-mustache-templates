@@ -31,16 +31,16 @@ import java.io.Serializable;
 /**
  * Example of a deprecated Record
  * @deprecated
- * @param field a boolean field
+ * @param field1 a boolean field
  */
 @Deprecated
 public record DeprecatedExampleRecord(
-        @javax.annotation.Nonnull Boolean field) {
+        @javax.annotation.Nonnull Boolean field1) {
 
     private static final long serialVersionUID = 1L;
 
     public DeprecatedExampleRecord(
-            @javax.annotation.Nonnull final Boolean field) { 
-        this.field = field;
+            @javax.annotation.Nonnull final Boolean field1) { 
+        this.field1 = field1;
     }
 }
