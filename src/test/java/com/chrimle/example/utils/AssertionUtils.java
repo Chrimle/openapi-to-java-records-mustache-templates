@@ -35,7 +35,7 @@ public class AssertionUtils {
     assertClassIsAnnotatedWith(classUnderTest, Deprecated.class, isDeprecated);
   }
 
-  public static void assertClassIsAnnotatedWith(final Class<?> classUnderTest,
+  private static void assertClassIsAnnotatedWith(final Class<?> classUnderTest,
       final Class<?> annotation, final boolean hasAnnotation) {
     if (hasAnnotation) {
       assertClassIsAnnotatedWith(classUnderTest, annotation);
@@ -45,7 +45,7 @@ public class AssertionUtils {
   }
 
 
-  public static void assertClassIsAnnotatedWith(final Class<?> clazz,
+  private static void assertClassIsAnnotatedWith(final Class<?> clazz,
       final Class<?> annotation) {
     Assertions.assertTrue(
         Arrays.stream(clazz.getAnnotations())
