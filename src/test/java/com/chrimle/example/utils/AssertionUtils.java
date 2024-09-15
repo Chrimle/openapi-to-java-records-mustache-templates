@@ -70,9 +70,10 @@ public class AssertionUtils {
   }
 
   public static void assertRecordHasFieldsOfType(final Class<?> classUnderTest,
+      final boolean isModelSerializable,
       final Class<?>... fieldClasses) {
 
-    Assertions.assertEquals(fieldClasses.length,
+    Assertions.assertEquals(fieldClasses.length + (isModelSerializable ? 1 : 0),
         classUnderTest.getDeclaredFields().length,
         classUnderTest.getCanonicalName()
             + " does not have the expected number of fields!");

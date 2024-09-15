@@ -18,7 +18,8 @@ public class GeneratedRecordTestUtils {
         classUnderTest, hasAdditionalTypeAnnotations);
     AssertionUtils.assertModelIsSerializable(classUnderTest,
         isSerializableModel);
-    AssertionUtils.assertRecordHasFieldsOfType(classUnderTest, fieldClasses);
+    AssertionUtils.assertRecordHasFieldsOfType(classUnderTest,
+        isSerializableModel, fieldClasses);
   }
 
 }
