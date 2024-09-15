@@ -22,4 +22,19 @@ public class GeneratedRecordTestUtils {
         isSerializableModel, fieldClasses);
   }
 
+  public static void assertExampleRecord(
+      final Class<?> classUnderTest,
+      final boolean hasAdditionalTypeAnnotations,
+      final boolean isSerializableModel
+  ) {
+    assertRecord(
+        classUnderTest,
+        false,
+        hasAdditionalTypeAnnotations,
+        isSerializableModel,
+        Boolean.class
+    );
+  }
+
+
 }

@@ -45,12 +45,10 @@ public class SerializableModelTests {
         HAS_ADDITIONAL_ENUM_TYPE_ANNOTATIONS,
         USE_ENUM_CASE_INSENSITIVE
     );
-    GeneratedRecordTestUtils.assertRecord(
+    GeneratedRecordTestUtils.assertExampleRecord(
         exampleRecord,
-        false,
         HAS_ADDITIONAL_MODEL_TYPE_ANNOTATIONS,
-        IS_MODEL_SERIALIZABLE,
-        Boolean.class
+        IS_MODEL_SERIALIZABLE
     );
     GeneratedRecordTestUtils.assertRecord(
         deprecatedExampleRecord,
