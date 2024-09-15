@@ -38,6 +38,9 @@ public class GeneratedEnumTestUtils {
   private static <E extends Enum<E>> void assertEnumHasCaseInsensitiveFromValueMethod(
       final Class<E> classUnderTest, final boolean useEnumCaseInsensitive) {
     if (!useEnumCaseInsensitive) {
+      // Assert 'fromValue'-method does NOT exist
+      Assertions.assertThrows(NoSuchMethodException.class,
+          () -> classUnderTest.getMethod("fromValue", String.class));
       return;
     }
     // Assert 'fromValue'-method exists
