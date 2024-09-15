@@ -92,16 +92,6 @@ public class AssertionUtils {
   }
 
 
-  public static void assertRecordHasNumberOfFieldsOfType(final Class<?> clazz,
-      final int count, final Class<?> type) {
-    for (int i = 1; i <= count; i++) {
-      final Field field = clazz.getDeclaredFields()[
-          i - 1];
-      Assertions.assertEquals("field" + i, field.getName());
-      Assertions.assertEquals(type, field.getType());
-    }
-  }
-
   public static void assertModelIsSerializable(final Class<?> classUnderTest,
       final boolean isModelSerializable) {
     if (isModelSerializable) {
