@@ -30,17 +30,17 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * Example of a Record with default fields
- * @param nullableStringField a nullable String field
- * @param defaultStringField a String field with a default value
+ * @param field1 a nullable String field
+ * @param field2 a String field with a default value
  */
 public record ExampleRecordWithDefaultFields(
-        @javax.annotation.Nullable String nullableStringField,
-        @javax.annotation.Nonnull String defaultStringField) {
+        @javax.annotation.Nullable String field1,
+        @javax.annotation.Nonnull String field2) {
 
     public ExampleRecordWithDefaultFields(
-            @javax.annotation.Nullable final String nullableStringField,
-            @javax.annotation.Nullable final String defaultStringField) { 
-        this.nullableStringField = nullableStringField;
-        this.defaultStringField = Objects.requireNonNullElse(defaultStringField, "someDefaultValue");
+            @javax.annotation.Nullable final String field1,
+            @javax.annotation.Nullable final String field2) { 
+        this.field1 = field1;
+        this.field2 = Objects.requireNonNullElse(field2, "someDefaultValue");
     }
 }
