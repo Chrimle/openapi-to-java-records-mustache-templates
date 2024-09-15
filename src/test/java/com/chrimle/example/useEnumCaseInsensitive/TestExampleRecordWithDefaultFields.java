@@ -27,7 +27,7 @@ public class TestExampleRecordWithDefaultFields {
   public void testNullableFieldIsNullAfterInstantiation() {
     ExampleRecordWithDefaultFields record = new ExampleRecordWithDefaultFields(
         null, "ignore");
-    Assertions.assertNull(record.nullableStringField());
+    Assertions.assertNull(record.field1());
   }
 
   @Test
@@ -35,7 +35,7 @@ public class TestExampleRecordWithDefaultFields {
   public void testFieldWithDefaultValueIsSetToDefaultIfProvidedValueIsNull() {
     ExampleRecordWithDefaultFields record = new ExampleRecordWithDefaultFields(
         "ignore", null);
-    Assertions.assertEquals("someDefaultValue", record.defaultStringField());
+    Assertions.assertEquals("someDefaultValue", record.field2());
   }
 
   @Test
@@ -43,6 +43,6 @@ public class TestExampleRecordWithDefaultFields {
   public void testFieldWithDefaultValueIsSetToProvidedValueIfProvidedValueIsNotNull() {
     ExampleRecordWithDefaultFields record = new ExampleRecordWithDefaultFields(
         "ignore", "someValue");
-    Assertions.assertEquals("someValue", record.defaultStringField());
+    Assertions.assertEquals("someValue", record.field2());
   }
 }
