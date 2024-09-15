@@ -68,5 +68,21 @@ public class GeneratedRecordTestUtils {
     );
   }
 
+  public static void assertExampleRecordWithBooleanFields(
+      final Class<?> classUnderTest,
+      final boolean hasAdditionalTypeAnnotations,
+      final boolean isSerializableModel
+  ) {
+    assertRecord(
+        classUnderTest,
+        false,
+        hasAdditionalTypeAnnotations,
+        isSerializableModel,
+        Boolean.class,
+        Boolean.class,
+        Boolean.class
+    );
+  }
+
 
 }
