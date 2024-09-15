@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 /**
  * Tests for the 'serializableModel' plugin-execution.
  */
+@SuppressWarnings("deprecation")
 public class SerializableModelTests {
 
   final Class<DeprecatedExampleEnum> deprecatedExampleEnum = DeprecatedExampleEnum.class;
