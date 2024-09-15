@@ -110,14 +110,10 @@ public class StandardTests {
         String.class,
         String.class
     );
-    GeneratedRecordTestUtils.assertRecord(
+    GeneratedRecordTestUtils.assertExampleRecordWithArrayFields(
         exampleRecordWithArrayFields,
-        false,
         HAS_ADDITIONAL_MODEL_TYPE_ANNOTATIONS,
-        IS_MODEL_SERIALIZABLE,
-        List.class,
-        List.class,
-        List.class
+        IS_MODEL_SERIALIZABLE
     );
     GeneratedRecordTestUtils.assertRecord(
         exampleRecordWithDefaultFields,

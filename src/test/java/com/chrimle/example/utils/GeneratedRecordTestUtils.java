@@ -1,5 +1,7 @@
 package com.chrimle.example.utils;
 
+import java.util.List;
+
 /**
  * Generalized Test-class for testing Generated Record-classes
  */
@@ -47,6 +49,22 @@ public class GeneratedRecordTestUtils {
         hasAdditionalTypeAnnotations,
         isSerializableModel,
         Boolean.class
+    );
+  }
+
+  public static void assertExampleRecordWithArrayFields(
+      final Class<?> classUnderTest,
+      final boolean hasAdditionalTypeAnnotations,
+      final boolean isSerializableModel
+  ) {
+    assertRecord(
+        classUnderTest,
+        false,
+        hasAdditionalTypeAnnotations,
+        isSerializableModel,
+        List.class,
+        List.class,
+        List.class
     );
   }
 
