@@ -1,4 +1,4 @@
-package com.chrimle.example.additionalModelTypeAnnotations;
+package com.chrimle.example.additionalEnumTypeAnnotations;
 
 import com.chrimle.example.utils.GeneratedEnumTestUtils;
 import com.chrimle.example.utils.GeneratedRecordTestUtils;
@@ -9,11 +9,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 /**
- * Tests for the 'additionalModelTypeAnnotations' plugin-execution.
+ * Tests for the 'additionalEnumTypeAnnotations' plugin-execution.
  */
 @SuppressWarnings("deprecation")
-public class AdditionalModelTypeAnnotationTests {
-
+public class AdditionalEnumTypeAnnotationTests {
 
   final Class<DeprecatedExampleEnum> deprecatedExampleEnum = DeprecatedExampleEnum.class;
   final Class<DeprecatedExampleRecord> deprecatedExampleRecord = DeprecatedExampleRecord.class;
@@ -28,8 +27,8 @@ public class AdditionalModelTypeAnnotationTests {
   final Class<ExampleRecordWithNumberFields> exampleRecordWithNumberFields = ExampleRecordWithNumberFields.class;
   final Class<ExampleRecordWithStringFields> exampleRecordWithStringFields = ExampleRecordWithStringFields.class;
 
-  final boolean HAS_ADDITIONAL_MODEL_TYPE_ANNOTATIONS = true;
-  final boolean HAS_ADDITIONAL_ENUM_TYPE_ANNOTATIONS = false;
+  final boolean HAS_ADDITIONAL_MODEL_TYPE_ANNOTATIONS = false;
+  final boolean HAS_ADDITIONAL_ENUM_TYPE_ANNOTATIONS = true;
   final boolean USE_ENUM_CASE_INSENSITIVE = false;
   final boolean IS_MODEL_SERIALIZABLE = false;
 
