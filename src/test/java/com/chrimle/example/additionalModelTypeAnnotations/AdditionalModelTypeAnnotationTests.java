@@ -52,12 +52,10 @@ public class AdditionalModelTypeAnnotationTests {
         HAS_ADDITIONAL_MODEL_TYPE_ANNOTATIONS,
         IS_MODEL_SERIALIZABLE
     );
-    GeneratedRecordTestUtils.assertRecord(
+    GeneratedRecordTestUtils.assertDeprecatedExampleRecord(
         deprecatedExampleRecord,
-        true,
         HAS_ADDITIONAL_MODEL_TYPE_ANNOTATIONS,
-        IS_MODEL_SERIALIZABLE,
-        Boolean.class
+        IS_MODEL_SERIALIZABLE
     );
     GeneratedRecordTestUtils.assertRecord(
         exampleRecordWithBooleanFields,

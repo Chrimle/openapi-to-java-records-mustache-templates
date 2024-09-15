@@ -36,5 +36,19 @@ public class GeneratedRecordTestUtils {
     );
   }
 
+  public static void assertDeprecatedExampleRecord(
+      final Class<?> classUnderTest,
+      final boolean hasAdditionalTypeAnnotations,
+      final boolean isSerializableModel
+  ) {
+    assertRecord(
+        classUnderTest,
+        true,
+        hasAdditionalTypeAnnotations,
+        isSerializableModel,
+        Boolean.class
+    );
+  }
+
 
 }
