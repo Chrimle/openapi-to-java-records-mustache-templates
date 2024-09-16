@@ -87,14 +87,10 @@ public class SerializableModelTests {
         Integer.class,
         Integer.class
     );
-    GeneratedRecordTestUtils.assertRecord(
+    GeneratedRecordTestUtils.assertExampleRecordWithNumberFields(
         exampleRecordWithNumberFields,
-        false,
         HAS_ADDITIONAL_MODEL_TYPE_ANNOTATIONS,
-        IS_MODEL_SERIALIZABLE,
-        BigDecimal.class,
-        BigDecimal.class,
-        BigDecimal.class
+        IS_MODEL_SERIALIZABLE
     );
     GeneratedRecordTestUtils.assertRecord(
         exampleRecordWithStringFields,

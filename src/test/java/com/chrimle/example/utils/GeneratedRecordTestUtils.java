@@ -1,5 +1,6 @@
 package com.chrimle.example.utils;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -81,6 +82,22 @@ public class GeneratedRecordTestUtils {
         Boolean.class,
         Boolean.class,
         Boolean.class
+    );
+  }
+
+  public static void assertExampleRecordWithNumberFields(
+      final Class<?> classUnderTest,
+      final boolean hasAdditionalTypeAnnotations,
+      final boolean isSerializableModel
+  ) {
+    assertRecord(
+        classUnderTest,
+        false,
+        hasAdditionalTypeAnnotations,
+        isSerializableModel,
+        BigDecimal.class,
+        BigDecimal.class,
+        BigDecimal.class
     );
   }
 
