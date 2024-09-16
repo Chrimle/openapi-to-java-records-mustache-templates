@@ -94,14 +94,10 @@ public class UseEnumCaseInsensitiveTests {
         HAS_ADDITIONAL_MODEL_TYPE_ANNOTATIONS,
         IS_MODEL_SERIALIZABLE
     );
-    GeneratedRecordTestUtils.assertRecord(
+    GeneratedRecordTestUtils.assertExampleRecordWithStringFields(
         exampleRecordWithStringFields,
-        false,
         HAS_ADDITIONAL_MODEL_TYPE_ANNOTATIONS,
-        IS_MODEL_SERIALIZABLE,
-        String.class,
-        String.class,
-        String.class
+        IS_MODEL_SERIALIZABLE
     );
     GeneratedRecordTestUtils.assertExampleRecordWithArrayFields(
         exampleRecordWithArrayFields,

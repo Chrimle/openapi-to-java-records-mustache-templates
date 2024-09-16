@@ -101,5 +101,21 @@ public class GeneratedRecordTestUtils {
     );
   }
 
+  public static void assertExampleRecordWithStringFields(
+      final Class<?> classUnderTest,
+      final boolean hasAdditionalTypeAnnotations,
+      final boolean isSerializableModel
+  ) {
+    assertRecord(
+        classUnderTest,
+        false,
+        hasAdditionalTypeAnnotations,
+        isSerializableModel,
+        String.class,
+        String.class,
+        String.class
+    );
+  }
+
 
 }
