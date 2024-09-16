@@ -1,9 +1,6 @@
 package com.chrimle.example.additionalModelTypeAnnotations;
 
-import com.chrimle.example.utils.GeneratedEnumTestUtils;
-import com.chrimle.example.utils.GeneratedRecordTestUtils;
-import java.math.BigDecimal;
-import java.util.List;
+import com.chrimle.example.TestSuite;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -14,20 +11,6 @@ import org.junit.jupiter.api.Test;
 @SuppressWarnings("deprecation")
 public class AdditionalModelTypeAnnotationTests {
 
-
-  final Class<DeprecatedExampleEnum> deprecatedExampleEnum = DeprecatedExampleEnum.class;
-  final Class<DeprecatedExampleRecord> deprecatedExampleRecord = DeprecatedExampleRecord.class;
-  final Class<ExampleEnum> exampleEnum = ExampleEnum.class;
-  final Class<ExampleRecord> exampleRecord = ExampleRecord.class;
-  final Class<ExampleRecordWithArrayFields> exampleRecordWithArrayFields = ExampleRecordWithArrayFields.class;
-  final Class<ExampleRecordWithBooleanFields> exampleRecordWithBooleanFields = ExampleRecordWithBooleanFields.class;
-  final Class<ExampleRecordWithDefaultFields> exampleRecordWithDefaultFields = ExampleRecordWithDefaultFields.class;
-  final Class<ExampleRecordWithExampleEnumFields> exampleRecordWithExampleEnumFields = ExampleRecordWithExampleEnumFields.class;
-  final Class<ExampleRecordWithExampleRecordFields> exampleRecordWithExampleRecordFields = ExampleRecordWithExampleRecordFields.class;
-  final Class<ExampleRecordWithIntegerFields> exampleRecordWithIntegerFields = ExampleRecordWithIntegerFields.class;
-  final Class<ExampleRecordWithNumberFields> exampleRecordWithNumberFields = ExampleRecordWithNumberFields.class;
-  final Class<ExampleRecordWithStringFields> exampleRecordWithStringFields = ExampleRecordWithStringFields.class;
-
   final boolean HAS_ADDITIONAL_MODEL_TYPE_ANNOTATIONS = true;
   final boolean HAS_ADDITIONAL_ENUM_TYPE_ANNOTATIONS = false;
   final boolean USE_ENUM_CASE_INSENSITIVE = false;
@@ -35,71 +18,25 @@ public class AdditionalModelTypeAnnotationTests {
 
   @Test
   public void testAllGeneratedClasses() {
-    GeneratedEnumTestUtils.assertExampleEnum(
-        exampleEnum,
+    final TestSuite testSuite = new TestSuite(
+        DeprecatedExampleEnum.class,
+        DeprecatedExampleRecord.class,
+        ExampleEnum.class,
+        ExampleRecord.class,
+        ExampleRecordWithArrayFields.class,
+        ExampleRecordWithBooleanFields.class,
+        ExampleRecordWithDefaultFields.class,
+        ExampleRecordWithExampleEnumFields.class,
+        ExampleRecordWithExampleRecordFields.class,
+        ExampleRecordWithIntegerFields.class,
+        ExampleRecordWithNumberFields.class,
+        ExampleRecordWithStringFields.class,
+        HAS_ADDITIONAL_MODEL_TYPE_ANNOTATIONS,
         HAS_ADDITIONAL_ENUM_TYPE_ANNOTATIONS,
-        USE_ENUM_CASE_INSENSITIVE
-    );
-    GeneratedEnumTestUtils.assertDeprecatedExampleEnum(
-        deprecatedExampleEnum,
-        HAS_ADDITIONAL_ENUM_TYPE_ANNOTATIONS,
-        USE_ENUM_CASE_INSENSITIVE
-    );
-    GeneratedRecordTestUtils.assertExampleRecord(
-        exampleRecord,
-        HAS_ADDITIONAL_MODEL_TYPE_ANNOTATIONS,
+        USE_ENUM_CASE_INSENSITIVE,
         IS_MODEL_SERIALIZABLE
     );
-    GeneratedRecordTestUtils.assertDeprecatedExampleRecord(
-        deprecatedExampleRecord,
-        HAS_ADDITIONAL_MODEL_TYPE_ANNOTATIONS,
-        IS_MODEL_SERIALIZABLE
-    );
-    GeneratedRecordTestUtils.assertExampleRecordWithBooleanFields(
-        exampleRecordWithBooleanFields,
-        HAS_ADDITIONAL_MODEL_TYPE_ANNOTATIONS,
-        IS_MODEL_SERIALIZABLE
-    );
-    GeneratedRecordTestUtils.assertExampleRecordWithExampleEnumFields(
-        exampleRecordWithExampleEnumFields,
-        exampleEnum,
-        HAS_ADDITIONAL_MODEL_TYPE_ANNOTATIONS,
-        IS_MODEL_SERIALIZABLE
-    );
-    GeneratedRecordTestUtils.assertExampleRecordWithExampleRecordFields(
-        exampleRecordWithExampleRecordFields,
-        exampleRecord,
-        HAS_ADDITIONAL_MODEL_TYPE_ANNOTATIONS,
-        IS_MODEL_SERIALIZABLE
-    );
-    GeneratedRecordTestUtils.assertExampleRecordWithIntegerFields(
-        exampleRecordWithIntegerFields,
-        HAS_ADDITIONAL_MODEL_TYPE_ANNOTATIONS,
-        IS_MODEL_SERIALIZABLE
-    );
-    GeneratedRecordTestUtils.assertExampleRecordWithNumberFields(
-        exampleRecordWithNumberFields,
-        HAS_ADDITIONAL_MODEL_TYPE_ANNOTATIONS,
-        IS_MODEL_SERIALIZABLE
-    );
-    GeneratedRecordTestUtils.assertExampleRecordWithStringFields(
-        exampleRecordWithStringFields,
-        HAS_ADDITIONAL_MODEL_TYPE_ANNOTATIONS,
-        IS_MODEL_SERIALIZABLE
-    );
-    GeneratedRecordTestUtils.assertExampleRecordWithArrayFields(
-        exampleRecordWithArrayFields,
-        HAS_ADDITIONAL_MODEL_TYPE_ANNOTATIONS,
-        IS_MODEL_SERIALIZABLE
-    );
-    GeneratedRecordTestUtils.assertRecord(
-        exampleRecordWithDefaultFields,
-        false,
-        HAS_ADDITIONAL_MODEL_TYPE_ANNOTATIONS,
-        IS_MODEL_SERIALIZABLE,
-        String.class,
-        String.class
-    );
+    testSuite.assertModels();
   }
 
   @Test
