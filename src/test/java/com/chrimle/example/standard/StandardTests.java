@@ -34,9 +34,8 @@ public class StandardTests {
 
   @Test
   public void testAllGeneratedClasses() {
-    GeneratedEnumTestUtils.assertEnumClass(
+    GeneratedEnumTestUtils.assertExampleEnum(
         exampleEnum,
-        false,
         HAS_ADDITIONAL_ENUM_TYPE_ANNOTATIONS,
         USE_ENUM_CASE_INSENSITIVE
     );

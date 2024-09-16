@@ -10,6 +10,19 @@ import org.junit.jupiter.api.Assertions;
  */
 public class GeneratedEnumTestUtils {
 
+  public static <E extends Enum<E>> void assertExampleEnum(
+      final Class<E> classUnderTest,
+      final boolean hasAdditionalModelAnnotations,
+      final boolean useEnumCaseInsensitive
+  ) {
+    assertEnumClass(
+        classUnderTest,
+        false,
+        hasAdditionalModelAnnotations,
+        useEnumCaseInsensitive
+    );
+  }
+
   public static <E extends Enum<E>> void assertEnumClass(
       final Class<E> classUnderTest,
       final boolean isDeprecated,
