@@ -149,4 +149,22 @@ public class GeneratedRecordTestUtils {
         enumClass
     );
   }
+
+  public static void assertExampleRecordWithExampleRecordFields(
+      final Class<?> classUnderTest,
+      final Class<?> subClass,
+      final boolean hasAdditionalModelTypeAnnotations,
+      final boolean isSerializableModel
+  ) {
+    assertRecord(
+        classUnderTest,
+        false,
+        hasAdditionalModelTypeAnnotations,
+        isSerializableModel,
+        subClass,
+        subClass,
+        subClass
+    );
+  }
+
 }

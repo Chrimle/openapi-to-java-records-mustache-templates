@@ -65,14 +65,11 @@ public class StandardTests {
         HAS_ADDITIONAL_MODEL_TYPE_ANNOTATIONS,
         IS_MODEL_SERIALIZABLE
     );
-    GeneratedRecordTestUtils.assertRecord(
+    GeneratedRecordTestUtils.assertExampleRecordWithExampleRecordFields(
         exampleRecordWithExampleRecordFields,
-        false,
+        exampleRecord,
         HAS_ADDITIONAL_MODEL_TYPE_ANNOTATIONS,
-        IS_MODEL_SERIALIZABLE,
-        exampleRecord,
-        exampleRecord,
-        exampleRecord
+        IS_MODEL_SERIALIZABLE
     );
     GeneratedRecordTestUtils.assertExampleRecordWithIntegerFields(
         exampleRecordWithIntegerFields,
