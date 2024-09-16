@@ -133,5 +133,20 @@ public class GeneratedRecordTestUtils {
     );
   }
 
-
+  public static <E extends Enum<E>> void assertExampleRecordWithExampleEnumFields(
+      final Class<?> classUnderTest,
+      final Class<E> enumClass,
+      final boolean hasAdditionalTypeAnnotations,
+      final boolean isSerializableModel
+  ) {
+    assertRecord(
+        classUnderTest,
+        false,
+        hasAdditionalTypeAnnotations,
+        isSerializableModel,
+        enumClass,
+        enumClass,
+        enumClass
+    );
+  }
 }

@@ -59,14 +59,11 @@ public class StandardTests {
         HAS_ADDITIONAL_MODEL_TYPE_ANNOTATIONS,
         IS_MODEL_SERIALIZABLE
     );
-    GeneratedRecordTestUtils.assertRecord(
+    GeneratedRecordTestUtils.assertExampleRecordWithExampleEnumFields(
         exampleRecordWithExampleEnumFields,
-        false,
+        exampleEnum,
         HAS_ADDITIONAL_MODEL_TYPE_ANNOTATIONS,
-        IS_MODEL_SERIALIZABLE,
-        exampleEnum,
-        exampleEnum,
-        exampleEnum
+        IS_MODEL_SERIALIZABLE
     );
     GeneratedRecordTestUtils.assertRecord(
         exampleRecordWithExampleRecordFields,
