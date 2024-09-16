@@ -39,9 +39,8 @@ public class StandardTests {
         HAS_ADDITIONAL_ENUM_TYPE_ANNOTATIONS,
         USE_ENUM_CASE_INSENSITIVE
     );
-    GeneratedEnumTestUtils.assertEnumClass(
+    GeneratedEnumTestUtils.assertDeprecatedExampleEnum(
         deprecatedExampleEnum,
-        true,
         HAS_ADDITIONAL_ENUM_TYPE_ANNOTATIONS,
         USE_ENUM_CASE_INSENSITIVE
     );

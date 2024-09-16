@@ -23,6 +23,19 @@ public class GeneratedEnumTestUtils {
     );
   }
 
+  public static <E extends Enum<E>> void assertDeprecatedExampleEnum(
+      final Class<E> classUnderTest,
+      final boolean hasAdditionalModelAnnotations,
+      final boolean useEnumCaseInsensitive
+  ) {
+    assertEnumClass(
+        classUnderTest,
+        true,
+        hasAdditionalModelAnnotations,
+        useEnumCaseInsensitive
+    );
+  }
+
   public static <E extends Enum<E>> void assertEnumClass(
       final Class<E> classUnderTest,
       final boolean isDeprecated,
