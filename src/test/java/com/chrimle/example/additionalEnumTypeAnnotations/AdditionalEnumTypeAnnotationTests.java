@@ -79,14 +79,10 @@ public class AdditionalEnumTypeAnnotationTests {
         exampleRecord,
         exampleRecord
     );
-    GeneratedRecordTestUtils.assertRecord(
+    GeneratedRecordTestUtils.assertExampleRecordWithIntegerFields(
         exampleRecordWithIntegerFields,
-        false,
         HAS_ADDITIONAL_MODEL_TYPE_ANNOTATIONS,
-        IS_MODEL_SERIALIZABLE,
-        Integer.class,
-        Integer.class,
-        Integer.class
+        IS_MODEL_SERIALIZABLE
     );
     GeneratedRecordTestUtils.assertExampleRecordWithNumberFields(
         exampleRecordWithNumberFields,
