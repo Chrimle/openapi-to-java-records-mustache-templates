@@ -36,5 +36,4 @@ public class SerializableModelTests {
     );
     testSuite.assertModels();
   }
-
 }

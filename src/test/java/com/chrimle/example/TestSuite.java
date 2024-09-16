@@ -80,13 +80,10 @@ public record TestSuite<DeprecatedExampleEnum extends Enum<DeprecatedExampleEnum
         hasAdditionalModelTypeAnnotations,
         serializableModel
     );
-    GeneratedRecordTestUtils.assertRecord(
+    GeneratedRecordTestUtils.assertExampleRecordWithDefaultFields(
         exampleRecordWithDefaultFields,
-        false,
         hasAdditionalModelTypeAnnotations,
-        serializableModel,
-        String.class,
-        String.class
+        serializableModel
     );
   }
 }
