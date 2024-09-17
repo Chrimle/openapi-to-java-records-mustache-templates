@@ -65,8 +65,8 @@ public class GeneratedEnumTestUtils {
       final Class<E> classUnderTest, final boolean useEnumCaseInsensitive) {
     if (!useEnumCaseInsensitive) {
       // Assert 'fromValue'-method does NOT exist
-      Assertions.assertThrows(NoSuchMethodException.class,
-          () -> classUnderTest.getMethod("fromValue", String.class));
+      AssertionUtils.assertClassDoesNotHaveMethod(classUnderTest, "fromValue",
+          String.class);
       return;
     }
     // Assert 'fromValue'-method exists
