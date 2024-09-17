@@ -85,7 +85,7 @@ public class AssertionUtils {
       assertRecordHasField(
           classUnderTest,
           fieldName,
-          fieldClasses[i-1]
+          fieldClasses[i - 1]
       );
     }
   }
@@ -94,9 +94,16 @@ public class AssertionUtils {
   public static void assertModelIsSerializable(final Class<?> classUnderTest,
       final boolean isModelSerializable) {
     if (isModelSerializable) {
-      assertModelHasSerialVersionField(classUnderTest);
+      assertRecordHasField(
+          classUnderTest,
+          "serialVersionUID",
+          long.class
+      );
     } else {
-      assertModelDoesNotHaveSerialVersionField(classUnderTest);
+      assertRecordDoesNotHaveField(
+          classUnderTest,
+          "serialVersionUID"
+      );
     }
   }
 
@@ -145,22 +152,17 @@ public class AssertionUtils {
     Assertions.assertEquals(expectedValue, actualValue);
   }
 
-  private static void assertModelDoesNotHaveSerialVersionField(
-      final Class<?> classUnderTest) {
+  private static void assertRecordDoesNotHaveField(
+      final Class<?> classUnderTest,
+      final String fieldName
+  ) {
     Assertions.assertThrows(NoSuchFieldException.class,
-        () -> classUnderTest.getDeclaredField("serialVersionUID"),
-        classUnderTest.getCanonicalName() + " HAS 'serialVersionUID'-field!"
+        () -> classUnderTest.getDeclaredField(fieldName),
+        classUnderTest.getCanonicalName() + " unexpectedly has the field: "
+            + fieldName
     );
   }
 
-
-  private static void assertModelHasSerialVersionField(
-      final Class<?> classUnderTest) {
-    Assertions.assertDoesNotThrow(
-        () -> classUnderTest.getDeclaredField("serialVersionUID"),
-        classUnderTest.getCanonicalName()
-            + " does NOT have 'serialVersionUID'-field!");
-  }
 
   private static void assertRecordHasField(
       final Class<?> classUnderTest,
