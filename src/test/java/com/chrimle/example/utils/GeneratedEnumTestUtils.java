@@ -70,11 +70,9 @@ public class GeneratedEnumTestUtils {
       return;
     }
     // Assert 'fromValue'-method exists
-    final Method fromValueMethod = Assertions.assertDoesNotThrow(
-        () -> classUnderTest.getMethod("fromValue", String.class),
-        classUnderTest.getCanonicalName()
-            + " did NOT have a 'fromValue' method!"
-    );
+    final Method fromValueMethod = AssertionUtils.assertClassHasMethod(
+        classUnderTest, "fromValue",
+        String.class);
 
     // Assert 'IllegalArgumentException' is throws for unknown Enum-values
     InvocationTargetException invocationTargetException = Assertions.assertThrows(

@@ -138,11 +138,7 @@ public class AssertionUtils {
       final Object expectedValue
   ) {
     final Class<?> classUnderTest = objectUnderTest.getClass();
-    final Method method = Assertions.assertDoesNotThrow(
-        () -> classUnderTest.getDeclaredMethod(fieldName),
-        classUnderTest.getCanonicalName() + " does not have method: "
-            + fieldName
-    );
+    final Method method = assertClassHasMethod(classUnderTest, fieldName);
 
     final Object actualValue = Assertions.assertDoesNotThrow(
         () -> method.invoke(objectUnderTest),
@@ -150,6 +146,17 @@ public class AssertionUtils {
             + method.getName()
     );
     Assertions.assertEquals(expectedValue, actualValue);
+  }
+
+  public static Method assertClassHasMethod(
+      final Class<?> classUnderTest,
+      final String methodName,
+      final Class<?>... methodArgs
+  ) {
+    return Assertions.assertDoesNotThrow(
+        () -> classUnderTest.getDeclaredMethod(methodName, methodArgs),
+        classUnderTest.getCanonicalName() + " does not have method: "
+            + methodName + " with methodArgs: " + Arrays.toString(methodArgs));
   }
 
   private static void assertRecordDoesNotHaveField(
