@@ -3,7 +3,6 @@ package com.chrimle.example.utils;
 import java.lang.reflect.Constructor;
 import java.math.BigDecimal;
 import java.util.List;
-import org.junit.jupiter.api.Assertions;
 
 /**
  * Generalized Test-class for testing Generated Record-classes
@@ -183,55 +182,41 @@ public class GeneratedRecordTestUtils {
         String.class
     );
 
-    final Constructor<?> constructor = Assertions.assertDoesNotThrow(
-        () -> classUnderTest.getDeclaredConstructor(String.class, String.class),
-        classUnderTest.getCanonicalName() + " did not have expected constructor!"
+    final Constructor<?> constructor = AssertionUtils.assertRecordHasConstructor(
+        classUnderTest, String.class, String.class);
+
+    AssertionUtils.assertRecordFieldHasValue(
+        AssertionUtils.assertRecordInstantiateWithArgs(
+            classUnderTest,
+            constructor,
+            null,
+            null
+        ),
+        "field1",
+        null
     );
 
-    final String expectedCustomValue = "someValue";
-
-    final Object objectWithDefaultValue = Assertions.assertDoesNotThrow(
-        () -> constructor.newInstance("ignore", null),
-        classUnderTest.getCanonicalName() + " could not be instantiated!"
+    AssertionUtils.assertRecordFieldHasValue(
+        AssertionUtils.assertRecordInstantiateWithArgs(
+            classUnderTest,
+            constructor,
+            "ignore",
+            null
+        ),
+        "field2",
+        "someDefaultValue"
     );
 
-    final String field2WithDefaultValue = (String) Assertions.assertDoesNotThrow(
-        () -> classUnderTest.getDeclaredMethod("field2")
-            .invoke(objectWithDefaultValue),
-        classUnderTest.getCanonicalName()
-            + " could not invoke .field2()-method!");
-
-    Assertions.assertEquals("someDefaultValue", field2WithDefaultValue,
-        classUnderTest.getCanonicalName() + " field2 default-value was NOT used!");
-
-    final Object objectWithCustomValue = Assertions.assertDoesNotThrow(
-        () -> constructor.newInstance("ignore", expectedCustomValue),
-        classUnderTest.getCanonicalName() + " could not be instantiated!"
+    AssertionUtils.assertRecordFieldHasValue(
+        AssertionUtils.assertRecordInstantiateWithArgs(
+            classUnderTest,
+            constructor,
+            "ignore",
+            "someValue"
+        ),
+        "field2",
+        "someValue"
     );
-
-    final String field2WithCustomValue = (String) Assertions.assertDoesNotThrow(
-        () -> classUnderTest.getDeclaredMethod("field2")
-            .invoke(objectWithCustomValue),
-        classUnderTest.getCanonicalName()
-            + " could not invoke .field2()-method!");
-
-    Assertions.assertEquals(expectedCustomValue, field2WithCustomValue,
-        classUnderTest.getCanonicalName() + " field2 default-value WAS used!");
-
-    final Object objectWithNullableField = Assertions.assertDoesNotThrow(
-        () -> constructor.newInstance(null, null),
-        classUnderTest.getCanonicalName() + " could not be instantiated!"
-    );
-
-    final String field1WithNull = (String) Assertions.assertDoesNotThrow(
-        () -> classUnderTest.getDeclaredMethod("field1")
-            .invoke(objectWithNullableField),
-        classUnderTest.getCanonicalName()
-            + " could not invoke .field1()-method!");
-
-    Assertions.assertNull(field1WithNull, classUnderTest.getCanonicalName()
-        + " nullable field 'field1' was NOT null!");
-
   }
 
 }

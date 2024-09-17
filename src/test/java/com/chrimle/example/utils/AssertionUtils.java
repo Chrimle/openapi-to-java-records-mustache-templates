@@ -1,7 +1,9 @@
 package com.chrimle.example.utils;
 
 import java.lang.annotation.Annotation;
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.Arrays;
 import org.junit.jupiter.api.Assertions;
 
@@ -99,6 +101,51 @@ public class AssertionUtils {
     } else {
       assertModelDoesNotHaveSerialVersionField(classUnderTest);
     }
+  }
+
+  public static Object assertRecordInstantiateWithArgs(
+      final Class<?> classUnderTest,
+      final Constructor<?> constructorUnderTest,
+      final Object... constructorArgs
+  ) {
+    return Assertions.assertDoesNotThrow(
+        () -> constructorUnderTest.newInstance(constructorArgs),
+        classUnderTest.getCanonicalName()
+            + " could not be instantiated with constructorArgs: "
+            + Arrays.toString(constructorArgs)
+    );
+  }
+
+  public static Constructor<?> assertRecordHasConstructor(
+      final Class<?> classUnderTest,
+      final Class<?>... constructorArgs
+  ) {
+    return Assertions.assertDoesNotThrow(
+        () -> classUnderTest.getDeclaredConstructor(constructorArgs),
+        classUnderTest.getCanonicalName()
+            + " does not have the expected constructor with arguments: "
+            + Arrays.toString(constructorArgs)
+    );
+  }
+
+  public static void assertRecordFieldHasValue(
+      final Object objectUnderTest,
+      final String fieldName,
+      final Object expectedValue
+  ) {
+    final Class<?> classUnderTest = objectUnderTest.getClass();
+    final Method method = Assertions.assertDoesNotThrow(
+        () -> classUnderTest.getDeclaredMethod(fieldName),
+        classUnderTest.getCanonicalName() + " does not have method: "
+            + fieldName
+    );
+
+    final Object actualValue = Assertions.assertDoesNotThrow(
+        () -> method.invoke(objectUnderTest),
+        classUnderTest.getCanonicalName() + " could not invoke method: "
+            + method.getName()
+    );
+    Assertions.assertEquals(expectedValue, actualValue);
   }
 
   private static void assertModelDoesNotHaveSerialVersionField(
