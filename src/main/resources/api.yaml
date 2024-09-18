@@ -105,6 +105,28 @@ components:
         field3:
           type: number
           description: yet another Number field
+    ExampleRecordWithSetFields:
+      type: object
+      description: Example of a Record with Set fields
+      properties:
+        field1:
+          type: array
+          description: a Set field
+          uniqueItems: true
+          items:
+            type: boolean
+        field2:
+          type: array
+          description: another Set field
+          uniqueItems: true
+          items:
+            type: boolean
+        field3:
+          type: array
+          description: yet another Set field
+          uniqueItems: true
+          items:
+            type: boolean
     ExampleRecordWithExampleRecordFields:
       type: object
       description: Example of a Record with Record fields

@@ -3,6 +3,7 @@ package com.chrimle.example.utils;
 import java.lang.reflect.Constructor;
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Generalized Test-class for testing Generated Record-classes
@@ -219,4 +220,18 @@ public class GeneratedRecordTestUtils {
     );
   }
 
+  public static void assertExampleRecordWithSetFields(
+      final Class<?> classUnderTest,
+      final boolean hasAdditionalTypeAnnotations,
+      final boolean isSerializableModel) {
+    assertRecord(
+        classUnderTest,
+        false,
+        hasAdditionalTypeAnnotations,
+        isSerializableModel,
+        Set.class,
+        Set.class,
+        Set.class
+    );
+  }
 }
