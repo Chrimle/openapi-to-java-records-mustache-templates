@@ -16,6 +16,7 @@ public record TestSuite<DeprecatedExampleEnum extends Enum<DeprecatedExampleEnum
     Class<?> exampleRecordWithIntegerFields,
     Class<?> exampleRecordWithNumberFields,
     Class<?> exampleRecordWithStringFields,
+    Class<?> exampleRecordWithSetFields,
     boolean hasAdditionalModelTypeAnnotations,
     boolean hasAdditionalEnumTypeAnnotations,
     boolean useEnumCaseInsensitive,
@@ -77,6 +78,11 @@ public record TestSuite<DeprecatedExampleEnum extends Enum<DeprecatedExampleEnum
     );
     GeneratedRecordTestUtils.assertExampleRecordWithArrayFields(
         exampleRecordWithArrayFields,
+        hasAdditionalModelTypeAnnotations,
+        serializableModel
+    );
+    GeneratedRecordTestUtils.assertExampleRecordWithSetFields(
+        exampleRecordWithSetFields,
         hasAdditionalModelTypeAnnotations,
         serializableModel
     );

@@ -29,6 +29,7 @@ public class AdditionalEnumTypeAnnotationTests {
         ExampleRecordWithIntegerFields.class,
         ExampleRecordWithNumberFields.class,
         ExampleRecordWithStringFields.class,
+        ExampleRecordWithSetFields.class,
         HAS_ADDITIONAL_MODEL_TYPE_ANNOTATIONS,
         HAS_ADDITIONAL_ENUM_TYPE_ANNOTATIONS,
         USE_ENUM_CASE_INSENSITIVE,
