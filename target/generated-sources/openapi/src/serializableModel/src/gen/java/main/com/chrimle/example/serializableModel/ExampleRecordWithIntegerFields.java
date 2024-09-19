@@ -37,7 +37,8 @@ import java.io.Serializable;
 public record ExampleRecordWithIntegerFields(
         @javax.annotation.Nonnull Integer field1,
         @javax.annotation.Nonnull Integer field2,
-        @javax.annotation.Nonnull Integer field3) {
+        @javax.annotation.Nonnull Integer field3
+) implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

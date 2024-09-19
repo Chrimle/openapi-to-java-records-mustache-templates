@@ -38,7 +38,8 @@ import java.io.Serializable;
 public record ExampleRecordWithExampleEnumFields(
         @javax.annotation.Nonnull ExampleEnum field1,
         @javax.annotation.Nonnull ExampleEnum field2,
-        @javax.annotation.Nonnull ExampleEnum field3) {
+        @javax.annotation.Nonnull ExampleEnum field3
+) implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

@@ -38,7 +38,8 @@ import java.io.Serializable;
 public record ExampleRecordWithNumberFields(
         @javax.annotation.Nonnull BigDecimal field1,
         @javax.annotation.Nonnull BigDecimal field2,
-        @javax.annotation.Nonnull BigDecimal field3) {
+        @javax.annotation.Nonnull BigDecimal field3
+) implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

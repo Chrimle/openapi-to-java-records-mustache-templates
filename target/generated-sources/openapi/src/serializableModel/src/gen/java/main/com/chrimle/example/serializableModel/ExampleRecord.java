@@ -33,7 +33,8 @@ import java.io.Serializable;
  * @param field1 a boolean field
  */
 public record ExampleRecord(
-        @javax.annotation.Nonnull Boolean field1) {
+        @javax.annotation.Nonnull Boolean field1
+) implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

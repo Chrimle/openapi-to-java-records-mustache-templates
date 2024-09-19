@@ -35,7 +35,8 @@ import java.io.Serializable;
  */
 @Deprecated
 public record DeprecatedExampleRecord(
-        @javax.annotation.Nonnull Boolean field1) {
+        @javax.annotation.Nonnull Boolean field1
+) implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

@@ -37,7 +37,8 @@ import java.io.Serializable;
 public record ExampleRecordWithStringFields(
         @javax.annotation.Nonnull String field1,
         @javax.annotation.Nonnull String field2,
-        @javax.annotation.Nonnull String field3) {
+        @javax.annotation.Nonnull String field3
+) implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

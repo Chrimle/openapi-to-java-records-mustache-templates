@@ -39,7 +39,8 @@ import java.io.Serializable;
 public record ExampleRecordWithArrayFields(
         @javax.annotation.Nonnull List<Boolean> field1,
         @javax.annotation.Nonnull List<Boolean> field2,
-        @javax.annotation.Nonnull List<Boolean> field3) {
+        @javax.annotation.Nonnull List<Boolean> field3
+) implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
