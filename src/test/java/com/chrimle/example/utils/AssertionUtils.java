@@ -1,5 +1,6 @@
 package com.chrimle.example.utils;
 
+import java.io.Serializable;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -198,4 +199,13 @@ public class AssertionUtils {
     Assertions.assertEquals(fieldType, field.getType());
   }
 
+  public static void assertClassImplementsSerializable(
+      final Class<?> classUnderTest,
+      final boolean isSerializableModel) {
+
+    Assertions.assertEquals(
+        isSerializableModel,
+        Arrays.asList(classUnderTest.getInterfaces()).contains(Serializable.class)
+    );
+  }
 }

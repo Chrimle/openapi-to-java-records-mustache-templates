@@ -12,7 +12,7 @@
  * openapi-to-java-records-mustache-templates. For further information,
  * questions, requesting features or reporting issues, please visit:
  * https://github.com/Chrimle/openapi-to-java-records-mustache-templates.
- * Generated with Version: 1.6.0
+ * Generated with Version: 1.6.1
  *
  */
 
@@ -36,7 +36,8 @@ import java.io.Serializable;
  */
 public record ExampleRecordWithDefaultFields(
         @javax.annotation.Nullable String field1,
-        @javax.annotation.Nonnull String field2) {
+        @javax.annotation.Nonnull String field2
+) implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

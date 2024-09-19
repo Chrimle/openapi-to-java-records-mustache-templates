@@ -25,6 +25,8 @@ public class GeneratedRecordTestUtils {
         isSerializableModel);
     AssertionUtils.assertRecordHasFieldsOfType(classUnderTest,
         isSerializableModel, fieldClasses);
+    AssertionUtils.assertClassImplementsSerializable(classUnderTest,
+        isSerializableModel);
   }
 
   public static void assertExampleRecord(
