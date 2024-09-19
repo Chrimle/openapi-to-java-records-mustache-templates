@@ -10,6 +10,32 @@ import org.junit.jupiter.api.Assertions;
  */
 public class GeneratedEnumTestUtils {
 
+  public static <E extends Enum<E>> void assertExampleEnum(
+      final Class<E> classUnderTest,
+      final boolean hasAdditionalModelAnnotations,
+      final boolean useEnumCaseInsensitive
+  ) {
+    assertEnumClass(
+        classUnderTest,
+        false,
+        hasAdditionalModelAnnotations,
+        useEnumCaseInsensitive
+    );
+  }
+
+  public static <E extends Enum<E>> void assertDeprecatedExampleEnum(
+      final Class<E> classUnderTest,
+      final boolean hasAdditionalModelAnnotations,
+      final boolean useEnumCaseInsensitive
+  ) {
+    assertEnumClass(
+        classUnderTest,
+        true,
+        hasAdditionalModelAnnotations,
+        useEnumCaseInsensitive
+    );
+  }
+
   public static <E extends Enum<E>> void assertEnumClass(
       final Class<E> classUnderTest,
       final boolean isDeprecated,
@@ -39,16 +65,14 @@ public class GeneratedEnumTestUtils {
       final Class<E> classUnderTest, final boolean useEnumCaseInsensitive) {
     if (!useEnumCaseInsensitive) {
       // Assert 'fromValue'-method does NOT exist
-      Assertions.assertThrows(NoSuchMethodException.class,
-          () -> classUnderTest.getMethod("fromValue", String.class));
+      AssertionUtils.assertClassDoesNotHaveMethod(classUnderTest, "fromValue",
+          String.class);
       return;
     }
     // Assert 'fromValue'-method exists
-    final Method fromValueMethod = Assertions.assertDoesNotThrow(
-        () -> classUnderTest.getMethod("fromValue", String.class),
-        classUnderTest.getCanonicalName()
-            + " did NOT have a 'fromValue' method!"
-    );
+    final Method fromValueMethod = AssertionUtils.assertClassHasMethod(
+        classUnderTest, "fromValue",
+        String.class);
 
     // Assert 'IllegalArgumentException' is throws for unknown Enum-values
     InvocationTargetException invocationTargetException = Assertions.assertThrows(

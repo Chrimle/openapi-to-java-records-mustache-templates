@@ -1,7 +1,9 @@
 package com.chrimle.example.utils;
 
 import java.lang.annotation.Annotation;
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.Arrays;
 import org.junit.jupiter.api.Assertions;
 
@@ -80,14 +82,11 @@ public class AssertionUtils {
 
     for (int i = 1; i <= fieldClasses.length; i++) {
       final String fieldName = "field" + i;
-      final Field field = Assertions.assertDoesNotThrow(
-          () -> classUnderTest.getDeclaredField(fieldName),
-          classUnderTest.getCanonicalName() + " does NOT have the field "
-              + fieldName
+      assertRecordHasField(
+          classUnderTest,
+          fieldName,
+          fieldClasses[i - 1]
       );
-      Assertions.assertEquals(fieldClasses[i - 1], field.getType(),
-          classUnderTest.getCanonicalName() + ".field" + i + " was NOT of type "
-              + fieldClasses[i - 1]);
     }
   }
 
@@ -95,27 +94,108 @@ public class AssertionUtils {
   public static void assertModelIsSerializable(final Class<?> classUnderTest,
       final boolean isModelSerializable) {
     if (isModelSerializable) {
-      assertModelHasSerialVersionField(classUnderTest);
+      assertRecordHasField(
+          classUnderTest,
+          "serialVersionUID",
+          long.class
+      );
     } else {
-      assertModelDoesNotHaveSerialVersionField(classUnderTest);
+      assertRecordDoesNotHaveField(
+          classUnderTest,
+          "serialVersionUID"
+      );
     }
   }
 
-  private static void assertModelDoesNotHaveSerialVersionField(
-      final Class<?> classUnderTest) {
+  public static Object assertRecordInstantiateWithArgs(
+      final Class<?> classUnderTest,
+      final Constructor<?> constructorUnderTest,
+      final Object... constructorArgs
+  ) {
+    return Assertions.assertDoesNotThrow(
+        () -> constructorUnderTest.newInstance(constructorArgs),
+        classUnderTest.getCanonicalName()
+            + " could not be instantiated with constructorArgs: "
+            + Arrays.toString(constructorArgs)
+    );
+  }
+
+  public static Constructor<?> assertRecordHasConstructor(
+      final Class<?> classUnderTest,
+      final Class<?>... constructorArgs
+  ) {
+    return Assertions.assertDoesNotThrow(
+        () -> classUnderTest.getDeclaredConstructor(constructorArgs),
+        classUnderTest.getCanonicalName()
+            + " does not have the expected constructor with arguments: "
+            + Arrays.toString(constructorArgs)
+    );
+  }
+
+  public static void assertRecordFieldHasValue(
+      final Object objectUnderTest,
+      final String fieldName,
+      final Object expectedValue
+  ) {
+    final Class<?> classUnderTest = objectUnderTest.getClass();
+    final Method method = assertClassHasMethod(classUnderTest, fieldName);
+
+    final Object actualValue = Assertions.assertDoesNotThrow(
+        () -> method.invoke(objectUnderTest),
+        classUnderTest.getCanonicalName() + " could not invoke method: "
+            + method.getName()
+    );
+    Assertions.assertEquals(expectedValue, actualValue);
+  }
+
+  public static void assertClassDoesNotHaveMethod(
+      final Class<?> classUnderTest,
+      final String methodName,
+      final Class<?>... methodArgs
+  ) {
+    Assertions.assertThrows(
+        NoSuchMethodException.class,
+        () -> classUnderTest.getMethod(methodName, methodArgs),
+        classUnderTest.getCanonicalName() + " unexpectedly has method: "
+            + methodName + " with methodArgs: " + Arrays.toString(methodArgs)
+    );
+  }
+
+  public static Method assertClassHasMethod(
+      final Class<?> classUnderTest,
+      final String methodName,
+      final Class<?>... methodArgs
+  ) {
+    return Assertions.assertDoesNotThrow(
+        () -> classUnderTest.getDeclaredMethod(methodName, methodArgs),
+        classUnderTest.getCanonicalName() + " does not have method: "
+            + methodName + " with methodArgs: " + Arrays.toString(methodArgs));
+  }
+
+  private static void assertRecordDoesNotHaveField(
+      final Class<?> classUnderTest,
+      final String fieldName
+  ) {
     Assertions.assertThrows(NoSuchFieldException.class,
-        () -> classUnderTest.getDeclaredField("serialVersionUID"),
-        classUnderTest.getCanonicalName() + " HAS 'serialVersionUID'-field!"
+        () -> classUnderTest.getDeclaredField(fieldName),
+        classUnderTest.getCanonicalName() + " unexpectedly has the field: "
+            + fieldName
     );
   }
 
 
-  private static void assertModelHasSerialVersionField(
-      final Class<?> classUnderTest) {
-    Assertions.assertDoesNotThrow(
-        () -> classUnderTest.getDeclaredField("serialVersionUID"),
-        classUnderTest.getCanonicalName()
-            + " does NOT have 'serialVersionUID'-field!");
+  private static void assertRecordHasField(
+      final Class<?> classUnderTest,
+      final String fieldName,
+      final Class<?> fieldType
+  ) {
+    final Field field = Assertions.assertDoesNotThrow(
+        () -> classUnderTest.getDeclaredField(fieldName),
+        classUnderTest.getCanonicalName() + " does not have the field: "
+            + fieldName
+    );
+
+    Assertions.assertEquals(fieldType, field.getType());
   }
 
 }
