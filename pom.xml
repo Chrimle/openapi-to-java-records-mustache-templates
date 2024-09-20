@@ -5,7 +5,7 @@
 
     <groupId>com.chrimle</groupId>
     <artifactId>openapi-to-java-records-mustache-templates</artifactId>
-    <version>1.6.2</version>
+    <version>1.7.0</version>
 
     <name>OpenAPI to Java records :: Mustache Templates</name>
     <url>
