@@ -90,6 +90,7 @@ public record ExampleRecordWithIntegerFields(
          * Builds a {@link ExampleRecordWithIntegerFields }-instance with the values provided in
          * preceding builder methods.
          * <p><b>NOTE:</b> Pass-by-reference is used
+         * <p><b>Description:</b> Example of a Record with Integer fields
          */
         public ExampleRecordWithIntegerFields build() {
             return new ExampleRecordWithIntegerFields(

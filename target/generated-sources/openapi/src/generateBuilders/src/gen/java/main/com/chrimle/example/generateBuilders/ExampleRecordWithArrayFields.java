@@ -92,6 +92,7 @@ public record ExampleRecordWithArrayFields(
          * Builds a {@link ExampleRecordWithArrayFields }-instance with the values provided in
          * preceding builder methods.
          * <p><b>NOTE:</b> Pass-by-reference is used
+         * <p><b>Description:</b> Example of a Record with Array fields
          */
         public ExampleRecordWithArrayFields build() {
             return new ExampleRecordWithArrayFields(

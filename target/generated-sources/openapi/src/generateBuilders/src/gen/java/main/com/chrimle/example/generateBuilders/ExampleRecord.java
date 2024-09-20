@@ -60,6 +60,7 @@ public record ExampleRecord(
          * Builds a {@link ExampleRecord }-instance with the values provided in
          * preceding builder methods.
          * <p><b>NOTE:</b> Pass-by-reference is used
+         * <p><b>Description:</b> Example of a Record
          */
         public ExampleRecord build() {
             return new ExampleRecord(

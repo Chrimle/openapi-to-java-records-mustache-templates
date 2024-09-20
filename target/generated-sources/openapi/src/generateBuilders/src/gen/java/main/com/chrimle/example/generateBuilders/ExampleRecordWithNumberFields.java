@@ -91,6 +91,7 @@ public record ExampleRecordWithNumberFields(
          * Builds a {@link ExampleRecordWithNumberFields }-instance with the values provided in
          * preceding builder methods.
          * <p><b>NOTE:</b> Pass-by-reference is used
+         * <p><b>Description:</b> Example of a Record with Number fields
          */
         public ExampleRecordWithNumberFields build() {
             return new ExampleRecordWithNumberFields(

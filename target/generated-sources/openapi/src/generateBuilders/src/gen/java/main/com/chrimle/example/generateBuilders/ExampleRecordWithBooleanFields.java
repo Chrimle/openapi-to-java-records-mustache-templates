@@ -90,6 +90,7 @@ public record ExampleRecordWithBooleanFields(
          * Builds a {@link ExampleRecordWithBooleanFields }-instance with the values provided in
          * preceding builder methods.
          * <p><b>NOTE:</b> Pass-by-reference is used
+         * <p><b>Description:</b> Example of a Record with Boolean fields
          */
         public ExampleRecordWithBooleanFields build() {
             return new ExampleRecordWithBooleanFields(
