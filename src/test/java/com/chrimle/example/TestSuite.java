@@ -1,107 +1,143 @@
 package com.chrimle.example;
 
+import com.chrimle.example.utils.AssertionUtils;
+import com.chrimle.example.utils.GeneratedClass;
 import com.chrimle.example.utils.GeneratedEnumTestUtils;
 import com.chrimle.example.utils.GeneratedRecordTestUtils;
+import com.chrimle.example.utils.PluginExecution;
 
-public record TestSuite<DeprecatedExampleEnum extends Enum<DeprecatedExampleEnum>, ExampleEnum extends Enum<ExampleEnum>>(
-    Class<DeprecatedExampleEnum> deprecatedExampleEnum,
-    Class<?> deprecatedExampleRecord,
-    Class<ExampleEnum> exampleEnum,
-    Class<?> exampleRecord,
-    Class<?> exampleRecordWithArrayFields,
-    Class<?> exampleRecordWithBooleanFields,
-    Class<?> exampleRecordWithDefaultFields,
-    Class<?> exampleRecordWithExampleEnumFields,
-    Class<?> exampleRecordWithExampleRecordFields,
-    Class<?> exampleRecordWithIntegerFields,
-    Class<?> exampleRecordWithNumberFields,
-    Class<?> exampleRecordWithStringFields,
-    Class<?> exampleRecordWithSetFields,
+public record TestSuite(
     boolean hasAdditionalModelTypeAnnotations,
     boolean hasAdditionalEnumTypeAnnotations,
     boolean useEnumCaseInsensitive,
     boolean serializableModel,
-    boolean generateBuilders
+    boolean generateBuilders,
+    PluginExecution pluginExecution
 ) {
 
   public void assertModels() {
+
     GeneratedEnumTestUtils.assertExampleEnum(
-        exampleEnum,
+        AssertionUtils.assertClassExists(
+            getCanonicalClassName(GeneratedClass.EXAMPLE_ENUM)
+        ),
         hasAdditionalEnumTypeAnnotations,
         useEnumCaseInsensitive
     );
     GeneratedEnumTestUtils.assertDeprecatedExampleEnum(
-        deprecatedExampleEnum,
+        AssertionUtils.assertClassExists(
+            getCanonicalClassName(GeneratedClass.DEPRECATED_EXAMPLE_ENUM)
+        ),
         hasAdditionalEnumTypeAnnotations,
         useEnumCaseInsensitive
     );
     GeneratedRecordTestUtils.assertExampleRecord(
-        exampleRecord,
+        AssertionUtils.assertClassExists(
+            getCanonicalClassName(GeneratedClass.EXAMPLE_RECORD)
+        ),
         hasAdditionalModelTypeAnnotations,
         serializableModel,
         generateBuilders
     );
     GeneratedRecordTestUtils.assertDeprecatedExampleRecord(
-        deprecatedExampleRecord,
+        AssertionUtils.assertClassExists(
+            getCanonicalClassName(GeneratedClass.DEPRECATED_EXAMPLE_RECORD)
+        ),
         hasAdditionalModelTypeAnnotations,
         serializableModel,
         generateBuilders
     );
     GeneratedRecordTestUtils.assertExampleRecordWithBooleanFields(
-        exampleRecordWithBooleanFields,
+        AssertionUtils.assertClassExists(
+            getCanonicalClassName(
+                GeneratedClass.EXAMPLE_RECORD_WITH_BOOLEAN_FIELDS)
+        ),
         hasAdditionalModelTypeAnnotations,
         serializableModel,
         generateBuilders
     );
     GeneratedRecordTestUtils.assertExampleRecordWithExampleEnumFields(
-        exampleRecordWithExampleEnumFields,
-        exampleEnum,
+        AssertionUtils.assertClassExists(
+            getCanonicalClassName(
+                GeneratedClass.EXAMPLE_RECORD_WITH_EXAMPLE_ENUM_FIELDS)
+        ),
+        AssertionUtils.assertClassExists(
+            getCanonicalClassName(GeneratedClass.EXAMPLE_ENUM)
+        ),
         hasAdditionalModelTypeAnnotations,
         serializableModel,
         generateBuilders
     );
     GeneratedRecordTestUtils.assertExampleRecordWithExampleRecordFields(
-        exampleRecordWithExampleRecordFields,
-        exampleRecord,
+        AssertionUtils.assertClassExists(
+            getCanonicalClassName(
+                GeneratedClass.EXAMPLE_RECORD_WITH_EXAMPLE_RECORD_FIELDS)
+        ),
+        AssertionUtils.assertClassExists(
+            getCanonicalClassName(GeneratedClass.EXAMPLE_RECORD)
+        ),
         hasAdditionalModelTypeAnnotations,
         serializableModel,
         generateBuilders
     );
     GeneratedRecordTestUtils.assertExampleRecordWithIntegerFields(
-        exampleRecordWithIntegerFields,
+        AssertionUtils.assertClassExists(
+            getCanonicalClassName(
+                GeneratedClass.EXAMPLE_RECORD_WITH_INTEGER_FIELDS)
+        ),
         hasAdditionalModelTypeAnnotations,
         serializableModel,
         generateBuilders
     );
     GeneratedRecordTestUtils.assertExampleRecordWithNumberFields(
-        exampleRecordWithNumberFields,
+        AssertionUtils.assertClassExists(
+            getCanonicalClassName(
+                GeneratedClass.EXAMPLE_RECORD_WITH_NUMBER_FIELDS)
+        ),
         hasAdditionalModelTypeAnnotations,
         serializableModel,
         generateBuilders
     );
     GeneratedRecordTestUtils.assertExampleRecordWithStringFields(
-        exampleRecordWithStringFields,
+        AssertionUtils.assertClassExists(
+            getCanonicalClassName(
+                GeneratedClass.EXAMPLE_RECORD_WITH_STRING_FIELDS)
+        ),
         hasAdditionalModelTypeAnnotations,
         serializableModel,
         generateBuilders
     );
     GeneratedRecordTestUtils.assertExampleRecordWithArrayFields(
-        exampleRecordWithArrayFields,
+        AssertionUtils.assertClassExists(
+            getCanonicalClassName(
+                GeneratedClass.EXAMPLE_RECORD_WITH_ARRAY_FIELDS)
+        ),
         hasAdditionalModelTypeAnnotations,
         serializableModel,
         generateBuilders
     );
     GeneratedRecordTestUtils.assertExampleRecordWithSetFields(
-        exampleRecordWithSetFields,
+        AssertionUtils.assertClassExists(
+            getCanonicalClassName(GeneratedClass.EXAMPLE_RECORD_WITH_SET_FIELDS)
+        ),
         hasAdditionalModelTypeAnnotations,
         serializableModel,
         generateBuilders
     );
     GeneratedRecordTestUtils.assertExampleRecordWithDefaultFields(
-        exampleRecordWithDefaultFields,
+        AssertionUtils.assertClassExists(
+            getCanonicalClassName(
+                GeneratedClass.EXAMPLE_RECORD_WITH_DEFAULT_FIELDS)
+        ),
         hasAdditionalModelTypeAnnotations,
         serializableModel,
         generateBuilders
     );
   }
+
+  private String getCanonicalClassName(final GeneratedClass generatedClass) {
+    return generatedClass.getCanonicalClassName(
+        pluginExecution.getPackageName());
+  }
+
 }
