@@ -50,9 +50,22 @@ public record ExampleRecordWithArrayFields(
     }
 
     /**
-     * Builder class for ExampleRecordWithArrayFields
+     * Builder class for {@link ExampleRecordWithArrayFields }
      */
     public static class Builder {
 
+        /**
+         * Builds a {@link ExampleRecordWithArrayFields }-instance with the values provided in
+         * preceding builder methods.
+         * <p>
+         * <b>NOTE:</b> Pass-by-reference is used
+         */
+        public ExampleRecordWithArrayFields build() {
+            return new ExampleRecordWithArrayFields(
+                null,
+                null,
+                null
+            );
+        }
     }
 }

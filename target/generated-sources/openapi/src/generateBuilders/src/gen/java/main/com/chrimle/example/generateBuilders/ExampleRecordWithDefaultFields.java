@@ -45,9 +45,21 @@ public record ExampleRecordWithDefaultFields(
     }
 
     /**
-     * Builder class for ExampleRecordWithDefaultFields
+     * Builder class for {@link ExampleRecordWithDefaultFields }
      */
     public static class Builder {
 
+        /**
+         * Builds a {@link ExampleRecordWithDefaultFields }-instance with the values provided in
+         * preceding builder methods.
+         * <p>
+         * <b>NOTE:</b> Pass-by-reference is used
+         */
+        public ExampleRecordWithDefaultFields build() {
+            return new ExampleRecordWithDefaultFields(
+                null,
+                null
+            );
+        }
     }
 }

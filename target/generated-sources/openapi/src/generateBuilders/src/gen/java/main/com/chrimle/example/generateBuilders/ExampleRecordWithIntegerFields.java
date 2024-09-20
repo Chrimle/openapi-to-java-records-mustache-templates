@@ -48,9 +48,22 @@ public record ExampleRecordWithIntegerFields(
     }
 
     /**
-     * Builder class for ExampleRecordWithIntegerFields
+     * Builder class for {@link ExampleRecordWithIntegerFields }
      */
     public static class Builder {
 
+        /**
+         * Builds a {@link ExampleRecordWithIntegerFields }-instance with the values provided in
+         * preceding builder methods.
+         * <p>
+         * <b>NOTE:</b> Pass-by-reference is used
+         */
+        public ExampleRecordWithIntegerFields build() {
+            return new ExampleRecordWithIntegerFields(
+                null,
+                null,
+                null
+            );
+        }
     }
 }

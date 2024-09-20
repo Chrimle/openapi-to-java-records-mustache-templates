@@ -40,9 +40,20 @@ public record ExampleRecord(
     }
 
     /**
-     * Builder class for ExampleRecord
+     * Builder class for {@link ExampleRecord }
      */
     public static class Builder {
 
+        /**
+         * Builds a {@link ExampleRecord }-instance with the values provided in
+         * preceding builder methods.
+         * <p>
+         * <b>NOTE:</b> Pass-by-reference is used
+         */
+        public ExampleRecord build() {
+            return new ExampleRecord(
+                null
+            );
+        }
     }
 }

@@ -3,9 +3,21 @@
 }}{{#generateBuilders}}
 
     /**
-     * Builder class for {{classname}}
+     * Builder class for {@link {{classname}} }
      */
     public static class Builder {
 
+        /**
+         * Builds a {@link {{classname}} }-instance with the values provided in
+         * preceding builder methods.
+         * <p>
+         * <b>NOTE:</b> Pass-by-reference is used
+         */
+        public {{classname}} build() {
+            return new {{classname}}(
+                {{#vars}}null{{^-last}},
+                {{/-last}}{{/vars}}
+            );
+        }
     }{{!
 }}{{/generateBuilders}}

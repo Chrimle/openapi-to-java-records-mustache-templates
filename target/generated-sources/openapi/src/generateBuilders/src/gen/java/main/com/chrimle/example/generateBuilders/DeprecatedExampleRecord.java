@@ -42,9 +42,20 @@ public record DeprecatedExampleRecord(
     }
 
     /**
-     * Builder class for DeprecatedExampleRecord
+     * Builder class for {@link DeprecatedExampleRecord }
      */
     public static class Builder {
 
+        /**
+         * Builds a {@link DeprecatedExampleRecord }-instance with the values provided in
+         * preceding builder methods.
+         * <p>
+         * <b>NOTE:</b> Pass-by-reference is used
+         */
+        public DeprecatedExampleRecord build() {
+            return new DeprecatedExampleRecord(
+                null
+            );
+        }
     }
 }

@@ -48,9 +48,22 @@ public record ExampleRecordWithStringFields(
     }
 
     /**
-     * Builder class for ExampleRecordWithStringFields
+     * Builder class for {@link ExampleRecordWithStringFields }
      */
     public static class Builder {
 
+        /**
+         * Builds a {@link ExampleRecordWithStringFields }-instance with the values provided in
+         * preceding builder methods.
+         * <p>
+         * <b>NOTE:</b> Pass-by-reference is used
+         */
+        public ExampleRecordWithStringFields build() {
+            return new ExampleRecordWithStringFields(
+                null,
+                null,
+                null
+            );
+        }
     }
 }
