@@ -13,6 +13,7 @@ public class AdditionalEnumTypeAnnotationTests {
   final boolean HAS_ADDITIONAL_ENUM_TYPE_ANNOTATIONS = true;
   final boolean USE_ENUM_CASE_INSENSITIVE = false;
   final boolean IS_MODEL_SERIALIZABLE = false;
+  final boolean GENERATE_BUILDERS = false;
 
   @Test
   public void testAllGeneratedClasses() {
@@ -33,7 +34,8 @@ public class AdditionalEnumTypeAnnotationTests {
         HAS_ADDITIONAL_MODEL_TYPE_ANNOTATIONS,
         HAS_ADDITIONAL_ENUM_TYPE_ANNOTATIONS,
         USE_ENUM_CASE_INSENSITIVE,
-        IS_MODEL_SERIALIZABLE
+        IS_MODEL_SERIALIZABLE,
+        GENERATE_BUILDERS
     );
     testSuite.assertModels();
   }

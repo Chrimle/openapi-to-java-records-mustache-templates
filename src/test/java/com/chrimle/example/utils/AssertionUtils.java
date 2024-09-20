@@ -205,7 +205,58 @@ public class AssertionUtils {
 
     Assertions.assertEquals(
         isSerializableModel,
-        Arrays.asList(classUnderTest.getInterfaces()).contains(Serializable.class)
+        Arrays.asList(classUnderTest.getInterfaces())
+            .contains(Serializable.class)
     );
+  }
+
+  public static void assertRecordHasBuilderInnerClass(
+      final Class<?> classUnderTest,
+      final boolean generateBuilders,
+      final Class<?>... fieldClasses) {
+    // Assert Builder can be instantiated from constructor
+    Arrays.stream(
+            classUnderTest.getClasses())
+        .filter(b -> "Builder".equals(b.getSimpleName()))
+        .findFirst()
+        .map(AssertionUtils::assertRecordHasConstructor)
+        .map(constructor -> assertRecordInstantiateWithArgs(classUnderTest,
+            constructor))
+        .ifPresentOrElse(
+            object -> assertRecordHasFieldsOfType(
+                object.getClass(),
+                false,
+                fieldClasses),
+            () -> Assertions.assertFalse(generateBuilders));
+    // Assert Builder can be instantiated from builder()-method
+    if (generateBuilders) {
+      final Method builderMethod = assertClassHasMethod(classUnderTest,
+          "builder");
+      final Object builderObject = Assertions.assertDoesNotThrow(
+          () -> builderMethod.invoke(null)
+      );
+      Assertions.assertNotNull(builderObject);
+      for (int i = 1; i <= fieldClasses.length; i++) {
+        final String fieldBuilderMethodName = "field" + i;
+        final Class<?> fieldClass = fieldClasses[i - 1];
+        final Method fieldBuilderMethod = Assertions.assertDoesNotThrow(
+            () -> builderObject.getClass()
+                .getDeclaredMethod(fieldBuilderMethodName, fieldClass)
+        );
+        final Object object = Assertions.assertDoesNotThrow(
+            () -> fieldBuilderMethod.invoke(builderObject, (Object) null)
+        );
+        Assertions.assertEquals(builderObject, object);
+      }
+      final Method buildMethod = AssertionUtils.assertClassHasMethod(
+          builderObject.getClass(), "build");
+      final Object classObject = Assertions.assertDoesNotThrow(
+          () -> buildMethod.invoke(builderObject)
+      );
+      Assertions.assertNotNull(classObject);
+      Assertions.assertInstanceOf(classUnderTest, classObject);
+    } else {
+      assertClassDoesNotHaveMethod(classUnderTest, "builder");
+    }
   }
 }
