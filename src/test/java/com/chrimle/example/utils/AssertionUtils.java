@@ -208,4 +208,9 @@ public class AssertionUtils {
         Arrays.asList(classUnderTest.getInterfaces()).contains(Serializable.class)
     );
   }
+
+  public static void assertRecordHasBuilderInnerClass(final Class<?> classUnderTest,
+      final boolean generateBuilders) {
+
+  }
 }

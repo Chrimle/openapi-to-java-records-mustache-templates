@@ -20,7 +20,8 @@ public record TestSuite<DeprecatedExampleEnum extends Enum<DeprecatedExampleEnum
     boolean hasAdditionalModelTypeAnnotations,
     boolean hasAdditionalEnumTypeAnnotations,
     boolean useEnumCaseInsensitive,
-    boolean serializableModel
+    boolean serializableModel,
+    boolean generateBuilders
 ) {
 
   public void assertModels() {
@@ -37,59 +38,70 @@ public record TestSuite<DeprecatedExampleEnum extends Enum<DeprecatedExampleEnum
     GeneratedRecordTestUtils.assertExampleRecord(
         exampleRecord,
         hasAdditionalModelTypeAnnotations,
-        serializableModel
+        serializableModel,
+        generateBuilders
     );
     GeneratedRecordTestUtils.assertDeprecatedExampleRecord(
         deprecatedExampleRecord,
         hasAdditionalModelTypeAnnotations,
-        serializableModel
+        serializableModel,
+        generateBuilders
     );
     GeneratedRecordTestUtils.assertExampleRecordWithBooleanFields(
         exampleRecordWithBooleanFields,
         hasAdditionalModelTypeAnnotations,
-        serializableModel
+        serializableModel,
+        generateBuilders
     );
     GeneratedRecordTestUtils.assertExampleRecordWithExampleEnumFields(
         exampleRecordWithExampleEnumFields,
         exampleEnum,
         hasAdditionalModelTypeAnnotations,
-        serializableModel
+        serializableModel,
+        generateBuilders
     );
     GeneratedRecordTestUtils.assertExampleRecordWithExampleRecordFields(
         exampleRecordWithExampleRecordFields,
         exampleRecord,
         hasAdditionalModelTypeAnnotations,
-        serializableModel
+        serializableModel,
+        generateBuilders
     );
     GeneratedRecordTestUtils.assertExampleRecordWithIntegerFields(
         exampleRecordWithIntegerFields,
         hasAdditionalModelTypeAnnotations,
-        serializableModel
+        serializableModel,
+        generateBuilders
     );
     GeneratedRecordTestUtils.assertExampleRecordWithNumberFields(
         exampleRecordWithNumberFields,
         hasAdditionalModelTypeAnnotations,
-        serializableModel
+        serializableModel,
+        generateBuilders
     );
     GeneratedRecordTestUtils.assertExampleRecordWithStringFields(
         exampleRecordWithStringFields,
         hasAdditionalModelTypeAnnotations,
-        serializableModel
+        serializableModel,
+        generateBuilders
     );
     GeneratedRecordTestUtils.assertExampleRecordWithArrayFields(
         exampleRecordWithArrayFields,
         hasAdditionalModelTypeAnnotations,
-        serializableModel
+        serializableModel,
+        generateBuilders
     );
     GeneratedRecordTestUtils.assertExampleRecordWithSetFields(
         exampleRecordWithSetFields,
         hasAdditionalModelTypeAnnotations,
-        serializableModel
+        serializableModel,
+        generateBuilders
     );
     GeneratedRecordTestUtils.assertExampleRecordWithDefaultFields(
         exampleRecordWithDefaultFields,
         hasAdditionalModelTypeAnnotations,
-        serializableModel
+        serializableModel,
+        generateBuilders
     );
   }
 }
