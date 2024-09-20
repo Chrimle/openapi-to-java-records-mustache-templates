@@ -49,6 +49,9 @@ public record ExampleRecordWithDefaultFields(
      */
     public static class Builder {
 
+        private String field1;
+        private String field2;
+
         /**
          * Builds a {@link ExampleRecordWithDefaultFields }-instance with the values provided in
          * preceding builder methods.

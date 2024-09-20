@@ -46,6 +46,8 @@ public record DeprecatedExampleRecord(
      */
     public static class Builder {
 
+        private Boolean field1;
+
         /**
          * Builds a {@link DeprecatedExampleRecord }-instance with the values provided in
          * preceding builder methods.

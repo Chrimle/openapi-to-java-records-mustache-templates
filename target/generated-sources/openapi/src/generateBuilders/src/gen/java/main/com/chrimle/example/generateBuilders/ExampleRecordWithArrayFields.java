@@ -54,6 +54,10 @@ public record ExampleRecordWithArrayFields(
      */
     public static class Builder {
 
+        private List<Boolean> field1;
+        private List<Boolean> field2;
+        private List<Boolean> field3;
+
         /**
          * Builds a {@link ExampleRecordWithArrayFields }-instance with the values provided in
          * preceding builder methods.

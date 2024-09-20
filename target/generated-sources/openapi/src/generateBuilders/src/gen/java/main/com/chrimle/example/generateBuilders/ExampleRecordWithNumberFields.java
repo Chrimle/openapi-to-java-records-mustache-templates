@@ -53,6 +53,10 @@ public record ExampleRecordWithNumberFields(
      */
     public static class Builder {
 
+        private BigDecimal field1;
+        private BigDecimal field2;
+        private BigDecimal field3;
+
         /**
          * Builds a {@link ExampleRecordWithNumberFields }-instance with the values provided in
          * preceding builder methods.

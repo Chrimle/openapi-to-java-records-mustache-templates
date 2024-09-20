@@ -53,6 +53,10 @@ public record ExampleRecordWithExampleRecordFields(
      */
     public static class Builder {
 
+        private ExampleRecord field1;
+        private ExampleRecord field2;
+        private ExampleRecord field3;
+
         /**
          * Builds a {@link ExampleRecordWithExampleRecordFields }-instance with the values provided in
          * preceding builder methods.

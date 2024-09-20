@@ -52,6 +52,10 @@ public record ExampleRecordWithBooleanFields(
      */
     public static class Builder {
 
+        private Boolean field1;
+        private Boolean field2;
+        private Boolean field3;
+
         /**
          * Builds a {@link ExampleRecordWithBooleanFields }-instance with the values provided in
          * preceding builder methods.

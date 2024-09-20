@@ -52,6 +52,10 @@ public record ExampleRecordWithStringFields(
      */
     public static class Builder {
 
+        private String field1;
+        private String field2;
+        private String field3;
+
         /**
          * Builds a {@link ExampleRecordWithStringFields }-instance with the values provided in
          * preceding builder methods.

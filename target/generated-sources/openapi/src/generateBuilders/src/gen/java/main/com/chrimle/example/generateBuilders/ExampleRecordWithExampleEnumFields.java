@@ -53,6 +53,10 @@ public record ExampleRecordWithExampleEnumFields(
      */
     public static class Builder {
 
+        private ExampleEnum field1;
+        private ExampleEnum field2;
+        private ExampleEnum field3;
+
         /**
          * Builds a {@link ExampleRecordWithExampleEnumFields }-instance with the values provided in
          * preceding builder methods.

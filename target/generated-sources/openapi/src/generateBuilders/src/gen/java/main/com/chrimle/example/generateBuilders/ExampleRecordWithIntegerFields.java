@@ -52,6 +52,10 @@ public record ExampleRecordWithIntegerFields(
      */
     public static class Builder {
 
+        private Integer field1;
+        private Integer field2;
+        private Integer field3;
+
         /**
          * Builds a {@link ExampleRecordWithIntegerFields }-instance with the values provided in
          * preceding builder methods.

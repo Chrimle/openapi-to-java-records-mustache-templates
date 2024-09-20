@@ -54,6 +54,10 @@ public record ExampleRecordWithSetFields(
      */
     public static class Builder {
 
+        private Set<Boolean> field1;
+        private Set<Boolean> field2;
+        private Set<Boolean> field3;
+
         /**
          * Builds a {@link ExampleRecordWithSetFields }-instance with the values provided in
          * preceding builder methods.
