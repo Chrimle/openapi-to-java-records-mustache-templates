@@ -64,9 +64,9 @@ public record ExampleRecordWithExampleEnumFields(
          */
         public ExampleRecordWithExampleEnumFields build() {
             return new ExampleRecordWithExampleEnumFields(
-                null,
-                null,
-                null
+                field1,
+                field2,
+                field3
             );
         }
     }

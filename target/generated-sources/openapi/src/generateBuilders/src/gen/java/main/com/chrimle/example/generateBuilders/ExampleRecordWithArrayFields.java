@@ -65,9 +65,9 @@ public record ExampleRecordWithArrayFields(
          */
         public ExampleRecordWithArrayFields build() {
             return new ExampleRecordWithArrayFields(
-                null,
-                null,
-                null
+                field1,
+                field2,
+                field3
             );
         }
     }

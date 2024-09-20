@@ -55,7 +55,7 @@ public record DeprecatedExampleRecord(
          */
         public DeprecatedExampleRecord build() {
             return new DeprecatedExampleRecord(
-                null
+                field1
             );
         }
     }

@@ -64,9 +64,9 @@ public record ExampleRecordWithNumberFields(
          */
         public ExampleRecordWithNumberFields build() {
             return new ExampleRecordWithNumberFields(
-                null,
-                null,
-                null
+                field1,
+                field2,
+                field3
             );
         }
     }

@@ -65,9 +65,9 @@ public record ExampleRecordWithSetFields(
          */
         public ExampleRecordWithSetFields build() {
             return new ExampleRecordWithSetFields(
-                null,
-                null,
-                null
+                field1,
+                field2,
+                field3
             );
         }
     }

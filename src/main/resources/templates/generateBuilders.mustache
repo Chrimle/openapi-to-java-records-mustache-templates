@@ -18,7 +18,7 @@
          */
         public {{classname}} build() {
             return new {{classname}}(
-                {{#vars}}null{{^-last}},
+                {{#vars}}{{name}}{{^-last}},
                 {{/-last}}{{/vars}}
             );
         }

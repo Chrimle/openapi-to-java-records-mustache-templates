@@ -53,7 +53,7 @@ public record ExampleRecord(
          */
         public ExampleRecord build() {
             return new ExampleRecord(
-                null
+                field1
             );
         }
     }

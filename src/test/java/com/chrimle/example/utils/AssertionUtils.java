@@ -230,11 +230,19 @@ public class AssertionUtils {
             () -> Assertions.assertFalse(generateBuilders));
     // Assert Builder can be instantiated from builder()-method
     if (generateBuilders) {
-      final Method builderMethod = assertClassHasMethod(classUnderTest, "builder");
+      final Method builderMethod = assertClassHasMethod(classUnderTest,
+          "builder");
       final Object builderObject = Assertions.assertDoesNotThrow(
           () -> builderMethod.invoke(null)
       );
       Assertions.assertNotNull(builderObject);
+      final Method buildMethod = AssertionUtils.assertClassHasMethod(
+          builderObject.getClass(), "build");
+      final Object classObject = Assertions.assertDoesNotThrow(
+          () -> buildMethod.invoke(builderObject)
+      );
+      Assertions.assertNotNull(classObject);
+      Assertions.assertInstanceOf(classUnderTest, classObject);
     } else {
       assertClassDoesNotHaveMethod(classUnderTest, "builder");
     }

@@ -64,9 +64,9 @@ public record ExampleRecordWithExampleRecordFields(
          */
         public ExampleRecordWithExampleRecordFields build() {
             return new ExampleRecordWithExampleRecordFields(
-                null,
-                null,
-                null
+                field1,
+                field2,
+                field3
             );
         }
     }

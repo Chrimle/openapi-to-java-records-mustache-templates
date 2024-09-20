@@ -63,9 +63,9 @@ public record ExampleRecordWithBooleanFields(
          */
         public ExampleRecordWithBooleanFields build() {
             return new ExampleRecordWithBooleanFields(
-                null,
-                null,
-                null
+                field1,
+                field2,
+                field3
             );
         }
     }

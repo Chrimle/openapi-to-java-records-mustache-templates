@@ -63,9 +63,9 @@ public record ExampleRecordWithIntegerFields(
          */
         public ExampleRecordWithIntegerFields build() {
             return new ExampleRecordWithIntegerFields(
-                null,
-                null,
-                null
+                field1,
+                field2,
+                field3
             );
         }
     }

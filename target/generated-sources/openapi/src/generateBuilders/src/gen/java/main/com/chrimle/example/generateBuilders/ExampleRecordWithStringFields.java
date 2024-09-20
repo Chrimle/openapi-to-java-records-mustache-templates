@@ -63,9 +63,9 @@ public record ExampleRecordWithStringFields(
          */
         public ExampleRecordWithStringFields build() {
             return new ExampleRecordWithStringFields(
-                null,
-                null,
-                null
+                field1,
+                field2,
+                field3
             );
         }
     }
