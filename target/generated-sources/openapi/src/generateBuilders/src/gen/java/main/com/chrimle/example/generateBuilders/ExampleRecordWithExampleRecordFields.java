@@ -56,8 +56,7 @@ public record ExampleRecordWithExampleRecordFields(
         /**
          * Builds a {@link ExampleRecordWithExampleRecordFields }-instance with the values provided in
          * preceding builder methods.
-         * <p>
-         * <b>NOTE:</b> Pass-by-reference is used
+         * <p><b>NOTE:</b> Pass-by-reference is used
          */
         public ExampleRecordWithExampleRecordFields build() {
             return new ExampleRecordWithExampleRecordFields(

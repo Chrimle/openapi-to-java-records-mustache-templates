@@ -57,8 +57,7 @@ public record ExampleRecordWithArrayFields(
         /**
          * Builds a {@link ExampleRecordWithArrayFields }-instance with the values provided in
          * preceding builder methods.
-         * <p>
-         * <b>NOTE:</b> Pass-by-reference is used
+         * <p><b>NOTE:</b> Pass-by-reference is used
          */
         public ExampleRecordWithArrayFields build() {
             return new ExampleRecordWithArrayFields(

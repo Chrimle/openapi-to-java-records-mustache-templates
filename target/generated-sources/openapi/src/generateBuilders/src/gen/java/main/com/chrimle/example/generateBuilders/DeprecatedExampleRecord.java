@@ -49,8 +49,7 @@ public record DeprecatedExampleRecord(
         /**
          * Builds a {@link DeprecatedExampleRecord }-instance with the values provided in
          * preceding builder methods.
-         * <p>
-         * <b>NOTE:</b> Pass-by-reference is used
+         * <p><b>NOTE:</b> Pass-by-reference is used
          */
         public DeprecatedExampleRecord build() {
             return new DeprecatedExampleRecord(

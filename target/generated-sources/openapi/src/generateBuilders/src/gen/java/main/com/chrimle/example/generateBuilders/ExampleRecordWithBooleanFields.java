@@ -55,8 +55,7 @@ public record ExampleRecordWithBooleanFields(
         /**
          * Builds a {@link ExampleRecordWithBooleanFields }-instance with the values provided in
          * preceding builder methods.
-         * <p>
-         * <b>NOTE:</b> Pass-by-reference is used
+         * <p><b>NOTE:</b> Pass-by-reference is used
          */
         public ExampleRecordWithBooleanFields build() {
             return new ExampleRecordWithBooleanFields(
