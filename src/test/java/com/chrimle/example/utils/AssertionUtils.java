@@ -236,6 +236,18 @@ public class AssertionUtils {
           () -> builderMethod.invoke(null)
       );
       Assertions.assertNotNull(builderObject);
+      for (int i = 1; i <= fieldClasses.length; i++) {
+        final String fieldBuilderMethodName = "field" + i;
+        final Class<?> fieldClass = fieldClasses[i - 1];
+        final Method fieldBuilderMethod = Assertions.assertDoesNotThrow(
+            () -> builderObject.getClass()
+                .getDeclaredMethod(fieldBuilderMethodName, fieldClass)
+        );
+        final Object object = Assertions.assertDoesNotThrow(
+            () -> fieldBuilderMethod.invoke(builderObject, (Object) null)
+        );
+        Assertions.assertEquals(builderObject, object);
+      }
       final Method buildMethod = AssertionUtils.assertClassHasMethod(
           builderObject.getClass(), "build");
       final Object classObject = Assertions.assertDoesNotThrow(
