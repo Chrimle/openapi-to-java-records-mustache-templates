@@ -29,7 +29,7 @@ public class GeneratedRecordTestUtils {
     AssertionUtils.assertClassImplementsSerializable(classUnderTest,
         isSerializableModel);
     AssertionUtils.assertRecordHasBuilderInnerClass(classUnderTest,
-        generateBuilders);
+        generateBuilders, fieldClasses);
   }
 
   public static void assertExampleRecord(

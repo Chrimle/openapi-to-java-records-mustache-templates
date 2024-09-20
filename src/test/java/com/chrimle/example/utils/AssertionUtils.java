@@ -212,15 +212,20 @@ public class AssertionUtils {
 
   public static void assertRecordHasBuilderInnerClass(
       final Class<?> classUnderTest,
-      final boolean generateBuilders) {
+      final boolean generateBuilders,
+      final Class<?>... fieldClasses) {
     Arrays.stream(
             classUnderTest.getClasses())
         .filter(b -> "Builder".equals(b.getSimpleName()))
         .findFirst()
         .map(AssertionUtils::assertRecordHasConstructor)
+        .map(constructor -> assertRecordInstantiateWithArgs(classUnderTest,
+            constructor))
         .ifPresentOrElse(
-            constructor -> assertRecordInstantiateWithArgs(classUnderTest,
-                constructor),
+            object -> assertRecordHasFieldsOfType(
+                object.getClass(),
+                false,
+                fieldClasses),
             () -> Assertions.assertFalse(generateBuilders));
   }
 }
