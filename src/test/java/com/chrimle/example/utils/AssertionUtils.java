@@ -214,6 +214,7 @@ public class AssertionUtils {
       final Class<?> classUnderTest,
       final boolean generateBuilders,
       final Class<?>... fieldClasses) {
+    // Assert Builder can be instantiated from constructor
     Arrays.stream(
             classUnderTest.getClasses())
         .filter(b -> "Builder".equals(b.getSimpleName()))
@@ -227,5 +228,15 @@ public class AssertionUtils {
                 false,
                 fieldClasses),
             () -> Assertions.assertFalse(generateBuilders));
+    // Assert Builder can be instantiated from builder()-method
+    if (generateBuilders) {
+      final Method builderMethod = assertClassHasMethod(classUnderTest, "builder");
+      final Object builderObject = Assertions.assertDoesNotThrow(
+          () -> builderMethod.invoke(null)
+      );
+      Assertions.assertNotNull(builderObject);
+    } else {
+      assertClassDoesNotHaveMethod(classUnderTest, "builder");
+    }
   }
 }
