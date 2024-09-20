@@ -205,12 +205,19 @@ public class AssertionUtils {
 
     Assertions.assertEquals(
         isSerializableModel,
-        Arrays.asList(classUnderTest.getInterfaces()).contains(Serializable.class)
+        Arrays.asList(classUnderTest.getInterfaces())
+            .contains(Serializable.class)
     );
   }
 
-  public static void assertRecordHasBuilderInnerClass(final Class<?> classUnderTest,
+  public static void assertRecordHasBuilderInnerClass(
+      final Class<?> classUnderTest,
       final boolean generateBuilders) {
-
+    Assertions.assertEquals(generateBuilders,
+        Arrays.stream(classUnderTest.getClasses())
+            .map(Class::getSimpleName)
+            .anyMatch(
+                "Builder"::equals)
+    );
   }
 }
