@@ -213,11 +213,14 @@ public class AssertionUtils {
   public static void assertRecordHasBuilderInnerClass(
       final Class<?> classUnderTest,
       final boolean generateBuilders) {
-    Assertions.assertEquals(generateBuilders,
-        Arrays.stream(classUnderTest.getClasses())
-            .map(Class::getSimpleName)
-            .anyMatch(
-                "Builder"::equals)
-    );
+    Arrays.stream(
+            classUnderTest.getClasses())
+        .filter(b -> "Builder".equals(b.getSimpleName()))
+        .findFirst()
+        .map(AssertionUtils::assertRecordHasConstructor)
+        .ifPresentOrElse(
+            constructor -> assertRecordInstantiateWithArgs(classUnderTest,
+                constructor),
+            () -> Assertions.assertFalse(generateBuilders));
   }
 }
