@@ -57,6 +57,36 @@ public record ExampleRecordWithIntegerFields(
         private Integer field3;
 
         /**
+         * Sets the value of {@link ExampleRecordWithIntegerFields#field1 }.
+         * <p><b>NOTE:</b> Pass-by-reference is used
+         * <p><b>Description:</b> a Integer field
+         */
+        public Builder field1(final Integer field1) {
+            this.field1 = field1;
+            return this;
+        }
+
+        /**
+         * Sets the value of {@link ExampleRecordWithIntegerFields#field2 }.
+         * <p><b>NOTE:</b> Pass-by-reference is used
+         * <p><b>Description:</b> another Integer field
+         */
+        public Builder field2(final Integer field2) {
+            this.field2 = field2;
+            return this;
+        }
+
+        /**
+         * Sets the value of {@link ExampleRecordWithIntegerFields#field3 }.
+         * <p><b>NOTE:</b> Pass-by-reference is used
+         * <p><b>Description:</b> yet another Integer field
+         */
+        public Builder field3(final Integer field3) {
+            this.field3 = field3;
+            return this;
+        }
+
+        /**
          * Builds a {@link ExampleRecordWithIntegerFields }-instance with the values provided in
          * preceding builder methods.
          * <p><b>NOTE:</b> Pass-by-reference is used

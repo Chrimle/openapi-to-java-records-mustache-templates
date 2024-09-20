@@ -57,6 +57,36 @@ public record ExampleRecordWithBooleanFields(
         private Boolean field3;
 
         /**
+         * Sets the value of {@link ExampleRecordWithBooleanFields#field1 }.
+         * <p><b>NOTE:</b> Pass-by-reference is used
+         * <p><b>Description:</b> a Boolean field
+         */
+        public Builder field1(final Boolean field1) {
+            this.field1 = field1;
+            return this;
+        }
+
+        /**
+         * Sets the value of {@link ExampleRecordWithBooleanFields#field2 }.
+         * <p><b>NOTE:</b> Pass-by-reference is used
+         * <p><b>Description:</b> another Boolean field
+         */
+        public Builder field2(final Boolean field2) {
+            this.field2 = field2;
+            return this;
+        }
+
+        /**
+         * Sets the value of {@link ExampleRecordWithBooleanFields#field3 }.
+         * <p><b>NOTE:</b> Pass-by-reference is used
+         * <p><b>Description:</b> yet another Boolean field
+         */
+        public Builder field3(final Boolean field3) {
+            this.field3 = field3;
+            return this;
+        }
+
+        /**
          * Builds a {@link ExampleRecordWithBooleanFields }-instance with the values provided in
          * preceding builder methods.
          * <p><b>NOTE:</b> Pass-by-reference is used

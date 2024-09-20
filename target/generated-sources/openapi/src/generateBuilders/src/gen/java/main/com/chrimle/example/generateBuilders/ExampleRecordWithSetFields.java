@@ -59,6 +59,36 @@ public record ExampleRecordWithSetFields(
         private Set<Boolean> field3;
 
         /**
+         * Sets the value of {@link ExampleRecordWithSetFields#field1 }.
+         * <p><b>NOTE:</b> Pass-by-reference is used
+         * <p><b>Description:</b> a Set field
+         */
+        public Builder field1(final Set<Boolean> field1) {
+            this.field1 = field1;
+            return this;
+        }
+
+        /**
+         * Sets the value of {@link ExampleRecordWithSetFields#field2 }.
+         * <p><b>NOTE:</b> Pass-by-reference is used
+         * <p><b>Description:</b> another Set field
+         */
+        public Builder field2(final Set<Boolean> field2) {
+            this.field2 = field2;
+            return this;
+        }
+
+        /**
+         * Sets the value of {@link ExampleRecordWithSetFields#field3 }.
+         * <p><b>NOTE:</b> Pass-by-reference is used
+         * <p><b>Description:</b> yet another Set field
+         */
+        public Builder field3(final Set<Boolean> field3) {
+            this.field3 = field3;
+            return this;
+        }
+
+        /**
          * Builds a {@link ExampleRecordWithSetFields }-instance with the values provided in
          * preceding builder methods.
          * <p><b>NOTE:</b> Pass-by-reference is used

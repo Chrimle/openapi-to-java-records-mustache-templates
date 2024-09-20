@@ -59,6 +59,36 @@ public record ExampleRecordWithArrayFields(
         private List<Boolean> field3;
 
         /**
+         * Sets the value of {@link ExampleRecordWithArrayFields#field1 }.
+         * <p><b>NOTE:</b> Pass-by-reference is used
+         * <p><b>Description:</b> an Array field
+         */
+        public Builder field1(final List<Boolean> field1) {
+            this.field1 = field1;
+            return this;
+        }
+
+        /**
+         * Sets the value of {@link ExampleRecordWithArrayFields#field2 }.
+         * <p><b>NOTE:</b> Pass-by-reference is used
+         * <p><b>Description:</b> another Array field
+         */
+        public Builder field2(final List<Boolean> field2) {
+            this.field2 = field2;
+            return this;
+        }
+
+        /**
+         * Sets the value of {@link ExampleRecordWithArrayFields#field3 }.
+         * <p><b>NOTE:</b> Pass-by-reference is used
+         * <p><b>Description:</b> yet another Array field
+         */
+        public Builder field3(final List<Boolean> field3) {
+            this.field3 = field3;
+            return this;
+        }
+
+        /**
          * Builds a {@link ExampleRecordWithArrayFields }-instance with the values provided in
          * preceding builder methods.
          * <p><b>NOTE:</b> Pass-by-reference is used

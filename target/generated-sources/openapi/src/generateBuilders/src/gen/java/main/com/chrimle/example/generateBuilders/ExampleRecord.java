@@ -47,6 +47,16 @@ public record ExampleRecord(
         private Boolean field1;
 
         /**
+         * Sets the value of {@link ExampleRecord#field1 }.
+         * <p><b>NOTE:</b> Pass-by-reference is used
+         * <p><b>Description:</b> a boolean field
+         */
+        public Builder field1(final Boolean field1) {
+            this.field1 = field1;
+            return this;
+        }
+
+        /**
          * Builds a {@link ExampleRecord }-instance with the values provided in
          * preceding builder methods.
          * <p><b>NOTE:</b> Pass-by-reference is used

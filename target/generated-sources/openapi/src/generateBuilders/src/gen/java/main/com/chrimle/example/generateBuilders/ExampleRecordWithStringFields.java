@@ -57,6 +57,36 @@ public record ExampleRecordWithStringFields(
         private String field3;
 
         /**
+         * Sets the value of {@link ExampleRecordWithStringFields#field1 }.
+         * <p><b>NOTE:</b> Pass-by-reference is used
+         * <p><b>Description:</b> a String field
+         */
+        public Builder field1(final String field1) {
+            this.field1 = field1;
+            return this;
+        }
+
+        /**
+         * Sets the value of {@link ExampleRecordWithStringFields#field2 }.
+         * <p><b>NOTE:</b> Pass-by-reference is used
+         * <p><b>Description:</b> another String field
+         */
+        public Builder field2(final String field2) {
+            this.field2 = field2;
+            return this;
+        }
+
+        /**
+         * Sets the value of {@link ExampleRecordWithStringFields#field3 }.
+         * <p><b>NOTE:</b> Pass-by-reference is used
+         * <p><b>Description:</b> yet another String field
+         */
+        public Builder field3(final String field3) {
+            this.field3 = field3;
+            return this;
+        }
+
+        /**
          * Builds a {@link ExampleRecordWithStringFields }-instance with the values provided in
          * preceding builder methods.
          * <p><b>NOTE:</b> Pass-by-reference is used

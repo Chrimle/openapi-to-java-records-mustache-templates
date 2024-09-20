@@ -53,6 +53,26 @@ public record ExampleRecordWithDefaultFields(
         private String field2;
 
         /**
+         * Sets the value of {@link ExampleRecordWithDefaultFields#field1 }.
+         * <p><b>NOTE:</b> Pass-by-reference is used
+         * <p><b>Description:</b> a nullable String field
+         */
+        public Builder field1(final String field1) {
+            this.field1 = field1;
+            return this;
+        }
+
+        /**
+         * Sets the value of {@link ExampleRecordWithDefaultFields#field2 }.
+         * <p><b>NOTE:</b> Pass-by-reference is used
+         * <p><b>Description:</b> a String field with a default value
+         */
+        public Builder field2(final String field2) {
+            this.field2 = field2;
+            return this;
+        }
+
+        /**
          * Builds a {@link ExampleRecordWithDefaultFields }-instance with the values provided in
          * preceding builder methods.
          * <p><b>NOTE:</b> Pass-by-reference is used

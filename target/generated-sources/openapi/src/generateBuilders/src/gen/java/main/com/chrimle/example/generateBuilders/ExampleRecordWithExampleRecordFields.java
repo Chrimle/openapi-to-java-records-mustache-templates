@@ -58,6 +58,36 @@ public record ExampleRecordWithExampleRecordFields(
         private ExampleRecord field3;
 
         /**
+         * Sets the value of {@link ExampleRecordWithExampleRecordFields#field1 }.
+         * <p><b>NOTE:</b> Pass-by-reference is used
+         * <p><b>Description:</b> 
+         */
+        public Builder field1(final ExampleRecord field1) {
+            this.field1 = field1;
+            return this;
+        }
+
+        /**
+         * Sets the value of {@link ExampleRecordWithExampleRecordFields#field2 }.
+         * <p><b>NOTE:</b> Pass-by-reference is used
+         * <p><b>Description:</b> 
+         */
+        public Builder field2(final ExampleRecord field2) {
+            this.field2 = field2;
+            return this;
+        }
+
+        /**
+         * Sets the value of {@link ExampleRecordWithExampleRecordFields#field3 }.
+         * <p><b>NOTE:</b> Pass-by-reference is used
+         * <p><b>Description:</b> 
+         */
+        public Builder field3(final ExampleRecord field3) {
+            this.field3 = field3;
+            return this;
+        }
+
+        /**
          * Builds a {@link ExampleRecordWithExampleRecordFields }-instance with the values provided in
          * preceding builder methods.
          * <p><b>NOTE:</b> Pass-by-reference is used

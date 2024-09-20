@@ -58,6 +58,36 @@ public record ExampleRecordWithNumberFields(
         private BigDecimal field3;
 
         /**
+         * Sets the value of {@link ExampleRecordWithNumberFields#field1 }.
+         * <p><b>NOTE:</b> Pass-by-reference is used
+         * <p><b>Description:</b> a Number field
+         */
+        public Builder field1(final BigDecimal field1) {
+            this.field1 = field1;
+            return this;
+        }
+
+        /**
+         * Sets the value of {@link ExampleRecordWithNumberFields#field2 }.
+         * <p><b>NOTE:</b> Pass-by-reference is used
+         * <p><b>Description:</b> another Number field
+         */
+        public Builder field2(final BigDecimal field2) {
+            this.field2 = field2;
+            return this;
+        }
+
+        /**
+         * Sets the value of {@link ExampleRecordWithNumberFields#field3 }.
+         * <p><b>NOTE:</b> Pass-by-reference is used
+         * <p><b>Description:</b> yet another Number field
+         */
+        public Builder field3(final BigDecimal field3) {
+            this.field3 = field3;
+            return this;
+        }
+
+        /**
          * Builds a {@link ExampleRecordWithNumberFields }-instance with the values provided in
          * preceding builder methods.
          * <p><b>NOTE:</b> Pass-by-reference is used
