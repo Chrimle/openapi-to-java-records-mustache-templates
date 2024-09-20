@@ -71,4 +71,11 @@ public record ExampleRecordWithArrayFields(
             );
         }
     }
+
+    /**
+     * Creates a {@link Builder}-instance.
+     */
+    public static ExampleRecordWithArrayFields.Builder builder() {
+        return new ExampleRecordWithArrayFields.Builder();
+    }
 }

@@ -22,5 +22,12 @@
                 {{/-last}}{{/vars}}
             );
         }
+    }
+
+    /**
+     * Creates a {@link Builder}-instance.
+     */
+    public static {{classname}}.Builder builder() {
+        return new {{classname}}.Builder();
     }{{!
 }}{{/generateBuilders}}

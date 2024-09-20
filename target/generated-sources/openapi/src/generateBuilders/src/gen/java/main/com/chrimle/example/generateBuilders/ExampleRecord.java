@@ -57,4 +57,11 @@ public record ExampleRecord(
             );
         }
     }
+
+    /**
+     * Creates a {@link Builder}-instance.
+     */
+    public static ExampleRecord.Builder builder() {
+        return new ExampleRecord.Builder();
+    }
 }

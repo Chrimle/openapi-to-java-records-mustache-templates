@@ -69,4 +69,11 @@ public record ExampleRecordWithStringFields(
             );
         }
     }
+
+    /**
+     * Creates a {@link Builder}-instance.
+     */
+    public static ExampleRecordWithStringFields.Builder builder() {
+        return new ExampleRecordWithStringFields.Builder();
+    }
 }

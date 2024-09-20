@@ -69,4 +69,11 @@ public record ExampleRecordWithBooleanFields(
             );
         }
     }
+
+    /**
+     * Creates a {@link Builder}-instance.
+     */
+    public static ExampleRecordWithBooleanFields.Builder builder() {
+        return new ExampleRecordWithBooleanFields.Builder();
+    }
 }

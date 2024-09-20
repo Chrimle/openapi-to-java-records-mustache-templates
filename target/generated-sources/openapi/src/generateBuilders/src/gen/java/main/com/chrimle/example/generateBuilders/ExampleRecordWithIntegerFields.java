@@ -69,4 +69,11 @@ public record ExampleRecordWithIntegerFields(
             );
         }
     }
+
+    /**
+     * Creates a {@link Builder}-instance.
+     */
+    public static ExampleRecordWithIntegerFields.Builder builder() {
+        return new ExampleRecordWithIntegerFields.Builder();
+    }
 }

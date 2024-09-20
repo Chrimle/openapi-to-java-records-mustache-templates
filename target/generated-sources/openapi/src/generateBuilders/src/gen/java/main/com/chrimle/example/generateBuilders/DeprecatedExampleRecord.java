@@ -59,4 +59,11 @@ public record DeprecatedExampleRecord(
             );
         }
     }
+
+    /**
+     * Creates a {@link Builder}-instance.
+     */
+    public static DeprecatedExampleRecord.Builder builder() {
+        return new DeprecatedExampleRecord.Builder();
+    }
 }

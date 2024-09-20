@@ -71,4 +71,11 @@ public record ExampleRecordWithSetFields(
             );
         }
     }
+
+    /**
+     * Creates a {@link Builder}-instance.
+     */
+    public static ExampleRecordWithSetFields.Builder builder() {
+        return new ExampleRecordWithSetFields.Builder();
+    }
 }

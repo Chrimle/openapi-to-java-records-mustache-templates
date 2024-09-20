@@ -64,4 +64,11 @@ public record ExampleRecordWithDefaultFields(
             );
         }
     }
+
+    /**
+     * Creates a {@link Builder}-instance.
+     */
+    public static ExampleRecordWithDefaultFields.Builder builder() {
+        return new ExampleRecordWithDefaultFields.Builder();
+    }
 }

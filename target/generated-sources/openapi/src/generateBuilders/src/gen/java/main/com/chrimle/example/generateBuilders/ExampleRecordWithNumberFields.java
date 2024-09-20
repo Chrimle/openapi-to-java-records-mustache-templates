@@ -70,4 +70,11 @@ public record ExampleRecordWithNumberFields(
             );
         }
     }
+
+    /**
+     * Creates a {@link Builder}-instance.
+     */
+    public static ExampleRecordWithNumberFields.Builder builder() {
+        return new ExampleRecordWithNumberFields.Builder();
+    }
 }

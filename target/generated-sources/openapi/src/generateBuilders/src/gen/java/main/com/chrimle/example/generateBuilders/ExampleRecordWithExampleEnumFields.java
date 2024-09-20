@@ -70,4 +70,11 @@ public record ExampleRecordWithExampleEnumFields(
             );
         }
     }
+
+    /**
+     * Creates a {@link Builder}-instance.
+     */
+    public static ExampleRecordWithExampleEnumFields.Builder builder() {
+        return new ExampleRecordWithExampleEnumFields.Builder();
+    }
 }
