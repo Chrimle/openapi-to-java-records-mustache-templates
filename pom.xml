@@ -305,8 +305,6 @@
                                         </limit>
                                     </limits>
                                 </rule>
-                            </rules>
-                            <rules>
                                 <rule>
                                     <element>BUNDLE</element>
                                     <limits>
