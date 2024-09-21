@@ -1,4 +1,4 @@
-package com.chrimle.example.utils;
+package com.chrimle.example;
 
 public enum GeneratedClass {
   DEPRECATED_EXAMPLE_ENUM("DeprecatedExampleEnum"),

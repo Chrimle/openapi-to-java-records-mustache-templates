@@ -1,4 +1,4 @@
-package com.chrimle.example.utils;
+package com.chrimle.example;
 
 public enum PluginExecution {
   ADDITIONAL_ENUM_TYPE_ANNOTATIONS("additionalEnumTypeAnnotations"),
