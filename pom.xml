@@ -15,8 +15,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.release>17</maven.compiler.release>
-        <openapi-generator-maven-plugin.version>7.7.0
-        </openapi-generator-maven-plugin.version>
+        <openapi-generator-maven-plugin.version>7.8.0</openapi-generator-maven-plugin.version>
         <maven.plugin.validation>VERBOSE</maven.plugin.validation>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
