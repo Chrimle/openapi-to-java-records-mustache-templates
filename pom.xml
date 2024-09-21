@@ -28,6 +28,11 @@
         <jackson-annotations.version>2.17.2</jackson-annotations.version>
         <hibernate-validator.version>8.0.0.Final</hibernate-validator.version>
 
+        <!-- Jacoco -->
+        <jacoco-maven-plugin.version>0.8.12</jacoco-maven-plugin.version>
+        <jacoco-maven-plugin.minimumPackageLineCoveredRatio>0.20</jacoco-maven-plugin.minimumPackageLineCoveredRatio>
+        <jacoco-maven-plugin.expectedBundleClassMissedCount>50</jacoco-maven-plugin.expectedBundleClassMissedCount>
+        <!-- /Jacoco -->
 
         <!-- Default `configuration`-option values -->
         <modelPackage.default>${project.groupId}.example</modelPackage.default>
@@ -262,6 +267,58 @@
                                 <serializableModel>${serializableModel.default}</serializableModel>
                                 <generateBuilders>true</generateBuilders>
                             </configOptions>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${jacoco-maven-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>report</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>jacoco-check</id>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <rule>
+                                    <element>PACKAGE</element>
+                                    <limits>
+                                        <limit>
+                                            <counter>LINE</counter>
+                                            <value>COVEREDRATIO</value>
+                                            <minimum>${jacoco-maven-plugin.minimumPackageLineCoveredRatio}</minimum>
+                                        </limit>
+                                    </limits>
+                                </rule>
+                            </rules>
+                            <rules>
+                                <rule>
+                                    <element>BUNDLE</element>
+                                    <limits>
+                                        <limit>
+                                            <counter>CLASS</counter>
+                                            <value>MISSEDCOUNT</value>
+                                            <minimum>${jacoco-maven-plugin.expectedBundleClassMissedCount}</minimum>
+                                            <maximum>${jacoco-maven-plugin.expectedBundleClassMissedCount}</maximum>
+                                        </limit>
+                                    </limits>
+                                </rule>
+                            </rules>
                         </configuration>
                     </execution>
                 </executions>
