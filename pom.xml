@@ -5,7 +5,7 @@
 
     <groupId>com.chrimle</groupId>
     <artifactId>openapi-to-java-records-mustache-templates</artifactId>
-    <version>1.6.0</version>
+    <version>1.7.0</version>
 
     <name>OpenAPI to Java records :: Mustache Templates</name>
     <url>
@@ -15,18 +15,17 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.release>17</maven.compiler.release>
-        <openapi-generator-maven-plugin.version>7.7.0
-        </openapi-generator-maven-plugin.version>
+        <openapi-generator-maven-plugin.version>7.8.0</openapi-generator-maven-plugin.version>
         <maven.plugin.validation>VERBOSE</maven.plugin.validation>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
-        <junit-jupiter-api.version>5.10.3</junit-jupiter-api.version>
-        <gson.version>2.10.1</gson.version>
+        <junit-jupiter.version>5.11.0</junit-jupiter.version>
+        <gson.version>2.11.0</gson.version>
         <jackson-databind-nullable.version>0.2.6
         </jackson-databind-nullable.version>
         <jsr305.version>3.0.2</jsr305.version>
-        <jakarta.annotation-api.version>2.1.1</jakarta.annotation-api.version>
-        <jackson-annotations.version>2.17.1</jackson-annotations.version>
+        <jakarta.annotation-api.version>3.0.0</jakarta.annotation-api.version>
+        <jackson-annotations.version>2.17.2</jackson-annotations.version>
         <hibernate-validator.version>8.0.0.Final</hibernate-validator.version>
 
 
@@ -45,6 +44,7 @@
         <output.default>target/generated-sources/openapi/src</output.default>
         <useEnumCaseInsensitive.default>false</useEnumCaseInsensitive.default>
         <serializableModel.default>false</serializableModel.default>
+        <generateBuilders.default>false</generateBuilders.default>
 
         <!-- Plugin Executions -->
         <!-- The Plugin Execution with Standard Configurations -->
@@ -57,6 +57,8 @@
         <execution.serializableModel>serializableModel</execution.serializableModel>
         <!-- The Plugin Execution with additionalEnumTypeAnnotations set -->
         <execution.additionalEnumTypeAnnotations>additionalEnumTypeAnnotations</execution.additionalEnumTypeAnnotations>
+        <!-- The Plugin Execution with generateBuilders=true -->
+        <execution.generateBuilders>generateBuilders</execution.generateBuilders>
     </properties>
 
 
@@ -64,7 +66,13 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
-            <version>${junit-jupiter-api.version}</version>
+            <version>${junit-jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
+            <version>${junit-jupiter.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -126,6 +134,7 @@
                                 <sourceFolder>${sourceFolder.default}</sourceFolder>
                                 <useEnumCaseInsensitive>${useEnumCaseInsensitive.default}</useEnumCaseInsensitive>
                                 <serializableModel>${serializableModel.default}</serializableModel>
+                                <generateBuilders>${generateBuilders.default}</generateBuilders>
                             </configOptions>
                         </configuration>
                     </execution>
@@ -149,6 +158,7 @@
                                 <sourceFolder>${sourceFolder.default}</sourceFolder>
                                 <useEnumCaseInsensitive>true</useEnumCaseInsensitive>
                                 <serializableModel>${serializableModel.default}</serializableModel>
+                                <generateBuilders>${generateBuilders.default}</generateBuilders>
                             </configOptions>
                         </configuration>
                     </execution>
@@ -177,6 +187,7 @@
                                 <sourceFolder>${sourceFolder.default}</sourceFolder>
                                 <useEnumCaseInsensitive>${useEnumCaseInsensitive.default}</useEnumCaseInsensitive>
                                 <serializableModel>${serializableModel.default}</serializableModel>
+                                <generateBuilders>${generateBuilders.default}</generateBuilders>
                             </configOptions>
                         </configuration>
                     </execution>
@@ -201,6 +212,7 @@
                                 <sourceFolder>${sourceFolder.default}</sourceFolder>
                                 <useEnumCaseInsensitive>${useEnumCaseInsensitive.default}</useEnumCaseInsensitive>
                                 <serializableModel>${serializableModel.default}</serializableModel>
+                                <generateBuilders>${generateBuilders.default}</generateBuilders>
                             </configOptions>
                         </configuration>
                     </execution>
@@ -224,6 +236,31 @@
                                 <sourceFolder>${sourceFolder.default}</sourceFolder>
                                 <useEnumCaseInsensitive>${useEnumCaseInsensitive.default}</useEnumCaseInsensitive>
                                 <serializableModel>true</serializableModel>
+                                <generateBuilders>${generateBuilders.default}</generateBuilders>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>generate-${execution.generateBuilders}</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <output>${output.default}/${execution.generateBuilders}</output>
+                            <modelPackage>${modelPackage.default}.${execution.generateBuilders}</modelPackage>
+                            <generateModels>${generateModels.default}</generateModels>
+                            <generateApis>${generateApis.default}</generateApis>
+                            <generateSupportingFiles>${generateSupportingFiles.default}</generateSupportingFiles>
+                            <generateModelTests>${generateModelTests.default}</generateModelTests>
+                            <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
+                            <inputSpec>${inputSpec.default}</inputSpec>
+                            <templateDirectory>${templateDirectory.default}</templateDirectory>
+                            <generatorName>${generatorName.default}</generatorName>
+                            <configOptions>
+                                <sourceFolder>${sourceFolder.default}</sourceFolder>
+                                <useEnumCaseInsensitive>${useEnumCaseInsensitive.default}</useEnumCaseInsensitive>
+                                <serializableModel>${serializableModel.default}</serializableModel>
+                                <generateBuilders>true</generateBuilders>
                             </configOptions>
                         </configuration>
                     </execution>

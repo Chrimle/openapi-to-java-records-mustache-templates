@@ -1,5 +1,11 @@
-/**
- * {{#description}}{{{.}}}{{/description}}{{^description}}{{classname}}{{/description}}{{#isDeprecated}}
+{{!
+  Source: openapi-to-java-records-mustache-templates
+  Version: 1.7.0
+
+  This template is optional, and does not override an existing template.
+
+}}/**
+ * {{description}}{{^description}}{{classname}}{{/description}}{{#isDeprecated}}
  * @deprecated{{/isDeprecated}}{{#vars}}
  * @param {{name}} {{description}}{{^description}}{{{datatypeWithEnum}}}{{/description}}{{/vars}}
  */

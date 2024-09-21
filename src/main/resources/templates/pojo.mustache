@@ -1,6 +1,6 @@
 {{!
   Source: openapi-to-java-records-mustache-templates
-  Version: 1.6.0
+  Version: 1.7.0
 
   Required imports:
     - none
@@ -15,11 +15,12 @@
 }}{{>javadoc}}{{>deprecation}}{{>additionalModelTypeAnnotations}}{{!
 }}public record {{classname}}(
         {{#vars}}@{{javaxPackage}}.annotation.{{#isNullable}}Nullable{{/isNullable}}{{^isNullable}}Nonnull{{/isNullable}}{{>beanValidationAnnotations}} {{{datatypeWithEnum}}} {{name}}{{^-last}},
-        {{/-last}}{{/vars}}) {
+        {{/-last}}{{/vars}}{{^serializableModel}}){{/serializableModel}}{{#serializableModel}}
+) implements Serializable{{/serializableModel}} {
 {{>serializableModel}}
     public {{classname}}(
             {{#vars}}@{{javaxPackage}}.annotation.{{#isNullable}}Nullable{{/isNullable}}{{^isNullable}}{{#defaultValue}}Nullable{{/defaultValue}}{{^defaultValue}}Nonnull{{/defaultValue}}{{/isNullable}} final {{{datatypeWithEnum}}} {{name}}{{^-last}},
             {{/-last}}{{/vars}}) { {{#vars}}
         this.{{name}} = {{^defaultValue}}{{name}}{{/defaultValue}}{{#defaultValue}}Objects.requireNonNullElse({{name}}, {{{.}}}){{/defaultValue}};{{/vars}}
-    }
+    }{{>generateBuilders}}
 }
