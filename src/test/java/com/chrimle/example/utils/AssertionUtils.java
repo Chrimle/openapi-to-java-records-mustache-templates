@@ -259,4 +259,10 @@ public class AssertionUtils {
       assertClassDoesNotHaveMethod(classUnderTest, "builder");
     }
   }
+
+  public static Class<?> assertClassExists(final String canonicalClassName) {
+    return Assertions.assertDoesNotThrow(
+        () -> Class.forName(canonicalClassName));
+  }
+
 }

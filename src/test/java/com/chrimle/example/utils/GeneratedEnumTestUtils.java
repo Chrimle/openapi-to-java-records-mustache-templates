@@ -10,8 +10,8 @@ import org.junit.jupiter.api.Assertions;
  */
 public class GeneratedEnumTestUtils {
 
-  public static <E extends Enum<E>> void assertExampleEnum(
-      final Class<E> classUnderTest,
+  public static void assertExampleEnum(
+      final Class<?> classUnderTest,
       final boolean hasAdditionalModelAnnotations,
       final boolean useEnumCaseInsensitive
   ) {
@@ -23,8 +23,8 @@ public class GeneratedEnumTestUtils {
     );
   }
 
-  public static <E extends Enum<E>> void assertDeprecatedExampleEnum(
-      final Class<E> classUnderTest,
+  public static void assertDeprecatedExampleEnum(
+      final Class<?> classUnderTest,
       final boolean hasAdditionalModelAnnotations,
       final boolean useEnumCaseInsensitive
   ) {
@@ -36,8 +36,8 @@ public class GeneratedEnumTestUtils {
     );
   }
 
-  public static <E extends Enum<E>> void assertEnumClass(
-      final Class<E> classUnderTest,
+  public static void assertEnumClass(
+      final Class<?> classUnderTest,
       final boolean isDeprecated,
       final boolean hasAdditionalTypeAnnotations,
       final boolean useEnumCaseInsensitive) {
@@ -53,16 +53,16 @@ public class GeneratedEnumTestUtils {
 
 
   private static <E extends Enum<E>> void assertEnumValues(
-      final Class<E> classUnderTest) {
+      final Class<?> classUnderTest) {
     Assertions.assertEquals(3, classUnderTest.getEnumConstants().length);
     for (int i = 1; i <= 3; i++) {
       Assertions.assertEquals("ENUM" + i,
-          classUnderTest.getEnumConstants()[i - 1].name());
+          ((E) classUnderTest.getEnumConstants()[i - 1]).name());
     }
   }
 
-  private static <E extends Enum<E>> void assertEnumHasCaseInsensitiveFromValueMethod(
-      final Class<E> classUnderTest, final boolean useEnumCaseInsensitive) {
+  private static void assertEnumHasCaseInsensitiveFromValueMethod(
+      final Class<?> classUnderTest, final boolean useEnumCaseInsensitive) {
     if (!useEnumCaseInsensitive) {
       // Assert 'fromValue'-method does NOT exist
       AssertionUtils.assertClassDoesNotHaveMethod(classUnderTest, "fromValue",
