@@ -26,7 +26,7 @@
         </jackson-databind-nullable.version>
         <jsr305.version>3.0.2</jsr305.version>
         <jakarta.annotation-api.version>2.1.1</jakarta.annotation-api.version>
-        <jackson-annotations.version>2.17.1</jackson-annotations.version>
+        <jackson-annotations.version>2.17.2</jackson-annotations.version>
         <hibernate-validator.version>8.0.0.Final</hibernate-validator.version>
 
 
