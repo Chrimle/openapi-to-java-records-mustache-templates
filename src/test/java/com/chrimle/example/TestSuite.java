@@ -3,25 +3,107 @@ package com.chrimle.example;
 import com.chrimle.example.utils.AssertionUtils;
 import com.chrimle.example.utils.GeneratedEnumTestUtils;
 import com.chrimle.example.utils.GeneratedRecordTestUtils;
+import java.util.stream.Stream;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
-public record TestSuite(
-    boolean hasAdditionalModelTypeAnnotations,
-    boolean hasAdditionalEnumTypeAnnotations,
-    boolean useEnumCaseInsensitive,
-    boolean serializableModel,
-    boolean generateBuilders,
-    PluginExecution pluginExecution
-) {
+public class TestSuite {
+
+  @ParameterizedTest(name = "Testing: {0}")
+  @MethodSource("provideTestArguments")
+  @DisplayName("Testing Plugin Execution...")
+  public void testAll(
+      PluginExecution pluginExecution,
+      boolean hasAdditionalModelTypeAnnotations,
+      boolean hasAdditionalEnumTypeAnnotations,
+      boolean useEnumCaseInsensitive,
+      boolean isModelSerializable,
+      boolean generateBuilders) {
+
+    for (GeneratedClass generatedClass : GeneratedClass.values()) {
+      assertModel(
+          generatedClass,
+          pluginExecution,
+          hasAdditionalModelTypeAnnotations,
+          hasAdditionalEnumTypeAnnotations,
+          useEnumCaseInsensitive,
+          isModelSerializable,
+          generateBuilders
+      );
+    }
+  }
+
+  public static Stream<Arguments> provideTestArguments() {
+    return Stream.of(
+        Arguments.of(
+            PluginExecution.ADDITIONAL_ENUM_TYPE_ANNOTATIONS,
+            false,
+            true,
+            false,
+            false,
+            false
+        ),
+        Arguments.of(
+            PluginExecution.ADDITIONAL_MODEL_TYPE_ANNOTATIONS,
+            true,
+            false,
+            false,
+            false,
+            false
+        ),
+        Arguments.of(
+            PluginExecution.GENERATE_BUILDERS,
+            false,
+            false,
+            false,
+            false,
+            true
+        ),
+        Arguments.of(
+            PluginExecution.SERIALIZABLE_MODEL,
+            false,
+            false,
+            false,
+            true,
+            false
+        ),
+        Arguments.of(
+            PluginExecution.STANDARD,
+            false,
+            false,
+            false,
+            false,
+            false
+        ),
+        Arguments.of(
+            PluginExecution.USE_ENUM_CASE_INSENSITIVE,
+            false,
+            false,
+            true,
+            false,
+            false
+        )
+    );
+  }
 
 
-  private void assertModel(final GeneratedClass generatedClass) {
+  private void assertModel(
+      GeneratedClass generatedClass,
+      PluginExecution pluginExecution,
+      boolean hasAdditionalModelTypeAnnotations,
+      boolean hasAdditionalEnumTypeAnnotations,
+      boolean useEnumCaseInsensitive,
+      boolean serializableModel,
+      boolean generateBuilders
+  ) {
 
     final Class<?> classUnderTest = AssertionUtils.assertClassExists(
-        getCanonicalClassName(generatedClass)
+        getCanonicalClassName(pluginExecution, generatedClass)
     );
 
     switch (generatedClass) {
-
       case EXAMPLE_ENUM -> GeneratedEnumTestUtils.assertExampleEnum(
           classUnderTest,
           hasAdditionalEnumTypeAnnotations,
@@ -57,7 +139,8 @@ public record TestSuite(
           GeneratedRecordTestUtils.assertExampleRecordWithExampleEnumFields(
               classUnderTest,
               AssertionUtils.assertClassExists(
-                  getCanonicalClassName(GeneratedClass.EXAMPLE_ENUM)
+                  getCanonicalClassName(pluginExecution,
+                      GeneratedClass.EXAMPLE_ENUM)
               ),
               hasAdditionalModelTypeAnnotations,
               serializableModel,
@@ -67,7 +150,8 @@ public record TestSuite(
           GeneratedRecordTestUtils.assertExampleRecordWithExampleRecordFields(
               classUnderTest,
               AssertionUtils.assertClassExists(
-                  getCanonicalClassName(GeneratedClass.EXAMPLE_RECORD)
+                  getCanonicalClassName(pluginExecution,
+                      GeneratedClass.EXAMPLE_RECORD)
               ),
               hasAdditionalModelTypeAnnotations,
               serializableModel,
@@ -118,13 +202,8 @@ public record TestSuite(
     }
   }
 
-  public void assertModels() {
-    for (GeneratedClass generatedClass : GeneratedClass.values()) {
-      assertModel(generatedClass);
-    }
-  }
-
-  private String getCanonicalClassName(final GeneratedClass generatedClass) {
+  private String getCanonicalClassName(final PluginExecution pluginExecution,
+      final GeneratedClass generatedClass) {
     return generatedClass.getCanonicalClassName(
         pluginExecution.getPackageName());
   }
