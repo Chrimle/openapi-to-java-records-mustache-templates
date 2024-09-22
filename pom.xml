@@ -83,6 +83,7 @@
         <useEnumCaseInsensitive.default>false</useEnumCaseInsensitive.default>
         <serializableModel.default>false</serializableModel.default>
         <generateBuilders.default>false</generateBuilders.default>
+        <useJakartaEe.default>false</useJakartaEe.default>
 
         <!-- Plugin Executions -->
         <!-- The Plugin Execution with Standard Configurations -->
@@ -97,6 +98,8 @@
         <execution.additionalEnumTypeAnnotations>additionalEnumTypeAnnotations</execution.additionalEnumTypeAnnotations>
         <!-- The Plugin Execution with generateBuilders=true -->
         <execution.generateBuilders>generateBuilders</execution.generateBuilders>
+        <!-- The Plugin Execution with useJakartaEe=true -->
+        <execution.useJakartaEe>useJakartaEe</execution.useJakartaEe>
     </properties>
 
 
@@ -173,6 +176,7 @@
                                 <useEnumCaseInsensitive>${useEnumCaseInsensitive.default}</useEnumCaseInsensitive>
                                 <serializableModel>${serializableModel.default}</serializableModel>
                                 <generateBuilders>${generateBuilders.default}</generateBuilders>
+                                <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
                             </configOptions>
                         </configuration>
                     </execution>
@@ -197,6 +201,7 @@
                                 <useEnumCaseInsensitive>true</useEnumCaseInsensitive>
                                 <serializableModel>${serializableModel.default}</serializableModel>
                                 <generateBuilders>${generateBuilders.default}</generateBuilders>
+                                <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
                             </configOptions>
                         </configuration>
                     </execution>
@@ -226,6 +231,7 @@
                                 <useEnumCaseInsensitive>${useEnumCaseInsensitive.default}</useEnumCaseInsensitive>
                                 <serializableModel>${serializableModel.default}</serializableModel>
                                 <generateBuilders>${generateBuilders.default}</generateBuilders>
+                                <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
                             </configOptions>
                         </configuration>
                     </execution>
@@ -251,6 +257,7 @@
                                 <useEnumCaseInsensitive>${useEnumCaseInsensitive.default}</useEnumCaseInsensitive>
                                 <serializableModel>${serializableModel.default}</serializableModel>
                                 <generateBuilders>${generateBuilders.default}</generateBuilders>
+                                <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
                             </configOptions>
                         </configuration>
                     </execution>
@@ -275,6 +282,7 @@
                                 <useEnumCaseInsensitive>${useEnumCaseInsensitive.default}</useEnumCaseInsensitive>
                                 <serializableModel>true</serializableModel>
                                 <generateBuilders>${generateBuilders.default}</generateBuilders>
+                                <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
                             </configOptions>
                         </configuration>
                     </execution>
@@ -299,6 +307,7 @@
                                 <useEnumCaseInsensitive>${useEnumCaseInsensitive.default}</useEnumCaseInsensitive>
                                 <serializableModel>${serializableModel.default}</serializableModel>
                                 <generateBuilders>true</generateBuilders>
+                                <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
                             </configOptions>
                         </configuration>
                     </execution>
