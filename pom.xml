@@ -61,6 +61,12 @@
         <jacoco-maven-plugin.expectedBundleClassMissedCount>50</jacoco-maven-plugin.expectedBundleClassMissedCount>
         <!-- /Jacoco -->
 
+        <!-- Spotless -->
+        <spotless.check.skip>true</spotless.check.skip> <!-- Unused imports causes build to fail -->
+        <spotless-maven-plugin.version>2.9.0</spotless-maven-plugin.version>
+        <googleJavaFormat.version>1.23.0</googleJavaFormat.version>
+        <!-- /Spotless -->
+
         <!-- Default `configuration`-option values -->
         <modelPackage.default>${project.groupId}.example</modelPackage.default>
         <generateModels.default>true</generateModels.default>
@@ -357,6 +363,30 @@
                         <include>**/*.mustache</include>
                     </includes>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.diffplug.spotless</groupId>
+                <artifactId>spotless-maven-plugin</artifactId>
+                <version>${spotless-maven-plugin.version}</version>
+                <configuration>
+                    <java>
+                        <includes>
+                            <include>target/generated-sources/openapi/src/src/gen/java/main/io/github/chrimle/example/generateBuilders/*.java</include>
+                        </includes>
+                        <lineEndings>UNIX</lineEndings>
+                        <googleJavaFormat>
+                            <version>${googleJavaFormat.version}</version>
+                            <style>GOOGLE</style>
+                        </googleJavaFormat>
+                    </java>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
