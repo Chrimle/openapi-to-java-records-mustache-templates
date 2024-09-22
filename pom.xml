@@ -3,14 +3,40 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.chrimle</groupId>
+    <groupId>io.github.chrimle</groupId>
     <artifactId>openapi-to-java-records-mustache-templates</artifactId>
     <version>1.7.0</version>
 
+    <!-- Project Information -->
     <name>OpenAPI to Java records :: Mustache Templates</name>
+    <description>Project containing Mustache-templates used by openapi-generator-maven-plugin to generate Java records from OpenAPI Specifications.</description>
+    <inceptionYear>2024</inceptionYear>
     <url>
         http://www.github.com/Chrimle/openapi-to-java-records-mustache-templates
     </url>
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>https://opensource.org/license/mit</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <organization>
+        <name>openapi-to-java-records-mustache-templates</name>
+        <url>http://www.github.com/Chrimle/openapi-to-java-records-mustache-templates</url>
+    </organization>
+    <developers>
+        <developer>
+            <id>Chrimle</id>
+            <name>Christopher Molin</name>
+            <roles>
+                <role>Lead Developer</role>
+            </roles>
+            <timezone>CET</timezone>
+            <url>https://www.chrimle.com</url>
+        </developer>
+    </developers>
+    <!-- -->
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
