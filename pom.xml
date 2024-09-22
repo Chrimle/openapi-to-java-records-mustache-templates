@@ -53,6 +53,7 @@
         <jakarta.annotation-api.version>3.0.0</jakarta.annotation-api.version>
         <jackson-annotations.version>2.17.2</jackson-annotations.version>
         <hibernate-validator.version>8.0.0.Final</hibernate-validator.version>
+        <maven-jar-plugin.version>3.2.0</maven-jar-plugin.version>
 
         <!-- Jacoco -->
         <jacoco-maven-plugin.version>0.8.12</jacoco-maven-plugin.version>
@@ -346,6 +347,16 @@
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>${maven-jar-plugin.version}</version>
+                <configuration>
+                    <includes>
+                        <include>**/*.mustache</include>
+                    </includes>
+                </configuration>
             </plugin>
         </plugins>
     </build>
