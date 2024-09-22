@@ -41,7 +41,7 @@ public record ExampleRecordWithExampleRecordFields(
     @javax.annotation.Nonnull ExampleRecord field3
   ) implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+  private static final long serialVersionUID = 1L;
 
   public ExampleRecordWithExampleRecordFields(
       @javax.annotation.Nonnull final ExampleRecord field1,

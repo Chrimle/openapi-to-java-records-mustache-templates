@@ -40,7 +40,7 @@ public record ExampleRecordWithBooleanFields(
     @javax.annotation.Nonnull Boolean field3
   ) implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+  private static final long serialVersionUID = 1L;
 
   public ExampleRecordWithBooleanFields(
       @javax.annotation.Nonnull final Boolean field1,

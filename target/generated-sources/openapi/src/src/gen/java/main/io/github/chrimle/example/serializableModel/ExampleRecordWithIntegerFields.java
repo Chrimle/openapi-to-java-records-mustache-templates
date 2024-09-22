@@ -40,7 +40,7 @@ public record ExampleRecordWithIntegerFields(
     @javax.annotation.Nonnull Integer field3
   ) implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+  private static final long serialVersionUID = 1L;
 
   public ExampleRecordWithIntegerFields(
       @javax.annotation.Nonnull final Integer field1,

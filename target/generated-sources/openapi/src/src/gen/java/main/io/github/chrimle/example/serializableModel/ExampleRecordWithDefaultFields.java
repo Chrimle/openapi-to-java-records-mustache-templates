@@ -39,7 +39,7 @@ public record ExampleRecordWithDefaultFields(
     @javax.annotation.Nonnull String field2
   ) implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+  private static final long serialVersionUID = 1L;
 
   public ExampleRecordWithDefaultFields(
       @javax.annotation.Nullable final String field1,

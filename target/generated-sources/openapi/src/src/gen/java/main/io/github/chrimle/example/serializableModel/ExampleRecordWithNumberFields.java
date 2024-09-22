@@ -41,7 +41,7 @@ public record ExampleRecordWithNumberFields(
     @javax.annotation.Nonnull BigDecimal field3
   ) implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+  private static final long serialVersionUID = 1L;
 
   public ExampleRecordWithNumberFields(
       @javax.annotation.Nonnull final BigDecimal field1,

@@ -42,7 +42,7 @@ public record ExampleRecordWithArrayFields(
     @javax.annotation.Nonnull List<Boolean> field3
   ) implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+  private static final long serialVersionUID = 1L;
 
   public ExampleRecordWithArrayFields(
       @javax.annotation.Nullable final List<Boolean> field1,

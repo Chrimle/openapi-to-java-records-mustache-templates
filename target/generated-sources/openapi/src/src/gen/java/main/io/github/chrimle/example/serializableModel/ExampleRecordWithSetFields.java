@@ -42,7 +42,7 @@ public record ExampleRecordWithSetFields(
     @javax.annotation.Nonnull Set<Boolean> field3
   ) implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+  private static final long serialVersionUID = 1L;
 
   public ExampleRecordWithSetFields(
       @javax.annotation.Nullable final Set<Boolean> field1,

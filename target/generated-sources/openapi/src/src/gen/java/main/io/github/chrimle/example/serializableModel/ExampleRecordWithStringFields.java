@@ -40,7 +40,7 @@ public record ExampleRecordWithStringFields(
     @javax.annotation.Nonnull String field3
   ) implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+  private static final long serialVersionUID = 1L;
 
   public ExampleRecordWithStringFields(
       @javax.annotation.Nonnull final String field1,

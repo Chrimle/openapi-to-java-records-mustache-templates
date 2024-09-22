@@ -41,7 +41,7 @@ public record ExampleRecordWithExampleEnumFields(
     @javax.annotation.Nonnull ExampleEnum field3
   ) implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+  private static final long serialVersionUID = 1L;
 
   public ExampleRecordWithExampleEnumFields(
       @javax.annotation.Nonnull final ExampleEnum field1,
