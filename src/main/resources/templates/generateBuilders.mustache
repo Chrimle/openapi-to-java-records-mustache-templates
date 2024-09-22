@@ -17,9 +17,9 @@
     /**
      * Sets the value of {@link {{classname}}#{{name}} }.
      *
-     * <p><b>NOTE:</b> Pass-by-reference is used{{#description}}
-     *
-     * <p><b>Description:</b> {{.}}{{/description}}
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     * @param {{name}} {{description}}{{^description}}sets the value of {{name}}{{/description}}
+     * @return this {@link Builder}-instance for method-chaining
      */
     public Builder {{name}}(final {{{datatypeWithEnum}}} {{name}}) {
       this.{{name}} = {{name}};
@@ -31,9 +31,10 @@
      * Builds a {@link {{classname}} }-instance with the values provided in preceding
      * builder methods.
      *
-     * <p><b>NOTE:</b> Pass-by-reference is used{{#description}}
+     * <p><b>NOTE:</b> Pass-by-reference is used!{{#description}}
      *
      * <p><b>Description:</b> {{.}}{{/description}}
+     * @return a new {@link {{classname}} }-instance
      */
     public {{classname}} build() {
       return new {{classname}}(

@@ -53,9 +53,9 @@ public record ExampleRecordWithDefaultFields(
     /**
      * Sets the value of {@link ExampleRecordWithDefaultFields#field1 }.
      *
-     * <p><b>NOTE:</b> Pass-by-reference is used
-     *
-     * <p><b>Description:</b> a nullable String field
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     * @param field1 a nullable String field
+     * @return this {@link Builder}-instance for method-chaining
      */
     public Builder field1(final String field1) {
       this.field1 = field1;
@@ -65,9 +65,9 @@ public record ExampleRecordWithDefaultFields(
     /**
      * Sets the value of {@link ExampleRecordWithDefaultFields#field2 }.
      *
-     * <p><b>NOTE:</b> Pass-by-reference is used
-     *
-     * <p><b>Description:</b> a String field with a default value
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     * @param field2 a String field with a default value
+     * @return this {@link Builder}-instance for method-chaining
      */
     public Builder field2(final String field2) {
       this.field2 = field2;
@@ -78,9 +78,10 @@ public record ExampleRecordWithDefaultFields(
      * Builds a {@link ExampleRecordWithDefaultFields }-instance with the values provided in preceding
      * builder methods.
      *
-     * <p><b>NOTE:</b> Pass-by-reference is used
+     * <p><b>NOTE:</b> Pass-by-reference is used!
      *
      * <p><b>Description:</b> Example of a Record with default fields
+     * @return a new {@link ExampleRecordWithDefaultFields }-instance
      */
     public ExampleRecordWithDefaultFields build() {
       return new ExampleRecordWithDefaultFields(

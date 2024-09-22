@@ -58,9 +58,9 @@ public record ExampleRecordWithNumberFields(
     /**
      * Sets the value of {@link ExampleRecordWithNumberFields#field1 }.
      *
-     * <p><b>NOTE:</b> Pass-by-reference is used
-     *
-     * <p><b>Description:</b> a Number field
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     * @param field1 a Number field
+     * @return this {@link Builder}-instance for method-chaining
      */
     public Builder field1(final BigDecimal field1) {
       this.field1 = field1;
@@ -70,9 +70,9 @@ public record ExampleRecordWithNumberFields(
     /**
      * Sets the value of {@link ExampleRecordWithNumberFields#field2 }.
      *
-     * <p><b>NOTE:</b> Pass-by-reference is used
-     *
-     * <p><b>Description:</b> another Number field
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     * @param field2 another Number field
+     * @return this {@link Builder}-instance for method-chaining
      */
     public Builder field2(final BigDecimal field2) {
       this.field2 = field2;
@@ -82,9 +82,9 @@ public record ExampleRecordWithNumberFields(
     /**
      * Sets the value of {@link ExampleRecordWithNumberFields#field3 }.
      *
-     * <p><b>NOTE:</b> Pass-by-reference is used
-     *
-     * <p><b>Description:</b> yet another Number field
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     * @param field3 yet another Number field
+     * @return this {@link Builder}-instance for method-chaining
      */
     public Builder field3(final BigDecimal field3) {
       this.field3 = field3;
@@ -95,9 +95,10 @@ public record ExampleRecordWithNumberFields(
      * Builds a {@link ExampleRecordWithNumberFields }-instance with the values provided in preceding
      * builder methods.
      *
-     * <p><b>NOTE:</b> Pass-by-reference is used
+     * <p><b>NOTE:</b> Pass-by-reference is used!
      *
      * <p><b>Description:</b> Example of a Record with Number fields
+     * @return a new {@link ExampleRecordWithNumberFields }-instance
      */
     public ExampleRecordWithNumberFields build() {
       return new ExampleRecordWithNumberFields(

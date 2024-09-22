@@ -57,9 +57,9 @@ public record ExampleRecordWithBooleanFields(
     /**
      * Sets the value of {@link ExampleRecordWithBooleanFields#field1 }.
      *
-     * <p><b>NOTE:</b> Pass-by-reference is used
-     *
-     * <p><b>Description:</b> a Boolean field
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     * @param field1 a Boolean field
+     * @return this {@link Builder}-instance for method-chaining
      */
     public Builder field1(final Boolean field1) {
       this.field1 = field1;
@@ -69,9 +69,9 @@ public record ExampleRecordWithBooleanFields(
     /**
      * Sets the value of {@link ExampleRecordWithBooleanFields#field2 }.
      *
-     * <p><b>NOTE:</b> Pass-by-reference is used
-     *
-     * <p><b>Description:</b> another Boolean field
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     * @param field2 another Boolean field
+     * @return this {@link Builder}-instance for method-chaining
      */
     public Builder field2(final Boolean field2) {
       this.field2 = field2;
@@ -81,9 +81,9 @@ public record ExampleRecordWithBooleanFields(
     /**
      * Sets the value of {@link ExampleRecordWithBooleanFields#field3 }.
      *
-     * <p><b>NOTE:</b> Pass-by-reference is used
-     *
-     * <p><b>Description:</b> yet another Boolean field
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     * @param field3 yet another Boolean field
+     * @return this {@link Builder}-instance for method-chaining
      */
     public Builder field3(final Boolean field3) {
       this.field3 = field3;
@@ -94,9 +94,10 @@ public record ExampleRecordWithBooleanFields(
      * Builds a {@link ExampleRecordWithBooleanFields }-instance with the values provided in preceding
      * builder methods.
      *
-     * <p><b>NOTE:</b> Pass-by-reference is used
+     * <p><b>NOTE:</b> Pass-by-reference is used!
      *
      * <p><b>Description:</b> Example of a Record with Boolean fields
+     * @return a new {@link ExampleRecordWithBooleanFields }-instance
      */
     public ExampleRecordWithBooleanFields build() {
       return new ExampleRecordWithBooleanFields(

@@ -57,9 +57,9 @@ public record ExampleRecordWithIntegerFields(
     /**
      * Sets the value of {@link ExampleRecordWithIntegerFields#field1 }.
      *
-     * <p><b>NOTE:</b> Pass-by-reference is used
-     *
-     * <p><b>Description:</b> a Integer field
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     * @param field1 a Integer field
+     * @return this {@link Builder}-instance for method-chaining
      */
     public Builder field1(final Integer field1) {
       this.field1 = field1;
@@ -69,9 +69,9 @@ public record ExampleRecordWithIntegerFields(
     /**
      * Sets the value of {@link ExampleRecordWithIntegerFields#field2 }.
      *
-     * <p><b>NOTE:</b> Pass-by-reference is used
-     *
-     * <p><b>Description:</b> another Integer field
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     * @param field2 another Integer field
+     * @return this {@link Builder}-instance for method-chaining
      */
     public Builder field2(final Integer field2) {
       this.field2 = field2;
@@ -81,9 +81,9 @@ public record ExampleRecordWithIntegerFields(
     /**
      * Sets the value of {@link ExampleRecordWithIntegerFields#field3 }.
      *
-     * <p><b>NOTE:</b> Pass-by-reference is used
-     *
-     * <p><b>Description:</b> yet another Integer field
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     * @param field3 yet another Integer field
+     * @return this {@link Builder}-instance for method-chaining
      */
     public Builder field3(final Integer field3) {
       this.field3 = field3;
@@ -94,9 +94,10 @@ public record ExampleRecordWithIntegerFields(
      * Builds a {@link ExampleRecordWithIntegerFields }-instance with the values provided in preceding
      * builder methods.
      *
-     * <p><b>NOTE:</b> Pass-by-reference is used
+     * <p><b>NOTE:</b> Pass-by-reference is used!
      *
      * <p><b>Description:</b> Example of a Record with Integer fields
+     * @return a new {@link ExampleRecordWithIntegerFields }-instance
      */
     public ExampleRecordWithIntegerFields build() {
       return new ExampleRecordWithIntegerFields(

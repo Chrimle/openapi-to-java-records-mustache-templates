@@ -59,9 +59,9 @@ public record ExampleRecordWithSetFields(
     /**
      * Sets the value of {@link ExampleRecordWithSetFields#field1 }.
      *
-     * <p><b>NOTE:</b> Pass-by-reference is used
-     *
-     * <p><b>Description:</b> a Set field
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     * @param field1 a Set field
+     * @return this {@link Builder}-instance for method-chaining
      */
     public Builder field1(final Set<Boolean> field1) {
       this.field1 = field1;
@@ -71,9 +71,9 @@ public record ExampleRecordWithSetFields(
     /**
      * Sets the value of {@link ExampleRecordWithSetFields#field2 }.
      *
-     * <p><b>NOTE:</b> Pass-by-reference is used
-     *
-     * <p><b>Description:</b> another Set field
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     * @param field2 another Set field
+     * @return this {@link Builder}-instance for method-chaining
      */
     public Builder field2(final Set<Boolean> field2) {
       this.field2 = field2;
@@ -83,9 +83,9 @@ public record ExampleRecordWithSetFields(
     /**
      * Sets the value of {@link ExampleRecordWithSetFields#field3 }.
      *
-     * <p><b>NOTE:</b> Pass-by-reference is used
-     *
-     * <p><b>Description:</b> yet another Set field
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     * @param field3 yet another Set field
+     * @return this {@link Builder}-instance for method-chaining
      */
     public Builder field3(final Set<Boolean> field3) {
       this.field3 = field3;
@@ -96,9 +96,10 @@ public record ExampleRecordWithSetFields(
      * Builds a {@link ExampleRecordWithSetFields }-instance with the values provided in preceding
      * builder methods.
      *
-     * <p><b>NOTE:</b> Pass-by-reference is used
+     * <p><b>NOTE:</b> Pass-by-reference is used!
      *
      * <p><b>Description:</b> Example of a Record with Set fields
+     * @return a new {@link ExampleRecordWithSetFields }-instance
      */
     public ExampleRecordWithSetFields build() {
       return new ExampleRecordWithSetFields(

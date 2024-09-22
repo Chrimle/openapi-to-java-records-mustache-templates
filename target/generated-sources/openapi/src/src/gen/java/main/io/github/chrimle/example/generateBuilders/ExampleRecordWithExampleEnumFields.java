@@ -58,7 +58,9 @@ public record ExampleRecordWithExampleEnumFields(
     /**
      * Sets the value of {@link ExampleRecordWithExampleEnumFields#field1 }.
      *
-     * <p><b>NOTE:</b> Pass-by-reference is used
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     * @param field1 sets the value of field1
+     * @return this {@link Builder}-instance for method-chaining
      */
     public Builder field1(final ExampleEnum field1) {
       this.field1 = field1;
@@ -68,7 +70,9 @@ public record ExampleRecordWithExampleEnumFields(
     /**
      * Sets the value of {@link ExampleRecordWithExampleEnumFields#field2 }.
      *
-     * <p><b>NOTE:</b> Pass-by-reference is used
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     * @param field2 sets the value of field2
+     * @return this {@link Builder}-instance for method-chaining
      */
     public Builder field2(final ExampleEnum field2) {
       this.field2 = field2;
@@ -78,7 +82,9 @@ public record ExampleRecordWithExampleEnumFields(
     /**
      * Sets the value of {@link ExampleRecordWithExampleEnumFields#field3 }.
      *
-     * <p><b>NOTE:</b> Pass-by-reference is used
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     * @param field3 sets the value of field3
+     * @return this {@link Builder}-instance for method-chaining
      */
     public Builder field3(final ExampleEnum field3) {
       this.field3 = field3;
@@ -89,9 +95,10 @@ public record ExampleRecordWithExampleEnumFields(
      * Builds a {@link ExampleRecordWithExampleEnumFields }-instance with the values provided in preceding
      * builder methods.
      *
-     * <p><b>NOTE:</b> Pass-by-reference is used
+     * <p><b>NOTE:</b> Pass-by-reference is used!
      *
      * <p><b>Description:</b> Example of a Record with Enum fields
+     * @return a new {@link ExampleRecordWithExampleEnumFields }-instance
      */
     public ExampleRecordWithExampleEnumFields build() {
       return new ExampleRecordWithExampleEnumFields(
