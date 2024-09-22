@@ -371,7 +371,7 @@
                 <configuration>
                     <java>
                         <includes>
-                            <include>target/generated-sources/openapi/src/src/gen/java/main/io/github/chrimle/example/generateBuilders/*.java</include>
+                            <include>target/generated-sources/**/*.java</include>
                         </includes>
                         <lineEndings>UNIX</lineEndings>
                         <googleJavaFormat>
