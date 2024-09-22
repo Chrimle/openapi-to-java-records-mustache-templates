@@ -390,4 +390,11 @@
             </plugin>
         </plugins>
     </build>
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub Chrimle Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/chrimle/${project.artifactId}</url>
+        </repository>
+    </distributionManagement>
 </project>
