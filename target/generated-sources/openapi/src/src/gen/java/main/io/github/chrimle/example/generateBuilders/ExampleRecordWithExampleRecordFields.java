@@ -12,7 +12,7 @@
  * openapi-to-java-records-mustache-templates. For further information,
  * questions, requesting features or reporting issues, please visit:
  * https://github.com/Chrimle/openapi-to-java-records-mustache-templates.
- * Generated with Version: 1.7.2
+ * Generated with Version: 1.7.3
  *
  */
 
@@ -96,8 +96,6 @@ public record ExampleRecordWithExampleRecordFields(
      * builder methods.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
-     *
-     * <p><b>Description:</b> Example of a Record with Record fields
      * @return a new {@link ExampleRecordWithExampleRecordFields }-instance
      */
     public ExampleRecordWithExampleRecordFields build() {
