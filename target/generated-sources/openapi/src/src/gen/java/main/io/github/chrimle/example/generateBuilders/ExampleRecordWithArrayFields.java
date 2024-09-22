@@ -97,8 +97,6 @@ public record ExampleRecordWithArrayFields(
      * builder methods.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
-     *
-     * <p><b>Description:</b> Example of a Record with Array fields
      * @return a new {@link ExampleRecordWithArrayFields }-instance
      */
     public ExampleRecordWithArrayFields build() {

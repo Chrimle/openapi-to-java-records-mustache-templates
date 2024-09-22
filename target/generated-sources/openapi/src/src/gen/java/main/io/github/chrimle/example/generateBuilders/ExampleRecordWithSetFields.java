@@ -97,8 +97,6 @@ public record ExampleRecordWithSetFields(
      * builder methods.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
-     *
-     * <p><b>Description:</b> Example of a Record with Set fields
      * @return a new {@link ExampleRecordWithSetFields }-instance
      */
     public ExampleRecordWithSetFields build() {

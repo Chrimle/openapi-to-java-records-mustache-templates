@@ -95,8 +95,6 @@ public record ExampleRecordWithBooleanFields(
      * builder methods.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
-     *
-     * <p><b>Description:</b> Example of a Record with Boolean fields
      * @return a new {@link ExampleRecordWithBooleanFields }-instance
      */
     public ExampleRecordWithBooleanFields build() {

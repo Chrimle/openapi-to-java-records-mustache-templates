@@ -96,8 +96,6 @@ public record ExampleRecordWithNumberFields(
      * builder methods.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
-     *
-     * <p><b>Description:</b> Example of a Record with Number fields
      * @return a new {@link ExampleRecordWithNumberFields }-instance
      */
     public ExampleRecordWithNumberFields build() {

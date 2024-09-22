@@ -79,8 +79,6 @@ public record ExampleRecordWithDefaultFields(
      * builder methods.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
-     *
-     * <p><b>Description:</b> Example of a Record with default fields
      * @return a new {@link ExampleRecordWithDefaultFields }-instance
      */
     public ExampleRecordWithDefaultFields build() {

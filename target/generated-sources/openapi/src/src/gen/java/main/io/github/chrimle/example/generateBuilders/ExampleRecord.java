@@ -61,8 +61,6 @@ public record ExampleRecord(
      * builder methods.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
-     *
-     * <p><b>Description:</b> Example of a Record
      * @return a new {@link ExampleRecord }-instance
      */
     public ExampleRecord build() {

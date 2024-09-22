@@ -64,8 +64,6 @@ public record DeprecatedExampleRecord(
      * builder methods.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
-     *
-     * <p><b>Description:</b> Example of a deprecated Record
      * @return a new {@link DeprecatedExampleRecord }-instance
      */
     public DeprecatedExampleRecord build() {

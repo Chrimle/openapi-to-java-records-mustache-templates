@@ -95,8 +95,6 @@ public record ExampleRecordWithStringFields(
      * builder methods.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
-     *
-     * <p><b>Description:</b> Example of a Record with String fields
      * @return a new {@link ExampleRecordWithStringFields }-instance
      */
     public ExampleRecordWithStringFields build() {
