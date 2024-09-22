@@ -12,7 +12,7 @@
  * openapi-to-java-records-mustache-templates. For further information,
  * questions, requesting features or reporting issues, please visit:
  * https://github.com/Chrimle/openapi-to-java-records-mustache-templates.
- * Generated with Version: 1.7.1
+ * Generated with Version: 1.7.2
  *
  */
 
@@ -58,7 +58,9 @@ public record ExampleRecordWithExampleRecordFields(
     /**
      * Sets the value of {@link ExampleRecordWithExampleRecordFields#field1 }.
      *
-     * <p><b>NOTE:</b> Pass-by-reference is used
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     * @param field1 sets the value of field1
+     * @return this {@link Builder}-instance for method-chaining
      */
     public Builder field1(final ExampleRecord field1) {
       this.field1 = field1;
@@ -68,7 +70,9 @@ public record ExampleRecordWithExampleRecordFields(
     /**
      * Sets the value of {@link ExampleRecordWithExampleRecordFields#field2 }.
      *
-     * <p><b>NOTE:</b> Pass-by-reference is used
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     * @param field2 sets the value of field2
+     * @return this {@link Builder}-instance for method-chaining
      */
     public Builder field2(final ExampleRecord field2) {
       this.field2 = field2;
@@ -78,7 +82,9 @@ public record ExampleRecordWithExampleRecordFields(
     /**
      * Sets the value of {@link ExampleRecordWithExampleRecordFields#field3 }.
      *
-     * <p><b>NOTE:</b> Pass-by-reference is used
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     * @param field3 sets the value of field3
+     * @return this {@link Builder}-instance for method-chaining
      */
     public Builder field3(final ExampleRecord field3) {
       this.field3 = field3;
@@ -89,9 +95,10 @@ public record ExampleRecordWithExampleRecordFields(
      * Builds a {@link ExampleRecordWithExampleRecordFields }-instance with the values provided in preceding
      * builder methods.
      *
-     * <p><b>NOTE:</b> Pass-by-reference is used
+     * <p><b>NOTE:</b> Pass-by-reference is used!
      *
      * <p><b>Description:</b> Example of a Record with Record fields
+     * @return a new {@link ExampleRecordWithExampleRecordFields }-instance
      */
     public ExampleRecordWithExampleRecordFields build() {
       return new ExampleRecordWithExampleRecordFields(

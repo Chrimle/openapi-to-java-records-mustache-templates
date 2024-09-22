@@ -12,7 +12,7 @@
  * openapi-to-java-records-mustache-templates. For further information,
  * questions, requesting features or reporting issues, please visit:
  * https://github.com/Chrimle/openapi-to-java-records-mustache-templates.
- * Generated with Version: 1.7.1
+ * Generated with Version: 1.7.2
  *
  */
 
@@ -57,9 +57,9 @@ public record ExampleRecordWithStringFields(
     /**
      * Sets the value of {@link ExampleRecordWithStringFields#field1 }.
      *
-     * <p><b>NOTE:</b> Pass-by-reference is used
-     *
-     * <p><b>Description:</b> a String field
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     * @param field1 a String field
+     * @return this {@link Builder}-instance for method-chaining
      */
     public Builder field1(final String field1) {
       this.field1 = field1;
@@ -69,9 +69,9 @@ public record ExampleRecordWithStringFields(
     /**
      * Sets the value of {@link ExampleRecordWithStringFields#field2 }.
      *
-     * <p><b>NOTE:</b> Pass-by-reference is used
-     *
-     * <p><b>Description:</b> another String field
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     * @param field2 another String field
+     * @return this {@link Builder}-instance for method-chaining
      */
     public Builder field2(final String field2) {
       this.field2 = field2;
@@ -81,9 +81,9 @@ public record ExampleRecordWithStringFields(
     /**
      * Sets the value of {@link ExampleRecordWithStringFields#field3 }.
      *
-     * <p><b>NOTE:</b> Pass-by-reference is used
-     *
-     * <p><b>Description:</b> yet another String field
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     * @param field3 yet another String field
+     * @return this {@link Builder}-instance for method-chaining
      */
     public Builder field3(final String field3) {
       this.field3 = field3;
@@ -94,9 +94,10 @@ public record ExampleRecordWithStringFields(
      * Builds a {@link ExampleRecordWithStringFields }-instance with the values provided in preceding
      * builder methods.
      *
-     * <p><b>NOTE:</b> Pass-by-reference is used
+     * <p><b>NOTE:</b> Pass-by-reference is used!
      *
      * <p><b>Description:</b> Example of a Record with String fields
+     * @return a new {@link ExampleRecordWithStringFields }-instance
      */
     public ExampleRecordWithStringFields build() {
       return new ExampleRecordWithStringFields(

@@ -12,7 +12,7 @@
  * openapi-to-java-records-mustache-templates. For further information,
  * questions, requesting features or reporting issues, please visit:
  * https://github.com/Chrimle/openapi-to-java-records-mustache-templates.
- * Generated with Version: 1.7.1
+ * Generated with Version: 1.7.2
  *
  */
 
@@ -47,9 +47,9 @@ public record ExampleRecord(
     /**
      * Sets the value of {@link ExampleRecord#field1 }.
      *
-     * <p><b>NOTE:</b> Pass-by-reference is used
-     *
-     * <p><b>Description:</b> a boolean field
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     * @param field1 a boolean field
+     * @return this {@link Builder}-instance for method-chaining
      */
     public Builder field1(final Boolean field1) {
       this.field1 = field1;
@@ -60,9 +60,10 @@ public record ExampleRecord(
      * Builds a {@link ExampleRecord }-instance with the values provided in preceding
      * builder methods.
      *
-     * <p><b>NOTE:</b> Pass-by-reference is used
+     * <p><b>NOTE:</b> Pass-by-reference is used!
      *
      * <p><b>Description:</b> Example of a Record
+     * @return a new {@link ExampleRecord }-instance
      */
     public ExampleRecord build() {
       return new ExampleRecord(
