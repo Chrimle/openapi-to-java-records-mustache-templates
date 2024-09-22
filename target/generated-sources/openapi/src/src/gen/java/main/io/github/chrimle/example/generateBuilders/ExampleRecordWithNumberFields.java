@@ -12,7 +12,7 @@
  * openapi-to-java-records-mustache-templates. For further information,
  * questions, requesting features or reporting issues, please visit:
  * https://github.com/Chrimle/openapi-to-java-records-mustache-templates.
- * Generated with Version: 1.7.0
+ * Generated with Version: 1.7.1
  *
  */
 
@@ -35,77 +35,81 @@ import java.util.Arrays;
  * @param field3 yet another Number field
  */
 public record ExampleRecordWithNumberFields(
-        @javax.annotation.Nonnull BigDecimal field1,
-        @javax.annotation.Nonnull BigDecimal field2,
-        @javax.annotation.Nonnull BigDecimal field3) {
+    @javax.annotation.Nonnull BigDecimal field1,
+    @javax.annotation.Nonnull BigDecimal field2,
+    @javax.annotation.Nonnull BigDecimal field3) {
 
-    public ExampleRecordWithNumberFields(
-            @javax.annotation.Nonnull final BigDecimal field1,
-            @javax.annotation.Nonnull final BigDecimal field2,
-            @javax.annotation.Nonnull final BigDecimal field3) { 
-        this.field1 = field1;
-        this.field2 = field2;
-        this.field3 = field3;
+  public ExampleRecordWithNumberFields(
+      @javax.annotation.Nonnull final BigDecimal field1,
+      @javax.annotation.Nonnull final BigDecimal field2,
+      @javax.annotation.Nonnull final BigDecimal field3) { 
+    this.field1 = field1;
+    this.field2 = field2;
+    this.field3 = field3;
+  }
+
+  /** Builder class for {@link ExampleRecordWithNumberFields } */
+  public static class Builder {
+
+    private BigDecimal field1;
+    private BigDecimal field2;
+    private BigDecimal field3;
+
+    /**
+     * Sets the value of {@link ExampleRecordWithNumberFields#field1 }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used
+     *
+     * <p><b>Description:</b> a Number field
+     */
+    public Builder field1(final BigDecimal field1) {
+      this.field1 = field1;
+      return this;
     }
 
     /**
-     * Builder class for {@link ExampleRecordWithNumberFields }
+     * Sets the value of {@link ExampleRecordWithNumberFields#field2 }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used
+     *
+     * <p><b>Description:</b> another Number field
      */
-    public static class Builder {
-
-        private BigDecimal field1;
-        private BigDecimal field2;
-        private BigDecimal field3;
-
-        /**
-         * Sets the value of {@link ExampleRecordWithNumberFields#field1 }.
-         * <p><b>NOTE:</b> Pass-by-reference is used
-         * <p><b>Description:</b> a Number field
-         */
-        public Builder field1(final BigDecimal field1) {
-            this.field1 = field1;
-            return this;
-        }
-
-        /**
-         * Sets the value of {@link ExampleRecordWithNumberFields#field2 }.
-         * <p><b>NOTE:</b> Pass-by-reference is used
-         * <p><b>Description:</b> another Number field
-         */
-        public Builder field2(final BigDecimal field2) {
-            this.field2 = field2;
-            return this;
-        }
-
-        /**
-         * Sets the value of {@link ExampleRecordWithNumberFields#field3 }.
-         * <p><b>NOTE:</b> Pass-by-reference is used
-         * <p><b>Description:</b> yet another Number field
-         */
-        public Builder field3(final BigDecimal field3) {
-            this.field3 = field3;
-            return this;
-        }
-
-        /**
-         * Builds a {@link ExampleRecordWithNumberFields }-instance with the values provided in
-         * preceding builder methods.
-         * <p><b>NOTE:</b> Pass-by-reference is used
-         * <p><b>Description:</b> Example of a Record with Number fields
-         */
-        public ExampleRecordWithNumberFields build() {
-            return new ExampleRecordWithNumberFields(
-                field1,
-                field2,
-                field3
-            );
-        }
+    public Builder field2(final BigDecimal field2) {
+      this.field2 = field2;
+      return this;
     }
 
     /**
-     * Creates a {@link Builder}-instance.
+     * Sets the value of {@link ExampleRecordWithNumberFields#field3 }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used
+     *
+     * <p><b>Description:</b> yet another Number field
      */
-    public static ExampleRecordWithNumberFields.Builder builder() {
-        return new ExampleRecordWithNumberFields.Builder();
+    public Builder field3(final BigDecimal field3) {
+      this.field3 = field3;
+      return this;
     }
+
+    /**
+     * Builds a {@link ExampleRecordWithNumberFields }-instance with the values provided in preceding
+     * builder methods.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used
+     *
+     * <p><b>Description:</b> Example of a Record with Number fields
+     */
+    public ExampleRecordWithNumberFields build() {
+      return new ExampleRecordWithNumberFields(
+        field1,
+        field2,
+        field3
+      );
+    }
+  }
+
+  /** Creates a {@link Builder}-instance. */
+  public static ExampleRecordWithNumberFields.Builder builder() {
+    return new ExampleRecordWithNumberFields.Builder();
+  }
 }

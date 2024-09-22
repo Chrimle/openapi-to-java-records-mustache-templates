@@ -12,7 +12,7 @@
  * openapi-to-java-records-mustache-templates. For further information,
  * questions, requesting features or reporting issues, please visit:
  * https://github.com/Chrimle/openapi-to-java-records-mustache-templates.
- * Generated with Version: 1.7.0
+ * Generated with Version: 1.7.1
  *
  */
 
@@ -36,19 +36,19 @@ import java.io.Serializable;
  * @param field3 ExampleRecord
  */
 public record ExampleRecordWithExampleRecordFields(
-        @javax.annotation.Nonnull ExampleRecord field1,
-        @javax.annotation.Nonnull ExampleRecord field2,
-        @javax.annotation.Nonnull ExampleRecord field3
-) implements Serializable {
+    @javax.annotation.Nonnull ExampleRecord field1,
+    @javax.annotation.Nonnull ExampleRecord field2,
+    @javax.annotation.Nonnull ExampleRecord field3
+  ) implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+  private static final long serialVersionUID = 1L;
 
-    public ExampleRecordWithExampleRecordFields(
-            @javax.annotation.Nonnull final ExampleRecord field1,
-            @javax.annotation.Nonnull final ExampleRecord field2,
-            @javax.annotation.Nonnull final ExampleRecord field3) { 
-        this.field1 = field1;
-        this.field2 = field2;
-        this.field3 = field3;
-    }
+  public ExampleRecordWithExampleRecordFields(
+      @javax.annotation.Nonnull final ExampleRecord field1,
+      @javax.annotation.Nonnull final ExampleRecord field2,
+      @javax.annotation.Nonnull final ExampleRecord field3) { 
+    this.field1 = field1;
+    this.field2 = field2;
+    this.field3 = field3;
+  }
 }

@@ -56,6 +56,7 @@ import ...;
 
 /**
  * This is an example
+ *
  * @deprecated
  * @param text Example text property
  * @param nullableText Example nullable text property with default value
@@ -64,21 +65,21 @@ import ...;
  */
 @Deprecated
 public record Example(
-        @javax.annotation.Nonnull String text,
-        @javax.annotation.Nullable String nullableText,
-        @javax.annotation.Nonnull List<Integer> collection,
-        @javax.annotation.Nonnull Composite composite) {
+    @javax.annotation.Nonnull String text,
+    @javax.annotation.Nullable String nullableText,
+    @javax.annotation.Nonnull List<Integer> collection,
+    @javax.annotation.Nonnull Composite composite) {
 
-    public Example(
-            @javax.annotation.Nonnull final String text,
-            @javax.annotation.Nullable final String nullableText,
-            @javax.annotation.Nullable final List<Integer> collection,
-            @javax.annotation.Nonnull final Composite composite) {
-        this.text = text;
-        this.nullableText = Objects.requireNonNullElse(nullableText, "someDefaultValue");
-        this.collection = Objects.requireNonNullElse(collection, new ArrayList<>());
-        this.composite = composite;
-    }
+  public Example(
+      @javax.annotation.Nonnull final String text,
+      @javax.annotation.Nullable final String nullableText,
+      @javax.annotation.Nullable final List<Integer> collection,
+      @javax.annotation.Nonnull final Composite composite) {
+    this.text = text;
+    this.nullableText = Objects.requireNonNullElse(nullableText, "someDefaultValue");
+    this.collection = Objects.requireNonNullElse(collection, new ArrayList<>());
+    this.composite = composite;
+  }
 }
 ```
 

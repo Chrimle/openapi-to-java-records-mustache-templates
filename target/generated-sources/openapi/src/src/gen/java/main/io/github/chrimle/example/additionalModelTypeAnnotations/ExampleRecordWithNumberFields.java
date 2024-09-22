@@ -12,7 +12,7 @@
  * openapi-to-java-records-mustache-templates. For further information,
  * questions, requesting features or reporting issues, please visit:
  * https://github.com/Chrimle/openapi-to-java-records-mustache-templates.
- * Generated with Version: 1.7.0
+ * Generated with Version: 1.7.1
  *
  */
 
@@ -38,16 +38,16 @@ import java.util.Arrays;
 @com.chrimle.example.annotations.TestAnnotationTwo
 @com.chrimle.example.annotations.TestAnnotationThree
 public record ExampleRecordWithNumberFields(
-        @javax.annotation.Nonnull BigDecimal field1,
-        @javax.annotation.Nonnull BigDecimal field2,
-        @javax.annotation.Nonnull BigDecimal field3) {
+    @javax.annotation.Nonnull BigDecimal field1,
+    @javax.annotation.Nonnull BigDecimal field2,
+    @javax.annotation.Nonnull BigDecimal field3) {
 
-    public ExampleRecordWithNumberFields(
-            @javax.annotation.Nonnull final BigDecimal field1,
-            @javax.annotation.Nonnull final BigDecimal field2,
-            @javax.annotation.Nonnull final BigDecimal field3) { 
-        this.field1 = field1;
-        this.field2 = field2;
-        this.field3 = field3;
-    }
+  public ExampleRecordWithNumberFields(
+      @javax.annotation.Nonnull final BigDecimal field1,
+      @javax.annotation.Nonnull final BigDecimal field2,
+      @javax.annotation.Nonnull final BigDecimal field3) { 
+    this.field1 = field1;
+    this.field2 = field2;
+    this.field3 = field3;
+  }
 }

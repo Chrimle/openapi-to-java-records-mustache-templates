@@ -12,7 +12,7 @@
  * openapi-to-java-records-mustache-templates. For further information,
  * questions, requesting features or reporting issues, please visit:
  * https://github.com/Chrimle/openapi-to-java-records-mustache-templates.
- * Generated with Version: 1.7.0
+ * Generated with Version: 1.7.1
  *
  */
 
@@ -36,16 +36,16 @@ import java.util.List;
  * @param field3 yet another Array field
  */
 public record ExampleRecordWithArrayFields(
-        @javax.annotation.Nonnull List<Boolean> field1,
-        @javax.annotation.Nonnull List<Boolean> field2,
-        @javax.annotation.Nonnull List<Boolean> field3) {
+    @javax.annotation.Nonnull List<Boolean> field1,
+    @javax.annotation.Nonnull List<Boolean> field2,
+    @javax.annotation.Nonnull List<Boolean> field3) {
 
-    public ExampleRecordWithArrayFields(
-            @javax.annotation.Nullable final List<Boolean> field1,
-            @javax.annotation.Nullable final List<Boolean> field2,
-            @javax.annotation.Nullable final List<Boolean> field3) { 
-        this.field1 = Objects.requireNonNullElse(field1, new ArrayList<>());
-        this.field2 = Objects.requireNonNullElse(field2, new ArrayList<>());
-        this.field3 = Objects.requireNonNullElse(field3, new ArrayList<>());
-    }
+  public ExampleRecordWithArrayFields(
+      @javax.annotation.Nullable final List<Boolean> field1,
+      @javax.annotation.Nullable final List<Boolean> field2,
+      @javax.annotation.Nullable final List<Boolean> field3) { 
+    this.field1 = Objects.requireNonNullElse(field1, new ArrayList<>());
+    this.field2 = Objects.requireNonNullElse(field2, new ArrayList<>());
+    this.field3 = Objects.requireNonNullElse(field3, new ArrayList<>());
+  }
 }

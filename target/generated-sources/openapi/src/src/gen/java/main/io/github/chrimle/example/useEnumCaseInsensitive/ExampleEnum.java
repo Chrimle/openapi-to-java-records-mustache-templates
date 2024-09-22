@@ -12,7 +12,7 @@
  * openapi-to-java-records-mustache-templates. For further information,
  * questions, requesting features or reporting issues, please visit:
  * https://github.com/Chrimle/openapi-to-java-records-mustache-templates.
- * Generated with Version: 1.7.0
+ * Generated with Version: 1.7.1
  *
  */
 
@@ -25,22 +25,23 @@ import com.google.gson.annotations.SerializedName;
  * Example of an Enum
  */
 public enum ExampleEnum {
-    ENUM1,
-    ENUM2,
-    ENUM3;
+  ENUM1,
+  ENUM2,
+  ENUM3;
 
-    /**
-     * Parses the given string to a matching Enum name, Case-insensitive.
-     * @param name of the Enum
-     * @return a {@link ExampleEnum } with the matching name
-     * @throws IllegalArgumentException if no Enum name matches the string
-     */
-    public static ExampleEnum fromValue(final String name) {
-        for (final ExampleEnum b : ExampleEnum.values()) {
-            if (b.name().equalsIgnoreCase(name)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + name + "'");
+  /**
+   * Parses the given string to a matching Enum name, Case-insensitive.
+   *
+   * @param name of the Enum
+   * @return a {@link ExampleEnum } with the matching name
+   * @throws IllegalArgumentException if no Enum name matches the string
+   */
+  public static ExampleEnum fromValue(final String name) {
+    for (final ExampleEnum b : ExampleEnum.values()) {
+      if (b.name().equalsIgnoreCase(name)) {
+        return b;
+      }
     }
+    throw new IllegalArgumentException("Unexpected value '" + name + "'");
+  }
 }

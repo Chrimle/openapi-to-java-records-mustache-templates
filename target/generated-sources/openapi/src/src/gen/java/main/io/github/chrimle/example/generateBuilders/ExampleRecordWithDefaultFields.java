@@ -12,7 +12,7 @@
  * openapi-to-java-records-mustache-templates. For further information,
  * questions, requesting features or reporting issues, please visit:
  * https://github.com/Chrimle/openapi-to-java-records-mustache-templates.
- * Generated with Version: 1.7.0
+ * Generated with Version: 1.7.1
  *
  */
 
@@ -34,62 +34,64 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * @param field2 a String field with a default value
  */
 public record ExampleRecordWithDefaultFields(
-        @javax.annotation.Nullable String field1,
-        @javax.annotation.Nonnull String field2) {
+    @javax.annotation.Nullable String field1,
+    @javax.annotation.Nonnull String field2) {
 
-    public ExampleRecordWithDefaultFields(
-            @javax.annotation.Nullable final String field1,
-            @javax.annotation.Nullable final String field2) { 
-        this.field1 = field1;
-        this.field2 = Objects.requireNonNullElse(field2, "someDefaultValue");
+  public ExampleRecordWithDefaultFields(
+      @javax.annotation.Nullable final String field1,
+      @javax.annotation.Nullable final String field2) { 
+    this.field1 = field1;
+    this.field2 = Objects.requireNonNullElse(field2, "someDefaultValue");
+  }
+
+  /** Builder class for {@link ExampleRecordWithDefaultFields } */
+  public static class Builder {
+
+    private String field1;
+    private String field2;
+
+    /**
+     * Sets the value of {@link ExampleRecordWithDefaultFields#field1 }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used
+     *
+     * <p><b>Description:</b> a nullable String field
+     */
+    public Builder field1(final String field1) {
+      this.field1 = field1;
+      return this;
     }
 
     /**
-     * Builder class for {@link ExampleRecordWithDefaultFields }
+     * Sets the value of {@link ExampleRecordWithDefaultFields#field2 }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used
+     *
+     * <p><b>Description:</b> a String field with a default value
      */
-    public static class Builder {
-
-        private String field1;
-        private String field2;
-
-        /**
-         * Sets the value of {@link ExampleRecordWithDefaultFields#field1 }.
-         * <p><b>NOTE:</b> Pass-by-reference is used
-         * <p><b>Description:</b> a nullable String field
-         */
-        public Builder field1(final String field1) {
-            this.field1 = field1;
-            return this;
-        }
-
-        /**
-         * Sets the value of {@link ExampleRecordWithDefaultFields#field2 }.
-         * <p><b>NOTE:</b> Pass-by-reference is used
-         * <p><b>Description:</b> a String field with a default value
-         */
-        public Builder field2(final String field2) {
-            this.field2 = field2;
-            return this;
-        }
-
-        /**
-         * Builds a {@link ExampleRecordWithDefaultFields }-instance with the values provided in
-         * preceding builder methods.
-         * <p><b>NOTE:</b> Pass-by-reference is used
-         * <p><b>Description:</b> Example of a Record with default fields
-         */
-        public ExampleRecordWithDefaultFields build() {
-            return new ExampleRecordWithDefaultFields(
-                field1,
-                field2
-            );
-        }
+    public Builder field2(final String field2) {
+      this.field2 = field2;
+      return this;
     }
 
     /**
-     * Creates a {@link Builder}-instance.
+     * Builds a {@link ExampleRecordWithDefaultFields }-instance with the values provided in preceding
+     * builder methods.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used
+     *
+     * <p><b>Description:</b> Example of a Record with default fields
      */
-    public static ExampleRecordWithDefaultFields.Builder builder() {
-        return new ExampleRecordWithDefaultFields.Builder();
+    public ExampleRecordWithDefaultFields build() {
+      return new ExampleRecordWithDefaultFields(
+        field1,
+        field2
+      );
     }
+  }
+
+  /** Creates a {@link Builder}-instance. */
+  public static ExampleRecordWithDefaultFields.Builder builder() {
+    return new ExampleRecordWithDefaultFields.Builder();
+  }
 }

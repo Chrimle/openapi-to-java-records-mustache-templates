@@ -12,7 +12,7 @@
  * openapi-to-java-records-mustache-templates. For further information,
  * questions, requesting features or reporting issues, please visit:
  * https://github.com/Chrimle/openapi-to-java-records-mustache-templates.
- * Generated with Version: 1.7.0
+ * Generated with Version: 1.7.1
  *
  */
 
@@ -34,16 +34,16 @@ import java.util.Arrays;
  * @param field3 yet another Integer field
  */
 public record ExampleRecordWithIntegerFields(
-        @javax.annotation.Nonnull Integer field1,
-        @javax.annotation.Nonnull Integer field2,
-        @javax.annotation.Nonnull Integer field3) {
+    @javax.annotation.Nonnull Integer field1,
+    @javax.annotation.Nonnull Integer field2,
+    @javax.annotation.Nonnull Integer field3) {
 
-    public ExampleRecordWithIntegerFields(
-            @javax.annotation.Nonnull final Integer field1,
-            @javax.annotation.Nonnull final Integer field2,
-            @javax.annotation.Nonnull final Integer field3) { 
-        this.field1 = field1;
-        this.field2 = field2;
-        this.field3 = field3;
-    }
+  public ExampleRecordWithIntegerFields(
+      @javax.annotation.Nonnull final Integer field1,
+      @javax.annotation.Nonnull final Integer field2,
+      @javax.annotation.Nonnull final Integer field3) { 
+    this.field1 = field1;
+    this.field2 = field2;
+    this.field3 = field3;
+  }
 }

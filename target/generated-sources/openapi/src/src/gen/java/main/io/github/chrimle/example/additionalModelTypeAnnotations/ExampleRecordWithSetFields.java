@@ -12,7 +12,7 @@
  * openapi-to-java-records-mustache-templates. For further information,
  * questions, requesting features or reporting issues, please visit:
  * https://github.com/Chrimle/openapi-to-java-records-mustache-templates.
- * Generated with Version: 1.7.0
+ * Generated with Version: 1.7.1
  *
  */
 
@@ -39,16 +39,16 @@ import java.util.Set;
 @com.chrimle.example.annotations.TestAnnotationTwo
 @com.chrimle.example.annotations.TestAnnotationThree
 public record ExampleRecordWithSetFields(
-        @javax.annotation.Nonnull Set<Boolean> field1,
-        @javax.annotation.Nonnull Set<Boolean> field2,
-        @javax.annotation.Nonnull Set<Boolean> field3) {
+    @javax.annotation.Nonnull Set<Boolean> field1,
+    @javax.annotation.Nonnull Set<Boolean> field2,
+    @javax.annotation.Nonnull Set<Boolean> field3) {
 
-    public ExampleRecordWithSetFields(
-            @javax.annotation.Nullable final Set<Boolean> field1,
-            @javax.annotation.Nullable final Set<Boolean> field2,
-            @javax.annotation.Nullable final Set<Boolean> field3) { 
-        this.field1 = Objects.requireNonNullElse(field1, new LinkedHashSet<>());
-        this.field2 = Objects.requireNonNullElse(field2, new LinkedHashSet<>());
-        this.field3 = Objects.requireNonNullElse(field3, new LinkedHashSet<>());
-    }
+  public ExampleRecordWithSetFields(
+      @javax.annotation.Nullable final Set<Boolean> field1,
+      @javax.annotation.Nullable final Set<Boolean> field2,
+      @javax.annotation.Nullable final Set<Boolean> field3) { 
+    this.field1 = Objects.requireNonNullElse(field1, new LinkedHashSet<>());
+    this.field2 = Objects.requireNonNullElse(field2, new LinkedHashSet<>());
+    this.field3 = Objects.requireNonNullElse(field3, new LinkedHashSet<>());
+  }
 }

@@ -5,7 +5,7 @@
 
     <groupId>io.github.chrimle</groupId>
     <artifactId>openapi-to-java-records-mustache-templates</artifactId>
-    <version>1.7.0</version>
+    <version>1.7.1</version>
 
     <!-- Project Information -->
     <name>OpenAPI to Java records :: Mustache Templates</name>
@@ -60,6 +60,12 @@
         <jacoco-maven-plugin.minimumPackageLineCoveredRatio>0.20</jacoco-maven-plugin.minimumPackageLineCoveredRatio>
         <jacoco-maven-plugin.expectedBundleClassMissedCount>50</jacoco-maven-plugin.expectedBundleClassMissedCount>
         <!-- /Jacoco -->
+
+        <!-- Spotless -->
+        <spotless.check.skip>true</spotless.check.skip> <!-- Unused imports causes build to fail -->
+        <spotless-maven-plugin.version>2.9.0</spotless-maven-plugin.version>
+        <googleJavaFormat.version>1.23.0</googleJavaFormat.version>
+        <!-- /Spotless -->
 
         <!-- Default `configuration`-option values -->
         <modelPackage.default>${project.groupId}.example</modelPackage.default>
@@ -357,6 +363,30 @@
                         <include>**/*.mustache</include>
                     </includes>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.diffplug.spotless</groupId>
+                <artifactId>spotless-maven-plugin</artifactId>
+                <version>${spotless-maven-plugin.version}</version>
+                <configuration>
+                    <java>
+                        <includes>
+                            <include>target/generated-sources/**/*.java</include>
+                        </includes>
+                        <lineEndings>UNIX</lineEndings>
+                        <googleJavaFormat>
+                            <version>${googleJavaFormat.version}</version>
+                            <style>GOOGLE</style>
+                        </googleJavaFormat>
+                    </java>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
