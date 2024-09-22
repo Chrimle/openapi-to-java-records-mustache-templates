@@ -28,6 +28,6 @@ public enum GeneratedClass {
   }
 
   public String getCanonicalClassName(final String moduleName) {
-    return "com.chrimle.example." + moduleName + "." + simpleClassName;
+    return "io.github.chrimle.example." + moduleName + "." + simpleClassName;
   }
 }

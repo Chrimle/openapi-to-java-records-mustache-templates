@@ -151,7 +151,7 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <output>${output.default}/${execution.standard}</output>
+                            <output>${output.default}</output>
                             <modelPackage>${modelPackage.default}.${execution.standard}</modelPackage>
                             <generateModels>${generateModels.default}</generateModels>
                             <generateApis>${generateApis.default}</generateApis>
@@ -175,7 +175,7 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <output>${output.default}/${execution.useEnumCaseInsensitive}</output>
+                            <output>${output.default}</output>
                             <modelPackage>${modelPackage.default}.${execution.useEnumCaseInsensitive}</modelPackage>
                             <generateModels>${generateModels.default}</generateModels>
                             <generateApis>${generateApis.default}</generateApis>
@@ -199,7 +199,7 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <output>${output.default}/${execution.additionalModelTypeAnnotations}</output>
+                            <output>${output.default}</output>
                             <modelPackage>${modelPackage.default}.${execution.additionalModelTypeAnnotations}</modelPackage>
                             <generateModels>${generateModels.default}</generateModels>
                             <generateApis>${generateApis.default}</generateApis>
@@ -228,7 +228,7 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <output>${output.default}/${execution.additionalEnumTypeAnnotations}</output>
+                            <output>${output.default}</output>
                             <modelPackage>${modelPackage.default}.${execution.additionalEnumTypeAnnotations}</modelPackage>
                             <generateModels>${generateModels.default}</generateModels>
                             <generateApis>${generateApis.default}</generateApis>
@@ -253,7 +253,7 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <output>${output.default}/${execution.serializableModel}</output>
+                            <output>${output.default}</output>
                             <modelPackage>${modelPackage.default}.${execution.serializableModel}</modelPackage>
                             <generateModels>${generateModels.default}</generateModels>
                             <generateApis>${generateApis.default}</generateApis>
@@ -277,7 +277,7 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <output>${output.default}/${execution.generateBuilders}</output>
+                            <output>${output.default}</output>
                             <modelPackage>${modelPackage.default}.${execution.generateBuilders}</modelPackage>
                             <generateModels>${generateModels.default}</generateModels>
                             <generateApis>${generateApis.default}</generateApis>
