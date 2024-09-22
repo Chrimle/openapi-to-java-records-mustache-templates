@@ -14,90 +14,26 @@ public class TestSuite {
   @ParameterizedTest(name = "Testing: {0}")
   @MethodSource("provideTestArguments")
   @DisplayName("Testing Plugin Execution...")
-  public void testAll(
-      PluginExecution pluginExecution,
-      boolean hasAdditionalModelTypeAnnotations,
-      boolean hasAdditionalEnumTypeAnnotations,
-      boolean useEnumCaseInsensitive,
-      boolean isModelSerializable,
-      boolean generateBuilders) {
-
+  public void testAll(PluginExecution pluginExecution) {
     for (GeneratedClass generatedClass : GeneratedClass.values()) {
-      assertModel(
-          generatedClass,
-          pluginExecution,
-          hasAdditionalModelTypeAnnotations,
-          hasAdditionalEnumTypeAnnotations,
-          useEnumCaseInsensitive,
-          isModelSerializable,
-          generateBuilders
-      );
+      assertModel(generatedClass, pluginExecution);
     }
   }
 
   public static Stream<Arguments> provideTestArguments() {
     return Stream.of(
-        Arguments.of(
-            PluginExecution.ADDITIONAL_ENUM_TYPE_ANNOTATIONS,
-            false,
-            true,
-            false,
-            false,
-            false
-        ),
-        Arguments.of(
-            PluginExecution.ADDITIONAL_MODEL_TYPE_ANNOTATIONS,
-            true,
-            false,
-            false,
-            false,
-            false
-        ),
-        Arguments.of(
-            PluginExecution.GENERATE_BUILDERS,
-            false,
-            false,
-            false,
-            false,
-            true
-        ),
-        Arguments.of(
-            PluginExecution.SERIALIZABLE_MODEL,
-            false,
-            false,
-            false,
-            true,
-            false
-        ),
-        Arguments.of(
-            PluginExecution.STANDARD,
-            false,
-            false,
-            false,
-            false,
-            false
-        ),
-        Arguments.of(
-            PluginExecution.USE_ENUM_CASE_INSENSITIVE,
-            false,
-            false,
-            true,
-            false,
-            false
-        )
+        Arguments.of(PluginExecution.ADDITIONAL_ENUM_TYPE_ANNOTATIONS),
+        Arguments.of(PluginExecution.ADDITIONAL_MODEL_TYPE_ANNOTATIONS),
+        Arguments.of(PluginExecution.GENERATE_BUILDERS),
+        Arguments.of(PluginExecution.SERIALIZABLE_MODEL),
+        Arguments.of(PluginExecution.STANDARD),
+        Arguments.of(PluginExecution.USE_ENUM_CASE_INSENSITIVE),
+        Arguments.of(PluginExecution.USE_JAKARTA_EE)
     );
   }
 
 
-  private void assertModel(
-      GeneratedClass generatedClass,
-      PluginExecution pluginExecution,
-      boolean hasAdditionalModelTypeAnnotations,
-      boolean hasAdditionalEnumTypeAnnotations,
-      boolean useEnumCaseInsensitive,
-      boolean serializableModel,
-      boolean generateBuilders
-  ) {
+  private void assertModel(GeneratedClass generatedClass, PluginExecution pluginExecution) {
 
     final Class<?> classUnderTest = AssertionUtils.assertClassExists(
         getCanonicalClassName(pluginExecution, generatedClass)
@@ -106,34 +42,32 @@ public class TestSuite {
     switch (generatedClass) {
       case EXAMPLE_ENUM -> GeneratedEnumTestUtils.assertExampleEnum(
           classUnderTest,
-          hasAdditionalEnumTypeAnnotations,
-          useEnumCaseInsensitive
+          pluginExecution.additionalEnumTypeAnnotations,
+          pluginExecution.useEnumCaseInsensitive
       );
       case EXAMPLE_RECORD -> GeneratedRecordTestUtils.assertExampleRecord(
           classUnderTest,
-          hasAdditionalModelTypeAnnotations,
-          serializableModel,
-          generateBuilders
+          pluginExecution.additionalModelTypeAnnotations,
+          pluginExecution.serializableModel,
+          pluginExecution.generateBuilders
       );
-      case DEPRECATED_EXAMPLE_ENUM ->
-          GeneratedEnumTestUtils.assertDeprecatedExampleEnum(
-              classUnderTest,
-              hasAdditionalEnumTypeAnnotations,
-              useEnumCaseInsensitive
-          );
-      case DEPRECATED_EXAMPLE_RECORD ->
-          GeneratedRecordTestUtils.assertDeprecatedExampleRecord(
-              classUnderTest,
-              hasAdditionalModelTypeAnnotations,
-              serializableModel,
-              generateBuilders
-          );
+      case DEPRECATED_EXAMPLE_ENUM -> GeneratedEnumTestUtils.assertDeprecatedExampleEnum(
+          classUnderTest,
+          pluginExecution.additionalEnumTypeAnnotations,
+          pluginExecution.useEnumCaseInsensitive
+      );
+      case DEPRECATED_EXAMPLE_RECORD -> GeneratedRecordTestUtils.assertDeprecatedExampleRecord(
+          classUnderTest,
+          pluginExecution.additionalModelTypeAnnotations,
+          pluginExecution.serializableModel,
+          pluginExecution.generateBuilders
+      );
       case EXAMPLE_RECORD_WITH_BOOLEAN_FIELDS ->
           GeneratedRecordTestUtils.assertExampleRecordWithBooleanFields(
               classUnderTest,
-              hasAdditionalModelTypeAnnotations,
-              serializableModel,
-              generateBuilders
+              pluginExecution.additionalModelTypeAnnotations,
+              pluginExecution.serializableModel,
+              pluginExecution.generateBuilders
           );
       case EXAMPLE_RECORD_WITH_EXAMPLE_ENUM_FIELDS ->
           GeneratedRecordTestUtils.assertExampleRecordWithExampleEnumFields(
@@ -142,9 +76,9 @@ public class TestSuite {
                   getCanonicalClassName(pluginExecution,
                       GeneratedClass.EXAMPLE_ENUM)
               ),
-              hasAdditionalModelTypeAnnotations,
-              serializableModel,
-              generateBuilders
+              pluginExecution.additionalModelTypeAnnotations,
+              pluginExecution.serializableModel,
+              pluginExecution.generateBuilders
           );
       case EXAMPLE_RECORD_WITH_EXAMPLE_RECORD_FIELDS ->
           GeneratedRecordTestUtils.assertExampleRecordWithExampleRecordFields(
@@ -153,59 +87,58 @@ public class TestSuite {
                   getCanonicalClassName(pluginExecution,
                       GeneratedClass.EXAMPLE_RECORD)
               ),
-              hasAdditionalModelTypeAnnotations,
-              serializableModel,
-              generateBuilders
+              pluginExecution.additionalModelTypeAnnotations,
+              pluginExecution.serializableModel,
+              pluginExecution.generateBuilders
           );
       case EXAMPLE_RECORD_WITH_INTEGER_FIELDS ->
           GeneratedRecordTestUtils.assertExampleRecordWithIntegerFields(
               classUnderTest,
-              hasAdditionalModelTypeAnnotations,
-              serializableModel,
-              generateBuilders
+              pluginExecution.additionalModelTypeAnnotations,
+              pluginExecution.serializableModel,
+              pluginExecution.generateBuilders
           );
       case EXAMPLE_RECORD_WITH_NUMBER_FIELDS ->
           GeneratedRecordTestUtils.assertExampleRecordWithNumberFields(
               classUnderTest,
-              hasAdditionalModelTypeAnnotations,
-              serializableModel,
-              generateBuilders
+              pluginExecution.additionalModelTypeAnnotations,
+              pluginExecution.serializableModel,
+              pluginExecution.generateBuilders
           );
       case EXAMPLE_RECORD_WITH_STRING_FIELDS ->
           GeneratedRecordTestUtils.assertExampleRecordWithStringFields(
               classUnderTest,
-              hasAdditionalModelTypeAnnotations,
-              serializableModel,
-              generateBuilders
+              pluginExecution.additionalModelTypeAnnotations,
+              pluginExecution.serializableModel,
+              pluginExecution.generateBuilders
           );
       case EXAMPLE_RECORD_WITH_ARRAY_FIELDS ->
           GeneratedRecordTestUtils.assertExampleRecordWithArrayFields(
               classUnderTest,
-              hasAdditionalModelTypeAnnotations,
-              serializableModel,
-              generateBuilders
+              pluginExecution.additionalModelTypeAnnotations,
+              pluginExecution.serializableModel,
+              pluginExecution.generateBuilders
           );
       case EXAMPLE_RECORD_WITH_SET_FIELDS ->
           GeneratedRecordTestUtils.assertExampleRecordWithSetFields(
               classUnderTest,
-              hasAdditionalModelTypeAnnotations,
-              serializableModel,
-              generateBuilders
+              pluginExecution.additionalModelTypeAnnotations,
+              pluginExecution.serializableModel,
+              pluginExecution.generateBuilders
           );
       case EXAMPLE_RECORD_WITH_DEFAULT_FIELDS ->
           GeneratedRecordTestUtils.assertExampleRecordWithDefaultFields(
               classUnderTest,
-              hasAdditionalModelTypeAnnotations,
-              serializableModel,
-              generateBuilders
+              pluginExecution.additionalModelTypeAnnotations,
+              pluginExecution.serializableModel,
+              pluginExecution.generateBuilders
           );
     }
   }
 
   private String getCanonicalClassName(final PluginExecution pluginExecution,
       final GeneratedClass generatedClass) {
-    return generatedClass.getCanonicalClassName(
-        pluginExecution.getPackageName());
+    return generatedClass.getCanonicalClassName(pluginExecution.packageName);
   }
 
 }

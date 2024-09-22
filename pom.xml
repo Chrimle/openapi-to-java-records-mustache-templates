@@ -58,7 +58,7 @@
         <!-- Jacoco -->
         <jacoco-maven-plugin.version>0.8.12</jacoco-maven-plugin.version>
         <jacoco-maven-plugin.minimumPackageLineCoveredRatio>0.20</jacoco-maven-plugin.minimumPackageLineCoveredRatio>
-        <jacoco-maven-plugin.expectedBundleClassMissedCount>50</jacoco-maven-plugin.expectedBundleClassMissedCount>
+        <jacoco-maven-plugin.expectedBundleClassMissedCount>60</jacoco-maven-plugin.expectedBundleClassMissedCount>
         <!-- /Jacoco -->
 
         <!-- Spotless -->
@@ -308,6 +308,31 @@
                                 <serializableModel>${serializableModel.default}</serializableModel>
                                 <generateBuilders>true</generateBuilders>
                                 <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>generate-${execution.useJakartaEe}</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <output>${output.default}</output>
+                            <modelPackage>${modelPackage.default}.${execution.useJakartaEe}</modelPackage>
+                            <generateModels>${generateModels.default}</generateModels>
+                            <generateApis>${generateApis.default}</generateApis>
+                            <generateSupportingFiles>${generateSupportingFiles.default}</generateSupportingFiles>
+                            <generateModelTests>${generateModelTests.default}</generateModelTests>
+                            <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
+                            <inputSpec>${inputSpec.default}</inputSpec>
+                            <templateDirectory>${templateDirectory.default}</templateDirectory>
+                            <generatorName>${generatorName.default}</generatorName>
+                            <configOptions>
+                                <sourceFolder>${sourceFolder.default}</sourceFolder>
+                                <useEnumCaseInsensitive>${useEnumCaseInsensitive.default}</useEnumCaseInsensitive>
+                                <serializableModel>${serializableModel.default}</serializableModel>
+                                <generateBuilders>${generateBuilders.default}</generateBuilders>
+                                <useJakartaEe>true</useJakartaEe>
                             </configOptions>
                         </configuration>
                     </execution>
