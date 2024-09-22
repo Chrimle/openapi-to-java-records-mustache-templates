@@ -21,5 +21,5 @@
       {{#vars}}@{{javaxPackage}}.annotation.{{#isNullable}}Nullable{{/isNullable}}{{^isNullable}}{{#defaultValue}}Nullable{{/defaultValue}}{{^defaultValue}}Nonnull{{/defaultValue}}{{/isNullable}} final {{{datatypeWithEnum}}} {{name}}{{^-last}},
       {{/-last}}{{/vars}}) { {{#vars}}
     this.{{name}} = {{^defaultValue}}{{name}}{{/defaultValue}}{{#defaultValue}}Objects.requireNonNullElse({{name}}, {{{.}}}){{/defaultValue}};{{/vars}}
-  }{{>generateBuilders}}
+  }{{#generateBuilders}}{{>generateBuilders}}{{/generateBuilders}}
 }
