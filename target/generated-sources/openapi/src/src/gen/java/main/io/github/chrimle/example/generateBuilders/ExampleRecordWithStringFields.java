@@ -34,77 +34,81 @@ import java.util.Arrays;
  * @param field3 yet another String field
  */
 public record ExampleRecordWithStringFields(
-        @javax.annotation.Nonnull String field1,
-        @javax.annotation.Nonnull String field2,
-        @javax.annotation.Nonnull String field3) {
+    @javax.annotation.Nonnull String field1,
+    @javax.annotation.Nonnull String field2,
+    @javax.annotation.Nonnull String field3) {
 
-    public ExampleRecordWithStringFields(
-            @javax.annotation.Nonnull final String field1,
-            @javax.annotation.Nonnull final String field2,
-            @javax.annotation.Nonnull final String field3) { 
-        this.field1 = field1;
-        this.field2 = field2;
-        this.field3 = field3;
+  public ExampleRecordWithStringFields(
+      @javax.annotation.Nonnull final String field1,
+      @javax.annotation.Nonnull final String field2,
+      @javax.annotation.Nonnull final String field3) { 
+    this.field1 = field1;
+    this.field2 = field2;
+    this.field3 = field3;
+  }
+
+  /** Builder class for {@link ExampleRecordWithStringFields } */
+  public static class Builder {
+
+    private String field1;
+    private String field2;
+    private String field3;
+
+    /**
+     * Sets the value of {@link ExampleRecordWithStringFields#field1 }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used
+     *
+     * <p><b>Description:</b> a String field
+     */
+    public Builder field1(final String field1) {
+      this.field1 = field1;
+      return this;
     }
 
     /**
-     * Builder class for {@link ExampleRecordWithStringFields }
+     * Sets the value of {@link ExampleRecordWithStringFields#field2 }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used
+     *
+     * <p><b>Description:</b> another String field
      */
-    public static class Builder {
-
-        private String field1;
-        private String field2;
-        private String field3;
-
-        /**
-         * Sets the value of {@link ExampleRecordWithStringFields#field1 }.
-         * <p><b>NOTE:</b> Pass-by-reference is used
-         * <p><b>Description:</b> a String field
-         */
-        public Builder field1(final String field1) {
-            this.field1 = field1;
-            return this;
-        }
-
-        /**
-         * Sets the value of {@link ExampleRecordWithStringFields#field2 }.
-         * <p><b>NOTE:</b> Pass-by-reference is used
-         * <p><b>Description:</b> another String field
-         */
-        public Builder field2(final String field2) {
-            this.field2 = field2;
-            return this;
-        }
-
-        /**
-         * Sets the value of {@link ExampleRecordWithStringFields#field3 }.
-         * <p><b>NOTE:</b> Pass-by-reference is used
-         * <p><b>Description:</b> yet another String field
-         */
-        public Builder field3(final String field3) {
-            this.field3 = field3;
-            return this;
-        }
-
-        /**
-         * Builds a {@link ExampleRecordWithStringFields }-instance with the values provided in
-         * preceding builder methods.
-         * <p><b>NOTE:</b> Pass-by-reference is used
-         * <p><b>Description:</b> Example of a Record with String fields
-         */
-        public ExampleRecordWithStringFields build() {
-            return new ExampleRecordWithStringFields(
-                field1,
-                field2,
-                field3
-            );
-        }
+    public Builder field2(final String field2) {
+      this.field2 = field2;
+      return this;
     }
 
     /**
-     * Creates a {@link Builder}-instance.
+     * Sets the value of {@link ExampleRecordWithStringFields#field3 }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used
+     *
+     * <p><b>Description:</b> yet another String field
      */
-    public static ExampleRecordWithStringFields.Builder builder() {
-        return new ExampleRecordWithStringFields.Builder();
+    public Builder field3(final String field3) {
+      this.field3 = field3;
+      return this;
     }
+
+    /**
+     * Builds a {@link ExampleRecordWithStringFields }-instance with the values provided in preceding
+     * builder methods.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used
+     *
+     * <p><b>Description:</b> Example of a Record with String fields
+     */
+    public ExampleRecordWithStringFields build() {
+      return new ExampleRecordWithStringFields(
+        field1,
+        field2,
+        field3
+      );
+    }
+  }
+
+  /** Creates a {@link Builder}-instance. */
+  public static ExampleRecordWithStringFields.Builder builder() {
+    return new ExampleRecordWithStringFields.Builder();
+  }
 }

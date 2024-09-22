@@ -36,77 +36,81 @@ import java.util.List;
  * @param field3 yet another Array field
  */
 public record ExampleRecordWithArrayFields(
-        @javax.annotation.Nonnull List<Boolean> field1,
-        @javax.annotation.Nonnull List<Boolean> field2,
-        @javax.annotation.Nonnull List<Boolean> field3) {
+    @javax.annotation.Nonnull List<Boolean> field1,
+    @javax.annotation.Nonnull List<Boolean> field2,
+    @javax.annotation.Nonnull List<Boolean> field3) {
 
-    public ExampleRecordWithArrayFields(
-            @javax.annotation.Nullable final List<Boolean> field1,
-            @javax.annotation.Nullable final List<Boolean> field2,
-            @javax.annotation.Nullable final List<Boolean> field3) { 
-        this.field1 = Objects.requireNonNullElse(field1, new ArrayList<>());
-        this.field2 = Objects.requireNonNullElse(field2, new ArrayList<>());
-        this.field3 = Objects.requireNonNullElse(field3, new ArrayList<>());
+  public ExampleRecordWithArrayFields(
+      @javax.annotation.Nullable final List<Boolean> field1,
+      @javax.annotation.Nullable final List<Boolean> field2,
+      @javax.annotation.Nullable final List<Boolean> field3) { 
+    this.field1 = Objects.requireNonNullElse(field1, new ArrayList<>());
+    this.field2 = Objects.requireNonNullElse(field2, new ArrayList<>());
+    this.field3 = Objects.requireNonNullElse(field3, new ArrayList<>());
+  }
+
+  /** Builder class for {@link ExampleRecordWithArrayFields } */
+  public static class Builder {
+
+    private List<Boolean> field1;
+    private List<Boolean> field2;
+    private List<Boolean> field3;
+
+    /**
+     * Sets the value of {@link ExampleRecordWithArrayFields#field1 }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used
+     *
+     * <p><b>Description:</b> an Array field
+     */
+    public Builder field1(final List<Boolean> field1) {
+      this.field1 = field1;
+      return this;
     }
 
     /**
-     * Builder class for {@link ExampleRecordWithArrayFields }
+     * Sets the value of {@link ExampleRecordWithArrayFields#field2 }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used
+     *
+     * <p><b>Description:</b> another Array field
      */
-    public static class Builder {
-
-        private List<Boolean> field1;
-        private List<Boolean> field2;
-        private List<Boolean> field3;
-
-        /**
-         * Sets the value of {@link ExampleRecordWithArrayFields#field1 }.
-         * <p><b>NOTE:</b> Pass-by-reference is used
-         * <p><b>Description:</b> an Array field
-         */
-        public Builder field1(final List<Boolean> field1) {
-            this.field1 = field1;
-            return this;
-        }
-
-        /**
-         * Sets the value of {@link ExampleRecordWithArrayFields#field2 }.
-         * <p><b>NOTE:</b> Pass-by-reference is used
-         * <p><b>Description:</b> another Array field
-         */
-        public Builder field2(final List<Boolean> field2) {
-            this.field2 = field2;
-            return this;
-        }
-
-        /**
-         * Sets the value of {@link ExampleRecordWithArrayFields#field3 }.
-         * <p><b>NOTE:</b> Pass-by-reference is used
-         * <p><b>Description:</b> yet another Array field
-         */
-        public Builder field3(final List<Boolean> field3) {
-            this.field3 = field3;
-            return this;
-        }
-
-        /**
-         * Builds a {@link ExampleRecordWithArrayFields }-instance with the values provided in
-         * preceding builder methods.
-         * <p><b>NOTE:</b> Pass-by-reference is used
-         * <p><b>Description:</b> Example of a Record with Array fields
-         */
-        public ExampleRecordWithArrayFields build() {
-            return new ExampleRecordWithArrayFields(
-                field1,
-                field2,
-                field3
-            );
-        }
+    public Builder field2(final List<Boolean> field2) {
+      this.field2 = field2;
+      return this;
     }
 
     /**
-     * Creates a {@link Builder}-instance.
+     * Sets the value of {@link ExampleRecordWithArrayFields#field3 }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used
+     *
+     * <p><b>Description:</b> yet another Array field
      */
-    public static ExampleRecordWithArrayFields.Builder builder() {
-        return new ExampleRecordWithArrayFields.Builder();
+    public Builder field3(final List<Boolean> field3) {
+      this.field3 = field3;
+      return this;
     }
+
+    /**
+     * Builds a {@link ExampleRecordWithArrayFields }-instance with the values provided in preceding
+     * builder methods.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used
+     *
+     * <p><b>Description:</b> Example of a Record with Array fields
+     */
+    public ExampleRecordWithArrayFields build() {
+      return new ExampleRecordWithArrayFields(
+        field1,
+        field2,
+        field3
+      );
+    }
+  }
+
+  /** Creates a {@link Builder}-instance. */
+  public static ExampleRecordWithArrayFields.Builder builder() {
+    return new ExampleRecordWithArrayFields.Builder();
+  }
 }

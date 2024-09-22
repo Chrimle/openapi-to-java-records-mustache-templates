@@ -34,77 +34,81 @@ import java.util.Arrays;
  * @param field3 yet another Integer field
  */
 public record ExampleRecordWithIntegerFields(
-        @javax.annotation.Nonnull Integer field1,
-        @javax.annotation.Nonnull Integer field2,
-        @javax.annotation.Nonnull Integer field3) {
+    @javax.annotation.Nonnull Integer field1,
+    @javax.annotation.Nonnull Integer field2,
+    @javax.annotation.Nonnull Integer field3) {
 
-    public ExampleRecordWithIntegerFields(
-            @javax.annotation.Nonnull final Integer field1,
-            @javax.annotation.Nonnull final Integer field2,
-            @javax.annotation.Nonnull final Integer field3) { 
-        this.field1 = field1;
-        this.field2 = field2;
-        this.field3 = field3;
+  public ExampleRecordWithIntegerFields(
+      @javax.annotation.Nonnull final Integer field1,
+      @javax.annotation.Nonnull final Integer field2,
+      @javax.annotation.Nonnull final Integer field3) { 
+    this.field1 = field1;
+    this.field2 = field2;
+    this.field3 = field3;
+  }
+
+  /** Builder class for {@link ExampleRecordWithIntegerFields } */
+  public static class Builder {
+
+    private Integer field1;
+    private Integer field2;
+    private Integer field3;
+
+    /**
+     * Sets the value of {@link ExampleRecordWithIntegerFields#field1 }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used
+     *
+     * <p><b>Description:</b> a Integer field
+     */
+    public Builder field1(final Integer field1) {
+      this.field1 = field1;
+      return this;
     }
 
     /**
-     * Builder class for {@link ExampleRecordWithIntegerFields }
+     * Sets the value of {@link ExampleRecordWithIntegerFields#field2 }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used
+     *
+     * <p><b>Description:</b> another Integer field
      */
-    public static class Builder {
-
-        private Integer field1;
-        private Integer field2;
-        private Integer field3;
-
-        /**
-         * Sets the value of {@link ExampleRecordWithIntegerFields#field1 }.
-         * <p><b>NOTE:</b> Pass-by-reference is used
-         * <p><b>Description:</b> a Integer field
-         */
-        public Builder field1(final Integer field1) {
-            this.field1 = field1;
-            return this;
-        }
-
-        /**
-         * Sets the value of {@link ExampleRecordWithIntegerFields#field2 }.
-         * <p><b>NOTE:</b> Pass-by-reference is used
-         * <p><b>Description:</b> another Integer field
-         */
-        public Builder field2(final Integer field2) {
-            this.field2 = field2;
-            return this;
-        }
-
-        /**
-         * Sets the value of {@link ExampleRecordWithIntegerFields#field3 }.
-         * <p><b>NOTE:</b> Pass-by-reference is used
-         * <p><b>Description:</b> yet another Integer field
-         */
-        public Builder field3(final Integer field3) {
-            this.field3 = field3;
-            return this;
-        }
-
-        /**
-         * Builds a {@link ExampleRecordWithIntegerFields }-instance with the values provided in
-         * preceding builder methods.
-         * <p><b>NOTE:</b> Pass-by-reference is used
-         * <p><b>Description:</b> Example of a Record with Integer fields
-         */
-        public ExampleRecordWithIntegerFields build() {
-            return new ExampleRecordWithIntegerFields(
-                field1,
-                field2,
-                field3
-            );
-        }
+    public Builder field2(final Integer field2) {
+      this.field2 = field2;
+      return this;
     }
 
     /**
-     * Creates a {@link Builder}-instance.
+     * Sets the value of {@link ExampleRecordWithIntegerFields#field3 }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used
+     *
+     * <p><b>Description:</b> yet another Integer field
      */
-    public static ExampleRecordWithIntegerFields.Builder builder() {
-        return new ExampleRecordWithIntegerFields.Builder();
+    public Builder field3(final Integer field3) {
+      this.field3 = field3;
+      return this;
     }
+
+    /**
+     * Builds a {@link ExampleRecordWithIntegerFields }-instance with the values provided in preceding
+     * builder methods.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used
+     *
+     * <p><b>Description:</b> Example of a Record with Integer fields
+     */
+    public ExampleRecordWithIntegerFields build() {
+      return new ExampleRecordWithIntegerFields(
+        field1,
+        field2,
+        field3
+      );
+    }
+  }
+
+  /** Creates a {@link Builder}-instance. */
+  public static ExampleRecordWithIntegerFields.Builder builder() {
+    return new ExampleRecordWithIntegerFields.Builder();
+  }
 }

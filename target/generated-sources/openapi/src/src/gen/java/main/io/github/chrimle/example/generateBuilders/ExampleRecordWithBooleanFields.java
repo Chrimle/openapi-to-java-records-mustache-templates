@@ -34,77 +34,81 @@ import java.util.Arrays;
  * @param field3 yet another Boolean field
  */
 public record ExampleRecordWithBooleanFields(
-        @javax.annotation.Nonnull Boolean field1,
-        @javax.annotation.Nonnull Boolean field2,
-        @javax.annotation.Nonnull Boolean field3) {
+    @javax.annotation.Nonnull Boolean field1,
+    @javax.annotation.Nonnull Boolean field2,
+    @javax.annotation.Nonnull Boolean field3) {
 
-    public ExampleRecordWithBooleanFields(
-            @javax.annotation.Nonnull final Boolean field1,
-            @javax.annotation.Nonnull final Boolean field2,
-            @javax.annotation.Nonnull final Boolean field3) { 
-        this.field1 = field1;
-        this.field2 = field2;
-        this.field3 = field3;
+  public ExampleRecordWithBooleanFields(
+      @javax.annotation.Nonnull final Boolean field1,
+      @javax.annotation.Nonnull final Boolean field2,
+      @javax.annotation.Nonnull final Boolean field3) { 
+    this.field1 = field1;
+    this.field2 = field2;
+    this.field3 = field3;
+  }
+
+  /** Builder class for {@link ExampleRecordWithBooleanFields } */
+  public static class Builder {
+
+    private Boolean field1;
+    private Boolean field2;
+    private Boolean field3;
+
+    /**
+     * Sets the value of {@link ExampleRecordWithBooleanFields#field1 }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used
+     *
+     * <p><b>Description:</b> a Boolean field
+     */
+    public Builder field1(final Boolean field1) {
+      this.field1 = field1;
+      return this;
     }
 
     /**
-     * Builder class for {@link ExampleRecordWithBooleanFields }
+     * Sets the value of {@link ExampleRecordWithBooleanFields#field2 }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used
+     *
+     * <p><b>Description:</b> another Boolean field
      */
-    public static class Builder {
-
-        private Boolean field1;
-        private Boolean field2;
-        private Boolean field3;
-
-        /**
-         * Sets the value of {@link ExampleRecordWithBooleanFields#field1 }.
-         * <p><b>NOTE:</b> Pass-by-reference is used
-         * <p><b>Description:</b> a Boolean field
-         */
-        public Builder field1(final Boolean field1) {
-            this.field1 = field1;
-            return this;
-        }
-
-        /**
-         * Sets the value of {@link ExampleRecordWithBooleanFields#field2 }.
-         * <p><b>NOTE:</b> Pass-by-reference is used
-         * <p><b>Description:</b> another Boolean field
-         */
-        public Builder field2(final Boolean field2) {
-            this.field2 = field2;
-            return this;
-        }
-
-        /**
-         * Sets the value of {@link ExampleRecordWithBooleanFields#field3 }.
-         * <p><b>NOTE:</b> Pass-by-reference is used
-         * <p><b>Description:</b> yet another Boolean field
-         */
-        public Builder field3(final Boolean field3) {
-            this.field3 = field3;
-            return this;
-        }
-
-        /**
-         * Builds a {@link ExampleRecordWithBooleanFields }-instance with the values provided in
-         * preceding builder methods.
-         * <p><b>NOTE:</b> Pass-by-reference is used
-         * <p><b>Description:</b> Example of a Record with Boolean fields
-         */
-        public ExampleRecordWithBooleanFields build() {
-            return new ExampleRecordWithBooleanFields(
-                field1,
-                field2,
-                field3
-            );
-        }
+    public Builder field2(final Boolean field2) {
+      this.field2 = field2;
+      return this;
     }
 
     /**
-     * Creates a {@link Builder}-instance.
+     * Sets the value of {@link ExampleRecordWithBooleanFields#field3 }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used
+     *
+     * <p><b>Description:</b> yet another Boolean field
      */
-    public static ExampleRecordWithBooleanFields.Builder builder() {
-        return new ExampleRecordWithBooleanFields.Builder();
+    public Builder field3(final Boolean field3) {
+      this.field3 = field3;
+      return this;
     }
+
+    /**
+     * Builds a {@link ExampleRecordWithBooleanFields }-instance with the values provided in preceding
+     * builder methods.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used
+     *
+     * <p><b>Description:</b> Example of a Record with Boolean fields
+     */
+    public ExampleRecordWithBooleanFields build() {
+      return new ExampleRecordWithBooleanFields(
+        field1,
+        field2,
+        field3
+      );
+    }
+  }
+
+  /** Creates a {@link Builder}-instance. */
+  public static ExampleRecordWithBooleanFields.Builder builder() {
+    return new ExampleRecordWithBooleanFields.Builder();
+  }
 }

@@ -36,77 +36,81 @@ import java.util.Set;
  * @param field3 yet another Set field
  */
 public record ExampleRecordWithSetFields(
-        @javax.annotation.Nonnull Set<Boolean> field1,
-        @javax.annotation.Nonnull Set<Boolean> field2,
-        @javax.annotation.Nonnull Set<Boolean> field3) {
+    @javax.annotation.Nonnull Set<Boolean> field1,
+    @javax.annotation.Nonnull Set<Boolean> field2,
+    @javax.annotation.Nonnull Set<Boolean> field3) {
 
-    public ExampleRecordWithSetFields(
-            @javax.annotation.Nullable final Set<Boolean> field1,
-            @javax.annotation.Nullable final Set<Boolean> field2,
-            @javax.annotation.Nullable final Set<Boolean> field3) { 
-        this.field1 = Objects.requireNonNullElse(field1, new LinkedHashSet<>());
-        this.field2 = Objects.requireNonNullElse(field2, new LinkedHashSet<>());
-        this.field3 = Objects.requireNonNullElse(field3, new LinkedHashSet<>());
+  public ExampleRecordWithSetFields(
+      @javax.annotation.Nullable final Set<Boolean> field1,
+      @javax.annotation.Nullable final Set<Boolean> field2,
+      @javax.annotation.Nullable final Set<Boolean> field3) { 
+    this.field1 = Objects.requireNonNullElse(field1, new LinkedHashSet<>());
+    this.field2 = Objects.requireNonNullElse(field2, new LinkedHashSet<>());
+    this.field3 = Objects.requireNonNullElse(field3, new LinkedHashSet<>());
+  }
+
+  /** Builder class for {@link ExampleRecordWithSetFields } */
+  public static class Builder {
+
+    private Set<Boolean> field1;
+    private Set<Boolean> field2;
+    private Set<Boolean> field3;
+
+    /**
+     * Sets the value of {@link ExampleRecordWithSetFields#field1 }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used
+     *
+     * <p><b>Description:</b> a Set field
+     */
+    public Builder field1(final Set<Boolean> field1) {
+      this.field1 = field1;
+      return this;
     }
 
     /**
-     * Builder class for {@link ExampleRecordWithSetFields }
+     * Sets the value of {@link ExampleRecordWithSetFields#field2 }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used
+     *
+     * <p><b>Description:</b> another Set field
      */
-    public static class Builder {
-
-        private Set<Boolean> field1;
-        private Set<Boolean> field2;
-        private Set<Boolean> field3;
-
-        /**
-         * Sets the value of {@link ExampleRecordWithSetFields#field1 }.
-         * <p><b>NOTE:</b> Pass-by-reference is used
-         * <p><b>Description:</b> a Set field
-         */
-        public Builder field1(final Set<Boolean> field1) {
-            this.field1 = field1;
-            return this;
-        }
-
-        /**
-         * Sets the value of {@link ExampleRecordWithSetFields#field2 }.
-         * <p><b>NOTE:</b> Pass-by-reference is used
-         * <p><b>Description:</b> another Set field
-         */
-        public Builder field2(final Set<Boolean> field2) {
-            this.field2 = field2;
-            return this;
-        }
-
-        /**
-         * Sets the value of {@link ExampleRecordWithSetFields#field3 }.
-         * <p><b>NOTE:</b> Pass-by-reference is used
-         * <p><b>Description:</b> yet another Set field
-         */
-        public Builder field3(final Set<Boolean> field3) {
-            this.field3 = field3;
-            return this;
-        }
-
-        /**
-         * Builds a {@link ExampleRecordWithSetFields }-instance with the values provided in
-         * preceding builder methods.
-         * <p><b>NOTE:</b> Pass-by-reference is used
-         * <p><b>Description:</b> Example of a Record with Set fields
-         */
-        public ExampleRecordWithSetFields build() {
-            return new ExampleRecordWithSetFields(
-                field1,
-                field2,
-                field3
-            );
-        }
+    public Builder field2(final Set<Boolean> field2) {
+      this.field2 = field2;
+      return this;
     }
 
     /**
-     * Creates a {@link Builder}-instance.
+     * Sets the value of {@link ExampleRecordWithSetFields#field3 }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used
+     *
+     * <p><b>Description:</b> yet another Set field
      */
-    public static ExampleRecordWithSetFields.Builder builder() {
-        return new ExampleRecordWithSetFields.Builder();
+    public Builder field3(final Set<Boolean> field3) {
+      this.field3 = field3;
+      return this;
     }
+
+    /**
+     * Builds a {@link ExampleRecordWithSetFields }-instance with the values provided in preceding
+     * builder methods.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used
+     *
+     * <p><b>Description:</b> Example of a Record with Set fields
+     */
+    public ExampleRecordWithSetFields build() {
+      return new ExampleRecordWithSetFields(
+        field1,
+        field2,
+        field3
+      );
+    }
+  }
+
+  /** Creates a {@link Builder}-instance. */
+  public static ExampleRecordWithSetFields.Builder builder() {
+    return new ExampleRecordWithSetFields.Builder();
+  }
 }

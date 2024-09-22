@@ -39,16 +39,16 @@ import java.util.List;
 @com.chrimle.example.annotations.TestAnnotationTwo
 @com.chrimle.example.annotations.TestAnnotationThree
 public record ExampleRecordWithArrayFields(
-        @javax.annotation.Nonnull List<Boolean> field1,
-        @javax.annotation.Nonnull List<Boolean> field2,
-        @javax.annotation.Nonnull List<Boolean> field3) {
+    @javax.annotation.Nonnull List<Boolean> field1,
+    @javax.annotation.Nonnull List<Boolean> field2,
+    @javax.annotation.Nonnull List<Boolean> field3) {
 
-    public ExampleRecordWithArrayFields(
-            @javax.annotation.Nullable final List<Boolean> field1,
-            @javax.annotation.Nullable final List<Boolean> field2,
-            @javax.annotation.Nullable final List<Boolean> field3) { 
-        this.field1 = Objects.requireNonNullElse(field1, new ArrayList<>());
-        this.field2 = Objects.requireNonNullElse(field2, new ArrayList<>());
-        this.field3 = Objects.requireNonNullElse(field3, new ArrayList<>());
-    }
+  public ExampleRecordWithArrayFields(
+      @javax.annotation.Nullable final List<Boolean> field1,
+      @javax.annotation.Nullable final List<Boolean> field2,
+      @javax.annotation.Nullable final List<Boolean> field3) { 
+    this.field1 = Objects.requireNonNullElse(field1, new ArrayList<>());
+    this.field2 = Objects.requireNonNullElse(field2, new ArrayList<>());
+    this.field3 = Objects.requireNonNullElse(field3, new ArrayList<>());
+  }
 }

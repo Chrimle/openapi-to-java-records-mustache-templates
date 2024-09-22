@@ -35,19 +35,19 @@ import java.io.Serializable;
  * @param field3 yet another Boolean field
  */
 public record ExampleRecordWithBooleanFields(
-        @javax.annotation.Nonnull Boolean field1,
-        @javax.annotation.Nonnull Boolean field2,
-        @javax.annotation.Nonnull Boolean field3
-) implements Serializable {
+    @javax.annotation.Nonnull Boolean field1,
+    @javax.annotation.Nonnull Boolean field2,
+    @javax.annotation.Nonnull Boolean field3
+  ) implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    public ExampleRecordWithBooleanFields(
-            @javax.annotation.Nonnull final Boolean field1,
-            @javax.annotation.Nonnull final Boolean field2,
-            @javax.annotation.Nonnull final Boolean field3) { 
-        this.field1 = field1;
-        this.field2 = field2;
-        this.field3 = field3;
-    }
+  public ExampleRecordWithBooleanFields(
+      @javax.annotation.Nonnull final Boolean field1,
+      @javax.annotation.Nonnull final Boolean field2,
+      @javax.annotation.Nonnull final Boolean field3) { 
+    this.field1 = field1;
+    this.field2 = field2;
+    this.field3 = field3;
+  }
 }

@@ -35,74 +35,75 @@ import java.util.Arrays;
  * @param field3 ExampleRecord
  */
 public record ExampleRecordWithExampleRecordFields(
-        @javax.annotation.Nonnull ExampleRecord field1,
-        @javax.annotation.Nonnull ExampleRecord field2,
-        @javax.annotation.Nonnull ExampleRecord field3) {
+    @javax.annotation.Nonnull ExampleRecord field1,
+    @javax.annotation.Nonnull ExampleRecord field2,
+    @javax.annotation.Nonnull ExampleRecord field3) {
 
-    public ExampleRecordWithExampleRecordFields(
-            @javax.annotation.Nonnull final ExampleRecord field1,
-            @javax.annotation.Nonnull final ExampleRecord field2,
-            @javax.annotation.Nonnull final ExampleRecord field3) { 
-        this.field1 = field1;
-        this.field2 = field2;
-        this.field3 = field3;
+  public ExampleRecordWithExampleRecordFields(
+      @javax.annotation.Nonnull final ExampleRecord field1,
+      @javax.annotation.Nonnull final ExampleRecord field2,
+      @javax.annotation.Nonnull final ExampleRecord field3) { 
+    this.field1 = field1;
+    this.field2 = field2;
+    this.field3 = field3;
+  }
+
+  /** Builder class for {@link ExampleRecordWithExampleRecordFields } */
+  public static class Builder {
+
+    private ExampleRecord field1;
+    private ExampleRecord field2;
+    private ExampleRecord field3;
+
+    /**
+     * Sets the value of {@link ExampleRecordWithExampleRecordFields#field1 }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used
+     */
+    public Builder field1(final ExampleRecord field1) {
+      this.field1 = field1;
+      return this;
     }
 
     /**
-     * Builder class for {@link ExampleRecordWithExampleRecordFields }
+     * Sets the value of {@link ExampleRecordWithExampleRecordFields#field2 }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used
      */
-    public static class Builder {
-
-        private ExampleRecord field1;
-        private ExampleRecord field2;
-        private ExampleRecord field3;
-
-        /**
-         * Sets the value of {@link ExampleRecordWithExampleRecordFields#field1 }.
-         * <p><b>NOTE:</b> Pass-by-reference is used
-         */
-        public Builder field1(final ExampleRecord field1) {
-            this.field1 = field1;
-            return this;
-        }
-
-        /**
-         * Sets the value of {@link ExampleRecordWithExampleRecordFields#field2 }.
-         * <p><b>NOTE:</b> Pass-by-reference is used
-         */
-        public Builder field2(final ExampleRecord field2) {
-            this.field2 = field2;
-            return this;
-        }
-
-        /**
-         * Sets the value of {@link ExampleRecordWithExampleRecordFields#field3 }.
-         * <p><b>NOTE:</b> Pass-by-reference is used
-         */
-        public Builder field3(final ExampleRecord field3) {
-            this.field3 = field3;
-            return this;
-        }
-
-        /**
-         * Builds a {@link ExampleRecordWithExampleRecordFields }-instance with the values provided in
-         * preceding builder methods.
-         * <p><b>NOTE:</b> Pass-by-reference is used
-         * <p><b>Description:</b> Example of a Record with Record fields
-         */
-        public ExampleRecordWithExampleRecordFields build() {
-            return new ExampleRecordWithExampleRecordFields(
-                field1,
-                field2,
-                field3
-            );
-        }
+    public Builder field2(final ExampleRecord field2) {
+      this.field2 = field2;
+      return this;
     }
 
     /**
-     * Creates a {@link Builder}-instance.
+     * Sets the value of {@link ExampleRecordWithExampleRecordFields#field3 }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used
      */
-    public static ExampleRecordWithExampleRecordFields.Builder builder() {
-        return new ExampleRecordWithExampleRecordFields.Builder();
+    public Builder field3(final ExampleRecord field3) {
+      this.field3 = field3;
+      return this;
     }
+
+    /**
+     * Builds a {@link ExampleRecordWithExampleRecordFields }-instance with the values provided in preceding
+     * builder methods.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used
+     *
+     * <p><b>Description:</b> Example of a Record with Record fields
+     */
+    public ExampleRecordWithExampleRecordFields build() {
+      return new ExampleRecordWithExampleRecordFields(
+        field1,
+        field2,
+        field3
+      );
+    }
+  }
+
+  /** Creates a {@link Builder}-instance. */
+  public static ExampleRecordWithExampleRecordFields.Builder builder() {
+    return new ExampleRecordWithExampleRecordFields.Builder();
+  }
 }

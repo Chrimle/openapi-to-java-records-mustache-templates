@@ -34,13 +34,13 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * @param field2 a String field with a default value
  */
 public record ExampleRecordWithDefaultFields(
-        @javax.annotation.Nullable String field1,
-        @javax.annotation.Nonnull String field2) {
+    @javax.annotation.Nullable String field1,
+    @javax.annotation.Nonnull String field2) {
 
-    public ExampleRecordWithDefaultFields(
-            @javax.annotation.Nullable final String field1,
-            @javax.annotation.Nullable final String field2) { 
-        this.field1 = field1;
-        this.field2 = Objects.requireNonNullElse(field2, "someDefaultValue");
-    }
+  public ExampleRecordWithDefaultFields(
+      @javax.annotation.Nullable final String field1,
+      @javax.annotation.Nullable final String field2) { 
+    this.field1 = field1;
+    this.field2 = Objects.requireNonNullElse(field2, "someDefaultValue");
+  }
 }

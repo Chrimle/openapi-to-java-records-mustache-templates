@@ -29,6 +29,7 @@ import java.util.Arrays;
 
 /**
  * Example of a deprecated Record
+ *
  * @deprecated
  * @param field1 a boolean field
  */
@@ -37,10 +38,10 @@ import java.util.Arrays;
 @com.chrimle.example.annotations.TestAnnotationTwo
 @com.chrimle.example.annotations.TestAnnotationThree
 public record DeprecatedExampleRecord(
-        @javax.annotation.Nonnull Boolean field1) {
+    @javax.annotation.Nonnull Boolean field1) {
 
-    public DeprecatedExampleRecord(
-            @javax.annotation.Nonnull final Boolean field1) { 
-        this.field1 = field1;
-    }
+  public DeprecatedExampleRecord(
+      @javax.annotation.Nonnull final Boolean field1) { 
+    this.field1 = field1;
+  }
 }

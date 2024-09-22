@@ -25,7 +25,7 @@ import com.google.gson.annotations.SerializedName;
  * Example of an Enum
  */
 public enum ExampleEnum {
-    ENUM1,
-    ENUM2,
-    ENUM3;
+  ENUM1,
+  ENUM2,
+  ENUM3;
 }

@@ -36,19 +36,19 @@ import java.io.Serializable;
  * @param field3 ExampleEnum
  */
 public record ExampleRecordWithExampleEnumFields(
-        @javax.annotation.Nonnull ExampleEnum field1,
-        @javax.annotation.Nonnull ExampleEnum field2,
-        @javax.annotation.Nonnull ExampleEnum field3
-) implements Serializable {
+    @javax.annotation.Nonnull ExampleEnum field1,
+    @javax.annotation.Nonnull ExampleEnum field2,
+    @javax.annotation.Nonnull ExampleEnum field3
+  ) implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    public ExampleRecordWithExampleEnumFields(
-            @javax.annotation.Nonnull final ExampleEnum field1,
-            @javax.annotation.Nonnull final ExampleEnum field2,
-            @javax.annotation.Nonnull final ExampleEnum field3) { 
-        this.field1 = field1;
-        this.field2 = field2;
-        this.field3 = field3;
-    }
+  public ExampleRecordWithExampleEnumFields(
+      @javax.annotation.Nonnull final ExampleEnum field1,
+      @javax.annotation.Nonnull final ExampleEnum field2,
+      @javax.annotation.Nonnull final ExampleEnum field3) { 
+    this.field1 = field1;
+    this.field2 = field2;
+    this.field3 = field3;
+  }
 }

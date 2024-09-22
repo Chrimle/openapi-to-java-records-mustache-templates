@@ -37,19 +37,19 @@ import java.io.Serializable;
  * @param field3 yet another Array field
  */
 public record ExampleRecordWithArrayFields(
-        @javax.annotation.Nonnull List<Boolean> field1,
-        @javax.annotation.Nonnull List<Boolean> field2,
-        @javax.annotation.Nonnull List<Boolean> field3
-) implements Serializable {
+    @javax.annotation.Nonnull List<Boolean> field1,
+    @javax.annotation.Nonnull List<Boolean> field2,
+    @javax.annotation.Nonnull List<Boolean> field3
+  ) implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    public ExampleRecordWithArrayFields(
-            @javax.annotation.Nullable final List<Boolean> field1,
-            @javax.annotation.Nullable final List<Boolean> field2,
-            @javax.annotation.Nullable final List<Boolean> field3) { 
-        this.field1 = Objects.requireNonNullElse(field1, new ArrayList<>());
-        this.field2 = Objects.requireNonNullElse(field2, new ArrayList<>());
-        this.field3 = Objects.requireNonNullElse(field3, new ArrayList<>());
-    }
+  public ExampleRecordWithArrayFields(
+      @javax.annotation.Nullable final List<Boolean> field1,
+      @javax.annotation.Nullable final List<Boolean> field2,
+      @javax.annotation.Nullable final List<Boolean> field3) { 
+    this.field1 = Objects.requireNonNullElse(field1, new ArrayList<>());
+    this.field2 = Objects.requireNonNullElse(field2, new ArrayList<>());
+    this.field3 = Objects.requireNonNullElse(field3, new ArrayList<>());
+  }
 }

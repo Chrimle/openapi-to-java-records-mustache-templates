@@ -35,10 +35,10 @@ import java.util.Arrays;
 @com.chrimle.example.annotations.TestAnnotationTwo
 @com.chrimle.example.annotations.TestAnnotationThree
 public record ExampleRecord(
-        @javax.annotation.Nonnull Boolean field1) {
+    @javax.annotation.Nonnull Boolean field1) {
 
-    public ExampleRecord(
-            @javax.annotation.Nonnull final Boolean field1) { 
-        this.field1 = field1;
-    }
+  public ExampleRecord(
+      @javax.annotation.Nonnull final Boolean field1) { 
+    this.field1 = field1;
+  }
 }

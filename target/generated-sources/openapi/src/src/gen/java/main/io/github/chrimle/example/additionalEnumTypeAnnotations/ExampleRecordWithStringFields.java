@@ -34,16 +34,16 @@ import java.util.Arrays;
  * @param field3 yet another String field
  */
 public record ExampleRecordWithStringFields(
-        @javax.annotation.Nonnull String field1,
-        @javax.annotation.Nonnull String field2,
-        @javax.annotation.Nonnull String field3) {
+    @javax.annotation.Nonnull String field1,
+    @javax.annotation.Nonnull String field2,
+    @javax.annotation.Nonnull String field3) {
 
-    public ExampleRecordWithStringFields(
-            @javax.annotation.Nonnull final String field1,
-            @javax.annotation.Nonnull final String field2,
-            @javax.annotation.Nonnull final String field3) { 
-        this.field1 = field1;
-        this.field2 = field2;
-        this.field3 = field3;
-    }
+  public ExampleRecordWithStringFields(
+      @javax.annotation.Nonnull final String field1,
+      @javax.annotation.Nonnull final String field2,
+      @javax.annotation.Nonnull final String field3) { 
+    this.field1 = field1;
+    this.field2 = field2;
+    this.field3 = field3;
+  }
 }

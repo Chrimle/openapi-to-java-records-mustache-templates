@@ -35,74 +35,75 @@ import java.util.Arrays;
  * @param field3 ExampleEnum
  */
 public record ExampleRecordWithExampleEnumFields(
-        @javax.annotation.Nonnull ExampleEnum field1,
-        @javax.annotation.Nonnull ExampleEnum field2,
-        @javax.annotation.Nonnull ExampleEnum field3) {
+    @javax.annotation.Nonnull ExampleEnum field1,
+    @javax.annotation.Nonnull ExampleEnum field2,
+    @javax.annotation.Nonnull ExampleEnum field3) {
 
-    public ExampleRecordWithExampleEnumFields(
-            @javax.annotation.Nonnull final ExampleEnum field1,
-            @javax.annotation.Nonnull final ExampleEnum field2,
-            @javax.annotation.Nonnull final ExampleEnum field3) { 
-        this.field1 = field1;
-        this.field2 = field2;
-        this.field3 = field3;
+  public ExampleRecordWithExampleEnumFields(
+      @javax.annotation.Nonnull final ExampleEnum field1,
+      @javax.annotation.Nonnull final ExampleEnum field2,
+      @javax.annotation.Nonnull final ExampleEnum field3) { 
+    this.field1 = field1;
+    this.field2 = field2;
+    this.field3 = field3;
+  }
+
+  /** Builder class for {@link ExampleRecordWithExampleEnumFields } */
+  public static class Builder {
+
+    private ExampleEnum field1;
+    private ExampleEnum field2;
+    private ExampleEnum field3;
+
+    /**
+     * Sets the value of {@link ExampleRecordWithExampleEnumFields#field1 }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used
+     */
+    public Builder field1(final ExampleEnum field1) {
+      this.field1 = field1;
+      return this;
     }
 
     /**
-     * Builder class for {@link ExampleRecordWithExampleEnumFields }
+     * Sets the value of {@link ExampleRecordWithExampleEnumFields#field2 }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used
      */
-    public static class Builder {
-
-        private ExampleEnum field1;
-        private ExampleEnum field2;
-        private ExampleEnum field3;
-
-        /**
-         * Sets the value of {@link ExampleRecordWithExampleEnumFields#field1 }.
-         * <p><b>NOTE:</b> Pass-by-reference is used
-         */
-        public Builder field1(final ExampleEnum field1) {
-            this.field1 = field1;
-            return this;
-        }
-
-        /**
-         * Sets the value of {@link ExampleRecordWithExampleEnumFields#field2 }.
-         * <p><b>NOTE:</b> Pass-by-reference is used
-         */
-        public Builder field2(final ExampleEnum field2) {
-            this.field2 = field2;
-            return this;
-        }
-
-        /**
-         * Sets the value of {@link ExampleRecordWithExampleEnumFields#field3 }.
-         * <p><b>NOTE:</b> Pass-by-reference is used
-         */
-        public Builder field3(final ExampleEnum field3) {
-            this.field3 = field3;
-            return this;
-        }
-
-        /**
-         * Builds a {@link ExampleRecordWithExampleEnumFields }-instance with the values provided in
-         * preceding builder methods.
-         * <p><b>NOTE:</b> Pass-by-reference is used
-         * <p><b>Description:</b> Example of a Record with Enum fields
-         */
-        public ExampleRecordWithExampleEnumFields build() {
-            return new ExampleRecordWithExampleEnumFields(
-                field1,
-                field2,
-                field3
-            );
-        }
+    public Builder field2(final ExampleEnum field2) {
+      this.field2 = field2;
+      return this;
     }
 
     /**
-     * Creates a {@link Builder}-instance.
+     * Sets the value of {@link ExampleRecordWithExampleEnumFields#field3 }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used
      */
-    public static ExampleRecordWithExampleEnumFields.Builder builder() {
-        return new ExampleRecordWithExampleEnumFields.Builder();
+    public Builder field3(final ExampleEnum field3) {
+      this.field3 = field3;
+      return this;
     }
+
+    /**
+     * Builds a {@link ExampleRecordWithExampleEnumFields }-instance with the values provided in preceding
+     * builder methods.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used
+     *
+     * <p><b>Description:</b> Example of a Record with Enum fields
+     */
+    public ExampleRecordWithExampleEnumFields build() {
+      return new ExampleRecordWithExampleEnumFields(
+        field1,
+        field2,
+        field3
+      );
+    }
+  }
+
+  /** Creates a {@link Builder}-instance. */
+  public static ExampleRecordWithExampleEnumFields.Builder builder() {
+    return new ExampleRecordWithExampleEnumFields.Builder();
+  }
 }

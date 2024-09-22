@@ -35,19 +35,19 @@ import java.io.Serializable;
  * @param field3 yet another Integer field
  */
 public record ExampleRecordWithIntegerFields(
-        @javax.annotation.Nonnull Integer field1,
-        @javax.annotation.Nonnull Integer field2,
-        @javax.annotation.Nonnull Integer field3
-) implements Serializable {
+    @javax.annotation.Nonnull Integer field1,
+    @javax.annotation.Nonnull Integer field2,
+    @javax.annotation.Nonnull Integer field3
+  ) implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    public ExampleRecordWithIntegerFields(
-            @javax.annotation.Nonnull final Integer field1,
-            @javax.annotation.Nonnull final Integer field2,
-            @javax.annotation.Nonnull final Integer field3) { 
-        this.field1 = field1;
-        this.field2 = field2;
-        this.field3 = field3;
-    }
+  public ExampleRecordWithIntegerFields(
+      @javax.annotation.Nonnull final Integer field1,
+      @javax.annotation.Nonnull final Integer field2,
+      @javax.annotation.Nonnull final Integer field3) { 
+    this.field1 = field1;
+    this.field2 = field2;
+    this.field3 = field3;
+  }
 }

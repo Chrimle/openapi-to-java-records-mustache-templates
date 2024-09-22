@@ -28,7 +28,7 @@ import com.google.gson.annotations.SerializedName;
 @com.chrimle.example.annotations.TestAnnotationTwo
 @com.chrimle.example.annotations.TestAnnotationThree
 public enum ExampleEnum {
-    ENUM1,
-    ENUM2,
-    ENUM3;
+  ENUM1,
+  ENUM2,
+  ENUM3;
 }
