@@ -1,14 +1,9 @@
 # openapi-to-java-records-mustache-templates
 
-Aims to
-generate [Java Records](https://docs.oracle.com/en/java/javase/17/language/records.html)
-from [OpenAPI Specifications](https://swagger.io/specification/)
-via [openapi-generator-maven-plugin](https://github.com/OpenAPITools/openapi-generator/blob/master/modules/openapi-generator-maven-plugin/README.md)
-and [mustache templates](https://mustache.github.io/).
+Project containing [Mustache-templates](https://mustache.github.io/) used by [openapi-generator-maven-plugin](https://github.com/OpenAPITools/openapi-generator/blob/master/modules/openapi-generator-maven-plugin/README.md) to generate [Java Records](https://docs.oracle.com/en/java/javase/17/language/records.html) from [OpenAPI Specifications](https://swagger.io/specification/).
 
-This project contains the
-mustache templates, and an example OpenAPI Specification which will generate example Java
-classes (Records & Enums).
+This project contains the mustache templates. There is also an example OpenAPI Specification which
+will generate example Java classes (Records & Enums).
 
 ## Example
 
@@ -55,7 +50,7 @@ components:
 ### Java Record
 
 ```java
-package com.chrimle.example;
+package io.github.chrimle.example;
 
 import ...;
 
