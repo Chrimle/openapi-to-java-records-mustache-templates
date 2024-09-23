@@ -157,7 +157,7 @@ Place the file(s) in desired directory. Then, in the Maven build configuration, 
 
 ### 4. Generate models
 Compile the project, for example via:
-```
+```console
 mvn compile
 ```
 
