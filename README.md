@@ -2,14 +2,25 @@
 
 Project containing [Mustache-templates](https://mustache.github.io/) used by [openapi-generator-maven-plugin](https://github.com/OpenAPITools/openapi-generator/blob/master/modules/openapi-generator-maven-plugin/README.md) to generate [Java Records](https://docs.oracle.com/en/java/javase/17/language/records.html) from [OpenAPI Specifications](https://swagger.io/specification/).
 
-This project contains the mustache templates. There is also an example OpenAPI Specification which
-will generate example Java classes (Records & Enums).
+This project contains the **mustache templates**.
+> [!NOTE]
+> There is also an example OpenAPI Specification which will generate example Java classes (Records & Enums).
+> **This is for testing purposes only**, and will **not** be included when importing the project. The templates
+> support a variety of different properties and configurations. Just for reference, generated classes can be found
+> under [/target/generated-sources/...](./target/generated-sources/openapi/src/src/gen/java/main/io/github/chrimle/example).
 
-## Example
+# Example
 
-The following is an example of a Java record generated from an OpenAPI Specification.
+The following is an example of a Java record generated from an OpenAPI Specification, with default `openapi-generator-maven-plugin`-configurations.
 
-### OpenAPI Specification
+## Maven 
+> [!IMPORTANT]
+> Some `openapi-generator-maven-plugin`-configuration options have not yet been verified. By using them, they may either be ignored or may even cause issues.
+> 
+> Due to the sheer number of `<configuration>`-options, this section has been moved to the Wiki-page: [Supported 'openapi‐generator‐maven‐plugin' Configuration options
+](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/wiki/Supported-%27openapi‐generator‐maven‐plugin%27-Configuration-options)
+
+## OpenAPI Specification
 
 ```yaml
 components:
@@ -42,12 +53,11 @@ components:
           description: Example text property
           type: string
 ```
+> [!IMPORTANT]
+> See the complete list of [Supported OpenAPI Specification properties](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/wiki/Supported-OpenAPI-Specification-properties)
+> on the wiki!
 
-> [!TIP]
-> See the complete list of Supported OpenAPI Specification
-> properties [here](#supported-openapi-specification-properties).
-
-### Java Record
+## Java Record
 
 ```java
 package io.github.chrimle.example;
@@ -83,50 +93,6 @@ public record Example(
 }
 ```
 
-> [!NOTE]
-> The annotations `@javax.annotation.*` can be changed to `@jakarta.annotation.*`
-> by setting the `configOptions`-property `useJakartaEe` to `true`.
-
-## Supported `openapi-generator-maven-plugin` configurations
-
-> [!IMPORTANT]
-> Some `<configuration>`-options have not yet been verified. By using them, they may either be ignored or may even cause issues.
-> 
-> Due to the sheer number of `<configuration>`-options, this section has been moved to the Wiki-page: [Supported 'openapi‐generator‐maven‐plugin' Configuration options
-](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/wiki/Supported-%27openapi‐generator‐maven‐plugin%27-Configuration-options)
-
-## Supported OpenAPI Specification properties
-
-The following are OpenAPI Specification properties which are supported. Other
-properties may be ignored, or may cause problems.
-
-> [!NOTE]
-> The following properties are referring to the schema definitions, prefixed
-> by `components.schemas.{schema}`.
-
-| Property                                     | Description                                      |       Value       | Value Description                                                                                                      |
-|----------------------------------------------|--------------------------------------------------|:-----------------:|------------------------------------------------------------------------------------------------------------------------|
-| `{schema}`                                   | Name of the generated Java class.                |         *         |                                                                                                                        |
-| `{schema}.type`                              | Type of the generated Java class.                |     `object`      | Generates a Record class.                                                                                              |
-|                                              |                                                  |      `enum`       | Generates an Enum class.                                                                                               |
-| `{schema}.description`                       | JavaDoc description of the generated Java class. |         *         | If not set, adds the class name as a placeholder in the JavaDoc description.                                           |
-| `{schema}.deprecated`                        | Marks the generated Java class as Deprecated.    |      `true`       | Annotates the class with `@Deprecated` and adds `@deprecated` to the JavaDoc description.                              |
-|                                              |                                                  | `false` (default) | Does nothing.                                                                                                          |
-| `{schema}.properties`                        | Fields of the generated Record class.            |         *         |                                                                                                                        |
-| `{schema}.properties.{property}`             | Name of the field.                               |         *         | Added as a `@param` in the JavaDoc.                                                                                    |
-| `{schema}.properties.{property}.description` | Description of the field.                        |         *         | Description of the `@param` in the JavaDoc. If not set, the class name of the field will be added as a description.    |
-| `{schema}.properties.{property}.default`     | Default value of the field.                      |         *         | If set, the field is set to the default value if the provided value is null. (Using `Objects.requireNonNullElse()`)    |
-| `{schema}.properties.{property}.nullable`    | Marks the field with `@Nullable`-annotations.    |      `true`       | Annotates the field with `@Nullable`.                                                                                  |
-|                                              |                                                  | `false` (default) | Annotates the field with `@Nonnull`. This will be annotated `@Nullable` in the constructor, if `default` has been set. |
-| `{schema}.properties.{property}.$ref`        | Type of the field is another Java class.         |         *         |                                                                                                                        |
-| `{schema}.properties.{property}.type`        | Type of the field.                               |      `array`      | Generates the field as `List<{items.type}>`.                                                                           |
-|                                              |                                                  |     `boolean`     | Generates the field as `Boolean`.                                                                                      |
-|                                              |                                                  |      `enum`       | **Not supported yet** - See [Issue #5](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/issues/5) |
-|                                              |                                                  |     `integer`     | Generates the field as `Integer`.                                                                                      |
-|                                              |                                                  |     `number`      | Generates the field as `BigDecimal`.                                                                                   |
-|                                              |                                                  |     `object`      | **Not supported yet** - See [Issue #4](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/issues/4) |
-|                                              |                                                  |     `string`      | Generates the field as `String`.                                                                                       |
-
 ### Useful Resources
 
 - [Maven in 5 minutes](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html)
@@ -138,10 +104,32 @@ properties may be ignored, or may cause problems.
 > [!NOTE]
 > This project is about mustache templates only. For that reason, any other files or configurations are either irrelevant, or may not be applicable to your use-case.
 ## 1. Get mustache templates
-The mustache templates can be found under [./src/main/resources/templates](./src/main/resources/templates).
+The mustache templates can be acquired through multiple ways.
+- ### Import from [Maven Central Repository](https://central.sonatype.com/artifact/io.github.chrimle/openapi-to-java-records-mustache-templates)
+Import the project via:
+```xml
+<dependency>
+    <groupId>io.github.chrimle</groupId>
+    <artifactId>openapi-to-java-records-mustache-templates</artifactId>
+    <version><!-- Insert version here --></version>
+</dependency>
+```
+
+- ### Import from [GitHub Packages](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/packages/)
 > [!IMPORTANT]
-> The only **required** `.mustache`-file is [`pojo.mustache`](./src/main/resources/templates/pojo.mustache), which generates Java records instead of Java classes.
-> Without the supporting `.mustache`-files however, the generated Java record will be a skeleton class - which will **not** feature JavaDocs nor `@Deprecated`-annotations.
+> Importing via GitHub Packages require authentication, see [GitHub Packages: Installing a Package](https://docs.github.com/en/packages/learn-github-packages/installing-a-package) for further details.
+
+Import the project via:
+```xml
+<dependency>
+    <groupId>io.github.chrimle</groupId>
+    <artifactId>openapi-to-java-records-mustache-templates</artifactId>
+    <version><!-- Insert version here --></version>
+</dependency>
+```
+
+- ### Browse mustache templates on GitHub
+The mustache templates can be found under [./src/main/resources/templates](./src/main/resources/templates).
 
 ## 2. Use the `.mustache` templates when generating
 Place the file(s) in desired directory. Then, in the Maven build configuration, set the property `<templateDirectory>` to the directory path. Example:
@@ -168,7 +156,11 @@ Place the file(s) in desired directory. Then, in the Maven build configuration, 
 > Do the same with the OpenAPI Specification, and [Supported OpenAPI Spec Properties](#supported-openapi-specification-properties).
 
 ### 4. Generate models
-Compile the project, for example via `mvn compile`.
+Compile the project, for example via:
+```console
+mvn compile
+```
+
 > [!TIP]
 > Further information about how to generate models can be found on [openapi-generator-maven-plugin](https://github.com/OpenAPITools/openapi-generator/blob/master/modules/openapi-generator-maven-plugin/README.md).
 
