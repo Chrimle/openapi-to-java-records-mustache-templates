@@ -152,8 +152,8 @@ Place the file(s) in desired directory. Then, in the Maven build configuration, 
 ```
 ### 3. Review other `<configuration>`-properties & OpenAPI Specification
 > [!IMPORTANT]
-> Review the configurations, and compare with [Supported Configurations](#supported-openapi-generator-maven-plugin-configurations).
-> Do the same with the OpenAPI Specification, and [Supported OpenAPI Spec Properties](#supported-openapi-specification-properties).
+> Review the configurations, and compare with [Supported Configurations](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/wiki/Supported-%27openapi‐generator‐maven‐plugin%27-Configuration-options).
+> Do the same with the OpenAPI Specification, and [Supported OpenAPI Spec Properties](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/wiki/Supported-OpenAPI-Specification-properties).
 
 ### 4. Generate models
 Compile the project, for example via:
