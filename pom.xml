@@ -5,7 +5,7 @@
 
     <groupId>io.github.chrimle</groupId>
     <artifactId>openapi-to-java-records-mustache-templates</artifactId>
-    <version>1.7.4</version>
+    <version>1.7.6</version>
 
     <!-- Project Information -->
     <name>OpenAPI to Java records :: Mustache Templates</name>
@@ -53,7 +53,7 @@
         <jakarta.annotation-api.version>3.0.0</jakarta.annotation-api.version>
         <jackson-annotations.version>2.17.2</jackson-annotations.version>
         <hibernate-validator.version>8.0.0.Final</hibernate-validator.version>
-        <maven-jar-plugin.version>3.2.0</maven-jar-plugin.version>
+        <maven-jar-plugin.version>3.4.2</maven-jar-plugin.version>
 
         <!-- Jacoco -->
         <jacoco-maven-plugin.version>0.8.12</jacoco-maven-plugin.version>
@@ -63,9 +63,15 @@
 
         <!-- Spotless -->
         <spotless.check.skip>true</spotless.check.skip> <!-- Unused imports causes build to fail -->
-        <spotless-maven-plugin.version>2.9.0</spotless-maven-plugin.version>
+        <spotless-maven-plugin.version>2.43.0</spotless-maven-plugin.version>
         <googleJavaFormat.version>1.23.0</googleJavaFormat.version>
         <!-- /Spotless -->
+
+        <!-- Publish to Maven Central Repository -->
+        <maven-gpg-plugin.version>3.1.0</maven-gpg-plugin.version>
+        <maven-source-plugin.version>3.3.0</maven-source-plugin.version>
+        <central-publishing-maven-plugin.version>0.4.0</central-publishing-maven-plugin.version>
+        <!-- /Publish to Maven Central Repository -->
 
         <!-- Default `configuration`-option values -->
         <modelPackage.default>${project.groupId}.example</modelPackage.default>
@@ -431,4 +437,63 @@
             <url>https://maven.pkg.github.com/chrimle/${project.artifactId}</url>
         </repository>
     </distributionManagement>
+    <scm>
+        <connection>scm:git:git://github.com/chrimle/openapi-to-java-records-mustache-templates.git</connection>
+        <developerConnection>scm:git:ssh://github.com:chrimle/openapi-to-java-records-mustache-templates.git</developerConnection>
+        <url>http://github.com/chrimle/openapi-to-java-records-mustache-templates/tree/main</url>
+    </scm>
+    <profiles>
+        <profile>
+            <id>deploy-to-maven-central</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.sonatype.central</groupId>
+                        <artifactId>central-publishing-maven-plugin</artifactId>
+                        <version>${central-publishing-maven-plugin.version}</version>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <publishingServerId>central</publishingServerId>
+                            <tokenAuth>true</tokenAuth>
+                            <autoPublish>true</autoPublish>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <version>${maven-source-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>jar-no-fork</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>${maven-gpg-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <gpgArguments>
+                                <arg>--pinentry-mode</arg>
+                                <arg>loopback</arg>
+                            </gpgArguments>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
