@@ -14,7 +14,8 @@ public enum GeneratedClass {
   EXAMPLE_RECORD_WITH_INTEGER_FIELDS("ExampleRecordWithIntegerFields"),
   EXAMPLE_RECORD_WITH_NUMBER_FIELDS("ExampleRecordWithNumberFields"),
   EXAMPLE_RECORD_WITH_SET_FIELDS("ExampleRecordWithSetFields"),
-  EXAMPLE_RECORD_WITH_STRING_FIELDS("ExampleRecordWithStringFields");
+  EXAMPLE_RECORD_WITH_STRING_FIELDS("ExampleRecordWithStringFields"),
+  EXAMPLE_RECORD_WITH_REQUIRED_FIELDS_OF_EACH_TYPE("ExampleRecordWithRequiredFieldsOfEachType");
 
 
   private final String simpleClassName;

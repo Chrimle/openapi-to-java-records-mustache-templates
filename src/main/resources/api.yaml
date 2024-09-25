@@ -19,6 +19,49 @@ paths:
 
 components:
   schemas:
+    ExampleRecordWithRequiredFieldsOfEachType:
+      type: object
+      description: Example of a Record with fields of each type
+      required:
+        - field1
+        - field2
+        - field3
+        - field4
+        - field5
+        - field6
+        - field7
+        - field8
+      properties:
+        field1:
+          type: boolean
+          description: a Boolean field
+        field2:
+          type: string
+          description: a String field
+        field3:
+          type: integer
+          description: an Integer field
+        field4:
+          type: number
+          description: a Number field
+        field5:
+          type: array
+          description: an Array of Boolean field
+          items:
+            type: boolean
+        field6:
+          type: array
+          description: a Set field
+          uniqueItems: true
+          items:
+            type: boolean
+        field7:
+          description: an ExampleRecord field
+          $ref: '#/components/schemas/ExampleRecord'
+        field8:
+          description: an ExampleEnum field
+          $ref: '#/components/schemas/ExampleEnum'
+
     ExampleRecord:
       type: object
       description: Example of a Record

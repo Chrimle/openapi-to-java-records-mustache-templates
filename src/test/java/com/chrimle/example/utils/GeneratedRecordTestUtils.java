@@ -261,4 +261,28 @@ public class GeneratedRecordTestUtils {
         Set.class
     );
   }
+
+  public static void assertExampleRecordWithRequiredFieldsOfEachType(
+      final Class<?> classUnderTest,
+      final Class<?> recordClass,
+      final Class<?> enumClass,
+      final boolean hasAdditionalTypeAnnotations,
+      final boolean isSerializableModel,
+      final boolean generateBuilders) {
+    assertRecord(
+        classUnderTest,
+        false,
+        hasAdditionalTypeAnnotations,
+        isSerializableModel,
+        generateBuilders,
+        Boolean.class,
+        String.class,
+        Integer.class,
+        BigDecimal.class,
+        List.class,
+        Set.class,
+        recordClass,
+        enumClass
+    );
+  }
 }

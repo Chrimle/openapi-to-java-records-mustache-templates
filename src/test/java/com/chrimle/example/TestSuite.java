@@ -139,6 +139,21 @@ public class TestSuite {
               serializableModel,
               generateBuilders
           );
+      case EXAMPLE_RECORD_WITH_REQUIRED_FIELDS_OF_EACH_TYPE ->
+        GeneratedRecordTestUtils.assertExampleRecordWithRequiredFieldsOfEachType(
+            classUnderTest,
+            AssertionUtils.assertClassExists(
+                getCanonicalClassName(pluginExecution,
+                    GeneratedClass.EXAMPLE_RECORD)
+            ),
+            AssertionUtils.assertClassExists(
+                getCanonicalClassName(pluginExecution,
+                    GeneratedClass.EXAMPLE_ENUM)
+            ),
+            hasAdditionalModelTypeAnnotations,
+            serializableModel,
+            generateBuilders
+        );
     }
   }
 
