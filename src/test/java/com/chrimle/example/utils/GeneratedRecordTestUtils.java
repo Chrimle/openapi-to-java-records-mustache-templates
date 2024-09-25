@@ -2,6 +2,7 @@ package com.chrimle.example.utils;
 
 import java.lang.reflect.Constructor;
 import java.math.BigDecimal;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
@@ -30,6 +31,10 @@ public class GeneratedRecordTestUtils {
         isSerializableModel);
     AssertionUtils.assertRecordHasBuilderInnerClass(classUnderTest,
         generateBuilders, fieldClasses);
+    Constructor<?> constructor = AssertionUtils.assertRecordHasConstructor(classUnderTest,
+        fieldClasses);
+    AssertionUtils.assertRecordInstantiateWithArgs(classUnderTest,
+        constructor, Arrays.stream(fieldClasses).map(x -> null).toArray());
   }
 
   public static void assertExampleRecord(
