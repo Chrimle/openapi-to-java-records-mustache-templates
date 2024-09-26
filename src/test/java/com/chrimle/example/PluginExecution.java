@@ -7,42 +7,51 @@ public enum PluginExecution {
       false,
       false,
       false,
-      false
-  ),
+      false,
+      false),
   ADDITIONAL_ENUM_TYPE_ANNOTATIONS(
       "additionalEnumTypeAnnotations",
       false,
       true,
       false,
       false,
-      false
-  ),
+      false,
+      false),
   ADDITIONAL_MODEL_TYPE_ANNOTATIONS(
       "additionalModelTypeAnnotations",
       false,
       false,
       true,
       false,
-      false
-  ),
+      false,
+      false),
   SERIALIZABLE_MODEL(
       "serializableModel",
       false,
       false,
       false,
       true,
-      false
-  ),
+      false,
+      false),
   STANDARD(
       "standard",
       false,
       false,
       false,
       false,
-      false
-  ),
+      false,
+      false),
   USE_ENUM_CASE_INSENSITIVE(
       "useEnumCaseInsensitive",
+      false,
+      false,
+      false,
+      false,
+      true,
+      false),
+  USE_JAKARTA_EE(
+      "useJakartaEe",
+      false,
       false,
       false,
       false,
@@ -56,6 +65,7 @@ public enum PluginExecution {
   private final boolean hasAdditionalModelTypeAnnotations;
   private final boolean serializableModel;
   private final boolean useEnumCaseInsensitive;
+  private final boolean useJakartaEe;
 
   PluginExecution(
       final String packageName,
@@ -63,13 +73,14 @@ public enum PluginExecution {
       final boolean hasAdditionalEnumTypeAnnotations,
       final boolean hasAdditionalModelTypeAnnotations,
       final boolean serializableModel,
-      final boolean useEnumCaseInsensitive) {
+      final boolean useEnumCaseInsensitive, boolean useJakartaEe) {
     this.packageName = packageName;
     this.hasAdditionalEnumTypeAnnotations = hasAdditionalEnumTypeAnnotations;
     this.hasAdditionalModelTypeAnnotations = hasAdditionalModelTypeAnnotations;
     this.generateBuilders = generateBuilders;
     this.serializableModel = serializableModel;
     this.useEnumCaseInsensitive = useEnumCaseInsensitive;
+    this.useJakartaEe = useJakartaEe;
   }
 
   public String getPackageName() {
@@ -94,5 +105,9 @@ public enum PluginExecution {
 
   public boolean useEnumCaseInsensitive() {
     return useEnumCaseInsensitive;
+  }
+
+  public boolean isUseJakartaEe() {
+    return useJakartaEe;
   }
 }
