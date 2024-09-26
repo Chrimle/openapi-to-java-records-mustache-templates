@@ -1,11 +1,18 @@
 package com.chrimle.example;
 
 public enum PluginExecution {
-  ADDITIONAL_ENUM_TYPE_ANNOTATIONS(
-      "additionalEnumTypeAnnotations",
+  GENERATE_BUILDERS(
+      "generateBuilders",
       true,
       false,
       false,
+      false,
+      false
+  ),
+  ADDITIONAL_ENUM_TYPE_ANNOTATIONS(
+      "additionalEnumTypeAnnotations",
+      false,
+      true,
       false,
       false,
       false
@@ -13,18 +20,8 @@ public enum PluginExecution {
   ADDITIONAL_MODEL_TYPE_ANNOTATIONS(
       "additionalModelTypeAnnotations",
       false,
-      true,
-      false,
-      false,
-      false,
-      false
-  ),
-  GENERATE_BUILDERS(
-      "generateBuilders",
-      false,
       false,
       true,
-      false,
       false,
       false
   ),
@@ -34,12 +31,10 @@ public enum PluginExecution {
       false,
       false,
       true,
-      false,
       false
   ),
   STANDARD(
       "standard",
-      false,
       false,
       false,
       false,
@@ -52,42 +47,52 @@ public enum PluginExecution {
       false,
       false,
       false,
-      true,
-      false
-  ),
-  USE_JAKARTA_EE(
-      "useJakartaEe",
-      false,
-      false,
-      false,
-      false,
-      false,
       true
   );
 
-  public final String packageName;
-  public final boolean additionalEnumTypeAnnotations;
-  public final boolean additionalModelTypeAnnotations;
-  public final boolean generateBuilders;
-  public final boolean serializableModel;
-  public final boolean useEnumCaseInsensitive;
-  public final boolean useJakartaEe;
+  private final String packageName;
+  private final boolean generateBuilders;
+  private final boolean hasAdditionalEnumTypeAnnotations;
+  private final boolean hasAdditionalModelTypeAnnotations;
+  private final boolean serializableModel;
+  private final boolean useEnumCaseInsensitive;
 
   PluginExecution(
       final String packageName,
-      final boolean additionalEnumTypeAnnotations,
-      final boolean additionalModelTypeAnnotations,
       final boolean generateBuilders,
+      final boolean hasAdditionalEnumTypeAnnotations,
+      final boolean hasAdditionalModelTypeAnnotations,
       final boolean serializableModel,
-      final boolean useEnumCaseInsensitive,
-      final boolean useJakartaEe
-  ) {
+      final boolean useEnumCaseInsensitive) {
     this.packageName = packageName;
-    this.additionalEnumTypeAnnotations = additionalEnumTypeAnnotations;
-    this.additionalModelTypeAnnotations = additionalModelTypeAnnotations;
+    this.hasAdditionalEnumTypeAnnotations = hasAdditionalEnumTypeAnnotations;
+    this.hasAdditionalModelTypeAnnotations = hasAdditionalModelTypeAnnotations;
     this.generateBuilders = generateBuilders;
     this.serializableModel = serializableModel;
     this.useEnumCaseInsensitive = useEnumCaseInsensitive;
-    this.useJakartaEe = useJakartaEe;
+  }
+
+  public String getPackageName() {
+    return packageName;
+  }
+
+  public boolean generateBuilders() {
+    return generateBuilders;
+  }
+
+  public boolean hasAdditionalEnumTypeAnnotations() {
+    return hasAdditionalEnumTypeAnnotations;
+  }
+
+  public boolean hasAdditionalModelTypeAnnotations() {
+    return hasAdditionalModelTypeAnnotations;
+  }
+
+  public boolean serializableModel() {
+    return serializableModel;
+  }
+
+  public boolean useEnumCaseInsensitive() {
+    return useEnumCaseInsensitive;
   }
 }

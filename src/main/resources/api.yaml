@@ -19,6 +19,49 @@ paths:
 
 components:
   schemas:
+    ExampleRecordWithRequiredFieldsOfEachType:
+      type: object
+      description: Example of a Record with fields of each type
+      required:
+        - field1
+        - field2
+        - field3
+        - field4
+        - field5
+        - field6
+        - field7
+        - field8
+      properties:
+        field1:
+          type: boolean
+          description: a Boolean field
+        field2:
+          type: string
+          description: a String field
+        field3:
+          type: integer
+          description: an Integer field
+        field4:
+          type: number
+          description: a Number field
+        field5:
+          type: array
+          description: an Array of Boolean field
+          items:
+            type: boolean
+        field6:
+          type: array
+          description: a Set field
+          uniqueItems: true
+          items:
+            type: boolean
+        field7:
+          description: an ExampleRecord field
+          $ref: '#/components/schemas/ExampleRecord'
+        field8:
+          description: an ExampleEnum field
+          $ref: '#/components/schemas/ExampleEnum'
+
     ExampleRecord:
       type: object
       description: Example of a Record
@@ -34,119 +77,6 @@ components:
         field1:
           type: boolean
           description: a boolean field
-    ExampleRecordWithStringFields:
-      type: object
-      description: Example of a Record with String fields
-      properties:
-        field1:
-          type: string
-          description: a String field
-        field2:
-          type: string
-          description: another String field
-        field3:
-          type: string
-          description: yet another String field
-    ExampleRecordWithIntegerFields:
-      type: object
-      description: Example of a Record with Integer fields
-      properties:
-        field1:
-          type: integer
-          description: a Integer field
-        field2:
-          type: integer
-          description: another Integer field
-        field3:
-          type: integer
-          description: yet another Integer field
-    ExampleRecordWithBooleanFields:
-      type: object
-      description: Example of a Record with Boolean fields
-      properties:
-        field1:
-          type: boolean
-          description: a Boolean field
-        field2:
-          type: boolean
-          description: another Boolean field
-        field3:
-          type: boolean
-          description: yet another Boolean field
-    ExampleRecordWithArrayFields:
-      type: object
-      description: Example of a Record with Array fields
-      properties:
-        field1:
-          type: array
-          description: an Array field
-          items:
-            type: boolean
-        field2:
-          type: array
-          description: another Array field
-          items:
-            type: boolean
-        field3:
-          type: array
-          description: yet another Array field
-          items:
-            type: boolean
-    ExampleRecordWithNumberFields:
-      type: object
-      description: Example of a Record with Number fields
-      properties:
-        field1:
-          type: number
-          description: a Number field
-        field2:
-          type: number
-          description: another Number field
-        field3:
-          type: number
-          description: yet another Number field
-    ExampleRecordWithSetFields:
-      type: object
-      description: Example of a Record with Set fields
-      properties:
-        field1:
-          type: array
-          description: a Set field
-          uniqueItems: true
-          items:
-            type: boolean
-        field2:
-          type: array
-          description: another Set field
-          uniqueItems: true
-          items:
-            type: boolean
-        field3:
-          type: array
-          description: yet another Set field
-          uniqueItems: true
-          items:
-            type: boolean
-    ExampleRecordWithExampleRecordFields:
-      type: object
-      description: Example of a Record with Record fields
-      properties:
-        field1:
-          $ref: '#/components/schemas/ExampleRecord'
-        field2:
-          $ref: '#/components/schemas/ExampleRecord'
-        field3:
-          $ref: '#/components/schemas/ExampleRecord'
-    ExampleRecordWithExampleEnumFields:
-      type: object
-      description: Example of a Record with Enum fields
-      properties:
-        field1:
-          $ref: '#/components/schemas/ExampleEnum'
-        field2:
-          $ref: '#/components/schemas/ExampleEnum'
-        field3:
-          $ref: '#/components/schemas/ExampleEnum'
     ExampleRecordWithDefaultFields:
       type: object
       description: Example of a Record with default fields
