@@ -1,5 +1,6 @@
 package com.chrimle.example.utils;
 
+import com.chrimle.example.PluginExecution;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.List;
@@ -11,44 +12,29 @@ import org.junit.jupiter.api.Assertions;
 public class GeneratedEnumTestUtils {
 
   public static void assertExampleEnum(
-      final Class<?> classUnderTest,
-      final boolean hasAdditionalModelAnnotations,
-      final boolean useEnumCaseInsensitive
-  ) {
-    assertEnumClass(
-        classUnderTest,
-        false,
-        hasAdditionalModelAnnotations,
-        useEnumCaseInsensitive
+      final PluginExecution pluginExecution, final Class<?> classUnderTest) {
+    assertEnumClass(pluginExecution, classUnderTest, false
     );
   }
 
   public static void assertDeprecatedExampleEnum(
-      final Class<?> classUnderTest,
-      final boolean hasAdditionalModelAnnotations,
-      final boolean useEnumCaseInsensitive
-  ) {
-    assertEnumClass(
-        classUnderTest,
-        true,
-        hasAdditionalModelAnnotations,
-        useEnumCaseInsensitive
+      final PluginExecution pluginExecution, final Class<?> classUnderTest) {
+    assertEnumClass(pluginExecution, classUnderTest, true
     );
   }
 
   public static void assertEnumClass(
+      final PluginExecution pluginExecution,
       final Class<?> classUnderTest,
-      final boolean isDeprecated,
-      final boolean hasAdditionalTypeAnnotations,
-      final boolean useEnumCaseInsensitive) {
+      final boolean isDeprecated) {
     AssertionUtils.assertIsEnum(classUnderTest);
     assertEnumValues(classUnderTest);
     AssertionUtils.assertClassIsAnnotatedAsDeprecated(classUnderTest,
         isDeprecated);
     AssertionUtils.assertClassIsAnnotatedWithAdditionalTypeAnnotations(
-        classUnderTest, hasAdditionalTypeAnnotations);
+        classUnderTest, pluginExecution.hasAdditionalEnumTypeAnnotations());
     assertEnumHasCaseInsensitiveFromValueMethod(classUnderTest,
-        useEnumCaseInsensitive);
+        pluginExecution.useEnumCaseInsensitive());
   }
 
 

@@ -16,26 +16,19 @@
  *
  */
 
-package io.github.chrimle.example.useEnumCaseInsensitive;
+package io.github.chrimle.example.useJakartaEe;
 
 import java.util.Objects;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
 
 /**
- * Example of a Record with default fields
- * @param field1 a String field with a default value
+ * Example of a deprecated Enum
+ *
+ * @deprecated
  */
-public record ExampleRecordWithDefaultFields(
-    @javax.annotation.Nonnull String field1) {
-
-  public ExampleRecordWithDefaultFields(
-      @javax.annotation.Nullable final String field1) { 
-    this.field1 = Objects.requireNonNullElse(field1, "someDefaultValue");
-  }
+@Deprecated
+public enum DeprecatedExampleEnum {
+  ENUM1,
+  ENUM2,
+  ENUM3;
 }

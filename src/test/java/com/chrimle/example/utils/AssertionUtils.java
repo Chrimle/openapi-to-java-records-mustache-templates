@@ -2,6 +2,7 @@ package com.chrimle.example.utils;
 
 import java.io.Serializable;
 import java.lang.annotation.Annotation;
+import java.lang.reflect.AnnotatedElement;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -72,7 +73,8 @@ public class AssertionUtils {
     );
   }
 
-  public static void assertRecordHasFieldsOfType(final Class<?> classUnderTest,
+  public static void assertRecordHasFieldsOfType(
+      final Class<?> classUnderTest,
       final boolean isModelSerializable,
       final Class<?>... fieldClasses) {
 
@@ -89,6 +91,72 @@ public class AssertionUtils {
           fieldClasses[i - 1]
       );
     }
+  }
+
+  public static void assertRecordHasFieldsOfTypeWithNullableAnnotations(
+      final Class<?> classUnderTest,
+      final boolean isModelSerializable,
+      final boolean isNullable,
+      final boolean useJakartaEe,
+      final Class<?>... fieldClasses) {
+    Assertions.assertEquals(fieldClasses.length + (isModelSerializable ? 1 : 0),
+        classUnderTest.getDeclaredFields().length,
+        classUnderTest.getCanonicalName()
+            + " does not have the expected number of fields!");
+
+    for (int i = 1; i <= fieldClasses.length; i++) {
+      final String fieldName = "field" + i;
+      final Field field = assertRecordHasField(
+          classUnderTest,
+          fieldName,
+          fieldClasses[i - 1]
+      );
+      final Class<? extends Annotation> nullableAnnotation =
+          useJakartaEe ? jakarta.annotation.Nullable.class : javax.annotation.Nullable.class;
+      final Class<? extends Annotation> nonNullAnnotation =
+          useJakartaEe ? jakarta.annotation.Nonnull.class : javax.annotation.Nonnull.class;
+      if (isNullable) {
+        assertHasAnnotation(
+            classUnderTest,
+            field,
+            nullableAnnotation);
+        assertDoesNotHaveAnnotation(
+            classUnderTest,
+            field,
+            nonNullAnnotation);
+
+      } else {
+        assertHasAnnotation(
+            classUnderTest,
+            field,
+            nonNullAnnotation
+        );
+        assertDoesNotHaveAnnotation(
+            classUnderTest,
+            field,
+            nullableAnnotation
+        );
+      }
+    }
+  }
+
+
+  private static <T extends Annotation> void assertHasAnnotation(
+      final Class<?> classUnderTest,
+      final AnnotatedElement annotatedElement,
+      final Class<T> annotation) {
+    Assertions.assertNotNull(annotatedElement.getAnnotation(annotation),
+        classUnderTest.getCanonicalName() + "'s field " + annotatedElement
+            + " is not annotated with " + annotation.getCanonicalName());
+  }
+
+  private static <T extends Annotation> void assertDoesNotHaveAnnotation(
+      final Class<?> classUnderTest,
+      final AnnotatedElement annotatedElement,
+      final Class<T> annotation) {
+    Assertions.assertNull(annotatedElement.getAnnotation(annotation),
+        classUnderTest.getCanonicalName() + "'s field " + annotatedElement
+            + " is annotated with " + annotation.getCanonicalName());
   }
 
 
@@ -185,7 +253,7 @@ public class AssertionUtils {
   }
 
 
-  private static void assertRecordHasField(
+  private static Field assertRecordHasField(
       final Class<?> classUnderTest,
       final String fieldName,
       final Class<?> fieldType
@@ -197,6 +265,8 @@ public class AssertionUtils {
     );
 
     Assertions.assertEquals(fieldType, field.getType());
+
+    return field;
   }
 
   public static void assertClassImplementsSerializable(
@@ -213,6 +283,7 @@ public class AssertionUtils {
   public static void assertRecordHasBuilderInnerClass(
       final Class<?> classUnderTest,
       final boolean generateBuilders,
+      final boolean isNullable,
       final Class<?>... fieldClasses) {
     // Assert Builder can be instantiated from constructor
     Arrays.stream(
