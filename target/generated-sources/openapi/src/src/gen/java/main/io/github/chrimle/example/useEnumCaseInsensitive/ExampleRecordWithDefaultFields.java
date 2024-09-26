@@ -26,21 +26,16 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
-import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * Example of a Record with default fields
- * @param field1 a nullable String field
- * @param field2 a String field with a default value
+ * @param field1 a String field with a default value
  */
 public record ExampleRecordWithDefaultFields(
-    @javax.annotation.Nullable String field1,
-    @javax.annotation.Nonnull String field2) {
+    @javax.annotation.Nonnull String field1) {
 
   public ExampleRecordWithDefaultFields(
-      @javax.annotation.Nullable final String field1,
-      @javax.annotation.Nullable final String field2) { 
-    this.field1 = field1;
-    this.field2 = Objects.requireNonNullElse(field2, "someDefaultValue");
+      @javax.annotation.Nullable final String field1) { 
+    this.field1 = Objects.requireNonNullElse(field1, "someDefaultValue");
   }
 }

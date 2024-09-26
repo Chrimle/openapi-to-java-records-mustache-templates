@@ -3,12 +3,9 @@ package com.chrimle.example;
 import com.chrimle.example.utils.AssertionUtils;
 import com.chrimle.example.utils.GeneratedEnumTestUtils;
 import com.chrimle.example.utils.GeneratedRecordTestUtils;
-import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.EnumSource;
-import org.junit.jupiter.params.provider.MethodSource;
 
 public class TestSuite {
 
@@ -24,7 +21,8 @@ public class TestSuite {
           pluginExecution.hasAdditionalEnumTypeAnnotations(),
           pluginExecution.useEnumCaseInsensitive(),
           pluginExecution.serializableModel(),
-          pluginExecution.generateBuilders()
+          pluginExecution.generateBuilders(),
+          pluginExecution.isUseJakartaEe()
       );
     }
   }
@@ -36,7 +34,8 @@ public class TestSuite {
       boolean hasAdditionalEnumTypeAnnotations,
       boolean useEnumCaseInsensitive,
       boolean serializableModel,
-      boolean generateBuilders
+      boolean generateBuilders,
+      boolean useJakartaEe
   ) {
 
     final Class<?> classUnderTest = AssertionUtils.assertClassExists(
@@ -53,7 +52,8 @@ public class TestSuite {
           classUnderTest,
           hasAdditionalModelTypeAnnotations,
           serializableModel,
-          generateBuilders
+          generateBuilders,
+          useJakartaEe
       );
       case DEPRECATED_EXAMPLE_ENUM ->
           GeneratedEnumTestUtils.assertDeprecatedExampleEnum(
@@ -66,14 +66,16 @@ public class TestSuite {
               classUnderTest,
               hasAdditionalModelTypeAnnotations,
               serializableModel,
-              generateBuilders
+              generateBuilders,
+              useJakartaEe
           );
       case EXAMPLE_RECORD_WITH_DEFAULT_FIELDS ->
           GeneratedRecordTestUtils.assertExampleRecordWithDefaultFields(
               classUnderTest,
               hasAdditionalModelTypeAnnotations,
               serializableModel,
-              generateBuilders
+              generateBuilders,
+              useJakartaEe
           );
       case EXAMPLE_RECORD_WITH_REQUIRED_FIELDS_OF_EACH_TYPE ->
         GeneratedRecordTestUtils.assertExampleRecordWithRequiredFieldsOfEachType(
@@ -88,7 +90,16 @@ public class TestSuite {
             ),
             hasAdditionalModelTypeAnnotations,
             serializableModel,
-            generateBuilders
+            generateBuilders,
+            useJakartaEe
+        );
+      case EXAMPLE_RECORD_WITH_NULLABLE_FIELDS_OF_EACH_TYPE ->
+        GeneratedRecordTestUtils.assertExampleRecordWithNullableFieldsOfEachType(
+            classUnderTest,
+            hasAdditionalModelTypeAnnotations,
+            serializableModel,
+            generateBuilders,
+            useJakartaEe
         );
     }
   }
