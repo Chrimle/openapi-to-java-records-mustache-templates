@@ -8,7 +8,7 @@ public enum GeneratedClass {
   EXAMPLE_RECORD_WITH_DEFAULT_FIELDS("ExampleRecordWithDefaultFields"),
   EXAMPLE_RECORD_WITH_REQUIRED_FIELDS_OF_EACH_TYPE("ExampleRecordWithRequiredFieldsOfEachType");
 
-
+  public static final String PACKAGE_NAME = "io.github.chrimle.example";
   private final String simpleClassName;
 
   GeneratedClass(final String simpleClassName) {
@@ -16,6 +16,6 @@ public enum GeneratedClass {
   }
 
   public String getCanonicalClassName(final String moduleName) {
-    return "io.github.chrimle.example." + moduleName + "." + simpleClassName;
+    return String.format("%s.%s.%s", PACKAGE_NAME, moduleName, simpleClassName);
   }
 }
