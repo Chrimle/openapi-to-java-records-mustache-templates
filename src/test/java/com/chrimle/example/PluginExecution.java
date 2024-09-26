@@ -107,7 +107,7 @@ public enum PluginExecution {
     return useEnumCaseInsensitive;
   }
 
-  public boolean isUseJakartaEe() {
+  public boolean useJakartaEe() {
     return useJakartaEe;
   }
 }

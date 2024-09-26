@@ -16,27 +16,13 @@ public class TestSuite {
     for (final GeneratedClass generatedClass : GeneratedClass.values()) {
       assertModel(
           generatedClass,
-          pluginExecution,
-          pluginExecution.hasAdditionalModelTypeAnnotations(),
-          pluginExecution.hasAdditionalEnumTypeAnnotations(),
-          pluginExecution.useEnumCaseInsensitive(),
-          pluginExecution.serializableModel(),
-          pluginExecution.generateBuilders(),
-          pluginExecution.isUseJakartaEe()
+          pluginExecution
       );
     }
   }
 
-  private void assertModel(
-      GeneratedClass generatedClass,
-      PluginExecution pluginExecution,
-      boolean hasAdditionalModelTypeAnnotations,
-      boolean hasAdditionalEnumTypeAnnotations,
-      boolean useEnumCaseInsensitive,
-      boolean serializableModel,
-      boolean generateBuilders,
-      boolean useJakartaEe
-  ) {
+  private void assertModel(final GeneratedClass generatedClass,
+      final PluginExecution pluginExecution) {
 
     final Class<?> classUnderTest = AssertionUtils.assertClassExists(
         getCanonicalClassName(pluginExecution, generatedClass)
@@ -44,63 +30,37 @@ public class TestSuite {
 
     switch (generatedClass) {
       case EXAMPLE_ENUM -> GeneratedEnumTestUtils.assertExampleEnum(
-          classUnderTest,
-          hasAdditionalEnumTypeAnnotations,
-          useEnumCaseInsensitive
+          pluginExecution, classUnderTest
       );
       case EXAMPLE_RECORD -> GeneratedRecordTestUtils.assertExampleRecord(
-          classUnderTest,
-          hasAdditionalModelTypeAnnotations,
-          serializableModel,
-          generateBuilders,
-          useJakartaEe
+          pluginExecution, classUnderTest
       );
-      case DEPRECATED_EXAMPLE_ENUM ->
-          GeneratedEnumTestUtils.assertDeprecatedExampleEnum(
-              classUnderTest,
-              hasAdditionalEnumTypeAnnotations,
-              useEnumCaseInsensitive
-          );
-      case DEPRECATED_EXAMPLE_RECORD ->
-          GeneratedRecordTestUtils.assertDeprecatedExampleRecord(
-              classUnderTest,
-              hasAdditionalModelTypeAnnotations,
-              serializableModel,
-              generateBuilders,
-              useJakartaEe
-          );
+      case DEPRECATED_EXAMPLE_ENUM -> GeneratedEnumTestUtils.assertDeprecatedExampleEnum(
+          pluginExecution, classUnderTest
+      );
+      case DEPRECATED_EXAMPLE_RECORD -> GeneratedRecordTestUtils.assertDeprecatedExampleRecord(
+          pluginExecution, classUnderTest
+      );
       case EXAMPLE_RECORD_WITH_DEFAULT_FIELDS ->
           GeneratedRecordTestUtils.assertExampleRecordWithDefaultFields(
-              classUnderTest,
-              hasAdditionalModelTypeAnnotations,
-              serializableModel,
-              generateBuilders,
-              useJakartaEe
+              pluginExecution, classUnderTest
           );
       case EXAMPLE_RECORD_WITH_REQUIRED_FIELDS_OF_EACH_TYPE ->
-        GeneratedRecordTestUtils.assertExampleRecordWithRequiredFieldsOfEachType(
-            classUnderTest,
-            AssertionUtils.assertClassExists(
-                getCanonicalClassName(pluginExecution,
-                    GeneratedClass.EXAMPLE_RECORD)
-            ),
-            AssertionUtils.assertClassExists(
-                getCanonicalClassName(pluginExecution,
-                    GeneratedClass.EXAMPLE_ENUM)
-            ),
-            hasAdditionalModelTypeAnnotations,
-            serializableModel,
-            generateBuilders,
-            useJakartaEe
-        );
+          GeneratedRecordTestUtils.assertExampleRecordWithRequiredFieldsOfEachType(
+              pluginExecution, classUnderTest,
+              AssertionUtils.assertClassExists(
+                  getCanonicalClassName(pluginExecution,
+                      GeneratedClass.EXAMPLE_RECORD)
+              ),
+              AssertionUtils.assertClassExists(
+                  getCanonicalClassName(pluginExecution,
+                      GeneratedClass.EXAMPLE_ENUM)
+              )
+          );
       case EXAMPLE_RECORD_WITH_NULLABLE_FIELDS_OF_EACH_TYPE ->
-        GeneratedRecordTestUtils.assertExampleRecordWithNullableFieldsOfEachType(
-            classUnderTest,
-            hasAdditionalModelTypeAnnotations,
-            serializableModel,
-            generateBuilders,
-            useJakartaEe
-        );
+          GeneratedRecordTestUtils.assertExampleRecordWithNullableFieldsOfEachType(
+              pluginExecution, classUnderTest
+          );
     }
   }
 
