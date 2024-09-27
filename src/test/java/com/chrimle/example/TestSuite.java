@@ -14,60 +14,44 @@ public class TestSuite {
   @DisplayName("Testing Plugin Executions...")
   public void testAll(final PluginExecution pluginExecution) {
     for (final GeneratedClass generatedClass : GeneratedClass.values()) {
-      assertModel(
-          generatedClass,
-          pluginExecution
-      );
+      assertModel(generatedClass, pluginExecution);
     }
   }
 
-  private void assertModel(final GeneratedClass generatedClass,
-      final PluginExecution pluginExecution) {
+  private void assertModel(
+      final GeneratedClass generatedClass, final PluginExecution pluginExecution) {
 
-    final Class<?> classUnderTest = AssertionUtils.assertClassExists(
-        getCanonicalClassName(pluginExecution, generatedClass)
-    );
+    final Class<?> classUnderTest =
+        AssertionUtils.assertClassExists(getCanonicalClassName(pluginExecution, generatedClass));
 
     switch (generatedClass) {
-      case EXAMPLE_ENUM -> GeneratedEnumTestUtils.assertExampleEnum(
-          pluginExecution, classUnderTest
-      );
-      case EXAMPLE_RECORD -> GeneratedRecordTestUtils.assertExampleRecord(
-          pluginExecution, classUnderTest
-      );
-      case DEPRECATED_EXAMPLE_ENUM -> GeneratedEnumTestUtils.assertDeprecatedExampleEnum(
-          pluginExecution, classUnderTest
-      );
-      case DEPRECATED_EXAMPLE_RECORD -> GeneratedRecordTestUtils.assertDeprecatedExampleRecord(
-          pluginExecution, classUnderTest
-      );
+      case EXAMPLE_ENUM ->
+          GeneratedEnumTestUtils.assertExampleEnum(pluginExecution, classUnderTest);
+      case EXAMPLE_RECORD ->
+          GeneratedRecordTestUtils.assertExampleRecord(pluginExecution, classUnderTest);
+      case DEPRECATED_EXAMPLE_ENUM ->
+          GeneratedEnumTestUtils.assertDeprecatedExampleEnum(pluginExecution, classUnderTest);
+      case DEPRECATED_EXAMPLE_RECORD ->
+          GeneratedRecordTestUtils.assertDeprecatedExampleRecord(pluginExecution, classUnderTest);
       case EXAMPLE_RECORD_WITH_DEFAULT_FIELDS ->
           GeneratedRecordTestUtils.assertExampleRecordWithDefaultFields(
-              pluginExecution, classUnderTest
-          );
+              pluginExecution, classUnderTest);
       case EXAMPLE_RECORD_WITH_REQUIRED_FIELDS_OF_EACH_TYPE ->
           GeneratedRecordTestUtils.assertExampleRecordWithRequiredFieldsOfEachType(
-              pluginExecution, classUnderTest,
+              pluginExecution,
+              classUnderTest,
               AssertionUtils.assertClassExists(
-                  getCanonicalClassName(pluginExecution,
-                      GeneratedClass.EXAMPLE_RECORD)
-              ),
+                  getCanonicalClassName(pluginExecution, GeneratedClass.EXAMPLE_RECORD)),
               AssertionUtils.assertClassExists(
-                  getCanonicalClassName(pluginExecution,
-                      GeneratedClass.EXAMPLE_ENUM)
-              )
-          );
+                  getCanonicalClassName(pluginExecution, GeneratedClass.EXAMPLE_ENUM)));
       case EXAMPLE_RECORD_WITH_NULLABLE_FIELDS_OF_EACH_TYPE ->
           GeneratedRecordTestUtils.assertExampleRecordWithNullableFieldsOfEachType(
-              pluginExecution, classUnderTest
-          );
+              pluginExecution, classUnderTest);
     }
   }
 
-  private String getCanonicalClassName(final PluginExecution pluginExecution,
-      final GeneratedClass generatedClass) {
-    return generatedClass.getCanonicalClassName(
-        pluginExecution.getPackageName());
+  private String getCanonicalClassName(
+      final PluginExecution pluginExecution, final GeneratedClass generatedClass) {
+    return generatedClass.getCanonicalClassName(pluginExecution.getPackageName());
   }
-
 }

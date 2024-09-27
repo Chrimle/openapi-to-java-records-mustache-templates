@@ -7,9 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
-/**
- * Generalized Test-class for testing Generated Record-classes
- */
+/** Generalized Test-class for testing Generated Record-classes */
 public class GeneratedRecordTestUtils {
 
   public static void assertRecord(
@@ -19,78 +17,52 @@ public class GeneratedRecordTestUtils {
       final boolean isNullable,
       final Class<?>... fieldClasses) {
     AssertionUtils.assertIsRecord(classUnderTest);
-    AssertionUtils.assertClassIsAnnotatedAsDeprecated(classUnderTest,
-        isDeprecated);
+    AssertionUtils.assertClassIsAnnotatedAsDeprecated(classUnderTest, isDeprecated);
     AssertionUtils.assertClassIsAnnotatedWithAdditionalTypeAnnotations(
         classUnderTest, pluginExecution.hasAdditionalModelTypeAnnotations());
-    AssertionUtils.assertModelIsSerializable(classUnderTest,
-        pluginExecution.serializableModel());
-    AssertionUtils.assertRecordHasFieldsOfTypeWithNullableAnnotations(classUnderTest,
-        pluginExecution.serializableModel(), isNullable, pluginExecution.useJakartaEe(), fieldClasses);
-    AssertionUtils.assertClassImplementsSerializable(classUnderTest,
-        pluginExecution.serializableModel());
-    AssertionUtils.assertRecordHasBuilderInnerClass(classUnderTest,
-        pluginExecution.generateBuilders(), isNullable, fieldClasses);
-    Constructor<?> constructor = AssertionUtils.assertRecordHasConstructor(classUnderTest,
+    AssertionUtils.assertModelIsSerializable(classUnderTest, pluginExecution.serializableModel());
+    AssertionUtils.assertRecordHasFieldsOfTypeWithNullableAnnotations(
+        classUnderTest,
+        pluginExecution.serializableModel(),
+        isNullable,
+        pluginExecution.useJakartaEe(),
         fieldClasses);
-    AssertionUtils.assertRecordInstantiateWithArgs(classUnderTest,
-        constructor, Arrays.stream(fieldClasses).map(x -> null).toArray());
+    AssertionUtils.assertClassImplementsSerializable(
+        classUnderTest, pluginExecution.serializableModel());
+    AssertionUtils.assertRecordHasBuilderInnerClass(
+        classUnderTest, pluginExecution.generateBuilders(), isNullable, fieldClasses);
+    Constructor<?> constructor =
+        AssertionUtils.assertRecordHasConstructor(classUnderTest, fieldClasses);
+    AssertionUtils.assertRecordInstantiateWithArgs(
+        classUnderTest, constructor, Arrays.stream(fieldClasses).map(x -> null).toArray());
   }
 
   public static void assertExampleRecord(
       final PluginExecution pluginExecution, final Class<?> classUnderTest) {
-    assertRecord(
-        pluginExecution,
-        classUnderTest,
-        false,
-        false,
-        Boolean.class
-    );
+    assertRecord(pluginExecution, classUnderTest, false, false, Boolean.class);
   }
 
   public static void assertDeprecatedExampleRecord(
       final PluginExecution pluginExecution, final Class<?> classUnderTest) {
-    assertRecord(
-        pluginExecution,
-        classUnderTest,
-        true,
-        false,
-        Boolean.class
-    );
+    assertRecord(pluginExecution, classUnderTest, true, false, Boolean.class);
   }
 
   public static void assertExampleRecordWithDefaultFields(
       final PluginExecution pluginExecution, final Class<?> classUnderTest) {
-    assertRecord(
-        pluginExecution,
-        classUnderTest,
-        false,
-        false,
-        String.class
-    );
+    assertRecord(pluginExecution, classUnderTest, false, false, String.class);
 
-    final Constructor<?> constructor = AssertionUtils.assertRecordHasConstructor(
-        classUnderTest, String.class);
+    final Constructor<?> constructor =
+        AssertionUtils.assertRecordHasConstructor(classUnderTest, String.class);
 
     AssertionUtils.assertRecordFieldHasValue(
-        AssertionUtils.assertRecordInstantiateWithArgs(
-            classUnderTest,
-            constructor,
-            (Object) null
-        ),
+        AssertionUtils.assertRecordInstantiateWithArgs(classUnderTest, constructor, (Object) null),
         "field1",
-        "someDefaultValue"
-    );
+        "someDefaultValue");
 
     AssertionUtils.assertRecordFieldHasValue(
-        AssertionUtils.assertRecordInstantiateWithArgs(
-            classUnderTest,
-            constructor,
-            "someValue"
-        ),
+        AssertionUtils.assertRecordInstantiateWithArgs(classUnderTest, constructor, "someValue"),
         "field1",
-        "someValue"
-    );
+        "someValue");
   }
 
   public static void assertExampleRecordWithRequiredFieldsOfEachType(
@@ -110,8 +82,7 @@ public class GeneratedRecordTestUtils {
         List.class,
         Set.class,
         recordClass,
-        enumClass
-    );
+        enumClass);
   }
 
   public static void assertExampleRecordWithNullableFieldsOfEachType(
@@ -126,7 +97,6 @@ public class GeneratedRecordTestUtils {
         Integer.class,
         BigDecimal.class,
         List.class,
-        Set.class
-    );
+        Set.class);
   }
 }
