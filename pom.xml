@@ -62,7 +62,7 @@
         <!-- /Jacoco -->
 
         <!-- Spotless -->
-        <spotless.check.skip>true</spotless.check.skip> <!-- Unused imports causes build to fail -->
+        <spotless.check.skip>false</spotless.check.skip> <!-- Unused imports causes build to fail -->
         <spotless-maven-plugin.version>2.43.0</spotless-maven-plugin.version>
         <googleJavaFormat.version>1.23.0</googleJavaFormat.version>
         <!-- /Spotless -->
@@ -452,9 +452,6 @@
                 <version>${spotless-maven-plugin.version}</version>
                 <configuration>
                     <java>
-                        <includes>
-                            <include>target/generated-sources/**/*.java</include>
-                        </includes>
                         <lineEndings>UNIX</lineEndings>
                         <googleJavaFormat>
                             <version>${googleJavaFormat.version}</version>
@@ -465,8 +462,17 @@
                 <executions>
                     <execution>
                         <goals>
-                            <goal>check</goal>
+                            <goal>apply</goal>
                         </goals>
+                        <phase>validate</phase>
+                        <configuration>
+                            <java>
+                                <includes>
+                                    <include>src/main/**/*.java</include>
+                                    <include>src/test/**/*.java</include>
+                                </includes>
+                            </java>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
