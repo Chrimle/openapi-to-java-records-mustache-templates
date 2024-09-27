@@ -1,63 +1,15 @@
 package com.chrimle.example;
 
 public enum PluginExecution {
-  GENERATE_BUILDERS(
-      "generateBuilders",
-      true,
-      false,
-      false,
-      false,
-      false,
-      false),
+  GENERATE_BUILDERS("generateBuilders", true, false, false, false, false, false),
   ADDITIONAL_ENUM_TYPE_ANNOTATIONS(
-      "additionalEnumTypeAnnotations",
-      false,
-      true,
-      false,
-      false,
-      false,
-      false),
+      "additionalEnumTypeAnnotations", false, true, false, false, false, false),
   ADDITIONAL_MODEL_TYPE_ANNOTATIONS(
-      "additionalModelTypeAnnotations",
-      false,
-      false,
-      true,
-      false,
-      false,
-      false),
-  SERIALIZABLE_MODEL(
-      "serializableModel",
-      false,
-      false,
-      false,
-      true,
-      false,
-      false),
-  STANDARD(
-      "standard",
-      false,
-      false,
-      false,
-      false,
-      false,
-      false),
-  USE_ENUM_CASE_INSENSITIVE(
-      "useEnumCaseInsensitive",
-      false,
-      false,
-      false,
-      false,
-      true,
-      false),
-  USE_JAKARTA_EE(
-      "useJakartaEe",
-      false,
-      false,
-      false,
-      false,
-      false,
-      true
-  );
+      "additionalModelTypeAnnotations", false, false, true, false, false, false),
+  SERIALIZABLE_MODEL("serializableModel", false, false, false, true, false, false),
+  STANDARD("standard", false, false, false, false, false, false),
+  USE_ENUM_CASE_INSENSITIVE("useEnumCaseInsensitive", false, false, false, false, true, false),
+  USE_JAKARTA_EE("useJakartaEe", false, false, false, false, false, true);
 
   private final String packageName;
   private final boolean generateBuilders;
@@ -73,7 +25,8 @@ public enum PluginExecution {
       final boolean hasAdditionalEnumTypeAnnotations,
       final boolean hasAdditionalModelTypeAnnotations,
       final boolean serializableModel,
-      final boolean useEnumCaseInsensitive, boolean useJakartaEe) {
+      final boolean useEnumCaseInsensitive,
+      boolean useJakartaEe) {
     this.packageName = packageName;
     this.hasAdditionalEnumTypeAnnotations = hasAdditionalEnumTypeAnnotations;
     this.hasAdditionalModelTypeAnnotations = hasAdditionalModelTypeAnnotations;
