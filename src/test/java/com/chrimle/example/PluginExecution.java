@@ -8,7 +8,9 @@ public enum PluginExecution {
       false,
       false,
       false,
-      false),
+      false,
+      false
+  ),
   ADDITIONAL_ENUM_TYPE_ANNOTATIONS(
       "additionalEnumTypeAnnotations",
       false,
@@ -16,7 +18,9 @@ public enum PluginExecution {
       false,
       false,
       false,
-      false),
+      false,
+      false
+  ),
   ADDITIONAL_MODEL_TYPE_ANNOTATIONS(
       "additionalModelTypeAnnotations",
       false,
@@ -24,7 +28,9 @@ public enum PluginExecution {
       true,
       false,
       false,
-      false),
+      false,
+      false
+  ),
   SERIALIZABLE_MODEL(
       "serializableModel",
       false,
@@ -32,7 +38,9 @@ public enum PluginExecution {
       false,
       true,
       false,
-      false),
+      false,
+      false
+  ),
   STANDARD(
       "standard",
       false,
@@ -40,17 +48,32 @@ public enum PluginExecution {
       false,
       false,
       false,
-      false),
+      false,
+      false
+  ),
+  USE_BEAN_VALIDATION(
+      "useBeanValidation",
+      false,
+      false,
+      false,
+      false,
+      true,
+      false,
+      false
+  ),
   USE_ENUM_CASE_INSENSITIVE(
       "useEnumCaseInsensitive",
       false,
       false,
       false,
       false,
+      false,
       true,
-      false),
+      false
+  ),
   USE_JAKARTA_EE(
       "useJakartaEe",
+      false,
       false,
       false,
       false,
@@ -64,6 +87,7 @@ public enum PluginExecution {
   private final boolean hasAdditionalEnumTypeAnnotations;
   private final boolean hasAdditionalModelTypeAnnotations;
   private final boolean serializableModel;
+  private final boolean useBeanValidation;
   private final boolean useEnumCaseInsensitive;
   private final boolean useJakartaEe;
 
@@ -73,12 +97,15 @@ public enum PluginExecution {
       final boolean hasAdditionalEnumTypeAnnotations,
       final boolean hasAdditionalModelTypeAnnotations,
       final boolean serializableModel,
-      final boolean useEnumCaseInsensitive, boolean useJakartaEe) {
+      final boolean useBeanValidation,
+      final boolean useEnumCaseInsensitive,
+      final boolean useJakartaEe) {
     this.packageName = packageName;
     this.hasAdditionalEnumTypeAnnotations = hasAdditionalEnumTypeAnnotations;
     this.hasAdditionalModelTypeAnnotations = hasAdditionalModelTypeAnnotations;
     this.generateBuilders = generateBuilders;
     this.serializableModel = serializableModel;
+    this.useBeanValidation = useBeanValidation;
     this.useEnumCaseInsensitive = useEnumCaseInsensitive;
     this.useJakartaEe = useJakartaEe;
   }
@@ -109,5 +136,9 @@ public enum PluginExecution {
 
   public boolean useJakartaEe() {
     return useJakartaEe;
+  }
+
+  public boolean useBeanValidation() {
+    return useBeanValidation;
   }
 }
