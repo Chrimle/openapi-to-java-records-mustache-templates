@@ -1,12 +1,13 @@
 {{!
   Source: openapi-to-java-records-mustache-templates
-  Version: 1.7.0
+  Version: 1.7.6
 
   Required imports:
     - none
 
   Optional imports:
     - `deprecation.mustache`
+    - `generateBuilders.mustache`
     - `javadoc.mustache`
     - `serializableModel.mustache`
     - `beanValidationAnnotations.mustache`
@@ -14,13 +15,13 @@
 
 }}{{>javadoc}}{{>deprecation}}{{>additionalModelTypeAnnotations}}{{!
 }}public record {{classname}}(
-        {{#vars}}@{{javaxPackage}}.annotation.{{#isNullable}}Nullable{{/isNullable}}{{^isNullable}}Nonnull{{/isNullable}}{{>beanValidationAnnotations}} {{{datatypeWithEnum}}} {{name}}{{^-last}},
-        {{/-last}}{{/vars}}{{^serializableModel}}){{/serializableModel}}{{#serializableModel}}
-) implements Serializable{{/serializableModel}} {
+    {{#vars}}@{{javaxPackage}}.annotation.{{#isNullable}}Nullable{{/isNullable}}{{^isNullable}}Nonnull{{/isNullable}}{{>beanValidationAnnotations}} {{{datatypeWithEnum}}} {{name}}{{^-last}},
+    {{/-last}}{{/vars}}{{^serializableModel}}){{/serializableModel}}{{#serializableModel}}
+  ) implements Serializable{{/serializableModel}} {
 {{>serializableModel}}
-    public {{classname}}(
-            {{#vars}}@{{javaxPackage}}.annotation.{{#isNullable}}Nullable{{/isNullable}}{{^isNullable}}{{#defaultValue}}Nullable{{/defaultValue}}{{^defaultValue}}Nonnull{{/defaultValue}}{{/isNullable}} final {{{datatypeWithEnum}}} {{name}}{{^-last}},
-            {{/-last}}{{/vars}}) { {{#vars}}
-        this.{{name}} = {{^defaultValue}}{{name}}{{/defaultValue}}{{#defaultValue}}Objects.requireNonNullElse({{name}}, {{{.}}}){{/defaultValue}};{{/vars}}
-    }{{>generateBuilders}}
+  public {{classname}}(
+      {{#vars}}@{{javaxPackage}}.annotation.{{#isNullable}}Nullable{{/isNullable}}{{^isNullable}}{{#defaultValue}}Nullable{{/defaultValue}}{{^defaultValue}}Nonnull{{/defaultValue}}{{/isNullable}} final {{{datatypeWithEnum}}} {{name}}{{^-last}},
+      {{/-last}}{{/vars}}) { {{#vars}}
+    this.{{name}} = {{^defaultValue}}{{name}}{{/defaultValue}}{{#defaultValue}}Objects.requireNonNullElse({{name}}, {{{.}}}){{/defaultValue}};{{/vars}}
+  }{{#generateBuilders}}{{>generateBuilders}}{{/generateBuilders}}
 }

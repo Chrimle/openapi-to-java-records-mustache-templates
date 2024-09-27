@@ -34,3 +34,5 @@ target/maven-status
 target/maven-archiver
 target/surefire-reports
 /target/generated-sources/openapi/.openapi-generator/api.yaml-default.sha256
+/target/site/jacoco/
+/target/jacoco.exec

@@ -1,7 +1,9 @@
 package com.chrimle.example.utils;
 
+import com.chrimle.example.PluginExecution;
 import java.lang.reflect.Constructor;
 import java.math.BigDecimal;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
@@ -11,225 +13,72 @@ import java.util.Set;
 public class GeneratedRecordTestUtils {
 
   public static void assertRecord(
+      final PluginExecution pluginExecution,
       final Class<?> classUnderTest,
       final boolean isDeprecated,
-      final boolean hasAdditionalTypeAnnotations,
-      final boolean isSerializableModel,
-      final boolean generateBuilders,
+      final boolean isNullable,
       final Class<?>... fieldClasses) {
     AssertionUtils.assertIsRecord(classUnderTest);
     AssertionUtils.assertClassIsAnnotatedAsDeprecated(classUnderTest,
         isDeprecated);
     AssertionUtils.assertClassIsAnnotatedWithAdditionalTypeAnnotations(
-        classUnderTest, hasAdditionalTypeAnnotations);
+        classUnderTest, pluginExecution.hasAdditionalModelTypeAnnotations());
     AssertionUtils.assertModelIsSerializable(classUnderTest,
-        isSerializableModel);
-    AssertionUtils.assertRecordHasFieldsOfType(classUnderTest,
-        isSerializableModel, fieldClasses);
+        pluginExecution.serializableModel());
+    AssertionUtils.assertRecordHasFieldsOfTypeWithNullableAnnotations(classUnderTest,
+        pluginExecution.serializableModel(), isNullable, pluginExecution.useJakartaEe(), fieldClasses);
     AssertionUtils.assertClassImplementsSerializable(classUnderTest,
-        isSerializableModel);
+        pluginExecution.serializableModel());
     AssertionUtils.assertRecordHasBuilderInnerClass(classUnderTest,
-        generateBuilders, fieldClasses);
+        pluginExecution.generateBuilders(), isNullable, fieldClasses);
+    Constructor<?> constructor = AssertionUtils.assertRecordHasConstructor(classUnderTest,
+        fieldClasses);
+    AssertionUtils.assertRecordInstantiateWithArgs(classUnderTest,
+        constructor, Arrays.stream(fieldClasses).map(x -> null).toArray());
   }
 
   public static void assertExampleRecord(
-      final Class<?> classUnderTest,
-      final boolean hasAdditionalTypeAnnotations,
-      final boolean isSerializableModel,
-      final boolean generateBuilders
-  ) {
+      final PluginExecution pluginExecution, final Class<?> classUnderTest) {
     assertRecord(
+        pluginExecution,
         classUnderTest,
         false,
-        hasAdditionalTypeAnnotations,
-        isSerializableModel,
-        generateBuilders,
+        false,
         Boolean.class
     );
   }
 
   public static void assertDeprecatedExampleRecord(
-      final Class<?> classUnderTest,
-      final boolean hasAdditionalTypeAnnotations,
-      final boolean isSerializableModel,
-      final boolean generateBuilders
-  ) {
+      final PluginExecution pluginExecution, final Class<?> classUnderTest) {
     assertRecord(
+        pluginExecution,
         classUnderTest,
         true,
-        hasAdditionalTypeAnnotations,
-        isSerializableModel,
-        generateBuilders,
+        false,
         Boolean.class
-    );
-  }
-
-  public static void assertExampleRecordWithArrayFields(
-      final Class<?> classUnderTest,
-      final boolean hasAdditionalTypeAnnotations,
-      final boolean isSerializableModel,
-      final boolean generateBuilders
-  ) {
-    assertRecord(
-        classUnderTest,
-        false,
-        hasAdditionalTypeAnnotations,
-        isSerializableModel,
-        generateBuilders,
-        List.class,
-        List.class,
-        List.class
-    );
-  }
-
-  public static void assertExampleRecordWithBooleanFields(
-      final Class<?> classUnderTest,
-      final boolean hasAdditionalTypeAnnotations,
-      final boolean isSerializableModel,
-      final boolean generateBuilders
-  ) {
-    assertRecord(
-        classUnderTest,
-        false,
-        hasAdditionalTypeAnnotations,
-        isSerializableModel,
-        generateBuilders,
-        Boolean.class,
-        Boolean.class,
-        Boolean.class
-    );
-  }
-
-  public static void assertExampleRecordWithNumberFields(
-      final Class<?> classUnderTest,
-      final boolean hasAdditionalTypeAnnotations,
-      final boolean isSerializableModel,
-      final boolean generateBuilders
-  ) {
-    assertRecord(
-        classUnderTest,
-        false,
-        hasAdditionalTypeAnnotations,
-        isSerializableModel,
-        generateBuilders,
-        BigDecimal.class,
-        BigDecimal.class,
-        BigDecimal.class
-    );
-  }
-
-  public static void assertExampleRecordWithStringFields(
-      final Class<?> classUnderTest,
-      final boolean hasAdditionalTypeAnnotations,
-      final boolean isSerializableModel,
-      final boolean generateBuilders
-  ) {
-    assertRecord(
-        classUnderTest,
-        false,
-        hasAdditionalTypeAnnotations,
-        isSerializableModel,
-        generateBuilders,
-        String.class,
-        String.class,
-        String.class
-    );
-  }
-
-  public static void assertExampleRecordWithIntegerFields(
-      final Class<?> classUnderTest,
-      final boolean hasAdditionalTypeAnnotations,
-      final boolean isSerializableModel,
-      final boolean generateBuilders
-  ) {
-    assertRecord(
-        classUnderTest,
-        false,
-        hasAdditionalTypeAnnotations,
-        isSerializableModel,
-        generateBuilders,
-        Integer.class,
-        Integer.class,
-        Integer.class
-    );
-  }
-
-  public static void assertExampleRecordWithExampleEnumFields(
-      final Class<?> classUnderTest,
-      final Class<?> enumClass,
-      final boolean hasAdditionalTypeAnnotations,
-      final boolean isSerializableModel,
-      final boolean generateBuilders
-  ) {
-    assertRecord(
-        classUnderTest,
-        false,
-        hasAdditionalTypeAnnotations,
-        isSerializableModel,
-        generateBuilders,
-        enumClass,
-        enumClass,
-        enumClass
-    );
-  }
-
-  public static void assertExampleRecordWithExampleRecordFields(
-      final Class<?> classUnderTest,
-      final Class<?> subClass,
-      final boolean hasAdditionalModelTypeAnnotations,
-      final boolean isSerializableModel,
-      final boolean generateBuilders
-  ) {
-    assertRecord(
-        classUnderTest,
-        false,
-        hasAdditionalModelTypeAnnotations,
-        isSerializableModel,
-        generateBuilders,
-        subClass,
-        subClass,
-        subClass
     );
   }
 
   public static void assertExampleRecordWithDefaultFields(
-      final Class<?> classUnderTest,
-      final boolean hasAdditionalModelTypeAnnotations,
-      final boolean isSerializableModel,
-      final boolean generateBuilders
-  ) {
+      final PluginExecution pluginExecution, final Class<?> classUnderTest) {
     assertRecord(
+        pluginExecution,
         classUnderTest,
         false,
-        hasAdditionalModelTypeAnnotations,
-        isSerializableModel,
-        generateBuilders,
-        String.class,
+        false,
         String.class
     );
 
     final Constructor<?> constructor = AssertionUtils.assertRecordHasConstructor(
-        classUnderTest, String.class, String.class);
+        classUnderTest, String.class);
 
     AssertionUtils.assertRecordFieldHasValue(
         AssertionUtils.assertRecordInstantiateWithArgs(
             classUnderTest,
             constructor,
-            null,
-            null
+            (Object) null
         ),
         "field1",
-        null
-    );
-
-    AssertionUtils.assertRecordFieldHasValue(
-        AssertionUtils.assertRecordInstantiateWithArgs(
-            classUnderTest,
-            constructor,
-            "ignore",
-            null
-        ),
-        "field2",
         "someDefaultValue"
     );
 
@@ -237,27 +86,46 @@ public class GeneratedRecordTestUtils {
         AssertionUtils.assertRecordInstantiateWithArgs(
             classUnderTest,
             constructor,
-            "ignore",
             "someValue"
         ),
-        "field2",
+        "field1",
         "someValue"
     );
   }
 
-  public static void assertExampleRecordWithSetFields(
+  public static void assertExampleRecordWithRequiredFieldsOfEachType(
+      final PluginExecution pluginExecution,
       final Class<?> classUnderTest,
-      final boolean hasAdditionalTypeAnnotations,
-      final boolean isSerializableModel,
-      final boolean generateBuilders) {
+      final Class<?> recordClass,
+      final Class<?> enumClass) {
     assertRecord(
+        pluginExecution,
         classUnderTest,
         false,
-        hasAdditionalTypeAnnotations,
-        isSerializableModel,
-        generateBuilders,
+        false,
+        Boolean.class,
+        String.class,
+        Integer.class,
+        BigDecimal.class,
+        List.class,
         Set.class,
-        Set.class,
+        recordClass,
+        enumClass
+    );
+  }
+
+  public static void assertExampleRecordWithNullableFieldsOfEachType(
+      final PluginExecution pluginExecution, final Class<?> classUnderTest) {
+    assertRecord(
+        pluginExecution,
+        classUnderTest,
+        false,
+        true,
+        Boolean.class,
+        String.class,
+        Integer.class,
+        BigDecimal.class,
+        List.class,
         Set.class
     );
   }
