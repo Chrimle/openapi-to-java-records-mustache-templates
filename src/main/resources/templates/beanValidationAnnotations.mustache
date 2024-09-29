@@ -5,6 +5,8 @@ if useBeanValidation
   }}{{#required}}{{^isNullable}}{{!
     if isEnum
     }}{{#isEnum}} @NotNull{{/isEnum}}{{!
+    if isBoolean
+    }}{{#isBoolean}} @NotNull{{/isBoolean}}{{!
     if isString
     }}{{#isString}}{{!
       if pattern is set
