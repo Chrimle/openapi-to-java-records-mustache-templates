@@ -1,67 +1,17 @@
 package com.chrimle.example;
 
 public enum PluginExecution {
-  GENERATE_BUILDERS("generateBuilders", true, false, false, false, false, false,
-      false
-  ),
+  GENERATE_BUILDERS("generateBuilders", true, false, false, false, false, false, false),
   ADDITIONAL_ENUM_TYPE_ANNOTATIONS(
-      "additionalEnumTypeAnnotations", false, true, false, false, false, false,
-      false
-  ),
+      "additionalEnumTypeAnnotations", false, true, false, false, false, false, false),
   ADDITIONAL_MODEL_TYPE_ANNOTATIONS(
-      "additionalModelTypeAnnotations", false, false, true, false, false, false,
-      false
-  ),
-  SERIALIZABLE_MODEL(
-      "serializableModel",
-      false,
-      false,
-      false,
-      true,
-      false,
-      false,
-      false
-  ),
-  STANDARD(
-      "standard",
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
-      false
-  ),
-  USE_BEAN_VALIDATION(
-      "useBeanValidation",
-      false,
-      false,
-      false,
-      false,
-      true,
-      false,
-      false
-  ),
+      "additionalModelTypeAnnotations", false, false, true, false, false, false, false),
+  SERIALIZABLE_MODEL("serializableModel", false, false, false, true, false, false, false),
+  STANDARD("standard", false, false, false, false, false, false, false),
+  USE_BEAN_VALIDATION("useBeanValidation", false, false, false, false, true, false, false),
   USE_ENUM_CASE_INSENSITIVE(
-      "useEnumCaseInsensitive",
-      false,
-      false,
-      false,
-      false,
-      false,
-      true,
-      false
-  ),
-  USE_JAKARTA_EE(
-      "useJakartaEe",
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
-      true
-  );
+      "useEnumCaseInsensitive", false, false, false, false, false, true, false),
+  USE_JAKARTA_EE("useJakartaEe", false, false, false, false, false, false, true);
 
   private final String packageName;
   private final boolean generateBuilders;
