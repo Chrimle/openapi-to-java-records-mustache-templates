@@ -68,7 +68,7 @@
         <!-- /Spotless -->
 
         <!-- Publish to Maven Central Repository -->
-        <maven-gpg-plugin.version>3.1.0</maven-gpg-plugin.version>
+        <maven-gpg-plugin.version>3.2.7</maven-gpg-plugin.version>
         <maven-source-plugin.version>3.3.1</maven-source-plugin.version>
         <central-publishing-maven-plugin.version>0.6.0</central-publishing-maven-plugin.version>
         <!-- /Publish to Maven Central Repository -->
