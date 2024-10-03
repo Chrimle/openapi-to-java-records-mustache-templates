@@ -7,7 +7,8 @@ public enum GeneratedClass {
   EXAMPLE_RECORD("ExampleRecord"),
   EXAMPLE_RECORD_WITH_DEFAULT_FIELDS("ExampleRecordWithDefaultFields"),
   EXAMPLE_RECORD_WITH_REQUIRED_FIELDS_OF_EACH_TYPE("ExampleRecordWithRequiredFieldsOfEachType"),
-  EXAMPLE_RECORD_WITH_NULLABLE_FIELDS_OF_EACH_TYPE("ExampleRecordWithNullableFieldsOfEachType");
+  EXAMPLE_RECORD_WITH_NULLABLE_FIELDS_OF_EACH_TYPE("ExampleRecordWithNullableFieldsOfEachType"),
+  RECORD_WITH_ALL_CONSTRAINTS("RecordWithAllConstraints");
 
   public static final String PACKAGE_NAME = "io.github.chrimle.example";
   private final String simpleClassName;

@@ -1,0 +1,15 @@
+{{!
+  Source: openapi-to-java-records-mustache-templates
+  Version: 1.7.6
+}}{{!
+  if (configOption.useBeanValidation == true)
+}}{{#useBeanValidation}}{{!
+    if (isString == true)
+  }}{{#isString}}{{!
+      if (isNullable == true)
+    }}{{#isNullable}}{{!
+      Jakarta Bean Validation does not have constraint annotations for nullable values,
+      as values are nullable by default.
+    }}{{/isNullable}}{{!
+  }}{{/isString}}{{!
+}}{{/useBeanValidation}}
