@@ -1,5 +1,6 @@
 package com.chrimle.example.utils;
 
+import com.chrimle.example.GeneratedClass;
 import com.chrimle.example.PluginExecution;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -9,23 +10,16 @@ import org.junit.jupiter.api.Assertions;
 /** Generalized Test-class for testing Generated Enum-classes */
 public class GeneratedEnumTestUtils {
 
-  public static void assertExampleEnum(
-      final PluginExecution pluginExecution, final Class<?> classUnderTest) {
-    assertEnumClass(pluginExecution, classUnderTest, false);
-  }
-
-  public static void assertDeprecatedExampleEnum(
-      final PluginExecution pluginExecution, final Class<?> classUnderTest) {
-    assertEnumClass(pluginExecution, classUnderTest, true);
-  }
-
   public static void assertEnumClass(
-      final PluginExecution pluginExecution,
-      final Class<?> classUnderTest,
-      final boolean isDeprecated) {
+      final PluginExecution pluginExecution, final GeneratedClass generatedClass) {
+
+    final Class<?> classUnderTest =
+        AssertionUtils.assertClassExists(
+            generatedClass.getCanonicalClassName(pluginExecution.getPackageName()));
+
     AssertionUtils.assertIsEnum(classUnderTest);
     assertEnumValues(classUnderTest);
-    AssertionUtils.assertClassIsAnnotatedAsDeprecated(classUnderTest, isDeprecated);
+    AssertionUtils.assertClassIsAnnotatedAsDeprecated(classUnderTest, generatedClass.isDeprecated);
     AssertionUtils.assertClassIsAnnotatedWithAdditionalTypeAnnotations(
         classUnderTest, pluginExecution.hasAdditionalEnumTypeAnnotations());
     assertEnumHasCaseInsensitiveFromValueMethod(

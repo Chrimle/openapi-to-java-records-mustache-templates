@@ -12,6 +12,11 @@ import java.util.Set;
 public class GeneratedRecordTestUtils {
 
   public static void assertRecord(
+      final PluginExecution pluginExecution, final GeneratedClass generatedClass) {
+    assertRecord(pluginExecution, generatedClass, generatedClass.fieldClasses);
+  }
+
+  public static void assertRecord(
       final PluginExecution pluginExecution,
       final GeneratedClass generatedClass,
       final Class<?>... fieldClasses) {
@@ -50,7 +55,7 @@ public class GeneratedRecordTestUtils {
 
     final Class<?> classUnderTest =
         AssertionUtils.assertClassExists(
-            GeneratedClass.getCanonicalClassName(pluginExecution.getPackageName(), generatedClass));
+            generatedClass.getCanonicalClassName(pluginExecution.getPackageName()));
 
     assertRecord(pluginExecution, generatedClass, generatedClass.fieldClasses);
 
