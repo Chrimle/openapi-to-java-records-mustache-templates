@@ -14,16 +14,15 @@ public class GeneratedEnumTestUtils {
       final PluginExecution pluginExecution, final GeneratedClass generatedClass) {
 
     final Class<?> classUnderTest =
-        AssertionUtils.assertClassExists(
-            generatedClass.getCanonicalClassName(pluginExecution.getPackageName()));
+        AssertionUtils.assertClassExists(generatedClass.getCanonicalClassName(pluginExecution));
 
     AssertionUtils.assertIsEnum(classUnderTest);
     assertEnumValues(classUnderTest);
     AssertionUtils.assertClassIsAnnotatedAsDeprecated(classUnderTest, generatedClass.isDeprecated);
     AssertionUtils.assertClassIsAnnotatedWithAdditionalTypeAnnotations(
-        classUnderTest, pluginExecution.hasAdditionalEnumTypeAnnotations());
+        classUnderTest, pluginExecution.hasAdditionalEnumTypeAnnotations);
     assertEnumHasCaseInsensitiveFromValueMethod(
-        classUnderTest, pluginExecution.useEnumCaseInsensitive());
+        classUnderTest, pluginExecution.useEnumCaseInsensitive);
   }
 
   private static <E extends Enum<E>> void assertEnumValues(final Class<?> classUnderTest) {

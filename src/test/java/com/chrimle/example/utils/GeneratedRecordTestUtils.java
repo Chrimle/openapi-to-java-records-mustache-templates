@@ -22,27 +22,23 @@ public class GeneratedRecordTestUtils {
       final Class<?>... fieldClasses) {
 
     final Class<?> classUnderTest =
-        AssertionUtils.assertClassExists(
-            GeneratedClass.getCanonicalClassName(pluginExecution.getPackageName(), generatedClass));
+        AssertionUtils.assertClassExists(generatedClass.getCanonicalClassName(pluginExecution));
 
     AssertionUtils.assertIsRecord(classUnderTest);
     AssertionUtils.assertClassIsAnnotatedAsDeprecated(classUnderTest, generatedClass.isDeprecated);
     AssertionUtils.assertClassIsAnnotatedWithAdditionalTypeAnnotations(
-        classUnderTest, pluginExecution.hasAdditionalModelTypeAnnotations());
-    AssertionUtils.assertModelIsSerializable(classUnderTest, pluginExecution.serializableModel());
+        classUnderTest, pluginExecution.hasAdditionalModelTypeAnnotations);
+    AssertionUtils.assertModelIsSerializable(classUnderTest, pluginExecution.serializableModel);
     AssertionUtils.assertRecordHasFieldsOfTypeWithNullableAnnotations(
         classUnderTest,
-        pluginExecution.serializableModel(),
+        pluginExecution.serializableModel,
         generatedClass.isNullable,
-        pluginExecution.useJakartaEe(),
+        pluginExecution.useJakartaEe,
         fieldClasses);
     AssertionUtils.assertClassImplementsSerializable(
-        classUnderTest, pluginExecution.serializableModel());
+        classUnderTest, pluginExecution.serializableModel);
     AssertionUtils.assertRecordHasBuilderInnerClass(
-        classUnderTest,
-        pluginExecution.generateBuilders(),
-        generatedClass.isNullable,
-        fieldClasses);
+        classUnderTest, pluginExecution.generateBuilders, generatedClass.isNullable, fieldClasses);
     Constructor<?> constructor =
         AssertionUtils.assertRecordHasConstructor(classUnderTest, fieldClasses);
     AssertionUtils.assertRecordInstantiateWithArgs(
@@ -54,8 +50,7 @@ public class GeneratedRecordTestUtils {
     final GeneratedClass generatedClass = GeneratedClass.EXAMPLE_RECORD_WITH_DEFAULT_FIELDS;
 
     final Class<?> classUnderTest =
-        AssertionUtils.assertClassExists(
-            generatedClass.getCanonicalClassName(pluginExecution.getPackageName()));
+        AssertionUtils.assertClassExists(generatedClass.getCanonicalClassName(pluginExecution));
 
     assertRecord(pluginExecution, generatedClass, generatedClass.fieldClasses);
 
@@ -85,8 +80,8 @@ public class GeneratedRecordTestUtils {
         List.class,
         Set.class,
         AssertionUtils.assertClassExists(
-            GeneratedClass.EXAMPLE_RECORD.getCanonicalClassName(pluginExecution.getPackageName())),
+            GeneratedClass.EXAMPLE_RECORD.getCanonicalClassName(pluginExecution)),
         AssertionUtils.assertClassExists(
-            GeneratedClass.EXAMPLE_ENUM.getCanonicalClassName(pluginExecution.getPackageName())));
+            GeneratedClass.EXAMPLE_ENUM.getCanonicalClassName(pluginExecution)));
   }
 }

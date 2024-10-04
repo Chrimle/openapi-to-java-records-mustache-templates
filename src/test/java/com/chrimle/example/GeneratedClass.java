@@ -40,8 +40,8 @@ public enum GeneratedClass {
     this.fieldClasses = fieldClasses;
   }
 
-  public String getCanonicalClassName(final String moduleName) {
-    return getCanonicalClassName(moduleName, this);
+  public String getCanonicalClassName(final PluginExecution pluginExecution) {
+    return getCanonicalClassName(pluginExecution.packageName, this);
   }
 
   public static String getCanonicalClassName(
