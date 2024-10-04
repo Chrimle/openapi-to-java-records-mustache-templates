@@ -46,6 +46,6 @@ public enum GeneratedClass {
 
   public static String getCanonicalClassName(
       final String moduleName, final GeneratedClass generatedClass) {
-    return String.format("%s.%s.%s", PACKAGE_NAME, moduleName, generatedClass.simpleClassName);
+    return String.join(".", PACKAGE_NAME, moduleName, generatedClass.simpleClassName);
   }
 }
