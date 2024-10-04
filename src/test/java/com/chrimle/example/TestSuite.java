@@ -27,26 +27,15 @@ public class TestSuite {
     switch (generatedClass) {
       case EXAMPLE_ENUM ->
           GeneratedEnumTestUtils.assertExampleEnum(pluginExecution, classUnderTest);
-      case EXAMPLE_RECORD ->
-          GeneratedRecordTestUtils.assertExampleRecord(pluginExecution, classUnderTest);
       case DEPRECATED_EXAMPLE_ENUM ->
           GeneratedEnumTestUtils.assertDeprecatedExampleEnum(pluginExecution, classUnderTest);
-      case DEPRECATED_EXAMPLE_RECORD ->
-          GeneratedRecordTestUtils.assertDeprecatedExampleRecord(pluginExecution, classUnderTest);
       case EXAMPLE_RECORD_WITH_DEFAULT_FIELDS ->
-          GeneratedRecordTestUtils.assertExampleRecordWithDefaultFields(
-              pluginExecution, classUnderTest);
+          GeneratedRecordTestUtils.assertExampleRecordWithDefaultFields(pluginExecution);
       case EXAMPLE_RECORD_WITH_REQUIRED_FIELDS_OF_EACH_TYPE ->
-          GeneratedRecordTestUtils.assertExampleRecordWithRequiredFieldsOfEachType(
-              pluginExecution,
-              classUnderTest,
-              AssertionUtils.assertClassExists(
-                  getCanonicalClassName(pluginExecution, GeneratedClass.EXAMPLE_RECORD)),
-              AssertionUtils.assertClassExists(
-                  getCanonicalClassName(pluginExecution, GeneratedClass.EXAMPLE_ENUM)));
-      case EXAMPLE_RECORD_WITH_NULLABLE_FIELDS_OF_EACH_TYPE ->
-          GeneratedRecordTestUtils.assertExampleRecordWithNullableFieldsOfEachType(
-              pluginExecution, classUnderTest);
+          GeneratedRecordTestUtils.assertExampleRecordWithRequiredFieldsOfEachType(pluginExecution);
+      default ->
+          GeneratedRecordTestUtils.assertRecord(
+              pluginExecution, generatedClass, generatedClass.fieldClasses);
     }
   }
 

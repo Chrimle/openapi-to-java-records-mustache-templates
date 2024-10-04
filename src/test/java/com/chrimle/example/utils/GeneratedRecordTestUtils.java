@@ -13,10 +13,13 @@ public class GeneratedRecordTestUtils {
 
   public static void assertRecord(
       final PluginExecution pluginExecution,
-      final Class<?> classUnderTest,
       final GeneratedClass generatedClass,
-      final boolean isNullable,
       final Class<?>... fieldClasses) {
+
+    final Class<?> classUnderTest =
+        AssertionUtils.assertClassExists(
+            GeneratedClass.getCanonicalClassName(pluginExecution.getPackageName(), generatedClass));
+
     AssertionUtils.assertIsRecord(classUnderTest);
     AssertionUtils.assertClassIsAnnotatedAsDeprecated(classUnderTest, generatedClass.isDeprecated);
     AssertionUtils.assertClassIsAnnotatedWithAdditionalTypeAnnotations(
@@ -25,46 +28,34 @@ public class GeneratedRecordTestUtils {
     AssertionUtils.assertRecordHasFieldsOfTypeWithNullableAnnotations(
         classUnderTest,
         pluginExecution.serializableModel(),
-        isNullable,
+        generatedClass.isNullable,
         pluginExecution.useJakartaEe(),
         fieldClasses);
     AssertionUtils.assertClassImplementsSerializable(
         classUnderTest, pluginExecution.serializableModel());
     AssertionUtils.assertRecordHasBuilderInnerClass(
-        classUnderTest, pluginExecution.generateBuilders(), isNullable, fieldClasses);
+        classUnderTest,
+        pluginExecution.generateBuilders(),
+        generatedClass.isNullable,
+        fieldClasses);
     Constructor<?> constructor =
         AssertionUtils.assertRecordHasConstructor(classUnderTest, fieldClasses);
     AssertionUtils.assertRecordInstantiateWithArgs(
         classUnderTest, constructor, Arrays.stream(fieldClasses).map(x -> null).toArray());
   }
 
-  public static void assertExampleRecord(
-      final PluginExecution pluginExecution, final Class<?> classUnderTest) {
-    assertRecord(
-        pluginExecution, classUnderTest, GeneratedClass.EXAMPLE_RECORD, false, Boolean.class);
-  }
+  public static void assertExampleRecordWithDefaultFields(final PluginExecution pluginExecution) {
 
-  public static void assertDeprecatedExampleRecord(
-      final PluginExecution pluginExecution, final Class<?> classUnderTest) {
-    assertRecord(
-        pluginExecution,
-        classUnderTest,
-        GeneratedClass.DEPRECATED_EXAMPLE_RECORD,
-        false,
-        Boolean.class);
-  }
+    final GeneratedClass generatedClass = GeneratedClass.EXAMPLE_RECORD_WITH_DEFAULT_FIELDS;
 
-  public static void assertExampleRecordWithDefaultFields(
-      final PluginExecution pluginExecution, final Class<?> classUnderTest) {
-    assertRecord(
-        pluginExecution,
-        classUnderTest,
-        GeneratedClass.EXAMPLE_RECORD_WITH_DEFAULT_FIELDS,
-        false,
-        String.class);
+    final Class<?> classUnderTest =
+        AssertionUtils.assertClassExists(
+            GeneratedClass.getCanonicalClassName(pluginExecution.getPackageName(), generatedClass));
+
+    assertRecord(pluginExecution, generatedClass, generatedClass.fieldClasses);
 
     final Constructor<?> constructor =
-        AssertionUtils.assertRecordHasConstructor(classUnderTest, String.class);
+        AssertionUtils.assertRecordHasConstructor(classUnderTest, generatedClass.fieldClasses);
 
     AssertionUtils.assertRecordFieldHasValue(
         AssertionUtils.assertRecordInstantiateWithArgs(classUnderTest, constructor, (Object) null),
@@ -78,37 +69,19 @@ public class GeneratedRecordTestUtils {
   }
 
   public static void assertExampleRecordWithRequiredFieldsOfEachType(
-      final PluginExecution pluginExecution,
-      final Class<?> classUnderTest,
-      final Class<?> recordClass,
-      final Class<?> enumClass) {
+      final PluginExecution pluginExecution) {
     assertRecord(
         pluginExecution,
-        classUnderTest,
         GeneratedClass.EXAMPLE_RECORD_WITH_REQUIRED_FIELDS_OF_EACH_TYPE,
-        false,
         Boolean.class,
         String.class,
         Integer.class,
         BigDecimal.class,
         List.class,
         Set.class,
-        recordClass,
-        enumClass);
-  }
-
-  public static void assertExampleRecordWithNullableFieldsOfEachType(
-      final PluginExecution pluginExecution, final Class<?> classUnderTest) {
-    assertRecord(
-        pluginExecution,
-        classUnderTest,
-        GeneratedClass.EXAMPLE_RECORD_WITH_NULLABLE_FIELDS_OF_EACH_TYPE,
-        true,
-        Boolean.class,
-        String.class,
-        Integer.class,
-        BigDecimal.class,
-        List.class,
-        Set.class);
+        AssertionUtils.assertClassExists(
+            GeneratedClass.EXAMPLE_RECORD.getCanonicalClassName(pluginExecution.getPackageName())),
+        AssertionUtils.assertClassExists(
+            GeneratedClass.EXAMPLE_ENUM.getCanonicalClassName(pluginExecution.getPackageName())));
   }
 }
