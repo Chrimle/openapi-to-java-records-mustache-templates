@@ -1,5 +1,6 @@
 package com.chrimle.example.utils;
 
+import com.chrimle.example.GeneratedClass;
 import com.chrimle.example.PluginExecution;
 import java.lang.reflect.Constructor;
 import java.math.BigDecimal;
@@ -13,11 +14,11 @@ public class GeneratedRecordTestUtils {
   public static void assertRecord(
       final PluginExecution pluginExecution,
       final Class<?> classUnderTest,
-      final boolean isDeprecated,
+      final GeneratedClass generatedClass,
       final boolean isNullable,
       final Class<?>... fieldClasses) {
     AssertionUtils.assertIsRecord(classUnderTest);
-    AssertionUtils.assertClassIsAnnotatedAsDeprecated(classUnderTest, isDeprecated);
+    AssertionUtils.assertClassIsAnnotatedAsDeprecated(classUnderTest, generatedClass.isDeprecated);
     AssertionUtils.assertClassIsAnnotatedWithAdditionalTypeAnnotations(
         classUnderTest, pluginExecution.hasAdditionalModelTypeAnnotations());
     AssertionUtils.assertModelIsSerializable(classUnderTest, pluginExecution.serializableModel());
@@ -39,17 +40,28 @@ public class GeneratedRecordTestUtils {
 
   public static void assertExampleRecord(
       final PluginExecution pluginExecution, final Class<?> classUnderTest) {
-    assertRecord(pluginExecution, classUnderTest, false, false, Boolean.class);
+    assertRecord(
+        pluginExecution, classUnderTest, GeneratedClass.EXAMPLE_RECORD, false, Boolean.class);
   }
 
   public static void assertDeprecatedExampleRecord(
       final PluginExecution pluginExecution, final Class<?> classUnderTest) {
-    assertRecord(pluginExecution, classUnderTest, true, false, Boolean.class);
+    assertRecord(
+        pluginExecution,
+        classUnderTest,
+        GeneratedClass.DEPRECATED_EXAMPLE_RECORD,
+        false,
+        Boolean.class);
   }
 
   public static void assertExampleRecordWithDefaultFields(
       final PluginExecution pluginExecution, final Class<?> classUnderTest) {
-    assertRecord(pluginExecution, classUnderTest, false, false, String.class);
+    assertRecord(
+        pluginExecution,
+        classUnderTest,
+        GeneratedClass.EXAMPLE_RECORD_WITH_DEFAULT_FIELDS,
+        false,
+        String.class);
 
     final Constructor<?> constructor =
         AssertionUtils.assertRecordHasConstructor(classUnderTest, String.class);
@@ -73,7 +85,7 @@ public class GeneratedRecordTestUtils {
     assertRecord(
         pluginExecution,
         classUnderTest,
-        false,
+        GeneratedClass.EXAMPLE_RECORD_WITH_REQUIRED_FIELDS_OF_EACH_TYPE,
         false,
         Boolean.class,
         String.class,
@@ -90,7 +102,7 @@ public class GeneratedRecordTestUtils {
     assertRecord(
         pluginExecution,
         classUnderTest,
-        false,
+        GeneratedClass.EXAMPLE_RECORD_WITH_NULLABLE_FIELDS_OF_EACH_TYPE,
         true,
         Boolean.class,
         String.class,
