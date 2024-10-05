@@ -8,12 +8,7 @@ import java.util.Arrays;
 public class GeneratedRecordTestUtils {
 
   public static void assertRecord(final GeneratedSource generatedSource) {
-    assertRecord(generatedSource, generatedSource.fieldClasses());
-  }
-
-  public static void assertRecord(
-      final GeneratedSource generatedSource, final Class<?>... fieldClasses) {
-
+    final Class<?>[] fieldClasses = generatedSource.fieldClasses();
     final Class<?> classUnderTest = generatedSource.getClassUnderTest();
 
     AssertionUtils.assertIsRecord(classUnderTest);
@@ -22,8 +17,7 @@ public class GeneratedRecordTestUtils {
     AssertionUtils.assertClassIsAnnotatedWithAdditionalTypeAnnotations(
         classUnderTest, generatedSource.hasAdditionalModelTypeAnnotations());
     AssertionUtils.assertModelIsSerializable(generatedSource);
-    AssertionUtils.assertRecordHasFieldsOfTypeWithNullableAnnotations(
-        generatedSource, fieldClasses);
+    AssertionUtils.assertRecordHasFieldsOfTypeWithNullableAnnotations(generatedSource);
     AssertionUtils.assertClassImplementsSerializable(generatedSource);
     AssertionUtils.assertRecordHasBuilderInnerClass(
         classUnderTest, generatedSource.generateBuilders(), fieldClasses);
@@ -37,7 +31,7 @@ public class GeneratedRecordTestUtils {
 
     final Class<?> classUnderTest = generatedSource.getClassUnderTest();
 
-    assertRecord(generatedSource, generatedSource.fieldClasses());
+    assertRecord(generatedSource);
 
     final Constructor<?> constructor =
         AssertionUtils.assertRecordHasConstructor(classUnderTest, generatedSource.fieldClasses());

@@ -84,9 +84,10 @@ public class AssertionUtils {
   }
 
   public static void assertRecordHasFieldsOfTypeWithNullableAnnotations(
-      final GeneratedSource generatedSource, final Class<?>... fieldClasses) {
+      final GeneratedSource generatedSource) {
+    final Class<?>[] fieldClasses = generatedSource.fieldClasses();
+    final Class<?> classUnderTest = generatedSource.getClassUnderTest();
 
-    Class<?> classUnderTest = generatedSource.getClassUnderTest();
     Assertions.assertEquals(
         fieldClasses.length + (generatedSource.serializableModel() ? 1 : 0),
         classUnderTest.getDeclaredFields().length,

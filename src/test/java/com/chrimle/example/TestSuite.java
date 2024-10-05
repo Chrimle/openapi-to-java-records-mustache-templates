@@ -21,20 +21,37 @@ public class TestSuite {
         case EXAMPLE_ENUM, DEPRECATED_EXAMPLE_ENUM ->
             GeneratedEnumTestUtils.assertEnumClass(generatedSource);
         case EXAMPLE_RECORD_WITH_DEFAULT_FIELDS ->
-            GeneratedRecordTestUtils.assertExampleRecordWithDefaultFields(generatedSource);
+            GeneratedRecordTestUtils.assertExampleRecordWithDefaultFields(
+                new GeneratedSource(pluginExecution, generatedClass, String.class));
         case EXAMPLE_RECORD_WITH_REQUIRED_FIELDS_OF_EACH_TYPE ->
             GeneratedRecordTestUtils.assertRecord(
-                generatedSource,
-                Boolean.class,
-                String.class,
-                Integer.class,
-                BigDecimal.class,
-                List.class,
-                Set.class,
-                new GeneratedSource(pluginExecution, GeneratedClass.EXAMPLE_RECORD)
-                    .getClassUnderTest(),
-                new GeneratedSource(pluginExecution, GeneratedClass.EXAMPLE_ENUM)
-                    .getClassUnderTest());
+                new GeneratedSource(
+                    pluginExecution,
+                    generatedClass,
+                    Boolean.class,
+                    String.class,
+                    Integer.class,
+                    BigDecimal.class,
+                    List.class,
+                    Set.class,
+                    new GeneratedSource(pluginExecution, GeneratedClass.EXAMPLE_RECORD)
+                        .getClassUnderTest(),
+                    new GeneratedSource(pluginExecution, GeneratedClass.EXAMPLE_ENUM)
+                        .getClassUnderTest()));
+        case DEPRECATED_EXAMPLE_RECORD, EXAMPLE_RECORD ->
+            GeneratedRecordTestUtils.assertRecord(
+                new GeneratedSource(pluginExecution, generatedClass, Boolean.class));
+        case EXAMPLE_RECORD_WITH_NULLABLE_FIELDS_OF_EACH_TYPE ->
+            GeneratedRecordTestUtils.assertRecord(
+                new GeneratedSource(
+                    pluginExecution,
+                    generatedClass,
+                    Boolean.class,
+                    String.class,
+                    Integer.class,
+                    BigDecimal.class,
+                    List.class,
+                    Set.class));
         default -> GeneratedRecordTestUtils.assertRecord(generatedSource);
       }
     }

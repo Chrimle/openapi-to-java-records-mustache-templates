@@ -5,13 +5,17 @@ import com.chrimle.example.utils.AssertionUtils;
 public class GeneratedSource {
 
   private final Class<?> classUnderTest;
+  private final Class<?>[] fieldClasses;
   private final PluginExecution pluginExecution;
-
   private final GeneratedClass generatedClass;
 
-  public GeneratedSource(PluginExecution pluginExecution, GeneratedClass generatedClass) {
+  public GeneratedSource(
+      final PluginExecution pluginExecution,
+      final GeneratedClass generatedClass,
+      final Class<?>... fieldClasses) {
     this.pluginExecution = pluginExecution;
     this.generatedClass = generatedClass;
+    this.fieldClasses = fieldClasses;
     classUnderTest =
         AssertionUtils.assertClassExists(generatedClass.getCanonicalClassName(pluginExecution));
   }
@@ -49,7 +53,7 @@ public class GeneratedSource {
   }
 
   public Class<?>[] fieldClasses() {
-    return generatedClass.fieldClasses;
+    return fieldClasses;
   }
 
   public Class<?> getClassUnderTest() {
