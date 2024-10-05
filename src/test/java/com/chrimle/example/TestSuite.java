@@ -15,7 +15,8 @@ public class TestSuite {
     for (final GeneratedClass generatedClass : GeneratedClass.values()) {
       switch (generatedClass) {
         case EXAMPLE_ENUM, DEPRECATED_EXAMPLE_ENUM ->
-            GeneratedEnumTestUtils.assertEnumClass(pluginExecution, generatedClass);
+            GeneratedEnumTestUtils.assertEnumClass(
+                new GeneratedEnum(pluginExecution, generatedClass));
         case EXAMPLE_RECORD_WITH_DEFAULT_FIELDS ->
             GeneratedRecordTestUtils.assertExampleRecordWithDefaultFields(pluginExecution);
         case EXAMPLE_RECORD_WITH_REQUIRED_FIELDS_OF_EACH_TYPE ->
