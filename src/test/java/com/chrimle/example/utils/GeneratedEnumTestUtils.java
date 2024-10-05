@@ -1,6 +1,6 @@
 package com.chrimle.example.utils;
 
-import com.chrimle.example.GeneratedEnum;
+import com.chrimle.example.GeneratedSource;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.List;
@@ -9,17 +9,17 @@ import org.junit.jupiter.api.Assertions;
 /** Generalized Test-class for testing Generated Enum-classes */
 public class GeneratedEnumTestUtils {
 
-  public static void assertEnumClass(final GeneratedEnum generatedEnum) {
+  public static void assertEnumClass(final GeneratedSource generatedSource) {
 
-    final Class<?> classUnderTest = generatedEnum.classUnderTest;
+    final Class<?> classUnderTest = generatedSource.getClassUnderTest();
 
     AssertionUtils.assertIsEnum(classUnderTest);
     assertEnumValues(classUnderTest);
     AssertionUtils.assertClassIsAnnotatedAsDeprecated(
-        classUnderTest, generatedEnum.generatedClass.isDeprecated);
+        classUnderTest, generatedSource.isDeprecated());
     AssertionUtils.assertClassIsAnnotatedWithAdditionalTypeAnnotations(
-        classUnderTest, generatedEnum.pluginExecution.hasAdditionalEnumTypeAnnotations);
-    assertEnumHasCaseInsensitiveFromValueMethod(generatedEnum);
+        classUnderTest, generatedSource.hasAdditionalEnumTypeAnnotations());
+    assertEnumHasCaseInsensitiveFromValueMethod(generatedSource);
   }
 
   private static <E extends Enum<E>> void assertEnumValues(final Class<?> classUnderTest) {
@@ -30,17 +30,17 @@ public class GeneratedEnumTestUtils {
   }
 
   private static void assertEnumHasCaseInsensitiveFromValueMethod(
-      final GeneratedEnum generatedEnum) {
-    if (!generatedEnum.pluginExecution.useEnumCaseInsensitive) {
+      final GeneratedSource generatedSource) {
+    if (!generatedSource.useEnumCaseInsensitive()) {
       // Assert 'fromValue'-method does NOT exist
       AssertionUtils.assertClassDoesNotHaveMethod(
-          generatedEnum.classUnderTest, "fromValue", String.class);
+          generatedSource.getClassUnderTest(), "fromValue", String.class);
       return;
     }
     // Assert 'fromValue'-method exists
     final Method fromValueMethod =
         AssertionUtils.assertClassHasMethod(
-            generatedEnum.classUnderTest, "fromValue", String.class);
+            generatedSource.getClassUnderTest(), "fromValue", String.class);
 
     // Assert 'IllegalArgumentException' is throws for unknown Enum-values
     InvocationTargetException invocationTargetException =

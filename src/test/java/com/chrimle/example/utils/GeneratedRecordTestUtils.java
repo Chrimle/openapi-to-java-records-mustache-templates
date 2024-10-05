@@ -1,61 +1,46 @@
 package com.chrimle.example.utils;
 
-import com.chrimle.example.GeneratedClass;
-import com.chrimle.example.PluginExecution;
+import com.chrimle.example.GeneratedSource;
 import java.lang.reflect.Constructor;
-import java.math.BigDecimal;
 import java.util.Arrays;
-import java.util.List;
-import java.util.Set;
 
 /** Generalized Test-class for testing Generated Record-classes */
 public class GeneratedRecordTestUtils {
 
-  public static void assertRecord(
-      final PluginExecution pluginExecution, final GeneratedClass generatedClass) {
-    assertRecord(pluginExecution, generatedClass, generatedClass.fieldClasses);
+  public static void assertRecord(final GeneratedSource generatedSource) {
+    assertRecord(generatedSource, generatedSource.fieldClasses());
   }
 
   public static void assertRecord(
-      final PluginExecution pluginExecution,
-      final GeneratedClass generatedClass,
-      final Class<?>... fieldClasses) {
+      final GeneratedSource generatedSource, final Class<?>... fieldClasses) {
 
-    final Class<?> classUnderTest =
-        AssertionUtils.assertClassExists(generatedClass.getCanonicalClassName(pluginExecution));
+    final Class<?> classUnderTest = generatedSource.getClassUnderTest();
 
     AssertionUtils.assertIsRecord(classUnderTest);
-    AssertionUtils.assertClassIsAnnotatedAsDeprecated(classUnderTest, generatedClass.isDeprecated);
+    AssertionUtils.assertClassIsAnnotatedAsDeprecated(
+        classUnderTest, generatedSource.isDeprecated());
     AssertionUtils.assertClassIsAnnotatedWithAdditionalTypeAnnotations(
-        classUnderTest, pluginExecution.hasAdditionalModelTypeAnnotations);
-    AssertionUtils.assertModelIsSerializable(classUnderTest, pluginExecution.serializableModel);
+        classUnderTest, generatedSource.hasAdditionalModelTypeAnnotations());
+    AssertionUtils.assertModelIsSerializable(generatedSource);
     AssertionUtils.assertRecordHasFieldsOfTypeWithNullableAnnotations(
-        classUnderTest,
-        pluginExecution.serializableModel,
-        generatedClass.isNullable,
-        pluginExecution.useJakartaEe,
-        fieldClasses);
-    AssertionUtils.assertClassImplementsSerializable(
-        classUnderTest, pluginExecution.serializableModel);
+        generatedSource, fieldClasses);
+    AssertionUtils.assertClassImplementsSerializable(generatedSource);
     AssertionUtils.assertRecordHasBuilderInnerClass(
-        classUnderTest, pluginExecution.generateBuilders, generatedClass.isNullable, fieldClasses);
+        classUnderTest, generatedSource.generateBuilders(), fieldClasses);
     Constructor<?> constructor =
         AssertionUtils.assertRecordHasConstructor(classUnderTest, fieldClasses);
     AssertionUtils.assertRecordInstantiateWithArgs(
         classUnderTest, constructor, Arrays.stream(fieldClasses).map(x -> null).toArray());
   }
 
-  public static void assertExampleRecordWithDefaultFields(final PluginExecution pluginExecution) {
+  public static void assertExampleRecordWithDefaultFields(final GeneratedSource generatedSource) {
 
-    final GeneratedClass generatedClass = GeneratedClass.EXAMPLE_RECORD_WITH_DEFAULT_FIELDS;
+    final Class<?> classUnderTest = generatedSource.getClassUnderTest();
 
-    final Class<?> classUnderTest =
-        AssertionUtils.assertClassExists(generatedClass.getCanonicalClassName(pluginExecution));
-
-    assertRecord(pluginExecution, generatedClass, generatedClass.fieldClasses);
+    assertRecord(generatedSource, generatedSource.fieldClasses());
 
     final Constructor<?> constructor =
-        AssertionUtils.assertRecordHasConstructor(classUnderTest, generatedClass.fieldClasses);
+        AssertionUtils.assertRecordHasConstructor(classUnderTest, generatedSource.fieldClasses());
 
     AssertionUtils.assertRecordFieldHasValue(
         AssertionUtils.assertRecordInstantiateWithArgs(classUnderTest, constructor, (Object) null),
@@ -66,22 +51,5 @@ public class GeneratedRecordTestUtils {
         AssertionUtils.assertRecordInstantiateWithArgs(classUnderTest, constructor, "someValue"),
         "field1",
         "someValue");
-  }
-
-  public static void assertExampleRecordWithRequiredFieldsOfEachType(
-      final PluginExecution pluginExecution) {
-    assertRecord(
-        pluginExecution,
-        GeneratedClass.EXAMPLE_RECORD_WITH_REQUIRED_FIELDS_OF_EACH_TYPE,
-        Boolean.class,
-        String.class,
-        Integer.class,
-        BigDecimal.class,
-        List.class,
-        Set.class,
-        AssertionUtils.assertClassExists(
-            GeneratedClass.EXAMPLE_RECORD.getCanonicalClassName(pluginExecution)),
-        AssertionUtils.assertClassExists(
-            GeneratedClass.EXAMPLE_ENUM.getCanonicalClassName(pluginExecution)));
   }
 }
