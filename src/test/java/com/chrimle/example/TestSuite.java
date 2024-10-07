@@ -16,10 +16,7 @@ public class TestSuite {
   @DisplayName("Testing Plugin Executions...")
   public void testAll(final PluginExecution pluginExecution) {
     for (final GeneratedClass generatedClass : GeneratedClass.values()) {
-      final GeneratedSource generatedSource = new GeneratedSource(pluginExecution, generatedClass);
       switch (generatedClass) {
-        case EXAMPLE_ENUM, DEPRECATED_EXAMPLE_ENUM ->
-            GeneratedEnumTestUtils.assertEnumClass(generatedSource);
         case EXAMPLE_RECORD_WITH_DEFAULT_FIELDS ->
             GeneratedRecordTestUtils.assertExampleRecordWithDefaultFields(
                 new GeneratedSource(pluginExecution, generatedClass, String.class));
@@ -52,8 +49,16 @@ public class TestSuite {
                     BigDecimal.class,
                     List.class,
                     Set.class));
-        default -> GeneratedRecordTestUtils.assertRecord(generatedSource);
+        default -> assertGeneratedSource(new GeneratedSource(pluginExecution, generatedClass));
       }
+    }
+  }
+
+  private static void assertGeneratedSource(final GeneratedSource generatedSource) {
+    if (generatedSource.isEnum()) {
+      GeneratedEnumTestUtils.assertEnumClass(generatedSource);
+    } else {
+      GeneratedRecordTestUtils.assertRecord(generatedSource);
     }
   }
 }

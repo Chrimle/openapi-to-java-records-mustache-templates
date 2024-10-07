@@ -52,6 +52,10 @@ public class GeneratedSource {
     return generatedClass.isNullable;
   }
 
+  public boolean isEnum() {
+    return generatedClass.isEnum;
+  }
+
   public Class<?>[] fieldClasses() {
     return fieldClasses;
   }
