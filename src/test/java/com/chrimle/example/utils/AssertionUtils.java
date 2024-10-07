@@ -95,6 +95,8 @@ public class AssertionUtils {
     for (GeneratedField generatedField : generatedSource.generatedFields()) {
       final Field field =
           assertRecordHasField(classUnderTest, generatedField.name(), generatedField.type());
+
+      // Jakarta or JavaX ?
       final Class<? extends Annotation> nullableAnnotation =
           generatedSource.useJakartaEe()
               ? jakarta.annotation.Nullable.class
@@ -103,14 +105,16 @@ public class AssertionUtils {
           generatedSource.useJakartaEe()
               ? jakarta.annotation.Nonnull.class
               : javax.annotation.Nonnull.class;
-      if (generatedField.isNullable()) {
-        assertHasAnnotation(classUnderTest, field, nullableAnnotation);
-        assertDoesNotHaveAnnotation(classUnderTest, field, nonNullAnnotation);
 
-      } else {
-        assertHasAnnotation(classUnderTest, field, nonNullAnnotation);
-        assertDoesNotHaveAnnotation(classUnderTest, field, nullableAnnotation);
-      }
+      // Nullable or NonNull expected?
+      final Class<? extends Annotation> expectedAnnotation =
+          generatedField.isNullable() ? nullableAnnotation : nonNullAnnotation;
+
+      final Class<? extends Annotation> unexpectedAnnotation =
+          generatedField.isNullable() ? nonNullAnnotation : nullableAnnotation;
+
+      assertHasAnnotation(classUnderTest, field, expectedAnnotation);
+      assertDoesNotHaveAnnotation(classUnderTest, field, unexpectedAnnotation);
     }
   }
 

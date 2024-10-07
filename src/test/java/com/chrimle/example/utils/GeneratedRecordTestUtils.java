@@ -37,12 +37,12 @@ public class GeneratedRecordTestUtils {
 
     AssertionUtils.assertRecordFieldHasValue(
         AssertionUtils.assertRecordInstantiateWithArgs(classUnderTest, constructor, (Object) null),
-        "field1",
+        generatedSource.generatedFields()[0].name(),
         "someDefaultValue");
 
     AssertionUtils.assertRecordFieldHasValue(
         AssertionUtils.assertRecordInstantiateWithArgs(classUnderTest, constructor, "someValue"),
-        "field1",
+        generatedSource.generatedFields()[0].name(),
         "someValue");
   }
 }
