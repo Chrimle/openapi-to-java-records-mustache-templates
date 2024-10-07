@@ -21,7 +21,9 @@ public class TestSuite {
         case EXAMPLE_RECORD_WITH_DEFAULT_FIELDS ->
             GeneratedRecordTestUtils.assertExampleRecordWithDefaultFields(
                 new GeneratedSource(
-                    pluginExecution, generatedClass, GeneratedField.of("field1", String.class)));
+                    pluginExecution,
+                    generatedClass,
+                    GeneratedField.of("field1", String.class, false, "someDefaultValue")));
 
         case EXAMPLE_RECORD_WITH_REQUIRED_FIELDS_OF_EACH_TYPE ->
             GeneratedRecordTestUtils.assertRecord(
@@ -70,5 +72,4 @@ public class TestSuite {
     return AssertionUtils.assertClassExists(
         GeneratedClass.EXAMPLE_RECORD.getCanonicalClassName(pluginExecution));
   }
-
 }
