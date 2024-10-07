@@ -77,7 +77,7 @@ public class AssertionUtils {
         classUnderTest.getDeclaredFields().length,
         classUnderTest.getCanonicalName() + " does not have the expected number of fields!");
 
-    for (GeneratedField generatedField : generatedSource.generatedFields()) {
+    for (GeneratedField<?> generatedField : generatedSource.generatedFields()) {
       assertRecordHasField(classUnderTest, generatedField.name(), generatedField.type());
     }
   }
@@ -92,7 +92,7 @@ public class AssertionUtils {
         classUnderTest.getDeclaredFields().length,
         classUnderTest.getCanonicalName() + " does not have the expected number of fields!");
 
-    for (GeneratedField generatedField : generatedSource.generatedFields()) {
+    for (GeneratedField<?> generatedField : generatedSource.generatedFields()) {
       final Field field =
           assertRecordHasField(classUnderTest, generatedField.name(), generatedField.type());
 
@@ -252,7 +252,7 @@ public class AssertionUtils {
       final Method builderMethod = assertClassHasMethod(classUnderTest, "builder");
       final Object builderObject = Assertions.assertDoesNotThrow(() -> builderMethod.invoke(null));
       Assertions.assertNotNull(builderObject);
-      for (GeneratedField generatedField : generatedSource.generatedFields()) {
+      for (GeneratedField<?> generatedField : generatedSource.generatedFields()) {
         final String fieldBuilderMethodName = generatedField.name();
         final Class<?> fieldClass = generatedField.type();
         final Method fieldBuilderMethod =

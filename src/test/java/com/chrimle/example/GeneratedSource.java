@@ -6,14 +6,14 @@ import java.util.Arrays;
 public class GeneratedSource {
 
   private final Class<?> classUnderTest;
-  private final GeneratedField[] generatedFields;
+  private final GeneratedField<?>[] generatedFields;
   private final PluginExecution pluginExecution;
   private final GeneratedClass generatedClass;
 
   public GeneratedSource(
       final PluginExecution pluginExecution,
       final GeneratedClass generatedClass,
-      final GeneratedField... generatedFields) {
+      final GeneratedField<?>... generatedFields) {
     this.pluginExecution = pluginExecution;
     this.generatedClass = generatedClass;
     this.generatedFields = generatedFields;
@@ -57,7 +57,7 @@ public class GeneratedSource {
     return Arrays.stream(generatedFields).map(GeneratedField::type).toArray(Class<?>[]::new);
   }
 
-  public GeneratedField[] generatedFields() {
+  public GeneratedField<?>[] generatedFields() {
     return generatedFields;
   }
 
