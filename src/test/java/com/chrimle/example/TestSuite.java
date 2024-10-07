@@ -34,18 +34,14 @@ public class TestSuite {
                     GeneratedField.of("field4", BigDecimal.class),
                     GeneratedField.of("field5", List.class),
                     GeneratedField.of("field6", Set.class),
-                    GeneratedField.of(
-                        "field7",
-                        AssertionUtils.assertClassExists(
-                            GeneratedClass.EXAMPLE_RECORD.getCanonicalClassName(pluginExecution))),
-                    GeneratedField.of(
-                        "field8",
-                        AssertionUtils.assertClassExists(
-                            GeneratedClass.EXAMPLE_ENUM.getCanonicalClassName(pluginExecution)))));
+                    GeneratedField.of("field7", getExampleRecordClass(pluginExecution)),
+                    GeneratedField.of("field8", getExampleEnumClass(pluginExecution))));
+
         case DEPRECATED_EXAMPLE_RECORD, EXAMPLE_RECORD ->
             GeneratedRecordTestUtils.assertRecord(
                 new GeneratedSource(
                     pluginExecution, generatedClass, GeneratedField.of("field1", Boolean.class)));
+
         case EXAMPLE_RECORD_WITH_NULLABLE_FIELDS_OF_EACH_TYPE ->
             GeneratedRecordTestUtils.assertRecord(
                 new GeneratedSource(
@@ -57,16 +53,22 @@ public class TestSuite {
                     GeneratedField.of("field4", BigDecimal.class, true),
                     GeneratedField.of("field5", List.class, true),
                     GeneratedField.of("field6", Set.class, true)));
-        default -> assertGeneratedSource(new GeneratedSource(pluginExecution, generatedClass));
+
+        default ->
+            GeneratedEnumTestUtils.assertEnumClass(
+                new GeneratedSource(pluginExecution, generatedClass));
       }
     }
   }
 
-  private static void assertGeneratedSource(final GeneratedSource generatedSource) {
-    if (generatedSource.isEnum()) {
-      GeneratedEnumTestUtils.assertEnumClass(generatedSource);
-    } else {
-      GeneratedRecordTestUtils.assertRecord(generatedSource);
-    }
+  private static Class<?> getExampleEnumClass(PluginExecution pluginExecution) {
+    return AssertionUtils.assertClassExists(
+        GeneratedClass.EXAMPLE_ENUM.getCanonicalClassName(pluginExecution));
   }
+
+  private static Class<?> getExampleRecordClass(PluginExecution pluginExecution) {
+    return AssertionUtils.assertClassExists(
+        GeneratedClass.EXAMPLE_RECORD.getCanonicalClassName(pluginExecution));
+  }
+
 }
