@@ -1,21 +1,22 @@
 package com.chrimle.example;
 
 import com.chrimle.example.utils.AssertionUtils;
+import java.util.Arrays;
 
 public class GeneratedSource {
 
   private final Class<?> classUnderTest;
-  private final Class<?>[] fieldClasses;
+  private final GeneratedField[] generatedFields;
   private final PluginExecution pluginExecution;
   private final GeneratedClass generatedClass;
 
   public GeneratedSource(
       final PluginExecution pluginExecution,
       final GeneratedClass generatedClass,
-      final Class<?>... fieldClasses) {
+      final GeneratedField... generatedFields) {
     this.pluginExecution = pluginExecution;
     this.generatedClass = generatedClass;
-    this.fieldClasses = fieldClasses;
+    this.generatedFields = generatedFields;
     classUnderTest =
         AssertionUtils.assertClassExists(generatedClass.getCanonicalClassName(pluginExecution));
   }
@@ -57,7 +58,7 @@ public class GeneratedSource {
   }
 
   public Class<?>[] fieldClasses() {
-    return fieldClasses;
+    return Arrays.stream(generatedFields).map(GeneratedField::type).toArray(Class<?>[]::new);
   }
 
   public Class<?> getClassUnderTest() {
