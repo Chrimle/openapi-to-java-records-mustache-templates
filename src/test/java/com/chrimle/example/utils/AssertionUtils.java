@@ -1,5 +1,6 @@
 package com.chrimle.example.utils;
 
+import com.chrimle.example.GeneratedField;
 import com.chrimle.example.GeneratedSource;
 import java.io.Serializable;
 import java.lang.annotation.Annotation;
@@ -67,35 +68,33 @@ public class AssertionUtils {
         clazz.getCanonicalName() + " IS annotated with " + annotation.getCanonicalName());
   }
 
-  public static void assertRecordHasFieldsOfType(
-      final Class<?> classUnderTest,
-      final boolean isModelSerializable,
-      final Class<?>... fieldClasses) {
+  public static void assertRecordHasFieldsOfType(final GeneratedSource generatedSource) {
+
+    final Class<?> classUnderTest = generatedSource.getClassUnderTest();
 
     Assertions.assertEquals(
-        fieldClasses.length + (isModelSerializable ? 1 : 0),
+        generatedSource.generatedFields().length + (generatedSource.serializableModel() ? 1 : 0),
         classUnderTest.getDeclaredFields().length,
         classUnderTest.getCanonicalName() + " does not have the expected number of fields!");
 
-    for (int i = 1; i <= fieldClasses.length; i++) {
-      final String fieldName = "field" + i;
-      assertRecordHasField(classUnderTest, fieldName, fieldClasses[i - 1]);
+    for (GeneratedField generatedField : generatedSource.generatedFields()) {
+      assertRecordHasField(classUnderTest, generatedField.name(), generatedField.type());
     }
   }
 
   public static void assertRecordHasFieldsOfTypeWithNullableAnnotations(
       final GeneratedSource generatedSource) {
-    final Class<?>[] fieldClasses = generatedSource.fieldClasses();
+
     final Class<?> classUnderTest = generatedSource.getClassUnderTest();
 
     Assertions.assertEquals(
-        fieldClasses.length + (generatedSource.serializableModel() ? 1 : 0),
+        generatedSource.generatedFields().length + (generatedSource.serializableModel() ? 1 : 0),
         classUnderTest.getDeclaredFields().length,
         classUnderTest.getCanonicalName() + " does not have the expected number of fields!");
 
-    for (int i = 1; i <= fieldClasses.length; i++) {
-      final String fieldName = "field" + i;
-      final Field field = assertRecordHasField(classUnderTest, fieldName, fieldClasses[i - 1]);
+    for (GeneratedField generatedField : generatedSource.generatedFields()) {
+      final Field field =
+          assertRecordHasField(classUnderTest, generatedField.name(), generatedField.type());
       final Class<? extends Annotation> nullableAnnotation =
           generatedSource.useJakartaEe()
               ? jakarta.annotation.Nullable.class
@@ -231,10 +230,10 @@ public class AssertionUtils {
             .contains(Serializable.class));
   }
 
-  public static void assertRecordHasBuilderInnerClass(
-      final Class<?> classUnderTest,
-      final boolean generateBuilders,
-      final Class<?>... fieldClasses) {
+  public static void assertRecordHasBuilderInnerClass(final GeneratedSource generatedSource) {
+
+    final Class<?> classUnderTest = generatedSource.getClassUnderTest();
+
     // Assert Builder can be instantiated from constructor
     Arrays.stream(classUnderTest.getClasses())
         .filter(b -> "Builder".equals(b.getSimpleName()))
@@ -242,16 +241,16 @@ public class AssertionUtils {
         .map(AssertionUtils::assertRecordHasConstructor)
         .map(constructor -> assertRecordInstantiateWithArgs(classUnderTest, constructor))
         .ifPresentOrElse(
-            object -> assertRecordHasFieldsOfType(object.getClass(), false, fieldClasses),
-            () -> Assertions.assertFalse(generateBuilders));
+            object -> assertRecordHasFieldsOfType(generatedSource),
+            () -> Assertions.assertFalse(generatedSource.generateBuilders()));
     // Assert Builder can be instantiated from builder()-method
-    if (generateBuilders) {
+    if (generatedSource.generateBuilders()) {
       final Method builderMethod = assertClassHasMethod(classUnderTest, "builder");
       final Object builderObject = Assertions.assertDoesNotThrow(() -> builderMethod.invoke(null));
       Assertions.assertNotNull(builderObject);
-      for (int i = 1; i <= fieldClasses.length; i++) {
-        final String fieldBuilderMethodName = "field" + i;
-        final Class<?> fieldClass = fieldClasses[i - 1];
+      for (GeneratedField generatedField : generatedSource.generatedFields()) {
+        final String fieldBuilderMethodName = generatedField.name();
+        final Class<?> fieldClass = generatedField.type();
         final Method fieldBuilderMethod =
             Assertions.assertDoesNotThrow(
                 () ->

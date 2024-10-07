@@ -61,6 +61,10 @@ public class GeneratedSource {
     return Arrays.stream(generatedFields).map(GeneratedField::type).toArray(Class<?>[]::new);
   }
 
+  public GeneratedField[] generatedFields() {
+    return generatedFields;
+  }
+
   public Class<?> getClassUnderTest() {
     return classUnderTest;
   }

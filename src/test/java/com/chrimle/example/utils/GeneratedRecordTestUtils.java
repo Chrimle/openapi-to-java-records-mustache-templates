@@ -19,8 +19,7 @@ public class GeneratedRecordTestUtils {
     AssertionUtils.assertModelIsSerializable(generatedSource);
     AssertionUtils.assertRecordHasFieldsOfTypeWithNullableAnnotations(generatedSource);
     AssertionUtils.assertClassImplementsSerializable(generatedSource);
-    AssertionUtils.assertRecordHasBuilderInnerClass(
-        classUnderTest, generatedSource.generateBuilders(), fieldClasses);
+    AssertionUtils.assertRecordHasBuilderInnerClass(generatedSource);
     Constructor<?> constructor =
         AssertionUtils.assertRecordHasConstructor(classUnderTest, fieldClasses);
     AssertionUtils.assertRecordInstantiateWithArgs(
