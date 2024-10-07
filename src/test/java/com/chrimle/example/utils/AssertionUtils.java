@@ -103,7 +103,7 @@ public class AssertionUtils {
           generatedSource.useJakartaEe()
               ? jakarta.annotation.Nonnull.class
               : javax.annotation.Nonnull.class;
-      if (generatedSource.isNullable()) {
+      if (generatedField.isNullable()) {
         assertHasAnnotation(classUnderTest, field, nullableAnnotation);
         assertDoesNotHaveAnnotation(classUnderTest, field, nonNullAnnotation);
 

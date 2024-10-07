@@ -30,12 +30,12 @@ public class TestSuite {
                 new GeneratedSource(
                     pluginExecution,
                     generatedClass,
-                    new GeneratedField("field1", Boolean.class, true),
-                    new GeneratedField("field2", String.class, true),
-                    new GeneratedField("field3", Integer.class, true),
-                    new GeneratedField("field4", BigDecimal.class, true),
-                    new GeneratedField("field5", List.class, true),
-                    new GeneratedField("field6", Set.class, true),
+                    new GeneratedField("field1", Boolean.class, false),
+                    new GeneratedField("field2", String.class, false),
+                    new GeneratedField("field3", Integer.class, false),
+                    new GeneratedField("field4", BigDecimal.class, false),
+                    new GeneratedField("field5", List.class, false),
+                    new GeneratedField("field6", Set.class, false),
                     new GeneratedField(
                         "field7",
                         AssertionUtils.assertClassExists(

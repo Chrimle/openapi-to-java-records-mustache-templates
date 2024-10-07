@@ -49,10 +49,6 @@ public class GeneratedSource {
     return generatedClass.isDeprecated;
   }
 
-  public boolean isNullable() {
-    return generatedClass.isNullable;
-  }
-
   public boolean isEnum() {
     return generatedClass.isEnum;
   }
