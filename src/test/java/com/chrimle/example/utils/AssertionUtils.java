@@ -181,7 +181,10 @@ public class AssertionUtils {
         Assertions.assertDoesNotThrow(
             () -> method.invoke(objectUnderTest),
             classUnderTest.getCanonicalName() + " could not invoke method: " + method.getName());
-    Assertions.assertEquals(expectedValue, actualValue);
+    Assertions.assertEquals(
+        expectedValue,
+        actualValue,
+        classUnderTest.getCanonicalName() + " field '" + fieldName + "' has unexpected value");
   }
 
   public static void assertClassDoesNotHaveMethod(
