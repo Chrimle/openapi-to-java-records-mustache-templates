@@ -1,102 +1,127 @@
 package com.chrimle.example.utils;
 
-import com.chrimle.example.PluginExecution;
+import com.chrimle.example.GeneratedField;
+import com.chrimle.example.GeneratedSource;
 import java.lang.reflect.Constructor;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
+import org.junit.jupiter.api.Assertions;
 
 /** Generalized Test-class for testing Generated Record-classes */
 public class GeneratedRecordTestUtils {
 
-  public static void assertRecord(
-      final PluginExecution pluginExecution,
-      final Class<?> classUnderTest,
-      final boolean isDeprecated,
-      final boolean isNullable,
-      final Class<?>... fieldClasses) {
+  public static void assertRecord(final GeneratedSource generatedSource) {
+    final Class<?>[] fieldClasses = generatedSource.fieldClasses();
+    final Class<?> classUnderTest = generatedSource.getClassUnderTest();
+
     AssertionUtils.assertIsRecord(classUnderTest);
-    AssertionUtils.assertClassIsAnnotatedAsDeprecated(classUnderTest, isDeprecated);
+    AssertionUtils.assertClassIsAnnotatedAsDeprecated(
+        classUnderTest, generatedSource.isDeprecated());
     AssertionUtils.assertClassIsAnnotatedWithAdditionalTypeAnnotations(
-        classUnderTest, pluginExecution.hasAdditionalModelTypeAnnotations());
-    AssertionUtils.assertModelIsSerializable(classUnderTest, pluginExecution.serializableModel());
-    AssertionUtils.assertRecordHasFieldsOfTypeWithNullableAnnotations(
-        classUnderTest,
-        pluginExecution.serializableModel(),
-        isNullable,
-        pluginExecution.useJakartaEe(),
-        fieldClasses);
-    AssertionUtils.assertClassImplementsSerializable(
-        classUnderTest, pluginExecution.serializableModel());
-    AssertionUtils.assertRecordHasBuilderInnerClass(
-        classUnderTest, pluginExecution.generateBuilders(), isNullable, fieldClasses);
-    Constructor<?> constructor =
-        AssertionUtils.assertRecordHasConstructor(classUnderTest, fieldClasses);
-    AssertionUtils.assertRecordInstantiateWithArgs(
-        classUnderTest, constructor, Arrays.stream(fieldClasses).map(x -> null).toArray());
-  }
-
-  public static void assertExampleRecord(
-      final PluginExecution pluginExecution, final Class<?> classUnderTest) {
-    assertRecord(pluginExecution, classUnderTest, false, false, Boolean.class);
-  }
-
-  public static void assertDeprecatedExampleRecord(
-      final PluginExecution pluginExecution, final Class<?> classUnderTest) {
-    assertRecord(pluginExecution, classUnderTest, true, false, Boolean.class);
-  }
-
-  public static void assertExampleRecordWithDefaultFields(
-      final PluginExecution pluginExecution, final Class<?> classUnderTest) {
-    assertRecord(pluginExecution, classUnderTest, false, false, String.class);
-
+        classUnderTest, generatedSource.hasAdditionalModelTypeAnnotations());
+    AssertionUtils.assertModelIsSerializable(generatedSource);
+    AssertionUtils.assertRecordHasFieldsOfTypeWithNullableAnnotations(generatedSource);
+    AssertionUtils.assertClassImplementsSerializable(generatedSource);
+    AssertionUtils.assertRecordHasBuilderInnerClass(generatedSource);
     final Constructor<?> constructor =
-        AssertionUtils.assertRecordHasConstructor(classUnderTest, String.class);
+        AssertionUtils.assertRecordHasConstructor(classUnderTest, fieldClasses);
 
-    AssertionUtils.assertRecordFieldHasValue(
-        AssertionUtils.assertRecordInstantiateWithArgs(classUnderTest, constructor, (Object) null),
-        "field1",
-        "someDefaultValue");
+    // Asserting Nullable-fields are null if unset
+    final Object objectWithNullFields =
+        AssertionUtils.assertRecordInstantiateWithArgs(
+            classUnderTest, constructor, Arrays.stream(fieldClasses).map(x -> null).toArray());
+    Assertions.assertInstanceOf(classUnderTest, objectWithNullFields);
 
-    AssertionUtils.assertRecordFieldHasValue(
-        AssertionUtils.assertRecordInstantiateWithArgs(classUnderTest, constructor, "someValue"),
-        "field1",
-        "someValue");
+    for (GeneratedField<?> generatedField : generatedSource.generatedFields()) {
+      assertFieldHasEitherNullOrDefaultValueSet(generatedField, objectWithNullFields);
+    }
+
+    // Asserting fields are not null when set
+    final Object objectWithNonNullFields =
+        AssertionUtils.assertRecordInstantiateWithArgs(
+            classUnderTest,
+            constructor,
+            Arrays.stream(fieldClasses)
+                .map(GeneratedRecordTestUtils::getClassSpecificTestingValue)
+                .toArray());
+    Assertions.assertInstanceOf(classUnderTest, objectWithNonNullFields);
+
+    for (GeneratedField<?> generatedField : generatedSource.generatedFields()) {
+      assertFieldHasTestingValueSet(generatedField, objectWithNonNullFields);
+    }
   }
 
-  public static void assertExampleRecordWithRequiredFieldsOfEachType(
-      final PluginExecution pluginExecution,
-      final Class<?> classUnderTest,
-      final Class<?> recordClass,
-      final Class<?> enumClass) {
-    assertRecord(
-        pluginExecution,
-        classUnderTest,
-        false,
-        false,
-        Boolean.class,
-        String.class,
-        Integer.class,
-        BigDecimal.class,
-        List.class,
-        Set.class,
-        recordClass,
-        enumClass);
+  private static <T> void assertFieldHasEitherNullOrDefaultValueSet(
+      GeneratedField<T> generatedField, Object object) {
+    AssertionUtils.assertRecordFieldHasValue(
+        object,
+        generatedField.name(),
+        generatedField
+            .defaultValue()
+            .orElseGet(
+                () ->
+                    generatedField.isNullable()
+                        ? null
+                        : getClassSpecificDefaultValue(generatedField.type())));
   }
 
-  public static void assertExampleRecordWithNullableFieldsOfEachType(
-      final PluginExecution pluginExecution, final Class<?> classUnderTest) {
-    assertRecord(
-        pluginExecution,
-        classUnderTest,
-        false,
-        true,
-        Boolean.class,
-        String.class,
-        Integer.class,
-        BigDecimal.class,
-        List.class,
-        Set.class);
+  private static <T> void assertFieldHasTestingValueSet(
+      GeneratedField<T> generatedField, Object object) {
+    AssertionUtils.assertRecordFieldHasValue(
+        object, generatedField.name(), getClassSpecificTestingValue(generatedField.type()));
+  }
+
+  /**
+   * Returns the default value for the given class, according to openapi-generator-maven-plugin.
+   *
+   * @param fieldClass to get the default value for
+   * @return the default value
+   * @param <T> type of the class
+   */
+  private static <T> T getClassSpecificDefaultValue(final Class<? extends T> fieldClass) {
+    if (Arrays.class.equals(fieldClass)) {
+      return fieldClass.cast(Collections.emptyList());
+    }
+    if (Set.class.equals(fieldClass)) {
+      return fieldClass.cast(new LinkedHashSet<>());
+    }
+    if (List.class.equals(fieldClass)) {
+      return fieldClass.cast(new ArrayList<>());
+    }
+    return null;
+  }
+
+  /**
+   * Returns a testing value (pure) for the given class.
+   *
+   * @param fieldClass to get a testing value for
+   * @return the testing value
+   * @param <T> type of the class
+   */
+  private static <T> T getClassSpecificTestingValue(final Class<? extends T> fieldClass) {
+    if (Boolean.class.equals(fieldClass)) {
+      return fieldClass.cast(Boolean.TRUE);
+    }
+    if (String.class.equals(fieldClass)) {
+      return fieldClass.cast("testString");
+    }
+    if (Integer.class.equals(fieldClass)) {
+      return fieldClass.cast(42);
+    }
+    if (BigDecimal.class.equals(fieldClass)) {
+      return fieldClass.cast(BigDecimal.valueOf(123.456));
+    }
+    if (List.class.equals(fieldClass)) {
+      return fieldClass.cast(new ArrayList<>(List.of(Boolean.TRUE, Boolean.FALSE)));
+    }
+    if (Set.class.equals(fieldClass)) {
+      return fieldClass.cast(new LinkedHashSet<>(List.of(Boolean.TRUE, Boolean.FALSE)));
+    }
+    return null;
   }
 }

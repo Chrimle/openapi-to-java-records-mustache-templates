@@ -11,13 +11,13 @@ public enum PluginExecution {
   USE_ENUM_CASE_INSENSITIVE("useEnumCaseInsensitive", false, false, false, false, true, false),
   USE_JAKARTA_EE("useJakartaEe", false, false, false, false, false, true);
 
-  private final String packageName;
-  private final boolean generateBuilders;
-  private final boolean hasAdditionalEnumTypeAnnotations;
-  private final boolean hasAdditionalModelTypeAnnotations;
-  private final boolean serializableModel;
-  private final boolean useEnumCaseInsensitive;
-  private final boolean useJakartaEe;
+  public final String packageName;
+  public final boolean generateBuilders;
+  public final boolean hasAdditionalEnumTypeAnnotations;
+  public final boolean hasAdditionalModelTypeAnnotations;
+  public final boolean serializableModel;
+  public final boolean useEnumCaseInsensitive;
+  public final boolean useJakartaEe;
 
   PluginExecution(
       final String packageName,
@@ -26,7 +26,7 @@ public enum PluginExecution {
       final boolean hasAdditionalModelTypeAnnotations,
       final boolean serializableModel,
       final boolean useEnumCaseInsensitive,
-      boolean useJakartaEe) {
+      final boolean useJakartaEe) {
     this.packageName = packageName;
     this.hasAdditionalEnumTypeAnnotations = hasAdditionalEnumTypeAnnotations;
     this.hasAdditionalModelTypeAnnotations = hasAdditionalModelTypeAnnotations;
@@ -34,33 +34,5 @@ public enum PluginExecution {
     this.serializableModel = serializableModel;
     this.useEnumCaseInsensitive = useEnumCaseInsensitive;
     this.useJakartaEe = useJakartaEe;
-  }
-
-  public String getPackageName() {
-    return packageName;
-  }
-
-  public boolean generateBuilders() {
-    return generateBuilders;
-  }
-
-  public boolean hasAdditionalEnumTypeAnnotations() {
-    return hasAdditionalEnumTypeAnnotations;
-  }
-
-  public boolean hasAdditionalModelTypeAnnotations() {
-    return hasAdditionalModelTypeAnnotations;
-  }
-
-  public boolean serializableModel() {
-    return serializableModel;
-  }
-
-  public boolean useEnumCaseInsensitive() {
-    return useEnumCaseInsensitive;
-  }
-
-  public boolean useJakartaEe() {
-    return useJakartaEe;
   }
 }

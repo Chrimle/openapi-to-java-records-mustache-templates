@@ -3,6 +3,9 @@ package com.chrimle.example;
 import com.chrimle.example.utils.AssertionUtils;
 import com.chrimle.example.utils.GeneratedEnumTestUtils;
 import com.chrimle.example.utils.GeneratedRecordTestUtils;
+import java.math.BigDecimal;
+import java.util.List;
+import java.util.Set;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
@@ -14,44 +17,63 @@ public class TestSuite {
   @DisplayName("Testing Plugin Executions...")
   public void testAll(final PluginExecution pluginExecution) {
     for (final GeneratedClass generatedClass : GeneratedClass.values()) {
-      assertModel(generatedClass, pluginExecution);
+
+      final GeneratedSource generatedSource =
+          getGeneratedSourceForGeneratedClass(generatedClass, pluginExecution);
+
+      if (generatedSource.isEnum()) {
+        GeneratedEnumTestUtils.assertEnumClass(generatedSource);
+      } else {
+        GeneratedRecordTestUtils.assertRecord(generatedSource);
+      }
     }
   }
 
-  private void assertModel(
+  private static GeneratedSource getGeneratedSourceForGeneratedClass(
       final GeneratedClass generatedClass, final PluginExecution pluginExecution) {
-
-    final Class<?> classUnderTest =
-        AssertionUtils.assertClassExists(getCanonicalClassName(pluginExecution, generatedClass));
-
-    switch (generatedClass) {
-      case EXAMPLE_ENUM ->
-          GeneratedEnumTestUtils.assertExampleEnum(pluginExecution, classUnderTest);
-      case EXAMPLE_RECORD ->
-          GeneratedRecordTestUtils.assertExampleRecord(pluginExecution, classUnderTest);
-      case DEPRECATED_EXAMPLE_ENUM ->
-          GeneratedEnumTestUtils.assertDeprecatedExampleEnum(pluginExecution, classUnderTest);
-      case DEPRECATED_EXAMPLE_RECORD ->
-          GeneratedRecordTestUtils.assertDeprecatedExampleRecord(pluginExecution, classUnderTest);
+    return switch (generatedClass) {
+      case DEPRECATED_EXAMPLE_ENUM, EXAMPLE_ENUM ->
+          new GeneratedSource(pluginExecution, generatedClass);
+      case DEPRECATED_EXAMPLE_RECORD, EXAMPLE_RECORD ->
+          new GeneratedSource(
+              pluginExecution, generatedClass, GeneratedField.of("field1", Boolean.class));
       case EXAMPLE_RECORD_WITH_DEFAULT_FIELDS ->
-          GeneratedRecordTestUtils.assertExampleRecordWithDefaultFields(
-              pluginExecution, classUnderTest);
-      case EXAMPLE_RECORD_WITH_REQUIRED_FIELDS_OF_EACH_TYPE ->
-          GeneratedRecordTestUtils.assertExampleRecordWithRequiredFieldsOfEachType(
+          new GeneratedSource(
               pluginExecution,
-              classUnderTest,
-              AssertionUtils.assertClassExists(
-                  getCanonicalClassName(pluginExecution, GeneratedClass.EXAMPLE_RECORD)),
-              AssertionUtils.assertClassExists(
-                  getCanonicalClassName(pluginExecution, GeneratedClass.EXAMPLE_ENUM)));
+              generatedClass,
+              GeneratedField.of("field1", String.class, false, "someDefaultValue"));
       case EXAMPLE_RECORD_WITH_NULLABLE_FIELDS_OF_EACH_TYPE ->
-          GeneratedRecordTestUtils.assertExampleRecordWithNullableFieldsOfEachType(
-              pluginExecution, classUnderTest);
-    }
+          new GeneratedSource(
+              pluginExecution,
+              generatedClass,
+              GeneratedField.of("field1", Boolean.class, true),
+              GeneratedField.of("field2", String.class, true),
+              GeneratedField.of("field3", Integer.class, true),
+              GeneratedField.of("field4", BigDecimal.class, true),
+              GeneratedField.of("field5", List.class, true),
+              GeneratedField.of("field6", Set.class, true));
+      case EXAMPLE_RECORD_WITH_REQUIRED_FIELDS_OF_EACH_TYPE ->
+          new GeneratedSource(
+              pluginExecution,
+              generatedClass,
+              GeneratedField.of("field1", Boolean.class),
+              GeneratedField.of("field2", String.class),
+              GeneratedField.of("field3", Integer.class),
+              GeneratedField.of("field4", BigDecimal.class),
+              GeneratedField.of("field5", List.class),
+              GeneratedField.of("field6", Set.class),
+              GeneratedField.of("field7", getExampleRecordClass(pluginExecution)),
+              GeneratedField.of("field8", getExampleEnumClass(pluginExecution)));
+    };
   }
 
-  private String getCanonicalClassName(
-      final PluginExecution pluginExecution, final GeneratedClass generatedClass) {
-    return generatedClass.getCanonicalClassName(pluginExecution.getPackageName());
+  private static Class<?> getExampleEnumClass(PluginExecution pluginExecution) {
+    return AssertionUtils.assertClassExists(
+        GeneratedClass.EXAMPLE_ENUM.getCanonicalClassName(pluginExecution));
+  }
+
+  private static Class<?> getExampleRecordClass(PluginExecution pluginExecution) {
+    return AssertionUtils.assertClassExists(
+        GeneratedClass.EXAMPLE_RECORD.getCanonicalClassName(pluginExecution));
   }
 }
