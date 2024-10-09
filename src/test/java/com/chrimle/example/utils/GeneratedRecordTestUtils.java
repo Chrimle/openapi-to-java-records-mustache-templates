@@ -32,17 +32,33 @@ public class GeneratedRecordTestUtils {
         AssertionUtils.assertRecordHasConstructor(classUnderTest, fieldClasses);
 
     // Asserting Nullable-fields are null if unset
-    final Object objectWithFieldsSetToNull =
+    final Object objectWithNullFields =
         AssertionUtils.assertRecordInstantiateWithArgs(
             classUnderTest, constructor, Arrays.stream(fieldClasses).map(x -> null).toArray());
-    Assertions.assertInstanceOf(classUnderTest, objectWithFieldsSetToNull);
+    Assertions.assertInstanceOf(classUnderTest, objectWithNullFields);
 
     for (GeneratedField<?> generatedField : generatedSource.generatedFields()) {
-      assertGeneratedField(generatedField, objectWithFieldsSetToNull);
+      assertFieldHasEitherNullOrDefaultValueSet(generatedField, objectWithNullFields);
+    }
+
+    // Asserting fields are not null when set
+    final Object objectWithNonNullFields =
+        AssertionUtils.assertRecordInstantiateWithArgs(
+            classUnderTest,
+            constructor,
+            Arrays.stream(fieldClasses)
+                .map(GeneratedRecordTestUtils::getClassSpecificTestingValue)
+                .map(o -> o.orElse(null))
+                .toArray());
+    Assertions.assertInstanceOf(classUnderTest, objectWithNonNullFields);
+
+    for (GeneratedField<?> generatedField : generatedSource.generatedFields()) {
+      assertFieldHasTestingValueSet(generatedField, objectWithNonNullFields);
     }
   }
 
-  private static <T> void assertGeneratedField(GeneratedField<T> generatedField, Object object) {
+  private static <T> void assertFieldHasEitherNullOrDefaultValueSet(
+      GeneratedField<T> generatedField, Object object) {
     AssertionUtils.assertRecordFieldHasValue(
         object,
         generatedField.name(),
@@ -56,6 +72,21 @@ public class GeneratedRecordTestUtils {
             .orElse(null));
   }
 
+  private static <T> void assertFieldHasTestingValueSet(
+      GeneratedField<T> generatedField, Object object) {
+    AssertionUtils.assertRecordFieldHasValue(
+        object,
+        generatedField.name(),
+        getClassSpecificTestingValue(generatedField.type()).orElse(null));
+  }
+
+  /**
+   * Returns the default value for the given class, according to openapi-generator-maven-plugin.
+   *
+   * @param fieldClass to get the default value for
+   * @return the default value
+   * @param <T> type of the class
+   */
   private static <T> Optional<T> getClassSpecificDefaultValue(final Class<? extends T> fieldClass) {
     if (Arrays.class.equals(fieldClass)) {
       return Optional.of((T) Collections.emptyList());
@@ -65,6 +96,26 @@ public class GeneratedRecordTestUtils {
     }
     if (List.class.equals(fieldClass)) {
       return Optional.of((T) new ArrayList<>());
+    }
+    return Optional.empty();
+  }
+
+  /**
+   * Returns a testing value (pure) for the given class.
+   *
+   * @param fieldClass to get a testing value for
+   * @return the testing value
+   * @param <T> type of the class
+   */
+  private static <T> Optional<T> getClassSpecificTestingValue(final Class<? extends T> fieldClass) {
+    if (String.class.equals(fieldClass)) {
+      return Optional.of((T) "testString");
+    }
+    if (List.class.equals(fieldClass)) {
+      return Optional.of((T) new ArrayList<>(List.of(Boolean.TRUE, Boolean.FALSE)));
+    }
+    if (Set.class.equals(fieldClass)) {
+      return Optional.of((T) new LinkedHashSet<>(List.of(Boolean.TRUE, Boolean.FALSE)));
     }
     return Optional.empty();
   }
