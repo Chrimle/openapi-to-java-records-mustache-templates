@@ -8,7 +8,7 @@ public enum PluginExecution {
       "additionalModelTypeAnnotations", false, false, true, false, false, false, false),
   SERIALIZABLE_MODEL("serializableModel", false, false, false, true, false, false, false),
   STANDARD("standard", false, false, false, false, false, false, false),
-  USE_BEAN_VALIDATION("useBeanValidation", false, false, false, false, false, false, false),
+  USE_BEAN_VALIDATION("useBeanValidation", false, false, false, false, true, false, false),
   USE_ENUM_CASE_INSENSITIVE(
       "useEnumCaseInsensitive", false, false, false, false, false, true, false),
   USE_JAKARTA_EE("useJakartaEe", false, false, false, false, false, false, true);

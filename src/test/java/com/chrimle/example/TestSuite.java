@@ -41,39 +41,39 @@ public class TestSuite {
           new GeneratedSource(
               pluginExecution,
               generatedClass,
-              GeneratedField.of("field1", String.class, false, "someDefaultValue"));
+              GeneratedField.of("field1", String.class, false, true, "someDefaultValue"));
       case EXAMPLE_RECORD_WITH_NULLABLE_FIELDS_OF_EACH_TYPE ->
           new GeneratedSource(
               pluginExecution,
               generatedClass,
-              GeneratedField.of("field1", Boolean.class, true),
-              GeneratedField.of("field2", String.class, true),
-              GeneratedField.of("field3", Integer.class, true),
-              GeneratedField.of("field4", BigDecimal.class, true),
-              GeneratedField.of("field5", List.class, true),
-              GeneratedField.of("field6", Set.class, true));
+              GeneratedField.of("field1", Boolean.class, true, true),
+              GeneratedField.of("field2", String.class, true, true),
+              GeneratedField.of("field3", Integer.class, true, true),
+              GeneratedField.of("field4", BigDecimal.class, true, true),
+              GeneratedField.of("field5", List.class, true, true),
+              GeneratedField.of("field6", Set.class, true, true));
       case EXAMPLE_RECORD_WITH_REQUIRED_FIELDS_OF_EACH_TYPE ->
           new GeneratedSource(
               pluginExecution,
               generatedClass,
-              GeneratedField.of("field1", Boolean.class),
-              GeneratedField.of("field2", String.class),
-              GeneratedField.of("field3", Integer.class),
-              GeneratedField.of("field4", BigDecimal.class),
-              GeneratedField.of("field5", List.class),
-              GeneratedField.of("field6", Set.class),
-              GeneratedField.of("field7", getExampleRecordClass(pluginExecution)),
-              GeneratedField.of("field8", getExampleEnumClass(pluginExecution)));
+              GeneratedField.of("field1", Boolean.class, false, false),
+              GeneratedField.of("field2", String.class, false, false),
+              GeneratedField.of("field3", Integer.class, false, false),
+              GeneratedField.of("field4", BigDecimal.class, false, false),
+              GeneratedField.of("field5", List.class, false, false),
+              GeneratedField.of("field6", Set.class, false, false),
+              GeneratedField.of("field7", getExampleRecordClass(pluginExecution), false, false),
+              GeneratedField.of("field8", getExampleEnumClass(pluginExecution), false, false));
       case RECORD_WITH_ALL_CONSTRAINTS ->
           new GeneratedSource(
               pluginExecution,
               generatedClass,
-              GeneratedField.of("stringStandard", String.class),
-              GeneratedField.of("stringDefault", String.class, false, "someDefaultValue"),
-              GeneratedField.of("stringNullable", String.class, true),
-              GeneratedField.of("stringRequired", String.class),
-              GeneratedField.of("stringRequiredNullable", String.class, true),
-              GeneratedField.of("stringRequiredPattern", String.class));
+              GeneratedField.of("stringStandard", String.class, false, true),
+              GeneratedField.of("stringDefault", String.class, false, true, "someDefaultValue"),
+              GeneratedField.of("stringNullable", String.class, true, true),
+              GeneratedField.of("stringRequired", String.class, false, false),
+              GeneratedField.of("stringRequiredNullable", String.class, true, true),
+              GeneratedField.of("stringRequiredPattern", String.class, false, false));
     };
   }
 

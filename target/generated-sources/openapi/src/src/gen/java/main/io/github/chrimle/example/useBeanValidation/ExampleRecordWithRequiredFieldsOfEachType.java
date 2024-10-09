@@ -48,14 +48,14 @@ import jakarta.validation.Valid;
  * @param field8 ExampleEnum
  */
 public record ExampleRecordWithRequiredFieldsOfEachType(
-    @javax.annotation.Nonnull Boolean field1,
-    @javax.annotation.Nonnull String field2,
-    @javax.annotation.Nonnull Integer field3,
-    @javax.annotation.Nonnull BigDecimal field4,
-    @javax.annotation.Nonnull List<Boolean> field5,
-    @javax.annotation.Nonnull Set<Boolean> field6,
-    @javax.annotation.Nonnull ExampleRecord field7,
-    @javax.annotation.Nonnull ExampleEnum field8) {
+    @javax.annotation.Nonnull @NotNull Boolean field1,
+    @javax.annotation.Nonnull @NotNull String field2,
+    @javax.annotation.Nonnull @NotNull Integer field3,
+    @javax.annotation.Nonnull @NotNull BigDecimal field4,
+    @javax.annotation.Nonnull @NotNull List<Boolean> field5,
+    @javax.annotation.Nonnull @NotNull Set<Boolean> field6,
+    @javax.annotation.Nonnull @NotNull ExampleRecord field7,
+    @javax.annotation.Nonnull @NotNull ExampleEnum field8) {
 
   public ExampleRecordWithRequiredFieldsOfEachType(
       @javax.annotation.Nonnull final Boolean field1,

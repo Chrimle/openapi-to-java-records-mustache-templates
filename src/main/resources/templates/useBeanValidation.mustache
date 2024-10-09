@@ -4,12 +4,27 @@
 }}{{!
   if (configOption.useBeanValidation == true)
 }}{{#useBeanValidation}}{{!
-    if (isString == true)
-  }}{{#isString}}{{!
+    if (required == false)
+  }}{{^required}}{{!
+    When not required, the field *may* be nullable according to openapi-generator-maven-plugin.
+  }}{{/required}}{{!
+    if (required == true)
+  }}{{#required}}{{!
       if (isNullable == true)
     }}{{#isNullable}}{{!
-      Jakarta Bean Validation does not have constraint annotations for nullable values,
-      as values are nullable by default.
+       Jakarta Bean Validation does not have constraint annotations for nullable values,
+       as values are nullable by default.
     }}{{/isNullable}}{{!
-  }}{{/isString}}{{!
+      if (isNullable == false)
+    }}{{^isNullable}}{{!
+        if (isPrimitive == true)
+      }}{{#isPrimitive}}{{!
+        Primitive types cannot be null, hence, @NotNull annotation is unnecessary.
+      }}{{/isPrimitive}}{{!
+        if (isPrimitive == false)
+      }}{{^isPrimitive}}{{!
+        }} @NotNull{{!
+      }}{{/isPrimitive}}{{!
+    }}{{/isNullable}}{{!
+  }}{{/required}}{{!
 }}{{/useBeanValidation}}

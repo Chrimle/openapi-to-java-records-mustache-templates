@@ -115,6 +115,16 @@ public class AssertionUtils {
 
       assertHasAnnotation(classUnderTest, field, expectedAnnotation);
       assertDoesNotHaveAnnotation(classUnderTest, field, unexpectedAnnotation);
+
+      if (generatedSource.useBeanValidation()) {
+        final Class<? extends Annotation> notNullAnnotation =
+            jakarta.validation.constraints.NotNull.class;
+        if (generatedField.isBeanValidationNullable()) {
+          assertDoesNotHaveAnnotation(classUnderTest, field, notNullAnnotation);
+        } else {
+          assertHasAnnotation(classUnderTest, field, notNullAnnotation);
+        }
+      }
     }
   }
 

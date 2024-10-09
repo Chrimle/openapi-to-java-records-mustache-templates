@@ -43,9 +43,9 @@ public record RecordWithAllConstraints(
     @javax.annotation.Nonnull String stringStandard,
     @javax.annotation.Nonnull String stringDefault,
     @javax.annotation.Nullable String stringNullable,
-    @javax.annotation.Nonnull String stringRequired,
+    @javax.annotation.Nonnull @NotNull String stringRequired,
     @javax.annotation.Nullable String stringRequiredNullable,
-    @javax.annotation.Nonnull String stringRequiredPattern) {
+    @javax.annotation.Nonnull @NotNull String stringRequiredPattern) {
 
   public RecordWithAllConstraints(
       @javax.annotation.Nonnull final String stringStandard,
