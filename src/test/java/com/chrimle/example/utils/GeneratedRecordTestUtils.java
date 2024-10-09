@@ -30,13 +30,15 @@ public class GeneratedRecordTestUtils {
     AssertionUtils.assertRecordHasBuilderInnerClass(generatedSource);
     final Constructor<?> constructor =
         AssertionUtils.assertRecordHasConstructor(classUnderTest, fieldClasses);
-    final Object object =
+
+    // Asserting Nullable-fields are null if unset
+    final Object objectWithFieldsSetToNull =
         AssertionUtils.assertRecordInstantiateWithArgs(
             classUnderTest, constructor, Arrays.stream(fieldClasses).map(x -> null).toArray());
-    Assertions.assertInstanceOf(classUnderTest, object);
+    Assertions.assertInstanceOf(classUnderTest, objectWithFieldsSetToNull);
 
     for (GeneratedField<?> generatedField : generatedSource.generatedFields()) {
-      assertGeneratedField(generatedField, object);
+      assertGeneratedField(generatedField, objectWithFieldsSetToNull);
     }
   }
 
