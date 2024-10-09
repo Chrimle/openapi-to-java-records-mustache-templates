@@ -1,5 +1,7 @@
 package com.chrimle.example.utils;
 
+import com.chrimle.example.GeneratedField;
+import com.chrimle.example.GeneratedSource;
 import java.io.Serializable;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
@@ -66,48 +68,53 @@ public class AssertionUtils {
         clazz.getCanonicalName() + " IS annotated with " + annotation.getCanonicalName());
   }
 
-  public static void assertRecordHasFieldsOfType(
-      final Class<?> classUnderTest,
-      final boolean isModelSerializable,
-      final Class<?>... fieldClasses) {
+  public static void assertRecordHasFieldsOfType(final GeneratedSource generatedSource) {
+
+    final Class<?> classUnderTest = generatedSource.getClassUnderTest();
 
     Assertions.assertEquals(
-        fieldClasses.length + (isModelSerializable ? 1 : 0),
+        generatedSource.generatedFields().length + (generatedSource.serializableModel() ? 1 : 0),
         classUnderTest.getDeclaredFields().length,
         classUnderTest.getCanonicalName() + " does not have the expected number of fields!");
 
-    for (int i = 1; i <= fieldClasses.length; i++) {
-      final String fieldName = "field" + i;
-      assertRecordHasField(classUnderTest, fieldName, fieldClasses[i - 1]);
+    for (GeneratedField<?> generatedField : generatedSource.generatedFields()) {
+      assertRecordHasField(classUnderTest, generatedField.name(), generatedField.type());
     }
   }
 
   public static void assertRecordHasFieldsOfTypeWithNullableAnnotations(
-      final Class<?> classUnderTest,
-      final boolean isModelSerializable,
-      final boolean isNullable,
-      final boolean useJakartaEe,
-      final Class<?>... fieldClasses) {
+      final GeneratedSource generatedSource) {
+
+    final Class<?> classUnderTest = generatedSource.getClassUnderTest();
+
     Assertions.assertEquals(
-        fieldClasses.length + (isModelSerializable ? 1 : 0),
+        generatedSource.generatedFields().length + (generatedSource.serializableModel() ? 1 : 0),
         classUnderTest.getDeclaredFields().length,
         classUnderTest.getCanonicalName() + " does not have the expected number of fields!");
 
-    for (int i = 1; i <= fieldClasses.length; i++) {
-      final String fieldName = "field" + i;
-      final Field field = assertRecordHasField(classUnderTest, fieldName, fieldClasses[i - 1]);
-      final Class<? extends Annotation> nullableAnnotation =
-          useJakartaEe ? jakarta.annotation.Nullable.class : javax.annotation.Nullable.class;
-      final Class<? extends Annotation> nonNullAnnotation =
-          useJakartaEe ? jakarta.annotation.Nonnull.class : javax.annotation.Nonnull.class;
-      if (isNullable) {
-        assertHasAnnotation(classUnderTest, field, nullableAnnotation);
-        assertDoesNotHaveAnnotation(classUnderTest, field, nonNullAnnotation);
+    for (GeneratedField<?> generatedField : generatedSource.generatedFields()) {
+      final Field field =
+          assertRecordHasField(classUnderTest, generatedField.name(), generatedField.type());
 
-      } else {
-        assertHasAnnotation(classUnderTest, field, nonNullAnnotation);
-        assertDoesNotHaveAnnotation(classUnderTest, field, nullableAnnotation);
-      }
+      // Jakarta or JavaX ?
+      final Class<? extends Annotation> nullableAnnotation =
+          generatedSource.useJakartaEe()
+              ? jakarta.annotation.Nullable.class
+              : javax.annotation.Nullable.class;
+      final Class<? extends Annotation> nonNullAnnotation =
+          generatedSource.useJakartaEe()
+              ? jakarta.annotation.Nonnull.class
+              : javax.annotation.Nonnull.class;
+
+      // Nullable or NonNull expected?
+      final Class<? extends Annotation> expectedAnnotation =
+          generatedField.isNullable() ? nullableAnnotation : nonNullAnnotation;
+
+      final Class<? extends Annotation> unexpectedAnnotation =
+          generatedField.isNullable() ? nonNullAnnotation : nullableAnnotation;
+
+      assertHasAnnotation(classUnderTest, field, expectedAnnotation);
+      assertDoesNotHaveAnnotation(classUnderTest, field, unexpectedAnnotation);
     }
   }
 
@@ -137,12 +144,11 @@ public class AssertionUtils {
             + annotation.getCanonicalName());
   }
 
-  public static void assertModelIsSerializable(
-      final Class<?> classUnderTest, final boolean isModelSerializable) {
-    if (isModelSerializable) {
-      assertRecordHasField(classUnderTest, "serialVersionUID", long.class);
+  public static void assertModelIsSerializable(final GeneratedSource generatedSource) {
+    if (generatedSource.serializableModel()) {
+      assertRecordHasField(generatedSource.getClassUnderTest(), "serialVersionUID", long.class);
     } else {
-      assertRecordDoesNotHaveField(classUnderTest, "serialVersionUID");
+      assertRecordDoesNotHaveField(generatedSource.getClassUnderTest(), "serialVersionUID");
     }
   }
 
@@ -175,7 +181,10 @@ public class AssertionUtils {
         Assertions.assertDoesNotThrow(
             () -> method.invoke(objectUnderTest),
             classUnderTest.getCanonicalName() + " could not invoke method: " + method.getName());
-    Assertions.assertEquals(expectedValue, actualValue);
+    Assertions.assertEquals(
+        expectedValue,
+        actualValue,
+        classUnderTest.getCanonicalName() + " field '" + fieldName + "' has unexpected value");
   }
 
   public static void assertClassDoesNotHaveMethod(
@@ -221,19 +230,17 @@ public class AssertionUtils {
     return field;
   }
 
-  public static void assertClassImplementsSerializable(
-      final Class<?> classUnderTest, final boolean isSerializableModel) {
-
+  public static void assertClassImplementsSerializable(final GeneratedSource generatedSource) {
     Assertions.assertEquals(
-        isSerializableModel,
-        Arrays.asList(classUnderTest.getInterfaces()).contains(Serializable.class));
+        generatedSource.serializableModel(),
+        Arrays.asList(generatedSource.getClassUnderTest().getInterfaces())
+            .contains(Serializable.class));
   }
 
-  public static void assertRecordHasBuilderInnerClass(
-      final Class<?> classUnderTest,
-      final boolean generateBuilders,
-      final boolean isNullable,
-      final Class<?>... fieldClasses) {
+  public static void assertRecordHasBuilderInnerClass(final GeneratedSource generatedSource) {
+
+    final Class<?> classUnderTest = generatedSource.getClassUnderTest();
+
     // Assert Builder can be instantiated from constructor
     Arrays.stream(classUnderTest.getClasses())
         .filter(b -> "Builder".equals(b.getSimpleName()))
@@ -241,16 +248,16 @@ public class AssertionUtils {
         .map(AssertionUtils::assertRecordHasConstructor)
         .map(constructor -> assertRecordInstantiateWithArgs(classUnderTest, constructor))
         .ifPresentOrElse(
-            object -> assertRecordHasFieldsOfType(object.getClass(), false, fieldClasses),
-            () -> Assertions.assertFalse(generateBuilders));
+            object -> assertRecordHasFieldsOfType(generatedSource),
+            () -> Assertions.assertFalse(generatedSource.generateBuilders()));
     // Assert Builder can be instantiated from builder()-method
-    if (generateBuilders) {
+    if (generatedSource.generateBuilders()) {
       final Method builderMethod = assertClassHasMethod(classUnderTest, "builder");
       final Object builderObject = Assertions.assertDoesNotThrow(() -> builderMethod.invoke(null));
       Assertions.assertNotNull(builderObject);
-      for (int i = 1; i <= fieldClasses.length; i++) {
-        final String fieldBuilderMethodName = "field" + i;
-        final Class<?> fieldClass = fieldClasses[i - 1];
+      for (GeneratedField<?> generatedField : generatedSource.generatedFields()) {
+        final String fieldBuilderMethodName = generatedField.name();
+        final Class<?> fieldClass = generatedField.type();
         final Method fieldBuilderMethod =
             Assertions.assertDoesNotThrow(
                 () ->
