@@ -22,10 +22,11 @@ public class GeneratedEnumTestUtils {
     assertEnumHasCaseInsensitiveFromValueMethod(generatedSource);
   }
 
-  private static <E extends Enum<E>> void assertEnumValues(final Class<?> classUnderTest) {
+  private static void assertEnumValues(final Class<?> classUnderTest) {
     Assertions.assertEquals(3, classUnderTest.getEnumConstants().length);
     for (int i = 1; i <= 3; i++) {
-      Assertions.assertEquals("ENUM" + i, ((E) classUnderTest.getEnumConstants()[i - 1]).name());
+      Assertions.assertEquals(
+          "ENUM" + i, ((Enum<?>) classUnderTest.getEnumConstants()[i - 1]).name());
     }
   }
 
