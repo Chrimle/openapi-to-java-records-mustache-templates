@@ -3,6 +3,7 @@ package com.chrimle.example.utils;
 import com.chrimle.example.GeneratedField;
 import com.chrimle.example.GeneratedSource;
 import java.lang.reflect.Constructor;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -108,8 +109,17 @@ public class GeneratedRecordTestUtils {
    * @param <T> type of the class
    */
   private static <T> Optional<T> getClassSpecificTestingValue(final Class<? extends T> fieldClass) {
+    if (Boolean.class.equals(fieldClass)) {
+      return Optional.of((T) Boolean.TRUE);
+    }
     if (String.class.equals(fieldClass)) {
       return Optional.of((T) "testString");
+    }
+    if (Integer.class.equals(fieldClass)) {
+      return Optional.of((T) Integer.valueOf(42));
+    }
+    if (BigDecimal.class.equals(fieldClass)) {
+      return Optional.of((T) BigDecimal.valueOf(123.456));
     }
     if (List.class.equals(fieldClass)) {
       return Optional.of((T) new ArrayList<>(List.of(Boolean.TRUE, Boolean.FALSE)));
