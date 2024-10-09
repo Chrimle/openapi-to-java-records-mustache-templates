@@ -9,39 +9,39 @@ public record GeneratedField<T>(
     boolean isBeanValidationNullable,
     Optional<T> defaultValue) {
 
-  public GeneratedField(
-      String name,
-      Class<T> type,
-      boolean isNullable,
-      boolean isBeanValidationNullable,
-      T defaultValue) {
-    this(name, type, isNullable, isBeanValidationNullable, Optional.ofNullable(defaultValue));
+  public static <T> Builder<T> of(final String name, final Class<T> type) {
+    return new Builder<>(name, type);
   }
 
-  public GeneratedField(
-      String name, Class<T> type, boolean isNullable, boolean isBeanValidationNullable) {
-    this(name, type, isNullable, isBeanValidationNullable, Optional.empty());
-  }
+  public static class Builder<T> {
+    private final String name;
+    private final Class<T> type;
+    private boolean isNullable = false;
+    private boolean isBeanValidationNullable = true;
+    private Optional<T> defaultValue = Optional.empty();
 
-  public GeneratedField(String name, Class<T> type) {
-    this(name, type, false, true);
-  }
+    public Builder(final String name, final Class<T> type) {
+      this.name = name;
+      this.type = type;
+    }
 
-  public static <T> GeneratedField<T> of(String name, Class<T> type) {
-    return new GeneratedField<>(name, type);
-  }
+    public Builder<T> isNullable(final boolean isNullable) {
+      this.isNullable = isNullable;
+      return this;
+    }
 
-  public static <T> GeneratedField<T> of(
-      String name, Class<T> type, boolean isNullable, boolean isBeanValidationNullable) {
-    return new GeneratedField<>(name, type, isNullable, isBeanValidationNullable);
-  }
+    public Builder<T> isBeanValidationNullable(final boolean isBeanValidationNullable) {
+      this.isBeanValidationNullable = isBeanValidationNullable;
+      return this;
+    }
 
-  public static <T> GeneratedField<T> of(
-      String name,
-      Class<T> type,
-      boolean isNullable,
-      boolean isBeanValidationNullable,
-      T defaultValue) {
-    return new GeneratedField<>(name, type, isNullable, isBeanValidationNullable, defaultValue);
+    public Builder<T> defaultValue(final T defaultValue) {
+      this.defaultValue = Optional.ofNullable(defaultValue);
+      return this;
+    }
+
+    public GeneratedField<T> build() {
+      return new GeneratedField<>(name, type, isNullable, isBeanValidationNullable, defaultValue);
+    }
   }
 }

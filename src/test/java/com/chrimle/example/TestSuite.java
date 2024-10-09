@@ -36,44 +36,54 @@ public class TestSuite {
           new GeneratedSource(pluginExecution, generatedClass);
       case DEPRECATED_EXAMPLE_RECORD, EXAMPLE_RECORD ->
           new GeneratedSource(
-              pluginExecution, generatedClass, GeneratedField.of("field1", Boolean.class));
+              pluginExecution, generatedClass, GeneratedField.of("field1", Boolean.class).build());
       case EXAMPLE_RECORD_WITH_DEFAULT_FIELDS ->
           new GeneratedSource(
               pluginExecution,
               generatedClass,
-              GeneratedField.of("field1", String.class, false, true, "someDefaultValue"));
+              GeneratedField.of("field1", String.class).defaultValue("someDefaultValue").build());
       case EXAMPLE_RECORD_WITH_NULLABLE_FIELDS_OF_EACH_TYPE ->
           new GeneratedSource(
               pluginExecution,
               generatedClass,
-              GeneratedField.of("field1", Boolean.class, true, true),
-              GeneratedField.of("field2", String.class, true, true),
-              GeneratedField.of("field3", Integer.class, true, true),
-              GeneratedField.of("field4", BigDecimal.class, true, true),
-              GeneratedField.of("field5", List.class, true, true),
-              GeneratedField.of("field6", Set.class, true, true));
+              GeneratedField.of("field1", Boolean.class).isNullable(true).build(),
+              GeneratedField.of("field2", String.class).isNullable(true).build(),
+              GeneratedField.of("field3", Integer.class).isNullable(true).build(),
+              GeneratedField.of("field4", BigDecimal.class).isNullable(true).build(),
+              GeneratedField.of("field5", List.class).isNullable(true).build(),
+              GeneratedField.of("field6", Set.class).isNullable(true).build());
       case EXAMPLE_RECORD_WITH_REQUIRED_FIELDS_OF_EACH_TYPE ->
           new GeneratedSource(
               pluginExecution,
               generatedClass,
-              GeneratedField.of("field1", Boolean.class, false, false),
-              GeneratedField.of("field2", String.class, false, false),
-              GeneratedField.of("field3", Integer.class, false, false),
-              GeneratedField.of("field4", BigDecimal.class, false, false),
-              GeneratedField.of("field5", List.class, false, false),
-              GeneratedField.of("field6", Set.class, false, false),
-              GeneratedField.of("field7", getExampleRecordClass(pluginExecution), false, false),
-              GeneratedField.of("field8", getExampleEnumClass(pluginExecution), false, false));
+              GeneratedField.of("field1", Boolean.class).isBeanValidationNullable(false).build(),
+              GeneratedField.of("field2", String.class).isBeanValidationNullable(false).build(),
+              GeneratedField.of("field3", Integer.class).isBeanValidationNullable(false).build(),
+              GeneratedField.of("field4", BigDecimal.class).isBeanValidationNullable(false).build(),
+              GeneratedField.of("field5", List.class).isBeanValidationNullable(false).build(),
+              GeneratedField.of("field6", Set.class).isBeanValidationNullable(false).build(),
+              GeneratedField.of("field7", getExampleRecordClass(pluginExecution))
+                  .isBeanValidationNullable(false)
+                  .build(),
+              GeneratedField.of("field8", getExampleEnumClass(pluginExecution))
+                  .isBeanValidationNullable(false)
+                  .build());
       case RECORD_WITH_ALL_CONSTRAINTS ->
           new GeneratedSource(
               pluginExecution,
               generatedClass,
-              GeneratedField.of("stringStandard", String.class, false, true),
-              GeneratedField.of("stringDefault", String.class, false, true, "someDefaultValue"),
-              GeneratedField.of("stringNullable", String.class, true, true),
-              GeneratedField.of("stringRequired", String.class, false, false),
-              GeneratedField.of("stringRequiredNullable", String.class, true, true),
-              GeneratedField.of("stringRequiredPattern", String.class, false, false));
+              GeneratedField.of("stringStandard", String.class).build(),
+              GeneratedField.of("stringDefault", String.class)
+                  .defaultValue("someDefaultValue")
+                  .build(),
+              GeneratedField.of("stringNullable", String.class).isNullable(true).build(),
+              GeneratedField.of("stringRequired", String.class)
+                  .isBeanValidationNullable(false)
+                  .build(),
+              GeneratedField.of("stringRequiredNullable", String.class).isNullable(true).build(),
+              GeneratedField.of("stringRequiredPattern", String.class)
+                  .isBeanValidationNullable(false)
+                  .build());
     };
   }
 
