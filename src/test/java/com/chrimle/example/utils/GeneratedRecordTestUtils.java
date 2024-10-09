@@ -129,24 +129,4 @@ public class GeneratedRecordTestUtils {
     }
     return Optional.empty();
   }
-
-  public static void assertExampleRecordWithDefaultFields(final GeneratedSource generatedSource) {
-
-    final Class<?> classUnderTest = generatedSource.getClassUnderTest();
-
-    assertRecord(generatedSource);
-
-    final Constructor<?> constructor =
-        AssertionUtils.assertRecordHasConstructor(classUnderTest, generatedSource.fieldClasses());
-
-    AssertionUtils.assertRecordFieldHasValue(
-        AssertionUtils.assertRecordInstantiateWithArgs(classUnderTest, constructor, (Object) null),
-        generatedSource.generatedFields()[0].name(),
-        generatedSource.generatedFields()[0].defaultValue().orElseThrow());
-
-    AssertionUtils.assertRecordFieldHasValue(
-        AssertionUtils.assertRecordInstantiateWithArgs(classUnderTest, constructor, "someValue"),
-        generatedSource.generatedFields()[0].name(),
-        "someValue");
-  }
 }

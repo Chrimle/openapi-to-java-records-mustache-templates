@@ -17,50 +17,54 @@ public class TestSuite {
   @DisplayName("Testing Plugin Executions...")
   public void testAll(final PluginExecution pluginExecution) {
     for (final GeneratedClass generatedClass : GeneratedClass.values()) {
-      switch (generatedClass) {
-        case EXAMPLE_RECORD_WITH_DEFAULT_FIELDS ->
-            GeneratedRecordTestUtils.assertExampleRecordWithDefaultFields(
-                new GeneratedSource(
-                    pluginExecution,
-                    generatedClass,
-                    GeneratedField.of("field1", String.class, false, "someDefaultValue")));
 
-        case EXAMPLE_RECORD_WITH_REQUIRED_FIELDS_OF_EACH_TYPE ->
-            GeneratedRecordTestUtils.assertRecord(
-                new GeneratedSource(
-                    pluginExecution,
-                    generatedClass,
-                    GeneratedField.of("field1", Boolean.class),
-                    GeneratedField.of("field2", String.class),
-                    GeneratedField.of("field3", Integer.class),
-                    GeneratedField.of("field4", BigDecimal.class),
-                    GeneratedField.of("field5", List.class),
-                    GeneratedField.of("field6", Set.class),
-                    GeneratedField.of("field7", getExampleRecordClass(pluginExecution)),
-                    GeneratedField.of("field8", getExampleEnumClass(pluginExecution))));
+      final GeneratedSource generatedSource =
+          getGeneratedSourceForGeneratedClass(generatedClass, pluginExecution);
 
-        case DEPRECATED_EXAMPLE_RECORD, EXAMPLE_RECORD ->
-            GeneratedRecordTestUtils.assertRecord(
-                new GeneratedSource(
-                    pluginExecution, generatedClass, GeneratedField.of("field1", Boolean.class)));
-
-        case EXAMPLE_RECORD_WITH_NULLABLE_FIELDS_OF_EACH_TYPE ->
-            GeneratedRecordTestUtils.assertRecord(
-                new GeneratedSource(
-                    pluginExecution,
-                    generatedClass,
-                    GeneratedField.of("field1", Boolean.class, true),
-                    GeneratedField.of("field2", String.class, true),
-                    GeneratedField.of("field3", Integer.class, true),
-                    GeneratedField.of("field4", BigDecimal.class, true),
-                    GeneratedField.of("field5", List.class, true),
-                    GeneratedField.of("field6", Set.class, true)));
-
-        default ->
-            GeneratedEnumTestUtils.assertEnumClass(
-                new GeneratedSource(pluginExecution, generatedClass));
+      if (generatedSource.isEnum()) {
+        GeneratedEnumTestUtils.assertEnumClass(generatedSource);
+      } else {
+        GeneratedRecordTestUtils.assertRecord(generatedSource);
       }
     }
+  }
+
+  private static GeneratedSource getGeneratedSourceForGeneratedClass(
+      final GeneratedClass generatedClass, final PluginExecution pluginExecution) {
+    return switch (generatedClass) {
+      case DEPRECATED_EXAMPLE_ENUM, EXAMPLE_ENUM ->
+          new GeneratedSource(pluginExecution, generatedClass);
+      case DEPRECATED_EXAMPLE_RECORD, EXAMPLE_RECORD ->
+          new GeneratedSource(
+              pluginExecution, generatedClass, GeneratedField.of("field1", Boolean.class));
+      case EXAMPLE_RECORD_WITH_DEFAULT_FIELDS ->
+          new GeneratedSource(
+              pluginExecution,
+              generatedClass,
+              GeneratedField.of("field1", String.class, false, "someDefaultValue"));
+      case EXAMPLE_RECORD_WITH_NULLABLE_FIELDS_OF_EACH_TYPE ->
+          new GeneratedSource(
+              pluginExecution,
+              generatedClass,
+              GeneratedField.of("field1", Boolean.class, true),
+              GeneratedField.of("field2", String.class, true),
+              GeneratedField.of("field3", Integer.class, true),
+              GeneratedField.of("field4", BigDecimal.class, true),
+              GeneratedField.of("field5", List.class, true),
+              GeneratedField.of("field6", Set.class, true));
+      case EXAMPLE_RECORD_WITH_REQUIRED_FIELDS_OF_EACH_TYPE ->
+          new GeneratedSource(
+              pluginExecution,
+              generatedClass,
+              GeneratedField.of("field1", Boolean.class),
+              GeneratedField.of("field2", String.class),
+              GeneratedField.of("field3", Integer.class),
+              GeneratedField.of("field4", BigDecimal.class),
+              GeneratedField.of("field5", List.class),
+              GeneratedField.of("field6", Set.class),
+              GeneratedField.of("field7", getExampleRecordClass(pluginExecution)),
+              GeneratedField.of("field8", getExampleEnumClass(pluginExecution)));
+    };
   }
 
   private static Class<?> getExampleEnumClass(PluginExecution pluginExecution) {
