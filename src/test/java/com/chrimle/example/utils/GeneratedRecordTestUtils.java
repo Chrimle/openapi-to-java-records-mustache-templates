@@ -9,7 +9,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 import org.junit.jupiter.api.Assertions;
 
@@ -49,7 +48,6 @@ public class GeneratedRecordTestUtils {
             constructor,
             Arrays.stream(fieldClasses)
                 .map(GeneratedRecordTestUtils::getClassSpecificTestingValue)
-                .map(o -> o.orElse(null))
                 .toArray());
     Assertions.assertInstanceOf(classUnderTest, objectWithNonNullFields);
 
@@ -65,20 +63,17 @@ public class GeneratedRecordTestUtils {
         generatedField.name(),
         generatedField
             .defaultValue()
-            .or(
+            .orElseGet(
                 () ->
                     generatedField.isNullable()
-                        ? Optional.empty()
-                        : getClassSpecificDefaultValue(generatedField.type()))
-            .orElse(null));
+                        ? null
+                        : getClassSpecificDefaultValue(generatedField.type())));
   }
 
   private static <T> void assertFieldHasTestingValueSet(
       GeneratedField<T> generatedField, Object object) {
     AssertionUtils.assertRecordFieldHasValue(
-        object,
-        generatedField.name(),
-        getClassSpecificTestingValue(generatedField.type()).orElse(null));
+        object, generatedField.name(), getClassSpecificTestingValue(generatedField.type()));
   }
 
   /**
@@ -88,17 +83,17 @@ public class GeneratedRecordTestUtils {
    * @return the default value
    * @param <T> type of the class
    */
-  private static <T> Optional<T> getClassSpecificDefaultValue(final Class<? extends T> fieldClass) {
+  private static <T> T getClassSpecificDefaultValue(final Class<? extends T> fieldClass) {
     if (Arrays.class.equals(fieldClass)) {
-      return Optional.of((T) Collections.emptyList());
+      return fieldClass.cast(Collections.emptyList());
     }
     if (Set.class.equals(fieldClass)) {
-      return Optional.of((T) new LinkedHashSet<>());
+      return fieldClass.cast(new LinkedHashSet<>());
     }
     if (List.class.equals(fieldClass)) {
-      return Optional.of((T) new ArrayList<>());
+      return fieldClass.cast(new ArrayList<>());
     }
-    return Optional.empty();
+    return null;
   }
 
   /**
@@ -108,25 +103,25 @@ public class GeneratedRecordTestUtils {
    * @return the testing value
    * @param <T> type of the class
    */
-  private static <T> Optional<T> getClassSpecificTestingValue(final Class<? extends T> fieldClass) {
+  private static <T> T getClassSpecificTestingValue(final Class<? extends T> fieldClass) {
     if (Boolean.class.equals(fieldClass)) {
-      return Optional.of((T) Boolean.TRUE);
+      return fieldClass.cast(Boolean.TRUE);
     }
     if (String.class.equals(fieldClass)) {
-      return Optional.of((T) "testString");
+      return fieldClass.cast("testString");
     }
     if (Integer.class.equals(fieldClass)) {
-      return Optional.of((T) Integer.valueOf(42));
+      return fieldClass.cast(42);
     }
     if (BigDecimal.class.equals(fieldClass)) {
-      return Optional.of((T) BigDecimal.valueOf(123.456));
+      return fieldClass.cast(BigDecimal.valueOf(123.456));
     }
     if (List.class.equals(fieldClass)) {
-      return Optional.of((T) new ArrayList<>(List.of(Boolean.TRUE, Boolean.FALSE)));
+      return fieldClass.cast(new ArrayList<>(List.of(Boolean.TRUE, Boolean.FALSE)));
     }
     if (Set.class.equals(fieldClass)) {
-      return Optional.of((T) new LinkedHashSet<>(List.of(Boolean.TRUE, Boolean.FALSE)));
+      return fieldClass.cast(new LinkedHashSet<>(List.of(Boolean.TRUE, Boolean.FALSE)));
     }
-    return Optional.empty();
+    return null;
   }
 }
