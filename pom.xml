@@ -58,7 +58,7 @@
         <!-- Jacoco -->
         <jacoco-maven-plugin.version>0.8.12</jacoco-maven-plugin.version>
         <jacoco-maven-plugin.minimumPackageLineCoveredRatio>0</jacoco-maven-plugin.minimumPackageLineCoveredRatio>
-        <jacoco-maven-plugin.expectedBundleClassMissedCount>9</jacoco-maven-plugin.expectedBundleClassMissedCount>
+        <jacoco-maven-plugin.expectedBundleClassMissedCount>0</jacoco-maven-plugin.expectedBundleClassMissedCount>
         <!-- /Jacoco -->
 
         <!-- Spotless -->

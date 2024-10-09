@@ -64,6 +64,16 @@ public class TestSuite {
               GeneratedField.of("field6", Set.class),
               GeneratedField.of("field7", getExampleRecordClass(pluginExecution)),
               GeneratedField.of("field8", getExampleEnumClass(pluginExecution)));
+      case RECORD_WITH_ALL_CONSTRAINTS ->
+          new GeneratedSource(
+              pluginExecution,
+              generatedClass,
+              GeneratedField.of("stringStandard", String.class),
+              GeneratedField.of("stringDefault", String.class, false, "someDefaultValue"),
+              GeneratedField.of("stringNullable", String.class, true),
+              GeneratedField.of("stringRequired", String.class),
+              GeneratedField.of("stringRequiredNullable", String.class, true),
+              GeneratedField.of("stringRequiredPattern", String.class));
     };
   }
 
