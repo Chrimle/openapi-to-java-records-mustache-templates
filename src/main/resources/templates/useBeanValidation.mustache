@@ -17,14 +17,7 @@
     }}{{/isNullable}}{{!
       if (isNullable == false)
     }}{{^isNullable}}{{!
-        if (isPrimitive == true)
-      }}{{#isPrimitive}}{{!
-        Primitive types cannot be null, hence, @NotNull annotation is unnecessary.
-      }}{{/isPrimitive}}{{!
-        if (isPrimitive == false)
-      }}{{^isPrimitive}}{{!
-        }} @NotNull{{!
-      }}{{/isPrimitive}}{{!
+      }} @NotNull{{!
     }}{{/isNullable}}{{!
   }}{{/required}}{{!
 }}{{/useBeanValidation}}
