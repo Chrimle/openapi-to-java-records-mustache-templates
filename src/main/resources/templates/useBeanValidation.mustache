@@ -57,4 +57,12 @@
       }} @Max({{.}}){{!
     }}{{/maximum}}{{!
   }}{{/isInteger}}{{!
+  }}{{#isLong}}{{!
+    }}{{#minimum}}{{!
+      }} @Min({{.}}L){{!
+    }}{{/minimum}}{{!
+    }}{{#maximum}}{{!
+      }} @Max({{.}}L){{!
+    }}{{/maximum}}{{!
+  }}{{/isLong}}{{!
 }}{{/useBeanValidation}}

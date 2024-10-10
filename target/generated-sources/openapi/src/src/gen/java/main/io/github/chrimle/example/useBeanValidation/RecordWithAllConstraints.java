@@ -49,6 +49,9 @@ import jakarta.validation.Valid;
  * @param intMinimum Integer
  * @param intMaximum Integer
  * @param intMinimumAndMaximum Integer
+ * @param longMinimum Long
+ * @param longMaximum Long
+ * @param longMinimumAndMaximum Long
  */
 public record RecordWithAllConstraints(
     @javax.annotation.Nonnull String stringStandard,
@@ -65,7 +68,10 @@ public record RecordWithAllConstraints(
     @javax.annotation.Nonnull @Size(min = 1, max = 10) List<String> arrayMinAndMaxItems,
     @javax.annotation.Nonnull @Min(18) Integer intMinimum,
     @javax.annotation.Nonnull @Max(100) Integer intMaximum,
-    @javax.annotation.Nonnull @Min(0) @Max(100) Integer intMinimumAndMaximum) {
+    @javax.annotation.Nonnull @Min(0) @Max(100) Integer intMinimumAndMaximum,
+    @javax.annotation.Nonnull @Min(18L) Long longMinimum,
+    @javax.annotation.Nonnull @Max(100L) Long longMaximum,
+    @javax.annotation.Nonnull @Min(0L) @Max(100L) Long longMinimumAndMaximum) {
 
   public RecordWithAllConstraints(
       @javax.annotation.Nonnull final String stringStandard,
@@ -82,7 +88,10 @@ public record RecordWithAllConstraints(
       @javax.annotation.Nullable final List<String> arrayMinAndMaxItems,
       @javax.annotation.Nonnull final Integer intMinimum,
       @javax.annotation.Nonnull final Integer intMaximum,
-      @javax.annotation.Nonnull final Integer intMinimumAndMaximum) { 
+      @javax.annotation.Nonnull final Integer intMinimumAndMaximum,
+      @javax.annotation.Nonnull final Long longMinimum,
+      @javax.annotation.Nonnull final Long longMaximum,
+      @javax.annotation.Nonnull final Long longMinimumAndMaximum) { 
     this.stringStandard = stringStandard;
     this.stringDefault = Objects.requireNonNullElse(stringDefault, "someDefaultValue");
     this.stringNullable = stringNullable;
@@ -98,5 +107,8 @@ public record RecordWithAllConstraints(
     this.intMinimum = intMinimum;
     this.intMaximum = intMaximum;
     this.intMinimumAndMaximum = intMinimumAndMaximum;
+    this.longMinimum = longMinimum;
+    this.longMaximum = longMaximum;
+    this.longMinimumAndMaximum = longMinimumAndMaximum;
   }
 }

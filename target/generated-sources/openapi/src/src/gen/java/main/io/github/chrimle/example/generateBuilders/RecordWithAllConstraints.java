@@ -47,6 +47,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * @param intMinimum Integer
  * @param intMaximum Integer
  * @param intMinimumAndMaximum Integer
+ * @param longMinimum Long
+ * @param longMaximum Long
+ * @param longMinimumAndMaximum Long
  */
 public record RecordWithAllConstraints(
     @javax.annotation.Nonnull String stringStandard,
@@ -63,7 +66,10 @@ public record RecordWithAllConstraints(
     @javax.annotation.Nonnull List<String> arrayMinAndMaxItems,
     @javax.annotation.Nonnull Integer intMinimum,
     @javax.annotation.Nonnull Integer intMaximum,
-    @javax.annotation.Nonnull Integer intMinimumAndMaximum) {
+    @javax.annotation.Nonnull Integer intMinimumAndMaximum,
+    @javax.annotation.Nonnull Long longMinimum,
+    @javax.annotation.Nonnull Long longMaximum,
+    @javax.annotation.Nonnull Long longMinimumAndMaximum) {
 
   public RecordWithAllConstraints(
       @javax.annotation.Nonnull final String stringStandard,
@@ -80,7 +86,10 @@ public record RecordWithAllConstraints(
       @javax.annotation.Nullable final List<String> arrayMinAndMaxItems,
       @javax.annotation.Nonnull final Integer intMinimum,
       @javax.annotation.Nonnull final Integer intMaximum,
-      @javax.annotation.Nonnull final Integer intMinimumAndMaximum) { 
+      @javax.annotation.Nonnull final Integer intMinimumAndMaximum,
+      @javax.annotation.Nonnull final Long longMinimum,
+      @javax.annotation.Nonnull final Long longMaximum,
+      @javax.annotation.Nonnull final Long longMinimumAndMaximum) { 
     this.stringStandard = stringStandard;
     this.stringDefault = Objects.requireNonNullElse(stringDefault, "someDefaultValue");
     this.stringNullable = stringNullable;
@@ -96,6 +105,9 @@ public record RecordWithAllConstraints(
     this.intMinimum = intMinimum;
     this.intMaximum = intMaximum;
     this.intMinimumAndMaximum = intMinimumAndMaximum;
+    this.longMinimum = longMinimum;
+    this.longMaximum = longMaximum;
+    this.longMinimumAndMaximum = longMinimumAndMaximum;
   }
 
   /** Builder class for {@link RecordWithAllConstraints } */
@@ -116,6 +128,9 @@ public record RecordWithAllConstraints(
     private Integer intMinimum;
     private Integer intMaximum;
     private Integer intMinimumAndMaximum;
+    private Long longMinimum;
+    private Long longMaximum;
+    private Long longMinimumAndMaximum;
 
     /**
      * Sets the value of {@link RecordWithAllConstraints#stringStandard }.
@@ -298,6 +313,42 @@ public record RecordWithAllConstraints(
     }
 
     /**
+     * Sets the value of {@link RecordWithAllConstraints#longMinimum }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     * @param longMinimum sets the value of longMinimum
+     * @return this {@link Builder}-instance for method-chaining
+     */
+    public Builder longMinimum(final Long longMinimum) {
+      this.longMinimum = longMinimum;
+      return this;
+    }
+
+    /**
+     * Sets the value of {@link RecordWithAllConstraints#longMaximum }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     * @param longMaximum sets the value of longMaximum
+     * @return this {@link Builder}-instance for method-chaining
+     */
+    public Builder longMaximum(final Long longMaximum) {
+      this.longMaximum = longMaximum;
+      return this;
+    }
+
+    /**
+     * Sets the value of {@link RecordWithAllConstraints#longMinimumAndMaximum }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     * @param longMinimumAndMaximum sets the value of longMinimumAndMaximum
+     * @return this {@link Builder}-instance for method-chaining
+     */
+    public Builder longMinimumAndMaximum(final Long longMinimumAndMaximum) {
+      this.longMinimumAndMaximum = longMinimumAndMaximum;
+      return this;
+    }
+
+    /**
      * Builds a {@link RecordWithAllConstraints }-instance with the values provided in preceding
      * builder methods.
      *
@@ -320,7 +371,10 @@ public record RecordWithAllConstraints(
         arrayMinAndMaxItems,
         intMinimum,
         intMaximum,
-        intMinimumAndMaximum
+        intMinimumAndMaximum,
+        longMinimum,
+        longMaximum,
+        longMinimumAndMaximum
       );
     }
   }

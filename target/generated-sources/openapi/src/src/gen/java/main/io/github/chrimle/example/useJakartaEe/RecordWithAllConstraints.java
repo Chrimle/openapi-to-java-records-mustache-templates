@@ -47,6 +47,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * @param intMinimum Integer
  * @param intMaximum Integer
  * @param intMinimumAndMaximum Integer
+ * @param longMinimum Long
+ * @param longMaximum Long
+ * @param longMinimumAndMaximum Long
  */
 public record RecordWithAllConstraints(
     @jakarta.annotation.Nonnull String stringStandard,
@@ -63,7 +66,10 @@ public record RecordWithAllConstraints(
     @jakarta.annotation.Nonnull List<String> arrayMinAndMaxItems,
     @jakarta.annotation.Nonnull Integer intMinimum,
     @jakarta.annotation.Nonnull Integer intMaximum,
-    @jakarta.annotation.Nonnull Integer intMinimumAndMaximum) {
+    @jakarta.annotation.Nonnull Integer intMinimumAndMaximum,
+    @jakarta.annotation.Nonnull Long longMinimum,
+    @jakarta.annotation.Nonnull Long longMaximum,
+    @jakarta.annotation.Nonnull Long longMinimumAndMaximum) {
 
   public RecordWithAllConstraints(
       @jakarta.annotation.Nonnull final String stringStandard,
@@ -80,7 +86,10 @@ public record RecordWithAllConstraints(
       @jakarta.annotation.Nullable final List<String> arrayMinAndMaxItems,
       @jakarta.annotation.Nonnull final Integer intMinimum,
       @jakarta.annotation.Nonnull final Integer intMaximum,
-      @jakarta.annotation.Nonnull final Integer intMinimumAndMaximum) { 
+      @jakarta.annotation.Nonnull final Integer intMinimumAndMaximum,
+      @jakarta.annotation.Nonnull final Long longMinimum,
+      @jakarta.annotation.Nonnull final Long longMaximum,
+      @jakarta.annotation.Nonnull final Long longMinimumAndMaximum) { 
     this.stringStandard = stringStandard;
     this.stringDefault = Objects.requireNonNullElse(stringDefault, "someDefaultValue");
     this.stringNullable = stringNullable;
@@ -96,5 +105,8 @@ public record RecordWithAllConstraints(
     this.intMinimum = intMinimum;
     this.intMaximum = intMaximum;
     this.intMinimumAndMaximum = intMinimumAndMaximum;
+    this.longMinimum = longMinimum;
+    this.longMaximum = longMaximum;
+    this.longMinimumAndMaximum = longMinimumAndMaximum;
   }
 }

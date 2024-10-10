@@ -99,6 +99,12 @@ public class TestSuite {
               GeneratedField.of("intMinimumAndMaximum", Integer.class)
                   .minimum(0)
                   .maximum(100)
+                  .build(),
+              GeneratedField.of("longMinimum", Long.class).minimum(18).build(),
+              GeneratedField.of("longMaximum", Long.class).maximum(100).build(),
+              GeneratedField.of("longMinimumAndMaximum", Long.class)
+                  .minimum(0)
+                  .maximum(100)
                   .build());
     };
   }

@@ -48,6 +48,9 @@ import java.io.Serializable;
  * @param intMinimum Integer
  * @param intMaximum Integer
  * @param intMinimumAndMaximum Integer
+ * @param longMinimum Long
+ * @param longMaximum Long
+ * @param longMinimumAndMaximum Long
  */
 public record RecordWithAllConstraints(
     @javax.annotation.Nonnull String stringStandard,
@@ -64,7 +67,10 @@ public record RecordWithAllConstraints(
     @javax.annotation.Nonnull List<String> arrayMinAndMaxItems,
     @javax.annotation.Nonnull Integer intMinimum,
     @javax.annotation.Nonnull Integer intMaximum,
-    @javax.annotation.Nonnull Integer intMinimumAndMaximum
+    @javax.annotation.Nonnull Integer intMinimumAndMaximum,
+    @javax.annotation.Nonnull Long longMinimum,
+    @javax.annotation.Nonnull Long longMaximum,
+    @javax.annotation.Nonnull Long longMinimumAndMaximum
   ) implements Serializable {
 
   private static final long serialVersionUID = 1L;
@@ -84,7 +90,10 @@ public record RecordWithAllConstraints(
       @javax.annotation.Nullable final List<String> arrayMinAndMaxItems,
       @javax.annotation.Nonnull final Integer intMinimum,
       @javax.annotation.Nonnull final Integer intMaximum,
-      @javax.annotation.Nonnull final Integer intMinimumAndMaximum) { 
+      @javax.annotation.Nonnull final Integer intMinimumAndMaximum,
+      @javax.annotation.Nonnull final Long longMinimum,
+      @javax.annotation.Nonnull final Long longMaximum,
+      @javax.annotation.Nonnull final Long longMinimumAndMaximum) { 
     this.stringStandard = stringStandard;
     this.stringDefault = Objects.requireNonNullElse(stringDefault, "someDefaultValue");
     this.stringNullable = stringNullable;
@@ -100,5 +109,8 @@ public record RecordWithAllConstraints(
     this.intMinimum = intMinimum;
     this.intMaximum = intMaximum;
     this.intMinimumAndMaximum = intMinimumAndMaximum;
+    this.longMinimum = longMinimum;
+    this.longMaximum = longMaximum;
+    this.longMinimumAndMaximum = longMinimumAndMaximum;
   }
 }
