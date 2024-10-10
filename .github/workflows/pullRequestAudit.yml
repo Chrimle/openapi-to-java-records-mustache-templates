@@ -33,6 +33,8 @@ jobs:
 
       - name: Checkout code
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # Fetch all branches, not just the latest commit
 
       - name: Set up Java
         uses: actions/setup-java@v1
