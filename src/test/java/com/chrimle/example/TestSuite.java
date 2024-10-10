@@ -90,6 +90,12 @@ public class TestSuite {
               GeneratedField.of("stringMinAndMaxLength", String.class)
                   .minLength(3)
                   .maxLength(7)
+                  .build(),
+              GeneratedField.of("arrayMinItems", List.class).minItems(1).build(),
+              GeneratedField.of("arrayMaxItems", List.class).maxItems(10).build(),
+              GeneratedField.of("arrayMinAndMaxItems", List.class)
+                  .minItems(1)
+                  .maxItems(10)
                   .build());
     };
   }

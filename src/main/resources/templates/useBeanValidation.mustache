@@ -2,38 +2,29 @@
   Source: openapi-to-java-records-mustache-templates
   Version: 1.7.6
 }}{{!
-  if (configOption.useBeanValidation == true)
+  if configOption.useBeanValidation == true
 }}{{#useBeanValidation}}{{!
-    if (required == false)
   }}{{^required}}{{!
     When not required, the field *may* be nullable according to openapi-generator-maven-plugin.
   }}{{/required}}{{!
-    if (required == true)
   }}{{#required}}{{!
-      if (isNullable == true)
     }}{{#isNullable}}{{!
        Jakarta Bean Validation does not have constraint annotations for nullable values,
        as values are nullable by default.
     }}{{/isNullable}}{{!
-      if (isNullable == false)
     }}{{^isNullable}}{{!
       }} @NotNull{{!
     }}{{/isNullable}}{{!
   }}{{/required}}{{!
-    if (pattern != null)
   }}{{#pattern}}{{!
     }} @Pattern(regexp = "{{{.}}}"){{!
   }}{{/pattern}}{{!
-    if (minLength != null)
   }}{{#minLength}}{{!
-      if (maxLength != null)
     }}{{#maxLength}}{{!
       }} @Size(min = {{minLength}}, max = {{maxLength}}){{!
     }}{{/maxLength}}{{!
   }}{{/minLength}}{{!
-    if (minLength != null)
   }}{{#minLength}}{{!
-      if (maxLength == null)
     }}{{^maxLength}}{{!
       }} @Size(min = {{minLength}}){{!
     }}{{/maxLength}}{{!
@@ -43,4 +34,19 @@
       }} @Size(max = {{maxLength}}){{!
     }}{{/maxLength}}{{!
   }}{{/minLength}}{{!
+  }}{{#minItems}}{{!
+    }}{{#maxItems}}{{!
+      }} @Size(min = {{minItems}}, max = {{maxItems}}){{!
+    }}{{/maxItems}}{{!
+  }}{{/minItems}}{{!
+  }}{{#minItems}}{{!
+    }}{{^maxItems}}{{!
+      }} @Size(min = {{minItems}}){{!
+    }}{{/maxItems}}{{!
+  }}{{/minItems}}{{!
+  }}{{^minItems}}{{!
+    }}{{#maxItems}}{{!
+      }} @Size(max = {{maxItems}}){{!
+    }}{{/maxItems}}{{!
+  }}{{/minItems}}{{!
 }}{{/useBeanValidation}}

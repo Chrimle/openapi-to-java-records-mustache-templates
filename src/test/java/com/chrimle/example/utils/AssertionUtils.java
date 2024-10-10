@@ -138,10 +138,15 @@ public class AssertionUtils {
         if (generatedField.minLength().isPresent() || generatedField.maxLength().isPresent()) {
           final Size actualSizeAnnotation =
               assertHasAnnotation(classUnderTest, field, sizeAnnotation);
-          generatedField
-              .minLength()
-              .ifPresent(min -> Assertions.assertEquals(min, actualSizeAnnotation.min()));
-
+          Assertions.assertEquals(generatedField.minLength().orElse(0), actualSizeAnnotation.min());
+          Assertions.assertEquals(
+              generatedField.maxLength().orElse(Integer.MAX_VALUE), actualSizeAnnotation.max());
+        } else if (generatedField.minItems().isPresent() || generatedField.maxItems().isPresent()) {
+          final Size actualSizeAnnotation =
+              assertHasAnnotation(classUnderTest, field, sizeAnnotation);
+          Assertions.assertEquals(generatedField.minItems().orElse(0), actualSizeAnnotation.min());
+          Assertions.assertEquals(
+              generatedField.maxItems().orElse(Integer.MAX_VALUE), actualSizeAnnotation.max());
         } else {
           assertDoesNotHaveAnnotation(classUnderTest, field, sizeAnnotation);
         }

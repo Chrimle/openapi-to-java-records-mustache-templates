@@ -25,7 +25,9 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.io.Serializable;
 
@@ -40,6 +42,9 @@ import java.io.Serializable;
  * @param stringMinLength String
  * @param stringMaxLength String
  * @param stringMinAndMaxLength String
+ * @param arrayMinItems List<String>
+ * @param arrayMaxItems List<String>
+ * @param arrayMinAndMaxItems List<String>
  */
 public record RecordWithAllConstraints(
     @javax.annotation.Nonnull String stringStandard,
@@ -50,7 +55,10 @@ public record RecordWithAllConstraints(
     @javax.annotation.Nonnull String stringRequiredPattern,
     @javax.annotation.Nonnull String stringMinLength,
     @javax.annotation.Nonnull String stringMaxLength,
-    @javax.annotation.Nonnull String stringMinAndMaxLength
+    @javax.annotation.Nonnull String stringMinAndMaxLength,
+    @javax.annotation.Nonnull List<String> arrayMinItems,
+    @javax.annotation.Nonnull List<String> arrayMaxItems,
+    @javax.annotation.Nonnull List<String> arrayMinAndMaxItems
   ) implements Serializable {
 
   private static final long serialVersionUID = 1L;
@@ -64,7 +72,10 @@ public record RecordWithAllConstraints(
       @javax.annotation.Nonnull final String stringRequiredPattern,
       @javax.annotation.Nonnull final String stringMinLength,
       @javax.annotation.Nonnull final String stringMaxLength,
-      @javax.annotation.Nonnull final String stringMinAndMaxLength) { 
+      @javax.annotation.Nonnull final String stringMinAndMaxLength,
+      @javax.annotation.Nullable final List<String> arrayMinItems,
+      @javax.annotation.Nullable final List<String> arrayMaxItems,
+      @javax.annotation.Nullable final List<String> arrayMinAndMaxItems) { 
     this.stringStandard = stringStandard;
     this.stringDefault = Objects.requireNonNullElse(stringDefault, "someDefaultValue");
     this.stringNullable = stringNullable;
@@ -74,5 +85,8 @@ public record RecordWithAllConstraints(
     this.stringMinLength = stringMinLength;
     this.stringMaxLength = stringMaxLength;
     this.stringMinAndMaxLength = stringMinAndMaxLength;
+    this.arrayMinItems = Objects.requireNonNullElse(arrayMinItems, new ArrayList<>());
+    this.arrayMaxItems = Objects.requireNonNullElse(arrayMaxItems, new ArrayList<>());
+    this.arrayMinAndMaxItems = Objects.requireNonNullElse(arrayMinAndMaxItems, new ArrayList<>());
   }
 }

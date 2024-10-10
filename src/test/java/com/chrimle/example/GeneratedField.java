@@ -9,8 +9,10 @@ public record GeneratedField<T>(
     boolean isBeanValidationNullable,
     Optional<T> defaultValue,
     Optional<String> pattern,
-    Optional<Long> minLength,
-    Optional<Long> maxLength) {
+    Optional<Integer> minLength,
+    Optional<Integer> maxLength,
+    Optional<Integer> minItems,
+    Optional<Integer> maxItems) {
 
   public static <T> Builder<T> of(final String name, final Class<T> type) {
     return new Builder<>(name, type);
@@ -23,8 +25,10 @@ public record GeneratedField<T>(
     private boolean isBeanValidationNullable = true;
     private Optional<T> defaultValue = Optional.empty();
     private Optional<String> pattern = Optional.empty();
-    private Optional<Long> minLength = Optional.empty();
-    private Optional<Long> maxLength = Optional.empty();
+    private Optional<Integer> minLength = Optional.empty();
+    private Optional<Integer> maxLength = Optional.empty();
+    private Optional<Integer> minItems = Optional.empty();
+    private Optional<Integer> maxItems = Optional.empty();
 
     public Builder(final String name, final Class<T> type) {
       this.name = name;
@@ -51,13 +55,23 @@ public record GeneratedField<T>(
       return this;
     }
 
-    public Builder<T> minLength(final long minLength) {
+    public Builder<T> minLength(final int minLength) {
       this.minLength = Optional.of(minLength);
       return this;
     }
 
-    public Builder<T> maxLength(final long maxLength) {
+    public Builder<T> maxLength(final int maxLength) {
       this.maxLength = Optional.of(maxLength);
+      return this;
+    }
+
+    public Builder<T> minItems(final int minItems) {
+      this.minItems = Optional.of(minItems);
+      return this;
+    }
+
+    public Builder<T> maxItems(final int maxItems) {
+      this.maxItems = Optional.of(maxItems);
       return this;
     }
 
@@ -70,7 +84,9 @@ public record GeneratedField<T>(
           defaultValue,
           pattern,
           minLength,
-          maxLength);
+          maxLength,
+          minItems,
+          maxItems);
     }
   }
 }
