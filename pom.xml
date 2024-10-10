@@ -5,7 +5,7 @@
 
     <groupId>io.github.chrimle</groupId>
     <artifactId>openapi-to-java-records-mustache-templates</artifactId>
-    <version>1.7.6</version>
+    <version>1.8.0</version>
 
     <!-- Project Information -->
     <name>OpenAPI to Java records :: Mustache Templates</name>
@@ -90,6 +90,7 @@
         <serializableModel.default>false</serializableModel.default>
         <generateBuilders.default>false</generateBuilders.default>
         <useJakartaEe.default>false</useJakartaEe.default>
+        <useBeanValidation.default>false</useBeanValidation.default>
 
         <!-- Plugin Executions -->
         <!-- The Plugin Execution with Standard Configurations -->
@@ -106,6 +107,8 @@
         <execution.generateBuilders>generateBuilders</execution.generateBuilders>
         <!-- The Plugin Execution with useJakartaEe=true -->
         <execution.useJakartaEe>useJakartaEe</execution.useJakartaEe>
+        <!-- The Plugin Execution with useBeanValidation=true -->
+        <execution.useBeanValidation>useBeanValidation</execution.useBeanValidation>
     </properties>
 
 
@@ -151,6 +154,12 @@
             <artifactId>jackson-annotations</artifactId>
             <version>${jackson-annotations.version}</version>
         </dependency>
+        <dependency>
+            <!-- Needed when useBeanValidation=true -->
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>${hibernate-validator.version}</version>
+        </dependency>
     </dependencies>
 
 
@@ -183,6 +192,7 @@
                                 <serializableModel>${serializableModel.default}</serializableModel>
                                 <generateBuilders>${generateBuilders.default}</generateBuilders>
                                 <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
+                                <useBeanValidation>${useBeanValidation.default}</useBeanValidation>
                             </configOptions>
                         </configuration>
                     </execution>
@@ -208,6 +218,7 @@
                                 <serializableModel>${serializableModel.default}</serializableModel>
                                 <generateBuilders>${generateBuilders.default}</generateBuilders>
                                 <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
+                                <useBeanValidation>${useBeanValidation.default}</useBeanValidation>
                             </configOptions>
                         </configuration>
                     </execution>
@@ -238,6 +249,7 @@
                                 <serializableModel>${serializableModel.default}</serializableModel>
                                 <generateBuilders>${generateBuilders.default}</generateBuilders>
                                 <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
+                                <useBeanValidation>${useBeanValidation.default}</useBeanValidation>
                             </configOptions>
                         </configuration>
                     </execution>
@@ -264,6 +276,7 @@
                                 <serializableModel>${serializableModel.default}</serializableModel>
                                 <generateBuilders>${generateBuilders.default}</generateBuilders>
                                 <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
+                                <useBeanValidation>${useBeanValidation.default}</useBeanValidation>
                             </configOptions>
                         </configuration>
                     </execution>
@@ -289,6 +302,7 @@
                                 <serializableModel>true</serializableModel>
                                 <generateBuilders>${generateBuilders.default}</generateBuilders>
                                 <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
+                                <useBeanValidation>${useBeanValidation.default}</useBeanValidation>
                             </configOptions>
                         </configuration>
                     </execution>
@@ -314,6 +328,7 @@
                                 <serializableModel>${serializableModel.default}</serializableModel>
                                 <generateBuilders>true</generateBuilders>
                                 <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
+                                <useBeanValidation>${useBeanValidation.default}</useBeanValidation>
                             </configOptions>
                         </configuration>
                     </execution>
@@ -339,6 +354,33 @@
                                 <serializableModel>${serializableModel.default}</serializableModel>
                                 <generateBuilders>${generateBuilders.default}</generateBuilders>
                                 <useJakartaEe>true</useJakartaEe>
+                                <useBeanValidation>${useBeanValidation.default}</useBeanValidation>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>generate-${execution.useBeanValidation}</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <output>${output.default}</output>
+                            <modelPackage>${modelPackage.default}.${execution.useBeanValidation}</modelPackage>
+                            <generateModels>${generateModels.default}</generateModels>
+                            <generateApis>${generateApis.default}</generateApis>
+                            <generateSupportingFiles>${generateSupportingFiles.default}</generateSupportingFiles>
+                            <generateModelTests>${generateModelTests.default}</generateModelTests>
+                            <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
+                            <inputSpec>${inputSpec.default}</inputSpec>
+                            <templateDirectory>${templateDirectory.default}</templateDirectory>
+                            <generatorName>${generatorName.default}</generatorName>
+                            <configOptions>
+                                <sourceFolder>${sourceFolder.default}</sourceFolder>
+                                <useEnumCaseInsensitive>${useEnumCaseInsensitive.default}</useEnumCaseInsensitive>
+                                <serializableModel>${serializableModel.default}</serializableModel>
+                                <generateBuilders>${generateBuilders.default}</generateBuilders>
+                                <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
+                                <useBeanValidation>true</useBeanValidation>
                             </configOptions>
                         </configuration>
                     </execution>

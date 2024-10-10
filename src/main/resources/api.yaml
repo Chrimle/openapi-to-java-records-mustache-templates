@@ -141,3 +141,86 @@ components:
         - ENUM1
         - ENUM2
         - ENUM3
+    RecordWithAllConstraints:
+      type: object
+      description: Example of a Record which has fields with constraints
+      required:
+        - stringRequired
+        - stringRequiredNullable
+        - stringRequiredPattern
+      properties:
+        stringStandard:
+          type: string
+        stringDefault:
+          type: string
+          default: 'someDefaultValue'
+        stringNullable:
+          type: string
+          nullable: true
+        stringRequired:
+          type: string
+        stringRequiredNullable:
+          type: string
+          nullable: true
+        stringRequiredPattern:
+          type: string
+          pattern: '^\d{3}-\d{2}-\d{4}$'
+        stringMinLength:
+          type: string
+          minLength: 3
+        stringMaxLength:
+          type: string
+          maxLength: 7
+        stringMinAndMaxLength:
+          type: string
+          minLength: 3
+          maxLength: 7
+        arrayMinItems:
+          type: array
+          minItems: 1
+          items:
+            type: string
+        arrayMaxItems:
+          type: array
+          maxItems: 10
+          items:
+            type: string
+        arrayMinAndMaxItems:
+          type: array
+          minItems: 1
+          maxItems: 10
+          items:
+            type: string
+        intMinimum:
+          type: integer
+          minimum: 18
+        intMaximum:
+          type: integer
+          maximum: 100
+        intMinimumAndMaximum:
+          type: integer
+          minimum: 0
+          maximum: 100
+        longMinimum:
+          type: integer
+          format: int64
+          minimum: 18
+        longMaximum:
+          type: integer
+          format: int64
+          maximum: 100
+        longMinimumAndMaximum:
+          type: integer
+          format: int64
+          minimum: 0
+          maximum: 100
+        bigDecimalMinimum:
+          type: number
+          minimum: 0
+        bigDecimalMaximum:
+          type: number
+          maximum: 100
+        bigDecimalMinimumAndMaximum:
+          type: number
+          minimum: 0
+          maximum: 100

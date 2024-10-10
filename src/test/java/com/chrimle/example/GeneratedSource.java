@@ -37,6 +37,10 @@ public class GeneratedSource {
     return pluginExecution.serializableModel;
   }
 
+  public boolean useBeanValidation() {
+    return pluginExecution.useBeanValidation;
+  }
+
   public boolean useEnumCaseInsensitive() {
     return pluginExecution.useEnumCaseInsensitive;
   }

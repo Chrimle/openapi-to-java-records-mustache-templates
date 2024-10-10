@@ -36,34 +36,82 @@ public class TestSuite {
           new GeneratedSource(pluginExecution, generatedClass);
       case DEPRECATED_EXAMPLE_RECORD, EXAMPLE_RECORD ->
           new GeneratedSource(
-              pluginExecution, generatedClass, GeneratedField.of("field1", Boolean.class));
+              pluginExecution, generatedClass, GeneratedField.of("field1", Boolean.class).build());
       case EXAMPLE_RECORD_WITH_DEFAULT_FIELDS ->
           new GeneratedSource(
               pluginExecution,
               generatedClass,
-              GeneratedField.of("field1", String.class, false, "someDefaultValue"));
+              GeneratedField.of("field1", String.class).defaultValue("someDefaultValue").build());
       case EXAMPLE_RECORD_WITH_NULLABLE_FIELDS_OF_EACH_TYPE ->
           new GeneratedSource(
               pluginExecution,
               generatedClass,
-              GeneratedField.of("field1", Boolean.class, true),
-              GeneratedField.of("field2", String.class, true),
-              GeneratedField.of("field3", Integer.class, true),
-              GeneratedField.of("field4", BigDecimal.class, true),
-              GeneratedField.of("field5", List.class, true),
-              GeneratedField.of("field6", Set.class, true));
+              GeneratedField.of("field1", Boolean.class).isNullable(true).build(),
+              GeneratedField.of("field2", String.class).isNullable(true).build(),
+              GeneratedField.of("field3", Integer.class).isNullable(true).build(),
+              GeneratedField.of("field4", BigDecimal.class).isNullable(true).build(),
+              GeneratedField.of("field5", List.class).isNullable(true).build(),
+              GeneratedField.of("field6", Set.class).isNullable(true).build());
       case EXAMPLE_RECORD_WITH_REQUIRED_FIELDS_OF_EACH_TYPE ->
           new GeneratedSource(
               pluginExecution,
               generatedClass,
-              GeneratedField.of("field1", Boolean.class),
-              GeneratedField.of("field2", String.class),
-              GeneratedField.of("field3", Integer.class),
-              GeneratedField.of("field4", BigDecimal.class),
-              GeneratedField.of("field5", List.class),
-              GeneratedField.of("field6", Set.class),
-              GeneratedField.of("field7", getExampleRecordClass(pluginExecution)),
-              GeneratedField.of("field8", getExampleEnumClass(pluginExecution)));
+              GeneratedField.of("field1", Boolean.class).isBeanValidationNullable(false).build(),
+              GeneratedField.of("field2", String.class).isBeanValidationNullable(false).build(),
+              GeneratedField.of("field3", Integer.class).isBeanValidationNullable(false).build(),
+              GeneratedField.of("field4", BigDecimal.class).isBeanValidationNullable(false).build(),
+              GeneratedField.of("field5", List.class).isBeanValidationNullable(false).build(),
+              GeneratedField.of("field6", Set.class).isBeanValidationNullable(false).build(),
+              GeneratedField.of("field7", getExampleRecordClass(pluginExecution))
+                  .isBeanValidationNullable(false)
+                  .build(),
+              GeneratedField.of("field8", getExampleEnumClass(pluginExecution))
+                  .isBeanValidationNullable(false)
+                  .build());
+      case RECORD_WITH_ALL_CONSTRAINTS ->
+          new GeneratedSource(
+              pluginExecution,
+              generatedClass,
+              GeneratedField.of("stringStandard", String.class).build(),
+              GeneratedField.of("stringDefault", String.class)
+                  .defaultValue("someDefaultValue")
+                  .build(),
+              GeneratedField.of("stringNullable", String.class).isNullable(true).build(),
+              GeneratedField.of("stringRequired", String.class)
+                  .isBeanValidationNullable(false)
+                  .build(),
+              GeneratedField.of("stringRequiredNullable", String.class).isNullable(true).build(),
+              GeneratedField.of("stringRequiredPattern", String.class)
+                  .isBeanValidationNullable(false)
+                  .pattern("^\\d{3}-\\d{2}-\\d{4}$")
+                  .build(),
+              GeneratedField.of("stringMinLength", String.class).minLength(3).build(),
+              GeneratedField.of("stringMaxLength", String.class).maxLength(7).build(),
+              GeneratedField.of("stringMinAndMaxLength", String.class)
+                  .minLength(3)
+                  .maxLength(7)
+                  .build(),
+              GeneratedField.of("arrayMinItems", List.class).minItems(1).build(),
+              GeneratedField.of("arrayMaxItems", List.class).maxItems(10).build(),
+              GeneratedField.of("arrayMinAndMaxItems", List.class).minItems(1).maxItems(10).build(),
+              GeneratedField.of("intMinimum", Integer.class).minimum(18).build(),
+              GeneratedField.of("intMaximum", Integer.class).maximum(100).build(),
+              GeneratedField.of("intMinimumAndMaximum", Integer.class)
+                  .minimum(0)
+                  .maximum(100)
+                  .build(),
+              GeneratedField.of("longMinimum", Long.class).minimum(18).build(),
+              GeneratedField.of("longMaximum", Long.class).maximum(100).build(),
+              GeneratedField.of("longMinimumAndMaximum", Long.class)
+                  .minimum(0)
+                  .maximum(100)
+                  .build(),
+              GeneratedField.of("bigDecimalMinimum", BigDecimal.class).decimalMin("0").build(),
+              GeneratedField.of("bigDecimalMaximum", BigDecimal.class).decimalMax("100").build(),
+              GeneratedField.of("bigDecimalMinimumAndMaximum", BigDecimal.class)
+                  .decimalMin("0")
+                  .decimalMax("100")
+                  .build());
     };
   }
 
