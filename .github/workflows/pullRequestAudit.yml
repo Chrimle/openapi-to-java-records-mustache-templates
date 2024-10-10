@@ -93,6 +93,10 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Check out the branch for the pull request
+          git checkout ${{ github.head_ref }}
+          
           git add pom.xml
           git commit -m "Update project version $current_version -> $new_version" || echo "No changes to commit."
-          git push
+          git push origin ${{ github.head_ref }}
