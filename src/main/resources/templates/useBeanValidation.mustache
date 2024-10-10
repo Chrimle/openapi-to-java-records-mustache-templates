@@ -19,9 +19,28 @@
     }}{{^isNullable}}{{!
       }} @NotNull{{!
     }}{{/isNullable}}{{!
-      if (pattern == true)
-    }}{{#pattern}}{{!
-      }} @Pattern(regexp = "{{{.}}}"){{!
-    }}{{/pattern}}{{!
   }}{{/required}}{{!
+    if (pattern != null)
+  }}{{#pattern}}{{!
+    }} @Pattern(regexp = "{{{.}}}"){{!
+  }}{{/pattern}}{{!
+    if (minLength != null)
+  }}{{#minLength}}{{!
+      if (maxLength != null)
+    }}{{#maxLength}}{{!
+      }} @Size(min = {{minLength}}, max = {{maxLength}}){{!
+    }}{{/maxLength}}{{!
+  }}{{/minLength}}{{!
+    if (minLength != null)
+  }}{{#minLength}}{{!
+      if (maxLength == null)
+    }}{{^maxLength}}{{!
+      }} @Size(min = {{minLength}}){{!
+    }}{{/maxLength}}{{!
+  }}{{/minLength}}{{!
+  }}{{^minLength}}{{!
+    }}{{#maxLength}}{{!
+      }} @Size(max = {{maxLength}}){{!
+    }}{{/maxLength}}{{!
+  }}{{/minLength}}{{!
 }}{{/useBeanValidation}}

@@ -4,6 +4,7 @@ import com.chrimle.example.GeneratedField;
 import com.chrimle.example.GeneratedSource;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import java.io.Serializable;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
@@ -132,6 +133,17 @@ public class AssertionUtils {
           Assertions.assertEquals(generatedField.pattern().get(), actualPatternAnnotation.regexp());
         } else {
           assertDoesNotHaveAnnotation(classUnderTest, field, patternAnnotation);
+        }
+        final Class<Size> sizeAnnotation = Size.class;
+        if (generatedField.minLength().isPresent() || generatedField.maxLength().isPresent()) {
+          final Size actualSizeAnnotation =
+              assertHasAnnotation(classUnderTest, field, sizeAnnotation);
+          generatedField
+              .minLength()
+              .ifPresent(min -> Assertions.assertEquals(min, actualSizeAnnotation.min()));
+
+        } else {
+          assertDoesNotHaveAnnotation(classUnderTest, field, sizeAnnotation);
         }
       }
     }

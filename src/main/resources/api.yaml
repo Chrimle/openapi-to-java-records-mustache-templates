@@ -165,3 +165,13 @@ components:
         stringRequiredPattern:
           type: string
           pattern: '^\d{3}-\d{2}-\d{4}$'
+        stringMinLength:
+          type: string
+          minLength: 3
+        stringMaxLength:
+          type: string
+          maxLength: 7
+        stringMinAndMaxLength:
+          type: string
+          minLength: 3
+          maxLength: 7

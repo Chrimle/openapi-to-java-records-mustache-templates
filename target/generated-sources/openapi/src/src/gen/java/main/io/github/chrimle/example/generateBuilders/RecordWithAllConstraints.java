@@ -36,6 +36,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * @param stringRequired String
  * @param stringRequiredNullable String
  * @param stringRequiredPattern String
+ * @param stringMinLength String
+ * @param stringMaxLength String
+ * @param stringMinAndMaxLength String
  */
 public record RecordWithAllConstraints(
     @javax.annotation.Nonnull String stringStandard,
@@ -43,7 +46,10 @@ public record RecordWithAllConstraints(
     @javax.annotation.Nullable String stringNullable,
     @javax.annotation.Nonnull String stringRequired,
     @javax.annotation.Nullable String stringRequiredNullable,
-    @javax.annotation.Nonnull String stringRequiredPattern) {
+    @javax.annotation.Nonnull String stringRequiredPattern,
+    @javax.annotation.Nonnull String stringMinLength,
+    @javax.annotation.Nonnull String stringMaxLength,
+    @javax.annotation.Nonnull String stringMinAndMaxLength) {
 
   public RecordWithAllConstraints(
       @javax.annotation.Nonnull final String stringStandard,
@@ -51,13 +57,19 @@ public record RecordWithAllConstraints(
       @javax.annotation.Nullable final String stringNullable,
       @javax.annotation.Nonnull final String stringRequired,
       @javax.annotation.Nullable final String stringRequiredNullable,
-      @javax.annotation.Nonnull final String stringRequiredPattern) { 
+      @javax.annotation.Nonnull final String stringRequiredPattern,
+      @javax.annotation.Nonnull final String stringMinLength,
+      @javax.annotation.Nonnull final String stringMaxLength,
+      @javax.annotation.Nonnull final String stringMinAndMaxLength) { 
     this.stringStandard = stringStandard;
     this.stringDefault = Objects.requireNonNullElse(stringDefault, "someDefaultValue");
     this.stringNullable = stringNullable;
     this.stringRequired = stringRequired;
     this.stringRequiredNullable = stringRequiredNullable;
     this.stringRequiredPattern = stringRequiredPattern;
+    this.stringMinLength = stringMinLength;
+    this.stringMaxLength = stringMaxLength;
+    this.stringMinAndMaxLength = stringMinAndMaxLength;
   }
 
   /** Builder class for {@link RecordWithAllConstraints } */
@@ -69,6 +81,9 @@ public record RecordWithAllConstraints(
     private String stringRequired;
     private String stringRequiredNullable;
     private String stringRequiredPattern;
+    private String stringMinLength;
+    private String stringMaxLength;
+    private String stringMinAndMaxLength;
 
     /**
      * Sets the value of {@link RecordWithAllConstraints#stringStandard }.
@@ -143,6 +158,42 @@ public record RecordWithAllConstraints(
     }
 
     /**
+     * Sets the value of {@link RecordWithAllConstraints#stringMinLength }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     * @param stringMinLength sets the value of stringMinLength
+     * @return this {@link Builder}-instance for method-chaining
+     */
+    public Builder stringMinLength(final String stringMinLength) {
+      this.stringMinLength = stringMinLength;
+      return this;
+    }
+
+    /**
+     * Sets the value of {@link RecordWithAllConstraints#stringMaxLength }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     * @param stringMaxLength sets the value of stringMaxLength
+     * @return this {@link Builder}-instance for method-chaining
+     */
+    public Builder stringMaxLength(final String stringMaxLength) {
+      this.stringMaxLength = stringMaxLength;
+      return this;
+    }
+
+    /**
+     * Sets the value of {@link RecordWithAllConstraints#stringMinAndMaxLength }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     * @param stringMinAndMaxLength sets the value of stringMinAndMaxLength
+     * @return this {@link Builder}-instance for method-chaining
+     */
+    public Builder stringMinAndMaxLength(final String stringMinAndMaxLength) {
+      this.stringMinAndMaxLength = stringMinAndMaxLength;
+      return this;
+    }
+
+    /**
      * Builds a {@link RecordWithAllConstraints }-instance with the values provided in preceding
      * builder methods.
      *
@@ -156,7 +207,10 @@ public record RecordWithAllConstraints(
         stringNullable,
         stringRequired,
         stringRequiredNullable,
-        stringRequiredPattern
+        stringRequiredPattern,
+        stringMinLength,
+        stringMaxLength,
+        stringMinAndMaxLength
       );
     }
   }

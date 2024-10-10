@@ -84,6 +84,12 @@ public class TestSuite {
               GeneratedField.of("stringRequiredPattern", String.class)
                   .isBeanValidationNullable(false)
                   .pattern("^\\d{3}-\\d{2}-\\d{4}$")
+                  .build(),
+              GeneratedField.of("stringMinLength", String.class).minLength(3).build(),
+              GeneratedField.of("stringMaxLength", String.class).maxLength(7).build(),
+              GeneratedField.of("stringMinAndMaxLength", String.class)
+                  .minLength(3)
+                  .maxLength(7)
                   .build());
     };
   }

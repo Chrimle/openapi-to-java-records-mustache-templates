@@ -8,7 +8,9 @@ public record GeneratedField<T>(
     boolean isNullable,
     boolean isBeanValidationNullable,
     Optional<T> defaultValue,
-    Optional<String> pattern) {
+    Optional<String> pattern,
+    Optional<Long> minLength,
+    Optional<Long> maxLength) {
 
   public static <T> Builder<T> of(final String name, final Class<T> type) {
     return new Builder<>(name, type);
@@ -21,6 +23,8 @@ public record GeneratedField<T>(
     private boolean isBeanValidationNullable = true;
     private Optional<T> defaultValue = Optional.empty();
     private Optional<String> pattern = Optional.empty();
+    private Optional<Long> minLength = Optional.empty();
+    private Optional<Long> maxLength = Optional.empty();
 
     public Builder(final String name, final Class<T> type) {
       this.name = name;
@@ -47,9 +51,26 @@ public record GeneratedField<T>(
       return this;
     }
 
+    public Builder<T> minLength(final long minLength) {
+      this.minLength = Optional.of(minLength);
+      return this;
+    }
+
+    public Builder<T> maxLength(final long maxLength) {
+      this.maxLength = Optional.of(maxLength);
+      return this;
+    }
+
     public GeneratedField<T> build() {
       return new GeneratedField<>(
-          name, type, isNullable, isBeanValidationNullable, defaultValue, pattern);
+          name,
+          type,
+          isNullable,
+          isBeanValidationNullable,
+          defaultValue,
+          pattern,
+          minLength,
+          maxLength);
     }
   }
 }
