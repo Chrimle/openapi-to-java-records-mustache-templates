@@ -19,5 +19,9 @@
     }}{{^isNullable}}{{!
       }} @NotNull{{!
     }}{{/isNullable}}{{!
+      if (pattern == true)
+    }}{{#pattern}}{{!
+      }} @Pattern(regexp = "{{{.}}}"){{!
+    }}{{/pattern}}{{!
   }}{{/required}}{{!
 }}{{/useBeanValidation}}

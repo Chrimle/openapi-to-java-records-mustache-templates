@@ -45,7 +45,7 @@ public record RecordWithAllConstraints(
     @javax.annotation.Nullable String stringNullable,
     @javax.annotation.Nonnull @NotNull String stringRequired,
     @javax.annotation.Nullable String stringRequiredNullable,
-    @javax.annotation.Nonnull @NotNull String stringRequiredPattern) {
+    @javax.annotation.Nonnull @NotNull @Pattern(regexp = "^\\d{3}-\\d{2}-\\d{4}$") String stringRequiredPattern) {
 
   public RecordWithAllConstraints(
       @javax.annotation.Nonnull final String stringStandard,

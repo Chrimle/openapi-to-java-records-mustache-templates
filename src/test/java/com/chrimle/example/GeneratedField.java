@@ -7,7 +7,8 @@ public record GeneratedField<T>(
     Class<T> type,
     boolean isNullable,
     boolean isBeanValidationNullable,
-    Optional<T> defaultValue) {
+    Optional<T> defaultValue,
+    Optional<String> pattern) {
 
   public static <T> Builder<T> of(final String name, final Class<T> type) {
     return new Builder<>(name, type);
@@ -19,6 +20,7 @@ public record GeneratedField<T>(
     private boolean isNullable = false;
     private boolean isBeanValidationNullable = true;
     private Optional<T> defaultValue = Optional.empty();
+    private Optional<String> pattern = Optional.empty();
 
     public Builder(final String name, final Class<T> type) {
       this.name = name;
@@ -40,8 +42,14 @@ public record GeneratedField<T>(
       return this;
     }
 
+    public Builder<T> pattern(final String pattern) {
+      this.pattern = Optional.ofNullable(pattern);
+      return this;
+    }
+
     public GeneratedField<T> build() {
-      return new GeneratedField<>(name, type, isNullable, isBeanValidationNullable, defaultValue);
+      return new GeneratedField<>(
+          name, type, isNullable, isBeanValidationNullable, defaultValue, pattern);
     }
   }
 }

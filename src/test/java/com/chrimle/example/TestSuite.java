@@ -83,6 +83,7 @@ public class TestSuite {
               GeneratedField.of("stringRequiredNullable", String.class).isNullable(true).build(),
               GeneratedField.of("stringRequiredPattern", String.class)
                   .isBeanValidationNullable(false)
+                  .pattern("^\\d{3}-\\d{2}-\\d{4}$")
                   .build());
     };
   }
