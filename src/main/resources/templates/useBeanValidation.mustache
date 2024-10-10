@@ -1,8 +1,9 @@
 {{!
   Source: openapi-to-java-records-mustache-templates
   Version: 1.7.6
-}}{{!
-  if configOption.useBeanValidation == true
+
+  Enabled via configOption.useBeanValidation=true
+
 }}{{#useBeanValidation}}{{!
   }}{{^required}}{{!
     When not required, the field *may* be nullable according to openapi-generator-maven-plugin.
