@@ -25,6 +25,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -52,6 +53,9 @@ import jakarta.validation.Valid;
  * @param longMinimum Long
  * @param longMaximum Long
  * @param longMinimumAndMaximum Long
+ * @param bigDecimalMinimum BigDecimal
+ * @param bigDecimalMaximum BigDecimal
+ * @param bigDecimalMinimumAndMaximum BigDecimal
  */
 public record RecordWithAllConstraints(
     @javax.annotation.Nonnull String stringStandard,
@@ -71,7 +75,10 @@ public record RecordWithAllConstraints(
     @javax.annotation.Nonnull @Min(0) @Max(100) Integer intMinimumAndMaximum,
     @javax.annotation.Nonnull @Min(18L) Long longMinimum,
     @javax.annotation.Nonnull @Max(100L) Long longMaximum,
-    @javax.annotation.Nonnull @Min(0L) @Max(100L) Long longMinimumAndMaximum) {
+    @javax.annotation.Nonnull @Min(0L) @Max(100L) Long longMinimumAndMaximum,
+    @javax.annotation.Nonnull @DecimalMin("0") BigDecimal bigDecimalMinimum,
+    @javax.annotation.Nonnull @DecimalMax("100") BigDecimal bigDecimalMaximum,
+    @javax.annotation.Nonnull @DecimalMin("0") @DecimalMax("100") BigDecimal bigDecimalMinimumAndMaximum) {
 
   public RecordWithAllConstraints(
       @javax.annotation.Nonnull final String stringStandard,
@@ -91,7 +98,10 @@ public record RecordWithAllConstraints(
       @javax.annotation.Nonnull final Integer intMinimumAndMaximum,
       @javax.annotation.Nonnull final Long longMinimum,
       @javax.annotation.Nonnull final Long longMaximum,
-      @javax.annotation.Nonnull final Long longMinimumAndMaximum) { 
+      @javax.annotation.Nonnull final Long longMinimumAndMaximum,
+      @javax.annotation.Nonnull final BigDecimal bigDecimalMinimum,
+      @javax.annotation.Nonnull final BigDecimal bigDecimalMaximum,
+      @javax.annotation.Nonnull final BigDecimal bigDecimalMinimumAndMaximum) { 
     this.stringStandard = stringStandard;
     this.stringDefault = Objects.requireNonNullElse(stringDefault, "someDefaultValue");
     this.stringNullable = stringNullable;
@@ -110,5 +120,8 @@ public record RecordWithAllConstraints(
     this.longMinimum = longMinimum;
     this.longMaximum = longMaximum;
     this.longMinimumAndMaximum = longMinimumAndMaximum;
+    this.bigDecimalMinimum = bigDecimalMinimum;
+    this.bigDecimalMaximum = bigDecimalMaximum;
+    this.bigDecimalMinimumAndMaximum = bigDecimalMinimumAndMaximum;
   }
 }

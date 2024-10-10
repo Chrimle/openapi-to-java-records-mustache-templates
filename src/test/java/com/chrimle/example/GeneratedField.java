@@ -14,7 +14,9 @@ public record GeneratedField<T>(
     Optional<Integer> minItems,
     Optional<Integer> maxItems,
     Optional<Long> minimum,
-    Optional<Long> maximum) {
+    Optional<Long> maximum,
+    Optional<String> decimalMin,
+    Optional<String> decimalMax) {
 
   public static <T> Builder<T> of(final String name, final Class<T> type) {
     return new Builder<>(name, type);
@@ -33,6 +35,8 @@ public record GeneratedField<T>(
     private Optional<Integer> maxItems = Optional.empty();
     private Optional<Long> minimum = Optional.empty();
     private Optional<Long> maximum = Optional.empty();
+    private Optional<String> decimalMin = Optional.empty();
+    private Optional<String> decimalMax = Optional.empty();
 
     public Builder(final String name, final Class<T> type) {
       this.name = name;
@@ -89,6 +93,16 @@ public record GeneratedField<T>(
       return this;
     }
 
+    public Builder<T> decimalMin(final String decimalMin) {
+      this.decimalMin = Optional.ofNullable(decimalMin);
+      return this;
+    }
+
+    public Builder<T> decimalMax(final String decimalMax) {
+      this.decimalMax = Optional.ofNullable(decimalMax);
+      return this;
+    }
+
     public GeneratedField<T> build() {
       return new GeneratedField<>(
           name,
@@ -102,7 +116,9 @@ public record GeneratedField<T>(
           minItems,
           maxItems,
           minimum,
-          maximum);
+          maximum,
+          decimalMin,
+          decimalMax);
     }
   }
 }

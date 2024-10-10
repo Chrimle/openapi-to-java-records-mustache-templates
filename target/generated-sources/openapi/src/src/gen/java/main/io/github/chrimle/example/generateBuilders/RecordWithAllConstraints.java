@@ -25,6 +25,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -50,6 +51,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * @param longMinimum Long
  * @param longMaximum Long
  * @param longMinimumAndMaximum Long
+ * @param bigDecimalMinimum BigDecimal
+ * @param bigDecimalMaximum BigDecimal
+ * @param bigDecimalMinimumAndMaximum BigDecimal
  */
 public record RecordWithAllConstraints(
     @javax.annotation.Nonnull String stringStandard,
@@ -69,7 +73,10 @@ public record RecordWithAllConstraints(
     @javax.annotation.Nonnull Integer intMinimumAndMaximum,
     @javax.annotation.Nonnull Long longMinimum,
     @javax.annotation.Nonnull Long longMaximum,
-    @javax.annotation.Nonnull Long longMinimumAndMaximum) {
+    @javax.annotation.Nonnull Long longMinimumAndMaximum,
+    @javax.annotation.Nonnull BigDecimal bigDecimalMinimum,
+    @javax.annotation.Nonnull BigDecimal bigDecimalMaximum,
+    @javax.annotation.Nonnull BigDecimal bigDecimalMinimumAndMaximum) {
 
   public RecordWithAllConstraints(
       @javax.annotation.Nonnull final String stringStandard,
@@ -89,7 +96,10 @@ public record RecordWithAllConstraints(
       @javax.annotation.Nonnull final Integer intMinimumAndMaximum,
       @javax.annotation.Nonnull final Long longMinimum,
       @javax.annotation.Nonnull final Long longMaximum,
-      @javax.annotation.Nonnull final Long longMinimumAndMaximum) { 
+      @javax.annotation.Nonnull final Long longMinimumAndMaximum,
+      @javax.annotation.Nonnull final BigDecimal bigDecimalMinimum,
+      @javax.annotation.Nonnull final BigDecimal bigDecimalMaximum,
+      @javax.annotation.Nonnull final BigDecimal bigDecimalMinimumAndMaximum) { 
     this.stringStandard = stringStandard;
     this.stringDefault = Objects.requireNonNullElse(stringDefault, "someDefaultValue");
     this.stringNullable = stringNullable;
@@ -108,6 +118,9 @@ public record RecordWithAllConstraints(
     this.longMinimum = longMinimum;
     this.longMaximum = longMaximum;
     this.longMinimumAndMaximum = longMinimumAndMaximum;
+    this.bigDecimalMinimum = bigDecimalMinimum;
+    this.bigDecimalMaximum = bigDecimalMaximum;
+    this.bigDecimalMinimumAndMaximum = bigDecimalMinimumAndMaximum;
   }
 
   /** Builder class for {@link RecordWithAllConstraints } */
@@ -131,6 +144,9 @@ public record RecordWithAllConstraints(
     private Long longMinimum;
     private Long longMaximum;
     private Long longMinimumAndMaximum;
+    private BigDecimal bigDecimalMinimum;
+    private BigDecimal bigDecimalMaximum;
+    private BigDecimal bigDecimalMinimumAndMaximum;
 
     /**
      * Sets the value of {@link RecordWithAllConstraints#stringStandard }.
@@ -349,6 +365,42 @@ public record RecordWithAllConstraints(
     }
 
     /**
+     * Sets the value of {@link RecordWithAllConstraints#bigDecimalMinimum }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     * @param bigDecimalMinimum sets the value of bigDecimalMinimum
+     * @return this {@link Builder}-instance for method-chaining
+     */
+    public Builder bigDecimalMinimum(final BigDecimal bigDecimalMinimum) {
+      this.bigDecimalMinimum = bigDecimalMinimum;
+      return this;
+    }
+
+    /**
+     * Sets the value of {@link RecordWithAllConstraints#bigDecimalMaximum }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     * @param bigDecimalMaximum sets the value of bigDecimalMaximum
+     * @return this {@link Builder}-instance for method-chaining
+     */
+    public Builder bigDecimalMaximum(final BigDecimal bigDecimalMaximum) {
+      this.bigDecimalMaximum = bigDecimalMaximum;
+      return this;
+    }
+
+    /**
+     * Sets the value of {@link RecordWithAllConstraints#bigDecimalMinimumAndMaximum }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     * @param bigDecimalMinimumAndMaximum sets the value of bigDecimalMinimumAndMaximum
+     * @return this {@link Builder}-instance for method-chaining
+     */
+    public Builder bigDecimalMinimumAndMaximum(final BigDecimal bigDecimalMinimumAndMaximum) {
+      this.bigDecimalMinimumAndMaximum = bigDecimalMinimumAndMaximum;
+      return this;
+    }
+
+    /**
      * Builds a {@link RecordWithAllConstraints }-instance with the values provided in preceding
      * builder methods.
      *
@@ -374,7 +426,10 @@ public record RecordWithAllConstraints(
         intMinimumAndMaximum,
         longMinimum,
         longMaximum,
-        longMinimumAndMaximum
+        longMinimumAndMaximum,
+        bigDecimalMinimum,
+        bigDecimalMaximum,
+        bigDecimalMinimumAndMaximum
       );
     }
   }

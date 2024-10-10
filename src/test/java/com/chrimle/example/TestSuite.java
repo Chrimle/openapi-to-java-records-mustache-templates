@@ -105,6 +105,12 @@ public class TestSuite {
               GeneratedField.of("longMinimumAndMaximum", Long.class)
                   .minimum(0)
                   .maximum(100)
+                  .build(),
+              GeneratedField.of("bigDecimalMinimum", BigDecimal.class).decimalMin("0").build(),
+              GeneratedField.of("bigDecimalMaximum", BigDecimal.class).decimalMax("100").build(),
+              GeneratedField.of("bigDecimalMinimumAndMaximum", BigDecimal.class)
+                  .decimalMin("0")
+                  .decimalMax("100")
                   .build());
     };
   }

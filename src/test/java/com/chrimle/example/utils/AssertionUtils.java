@@ -2,6 +2,8 @@ package com.chrimle.example.utils;
 
 import com.chrimle.example.GeneratedField;
 import com.chrimle.example.GeneratedSource;
+import jakarta.validation.constraints.DecimalMax;
+import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
@@ -165,6 +167,22 @@ public class AssertionUtils {
           Assertions.assertEquals(generatedField.maximum().get(), max.value());
         } else {
           assertDoesNotHaveAnnotation(classUnderTest, field, maxAnnotation);
+        }
+        final Class<DecimalMin> decimalMinAnnotation = DecimalMin.class;
+        if (generatedField.decimalMin().isPresent()) {
+          final DecimalMin decimalMin =
+              assertHasAnnotation(classUnderTest, field, decimalMinAnnotation);
+          Assertions.assertEquals(generatedField.decimalMin().get(), decimalMin.value());
+        } else {
+          assertDoesNotHaveAnnotation(classUnderTest, field, decimalMinAnnotation);
+        }
+        final Class<DecimalMax> decimalMaxAnnotation = DecimalMax.class;
+        if (generatedField.decimalMax().isPresent()) {
+          final DecimalMax decimalMax =
+              assertHasAnnotation(classUnderTest, field, decimalMaxAnnotation);
+          Assertions.assertEquals(generatedField.decimalMax().get(), decimalMax.value());
+        } else {
+          assertDoesNotHaveAnnotation(classUnderTest, field, decimalMaxAnnotation);
         }
       }
     }

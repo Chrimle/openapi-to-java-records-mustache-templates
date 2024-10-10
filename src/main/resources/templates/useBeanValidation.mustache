@@ -65,4 +65,14 @@
       }} @Max({{.}}L){{!
     }}{{/maximum}}{{!
   }}{{/isLong}}{{!
+  }}{{^isInteger}}{{!
+    }}{{^isLong}}{{!
+      }}{{#minimum}}{{!
+        }} @DecimalMin({{#exclusiveMinimum}}value={{/exclusiveMinimum}}"{{minimum}}"{{#exclusiveMinimum}},inclusive=false{{/exclusiveMinimum}}){{!
+      }}{{/minimum}}{{!
+      }}{{#maximum}}{{!
+        }} @DecimalMax({{#exclusiveMaximum}}value={{/exclusiveMaximum}}"{{maximum}}"{{#exclusiveMaximum}},inclusive=false{{/exclusiveMaximum}}){{!
+      }}{{/maximum}}{{!
+    }}{{/isLong}}{{!
+  }}{{/isInteger}}{{!
 }}{{/useBeanValidation}}

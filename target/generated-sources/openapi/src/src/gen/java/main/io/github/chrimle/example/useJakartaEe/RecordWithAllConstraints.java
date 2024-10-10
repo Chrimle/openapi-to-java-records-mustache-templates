@@ -25,6 +25,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -50,6 +51,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * @param longMinimum Long
  * @param longMaximum Long
  * @param longMinimumAndMaximum Long
+ * @param bigDecimalMinimum BigDecimal
+ * @param bigDecimalMaximum BigDecimal
+ * @param bigDecimalMinimumAndMaximum BigDecimal
  */
 public record RecordWithAllConstraints(
     @jakarta.annotation.Nonnull String stringStandard,
@@ -69,7 +73,10 @@ public record RecordWithAllConstraints(
     @jakarta.annotation.Nonnull Integer intMinimumAndMaximum,
     @jakarta.annotation.Nonnull Long longMinimum,
     @jakarta.annotation.Nonnull Long longMaximum,
-    @jakarta.annotation.Nonnull Long longMinimumAndMaximum) {
+    @jakarta.annotation.Nonnull Long longMinimumAndMaximum,
+    @jakarta.annotation.Nonnull BigDecimal bigDecimalMinimum,
+    @jakarta.annotation.Nonnull BigDecimal bigDecimalMaximum,
+    @jakarta.annotation.Nonnull BigDecimal bigDecimalMinimumAndMaximum) {
 
   public RecordWithAllConstraints(
       @jakarta.annotation.Nonnull final String stringStandard,
@@ -89,7 +96,10 @@ public record RecordWithAllConstraints(
       @jakarta.annotation.Nonnull final Integer intMinimumAndMaximum,
       @jakarta.annotation.Nonnull final Long longMinimum,
       @jakarta.annotation.Nonnull final Long longMaximum,
-      @jakarta.annotation.Nonnull final Long longMinimumAndMaximum) { 
+      @jakarta.annotation.Nonnull final Long longMinimumAndMaximum,
+      @jakarta.annotation.Nonnull final BigDecimal bigDecimalMinimum,
+      @jakarta.annotation.Nonnull final BigDecimal bigDecimalMaximum,
+      @jakarta.annotation.Nonnull final BigDecimal bigDecimalMinimumAndMaximum) { 
     this.stringStandard = stringStandard;
     this.stringDefault = Objects.requireNonNullElse(stringDefault, "someDefaultValue");
     this.stringNullable = stringNullable;
@@ -108,5 +118,8 @@ public record RecordWithAllConstraints(
     this.longMinimum = longMinimum;
     this.longMaximum = longMaximum;
     this.longMinimumAndMaximum = longMinimumAndMaximum;
+    this.bigDecimalMinimum = bigDecimalMinimum;
+    this.bigDecimalMaximum = bigDecimalMaximum;
+    this.bigDecimalMinimumAndMaximum = bigDecimalMinimumAndMaximum;
   }
 }

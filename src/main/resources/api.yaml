@@ -214,3 +214,13 @@ components:
           format: int64
           minimum: 0
           maximum: 100
+        bigDecimalMinimum:
+          type: number
+          minimum: 0
+        bigDecimalMaximum:
+          type: number
+          maximum: 100
+        bigDecimalMinimumAndMaximum:
+          type: number
+          minimum: 0
+          maximum: 100
