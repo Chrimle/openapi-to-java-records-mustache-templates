@@ -30,4 +30,69 @@ jobs:
                 }
               }
             }
-            
+
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Java
+        uses: actions/setup-java@v1
+        with:
+          java-version: '17'
+
+      - name: Get Current Version from Main Branch
+        id: get_main_version
+        run: |
+          git fetch origin main
+          git checkout origin/main -- pom.xml
+          main_version=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
+          echo "Current version from main branch: $main_version"
+          echo "::set-output name=main_version::$main_version"
+
+      - name: Check Labels and Determine Version Update
+        id: version_type
+        run: |
+          current_version="${{ steps.get_main_version.outputs.main_version }}"
+          major=$(echo $current_version | cut -d. -f1)
+          minor=$(echo $current_version | cut -d. -f2)
+          patch=$(echo $current_version | cut -d. -f3)
+
+          # Initialize new_version
+          new_version=""
+
+          # Determine the highest priority label
+          if [[ $(gh pr view ${{ github.event.pull_request.number }} --json labels --jq '.labels[].name') == "MAJOR" ]]; then
+            new_version="$((major+1)).0.0"
+            echo "::set-output name=new_version::$new_version"
+            echo "::set-output name=type::MAJOR"
+          elif [[ $(gh pr view ${{ github.event.pull_request.number }} --json labels --jq '.labels[].name') == "MINOR" ]]; then
+            new_version="$major.$((minor+1)).0"
+            echo "::set-output name=new_version::$new_version"
+            echo "::set-output name=type::MINOR"
+          elif [[ $(gh pr view ${{ github.event.pull_request.number }} --json labels --jq '.labels[].name') == "PATCH" ]]; then
+            new_version="$major.$minor.$((patch+1))"
+            echo "::set-output name=new_version::$new_version"
+            echo "::set-output name=type::PATCH"
+          else
+            echo "No valid version label found. Skipping."
+            exit 0
+          fi
+
+      - name: Update Artifact Version in PR
+        run: |
+          new_version="${{ steps.version_type.outputs.new_version }}"
+          current_version="${{ steps.get_main_version.outputs.main_version }}"
+
+          if [[ "$new_version" != "$current_version" ]]; then
+            mvn versions:set -DnewVersion=$new_version
+            echo "Updated version to $new_version"
+          else
+            echo "Version is already up to date. Skipping update."
+          fi
+
+      - name: Commit and Push Changes to PR
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add pom.xml
+          git commit -m "Update project version $current_version -> $new_version" || echo "No changes to commit."
+          git push
