@@ -45,6 +45,9 @@ import java.io.Serializable;
  * @param arrayMinItems List<String>
  * @param arrayMaxItems List<String>
  * @param arrayMinAndMaxItems List<String>
+ * @param intMinimum Integer
+ * @param intMaximum Integer
+ * @param intMinimumAndMaximum Integer
  */
 public record RecordWithAllConstraints(
     @javax.annotation.Nonnull String stringStandard,
@@ -58,7 +61,10 @@ public record RecordWithAllConstraints(
     @javax.annotation.Nonnull String stringMinAndMaxLength,
     @javax.annotation.Nonnull List<String> arrayMinItems,
     @javax.annotation.Nonnull List<String> arrayMaxItems,
-    @javax.annotation.Nonnull List<String> arrayMinAndMaxItems
+    @javax.annotation.Nonnull List<String> arrayMinAndMaxItems,
+    @javax.annotation.Nonnull Integer intMinimum,
+    @javax.annotation.Nonnull Integer intMaximum,
+    @javax.annotation.Nonnull Integer intMinimumAndMaximum
   ) implements Serializable {
 
   private static final long serialVersionUID = 1L;
@@ -75,7 +81,10 @@ public record RecordWithAllConstraints(
       @javax.annotation.Nonnull final String stringMinAndMaxLength,
       @javax.annotation.Nullable final List<String> arrayMinItems,
       @javax.annotation.Nullable final List<String> arrayMaxItems,
-      @javax.annotation.Nullable final List<String> arrayMinAndMaxItems) { 
+      @javax.annotation.Nullable final List<String> arrayMinAndMaxItems,
+      @javax.annotation.Nonnull final Integer intMinimum,
+      @javax.annotation.Nonnull final Integer intMaximum,
+      @javax.annotation.Nonnull final Integer intMinimumAndMaximum) { 
     this.stringStandard = stringStandard;
     this.stringDefault = Objects.requireNonNullElse(stringDefault, "someDefaultValue");
     this.stringNullable = stringNullable;
@@ -88,5 +97,8 @@ public record RecordWithAllConstraints(
     this.arrayMinItems = Objects.requireNonNullElse(arrayMinItems, new ArrayList<>());
     this.arrayMaxItems = Objects.requireNonNullElse(arrayMaxItems, new ArrayList<>());
     this.arrayMinAndMaxItems = Objects.requireNonNullElse(arrayMinAndMaxItems, new ArrayList<>());
+    this.intMinimum = intMinimum;
+    this.intMaximum = intMaximum;
+    this.intMinimumAndMaximum = intMinimumAndMaximum;
   }
 }

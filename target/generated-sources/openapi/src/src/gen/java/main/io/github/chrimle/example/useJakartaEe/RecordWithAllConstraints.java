@@ -44,6 +44,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * @param arrayMinItems List<String>
  * @param arrayMaxItems List<String>
  * @param arrayMinAndMaxItems List<String>
+ * @param intMinimum Integer
+ * @param intMaximum Integer
+ * @param intMinimumAndMaximum Integer
  */
 public record RecordWithAllConstraints(
     @jakarta.annotation.Nonnull String stringStandard,
@@ -57,7 +60,10 @@ public record RecordWithAllConstraints(
     @jakarta.annotation.Nonnull String stringMinAndMaxLength,
     @jakarta.annotation.Nonnull List<String> arrayMinItems,
     @jakarta.annotation.Nonnull List<String> arrayMaxItems,
-    @jakarta.annotation.Nonnull List<String> arrayMinAndMaxItems) {
+    @jakarta.annotation.Nonnull List<String> arrayMinAndMaxItems,
+    @jakarta.annotation.Nonnull Integer intMinimum,
+    @jakarta.annotation.Nonnull Integer intMaximum,
+    @jakarta.annotation.Nonnull Integer intMinimumAndMaximum) {
 
   public RecordWithAllConstraints(
       @jakarta.annotation.Nonnull final String stringStandard,
@@ -71,7 +77,10 @@ public record RecordWithAllConstraints(
       @jakarta.annotation.Nonnull final String stringMinAndMaxLength,
       @jakarta.annotation.Nullable final List<String> arrayMinItems,
       @jakarta.annotation.Nullable final List<String> arrayMaxItems,
-      @jakarta.annotation.Nullable final List<String> arrayMinAndMaxItems) { 
+      @jakarta.annotation.Nullable final List<String> arrayMinAndMaxItems,
+      @jakarta.annotation.Nonnull final Integer intMinimum,
+      @jakarta.annotation.Nonnull final Integer intMaximum,
+      @jakarta.annotation.Nonnull final Integer intMinimumAndMaximum) { 
     this.stringStandard = stringStandard;
     this.stringDefault = Objects.requireNonNullElse(stringDefault, "someDefaultValue");
     this.stringNullable = stringNullable;
@@ -84,5 +93,8 @@ public record RecordWithAllConstraints(
     this.arrayMinItems = Objects.requireNonNullElse(arrayMinItems, new ArrayList<>());
     this.arrayMaxItems = Objects.requireNonNullElse(arrayMaxItems, new ArrayList<>());
     this.arrayMinAndMaxItems = Objects.requireNonNullElse(arrayMinAndMaxItems, new ArrayList<>());
+    this.intMinimum = intMinimum;
+    this.intMaximum = intMaximum;
+    this.intMinimumAndMaximum = intMinimumAndMaximum;
   }
 }

@@ -2,6 +2,8 @@ package com.chrimle.example.utils;
 
 import com.chrimle.example.GeneratedField;
 import com.chrimle.example.GeneratedSource;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
@@ -149,6 +151,20 @@ public class AssertionUtils {
               generatedField.maxItems().orElse(Integer.MAX_VALUE), actualSizeAnnotation.max());
         } else {
           assertDoesNotHaveAnnotation(classUnderTest, field, sizeAnnotation);
+        }
+        final Class<Min> minAnnotation = Min.class;
+        if (generatedField.minimum().isPresent()) {
+          final Min min = assertHasAnnotation(classUnderTest, field, minAnnotation);
+          Assertions.assertEquals(generatedField.minimum().get(), min.value());
+        } else {
+          assertDoesNotHaveAnnotation(classUnderTest, field, minAnnotation);
+        }
+        final Class<Max> maxAnnotation = Max.class;
+        if (generatedField.maximum().isPresent()) {
+          final Max max = assertHasAnnotation(classUnderTest, field, maxAnnotation);
+          Assertions.assertEquals(generatedField.maximum().get(), max.value());
+        } else {
+          assertDoesNotHaveAnnotation(classUnderTest, field, maxAnnotation);
         }
       }
     }

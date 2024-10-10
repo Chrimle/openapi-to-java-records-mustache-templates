@@ -46,6 +46,9 @@ import jakarta.validation.Valid;
  * @param arrayMinItems List<String>
  * @param arrayMaxItems List<String>
  * @param arrayMinAndMaxItems List<String>
+ * @param intMinimum Integer
+ * @param intMaximum Integer
+ * @param intMinimumAndMaximum Integer
  */
 public record RecordWithAllConstraints(
     @javax.annotation.Nonnull String stringStandard,
@@ -59,7 +62,10 @@ public record RecordWithAllConstraints(
     @javax.annotation.Nonnull @Size(min = 3, max = 7) String stringMinAndMaxLength,
     @javax.annotation.Nonnull @Size(min = 1) List<String> arrayMinItems,
     @javax.annotation.Nonnull @Size(max = 10) List<String> arrayMaxItems,
-    @javax.annotation.Nonnull @Size(min = 1, max = 10) List<String> arrayMinAndMaxItems) {
+    @javax.annotation.Nonnull @Size(min = 1, max = 10) List<String> arrayMinAndMaxItems,
+    @javax.annotation.Nonnull @Min(18) Integer intMinimum,
+    @javax.annotation.Nonnull @Max(100) Integer intMaximum,
+    @javax.annotation.Nonnull @Min(0) @Max(100) Integer intMinimumAndMaximum) {
 
   public RecordWithAllConstraints(
       @javax.annotation.Nonnull final String stringStandard,
@@ -73,7 +79,10 @@ public record RecordWithAllConstraints(
       @javax.annotation.Nonnull final String stringMinAndMaxLength,
       @javax.annotation.Nullable final List<String> arrayMinItems,
       @javax.annotation.Nullable final List<String> arrayMaxItems,
-      @javax.annotation.Nullable final List<String> arrayMinAndMaxItems) { 
+      @javax.annotation.Nullable final List<String> arrayMinAndMaxItems,
+      @javax.annotation.Nonnull final Integer intMinimum,
+      @javax.annotation.Nonnull final Integer intMaximum,
+      @javax.annotation.Nonnull final Integer intMinimumAndMaximum) { 
     this.stringStandard = stringStandard;
     this.stringDefault = Objects.requireNonNullElse(stringDefault, "someDefaultValue");
     this.stringNullable = stringNullable;
@@ -86,5 +95,8 @@ public record RecordWithAllConstraints(
     this.arrayMinItems = Objects.requireNonNullElse(arrayMinItems, new ArrayList<>());
     this.arrayMaxItems = Objects.requireNonNullElse(arrayMaxItems, new ArrayList<>());
     this.arrayMinAndMaxItems = Objects.requireNonNullElse(arrayMinAndMaxItems, new ArrayList<>());
+    this.intMinimum = intMinimum;
+    this.intMaximum = intMaximum;
+    this.intMinimumAndMaximum = intMinimumAndMaximum;
   }
 }

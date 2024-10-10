@@ -191,3 +191,13 @@ components:
           maxItems: 10
           items:
             type: string
+        intMinimum:
+          type: integer
+          minimum: 18
+        intMaximum:
+          type: integer
+          maximum: 100
+        intMinimumAndMaximum:
+          type: integer
+          minimum: 0
+          maximum: 100

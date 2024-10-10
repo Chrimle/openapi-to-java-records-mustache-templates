@@ -93,9 +93,12 @@ public class TestSuite {
                   .build(),
               GeneratedField.of("arrayMinItems", List.class).minItems(1).build(),
               GeneratedField.of("arrayMaxItems", List.class).maxItems(10).build(),
-              GeneratedField.of("arrayMinAndMaxItems", List.class)
-                  .minItems(1)
-                  .maxItems(10)
+              GeneratedField.of("arrayMinAndMaxItems", List.class).minItems(1).maxItems(10).build(),
+              GeneratedField.of("intMinimum", Integer.class).minimum(18).build(),
+              GeneratedField.of("intMaximum", Integer.class).maximum(100).build(),
+              GeneratedField.of("intMinimumAndMaximum", Integer.class)
+                  .minimum(0)
+                  .maximum(100)
                   .build());
     };
   }

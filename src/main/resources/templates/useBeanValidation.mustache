@@ -49,4 +49,12 @@
       }} @Size(max = {{maxItems}}){{!
     }}{{/maxItems}}{{!
   }}{{/minItems}}{{!
+  }}{{#isInteger}}{{!
+    }}{{#minimum}}{{!
+      }} @Min({{.}}){{!
+    }}{{/minimum}}{{!
+    }}{{#maximum}}{{!
+      }} @Max({{.}}){{!
+    }}{{/maximum}}{{!
+  }}{{/isInteger}}{{!
 }}{{/useBeanValidation}}

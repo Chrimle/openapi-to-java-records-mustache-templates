@@ -44,6 +44,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * @param arrayMinItems List<String>
  * @param arrayMaxItems List<String>
  * @param arrayMinAndMaxItems List<String>
+ * @param intMinimum Integer
+ * @param intMaximum Integer
+ * @param intMinimumAndMaximum Integer
  */
 public record RecordWithAllConstraints(
     @javax.annotation.Nonnull String stringStandard,
@@ -57,7 +60,10 @@ public record RecordWithAllConstraints(
     @javax.annotation.Nonnull String stringMinAndMaxLength,
     @javax.annotation.Nonnull List<String> arrayMinItems,
     @javax.annotation.Nonnull List<String> arrayMaxItems,
-    @javax.annotation.Nonnull List<String> arrayMinAndMaxItems) {
+    @javax.annotation.Nonnull List<String> arrayMinAndMaxItems,
+    @javax.annotation.Nonnull Integer intMinimum,
+    @javax.annotation.Nonnull Integer intMaximum,
+    @javax.annotation.Nonnull Integer intMinimumAndMaximum) {
 
   public RecordWithAllConstraints(
       @javax.annotation.Nonnull final String stringStandard,
@@ -71,7 +77,10 @@ public record RecordWithAllConstraints(
       @javax.annotation.Nonnull final String stringMinAndMaxLength,
       @javax.annotation.Nullable final List<String> arrayMinItems,
       @javax.annotation.Nullable final List<String> arrayMaxItems,
-      @javax.annotation.Nullable final List<String> arrayMinAndMaxItems) { 
+      @javax.annotation.Nullable final List<String> arrayMinAndMaxItems,
+      @javax.annotation.Nonnull final Integer intMinimum,
+      @javax.annotation.Nonnull final Integer intMaximum,
+      @javax.annotation.Nonnull final Integer intMinimumAndMaximum) { 
     this.stringStandard = stringStandard;
     this.stringDefault = Objects.requireNonNullElse(stringDefault, "someDefaultValue");
     this.stringNullable = stringNullable;
@@ -84,6 +93,9 @@ public record RecordWithAllConstraints(
     this.arrayMinItems = Objects.requireNonNullElse(arrayMinItems, new ArrayList<>());
     this.arrayMaxItems = Objects.requireNonNullElse(arrayMaxItems, new ArrayList<>());
     this.arrayMinAndMaxItems = Objects.requireNonNullElse(arrayMinAndMaxItems, new ArrayList<>());
+    this.intMinimum = intMinimum;
+    this.intMaximum = intMaximum;
+    this.intMinimumAndMaximum = intMinimumAndMaximum;
   }
 
   /** Builder class for {@link RecordWithAllConstraints } */
@@ -101,6 +113,9 @@ public record RecordWithAllConstraints(
     private List<String> arrayMinItems;
     private List<String> arrayMaxItems;
     private List<String> arrayMinAndMaxItems;
+    private Integer intMinimum;
+    private Integer intMaximum;
+    private Integer intMinimumAndMaximum;
 
     /**
      * Sets the value of {@link RecordWithAllConstraints#stringStandard }.
@@ -247,6 +262,42 @@ public record RecordWithAllConstraints(
     }
 
     /**
+     * Sets the value of {@link RecordWithAllConstraints#intMinimum }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     * @param intMinimum sets the value of intMinimum
+     * @return this {@link Builder}-instance for method-chaining
+     */
+    public Builder intMinimum(final Integer intMinimum) {
+      this.intMinimum = intMinimum;
+      return this;
+    }
+
+    /**
+     * Sets the value of {@link RecordWithAllConstraints#intMaximum }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     * @param intMaximum sets the value of intMaximum
+     * @return this {@link Builder}-instance for method-chaining
+     */
+    public Builder intMaximum(final Integer intMaximum) {
+      this.intMaximum = intMaximum;
+      return this;
+    }
+
+    /**
+     * Sets the value of {@link RecordWithAllConstraints#intMinimumAndMaximum }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     * @param intMinimumAndMaximum sets the value of intMinimumAndMaximum
+     * @return this {@link Builder}-instance for method-chaining
+     */
+    public Builder intMinimumAndMaximum(final Integer intMinimumAndMaximum) {
+      this.intMinimumAndMaximum = intMinimumAndMaximum;
+      return this;
+    }
+
+    /**
      * Builds a {@link RecordWithAllConstraints }-instance with the values provided in preceding
      * builder methods.
      *
@@ -266,7 +317,10 @@ public record RecordWithAllConstraints(
         stringMinAndMaxLength,
         arrayMinItems,
         arrayMaxItems,
-        arrayMinAndMaxItems
+        arrayMinAndMaxItems,
+        intMinimum,
+        intMaximum,
+        intMinimumAndMaximum
       );
     }
   }
