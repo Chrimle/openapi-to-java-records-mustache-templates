@@ -54,6 +54,8 @@ jobs:
           echo "::set-output name=main_version::$main_version"
 
       - name: Check Labels and Determine Version Update
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         id: version_type
         run: |
           current_version="${{ steps.get_main_version.outputs.main_version }}"
