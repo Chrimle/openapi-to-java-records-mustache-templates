@@ -66,33 +66,62 @@ In this example, each generated class will be named with the suffix "DTO", and f
 ```yaml
 components:
   schemas:
-    Example:
-      description: This is an example
+    Person:
+      description: Personal information
       deprecated: true
       type: object
+      required:
+        - fullName
+        - age
+        - gender
+        - height
+        - ssn
+        - aliases
+        - trackingCode
       properties:
-        text:
-          description: Example text property
+        fullName:
+          description: Full name
           type: string
-        nullableText:
-          description: Example nullable text property with default value
+          minLength: 2
+          maxLength: 50
+        age:
+          description: Age (years)
+          type: integer
+          minimum: 0
+          maximum: 100
+        gender:
+          $ref: '#/components/schemas/Gender'
+        height:
+          description: Height (m)
+          type: number
+          pattern: float
+          minimum: 0
+        ssn:
+          description: Social Security Number
           type: string
-          default: someDefaultValue
-          nullable: true
-        collection:
-          description: Example list property
+          pattern: '^\d{3}-\d{2}-\d{4}$'
+        aliases:
+          description: Known Aliases
           type: array
+          uniqueItems: true
+          minItems: 1
+          maxItems: 3
           items:
-            type: integer
-        composite:
-          $ref: '#/components/schemas/Composite'
-    Composite:
-      description: This is a composite object
-      type: object
-      properties:
-        text:
-          description: Example text property
+            type: string
+        telephoneNumber:
+          description: Telephone Number
           type: string
+          nullable: true
+        trackingCode:
+          description: Tracking code for Web analytics
+          type: string
+          default: "utm_source=default"
+    Gender:
+      description: Gender
+      type: string
+      enum:
+        - Male
+        - Female
 ```
 > [!TIP]
 > See [Supported OpenAPI Specification properties](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/wiki/Supported-OpenAPI-Specification-properties)
@@ -115,30 +144,46 @@ package io.github.chrimle.example;
 import ...;
 
 /**
- * This is an example
+ * Personal information
  *
  * @deprecated
- * @param text Example text property
- * @param nullableText Example nullable text property with default value
- * @param collection Example list property
- * @param composite CompositeDTO
+ * @param fullName Full name
+ * @param age Age (years)
+ * @param gender GenderDTO
+ * @param height Height (m)
+ * @param ssn Social Security Number
+ * @param aliases Known Aliases
+ * @param telephoneNumber Telephone Number
+ * @param trackingCode Tracking code for Web analytics
  */
 @Deprecated
-public record ExampleDTO(
-    @javax.annotation.Nonnull String text,
-    @javax.annotation.Nullable String nullableText,
-    @javax.annotation.Nonnull List<Integer> collection,
-    @javax.annotation.Nonnull CompositeDTO composite) {
+public record PersonDTO(
+    @javax.annotation.Nonnull @NotNull @Size(min = 2, max = 50) String fullName,
+    @javax.annotation.Nonnull @NotNull @Min(0) @Max(100) Integer age,
+    @javax.annotation.Nonnull @NotNull GenderDTO gender,
+    @javax.annotation.Nonnull @NotNull @DecimalMin("0") BigDecimal height,
+    @javax.annotation.Nonnull @NotNull @Pattern(regexp = "^\\d{3}-\\d{2}-\\d{4}$") String ssn,
+    @javax.annotation.Nonnull @NotNull @Size(min = 1, max = 3) Set<String> aliases,
+    @javax.annotation.Nullable String telephoneNumber,
+    @javax.annotation.Nonnull @NotNull String trackingCode) {
 
-  public ExampleDTO(
-      @javax.annotation.Nonnull final String text,
-      @javax.annotation.Nullable final String nullableText,
-      @javax.annotation.Nullable final List<Integer> collection,
-      @javax.annotation.Nonnull final CompositeDTO composite) { 
-    this.text = text;
-    this.nullableText = Objects.requireNonNullElse(nullableText, "someDefaultValue");
-    this.collection = Objects.requireNonNullElse(collection, new ArrayList<>());
-    this.composite = composite;
+  public PersonDTO(
+      @javax.annotation.Nonnull final String fullName,
+      @javax.annotation.Nonnull final Integer age,
+      @javax.annotation.Nonnull final GenderDTO gender,
+      @javax.annotation.Nonnull final BigDecimal height,
+      @javax.annotation.Nonnull final String ssn,
+      @javax.annotation.Nullable final Set<String> aliases,
+      @javax.annotation.Nullable final String telephoneNumber,
+      @javax.annotation.Nullable final String trackingCode) { 
+    this.fullName = fullName;
+    this.age = age;
+    this.gender = gender;
+    this.height = height;
+    this.ssn = ssn;
+    this.aliases = Objects.requireNonNullElse(aliases, new LinkedHashSet<>());
+    this.telephoneNumber = telephoneNumber;
+    this.trackingCode = Objects.requireNonNullElse(trackingCode, "utm_source=default");
   }
 }
 ```
