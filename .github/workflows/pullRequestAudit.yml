@@ -7,6 +7,9 @@ on:
       - labeled
       - unlabeled
 
+permissions:
+  contents: write
+
 jobs:
   Audit-Pull-Request:
     runs-on: ubuntu-latest
