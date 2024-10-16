@@ -1,3 +1,7 @@
-theme: jekyll-theme-minimal
-title: OpenAPI to Java records
-description: Official site
+author:
+  name: Chrimle
+
+theme: minima
+
+minima:
+  skin: auto
