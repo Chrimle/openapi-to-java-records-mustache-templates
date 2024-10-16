@@ -4,8 +4,6 @@ title: FAQ
 permalink: /faq/
 ---
 
-# FAQ
-
 - ### What version of Java is supported?
 > Only JDK `17` has been confirmed, as it is used in testing.
 >

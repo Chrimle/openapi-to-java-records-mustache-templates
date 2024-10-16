@@ -4,8 +4,6 @@ title: License
 permalink: /license/
 ---
 
-# License
-
 ```
 MIT License
 
