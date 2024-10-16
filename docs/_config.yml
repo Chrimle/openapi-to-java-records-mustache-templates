@@ -7,4 +7,5 @@ minima:
   skin: auto
 
 header_pages:
+  - faq.md
   - license.md
