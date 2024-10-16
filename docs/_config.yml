@@ -1,5 +1,6 @@
 author:
   name: Chrimle
+  email: @Chrimle
 
 theme: minima
 
@@ -9,3 +10,4 @@ minima:
 header_pages:
   - faq.md
   - license.md
+  - about.md
