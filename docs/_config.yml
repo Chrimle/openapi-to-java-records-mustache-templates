@@ -5,3 +5,6 @@ theme: minima
 
 minima:
   skin: auto
+
+header_pages:
+  - license.md
