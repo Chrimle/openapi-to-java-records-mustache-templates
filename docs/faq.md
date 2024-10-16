@@ -1,3 +1,9 @@
+---
+layout: page
+title: FAQ
+permalink: /faq/
+---
+
 # FAQ
 
 - ### What version of Java is supported?
