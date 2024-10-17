@@ -1,13 +1,16 @@
 author: 'Chrimle'
 
 theme: minima
+# Note: GitHub Pages uses minima:2.5.1
+# Docs: https://github.com/jekyll/minima/tree/v2.5.1
 
 minima:
   skin: auto
-  social_links:
-    - { platform: github,  user_url: "https://github.com/Chrimle" }
 
 header_pages:
   - faq.md
   - license.md
   - about.md
+
+twitter_username: Chrimle
+github_username: Chrimle
