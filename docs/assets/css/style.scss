@@ -1,0 +1,35 @@
+---
+---
+
+@import 'jekyll-theme-leap-day';
+
+header {
+  background: none;
+  background-color: #1e1e1e;
+}
+
+body {
+  background: none;
+  background-color: #1e1e1e;
+  color: #f3f3f3;
+}
+
+footer {
+  color: #f3f3f3
+}
+
+nav {
+  ul {
+    li {
+      &.tag-h1 {
+        a {
+          color: #f3f3f3;
+        }
+      }
+    }
+    a {
+      color: #f3f3f3;
+      &:hover { color: "white"; }
+    }
+  }
+}
