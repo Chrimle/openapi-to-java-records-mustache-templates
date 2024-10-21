@@ -11,9 +11,7 @@
     <name>OpenAPI to Java records :: Mustache Templates</name>
     <description>Project containing Mustache-templates used by openapi-generator-maven-plugin to generate Java records from OpenAPI Specifications.</description>
     <inceptionYear>2024</inceptionYear>
-    <url>
-        http://www.github.com/Chrimle/openapi-to-java-records-mustache-templates
-    </url>
+    <url>https://chrimle.github.io/openapi-to-java-records-mustache-templates/</url>
     <licenses>
         <license>
             <name>MIT License</name>
