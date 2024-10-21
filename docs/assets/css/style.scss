@@ -11,10 +11,18 @@ header {
 body {
   background: none;
   background-color: #1e1e1e;
+  color: "black";
 }
 
 footer {
-  color: #f3f3f3
+  color: #f3f3f3;
+}
+
+blockquote {
+  border-left: 5px solid #ffcc00;
+  border-bottom: 1px solid #ffcc00;
+  background-color: "lightgoldenrodyellow";
+  margin: 0 0 15px 0;
 }
 
 nav {
@@ -28,7 +36,47 @@ nav {
     }
     a {
       color: #f3f3f3;
-      &:hover { color: "white"; }
+      &:hover {
+        color: "white";
+      }
     }
+  }
+}
+
+a {
+  color: #1fbdd2;
+}
+
+strong {
+  color: inherit;
+}
+
+ul {
+  list-style-image: none;
+}
+
+li::marker {
+  color: #1fbdd2;
+}
+
+#banner {
+  background: #1fbdd2;
+  border: 1px solid #136163;
+
+  .button {
+    border: 1px solid #136163;
+    background: linear-gradient(#1fbdd2, #136163);
+
+    &:hover {
+      background: none;
+      background-color: "ghostwhite";
+      color: #1fbdd2;
+    }
+  }
+}
+
+.downloads {
+  span {
+    color: "ghostwhite";
   }
 }
