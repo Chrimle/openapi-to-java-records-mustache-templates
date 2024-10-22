@@ -14,6 +14,7 @@ public class GeneratedEnumTestUtils {
     final Class<?> classUnderTest = generatedSource.getClassUnderTest();
 
     AssertionUtils.assertIsEnum(classUnderTest);
+    assertEnumNames(classUnderTest);
     assertEnumValues(classUnderTest);
     AssertionUtils.assertClassIsAnnotatedAsDeprecated(
         classUnderTest, generatedSource.isDeprecated());
@@ -22,11 +23,19 @@ public class GeneratedEnumTestUtils {
     assertEnumHasCaseInsensitiveFromValueMethod(generatedSource);
   }
 
-  private static void assertEnumValues(final Class<?> classUnderTest) {
+  private static void assertEnumNames(final Class<?> classUnderTest) {
     Assertions.assertEquals(3, classUnderTest.getEnumConstants().length);
     for (int i = 1; i <= 3; i++) {
       Assertions.assertEquals(
           "ENUM" + i, ((Enum<?>) classUnderTest.getEnumConstants()[i - 1]).name());
+    }
+  }
+
+  private static void assertEnumValues(final Class<?> classUnderTest) {
+    Assertions.assertEquals(3, classUnderTest.getEnumConstants().length);
+    for (int i = 1; i <= 3; i++) {
+      final Object enumValue = classUnderTest.getEnumConstants()[i - 1];
+      AssertionUtils.assertInstanceMethodReturns(enumValue, "getValue", "ENUM" + i);
     }
   }
 

@@ -12,7 +12,7 @@
  * openapi-to-java-records-mustache-templates. For further information,
  * questions, requesting features or reporting issues, please visit:
  * https://github.com/Chrimle/openapi-to-java-records-mustache-templates.
- * Generated with Version: 1.8.1
+ * Generated with Version: 1.9.0
  *
  */
 
@@ -25,23 +25,39 @@ import com.google.gson.annotations.SerializedName;
  * Example of an Enum
  */
 public enum ExampleEnum {
-  ENUM1,
-  ENUM2,
-  ENUM3;
+  ENUM1("ENUM1"),
+  ENUM2("ENUM2"),
+  ENUM3("ENUM3");
+
+  private final String value;
+
+  ExampleEnum(final String value) {
+    this.value = value;
+  }
 
   /**
-   * Parses the given string to a matching Enum name, Case-insensitive.
+   * Gets the {@code value} of this enum.
    *
-   * @param name of the Enum
-   * @return a {@link ExampleEnum } with the matching name
-   * @throws IllegalArgumentException if no Enum name matches the string
+   * @return value of this enum
    */
-  public static ExampleEnum fromValue(final String name) {
+  public String getValue() {
+    return value;
+  }
+
+  /**
+   * Case-insensitively parses the given string to an enum with a matching value returned from
+   * {@link #getValue()}.
+   *
+   * @param value of the Enum
+   * @return a {@link ExampleEnum } with the matching value
+   * @throws IllegalArgumentException if no enum has a value matching the string
+   */
+  public static ExampleEnum fromValue(final String value) {
     for (final ExampleEnum b : ExampleEnum.values()) {
-      if (b.name().equalsIgnoreCase(name)) {
+      if (b.getValue().equalsIgnoreCase(value)) {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + name + "'");
+    throw new IllegalArgumentException("Unexpected value '" + value + "'");
   }
 }

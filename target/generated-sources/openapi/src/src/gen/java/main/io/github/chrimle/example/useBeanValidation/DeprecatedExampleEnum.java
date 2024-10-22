@@ -12,7 +12,7 @@
  * openapi-to-java-records-mustache-templates. For further information,
  * questions, requesting features or reporting issues, please visit:
  * https://github.com/Chrimle/openapi-to-java-records-mustache-templates.
- * Generated with Version: 1.8.1
+ * Generated with Version: 1.9.0
  *
  */
 
@@ -30,7 +30,22 @@ import jakarta.validation.Valid;
  */
 @Deprecated
 public enum DeprecatedExampleEnum {
-  ENUM1,
-  ENUM2,
-  ENUM3;
+  ENUM1("ENUM1"),
+  ENUM2("ENUM2"),
+  ENUM3("ENUM3");
+
+  private final String value;
+
+  DeprecatedExampleEnum(final String value) {
+    this.value = value;
+  }
+
+  /**
+   * Gets the {@code value} of this enum.
+   *
+   * @return value of this enum
+   */
+  public String getValue() {
+    return value;
+  }
 }
