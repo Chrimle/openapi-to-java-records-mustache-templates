@@ -244,10 +244,10 @@ public class AssertionUtils {
             + Arrays.toString(constructorArgs));
   }
 
-  public static void assertRecordFieldHasValue(
-      final Object objectUnderTest, final String fieldName, final Object expectedValue) {
+  public static void assertInstanceMethodReturns(
+      final Object objectUnderTest, final String methodName, final Object expectedValue) {
     final Class<?> classUnderTest = objectUnderTest.getClass();
-    final Method method = assertClassHasMethod(classUnderTest, fieldName);
+    final Method method = assertClassHasMethod(classUnderTest, methodName);
 
     final Object actualValue =
         Assertions.assertDoesNotThrow(
@@ -256,7 +256,7 @@ public class AssertionUtils {
     Assertions.assertEquals(
         expectedValue,
         actualValue,
-        classUnderTest.getCanonicalName() + " field '" + fieldName + "' has unexpected value");
+        classUnderTest.getCanonicalName() + " method '" + methodName + "' has unexpected value");
   }
 
   public static void assertClassDoesNotHaveMethod(

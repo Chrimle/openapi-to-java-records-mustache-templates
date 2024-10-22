@@ -58,7 +58,7 @@ public class GeneratedRecordTestUtils {
 
   private static <T> void assertFieldHasEitherNullOrDefaultValueSet(
       GeneratedField<T> generatedField, Object object) {
-    AssertionUtils.assertRecordFieldHasValue(
+    AssertionUtils.assertInstanceMethodReturns(
         object,
         generatedField.name(),
         generatedField
@@ -72,7 +72,7 @@ public class GeneratedRecordTestUtils {
 
   private static <T> void assertFieldHasTestingValueSet(
       GeneratedField<T> generatedField, Object object) {
-    AssertionUtils.assertRecordFieldHasValue(
+    AssertionUtils.assertInstanceMethodReturns(
         object, generatedField.name(), getClassSpecificTestingValue(generatedField.type()));
   }
 
