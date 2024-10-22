@@ -36,6 +36,11 @@ public enum ExampleEnum {
     this.value = value;
   }
 
+  /**
+   * Gets the {@code value} of this enum.
+   *
+   * @return value of this enum
+   */
   public String getValue() {
     return value;
   }
