@@ -9,8 +9,18 @@
 
 }}{{>javadoc}}{{>deprecation}}{{>additionalEnumTypeAnnotations}}{{!
 }}public enum {{classname}} {
-  {{#allowableValues}}{{#enumVars}}{{{name}}}{{^-last}},
+  {{#allowableValues}}{{#enumVars}}{{{name}}}({{{value}}}){{^-last}},
   {{/-last}}{{#-last}};{{/-last}}{{/enumVars}}{{/allowableValues}}
+
+  private final {{{dataType}}} value;
+
+  {{{datatypeWithEnum}}}{{^datatypeWithEnum}}{{{classname}}}{{/datatypeWithEnum}}(final {{{dataType}}} value) {
+    this.value = value;
+  }
+
+  public {{{dataType}}} getValue() {
+    return value;
+  }
   {{#useEnumCaseInsensitive}}
 
   /**

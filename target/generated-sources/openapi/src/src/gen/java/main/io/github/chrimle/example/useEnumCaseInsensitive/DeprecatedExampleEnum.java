@@ -28,9 +28,19 @@ import com.google.gson.annotations.SerializedName;
  */
 @Deprecated
 public enum DeprecatedExampleEnum {
-  ENUM1,
-  ENUM2,
-  ENUM3;
+  ENUM1("ENUM1"),
+  ENUM2("ENUM2"),
+  ENUM3("ENUM3");
+
+  private final String value;
+
+  DeprecatedExampleEnum(final String value) {
+    this.value = value;
+  }
+
+  public String getValue() {
+    return value;
+  }
 
   /**
    * Parses the given string to a matching Enum name, Case-insensitive.
