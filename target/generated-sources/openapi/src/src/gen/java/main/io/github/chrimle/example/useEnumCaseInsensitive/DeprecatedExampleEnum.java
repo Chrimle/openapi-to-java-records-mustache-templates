@@ -43,18 +43,18 @@ public enum DeprecatedExampleEnum {
   }
 
   /**
-   * Parses the given string to a matching Enum name, Case-insensitive.
+   * Case-insensitively parses the given string to an enum with a matching value.
    *
-   * @param name of the Enum
-   * @return a {@link DeprecatedExampleEnum } with the matching name
-   * @throws IllegalArgumentException if no Enum name matches the string
+   * @param value of the Enum
+   * @return a {@link DeprecatedExampleEnum } with the matching value
+   * @throws IllegalArgumentException if no enum has a value matching the string
    */
-  public static DeprecatedExampleEnum fromValue(final String name) {
+  public static DeprecatedExampleEnum fromValue(final String value) {
     for (final DeprecatedExampleEnum b : DeprecatedExampleEnum.values()) {
-      if (b.name().equalsIgnoreCase(name)) {
+      if (b.getValue().equalsIgnoreCase(value)) {
         return b;
       }
     }
-    throw new IllegalArgumentException("Unexpected value '" + name + "'");
+    throw new IllegalArgumentException("Unexpected value '" + value + "'");
   }
 }
