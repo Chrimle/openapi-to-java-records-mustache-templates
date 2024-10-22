@@ -43,7 +43,8 @@ public enum DeprecatedExampleEnum {
   }
 
   /**
-   * Case-insensitively parses the given string to an enum with a matching value.
+   * Case-insensitively parses the given string to an enum with a matching value returned from
+   * {@link #getValue()}.
    *
    * @param value of the Enum
    * @return a {@link DeprecatedExampleEnum } with the matching value

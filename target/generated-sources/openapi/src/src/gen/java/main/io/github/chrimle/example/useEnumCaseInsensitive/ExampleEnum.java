@@ -40,7 +40,8 @@ public enum ExampleEnum {
   }
 
   /**
-   * Case-insensitively parses the given string to an enum with a matching value.
+   * Case-insensitively parses the given string to an enum with a matching value returned from
+   * {@link #getValue()}.
    *
    * @param value of the Enum
    * @return a {@link ExampleEnum } with the matching value
