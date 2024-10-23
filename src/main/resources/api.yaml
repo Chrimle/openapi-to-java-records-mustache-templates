@@ -141,9 +141,9 @@ components:
         - ENUM1
         - ENUM2
         - ENUM3
-    RecordWithInnerEnum:
+    RecordWithInnerEnums:
       type: object
-      description: Example of a Record with an inner enum class
+      description: Example of a Record with inner enum classes
       properties:
         exampleInner:
           type: string
