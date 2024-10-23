@@ -10,7 +10,10 @@ public enum GeneratedClass {
       "ExampleRecordWithRequiredFieldsOfEachType", false, false),
   EXAMPLE_RECORD_WITH_NULLABLE_FIELDS_OF_EACH_TYPE(
       "ExampleRecordWithNullableFieldsOfEachType", false, false),
-  RECORD_WITH_ALL_CONSTRAINTS("RecordWithAllConstraints", false, false);
+  RECORD_WITH_ALL_CONSTRAINTS("RecordWithAllConstraints", false, false),
+  RECORD_WITH_INNER_ENUMS("RecordWithInnerEnums", false, false),
+  EXAMPLE_INNER_ENUM("RecordWithInnerEnums$ExampleInnerEnum", false, true),
+  EXAMPLE_INNER_TWO_ENUM("RecordWithInnerEnums$ExampleInnerTwoEnum", false, true);
 
   public static final String PACKAGE_NAME = "io.github.chrimle.example";
   public final String simpleClassName;
