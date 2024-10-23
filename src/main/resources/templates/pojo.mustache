@@ -23,5 +23,50 @@
       {{#vars}}@{{javaxPackage}}.annotation.{{#isNullable}}Nullable{{/isNullable}}{{^isNullable}}{{#defaultValue}}Nullable{{/defaultValue}}{{^defaultValue}}Nonnull{{/defaultValue}}{{/isNullable}} final {{{datatypeWithEnum}}} {{name}}{{^-last}},
       {{/-last}}{{/vars}}) { {{#vars}}
     this.{{name}} = {{^defaultValue}}{{name}}{{/defaultValue}}{{#defaultValue}}Objects.requireNonNullElse({{name}}, {{{.}}}){{/defaultValue}};{{/vars}}
-  }{{#generateBuilders}}{{>generateBuilders}}{{/generateBuilders}}
+  }{{#generateBuilders}}{{>generateBuilders}}{{/generateBuilders}}{{!
+    Generate inner enum classes
+  }}{{#vars}}{{#isEnum}}
+
+  /**
+   * {{description}}{{^description}}{{datatypeWithEnum}}{{/description}}
+   */
+  public enum {{datatypeWithEnum}} {
+  {{#allowableValues}}
+    {{#enumVars}}
+    {{{name}}}({{{value}}}){{^-last}},{{/-last}}{{#-last}};{{/-last}}
+    {{/enumVars}}
+  {{/allowableValues}}
+
+    private final {{{dataType}}} value;
+
+    {{datatypeWithEnum}}(final {{{dataType}}} value) {
+      this.value = value;
+    }
+
+    /**
+     * Gets the {@code value} of this enum.
+     *
+     * @return value of this enum
+     */
+    public {{{dataType}}} getValue() {
+      return value;
+    }{{#useEnumCaseInsensitive}}
+
+    /**
+     * Case-insensitively parses the given string to an enum with a matching value returned from
+     * {@link #getValue()}.
+     *
+     * @param value of the Enum
+     * @return a {@link {{datatypeWithEnum}} } with the matching value
+     * @throws IllegalArgumentException if no enum has a value matching the string
+     */
+    public static {{datatypeWithEnum}} fromValue(final String value) {
+      for (final {{datatypeWithEnum}} b : {{datatypeWithEnum}}.values()) {
+        if (b.getValue().equalsIgnoreCase(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }{{/useEnumCaseInsensitive}}
+  }{{/isEnum}}{{/vars}}
 }
