@@ -29,8 +29,10 @@
 
   /**
    * {{description}}{{^description}}{{datatypeWithEnum}}{{/description}}
-   */{{>additionalEnumTypeAnnotations}}
-  public enum {{datatypeWithEnum}} {
+   */
+  {{#additionalEnumTypeAnnotations}}{{{.}}}
+  {{/additionalEnumTypeAnnotations}}{{!
+}}public enum {{datatypeWithEnum}} {
   {{#allowableValues}}
     {{#enumVars}}
     {{{name}}}({{{value}}}){{^-last}},{{/-last}}{{#-last}};{{/-last}}
