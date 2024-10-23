@@ -32,11 +32,23 @@ public class TestSuite {
   private static GeneratedSource getGeneratedSourceForGeneratedClass(
       final GeneratedClass generatedClass, final PluginExecution pluginExecution) {
     return switch (generatedClass) {
-      case DEPRECATED_EXAMPLE_ENUM, EXAMPLE_ENUM ->
+      case DEPRECATED_EXAMPLE_ENUM, EXAMPLE_ENUM, EXAMPLE_INNER_ENUM, EXAMPLE_INNER_TWO_ENUM ->
           new GeneratedSource(pluginExecution, generatedClass);
       case DEPRECATED_EXAMPLE_RECORD, EXAMPLE_RECORD ->
           new GeneratedSource(
               pluginExecution, generatedClass, GeneratedField.of("field1", Boolean.class).build());
+      case RECORD_WITH_INNER_ENUMS ->
+          new GeneratedSource(
+              pluginExecution,
+              generatedClass,
+              GeneratedField.of(
+                      "exampleInner",
+                      getGeneratedClass(GeneratedClass.EXAMPLE_INNER_ENUM, pluginExecution))
+                  .build(),
+              GeneratedField.of(
+                      "exampleInnerTwo",
+                      getGeneratedClass(GeneratedClass.EXAMPLE_INNER_TWO_ENUM, pluginExecution))
+                  .build());
       case EXAMPLE_RECORD_WITH_DEFAULT_FIELDS ->
           new GeneratedSource(
               pluginExecution,
@@ -113,6 +125,11 @@ public class TestSuite {
                   .decimalMax("100")
                   .build());
     };
+  }
+
+  private static Class<?> getGeneratedClass(
+      final GeneratedClass generatedClass, final PluginExecution pluginExecution) {
+    return AssertionUtils.assertClassExists(generatedClass.getCanonicalClassName(pluginExecution));
   }
 
   private static Class<?> getExampleEnumClass(PluginExecution pluginExecution) {
