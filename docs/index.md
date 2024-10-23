@@ -87,7 +87,11 @@ components:
           minimum: 0
           maximum: 100
         gender:
-          $ref: '#/components/schemas/Gender'
+          description: Gender
+          type: string
+          enum:
+            - Male
+            - Female
         height:
           description: Height (m)
           type: number
@@ -113,12 +117,6 @@ components:
           description: Tracking code for Web analytics
           type: string
           default: "utm_source=default"
-    Gender:
-      description: Gender
-      type: string
-      enum:
-        - Male
-        - Female
 ```
 
 > See [Supported OpenAPI Specification properties](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/wiki/Supported-OpenAPI-Specification-properties)
@@ -145,7 +143,7 @@ import ...;
  * @deprecated
  * @param fullName Full name
  * @param age Age (years)
- * @param gender GenderDTO
+ * @param gender Gender
  * @param height Height (m)
  * @param ssn Social Security Number
  * @param aliases Known Aliases
@@ -156,7 +154,7 @@ import ...;
 public record PersonDTO(
     @javax.annotation.Nonnull @NotNull @Size(min = 2, max = 50) String fullName,
     @javax.annotation.Nonnull @NotNull @Min(0) @Max(100) Integer age,
-    @javax.annotation.Nonnull @NotNull GenderDTO gender,
+    @javax.annotation.Nonnull @NotNull GenderEnum gender,
     @javax.annotation.Nonnull @NotNull @DecimalMin("0") BigDecimal height,
     @javax.annotation.Nonnull @NotNull @Pattern(regexp = "^\\d{3}-\\d{2}-\\d{4}$") String ssn,
     @javax.annotation.Nonnull @NotNull @Size(min = 1, max = 3) Set<String> aliases,
@@ -166,7 +164,7 @@ public record PersonDTO(
   public PersonDTO(
       @javax.annotation.Nonnull final String fullName,
       @javax.annotation.Nonnull final Integer age,
-      @javax.annotation.Nonnull final GenderDTO gender,
+      @javax.annotation.Nonnull final GenderEnum gender,
       @javax.annotation.Nonnull final BigDecimal height,
       @javax.annotation.Nonnull final String ssn,
       @javax.annotation.Nullable final Set<String> aliases,
@@ -180,6 +178,29 @@ public record PersonDTO(
     this.aliases = Objects.requireNonNullElse(aliases, new LinkedHashSet<>());
     this.telephoneNumber = telephoneNumber;
     this.trackingCode = Objects.requireNonNullElse(trackingCode, "utm_source=default");
+  }
+
+  /**
+   * Gender
+   */
+  public enum GenderEnum {
+    MALE("Male"),
+    FEMALE("Female");
+
+    private final String value;
+
+    GenderEnum(final String value) {
+      this.value = value;
+    }
+
+    /**
+     * Gets the {@code value} of this enum.
+     *
+     * @return value of this enum
+     */
+    public String getValue() {
+      return value;
+    }
   }
 }
 ```

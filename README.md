@@ -120,7 +120,6 @@ components:
           description: Tracking code for Web analytics
           type: string
           default: "utm_source=default"
-
 ```
 > [!TIP]
 > See [Supported OpenAPI Specification properties](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/wiki/Supported-OpenAPI-Specification-properties)
