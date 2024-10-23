@@ -141,6 +141,24 @@ components:
         - ENUM1
         - ENUM2
         - ENUM3
+    RecordWithInnerEnum:
+      type: object
+      description: Example of a Record with an inner enum class
+      properties:
+        exampleInner:
+          type: string
+          description: Example of an inner enum class
+          enum:
+            - ENUM1
+            - ENUM2
+            - ENUM3
+        exampleInnerTwo:
+          type: string
+          description: Example of another inner enum class
+          enum:
+            - ENUM1
+            - ENUM2
+            - ENUM3
     RecordWithAllConstraints:
       type: object
       description: Example of a Record which has fields with constraints
