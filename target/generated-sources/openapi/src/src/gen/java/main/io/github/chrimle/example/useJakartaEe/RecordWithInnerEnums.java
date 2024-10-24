@@ -65,6 +65,23 @@ public record RecordWithInnerEnums(
     public String getValue() {
       return value;
     }
+
+    /**
+     * Case-sensitively parses the given string to an enum constant whose {@link #getValue()}
+     * matches the provided value.
+     *
+     * @param value of the Enum
+     * @return a {@link ExampleInnerEnum } with the matching value
+     * @throws IllegalArgumentException if no enum has a value matching the given value
+     */
+    public static ExampleInnerEnum fromValue(final String value) {
+      for (final ExampleInnerEnum constant : ExampleInnerEnum.values()) {
+        if (constant.getValue().equals(value)) {
+          return constant;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
   }
 
   /**
@@ -88,6 +105,23 @@ public record RecordWithInnerEnums(
      */
     public String getValue() {
       return value;
+    }
+
+    /**
+     * Case-sensitively parses the given string to an enum constant whose {@link #getValue()}
+     * matches the provided value.
+     *
+     * @param value of the Enum
+     * @return a {@link ExampleInnerTwoEnum } with the matching value
+     * @throws IllegalArgumentException if no enum has a value matching the given value
+     */
+    public static ExampleInnerTwoEnum fromValue(final String value) {
+      for (final ExampleInnerTwoEnum constant : ExampleInnerTwoEnum.values()) {
+        if (constant.getValue().equals(value)) {
+          return constant;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
   }
 }
