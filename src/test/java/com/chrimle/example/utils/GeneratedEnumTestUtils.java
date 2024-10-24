@@ -41,29 +41,34 @@ public class GeneratedEnumTestUtils {
 
   private static void assertEnumHasCaseInsensitiveFromValueMethod(
       final GeneratedSource generatedSource) {
-    if (!generatedSource.useEnumCaseInsensitive()) {
-      // Assert 'fromValue'-method does NOT exist
-      AssertionUtils.assertClassDoesNotHaveMethod(
-          generatedSource.getClassUnderTest(), "fromValue", String.class);
-      return;
-    }
     // Assert 'fromValue'-method exists
     final Method fromValueMethod =
         AssertionUtils.assertClassHasMethod(
             generatedSource.getClassUnderTest(), "fromValue", String.class);
 
-    // Assert 'IllegalArgumentException' is throws for unknown Enum-values
+    // Assert 'IllegalArgumentException' is thrown for unknown Enum-values
     InvocationTargetException invocationTargetException =
         Assertions.assertThrows(
             InvocationTargetException.class, () -> fromValueMethod.invoke(null, "invalid"));
     Assertions.assertInstanceOf(
         IllegalArgumentException.class, invocationTargetException.getCause());
 
-    // Assert all enum values can be mapped to case-insensitively
     for (final String name : List.of("enum", "Enum", "EnUm", "ENUM", "eNuM")) {
       for (int i = 1; i <= 3; i++) {
         final String value = name + i;
-        Assertions.assertDoesNotThrow(() -> fromValueMethod.invoke(null, value));
+        if (generatedSource.useEnumCaseInsensitive()) {
+          // Assert all enum values can be mapped to case-insensitively
+          Assertions.assertDoesNotThrow(() -> fromValueMethod.invoke(null, value));
+        } else if ("ENUM".equals(name)) {
+          Assertions.assertDoesNotThrow(() -> fromValueMethod.invoke(null, value));
+        } else {
+          // Assert 'IllegalArgumentException' is thrown when case-sensitive
+          Assertions.assertInstanceOf(
+              IllegalArgumentException.class,
+              Assertions.assertThrows(
+                      InvocationTargetException.class, () -> fromValueMethod.invoke(null, value))
+                  .getCause());
+        }
       }
     }
   }
