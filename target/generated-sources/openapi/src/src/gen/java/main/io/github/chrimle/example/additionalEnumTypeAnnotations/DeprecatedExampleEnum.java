@@ -12,7 +12,7 @@
  * openapi-to-java-records-mustache-templates. For further information,
  * questions, requesting features or reporting issues, please visit:
  * https://github.com/Chrimle/openapi-to-java-records-mustache-templates.
- * Generated with Version: 1.10.0
+ * Generated with Version: 1.11.0
  *
  */
 
@@ -48,5 +48,22 @@ public enum DeprecatedExampleEnum {
    */
   public String getValue() {
     return value;
+  }
+
+  /**
+   * Case-sensitively parses the given string to an enum constant whose {@link #getValue()}
+   * matches the provided value.
+   *
+   * @param value of the Enum
+   * @return a {@link DeprecatedExampleEnum } with the matching value
+   * @throws IllegalArgumentException if no enum has a value matching the given value
+   */
+  public static DeprecatedExampleEnum fromValue(final String value) {
+    for (final DeprecatedExampleEnum constant : DeprecatedExampleEnum.values()) {
+      if (constant.getValue().equals(value)) {
+        return constant;
+      }
+    }
+    throw new IllegalArgumentException("Unexpected value '" + value + "'");
   }
 }

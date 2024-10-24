@@ -12,7 +12,7 @@
  * openapi-to-java-records-mustache-templates. For further information,
  * questions, requesting features or reporting issues, please visit:
  * https://github.com/Chrimle/openapi-to-java-records-mustache-templates.
- * Generated with Version: 1.10.0
+ * Generated with Version: 1.11.0
  *
  */
 
@@ -45,17 +45,17 @@ public enum ExampleEnum {
   }
 
   /**
-   * Case-insensitively parses the given string to an enum with a matching value returned from
-   * {@link #getValue()}.
+   * Case-insensitively parses the given string to an enum constant whose {@link #getValue()}
+   * matches the provided value.
    *
    * @param value of the Enum
    * @return a {@link ExampleEnum } with the matching value
-   * @throws IllegalArgumentException if no enum has a value matching the string
+   * @throws IllegalArgumentException if no enum has a value matching the given value
    */
   public static ExampleEnum fromValue(final String value) {
-    for (final ExampleEnum b : ExampleEnum.values()) {
-      if (b.getValue().equalsIgnoreCase(value)) {
-        return b;
+    for (final ExampleEnum constant : ExampleEnum.values()) {
+      if (constant.getValue().equalsIgnoreCase(value)) {
+        return constant;
       }
     }
     throw new IllegalArgumentException("Unexpected value '" + value + "'");
