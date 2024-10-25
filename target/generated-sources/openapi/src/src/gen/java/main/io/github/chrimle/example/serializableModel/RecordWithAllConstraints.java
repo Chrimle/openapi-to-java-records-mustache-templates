@@ -34,6 +34,7 @@ import java.io.Serializable;
 
 /**
  * Example of a Record which has fields with constraints
+ *
  * @param stringStandard String
  * @param stringDefault String
  * @param stringNullable String

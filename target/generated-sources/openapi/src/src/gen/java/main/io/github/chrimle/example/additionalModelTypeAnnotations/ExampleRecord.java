@@ -29,6 +29,7 @@ import java.util.Arrays;
 
 /**
  * Example of a Record
+ *
  * @param field1 a boolean field
  */
 @com.chrimle.example.annotations.TestAnnotationOne

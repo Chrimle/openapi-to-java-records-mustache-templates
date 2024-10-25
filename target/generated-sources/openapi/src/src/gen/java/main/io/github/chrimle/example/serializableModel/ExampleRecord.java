@@ -30,6 +30,7 @@ import java.io.Serializable;
 
 /**
  * Example of a Record
+ *
  * @param field1 a boolean field
  */
 public record ExampleRecord(

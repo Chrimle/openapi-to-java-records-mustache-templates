@@ -31,6 +31,7 @@ import jakarta.validation.Valid;
 
 /**
  * Example of a Record
+ *
  * @param field1 a boolean field
  */
 public record ExampleRecord(

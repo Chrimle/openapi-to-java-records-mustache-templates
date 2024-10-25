@@ -29,6 +29,7 @@ import java.util.Arrays;
 
 /**
  * Example of a Record with inner enum classes
+ *
  * @param exampleInner Example of an inner enum class
  * @param exampleInnerTwo Example of another inner enum class
  */

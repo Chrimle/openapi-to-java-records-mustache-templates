@@ -37,6 +37,7 @@ import java.io.Serializable;
 
 /**
  * Example of a Record with fields of each type
+ *
  * @param field1 a Boolean field
  * @param field2 a String field
  * @param field3 an Integer field
