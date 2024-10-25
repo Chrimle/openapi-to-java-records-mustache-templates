@@ -7,6 +7,8 @@
 }}/**
  * {{description}}{{^description}}{{classname}}{{/description}}{{#isDeprecated}}
  *
- * @deprecated{{/isDeprecated}}{{#vars}}
- * @param {{name}} {{description}}{{^description}}{{{datatypeWithEnum}}}{{/description}}{{/vars}}
+ * @deprecated{{/isDeprecated}}{{#vars}}{{#-first}}{{^isDeprecated}}
+ *{{/isDeprecated}}{{/-first}}
+ * @param {{name}} {{description}}{{^description}}{{{datatypeWithEnum}}}{{/description}}{{!
+}}{{/vars}}
  */
