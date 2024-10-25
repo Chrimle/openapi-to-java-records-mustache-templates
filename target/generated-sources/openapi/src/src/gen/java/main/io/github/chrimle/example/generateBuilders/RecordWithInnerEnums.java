@@ -12,7 +12,7 @@
  * openapi-to-java-records-mustache-templates. For further information,
  * questions, requesting features or reporting issues, please visit:
  * https://github.com/Chrimle/openapi-to-java-records-mustache-templates.
- * Generated with Version: 1.11.0
+ * Generated with Version: 1.11.1
  *
  */
 
@@ -29,6 +29,7 @@ import java.util.Arrays;
 
 /**
  * Example of a Record with inner enum classes
+ *
  * @param exampleInner Example of an inner enum class
  * @param exampleInnerTwo Example of another inner enum class
  */

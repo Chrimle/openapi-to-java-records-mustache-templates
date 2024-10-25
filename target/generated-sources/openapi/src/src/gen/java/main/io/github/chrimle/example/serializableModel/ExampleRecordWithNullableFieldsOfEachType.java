@@ -12,7 +12,7 @@
  * openapi-to-java-records-mustache-templates. For further information,
  * questions, requesting features or reporting issues, please visit:
  * https://github.com/Chrimle/openapi-to-java-records-mustache-templates.
- * Generated with Version: 1.11.0
+ * Generated with Version: 1.11.1
  *
  */
 
@@ -35,6 +35,7 @@ import java.io.Serializable;
 
 /**
  * Example of a Record with fields of each type
+ *
  * @param field1 a Boolean field
  * @param field2 a String field
  * @param field3 an Integer field
