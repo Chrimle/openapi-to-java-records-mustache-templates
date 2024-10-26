@@ -1,6 +1,6 @@
 {{!
   Source: openapi-to-java-records-mustache-templates
-  Version: 1.11.1
+  Version: 1.11.2
 
   Required imports:
     - none
@@ -13,7 +13,10 @@
     - `useBeanValidation.mustache`
     - `additionalModelTypeAnnotations.mustache` (Official)
 
-}}{{>javadoc}}{{>deprecation}}{{>additionalModelTypeAnnotations}}{{!
+}}{{>javadoc}}{{!
+}}{{#isDeprecated}}@Deprecated
+{{/isDeprecated}}{{!
+}}{{>additionalModelTypeAnnotations}}{{!
 }}public record {{classname}}(
     {{#vars}}@{{javaxPackage}}.annotation.{{#isNullable}}Nullable{{/isNullable}}{{^isNullable}}Nonnull{{/isNullable}}{{>useBeanValidation}} {{{datatypeWithEnum}}} {{name}}{{^-last}},
     {{/-last}}{{/vars}}{{^serializableModel}}){{/serializableModel}}{{#serializableModel}}
