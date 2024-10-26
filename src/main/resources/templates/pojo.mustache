@@ -2,16 +2,14 @@
   Source: openapi-to-java-records-mustache-templates
   Version: 1.11.2
 
-  Required imports:
-    - none
+  This template is overriding an official 'openapi-generator-maven-plugin' template.
 
-  Optional imports:
-    - `deprecation.mustache`
+  Imported mustache templates (generation will fail without them):
+    - `additionalModelTypeAnnotations.mustache` (Official)
     - `generateBuilders.mustache`
     - `javadoc.mustache`
     - `serializableModel.mustache`
     - `useBeanValidation.mustache`
-    - `additionalModelTypeAnnotations.mustache` (Official)
 
 }}{{>javadoc}}{{!
 }}{{#isDeprecated}}@Deprecated
