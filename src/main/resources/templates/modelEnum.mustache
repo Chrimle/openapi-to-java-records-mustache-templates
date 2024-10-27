@@ -29,13 +29,14 @@
 }}{{>additionalEnumTypeAnnotations}}{{!
 }}public enum {{classname}} {
   {{#allowableValues}}{{#enumVars}}{{!
-  }}{{#enumDescription}}{{!
+}}{{#enumDescription}}{{!
 }}/**
    * {{.}}
    */
   {{/enumDescription}}{{!
   }}{{{name}}}({{{value}}}){{^-last}},
-  {{/-last}}{{#-last}};{{/-last}}{{/enumVars}}{{/allowableValues}}
+  {{/-last}}{{#-last}};{{/-last}}{{!
+  }}{{/enumVars}}{{/allowableValues}}
 
   private final {{{dataType}}} value;
 
