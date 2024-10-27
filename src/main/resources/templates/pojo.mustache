@@ -49,11 +49,15 @@
   {{#additionalEnumTypeAnnotations}}{{{.}}}
   {{/additionalEnumTypeAnnotations}}{{!
 }}public enum {{datatypeWithEnum}} {
-  {{#allowableValues}}
-    {{#enumVars}}
-    {{{name}}}({{{value}}}){{^-last}},{{/-last}}{{#-last}};{{/-last}}
-    {{/enumVars}}
-  {{/allowableValues}}
+    {{#allowableValues}}{{#enumVars}}{{!
+  }}{{#enumDescription}}{{!
+  }}/**
+     * {{.}}
+     */
+    {{/enumDescription}}{{!
+    }}{{{name}}}({{{value}}}){{^-last}},
+    {{/-last}}{{#-last}};{{/-last}}{{!
+    }}{{/enumVars}}{{/allowableValues}}
 
     private final {{{dataType}}} value;
 
