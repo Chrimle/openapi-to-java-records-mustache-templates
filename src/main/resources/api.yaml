@@ -133,6 +133,10 @@ components:
         - ENUM1
         - ENUM2
         - ENUM3
+      x-enum-descriptions:
+        - Some description of ENUM1
+        - Some description of ENUM2
+        - Some description of ENUM3
     DeprecatedExampleEnum:
       type: string
       deprecated: true
