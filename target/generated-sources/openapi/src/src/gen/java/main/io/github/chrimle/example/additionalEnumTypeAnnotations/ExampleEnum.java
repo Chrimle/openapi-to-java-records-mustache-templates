@@ -28,8 +28,17 @@ import com.google.gson.annotations.SerializedName;
 @com.chrimle.example.annotations.TestAnnotationTwo
 @com.chrimle.example.annotations.TestAnnotationThree
 public enum ExampleEnum {
+  /**
+   * Some description of ENUM1
+   */
   ENUM1("ENUM1"),
+  /**
+   * Some description of ENUM2
+   */
   ENUM2("ENUM2"),
+  /**
+   * Some description of ENUM3
+   */
   ENUM3("ENUM3");
 
   private final String value;

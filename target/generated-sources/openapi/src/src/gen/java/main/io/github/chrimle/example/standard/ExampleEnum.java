@@ -25,8 +25,17 @@ import com.google.gson.annotations.SerializedName;
  * Example of an Enum
  */
 public enum ExampleEnum {
+  /**
+   * Some description of ENUM1
+   */
   ENUM1("ENUM1"),
+  /**
+   * Some description of ENUM2
+   */
   ENUM2("ENUM2"),
+  /**
+   * Some description of ENUM3
+   */
   ENUM3("ENUM3");
 
   private final String value;
