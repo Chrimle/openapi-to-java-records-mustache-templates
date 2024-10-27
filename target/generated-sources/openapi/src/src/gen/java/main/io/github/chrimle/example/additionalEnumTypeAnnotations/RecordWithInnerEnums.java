@@ -51,8 +51,17 @@ public record RecordWithInnerEnums(
   @com.chrimle.example.annotations.TestAnnotationTwo
   @com.chrimle.example.annotations.TestAnnotationThree
   public enum ExampleInnerEnum {
+    /**
+     * Some description of ENUM1
+     */
     ENUM1("ENUM1"),
+    /**
+     * Some description of ENUM2
+     */
     ENUM2("ENUM2"),
+    /**
+     * Some description of ENUM3
+     */
     ENUM3("ENUM3");
 
     private final String value;
