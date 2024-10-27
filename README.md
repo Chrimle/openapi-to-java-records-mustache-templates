@@ -8,6 +8,9 @@ This project contains the **mustache templates**.
 Starting with project version **2.0.0**, the project is licensed under the **Apache License 2.0**.  
 Prior to version **2.0.0**, the project was licensed under the **MIT License**. See [License](#license).
 
+# Sponsorship
+If you want to sponsor the project, you can do so by sharing the project with others - or head over to [GitHub Sponsors - @Chrimle](https://github.com/sponsors/Chrimle)!
+
 # Getting Started
 The mustache templates can be acquired through multiple ways.
 - [Maven Central Repository](https://central.sonatype.com/artifact/io.github.chrimle/openapi-to-java-records-mustache-templates)
