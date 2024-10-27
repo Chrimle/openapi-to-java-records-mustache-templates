@@ -12,7 +12,7 @@
  * openapi-to-java-records-mustache-templates. For further information,
  * questions, requesting features or reporting issues, please visit:
  * https://github.com/Chrimle/openapi-to-java-records-mustache-templates.
- * Generated with Version: 2.0.0
+ * Generated with Version: 2.1.0
  *
  */
 
@@ -26,8 +26,17 @@ import java.io.Serializable;
  * Example of an Enum
  */
 public enum ExampleEnum {
+  /**
+   * Some description of ENUM1
+   */
   ENUM1("ENUM1"),
+  /**
+   * Some description of ENUM2
+   */
   ENUM2("ENUM2"),
+  /**
+   * Some description of ENUM3
+   */
   ENUM3("ENUM3");
 
   private final String value;

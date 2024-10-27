@@ -15,7 +15,7 @@
 
 }}{{!
   Source: openapi-to-java-records-mustache-templates
-  Version: 2.0.0
+  Version: 2.1.0
 
   This template is overriding an official 'openapi-generator-maven-plugin' template.
 
@@ -28,8 +28,15 @@
 {{/isDeprecated}}{{!
 }}{{>additionalEnumTypeAnnotations}}{{!
 }}public enum {{classname}} {
-  {{#allowableValues}}{{#enumVars}}{{{name}}}({{{value}}}){{^-last}},
-  {{/-last}}{{#-last}};{{/-last}}{{/enumVars}}{{/allowableValues}}
+  {{#allowableValues}}{{#enumVars}}{{!
+}}{{#enumDescription}}{{!
+}}/**
+   * {{.}}
+   */
+  {{/enumDescription}}{{!
+  }}{{{name}}}({{{value}}}){{^-last}},
+  {{/-last}}{{#-last}};{{/-last}}{{!
+  }}{{/enumVars}}{{/allowableValues}}
 
   private final {{{dataType}}} value;
 
