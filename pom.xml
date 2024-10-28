@@ -43,7 +43,7 @@
         <maven.plugin.validation>VERBOSE</maven.plugin.validation>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
-        <junit-jupiter.version>5.11.2</junit-jupiter.version>
+        <junit-jupiter.version>5.11.3</junit-jupiter.version>
         <gson.version>2.11.0</gson.version>
         <jackson-databind-nullable.version>0.2.6
         </jackson-databind-nullable.version>
