@@ -73,6 +73,10 @@ public class GeneratedSource {
     return generatedClass.isEnum;
   }
 
+  public boolean hasExtraAnnotation() {
+    return generatedClass.hasExtraAnnotation;
+  }
+
   public Class<?>[] fieldClasses() {
     return Arrays.stream(generatedFields).map(GeneratedField::type).toArray(Class<?>[]::new);
   }

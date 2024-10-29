@@ -60,6 +60,18 @@ public class AssertionUtils {
         hasAdditionalTypeAnnotations);
   }
 
+  public static void assertClassIsAnnotatedWithExtraAnnotation(
+      final Class<?> classUnderTest, final boolean hasExtraAnnotation) {
+    assertClassIsAnnotatedWith(
+        classUnderTest,
+        com.chrimle.example.annotations.TestExtraAnnotation.class,
+        hasExtraAnnotation);
+    assertClassIsAnnotatedWith(
+        classUnderTest,
+        com.chrimle.example.annotations.TestExtraAnnotationTwo.class,
+        hasExtraAnnotation);
+  }
+
   public static void assertClassIsAnnotatedAsDeprecated(
       final Class<?> classUnderTest, final boolean isDeprecated) {
     assertClassIsAnnotatedWith(classUnderTest, Deprecated.class, isDeprecated);

@@ -17,29 +17,36 @@
 package com.chrimle.example;
 
 public enum GeneratedClass {
-  DEPRECATED_EXAMPLE_ENUM("DeprecatedExampleEnum", true, true),
-  DEPRECATED_EXAMPLE_RECORD("DeprecatedExampleRecord", true, false),
-  EXAMPLE_ENUM("ExampleEnum", false, true),
-  EXAMPLE_RECORD("ExampleRecord", false, false),
-  EXAMPLE_RECORD_WITH_DEFAULT_FIELDS("ExampleRecordWithDefaultFields", false, false),
+  DEPRECATED_EXAMPLE_ENUM("DeprecatedExampleEnum", true, true, false),
+  DEPRECATED_EXAMPLE_RECORD("DeprecatedExampleRecord", true, false, false),
+  EXAMPLE_ENUM("ExampleEnum", false, true, false),
+  EXAMPLE_RECORD("ExampleRecord", false, false, false),
+  EXAMPLE_RECORD_WITH_EXTRA_ANNOTATION("ExampleRecordWithExtraAnnotation", false, false, true),
+  EXAMPLE_RECORD_WITH_DEFAULT_FIELDS("ExampleRecordWithDefaultFields", false, false, false),
   EXAMPLE_RECORD_WITH_REQUIRED_FIELDS_OF_EACH_TYPE(
-      "ExampleRecordWithRequiredFieldsOfEachType", false, false),
+      "ExampleRecordWithRequiredFieldsOfEachType", false, false, false),
   EXAMPLE_RECORD_WITH_NULLABLE_FIELDS_OF_EACH_TYPE(
-      "ExampleRecordWithNullableFieldsOfEachType", false, false),
-  RECORD_WITH_ALL_CONSTRAINTS("RecordWithAllConstraints", false, false),
-  RECORD_WITH_INNER_ENUMS("RecordWithInnerEnums", false, false),
-  EXAMPLE_INNER_ENUM("RecordWithInnerEnums$ExampleInnerEnum", false, true),
-  EXAMPLE_INNER_TWO_ENUM("RecordWithInnerEnums$ExampleInnerTwoEnum", false, true);
+      "ExampleRecordWithNullableFieldsOfEachType", false, false, false),
+  RECORD_WITH_ALL_CONSTRAINTS("RecordWithAllConstraints", false, false, false),
+  RECORD_WITH_INNER_ENUMS("RecordWithInnerEnums", false, false, false),
+  EXAMPLE_INNER_ENUM("RecordWithInnerEnums$ExampleInnerEnum", false, true, false),
+  EXAMPLE_INNER_TWO_ENUM("RecordWithInnerEnums$ExampleInnerTwoEnum", false, true, false);
 
   public static final String PACKAGE_NAME = "io.github.chrimle.example";
   public final String simpleClassName;
   public final boolean isDeprecated;
   public final boolean isEnum;
+  public final boolean hasExtraAnnotation;
 
-  GeneratedClass(final String simpleClassName, final boolean isDeprecated, final boolean isEnum) {
+  GeneratedClass(
+      final String simpleClassName,
+      final boolean isDeprecated,
+      final boolean isEnum,
+      boolean hasExtraAnnotation) {
     this.simpleClassName = simpleClassName;
     this.isDeprecated = isDeprecated;
     this.isEnum = isEnum;
+    this.hasExtraAnnotation = hasExtraAnnotation;
   }
 
   public String getCanonicalClassName(final PluginExecution pluginExecution) {
