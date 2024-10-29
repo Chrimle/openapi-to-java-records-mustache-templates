@@ -118,6 +118,16 @@ components:
         field1:
           type: boolean
           description: a boolean field
+    ExampleRecordWithExtraAnnotation:
+      type: object
+      description: Example of a Record with an extra annotation
+      x-class-extra-annotation: |
+        @com.chrimle.example.annotations.TestExtraAnnotation
+        @com.chrimle.example.annotations.TestExtraAnnotationTwo
+      properties:
+        field1:
+          type: boolean
+          description: a boolean field
     ExampleRecordWithDefaultFields:
       type: object
       description: Example of a Record with default fields
