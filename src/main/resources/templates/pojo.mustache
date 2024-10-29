@@ -30,6 +30,9 @@
 }}{{#isDeprecated}}@Deprecated
 {{/isDeprecated}}{{!
 }}{{>additionalModelTypeAnnotations}}{{!
+}}{{#vendorExtensions.x-class-extra-annotation}}{{!
+  }}{{{vendorExtensions.x-class-extra-annotation}}}{{!
+}}{{/vendorExtensions.x-class-extra-annotation}}{{!
 }}public record {{classname}}(
     {{#vars}}@{{javaxPackage}}.annotation.{{#isNullable}}Nullable{{/isNullable}}{{^isNullable}}Nonnull{{/isNullable}}{{>useBeanValidation}} {{{datatypeWithEnum}}} {{name}}{{^-last}},
     {{/-last}}{{/vars}}{{^serializableModel}}){{/serializableModel}}{{#serializableModel}}
