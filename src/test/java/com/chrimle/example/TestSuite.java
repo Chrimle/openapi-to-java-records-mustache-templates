@@ -50,7 +50,7 @@ public class TestSuite {
     return switch (generatedClass) {
       case DEPRECATED_EXAMPLE_ENUM, EXAMPLE_ENUM, EXAMPLE_INNER_ENUM, EXAMPLE_INNER_TWO_ENUM ->
           new GeneratedSource(pluginExecution, generatedClass);
-      case DEPRECATED_EXAMPLE_RECORD, EXAMPLE_RECORD ->
+      case DEPRECATED_EXAMPLE_RECORD, EXAMPLE_RECORD, EXAMPLE_RECORD_WITH_EXTRA_ANNOTATION ->
           new GeneratedSource(
               pluginExecution, generatedClass, GeneratedField.of("field1", Boolean.class).build());
       case RECORD_WITH_INNER_ENUMS ->

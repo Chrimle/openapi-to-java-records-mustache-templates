@@ -40,6 +40,8 @@ public class GeneratedRecordTestUtils {
         classUnderTest, generatedSource.isDeprecated());
     AssertionUtils.assertClassIsAnnotatedWithAdditionalTypeAnnotations(
         classUnderTest, generatedSource.hasAdditionalModelTypeAnnotations());
+    AssertionUtils.assertClassIsAnnotatedWithExtraAnnotation(
+        classUnderTest, generatedSource.hasExtraAnnotation());
     AssertionUtils.assertModelIsSerializable(generatedSource);
     AssertionUtils.assertRecordHasFieldsOfTypeWithNullableAnnotations(generatedSource);
     AssertionUtils.assertClassImplementsSerializable(generatedSource);
