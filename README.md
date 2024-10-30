@@ -1,6 +1,6 @@
 # openapi-to-java-records-mustache-templates
 [![Java CI with Maven](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/actions/workflows/maven.yml/badge.svg)](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/actions/workflows/maven.yml)
-
+[![Maven Package](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/actions/workflows/maven-publish.yml/badge.svg)](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/actions/workflows/maven-publish.yml)
 
 Project containing [Mustache-templates](https://mustache.github.io/) used by [openapi-generator-maven-plugin](https://github.com/OpenAPITools/openapi-generator/blob/master/modules/openapi-generator-maven-plugin/README.md) to generate [Java Records](https://docs.oracle.com/en/java/javase/17/language/records.html) from [OpenAPI Specifications](https://swagger.io/specification/).
 
