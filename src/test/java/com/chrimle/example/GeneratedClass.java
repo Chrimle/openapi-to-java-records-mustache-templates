@@ -18,6 +18,7 @@ package com.chrimle.example;
 
 public enum GeneratedClass {
   DEPRECATED_EXAMPLE_ENUM("DeprecatedExampleEnum", true, true),
+  TEMP_ENUM("TempEnum", true, true),
   DEPRECATED_EXAMPLE_RECORD("DeprecatedExampleRecord", true, false),
   EXAMPLE_ENUM("ExampleEnum", false, true),
   EXAMPLE_RECORD("ExampleRecord", false, false),

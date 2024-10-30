@@ -48,7 +48,11 @@ public class TestSuite {
   private static GeneratedSource getGeneratedSourceForGeneratedClass(
       final GeneratedClass generatedClass, final PluginExecution pluginExecution) {
     return switch (generatedClass) {
-      case DEPRECATED_EXAMPLE_ENUM, EXAMPLE_ENUM, EXAMPLE_INNER_ENUM, EXAMPLE_INNER_TWO_ENUM ->
+      case DEPRECATED_EXAMPLE_ENUM,
+              EXAMPLE_ENUM,
+              EXAMPLE_INNER_ENUM,
+              EXAMPLE_INNER_TWO_ENUM,
+              TEMP_ENUM ->
           new GeneratedSource(pluginExecution, generatedClass);
       case DEPRECATED_EXAMPLE_RECORD, EXAMPLE_RECORD ->
           new GeneratedSource(
