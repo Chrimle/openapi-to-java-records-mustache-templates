@@ -139,7 +139,7 @@ components:
         - Some description of ENUM3
     DeprecatedExampleEnum:
       type: string
-      deprecated: false
+      deprecated: true
       description: Example of a deprecated Enum
       enum:
         - ENUM1
