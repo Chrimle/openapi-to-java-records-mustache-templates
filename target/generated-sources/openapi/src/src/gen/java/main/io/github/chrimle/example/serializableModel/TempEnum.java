@@ -24,10 +24,7 @@ import java.io.Serializable;
 
 /**
  * Example of a deprecated Enum
- *
- * @deprecated
  */
-@Deprecated
 public enum TempEnum {
   ENUM1("ENUM1"),
   ENUM2("ENUM2"),

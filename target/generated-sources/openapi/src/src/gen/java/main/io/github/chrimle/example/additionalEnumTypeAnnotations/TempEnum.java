@@ -23,10 +23,7 @@ import com.google.gson.annotations.SerializedName;
 
 /**
  * Example of a deprecated Enum
- *
- * @deprecated
  */
-@Deprecated
 @com.chrimle.example.annotations.TestAnnotationOne
 @com.chrimle.example.annotations.TestAnnotationTwo
 @com.chrimle.example.annotations.TestAnnotationThree
