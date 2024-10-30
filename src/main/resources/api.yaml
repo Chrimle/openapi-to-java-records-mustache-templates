@@ -147,7 +147,6 @@ components:
         - ENUM3
     TempEnum:
       type: string
-      deprecated: true
       description: Example of a deprecated Enum
       enum:
         - ENUM1
