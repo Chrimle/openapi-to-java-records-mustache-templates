@@ -16,6 +16,10 @@
 */
 package com.chrimle.example;
 
+/**
+ * Enum class listing all expected classes ({@code record}s and {@code enum}s) to be generated from
+ * the OpenAPI spec.
+ */
 public enum GeneratedClass {
   DEPRECATED_EXAMPLE_ENUM("DeprecatedExampleEnum", true, true),
   DEPRECATED_EXAMPLE_RECORD("DeprecatedExampleRecord", true, false),
