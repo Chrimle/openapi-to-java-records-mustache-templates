@@ -92,6 +92,7 @@ public class TestSuite {
               GeneratedField.of("field6", Set.class).isBeanValidationNullable(false).build(),
               GeneratedField.of("field7", getExampleRecordClass(pluginExecution))
                   .isBeanValidationNullable(false)
+                  .isCustomClass(true)
                   .build(),
               GeneratedField.of("field8", getExampleEnumClass(pluginExecution))
                   .isBeanValidationNullable(false)
