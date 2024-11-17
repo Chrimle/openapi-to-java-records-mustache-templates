@@ -55,7 +55,7 @@ public record ExampleRecordWithRequiredFieldsOfEachType(
     @javax.annotation.Nonnull @NotNull BigDecimal field4,
     @javax.annotation.Nonnull @NotNull List<Boolean> field5,
     @javax.annotation.Nonnull @NotNull Set<Boolean> field6,
-    @javax.annotation.Nonnull @NotNull ExampleRecord field7,
+    @javax.annotation.Nonnull @Valid @NotNull ExampleRecord field7,
     @javax.annotation.Nonnull @NotNull ExampleEnum field8) {
 
   public ExampleRecordWithRequiredFieldsOfEachType(

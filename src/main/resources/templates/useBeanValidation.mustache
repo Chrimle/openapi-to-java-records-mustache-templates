@@ -22,6 +22,11 @@
   Enabled via configOption.useBeanValidation=true
 
 }}{{#useBeanValidation}}{{!
+  All fields of a custom type should be recursively validated, regardless of being required
+  or not, and being nullable or not.
+  }}{{#isModel}}{{!
+    }} @Valid{{!
+  }}{{/isModel}}{{!
   }}{{^required}}{{!
     When not required, the field *may* be nullable according to openapi-generator-maven-plugin.
   }}{{/required}}{{!
