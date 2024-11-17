@@ -19,6 +19,23 @@ package com.chrimle.example;
 import com.chrimle.example.utils.AssertionUtils;
 import java.util.Arrays;
 
+/**
+ * Represents a generated <i>source</i>, which contains:
+ *
+ * <ul>
+ *   <li>{@code Class<?>} <b>classUnderTest</b> which is used to assert properties using Java
+ *       Reflection API
+ *   <li>{@code GeneratedField<?>[]} <b>generatedFields</b> which is the complete set of fields
+ *       expected to have been generated for the <i>source</i>
+ *   <li>{@code PluginExecution} <b>pluginExecution</b> which represent configuration options set
+ *       for this {@code <pluginExecution>}
+ *   <li>{@code GeneratedClass} <b>generatedClass</b> which represents the <i>class/source</i> with
+ *       additional properties
+ * </ul>
+ *
+ * <p>Essentially, this class contains all details in order to be able to assert generated classes,
+ * with consideration for {@code <configuration>} properties
+ */
 public class GeneratedSource {
 
   private final Class<?> classUnderTest;

@@ -18,6 +18,7 @@ package com.chrimle.example.utils;
 
 import com.chrimle.example.GeneratedField;
 import com.chrimle.example.GeneratedSource;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.DecimalMax;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Max;
@@ -140,6 +141,12 @@ public class AssertionUtils {
       assertDoesNotHaveAnnotation(classUnderTest, field, unexpectedAnnotation);
 
       if (generatedSource.useBeanValidation()) {
+        final Class<Valid> validAnnotation = Valid.class;
+        if (generatedField.isCustomClass()) {
+          assertHasAnnotation(classUnderTest, field, validAnnotation);
+        } else {
+          assertDoesNotHaveAnnotation(classUnderTest, field, validAnnotation);
+        }
         final Class<NotNull> notNullAnnotation = NotNull.class;
         if (generatedField.isBeanValidationNullable()) {
           assertDoesNotHaveAnnotation(classUnderTest, field, notNullAnnotation);

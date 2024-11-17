@@ -16,6 +16,11 @@
 */
 package com.chrimle.example;
 
+/**
+ * Represents each {@code <pluginExecution>} present in the Maven {@code <build>} step. This is used
+ * to assert {@code <configuration>} or {@code <configOption>}-specific properties or behaviours of
+ * generated classes.
+ */
 public enum PluginExecution {
   GENERATE_BUILDERS("generateBuilders", true, false, false, false, false, false, false),
   ADDITIONAL_ENUM_TYPE_ANNOTATIONS(

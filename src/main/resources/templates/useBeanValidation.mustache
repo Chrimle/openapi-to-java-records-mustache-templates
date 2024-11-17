@@ -15,13 +15,22 @@
 
 }}{{!
   Source: openapi-to-java-records-mustache-templates
-  Version: 2.1.0
+  Version: 2.1.1
 
   This template is a custom template, and is used by `pojo.mustache`.
 
   Enabled via configOption.useBeanValidation=true
 
 }}{{#useBeanValidation}}{{!
+  All fields of a custom type should be recursively validated, regardless of being required
+  or not, and being nullable or not.
+  For unknown reasons, some classes are considered models, but others as freeFormObjects...
+  }}{{#isModel}}{{^isFreeFormObject}}{{!
+    }} @Valid{{!
+  }}{{/isFreeFormObject}}{{/isModel}}{{!
+  }}{{^isModel}}{{#isFreeFormObject}}{{!
+    }} @Valid{{!
+  }}{{/isFreeFormObject}}{{/isModel}}{{!
   }}{{^required}}{{!
     When not required, the field *may* be nullable according to openapi-generator-maven-plugin.
   }}{{/required}}{{!

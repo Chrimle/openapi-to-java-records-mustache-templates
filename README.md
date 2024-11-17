@@ -25,7 +25,7 @@ The mustache templates can be acquired through multiple ways.
 <dependency>
     <groupId>io.github.chrimle</groupId>
     <artifactId>openapi-to-java-records-mustache-templates</artifactId>
-    <version>2.1.0</version>
+    <version>2.1.1</version>
 </dependency>
 ```
 
@@ -76,12 +76,31 @@ In this example, each generated class will be named with the suffix "DTO", and f
 ```yaml
 components:
   schemas:
+    Name:
+      description: Name Information
+      type: object
+      required:
+        - firstName
+        - lastName
+      properties:
+        firstName:
+          description: First Name
+          type: string
+          minLength: 2
+        lastName:
+          description: Last Name
+          type: string
+          minLength: 2
+        middleName:
+          description: Middle Name
+          type: string
+          nullable: true
     Person:
       description: Personal information
       deprecated: true
       type: object
       required:
-        - fullName
+        - name
         - age
         - gender
         - height
@@ -89,11 +108,10 @@ components:
         - aliases
         - trackingCode
       properties:
-        fullName:
-          description: Full name
-          type: string
-          minLength: 2
-          maxLength: 50
+        name:
+          description: Name
+          type: object
+          $ref: '#/components/schemas/Name'
         age:
           description: Age (years)
           type: integer
@@ -110,6 +128,10 @@ components:
           type: number
           pattern: float
           minimum: 0
+        legalGuardian:
+          description: Legal Guardian
+          type: object
+          $ref: '#/components/schemas/Person'
         ssn:
           description: Social Security Number
           type: string
@@ -129,6 +151,8 @@ components:
         trackingCode:
           description: Tracking code for Web analytics
           type: string
+          minLength: 5
+          maxLength: 50
           default: "utm_source=default"
 ```
 > [!TIP]
@@ -155,10 +179,11 @@ import ...;
  * Personal information
  *
  * @deprecated
- * @param fullName Full name
+ * @param name Name
  * @param age Age (years)
  * @param gender Gender
  * @param height Height (m)
+ * @param legalGuardian PersonDTO
  * @param ssn Social Security Number
  * @param aliases Known Aliases
  * @param telephoneNumber Telephone Number
@@ -166,28 +191,31 @@ import ...;
  */
 @Deprecated
 public record PersonDTO(
-    @javax.annotation.Nonnull @NotNull @Size(min = 2, max = 50) String fullName,
+    @javax.annotation.Nonnull @Valid @NotNull Name name,
     @javax.annotation.Nonnull @NotNull @Min(0) @Max(100) Integer age,
     @javax.annotation.Nonnull @NotNull GenderEnum gender,
     @javax.annotation.Nonnull @NotNull @DecimalMin("0") BigDecimal height,
+    @javax.annotation.Nonnull @Valid PersonDTO legalGuardian,
     @javax.annotation.Nonnull @NotNull @Pattern(regexp = "^\\d{3}-\\d{2}-\\d{4}$") String ssn,
     @javax.annotation.Nonnull @NotNull @Size(min = 1, max = 3) Set<String> aliases,
     @javax.annotation.Nullable String telephoneNumber,
-    @javax.annotation.Nonnull @NotNull String trackingCode) {
+    @javax.annotation.Nonnull @NotNull @Size(min = 5, max = 50) String trackingCode) {
 
   public PersonDTO(
-      @javax.annotation.Nonnull final String fullName,
+      @javax.annotation.Nonnull final Name name,
       @javax.annotation.Nonnull final Integer age,
       @javax.annotation.Nonnull final GenderEnum gender,
       @javax.annotation.Nonnull final BigDecimal height,
+      @javax.annotation.Nonnull final PersonDTO legalGuardian,
       @javax.annotation.Nonnull final String ssn,
       @javax.annotation.Nullable final Set<String> aliases,
       @javax.annotation.Nullable final String telephoneNumber,
       @javax.annotation.Nullable final String trackingCode) {
-    this.fullName = fullName;
+    this.name = name;
     this.age = age;
     this.gender = gender;
     this.height = height;
+    this.legalGuardian = legalGuardian;
     this.ssn = ssn;
     this.aliases = Objects.requireNonNullElse(aliases, new LinkedHashSet<>());
     this.telephoneNumber = telephoneNumber;
