@@ -24,9 +24,13 @@
 }}{{#useBeanValidation}}{{!
   All fields of a custom type should be recursively validated, regardless of being required
   or not, and being nullable or not.
-  }}{{#isModel}}{{!
+  For unknown reasons, some classes are considered models, but others as freeFormObjects...
+  }}{{#isModel}}{{^isFreeFormObject}}{{!
     }} @Valid{{!
-  }}{{/isModel}}{{!
+  }}{{/isFreeFormObject}}{{/isModel}}{{!
+  }}{{^isModel}}{{#isFreeFormObject}}{{!
+    }} @Valid{{!
+  }}{{/isFreeFormObject}}{{/isModel}}{{!
   }}{{^required}}{{!
     When not required, the field *may* be nullable according to openapi-generator-maven-plugin.
   }}{{/required}}{{!
