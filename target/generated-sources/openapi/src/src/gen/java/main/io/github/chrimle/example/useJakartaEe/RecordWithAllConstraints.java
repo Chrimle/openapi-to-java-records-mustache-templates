@@ -40,6 +40,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * @param stringRequired String
  * @param stringRequiredNullable String
  * @param stringRequiredPattern String
+ * @param stringEmailFormat String
  * @param stringMinLength String
  * @param stringMaxLength String
  * @param stringMinAndMaxLength String
@@ -63,6 +64,7 @@ public record RecordWithAllConstraints(
     @jakarta.annotation.Nonnull String stringRequired,
     @jakarta.annotation.Nullable String stringRequiredNullable,
     @jakarta.annotation.Nonnull String stringRequiredPattern,
+    @jakarta.annotation.Nonnull String stringEmailFormat,
     @jakarta.annotation.Nonnull String stringMinLength,
     @jakarta.annotation.Nonnull String stringMaxLength,
     @jakarta.annotation.Nonnull String stringMinAndMaxLength,
@@ -86,6 +88,7 @@ public record RecordWithAllConstraints(
       @jakarta.annotation.Nonnull final String stringRequired,
       @jakarta.annotation.Nullable final String stringRequiredNullable,
       @jakarta.annotation.Nonnull final String stringRequiredPattern,
+      @jakarta.annotation.Nonnull final String stringEmailFormat,
       @jakarta.annotation.Nonnull final String stringMinLength,
       @jakarta.annotation.Nonnull final String stringMaxLength,
       @jakarta.annotation.Nonnull final String stringMinAndMaxLength,
@@ -107,6 +110,7 @@ public record RecordWithAllConstraints(
     this.stringRequired = stringRequired;
     this.stringRequiredNullable = stringRequiredNullable;
     this.stringRequiredPattern = stringRequiredPattern;
+    this.stringEmailFormat = stringEmailFormat;
     this.stringMinLength = stringMinLength;
     this.stringMaxLength = stringMaxLength;
     this.stringMinAndMaxLength = stringMinAndMaxLength;
