@@ -56,10 +56,9 @@ Place the file(s) in desired directory. Then, in the Maven build configuration, 
 ## Additional Configurations
 The generated classes are customizable by using `<configuration>`-properties.
 
-In this example, each generated class will be named with the suffix "DTO", and fields of generated records will be annotated with [Jakarta Bean Validation annotations](https://jakarta.ee/specifications/bean-validation/3.0/jakarta-bean-validation-spec-3.0.html#builtinconstraints).
+In this example, each generated class field will be annotated with [Jakarta Bean Validation annotations](https://jakarta.ee/specifications/bean-validation/3.0/jakarta-bean-validation-spec-3.0.html#builtinconstraints).
 ```xml
   <configuration>
-    <modelNameSuffix>DTO</modelNameSuffix>
     <!-- ... more configurations ... -->
     <configOptions>
       <useBeanValidation>true</useBeanValidation>
@@ -106,6 +105,7 @@ components:
         - height
         - ssn
         - aliases
+        - email
         - trackingCode
       properties:
         name:
@@ -148,6 +148,10 @@ components:
           description: Telephone Number
           type: string
           nullable: true
+        email:
+          description: Email Address
+          type: string
+          format: email
         trackingCode:
           description: Tracking code for Web analytics
           type: string
@@ -183,33 +187,36 @@ import ...;
  * @param age Age (years)
  * @param gender Gender
  * @param height Height (m)
- * @param legalGuardian PersonDTO
+ * @param legalGuardian Person
  * @param ssn Social Security Number
  * @param aliases Known Aliases
  * @param telephoneNumber Telephone Number
+ * @param email Email Address
  * @param trackingCode Tracking code for Web analytics
  */
 @Deprecated
-public record PersonDTO(
+public record Person(
     @javax.annotation.Nonnull @Valid @NotNull Name name,
     @javax.annotation.Nonnull @NotNull @Min(0) @Max(100) Integer age,
     @javax.annotation.Nonnull @NotNull GenderEnum gender,
     @javax.annotation.Nonnull @NotNull @DecimalMin("0") BigDecimal height,
-    @javax.annotation.Nonnull @Valid PersonDTO legalGuardian,
+    @javax.annotation.Nonnull @Valid Person legalGuardian,
     @javax.annotation.Nonnull @NotNull @Pattern(regexp = "^\\d{3}-\\d{2}-\\d{4}$") String ssn,
     @javax.annotation.Nonnull @NotNull @Size(min = 1, max = 3) Set<String> aliases,
     @javax.annotation.Nullable String telephoneNumber,
+    @javax.annotation.Nonnull @NotNull @Email String email,
     @javax.annotation.Nonnull @NotNull @Size(min = 5, max = 50) String trackingCode) {
 
-  public PersonDTO(
+  public Person(
       @javax.annotation.Nonnull final Name name,
       @javax.annotation.Nonnull final Integer age,
       @javax.annotation.Nonnull final GenderEnum gender,
       @javax.annotation.Nonnull final BigDecimal height,
-      @javax.annotation.Nonnull final PersonDTO legalGuardian,
+      @javax.annotation.Nonnull final Person legalGuardian,
       @javax.annotation.Nonnull final String ssn,
       @javax.annotation.Nullable final Set<String> aliases,
       @javax.annotation.Nullable final String telephoneNumber,
+      @javax.annotation.Nonnull final String email,
       @javax.annotation.Nullable final String trackingCode) {
     this.name = name;
     this.age = age;
@@ -219,6 +226,7 @@ public record PersonDTO(
     this.ssn = ssn;
     this.aliases = Objects.requireNonNullElse(aliases, new LinkedHashSet<>());
     this.telephoneNumber = telephoneNumber;
+    this.email = email;
     this.trackingCode = Objects.requireNonNullElse(trackingCode, "utm_source=default");
   }
 
