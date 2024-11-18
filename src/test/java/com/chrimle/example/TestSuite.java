@@ -114,6 +114,7 @@ public class TestSuite {
                   .isBeanValidationNullable(false)
                   .pattern("^\\d{3}-\\d{2}-\\d{4}$")
                   .build(),
+              GeneratedField.of("stringEmailFormat", String.class).isEmail(true).build(),
               GeneratedField.of("stringMinLength", String.class).minLength(3).build(),
               GeneratedField.of("stringMaxLength", String.class).maxLength(7).build(),
               GeneratedField.of("stringMinAndMaxLength", String.class)
