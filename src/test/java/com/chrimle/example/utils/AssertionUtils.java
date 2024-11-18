@@ -21,6 +21,7 @@ import com.chrimle.example.GeneratedSource;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.DecimalMax;
 import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
@@ -206,6 +207,12 @@ public class AssertionUtils {
           Assertions.assertEquals(generatedField.decimalMax().get(), decimalMax.value());
         } else {
           assertDoesNotHaveAnnotation(classUnderTest, field, decimalMaxAnnotation);
+        }
+        final Class<Email> emailAnnotation = Email.class;
+        if (generatedField.isEmail()) {
+          assertHasAnnotation(classUnderTest, field, emailAnnotation);
+        } else {
+          assertDoesNotHaveAnnotation(classUnderTest, field, emailAnnotation);
         }
       }
     }
