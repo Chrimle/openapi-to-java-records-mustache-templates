@@ -22,6 +22,7 @@ import com.chrimle.example.utils.GeneratedRecordTestUtils;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Set;
+import java.util.UUID;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
@@ -115,6 +116,7 @@ public class TestSuite {
                   .pattern("^\\d{3}-\\d{2}-\\d{4}$")
                   .build(),
               GeneratedField.of("stringEmailFormat", String.class).isEmail(true).build(),
+              GeneratedField.of("stringUuidFormat", UUID.class).build(),
               GeneratedField.of("stringMinLength", String.class).minLength(3).build(),
               GeneratedField.of("stringMaxLength", String.class).maxLength(7).build(),
               GeneratedField.of("stringMinAndMaxLength", String.class)

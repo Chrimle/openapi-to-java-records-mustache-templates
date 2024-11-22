@@ -29,6 +29,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
@@ -41,6 +42,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * @param stringRequiredNullable String
  * @param stringRequiredPattern String
  * @param stringEmailFormat String
+ * @param stringUuidFormat UUID
  * @param stringMinLength String
  * @param stringMaxLength String
  * @param stringMinAndMaxLength String
@@ -68,6 +70,7 @@ public record RecordWithAllConstraints(
     @javax.annotation.Nullable String stringRequiredNullable,
     @javax.annotation.Nonnull String stringRequiredPattern,
     @javax.annotation.Nonnull String stringEmailFormat,
+    @javax.annotation.Nonnull UUID stringUuidFormat,
     @javax.annotation.Nonnull String stringMinLength,
     @javax.annotation.Nonnull String stringMaxLength,
     @javax.annotation.Nonnull String stringMinAndMaxLength,
@@ -92,6 +95,7 @@ public record RecordWithAllConstraints(
       @javax.annotation.Nullable final String stringRequiredNullable,
       @javax.annotation.Nonnull final String stringRequiredPattern,
       @javax.annotation.Nonnull final String stringEmailFormat,
+      @javax.annotation.Nonnull final UUID stringUuidFormat,
       @javax.annotation.Nonnull final String stringMinLength,
       @javax.annotation.Nonnull final String stringMaxLength,
       @javax.annotation.Nonnull final String stringMinAndMaxLength,
@@ -114,6 +118,7 @@ public record RecordWithAllConstraints(
     this.stringRequiredNullable = stringRequiredNullable;
     this.stringRequiredPattern = stringRequiredPattern;
     this.stringEmailFormat = stringEmailFormat;
+    this.stringUuidFormat = stringUuidFormat;
     this.stringMinLength = stringMinLength;
     this.stringMaxLength = stringMaxLength;
     this.stringMinAndMaxLength = stringMinAndMaxLength;

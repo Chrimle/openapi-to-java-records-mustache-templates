@@ -107,6 +107,7 @@ components:
         - aliases
         - email
         - trackingCode
+        - uuid
       properties:
         name:
           description: Name
@@ -158,6 +159,10 @@ components:
           minLength: 5
           maxLength: 50
           default: "utm_source=default"
+        uuid:
+          description: An Universally Unique Identifier
+          type: string
+          format: uuid
 ```
 > [!TIP]
 > See [Supported OpenAPI Specification properties](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/wiki/Supported-OpenAPI-Specification-properties)
@@ -193,6 +198,7 @@ import ...;
  * @param telephoneNumber Telephone Number
  * @param email Email Address
  * @param trackingCode Tracking code for Web analytics
+ * @param uuid An Universally Unique Identifier
  */
 @Deprecated
 public record Person(
@@ -205,7 +211,8 @@ public record Person(
     @javax.annotation.Nonnull @NotNull @Size(min = 1, max = 3) Set<String> aliases,
     @javax.annotation.Nullable String telephoneNumber,
     @javax.annotation.Nonnull @NotNull @Email String email,
-    @javax.annotation.Nonnull @NotNull @Size(min = 5, max = 50) String trackingCode) {
+    @javax.annotation.Nonnull @NotNull @Size(min = 5, max = 50) String trackingCode,
+    @javax.annotation.Nonnull @NotNull UUID uuid) {
 
   public Person(
       @javax.annotation.Nonnull final Name name,
@@ -217,7 +224,8 @@ public record Person(
       @javax.annotation.Nullable final Set<String> aliases,
       @javax.annotation.Nullable final String telephoneNumber,
       @javax.annotation.Nonnull final String email,
-      @javax.annotation.Nullable final String trackingCode) {
+      @javax.annotation.Nullable final String trackingCode,
+      @javax.annotation.Nonnull final UUID uuid) {
     this.name = name;
     this.age = age;
     this.gender = gender;
@@ -228,6 +236,7 @@ public record Person(
     this.telephoneNumber = telephoneNumber;
     this.email = email;
     this.trackingCode = Objects.requireNonNullElse(trackingCode, "utm_source=default");
+    this.uuid = uuid;
   }
 
   /**
