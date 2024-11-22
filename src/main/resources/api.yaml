@@ -194,6 +194,9 @@ components:
         stringEmailFormat:
           type: string
           format: email
+        stringUuidFormat:
+          type: string
+          format: uuid
         stringMinLength:
           type: string
           minLength: 3
