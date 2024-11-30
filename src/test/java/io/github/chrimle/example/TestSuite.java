@@ -14,11 +14,11 @@
   limitations under the License.
 
 */
-package com.chrimle.example;
+package io.github.chrimle.example;
 
-import com.chrimle.example.utils.AssertionUtils;
-import com.chrimle.example.utils.GeneratedEnumTestUtils;
-import com.chrimle.example.utils.GeneratedRecordTestUtils;
+import io.github.chrimle.example.utils.AssertionUtils;
+import io.github.chrimle.example.utils.GeneratedEnumTestUtils;
+import io.github.chrimle.example.utils.GeneratedRecordTestUtils;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Set;

@@ -59,9 +59,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * @param bigDecimalMaximum BigDecimal
  * @param bigDecimalMinimumAndMaximum BigDecimal
  */
-@com.chrimle.example.annotations.TestAnnotationOne
-@com.chrimle.example.annotations.TestAnnotationTwo
-@com.chrimle.example.annotations.TestAnnotationThree
+@io.github.chrimle.example.annotations.TestAnnotationOne
+@io.github.chrimle.example.annotations.TestAnnotationTwo
+@io.github.chrimle.example.annotations.TestAnnotationThree
 public record RecordWithAllConstraints(
     @javax.annotation.Nonnull String stringStandard,
     @javax.annotation.Nonnull String stringDefault,

@@ -27,9 +27,9 @@ import com.google.gson.annotations.SerializedName;
  * @deprecated
  */
 @Deprecated
-@com.chrimle.example.annotations.TestAnnotationOne
-@com.chrimle.example.annotations.TestAnnotationTwo
-@com.chrimle.example.annotations.TestAnnotationThree
+@io.github.chrimle.example.annotations.TestAnnotationOne
+@io.github.chrimle.example.annotations.TestAnnotationTwo
+@io.github.chrimle.example.annotations.TestAnnotationThree
 public enum DeprecatedExampleEnum {
   ENUM1("ENUM1"),
   ENUM2("ENUM2"),

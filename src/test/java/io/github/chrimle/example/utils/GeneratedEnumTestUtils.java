@@ -14,9 +14,9 @@
   limitations under the License.
 
 */
-package com.chrimle.example.utils;
+package io.github.chrimle.example.utils;
 
-import com.chrimle.example.GeneratedSource;
+import io.github.chrimle.example.GeneratedSource;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.List;

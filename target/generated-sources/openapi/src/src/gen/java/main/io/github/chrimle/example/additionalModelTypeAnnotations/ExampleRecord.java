@@ -32,9 +32,9 @@ import java.util.Arrays;
  *
  * @param field1 a boolean field
  */
-@com.chrimle.example.annotations.TestAnnotationOne
-@com.chrimle.example.annotations.TestAnnotationTwo
-@com.chrimle.example.annotations.TestAnnotationThree
+@io.github.chrimle.example.annotations.TestAnnotationOne
+@io.github.chrimle.example.annotations.TestAnnotationTwo
+@io.github.chrimle.example.annotations.TestAnnotationThree
 public record ExampleRecord(
     @javax.annotation.Nonnull Boolean field1) {
 

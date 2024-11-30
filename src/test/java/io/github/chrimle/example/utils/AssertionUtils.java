@@ -14,10 +14,13 @@
   limitations under the License.
 
 */
-package com.chrimle.example.utils;
+package io.github.chrimle.example.utils;
 
-import com.chrimle.example.GeneratedField;
-import com.chrimle.example.GeneratedSource;
+import io.github.chrimle.example.GeneratedField;
+import io.github.chrimle.example.GeneratedSource;
+import io.github.chrimle.example.annotations.TestAnnotationOne;
+import io.github.chrimle.example.annotations.TestAnnotationThree;
+import io.github.chrimle.example.annotations.TestAnnotationTwo;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.DecimalMax;
 import jakarta.validation.constraints.DecimalMin;
@@ -49,17 +52,11 @@ public class AssertionUtils {
   public static void assertClassIsAnnotatedWithAdditionalTypeAnnotations(
       final Class<?> classUnderTest, final boolean hasAdditionalTypeAnnotations) {
     assertClassIsAnnotatedWith(
-        classUnderTest,
-        com.chrimle.example.annotations.TestAnnotationOne.class,
-        hasAdditionalTypeAnnotations);
+        classUnderTest, TestAnnotationOne.class, hasAdditionalTypeAnnotations);
     assertClassIsAnnotatedWith(
-        classUnderTest,
-        com.chrimle.example.annotations.TestAnnotationTwo.class,
-        hasAdditionalTypeAnnotations);
+        classUnderTest, TestAnnotationTwo.class, hasAdditionalTypeAnnotations);
     assertClassIsAnnotatedWith(
-        classUnderTest,
-        com.chrimle.example.annotations.TestAnnotationThree.class,
-        hasAdditionalTypeAnnotations);
+        classUnderTest, TestAnnotationThree.class, hasAdditionalTypeAnnotations);
   }
 
   public static void assertClassIsAnnotatedAsDeprecated(

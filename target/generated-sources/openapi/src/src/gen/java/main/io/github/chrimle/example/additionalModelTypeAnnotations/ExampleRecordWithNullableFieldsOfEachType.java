@@ -42,9 +42,9 @@ import java.util.Set;
  * @param field5 an Array of Boolean field
  * @param field6 a Set field
  */
-@com.chrimle.example.annotations.TestAnnotationOne
-@com.chrimle.example.annotations.TestAnnotationTwo
-@com.chrimle.example.annotations.TestAnnotationThree
+@io.github.chrimle.example.annotations.TestAnnotationOne
+@io.github.chrimle.example.annotations.TestAnnotationTwo
+@io.github.chrimle.example.annotations.TestAnnotationThree
 public record ExampleRecordWithNullableFieldsOfEachType(
     @javax.annotation.Nullable Boolean field1,
     @javax.annotation.Nullable String field2,

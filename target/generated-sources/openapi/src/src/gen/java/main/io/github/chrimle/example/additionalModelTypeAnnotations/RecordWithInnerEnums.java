@@ -33,9 +33,9 @@ import java.util.Arrays;
  * @param exampleInner Example of an inner enum class
  * @param exampleInnerTwo Example of another inner enum class
  */
-@com.chrimle.example.annotations.TestAnnotationOne
-@com.chrimle.example.annotations.TestAnnotationTwo
-@com.chrimle.example.annotations.TestAnnotationThree
+@io.github.chrimle.example.annotations.TestAnnotationOne
+@io.github.chrimle.example.annotations.TestAnnotationTwo
+@io.github.chrimle.example.annotations.TestAnnotationThree
 public record RecordWithInnerEnums(
     @javax.annotation.Nonnull ExampleInnerEnum exampleInner,
     @javax.annotation.Nonnull ExampleInnerTwoEnum exampleInnerTwo) {
