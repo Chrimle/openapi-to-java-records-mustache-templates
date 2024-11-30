@@ -238,9 +238,9 @@
                             <generatorName>${generatorName.default}</generatorName>
                             <configOptions>
                                 <additionalModelTypeAnnotations>
-                                    @com.chrimle.example.annotations.TestAnnotationOne
-                                    @com.chrimle.example.annotations.TestAnnotationTwo
-                                    @com.chrimle.example.annotations.TestAnnotationThree
+                                    @io.github.chrimle.example.annotations.TestAnnotationOne
+                                    @io.github.chrimle.example.annotations.TestAnnotationTwo
+                                    @io.github.chrimle.example.annotations.TestAnnotationThree
                                 </additionalModelTypeAnnotations>
                                 <sourceFolder>${sourceFolder.default}</sourceFolder>
                                 <useEnumCaseInsensitive>${useEnumCaseInsensitive.default}</useEnumCaseInsensitive>
@@ -268,7 +268,7 @@
                             <templateDirectory>${templateDirectory.default}</templateDirectory>
                             <generatorName>${generatorName.default}</generatorName>
                             <configOptions>
-                                <additionalEnumTypeAnnotations>@com.chrimle.example.annotations.TestAnnotationOne;@com.chrimle.example.annotations.TestAnnotationTwo;@com.chrimle.example.annotations.TestAnnotationThree;</additionalEnumTypeAnnotations>
+                                <additionalEnumTypeAnnotations>@io.github.chrimle.example.annotations.TestAnnotationOne;@io.github.chrimle.example.annotations.TestAnnotationTwo;@io.github.chrimle.example.annotations.TestAnnotationThree;</additionalEnumTypeAnnotations>
                                 <sourceFolder>${sourceFolder.default}</sourceFolder>
                                 <useEnumCaseInsensitive>${useEnumCaseInsensitive.default}</useEnumCaseInsensitive>
                                 <serializableModel>${serializableModel.default}</serializableModel>

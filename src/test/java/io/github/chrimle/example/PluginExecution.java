@@ -14,7 +14,7 @@
   limitations under the License.
 
 */
-package com.chrimle.example;
+package io.github.chrimle.example;
 
 /**
  * Represents each {@code <pluginExecution>} present in the Maven {@code <build>} step. This is used

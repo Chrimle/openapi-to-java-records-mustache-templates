@@ -14,9 +14,9 @@
   limitations under the License.
 
 */
-package com.chrimle.example;
+package io.github.chrimle.example;
 
-import com.chrimle.example.utils.AssertionUtils;
+import io.github.chrimle.example.utils.AssertionUtils;
 import java.util.Arrays;
 
 /**

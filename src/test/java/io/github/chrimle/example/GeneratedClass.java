@@ -14,7 +14,7 @@
   limitations under the License.
 
 */
-package com.chrimle.example;
+package io.github.chrimle.example;
 
 /**
  * Enum class listing all expected classes ({@code record}s and {@code enum}s) to be generated from

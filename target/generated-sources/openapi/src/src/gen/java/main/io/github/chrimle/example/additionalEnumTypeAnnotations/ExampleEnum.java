@@ -24,9 +24,9 @@ import com.google.gson.annotations.SerializedName;
 /**
  * Example of an Enum
  */
-@com.chrimle.example.annotations.TestAnnotationOne
-@com.chrimle.example.annotations.TestAnnotationTwo
-@com.chrimle.example.annotations.TestAnnotationThree
+@io.github.chrimle.example.annotations.TestAnnotationOne
+@io.github.chrimle.example.annotations.TestAnnotationTwo
+@io.github.chrimle.example.annotations.TestAnnotationThree
 public enum ExampleEnum {
   /**
    * Some description of ENUM1

@@ -47,9 +47,9 @@ public record RecordWithInnerEnums(
   /**
    * Example of an inner enum class
    */
-  @com.chrimle.example.annotations.TestAnnotationOne
-  @com.chrimle.example.annotations.TestAnnotationTwo
-  @com.chrimle.example.annotations.TestAnnotationThree
+  @io.github.chrimle.example.annotations.TestAnnotationOne
+  @io.github.chrimle.example.annotations.TestAnnotationTwo
+  @io.github.chrimle.example.annotations.TestAnnotationThree
   public enum ExampleInnerEnum {
     /**
      * Some description of ENUM1
@@ -100,9 +100,9 @@ public record RecordWithInnerEnums(
   /**
    * Example of another inner enum class
    */
-  @com.chrimle.example.annotations.TestAnnotationOne
-  @com.chrimle.example.annotations.TestAnnotationTwo
-  @com.chrimle.example.annotations.TestAnnotationThree
+  @io.github.chrimle.example.annotations.TestAnnotationOne
+  @io.github.chrimle.example.annotations.TestAnnotationTwo
+  @io.github.chrimle.example.annotations.TestAnnotationThree
   public enum ExampleInnerTwoEnum {
     ENUM1("ENUM1"),
     ENUM2("ENUM2"),
