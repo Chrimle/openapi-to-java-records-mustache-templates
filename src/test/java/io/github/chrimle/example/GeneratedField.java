@@ -52,6 +52,7 @@ public record GeneratedField<T>(
     boolean isBeanValidationNullable,
     boolean isCustomClass,
     boolean isEmail,
+    T enumValue,
     Optional<T> defaultValue,
     Optional<String> pattern,
     Optional<Integer> minLength,
@@ -64,7 +65,11 @@ public record GeneratedField<T>(
     Optional<String> decimalMax) {
 
   public static <T> Builder<T> of(final String name, final Class<T> type) {
-    return new Builder<>(name, type);
+    return new Builder<>(name, type, null);
+  }
+
+  public static <T> Builder<T> of(final String name, final Class<T> type, final T enumValue) {
+    return new Builder<>(name, type, enumValue);
   }
 
   public static class Builder<T> {
@@ -74,6 +79,7 @@ public record GeneratedField<T>(
     private boolean isBeanValidationNullable = true;
     private boolean isCustomClass = false;
     private boolean isEmail = false;
+    private T enumValue;
     private Optional<T> defaultValue = Optional.empty();
     private Optional<String> pattern = Optional.empty();
     private Optional<Integer> minLength = Optional.empty();
@@ -85,9 +91,10 @@ public record GeneratedField<T>(
     private Optional<String> decimalMin = Optional.empty();
     private Optional<String> decimalMax = Optional.empty();
 
-    public Builder(final String name, final Class<T> type) {
+    public Builder(final String name, final Class<T> type, final T enumValue) {
       this.name = name;
       this.type = type;
+      this.enumValue = enumValue;
     }
 
     public Builder<T> isNullable(final boolean isNullable) {
@@ -107,6 +114,11 @@ public record GeneratedField<T>(
 
     public Builder<T> isEmail(final boolean isEmail) {
       this.isEmail = isEmail;
+      return this;
+    }
+
+    public Builder<T> enumValue(final T enumValue) {
+      this.enumValue = enumValue;
       return this;
     }
 
@@ -168,6 +180,7 @@ public record GeneratedField<T>(
           isBeanValidationNullable,
           isCustomClass,
           isEmail,
+          enumValue,
           defaultValue,
           pattern,
           minLength,
