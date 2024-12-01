@@ -14,7 +14,7 @@
   limitations under the License.
 
 */
-package io.github.chrimle.example;
+package io.github.chrimle.example.models;
 
 /** Enum class listing all expected {@code enum} classes to be generated from the OpenAPI spec. */
 public enum GeneratedEnum implements GeneratedClass {

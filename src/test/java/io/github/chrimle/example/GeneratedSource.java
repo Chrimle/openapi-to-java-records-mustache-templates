@@ -16,6 +16,8 @@
 */
 package io.github.chrimle.example;
 
+import io.github.chrimle.example.models.GeneratedClass;
+import io.github.chrimle.example.models.GeneratedField;
 import io.github.chrimle.example.utils.AssertionUtils;
 import java.util.Arrays;
 

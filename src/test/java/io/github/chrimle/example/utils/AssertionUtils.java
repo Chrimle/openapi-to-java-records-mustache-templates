@@ -16,11 +16,11 @@
 */
 package io.github.chrimle.example.utils;
 
-import io.github.chrimle.example.GeneratedField;
 import io.github.chrimle.example.GeneratedSource;
 import io.github.chrimle.example.annotations.TestAnnotationOne;
 import io.github.chrimle.example.annotations.TestAnnotationThree;
 import io.github.chrimle.example.annotations.TestAnnotationTwo;
+import io.github.chrimle.example.models.GeneratedField;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.DecimalMax;
 import jakarta.validation.constraints.DecimalMin;

@@ -16,8 +16,8 @@
 */
 package io.github.chrimle.example.utils;
 
-import io.github.chrimle.example.GeneratedField;
 import io.github.chrimle.example.GeneratedSource;
+import io.github.chrimle.example.models.GeneratedField;
 import java.lang.reflect.Constructor;
 import java.math.BigDecimal;
 import java.util.ArrayList;

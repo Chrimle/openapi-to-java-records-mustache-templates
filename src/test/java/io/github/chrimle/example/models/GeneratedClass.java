@@ -14,7 +14,9 @@
   limitations under the License.
 
 */
-package io.github.chrimle.example;
+package io.github.chrimle.example.models;
+
+import io.github.chrimle.example.PluginExecution;
 
 /**
  * Enum class listing all expected classes ({@code record}s and {@code enum}s) to be generated from

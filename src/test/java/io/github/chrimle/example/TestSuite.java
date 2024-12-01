@@ -16,6 +16,10 @@
 */
 package io.github.chrimle.example;
 
+import io.github.chrimle.example.models.GeneratedClass;
+import io.github.chrimle.example.models.GeneratedEnum;
+import io.github.chrimle.example.models.GeneratedField;
+import io.github.chrimle.example.models.GeneratedRecord;
 import io.github.chrimle.example.utils.AssertionUtils;
 import io.github.chrimle.example.utils.GeneratedEnumTestUtils;
 import io.github.chrimle.example.utils.GeneratedRecordTestUtils;
