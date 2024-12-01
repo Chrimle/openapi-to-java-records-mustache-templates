@@ -33,10 +33,10 @@ public class TestSuite {
   @EnumSource(PluginExecution.class)
   @DisplayName("Testing Plugin Executions...")
   public void testAll(final PluginExecution pluginExecution) {
-    for (final GeneratedClass generatedClass : GeneratedClass.values()) {
+    for (final GeneratedClassLegacy generatedClassLegacy : GeneratedClassLegacy.values()) {
 
       final GeneratedSource generatedSource =
-          getGeneratedSourceForGeneratedClass(generatedClass, pluginExecution);
+          getGeneratedSourceForGeneratedClass(generatedClassLegacy, pluginExecution);
 
       if (generatedSource.isEnum()) {
         GeneratedEnumTestUtils.assertEnumClass(generatedSource);
@@ -47,26 +47,26 @@ public class TestSuite {
   }
 
   private static GeneratedSource getGeneratedSourceForGeneratedClass(
-      final GeneratedClass generatedClass, final PluginExecution pluginExecution) {
-    return switch (generatedClass) {
+      final GeneratedClassLegacy generatedClassLegacy, final PluginExecution pluginExecution) {
+    return switch (generatedClassLegacy) {
       case DEPRECATED_EXAMPLE_ENUM, EXAMPLE_ENUM, EXAMPLE_INNER_ENUM ->
           new GeneratedSource(
               pluginExecution,
-              generatedClass,
+              generatedClassLegacy,
               GeneratedField.of("ENUM1", String.class, "ENUM1").build(),
               GeneratedField.of("ENUM2", String.class, "ENUM2").build(),
               GeneratedField.of("ENUM3", String.class, "ENUM3").build());
       case EXAMPLE_INNER_TWO_ENUM ->
           new GeneratedSource(
               pluginExecution,
-              generatedClass,
+              generatedClassLegacy,
               GeneratedField.of("NUMBER_404", Integer.class, 404).build(),
               GeneratedField.of("NUMBER_501", Integer.class, 501).build(),
               GeneratedField.of("NUMBER_503", Integer.class, 503).build());
       case EXAMPLE_ENUM_WITH_INTEGER_VALUES ->
           new GeneratedSource(
               pluginExecution,
-              generatedClass,
+              generatedClassLegacy,
               GeneratedField.of("NUMBER_100", Integer.class, 100).build(),
               GeneratedField.of("NUMBER_200", Integer.class, 200).build(),
               GeneratedField.of("NUMBER_300", Integer.class, 300).build(),
@@ -74,28 +74,31 @@ public class TestSuite {
               GeneratedField.of("NUMBER_500", Integer.class, 500).build());
       case DEPRECATED_EXAMPLE_RECORD, EXAMPLE_RECORD ->
           new GeneratedSource(
-              pluginExecution, generatedClass, GeneratedField.of("field1", Boolean.class).build());
+              pluginExecution,
+              generatedClassLegacy,
+              GeneratedField.of("field1", Boolean.class).build());
       case RECORD_WITH_INNER_ENUMS ->
           new GeneratedSource(
               pluginExecution,
-              generatedClass,
+              generatedClassLegacy,
               GeneratedField.of(
                       "exampleInner",
-                      getGeneratedClass(GeneratedClass.EXAMPLE_INNER_ENUM, pluginExecution))
+                      getGeneratedClass(GeneratedClassLegacy.EXAMPLE_INNER_ENUM, pluginExecution))
                   .build(),
               GeneratedField.of(
                       "exampleInnerTwo",
-                      getGeneratedClass(GeneratedClass.EXAMPLE_INNER_TWO_ENUM, pluginExecution))
+                      getGeneratedClass(
+                          GeneratedClassLegacy.EXAMPLE_INNER_TWO_ENUM, pluginExecution))
                   .build());
       case EXAMPLE_RECORD_WITH_DEFAULT_FIELDS ->
           new GeneratedSource(
               pluginExecution,
-              generatedClass,
+              generatedClassLegacy,
               GeneratedField.of("field1", String.class).defaultValue("someDefaultValue").build());
       case EXAMPLE_RECORD_WITH_NULLABLE_FIELDS_OF_EACH_TYPE ->
           new GeneratedSource(
               pluginExecution,
-              generatedClass,
+              generatedClassLegacy,
               GeneratedField.of("field1", Boolean.class).isNullable(true).build(),
               GeneratedField.of("field2", String.class).isNullable(true).build(),
               GeneratedField.of("field3", Integer.class).isNullable(true).build(),
@@ -105,7 +108,7 @@ public class TestSuite {
       case EXAMPLE_RECORD_WITH_REQUIRED_FIELDS_OF_EACH_TYPE ->
           new GeneratedSource(
               pluginExecution,
-              generatedClass,
+              generatedClassLegacy,
               GeneratedField.of("field1", Boolean.class).isBeanValidationNullable(false).build(),
               GeneratedField.of("field2", String.class).isBeanValidationNullable(false).build(),
               GeneratedField.of("field3", Integer.class).isBeanValidationNullable(false).build(),
@@ -122,7 +125,7 @@ public class TestSuite {
       case RECORD_WITH_ALL_CONSTRAINTS ->
           new GeneratedSource(
               pluginExecution,
-              generatedClass,
+              generatedClassLegacy,
               GeneratedField.of("stringStandard", String.class).build(),
               GeneratedField.of("stringDefault", String.class)
                   .defaultValue("someDefaultValue")
@@ -175,11 +178,11 @@ public class TestSuite {
 
   private static Class<?> getExampleEnumClass(PluginExecution pluginExecution) {
     return AssertionUtils.assertClassExists(
-        GeneratedClass.EXAMPLE_ENUM.getCanonicalClassName(pluginExecution));
+        GeneratedClassLegacy.EXAMPLE_ENUM.getCanonicalClassName(pluginExecution));
   }
 
   private static Class<?> getExampleRecordClass(PluginExecution pluginExecution) {
     return AssertionUtils.assertClassExists(
-        GeneratedClass.EXAMPLE_RECORD.getCanonicalClassName(pluginExecution));
+        GeneratedClassLegacy.EXAMPLE_RECORD.getCanonicalClassName(pluginExecution));
   }
 }

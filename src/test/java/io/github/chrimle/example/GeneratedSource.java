@@ -83,11 +83,11 @@ public class GeneratedSource {
   }
 
   public boolean isDeprecated() {
-    return generatedClass.isDeprecated;
+    return generatedClass.isDeprecated();
   }
 
   public boolean isEnum() {
-    return generatedClass.isEnum;
+    return generatedClass.isEnum();
   }
 
   public Class<?>[] fieldClasses() {
