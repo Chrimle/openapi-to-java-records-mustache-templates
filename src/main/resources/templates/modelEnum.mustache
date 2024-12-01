@@ -61,9 +61,9 @@
    * @return a {@link {{classname}} } with the matching value
    * @throws IllegalArgumentException if no enum has a value matching the given value
    */
-  public static {{classname}} fromValue(final String value) {
+  public static {{classname}} fromValue(final {{{dataType}}} value) {
     for (final {{classname}} constant : {{classname}}.values()) {
-      if (constant.getValue().equals{{#useEnumCaseInsensitive}}IgnoreCase{{/useEnumCaseInsensitive}}(value)) {
+      if (constant.getValue().equals{{#useEnumCaseInsensitive}}{{#isString}}IgnoreCase{{/isString}}{{/useEnumCaseInsensitive}}(value)) {
         return constant;
       }
     }
