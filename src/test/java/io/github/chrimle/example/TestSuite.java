@@ -33,45 +33,52 @@ public class TestSuite {
   @EnumSource(PluginExecution.class)
   @DisplayName("Testing Plugin Executions...")
   public void testAll(final PluginExecution pluginExecution) {
+    // Asserting all generated record classes
     for (final GeneratedClassLegacy generatedClassLegacy : GeneratedClassLegacy.values()) {
-
       final GeneratedSource generatedSource =
           getGeneratedSourceForGeneratedClass(generatedClassLegacy, pluginExecution);
-
-      if (generatedSource.isEnum()) {
-        GeneratedEnumTestUtils.assertEnumClass(generatedSource);
-      } else {
-        GeneratedRecordTestUtils.assertRecord(generatedSource);
-      }
+      GeneratedRecordTestUtils.assertRecord(generatedSource);
+    }
+    // Asserting all generated enum classes
+    for (final GeneratedEnum generatedEnum : GeneratedEnum.values()) {
+      final GeneratedSource generatedSource =
+          getGeneratedSourceForGeneratedClass(generatedEnum, pluginExecution);
+      GeneratedEnumTestUtils.assertEnumClass(generatedSource);
     }
   }
 
   private static GeneratedSource getGeneratedSourceForGeneratedClass(
-      final GeneratedClassLegacy generatedClassLegacy, final PluginExecution pluginExecution) {
-    return switch (generatedClassLegacy) {
+      final GeneratedEnum generatedEnum, final PluginExecution pluginExecution) {
+    return switch (generatedEnum) {
       case DEPRECATED_EXAMPLE_ENUM, EXAMPLE_ENUM, EXAMPLE_INNER_ENUM ->
           new GeneratedSource(
               pluginExecution,
-              generatedClassLegacy,
+              generatedEnum,
               GeneratedField.of("ENUM1", String.class, "ENUM1").build(),
               GeneratedField.of("ENUM2", String.class, "ENUM2").build(),
               GeneratedField.of("ENUM3", String.class, "ENUM3").build());
       case EXAMPLE_INNER_TWO_ENUM ->
           new GeneratedSource(
               pluginExecution,
-              generatedClassLegacy,
+              generatedEnum,
               GeneratedField.of("NUMBER_404", Integer.class, 404).build(),
               GeneratedField.of("NUMBER_501", Integer.class, 501).build(),
               GeneratedField.of("NUMBER_503", Integer.class, 503).build());
       case EXAMPLE_ENUM_WITH_INTEGER_VALUES ->
           new GeneratedSource(
               pluginExecution,
-              generatedClassLegacy,
+              generatedEnum,
               GeneratedField.of("NUMBER_100", Integer.class, 100).build(),
               GeneratedField.of("NUMBER_200", Integer.class, 200).build(),
               GeneratedField.of("NUMBER_300", Integer.class, 300).build(),
               GeneratedField.of("NUMBER_400", Integer.class, 400).build(),
               GeneratedField.of("NUMBER_500", Integer.class, 500).build());
+    };
+  }
+
+  private static GeneratedSource getGeneratedSourceForGeneratedClass(
+      final GeneratedClassLegacy generatedClassLegacy, final PluginExecution pluginExecution) {
+    return switch (generatedClassLegacy) {
       case DEPRECATED_EXAMPLE_RECORD, EXAMPLE_RECORD ->
           new GeneratedSource(
               pluginExecution,
@@ -83,12 +90,11 @@ public class TestSuite {
               generatedClassLegacy,
               GeneratedField.of(
                       "exampleInner",
-                      getGeneratedClass(GeneratedClassLegacy.EXAMPLE_INNER_ENUM, pluginExecution))
+                      getGeneratedClass(GeneratedEnum.EXAMPLE_INNER_ENUM, pluginExecution))
                   .build(),
               GeneratedField.of(
                       "exampleInnerTwo",
-                      getGeneratedClass(
-                          GeneratedClassLegacy.EXAMPLE_INNER_TWO_ENUM, pluginExecution))
+                      getGeneratedClass(GeneratedEnum.EXAMPLE_INNER_TWO_ENUM, pluginExecution))
                   .build());
       case EXAMPLE_RECORD_WITH_DEFAULT_FIELDS ->
           new GeneratedSource(
@@ -178,7 +184,7 @@ public class TestSuite {
 
   private static Class<?> getExampleEnumClass(PluginExecution pluginExecution) {
     return AssertionUtils.assertClassExists(
-        GeneratedClassLegacy.EXAMPLE_ENUM.getCanonicalClassName(pluginExecution));
+        GeneratedEnum.EXAMPLE_ENUM.getCanonicalClassName(pluginExecution));
   }
 
   private static Class<?> getExampleRecordClass(PluginExecution pluginExecution) {
