@@ -137,6 +137,15 @@ components:
         - Some description of ENUM1
         - Some description of ENUM2
         - Some description of ENUM3
+    ExampleEnumWithIntegerValues:
+      type: integer
+      description: Example of an Enum with integer values
+      enum:
+        - 100
+        - 200
+        - 300
+        - 400
+        - 500
     DeprecatedExampleEnum:
       type: string
       deprecated: true
