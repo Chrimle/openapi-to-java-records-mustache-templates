@@ -82,9 +82,9 @@
      * @return a {@link {{datatypeWithEnum}} } with the matching value
      * @throws IllegalArgumentException if no enum has a value matching the given value
      */
-    public static {{datatypeWithEnum}} fromValue(final String value) {
+    public static {{datatypeWithEnum}} fromValue(final {{{dataType}}} value) {
       for (final {{datatypeWithEnum}} constant : {{datatypeWithEnum}}.values()) {
-        if (constant.getValue().equals{{#useEnumCaseInsensitive}}IgnoreCase{{/useEnumCaseInsensitive}}(value)) {
+        if (constant.getValue().equals{{#useEnumCaseInsensitive}}{{#isString}}IgnoreCase{{/isString}}{{/useEnumCaseInsensitive}}(value)) {
           return constant;
         }
       }
