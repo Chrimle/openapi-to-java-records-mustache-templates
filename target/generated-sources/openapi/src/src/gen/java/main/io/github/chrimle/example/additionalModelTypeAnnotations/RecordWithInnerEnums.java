@@ -31,7 +31,7 @@ import java.util.Arrays;
  * Example of a Record with inner enum classes
  *
  * @param exampleInner Example of an inner enum class
- * @param exampleInnerTwo Example of another inner enum class
+ * @param exampleInnerTwo Example of another inner enum class with integer values
  */
 @io.github.chrimle.example.annotations.TestAnnotationOne
 @io.github.chrimle.example.annotations.TestAnnotationTwo
@@ -98,16 +98,16 @@ public record RecordWithInnerEnums(
   }
 
   /**
-   * Example of another inner enum class
+   * Example of another inner enum class with integer values
    */
   public enum ExampleInnerTwoEnum {
-    ENUM1("ENUM1"),
-    ENUM2("ENUM2"),
-    ENUM3("ENUM3");
+    NUMBER_404(404),
+    NUMBER_501(501),
+    NUMBER_503(503);
 
-    private final String value;
+    private final Integer value;
 
-    ExampleInnerTwoEnum(final String value) {
+    ExampleInnerTwoEnum(final Integer value) {
       this.value = value;
     }
 
@@ -116,7 +116,7 @@ public record RecordWithInnerEnums(
      *
      * @return value of this enum
      */
-    public String getValue() {
+    public Integer getValue() {
       return value;
     }
 
@@ -128,7 +128,7 @@ public record RecordWithInnerEnums(
      * @return a {@link ExampleInnerTwoEnum } with the matching value
      * @throws IllegalArgumentException if no enum has a value matching the given value
      */
-    public static ExampleInnerTwoEnum fromValue(final String value) {
+    public static ExampleInnerTwoEnum fromValue(final Integer value) {
       for (final ExampleInnerTwoEnum constant : ExampleInnerTwoEnum.values()) {
         if (constant.getValue().equals(value)) {
           return constant;
