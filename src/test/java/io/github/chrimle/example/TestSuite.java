@@ -121,11 +121,14 @@ public class TestSuite {
               GeneratedField.of("field4", BigDecimal.class).isBeanValidationNullable(false).build(),
               GeneratedField.of("field5", List.class).isBeanValidationNullable(false).build(),
               GeneratedField.of("field6", Set.class).isBeanValidationNullable(false).build(),
-              GeneratedField.of("field7", getExampleRecordClass(pluginExecution))
+              GeneratedField.of(
+                      "field7",
+                      getGeneratedClass(GeneratedClassLegacy.EXAMPLE_RECORD, pluginExecution))
                   .isBeanValidationNullable(false)
                   .isCustomClass(true)
                   .build(),
-              GeneratedField.of("field8", getExampleEnumClass(pluginExecution))
+              GeneratedField.of(
+                      "field8", getGeneratedClass(GeneratedEnum.EXAMPLE_ENUM, pluginExecution))
                   .isBeanValidationNullable(false)
                   .build());
       case RECORD_WITH_ALL_CONSTRAINTS ->
@@ -180,15 +183,5 @@ public class TestSuite {
   private static Class<?> getGeneratedClass(
       final GeneratedClass generatedClass, final PluginExecution pluginExecution) {
     return AssertionUtils.assertClassExists(generatedClass.getCanonicalClassName(pluginExecution));
-  }
-
-  private static Class<?> getExampleEnumClass(PluginExecution pluginExecution) {
-    return AssertionUtils.assertClassExists(
-        GeneratedEnum.EXAMPLE_ENUM.getCanonicalClassName(pluginExecution));
-  }
-
-  private static Class<?> getExampleRecordClass(PluginExecution pluginExecution) {
-    return AssertionUtils.assertClassExists(
-        GeneratedClassLegacy.EXAMPLE_RECORD.getCanonicalClassName(pluginExecution));
   }
 }
