@@ -170,12 +170,12 @@ components:
             - Some description of ENUM2
             - Some description of ENUM3
         exampleInnerTwo:
-          type: string
-          description: Example of another inner enum class
+          type: integer
+          description: Example of another inner enum class with integer values
           enum:
-            - ENUM1
-            - ENUM2
-            - ENUM3
+            - 404
+            - 501
+            - 503
     RecordWithAllConstraints:
       type: object
       description: Example of a Record which has fields with constraints

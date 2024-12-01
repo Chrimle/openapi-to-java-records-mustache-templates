@@ -115,7 +115,10 @@ public class GeneratedEnumTestUtils {
         }
       }
     } else if (Integer.class.equals(generatedSource.fieldClasses()[0])) {
-      for (final int validValue : List.of(100, 200, 300, 400, 500)) {
+      for (final Object validValue :
+          Arrays.stream(generatedSource.generatedFields())
+              .map(GeneratedField::enumValue)
+              .toList()) {
         Assertions.assertDoesNotThrow(() -> fromValueMethod.invoke(null, validValue));
       }
       for (final Integer invalidValue : List.of(-12, 0, 1, 42)) {

@@ -49,13 +49,20 @@ public class TestSuite {
   private static GeneratedSource getGeneratedSourceForGeneratedClass(
       final GeneratedClass generatedClass, final PluginExecution pluginExecution) {
     return switch (generatedClass) {
-      case DEPRECATED_EXAMPLE_ENUM, EXAMPLE_ENUM, EXAMPLE_INNER_ENUM, EXAMPLE_INNER_TWO_ENUM ->
+      case DEPRECATED_EXAMPLE_ENUM, EXAMPLE_ENUM, EXAMPLE_INNER_ENUM ->
           new GeneratedSource(
               pluginExecution,
               generatedClass,
               GeneratedField.of("ENUM1", String.class, "ENUM1").build(),
               GeneratedField.of("ENUM2", String.class, "ENUM2").build(),
               GeneratedField.of("ENUM3", String.class, "ENUM3").build());
+      case EXAMPLE_INNER_TWO_ENUM ->
+          new GeneratedSource(
+              pluginExecution,
+              generatedClass,
+              GeneratedField.of("NUMBER_404", Integer.class, 404).build(),
+              GeneratedField.of("NUMBER_501", Integer.class, 501).build(),
+              GeneratedField.of("NUMBER_503", Integer.class, 503).build());
       case EXAMPLE_ENUM_WITH_INTEGER_VALUES ->
           new GeneratedSource(
               pluginExecution,
