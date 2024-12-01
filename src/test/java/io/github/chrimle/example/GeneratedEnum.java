@@ -27,7 +27,7 @@ public enum GeneratedEnum implements GeneratedClass {
   private final String simpleClassName;
   private final boolean isDeprecated;
 
-  GeneratedEnum(String simpleClassName, boolean isDeprecated) {
+  GeneratedEnum(final String simpleClassName, final boolean isDeprecated) {
     this.simpleClassName = simpleClassName;
     this.isDeprecated = isDeprecated;
   }

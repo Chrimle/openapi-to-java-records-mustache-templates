@@ -18,25 +18,22 @@ package io.github.chrimle.example;
 
 /** Enum class listing all expected {@code record} classes to be generated from the OpenAPI spec. */
 public enum GeneratedClassLegacy implements GeneratedClass {
-  DEPRECATED_EXAMPLE_RECORD("DeprecatedExampleRecord", true, false),
-  EXAMPLE_RECORD("ExampleRecord", false, false),
-  EXAMPLE_RECORD_WITH_DEFAULT_FIELDS("ExampleRecordWithDefaultFields", false, false),
+  DEPRECATED_EXAMPLE_RECORD("DeprecatedExampleRecord", true),
+  EXAMPLE_RECORD("ExampleRecord", false),
+  EXAMPLE_RECORD_WITH_DEFAULT_FIELDS("ExampleRecordWithDefaultFields", false),
   EXAMPLE_RECORD_WITH_REQUIRED_FIELDS_OF_EACH_TYPE(
-      "ExampleRecordWithRequiredFieldsOfEachType", false, false),
+      "ExampleRecordWithRequiredFieldsOfEachType", false),
   EXAMPLE_RECORD_WITH_NULLABLE_FIELDS_OF_EACH_TYPE(
-      "ExampleRecordWithNullableFieldsOfEachType", false, false),
-  RECORD_WITH_ALL_CONSTRAINTS("RecordWithAllConstraints", false, false),
-  RECORD_WITH_INNER_ENUMS("RecordWithInnerEnums", false, false);
+      "ExampleRecordWithNullableFieldsOfEachType", false),
+  RECORD_WITH_ALL_CONSTRAINTS("RecordWithAllConstraints", false),
+  RECORD_WITH_INNER_ENUMS("RecordWithInnerEnums", false);
 
   private final String simpleClassName;
   private final boolean isDeprecated;
-  private final boolean isEnum;
 
-  GeneratedClassLegacy(
-      final String simpleClassName, final boolean isDeprecated, final boolean isEnum) {
+  GeneratedClassLegacy(final String simpleClassName, final boolean isDeprecated) {
     this.simpleClassName = simpleClassName;
     this.isDeprecated = isDeprecated;
-    this.isEnum = isEnum;
   }
 
   /**
@@ -66,6 +63,6 @@ public enum GeneratedClassLegacy implements GeneratedClass {
    */
   @Override
   public boolean isEnum() {
-    return isEnum;
+    return false;
   }
 }
