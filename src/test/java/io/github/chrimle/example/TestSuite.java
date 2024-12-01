@@ -26,7 +26,6 @@ import io.github.chrimle.example.utils.GeneratedRecordTestUtils;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Set;
-import java.util.UUID;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
@@ -59,9 +58,6 @@ public class TestSuite {
   private static GeneratedSource getGeneratedSourceForGeneratedClass(
       final GeneratedRecord generatedRecord, final PluginExecution pluginExecution) {
     return switch (generatedRecord) {
-      case DEPRECATED_EXAMPLE_RECORD, EXAMPLE_RECORD ->
-          new GeneratedSource(
-              pluginExecution, generatedRecord, GeneratedField.of("field1", Boolean.class).build());
       case RECORD_WITH_INNER_ENUMS ->
           new GeneratedSource(
               pluginExecution,
@@ -74,21 +70,6 @@ public class TestSuite {
                       "exampleInnerTwo",
                       getGeneratedClass(GeneratedEnum.EXAMPLE_INNER_TWO_ENUM, pluginExecution))
                   .build());
-      case EXAMPLE_RECORD_WITH_DEFAULT_FIELDS ->
-          new GeneratedSource(
-              pluginExecution,
-              generatedRecord,
-              GeneratedField.of("field1", String.class).defaultValue("someDefaultValue").build());
-      case EXAMPLE_RECORD_WITH_NULLABLE_FIELDS_OF_EACH_TYPE ->
-          new GeneratedSource(
-              pluginExecution,
-              generatedRecord,
-              GeneratedField.of("field1", Boolean.class).isNullable(true).build(),
-              GeneratedField.of("field2", String.class).isNullable(true).build(),
-              GeneratedField.of("field3", Integer.class).isNullable(true).build(),
-              GeneratedField.of("field4", BigDecimal.class).isNullable(true).build(),
-              GeneratedField.of("field5", List.class).isNullable(true).build(),
-              GeneratedField.of("field6", Set.class).isNullable(true).build());
       case EXAMPLE_RECORD_WITH_REQUIRED_FIELDS_OF_EACH_TYPE ->
           new GeneratedSource(
               pluginExecution,
@@ -108,52 +89,9 @@ public class TestSuite {
                       "field8", getGeneratedClass(GeneratedEnum.EXAMPLE_ENUM, pluginExecution))
                   .isBeanValidationNullable(false)
                   .build());
-      case RECORD_WITH_ALL_CONSTRAINTS ->
+      default ->
           new GeneratedSource(
-              pluginExecution,
-              generatedRecord,
-              GeneratedField.of("stringStandard", String.class).build(),
-              GeneratedField.of("stringDefault", String.class)
-                  .defaultValue("someDefaultValue")
-                  .build(),
-              GeneratedField.of("stringNullable", String.class).isNullable(true).build(),
-              GeneratedField.of("stringRequired", String.class)
-                  .isBeanValidationNullable(false)
-                  .build(),
-              GeneratedField.of("stringRequiredNullable", String.class).isNullable(true).build(),
-              GeneratedField.of("stringRequiredPattern", String.class)
-                  .isBeanValidationNullable(false)
-                  .pattern("^\\d{3}-\\d{2}-\\d{4}$")
-                  .build(),
-              GeneratedField.of("stringEmailFormat", String.class).isEmail(true).build(),
-              GeneratedField.of("stringUuidFormat", UUID.class).build(),
-              GeneratedField.of("stringMinLength", String.class).minLength(3).build(),
-              GeneratedField.of("stringMaxLength", String.class).maxLength(7).build(),
-              GeneratedField.of("stringMinAndMaxLength", String.class)
-                  .minLength(3)
-                  .maxLength(7)
-                  .build(),
-              GeneratedField.of("arrayMinItems", List.class).minItems(1).build(),
-              GeneratedField.of("arrayMaxItems", List.class).maxItems(10).build(),
-              GeneratedField.of("arrayMinAndMaxItems", List.class).minItems(1).maxItems(10).build(),
-              GeneratedField.of("intMinimum", Integer.class).minimum(18).build(),
-              GeneratedField.of("intMaximum", Integer.class).maximum(100).build(),
-              GeneratedField.of("intMinimumAndMaximum", Integer.class)
-                  .minimum(0)
-                  .maximum(100)
-                  .build(),
-              GeneratedField.of("longMinimum", Long.class).minimum(18).build(),
-              GeneratedField.of("longMaximum", Long.class).maximum(100).build(),
-              GeneratedField.of("longMinimumAndMaximum", Long.class)
-                  .minimum(0)
-                  .maximum(100)
-                  .build(),
-              GeneratedField.of("bigDecimalMinimum", BigDecimal.class).decimalMin("0").build(),
-              GeneratedField.of("bigDecimalMaximum", BigDecimal.class).decimalMax("100").build(),
-              GeneratedField.of("bigDecimalMinimumAndMaximum", BigDecimal.class)
-                  .decimalMin("0")
-                  .decimalMax("100")
-                  .build());
+              pluginExecution, generatedRecord, generatedRecord.getGeneratedFields());
     };
   }
 
