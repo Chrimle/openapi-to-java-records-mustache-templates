@@ -17,7 +17,7 @@
 package io.github.chrimle.example;
 
 /** Enum class listing all expected {@code record} classes to be generated from the OpenAPI spec. */
-public enum GeneratedClassLegacy implements GeneratedClass {
+public enum GeneratedRecord implements GeneratedClass {
   DEPRECATED_EXAMPLE_RECORD("DeprecatedExampleRecord", true),
   EXAMPLE_RECORD("ExampleRecord", false),
   EXAMPLE_RECORD_WITH_DEFAULT_FIELDS("ExampleRecordWithDefaultFields", false),
@@ -31,7 +31,7 @@ public enum GeneratedClassLegacy implements GeneratedClass {
   private final String simpleClassName;
   private final boolean isDeprecated;
 
-  GeneratedClassLegacy(final String simpleClassName, final boolean isDeprecated) {
+  GeneratedRecord(final String simpleClassName, final boolean isDeprecated) {
     this.simpleClassName = simpleClassName;
     this.isDeprecated = isDeprecated;
   }

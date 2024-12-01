@@ -34,9 +34,9 @@ public class TestSuite {
   @DisplayName("Testing Plugin Executions...")
   public void testAll(final PluginExecution pluginExecution) {
     // Asserting all generated record classes
-    for (final GeneratedClassLegacy generatedClassLegacy : GeneratedClassLegacy.values()) {
+    for (final GeneratedRecord generatedRecord : GeneratedRecord.values()) {
       final GeneratedSource generatedSource =
-          getGeneratedSourceForGeneratedClass(generatedClassLegacy, pluginExecution);
+          getGeneratedSourceForGeneratedClass(generatedRecord, pluginExecution);
       GeneratedRecordTestUtils.assertRecord(generatedSource);
     }
     // Asserting all generated enum classes
@@ -77,17 +77,15 @@ public class TestSuite {
   }
 
   private static GeneratedSource getGeneratedSourceForGeneratedClass(
-      final GeneratedClassLegacy generatedClassLegacy, final PluginExecution pluginExecution) {
-    return switch (generatedClassLegacy) {
+      final GeneratedRecord generatedRecord, final PluginExecution pluginExecution) {
+    return switch (generatedRecord) {
       case DEPRECATED_EXAMPLE_RECORD, EXAMPLE_RECORD ->
           new GeneratedSource(
-              pluginExecution,
-              generatedClassLegacy,
-              GeneratedField.of("field1", Boolean.class).build());
+              pluginExecution, generatedRecord, GeneratedField.of("field1", Boolean.class).build());
       case RECORD_WITH_INNER_ENUMS ->
           new GeneratedSource(
               pluginExecution,
-              generatedClassLegacy,
+              generatedRecord,
               GeneratedField.of(
                       "exampleInner",
                       getGeneratedClass(GeneratedEnum.EXAMPLE_INNER_ENUM, pluginExecution))
@@ -99,12 +97,12 @@ public class TestSuite {
       case EXAMPLE_RECORD_WITH_DEFAULT_FIELDS ->
           new GeneratedSource(
               pluginExecution,
-              generatedClassLegacy,
+              generatedRecord,
               GeneratedField.of("field1", String.class).defaultValue("someDefaultValue").build());
       case EXAMPLE_RECORD_WITH_NULLABLE_FIELDS_OF_EACH_TYPE ->
           new GeneratedSource(
               pluginExecution,
-              generatedClassLegacy,
+              generatedRecord,
               GeneratedField.of("field1", Boolean.class).isNullable(true).build(),
               GeneratedField.of("field2", String.class).isNullable(true).build(),
               GeneratedField.of("field3", Integer.class).isNullable(true).build(),
@@ -114,7 +112,7 @@ public class TestSuite {
       case EXAMPLE_RECORD_WITH_REQUIRED_FIELDS_OF_EACH_TYPE ->
           new GeneratedSource(
               pluginExecution,
-              generatedClassLegacy,
+              generatedRecord,
               GeneratedField.of("field1", Boolean.class).isBeanValidationNullable(false).build(),
               GeneratedField.of("field2", String.class).isBeanValidationNullable(false).build(),
               GeneratedField.of("field3", Integer.class).isBeanValidationNullable(false).build(),
@@ -122,8 +120,7 @@ public class TestSuite {
               GeneratedField.of("field5", List.class).isBeanValidationNullable(false).build(),
               GeneratedField.of("field6", Set.class).isBeanValidationNullable(false).build(),
               GeneratedField.of(
-                      "field7",
-                      getGeneratedClass(GeneratedClassLegacy.EXAMPLE_RECORD, pluginExecution))
+                      "field7", getGeneratedClass(GeneratedRecord.EXAMPLE_RECORD, pluginExecution))
                   .isBeanValidationNullable(false)
                   .isCustomClass(true)
                   .build(),
@@ -134,7 +131,7 @@ public class TestSuite {
       case RECORD_WITH_ALL_CONSTRAINTS ->
           new GeneratedSource(
               pluginExecution,
-              generatedClassLegacy,
+              generatedRecord,
               GeneratedField.of("stringStandard", String.class).build(),
               GeneratedField.of("stringDefault", String.class)
                   .defaultValue("someDefaultValue")
