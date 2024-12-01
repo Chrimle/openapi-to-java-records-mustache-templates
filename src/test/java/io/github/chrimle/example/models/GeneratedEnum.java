@@ -18,18 +18,50 @@ package io.github.chrimle.example.models;
 
 /** Enum class listing all expected {@code enum} classes to be generated from the OpenAPI spec. */
 public enum GeneratedEnum implements GeneratedClass {
-  DEPRECATED_EXAMPLE_ENUM("DeprecatedExampleEnum", true),
-  EXAMPLE_ENUM("ExampleEnum", false),
-  EXAMPLE_ENUM_WITH_INTEGER_VALUES("ExampleEnumWithIntegerValues", false),
-  EXAMPLE_INNER_ENUM("RecordWithInnerEnums$ExampleInnerEnum", false),
-  EXAMPLE_INNER_TWO_ENUM("RecordWithInnerEnums$ExampleInnerTwoEnum", false);
+  DEPRECATED_EXAMPLE_ENUM(
+      "DeprecatedExampleEnum",
+      true,
+      GeneratedField.of("ENUM1", String.class, "ENUM1").build(),
+      GeneratedField.of("ENUM2", String.class, "ENUM2").build(),
+      GeneratedField.of("ENUM3", String.class, "ENUM3").build()),
+  EXAMPLE_ENUM(
+      "ExampleEnum",
+      false,
+      GeneratedField.of("ENUM1", String.class, "ENUM1").build(),
+      GeneratedField.of("ENUM2", String.class, "ENUM2").build(),
+      GeneratedField.of("ENUM3", String.class, "ENUM3").build()),
+  EXAMPLE_ENUM_WITH_INTEGER_VALUES(
+      "ExampleEnumWithIntegerValues",
+      false,
+      GeneratedField.of("NUMBER_100", Integer.class, 100).build(),
+      GeneratedField.of("NUMBER_200", Integer.class, 200).build(),
+      GeneratedField.of("NUMBER_300", Integer.class, 300).build(),
+      GeneratedField.of("NUMBER_400", Integer.class, 400).build(),
+      GeneratedField.of("NUMBER_500", Integer.class, 500).build()),
+  EXAMPLE_INNER_ENUM(
+      "RecordWithInnerEnums$ExampleInnerEnum",
+      false,
+      GeneratedField.of("ENUM1", String.class, "ENUM1").build(),
+      GeneratedField.of("ENUM2", String.class, "ENUM2").build(),
+      GeneratedField.of("ENUM3", String.class, "ENUM3").build()),
+  EXAMPLE_INNER_TWO_ENUM(
+      "RecordWithInnerEnums$ExampleInnerTwoEnum",
+      false,
+      GeneratedField.of("NUMBER_404", Integer.class, 404).build(),
+      GeneratedField.of("NUMBER_501", Integer.class, 501).build(),
+      GeneratedField.of("NUMBER_503", Integer.class, 503).build());
 
   private final String simpleClassName;
   private final boolean isDeprecated;
+  private final GeneratedField<?>[] generatedFields;
 
-  GeneratedEnum(final String simpleClassName, final boolean isDeprecated) {
+  GeneratedEnum(
+      final String simpleClassName,
+      final boolean isDeprecated,
+      final GeneratedField<?>... generatedFields) {
     this.simpleClassName = simpleClassName;
     this.isDeprecated = isDeprecated;
+    this.generatedFields = generatedFields;
   }
 
   /**
@@ -60,5 +92,9 @@ public enum GeneratedEnum implements GeneratedClass {
   @Override
   public boolean isEnum() {
     return true;
+  }
+
+  public GeneratedField<?>[] getGeneratedFields() {
+    return generatedFields;
   }
 }
