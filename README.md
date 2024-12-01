@@ -25,7 +25,7 @@ The mustache templates can be acquired through multiple ways.
 <dependency>
     <groupId>io.github.chrimle</groupId>
     <artifactId>openapi-to-java-records-mustache-templates</artifactId>
-    <version>2.2.0</version>
+    <version>2.2.1</version>
 </dependency>
 ```
 
