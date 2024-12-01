@@ -21,10 +21,10 @@ public enum GeneratedClassLegacy implements GeneratedClass {
   DEPRECATED_EXAMPLE_RECORD("DeprecatedExampleRecord", true),
   EXAMPLE_RECORD("ExampleRecord", false),
   EXAMPLE_RECORD_WITH_DEFAULT_FIELDS("ExampleRecordWithDefaultFields", false),
-  EXAMPLE_RECORD_WITH_REQUIRED_FIELDS_OF_EACH_TYPE(
-      "ExampleRecordWithRequiredFieldsOfEachType", false),
   EXAMPLE_RECORD_WITH_NULLABLE_FIELDS_OF_EACH_TYPE(
       "ExampleRecordWithNullableFieldsOfEachType", false),
+  EXAMPLE_RECORD_WITH_REQUIRED_FIELDS_OF_EACH_TYPE(
+      "ExampleRecordWithRequiredFieldsOfEachType", false),
   RECORD_WITH_ALL_CONSTRAINTS("RecordWithAllConstraints", false),
   RECORD_WITH_INNER_ENUMS("RecordWithInnerEnums", false);
 
