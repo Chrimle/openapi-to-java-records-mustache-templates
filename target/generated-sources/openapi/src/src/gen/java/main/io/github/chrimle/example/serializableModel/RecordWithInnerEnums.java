@@ -12,7 +12,7 @@
  * openapi-to-java-records-mustache-templates. For further information,
  * questions, requesting features or reporting issues, please visit:
  * https://github.com/Chrimle/openapi-to-java-records-mustache-templates.
- * Generated with Version: 2.2.0
+ * Generated with Version: 2.2.1
  *
  */
 
@@ -32,7 +32,7 @@ import java.io.Serializable;
  * Example of a Record with inner enum classes
  *
  * @param exampleInner Example of an inner enum class
- * @param exampleInnerTwo Example of another inner enum class
+ * @param exampleInnerTwo Example of another inner enum class with integer values
  */
 public record RecordWithInnerEnums(
     @javax.annotation.Nonnull ExampleInnerEnum exampleInner,
@@ -81,8 +81,11 @@ public record RecordWithInnerEnums(
     }
 
     /**
-     * Case-sensitively parses the given string to an enum constant whose {@link #getValue()}
-     * matches the provided value.
+     * Case-sensitively matches the given {@code value} to an enum constant using {@link
+     * #getValue()}.
+     *
+     * <p><b>NOTE:</b> if multiple enum constants have a matching value, the first enum constant is
+     * returned, by the order they are declared.
      *
      * @param value of the Enum
      * @return a {@link ExampleInnerEnum } with the matching value
@@ -99,16 +102,16 @@ public record RecordWithInnerEnums(
   }
 
   /**
-   * Example of another inner enum class
+   * Example of another inner enum class with integer values
    */
   public enum ExampleInnerTwoEnum {
-    ENUM1("ENUM1"),
-    ENUM2("ENUM2"),
-    ENUM3("ENUM3");
+    NUMBER_404(404),
+    NUMBER_501(501),
+    NUMBER_503(503);
 
-    private final String value;
+    private final Integer value;
 
-    ExampleInnerTwoEnum(final String value) {
+    ExampleInnerTwoEnum(final Integer value) {
       this.value = value;
     }
 
@@ -117,19 +120,22 @@ public record RecordWithInnerEnums(
      *
      * @return value of this enum
      */
-    public String getValue() {
+    public Integer getValue() {
       return value;
     }
 
     /**
-     * Case-sensitively parses the given string to an enum constant whose {@link #getValue()}
-     * matches the provided value.
+     * Matches the given {@code value} to an enum constant using {@link
+     * #getValue()}.
+     *
+     * <p><b>NOTE:</b> if multiple enum constants have a matching value, the first enum constant is
+     * returned, by the order they are declared.
      *
      * @param value of the Enum
      * @return a {@link ExampleInnerTwoEnum } with the matching value
      * @throws IllegalArgumentException if no enum has a value matching the given value
      */
-    public static ExampleInnerTwoEnum fromValue(final String value) {
+    public static ExampleInnerTwoEnum fromValue(final Integer value) {
       for (final ExampleInnerTwoEnum constant : ExampleInnerTwoEnum.values()) {
         if (constant.getValue().equals(value)) {
           return constant;

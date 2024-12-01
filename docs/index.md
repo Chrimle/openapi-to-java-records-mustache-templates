@@ -24,7 +24,7 @@ The mustache templates can be acquired through multiple ways.
 <dependency>
     <groupId>io.github.chrimle</groupId>
     <artifactId>openapi-to-java-records-mustache-templates</artifactId>
-    <version>2.2.0</version>
+    <version>2.2.1</version>
 </dependency>
 ```
 
@@ -259,8 +259,11 @@ public record Person(
     }
 
     /**
-     * Case-sensitively parses the given string to an enum constant whose {@link #getValue()}
-     * matches the provided value.
+     * Case-sensitively matches the given {@code value} to an enum constant using {@link
+     * #getValue()}.
+     *
+     * <p><b>NOTE:</b> if multiple enum constants have a matching value, the first enum constant is
+     * returned, by the order they are declared.
      *
      * @param value of the Enum
      * @return a {@link GenderEnum } with the matching value

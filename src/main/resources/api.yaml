@@ -137,6 +137,15 @@ components:
         - Some description of ENUM1
         - Some description of ENUM2
         - Some description of ENUM3
+    ExampleEnumWithIntegerValues:
+      type: integer
+      description: Example of an Enum with integer values
+      enum:
+        - 100
+        - 200
+        - 300
+        - 400
+        - 500
     DeprecatedExampleEnum:
       type: string
       deprecated: true
@@ -161,12 +170,12 @@ components:
             - Some description of ENUM2
             - Some description of ENUM3
         exampleInnerTwo:
-          type: string
-          description: Example of another inner enum class
+          type: integer
+          description: Example of another inner enum class with integer values
           enum:
-            - ENUM1
-            - ENUM2
-            - ENUM3
+            - 404
+            - 501
+            - 503
     RecordWithAllConstraints:
       type: object
       description: Example of a Record which has fields with constraints
