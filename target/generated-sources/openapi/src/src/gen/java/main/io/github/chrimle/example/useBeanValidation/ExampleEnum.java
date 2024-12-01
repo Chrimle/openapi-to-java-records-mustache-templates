@@ -56,7 +56,11 @@ public enum ExampleEnum {
   }
 
   /**
-   * Case-sensitively matches the given {@code value} to an enum constant, using {@link #getValue()}.
+   * Case-sensitively matches the given {@code value} to an enum constant using {@link
+   * #getValue()}.
+   *
+   * <p><b>NOTE:</b> if multiple enum constants have a matching value, the first enum constant is
+   * returned, by the order they are declared.
    *
    * @param value of the Enum
    * @return a {@link ExampleEnum } with the matching value
