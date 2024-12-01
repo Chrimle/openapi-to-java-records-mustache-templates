@@ -56,8 +56,7 @@ public enum ExampleEnum {
   }
 
   /**
-   * Case-sensitively parses the given string to an enum constant whose {@link #getValue()}
-   * matches the provided value.
+   * Case-sensitively matches the given {@code value} to an enum constant, using {@link #getValue()}.
    *
    * @param value of the Enum
    * @return a {@link ExampleEnum } with the matching value
