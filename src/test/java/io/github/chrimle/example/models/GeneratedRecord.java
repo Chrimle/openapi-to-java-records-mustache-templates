@@ -92,7 +92,7 @@ public enum GeneratedRecord implements GeneratedClass {
   GeneratedRecord(
       final String simpleClassName,
       final boolean isDeprecated,
-      GeneratedField<?>... generatedFields) {
+      final GeneratedField<?>... generatedFields) {
     this.simpleClassName = simpleClassName;
     this.isDeprecated = isDeprecated;
     this.generatedFields = generatedFields;
