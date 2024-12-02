@@ -41,7 +41,8 @@ public enum GeneratedRecord implements GeneratedClass {
       GeneratedField.of("field6", Set.class).isNullable(true).build()),
   /**
    * This class reference another class, which requires Reflection at runtime. Hence, this class
-   * does not list all expected fields to be generated. {@link io.github.chrimle.example.TestSuite}.
+   * does not list all expected fields to be generated. This is done in {@link
+   * io.github.chrimle.example.TestSuite}.
    */
   EXAMPLE_RECORD_WITH_REQUIRED_FIELDS_OF_EACH_TYPE(
       "ExampleRecordWithRequiredFieldsOfEachType", false),
@@ -79,7 +80,8 @@ public enum GeneratedRecord implements GeneratedClass {
           .build()),
   /**
    * This class reference another class, which requires Reflection at runtime. Hence, this class
-   * does not list all expected fields to be generated. {@link io.github.chrimle.example.TestSuite}.
+   * does not list all expected fields to be generated. This is done in {@link
+   * io.github.chrimle.example.TestSuite}.
    */
   RECORD_WITH_INNER_ENUMS("RecordWithInnerEnums", false);
 
@@ -126,6 +128,12 @@ public enum GeneratedRecord implements GeneratedClass {
     return false;
   }
 
+  /**
+   * {@inheritDoc}
+   *
+   * @return the collection of generatedFields.
+   */
+  @Override
   public GeneratedField<?>[] getGeneratedFields() {
     return generatedFields;
   }

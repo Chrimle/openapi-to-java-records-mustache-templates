@@ -51,6 +51,14 @@ public interface GeneratedClass {
   boolean isEnum();
 
   /**
+   * Returns the collection of {@link GeneratedField}s which are expected to be generated within the
+   * class.
+   *
+   * @return the collection of generatedFields.
+   */
+  GeneratedField<?>[] getGeneratedFields();
+
+  /**
    * Returns the canonical class name of this instance - including the package name.
    *
    * @param pluginExecution from which the package name is retrieved.

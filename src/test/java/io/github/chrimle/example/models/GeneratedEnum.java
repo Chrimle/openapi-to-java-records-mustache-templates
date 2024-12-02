@@ -94,6 +94,12 @@ public enum GeneratedEnum implements GeneratedClass {
     return true;
   }
 
+  /**
+   * {@inheritDoc}
+   *
+   * @return the collection of generatedFields.
+   */
+  @Override
   public GeneratedField<?>[] getGeneratedFields() {
     return generatedFields;
   }
