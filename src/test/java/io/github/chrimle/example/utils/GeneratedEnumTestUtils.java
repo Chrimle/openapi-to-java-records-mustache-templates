@@ -86,7 +86,7 @@ public class GeneratedEnumTestUtils {
             generatedSource.getClassUnderTest(), "fromValue", generatedSource.fieldClasses()[0]);
 
     // Assert 'IllegalArgumentException' is thrown for unknown Enum-values
-    InvocationTargetException invocationTargetException =
+    final InvocationTargetException invocationTargetException =
         Assertions.assertThrows(
             InvocationTargetException.class,
             () ->

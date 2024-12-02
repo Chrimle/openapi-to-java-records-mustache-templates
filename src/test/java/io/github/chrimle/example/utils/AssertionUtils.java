@@ -99,7 +99,7 @@ public class AssertionUtils {
         classUnderTest.getDeclaredFields().length,
         classUnderTest.getCanonicalName() + " does not have the expected number of fields!");
 
-    for (GeneratedField<?> generatedField : generatedSource.generatedFields()) {
+    for (final GeneratedField<?> generatedField : generatedSource.generatedFields()) {
       assertRecordHasField(classUnderTest, generatedField.name(), generatedField.type());
     }
   }
@@ -114,7 +114,7 @@ public class AssertionUtils {
         classUnderTest.getDeclaredFields().length,
         classUnderTest.getCanonicalName() + " does not have the expected number of fields!");
 
-    for (GeneratedField<?> generatedField : generatedSource.generatedFields()) {
+    for (final GeneratedField<?> generatedField : generatedSource.generatedFields()) {
       final Field field =
           assertRecordHasField(classUnderTest, generatedField.name(), generatedField.type());
 
@@ -219,7 +219,7 @@ public class AssertionUtils {
       final Class<?> classUnderTest,
       final AnnotatedElement annotatedElement,
       final Class<T> annotation) {
-    T actualAnnotation = annotatedElement.getAnnotation(annotation);
+    final T actualAnnotation = annotatedElement.getAnnotation(annotation);
     Assertions.assertNotNull(
         actualAnnotation,
         classUnderTest.getCanonicalName()
