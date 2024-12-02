@@ -65,7 +65,7 @@ public interface GeneratedClass {
    * @return the canonical class name.
    */
   default String getCanonicalClassName(final PluginExecution pluginExecution) {
-    return GeneratedClass.getCanonicalClassName(pluginExecution.packageName, this);
+    return GeneratedClass.getCanonicalClassName(pluginExecution.getPackageName(), this);
   }
 
   /**

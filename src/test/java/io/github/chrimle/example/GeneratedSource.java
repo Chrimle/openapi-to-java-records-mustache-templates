@@ -57,39 +57,35 @@ public class GeneratedSource {
   }
 
   public boolean generateBuilders() {
-    return pluginExecution.generateBuilders;
+    return pluginExecution.generateBuilders();
   }
 
   public boolean hasAdditionalEnumTypeAnnotations() {
-    return pluginExecution.hasAdditionalEnumTypeAnnotations;
+    return pluginExecution.hasAdditionalEnumTypeAnnotations();
   }
 
   public boolean hasAdditionalModelTypeAnnotations() {
-    return pluginExecution.hasAdditionalModelTypeAnnotations;
+    return pluginExecution.hasAdditionalModelTypeAnnotations();
   }
 
   public boolean serializableModel() {
-    return pluginExecution.serializableModel;
+    return pluginExecution.serializableModel();
   }
 
   public boolean useBeanValidation() {
-    return pluginExecution.useBeanValidation;
+    return pluginExecution.useBeanValidation();
   }
 
   public boolean useEnumCaseInsensitive() {
-    return pluginExecution.useEnumCaseInsensitive;
+    return pluginExecution.useEnumCaseInsensitive();
   }
 
   public boolean useJakartaEe() {
-    return pluginExecution.useJakartaEe;
+    return pluginExecution.useJakartaEe();
   }
 
   public boolean isDeprecated() {
     return generatedClass.isDeprecated();
-  }
-
-  public boolean isEnum() {
-    return generatedClass.isEnum();
   }
 
   public Class<?>[] fieldClasses() {
