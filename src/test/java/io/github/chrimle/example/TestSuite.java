@@ -52,7 +52,7 @@ public class TestSuite {
 
   private static GeneratedSource getGeneratedSourceForGeneratedClass(
       final GeneratedEnum generatedEnum, final PluginExecution pluginExecution) {
-    return new GeneratedSource(pluginExecution, generatedEnum, generatedEnum.getGeneratedFields());
+    return new GeneratedSource(pluginExecution, generatedEnum);
   }
 
   private static GeneratedSource getGeneratedSourceForGeneratedClass(
@@ -89,9 +89,7 @@ public class TestSuite {
                       "field8", getGeneratedClass(GeneratedEnum.EXAMPLE_ENUM, pluginExecution))
                   .isBeanValidationNullable(false)
                   .build());
-      default ->
-          new GeneratedSource(
-              pluginExecution, generatedRecord, generatedRecord.getGeneratedFields());
+      default -> new GeneratedSource(pluginExecution, generatedRecord);
     };
   }
 

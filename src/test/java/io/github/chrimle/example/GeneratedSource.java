@@ -56,6 +56,11 @@ public class GeneratedSource {
         AssertionUtils.assertClassExists(generatedClass.getCanonicalClassName(pluginExecution));
   }
 
+  public GeneratedSource(
+      final PluginExecution pluginExecution, final GeneratedClass generatedClass) {
+    this(pluginExecution, generatedClass, generatedClass.getGeneratedFields());
+  }
+
   public boolean generateBuilders() {
     return pluginExecution.generateBuilders();
   }
