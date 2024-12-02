@@ -16,6 +16,8 @@
 */
 package io.github.chrimle.example;
 
+import io.github.chrimle.example.models.GeneratedClass;
+import io.github.chrimle.example.models.GeneratedField;
 import io.github.chrimle.example.utils.AssertionUtils;
 import java.util.Arrays;
 
@@ -54,40 +56,41 @@ public class GeneratedSource {
         AssertionUtils.assertClassExists(generatedClass.getCanonicalClassName(pluginExecution));
   }
 
+  public GeneratedSource(
+      final PluginExecution pluginExecution, final GeneratedClass generatedClass) {
+    this(pluginExecution, generatedClass, generatedClass.getGeneratedFields());
+  }
+
   public boolean generateBuilders() {
-    return pluginExecution.generateBuilders;
+    return pluginExecution.generateBuilders();
   }
 
   public boolean hasAdditionalEnumTypeAnnotations() {
-    return pluginExecution.hasAdditionalEnumTypeAnnotations;
+    return pluginExecution.hasAdditionalEnumTypeAnnotations();
   }
 
   public boolean hasAdditionalModelTypeAnnotations() {
-    return pluginExecution.hasAdditionalModelTypeAnnotations;
+    return pluginExecution.hasAdditionalModelTypeAnnotations();
   }
 
   public boolean serializableModel() {
-    return pluginExecution.serializableModel;
+    return pluginExecution.serializableModel();
   }
 
   public boolean useBeanValidation() {
-    return pluginExecution.useBeanValidation;
+    return pluginExecution.useBeanValidation();
   }
 
   public boolean useEnumCaseInsensitive() {
-    return pluginExecution.useEnumCaseInsensitive;
+    return pluginExecution.useEnumCaseInsensitive();
   }
 
   public boolean useJakartaEe() {
-    return pluginExecution.useJakartaEe;
+    return pluginExecution.useJakartaEe();
   }
 
   public boolean isDeprecated() {
-    return generatedClass.isDeprecated;
-  }
-
-  public boolean isEnum() {
-    return generatedClass.isEnum;
+    return generatedClass.isDeprecated();
   }
 
   public Class<?>[] fieldClasses() {

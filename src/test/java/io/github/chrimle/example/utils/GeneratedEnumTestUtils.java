@@ -16,8 +16,8 @@
 */
 package io.github.chrimle.example.utils;
 
-import io.github.chrimle.example.GeneratedField;
 import io.github.chrimle.example.GeneratedSource;
+import io.github.chrimle.example.models.GeneratedField;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Arrays;
@@ -86,7 +86,7 @@ public class GeneratedEnumTestUtils {
             generatedSource.getClassUnderTest(), "fromValue", generatedSource.fieldClasses()[0]);
 
     // Assert 'IllegalArgumentException' is thrown for unknown Enum-values
-    InvocationTargetException invocationTargetException =
+    final InvocationTargetException invocationTargetException =
         Assertions.assertThrows(
             InvocationTargetException.class,
             () ->

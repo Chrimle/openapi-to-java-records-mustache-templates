@@ -16,11 +16,11 @@
 */
 package io.github.chrimle.example.utils;
 
-import io.github.chrimle.example.GeneratedField;
 import io.github.chrimle.example.GeneratedSource;
 import io.github.chrimle.example.annotations.TestAnnotationOne;
 import io.github.chrimle.example.annotations.TestAnnotationThree;
 import io.github.chrimle.example.annotations.TestAnnotationTwo;
+import io.github.chrimle.example.models.GeneratedField;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.DecimalMax;
 import jakarta.validation.constraints.DecimalMin;
@@ -99,7 +99,7 @@ public class AssertionUtils {
         classUnderTest.getDeclaredFields().length,
         classUnderTest.getCanonicalName() + " does not have the expected number of fields!");
 
-    for (GeneratedField<?> generatedField : generatedSource.generatedFields()) {
+    for (final GeneratedField<?> generatedField : generatedSource.generatedFields()) {
       assertRecordHasField(classUnderTest, generatedField.name(), generatedField.type());
     }
   }
@@ -114,7 +114,7 @@ public class AssertionUtils {
         classUnderTest.getDeclaredFields().length,
         classUnderTest.getCanonicalName() + " does not have the expected number of fields!");
 
-    for (GeneratedField<?> generatedField : generatedSource.generatedFields()) {
+    for (final GeneratedField<?> generatedField : generatedSource.generatedFields()) {
       final Field field =
           assertRecordHasField(classUnderTest, generatedField.name(), generatedField.type());
 
@@ -219,7 +219,7 @@ public class AssertionUtils {
       final Class<?> classUnderTest,
       final AnnotatedElement annotatedElement,
       final Class<T> annotation) {
-    T actualAnnotation = annotatedElement.getAnnotation(annotation);
+    final T actualAnnotation = annotatedElement.getAnnotation(annotation);
     Assertions.assertNotNull(
         actualAnnotation,
         classUnderTest.getCanonicalName()

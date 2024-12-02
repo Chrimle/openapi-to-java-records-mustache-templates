@@ -14,7 +14,7 @@
   limitations under the License.
 
 */
-package io.github.chrimle.example;
+package io.github.chrimle.example.models;
 
 import java.util.Optional;
 
