@@ -14,7 +14,7 @@
   limitations under the License.
 
 */
-package com.chrimle.example.annotations;
+package io.github.chrimle.example.annotations;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -23,4 +23,4 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-public @interface TestAnnotationTwo {}
+public @interface TestAnnotationThree {}

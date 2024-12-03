@@ -12,7 +12,7 @@
  * openapi-to-java-records-mustache-templates. For further information,
  * questions, requesting features or reporting issues, please visit:
  * https://github.com/Chrimle/openapi-to-java-records-mustache-templates.
- * Generated with Version: 2.1.0
+ * Generated with Version: 2.2.1
  *
  */
 
@@ -46,9 +46,9 @@ import java.util.Set;
  * @param field7 ExampleRecord
  * @param field8 ExampleEnum
  */
-@com.chrimle.example.annotations.TestAnnotationOne
-@com.chrimle.example.annotations.TestAnnotationTwo
-@com.chrimle.example.annotations.TestAnnotationThree
+@io.github.chrimle.example.annotations.TestAnnotationOne
+@io.github.chrimle.example.annotations.TestAnnotationTwo
+@io.github.chrimle.example.annotations.TestAnnotationThree
 public record ExampleRecordWithRequiredFieldsOfEachType(
     @javax.annotation.Nonnull Boolean field1,
     @javax.annotation.Nonnull String field2,

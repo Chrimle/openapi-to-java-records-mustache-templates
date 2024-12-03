@@ -12,7 +12,7 @@
  * openapi-to-java-records-mustache-templates. For further information,
  * questions, requesting features or reporting issues, please visit:
  * https://github.com/Chrimle/openapi-to-java-records-mustache-templates.
- * Generated with Version: 2.1.0
+ * Generated with Version: 2.2.1
  *
  */
 
@@ -29,6 +29,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.io.Serializable;
 
@@ -41,6 +42,8 @@ import java.io.Serializable;
  * @param stringRequired String
  * @param stringRequiredNullable String
  * @param stringRequiredPattern String
+ * @param stringEmailFormat String
+ * @param stringUuidFormat UUID
  * @param stringMinLength String
  * @param stringMaxLength String
  * @param stringMinAndMaxLength String
@@ -64,6 +67,8 @@ public record RecordWithAllConstraints(
     @javax.annotation.Nonnull String stringRequired,
     @javax.annotation.Nullable String stringRequiredNullable,
     @javax.annotation.Nonnull String stringRequiredPattern,
+    @javax.annotation.Nonnull String stringEmailFormat,
+    @javax.annotation.Nonnull UUID stringUuidFormat,
     @javax.annotation.Nonnull String stringMinLength,
     @javax.annotation.Nonnull String stringMaxLength,
     @javax.annotation.Nonnull String stringMinAndMaxLength,
@@ -90,6 +95,8 @@ public record RecordWithAllConstraints(
       @javax.annotation.Nonnull final String stringRequired,
       @javax.annotation.Nullable final String stringRequiredNullable,
       @javax.annotation.Nonnull final String stringRequiredPattern,
+      @javax.annotation.Nonnull final String stringEmailFormat,
+      @javax.annotation.Nonnull final UUID stringUuidFormat,
       @javax.annotation.Nonnull final String stringMinLength,
       @javax.annotation.Nonnull final String stringMaxLength,
       @javax.annotation.Nonnull final String stringMinAndMaxLength,
@@ -111,6 +118,8 @@ public record RecordWithAllConstraints(
     this.stringRequired = stringRequired;
     this.stringRequiredNullable = stringRequiredNullable;
     this.stringRequiredPattern = stringRequiredPattern;
+    this.stringEmailFormat = stringEmailFormat;
+    this.stringUuidFormat = stringUuidFormat;
     this.stringMinLength = stringMinLength;
     this.stringMaxLength = stringMaxLength;
     this.stringMinAndMaxLength = stringMinAndMaxLength;

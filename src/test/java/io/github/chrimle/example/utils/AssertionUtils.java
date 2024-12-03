@@ -14,12 +14,19 @@
   limitations under the License.
 
 */
-package com.chrimle.example.utils;
+package io.github.chrimle.example.utils;
 
-import com.chrimle.example.GeneratedField;
-import com.chrimle.example.GeneratedSource;
+import io.github.chrimle.example.GeneratedSource;
+import io.github.chrimle.example.annotations.TestAnnotationOne;
+import io.github.chrimle.example.annotations.TestAnnotationThree;
+import io.github.chrimle.example.annotations.TestAnnotationTwo;
+import io.github.chrimle.example.annotations.TestExtraAnnotation;
+import io.github.chrimle.example.annotations.TestExtraAnnotationTwo;
+import io.github.chrimle.example.models.GeneratedField;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.DecimalMax;
 import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
@@ -47,29 +54,17 @@ public class AssertionUtils {
   public static void assertClassIsAnnotatedWithAdditionalTypeAnnotations(
       final Class<?> classUnderTest, final boolean hasAdditionalTypeAnnotations) {
     assertClassIsAnnotatedWith(
-        classUnderTest,
-        com.chrimle.example.annotations.TestAnnotationOne.class,
-        hasAdditionalTypeAnnotations);
+        classUnderTest, TestAnnotationOne.class, hasAdditionalTypeAnnotations);
     assertClassIsAnnotatedWith(
-        classUnderTest,
-        com.chrimle.example.annotations.TestAnnotationTwo.class,
-        hasAdditionalTypeAnnotations);
+        classUnderTest, TestAnnotationTwo.class, hasAdditionalTypeAnnotations);
     assertClassIsAnnotatedWith(
-        classUnderTest,
-        com.chrimle.example.annotations.TestAnnotationThree.class,
-        hasAdditionalTypeAnnotations);
+        classUnderTest, TestAnnotationThree.class, hasAdditionalTypeAnnotations);
   }
 
   public static void assertClassIsAnnotatedWithExtraAnnotation(
       final Class<?> classUnderTest, final boolean hasExtraAnnotation) {
-    assertClassIsAnnotatedWith(
-        classUnderTest,
-        com.chrimle.example.annotations.TestExtraAnnotation.class,
-        hasExtraAnnotation);
-    assertClassIsAnnotatedWith(
-        classUnderTest,
-        com.chrimle.example.annotations.TestExtraAnnotationTwo.class,
-        hasExtraAnnotation);
+    assertClassIsAnnotatedWith(classUnderTest, TestExtraAnnotation.class, hasExtraAnnotation);
+    assertClassIsAnnotatedWith(classUnderTest, TestExtraAnnotationTwo.class, hasExtraAnnotation);
   }
 
   public static void assertClassIsAnnotatedAsDeprecated(
@@ -112,7 +107,7 @@ public class AssertionUtils {
         classUnderTest.getDeclaredFields().length,
         classUnderTest.getCanonicalName() + " does not have the expected number of fields!");
 
-    for (GeneratedField<?> generatedField : generatedSource.generatedFields()) {
+    for (final GeneratedField<?> generatedField : generatedSource.generatedFields()) {
       assertRecordHasField(classUnderTest, generatedField.name(), generatedField.type());
     }
   }
@@ -127,7 +122,7 @@ public class AssertionUtils {
         classUnderTest.getDeclaredFields().length,
         classUnderTest.getCanonicalName() + " does not have the expected number of fields!");
 
-    for (GeneratedField<?> generatedField : generatedSource.generatedFields()) {
+    for (final GeneratedField<?> generatedField : generatedSource.generatedFields()) {
       final Field field =
           assertRecordHasField(classUnderTest, generatedField.name(), generatedField.type());
 
@@ -152,6 +147,12 @@ public class AssertionUtils {
       assertDoesNotHaveAnnotation(classUnderTest, field, unexpectedAnnotation);
 
       if (generatedSource.useBeanValidation()) {
+        final Class<Valid> validAnnotation = Valid.class;
+        if (generatedField.isCustomClass()) {
+          assertHasAnnotation(classUnderTest, field, validAnnotation);
+        } else {
+          assertDoesNotHaveAnnotation(classUnderTest, field, validAnnotation);
+        }
         final Class<NotNull> notNullAnnotation = NotNull.class;
         if (generatedField.isBeanValidationNullable()) {
           assertDoesNotHaveAnnotation(classUnderTest, field, notNullAnnotation);
@@ -212,6 +213,12 @@ public class AssertionUtils {
         } else {
           assertDoesNotHaveAnnotation(classUnderTest, field, decimalMaxAnnotation);
         }
+        final Class<Email> emailAnnotation = Email.class;
+        if (generatedField.isEmail()) {
+          assertHasAnnotation(classUnderTest, field, emailAnnotation);
+        } else {
+          assertDoesNotHaveAnnotation(classUnderTest, field, emailAnnotation);
+        }
       }
     }
   }
@@ -220,7 +227,7 @@ public class AssertionUtils {
       final Class<?> classUnderTest,
       final AnnotatedElement annotatedElement,
       final Class<T> annotation) {
-    T actualAnnotation = annotatedElement.getAnnotation(annotation);
+    final T actualAnnotation = annotatedElement.getAnnotation(annotation);
     Assertions.assertNotNull(
         actualAnnotation,
         classUnderTest.getCanonicalName()

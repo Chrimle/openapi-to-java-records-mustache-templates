@@ -12,7 +12,7 @@
  * openapi-to-java-records-mustache-templates. For further information,
  * questions, requesting features or reporting issues, please visit:
  * https://github.com/Chrimle/openapi-to-java-records-mustache-templates.
- * Generated with Version: 2.1.0
+ * Generated with Version: 2.2.1
  *
  */
 
@@ -29,6 +29,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
@@ -40,6 +41,8 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * @param stringRequired String
  * @param stringRequiredNullable String
  * @param stringRequiredPattern String
+ * @param stringEmailFormat String
+ * @param stringUuidFormat UUID
  * @param stringMinLength String
  * @param stringMaxLength String
  * @param stringMinAndMaxLength String
@@ -63,6 +66,8 @@ public record RecordWithAllConstraints(
     @jakarta.annotation.Nonnull String stringRequired,
     @jakarta.annotation.Nullable String stringRequiredNullable,
     @jakarta.annotation.Nonnull String stringRequiredPattern,
+    @jakarta.annotation.Nonnull String stringEmailFormat,
+    @jakarta.annotation.Nonnull UUID stringUuidFormat,
     @jakarta.annotation.Nonnull String stringMinLength,
     @jakarta.annotation.Nonnull String stringMaxLength,
     @jakarta.annotation.Nonnull String stringMinAndMaxLength,
@@ -86,6 +91,8 @@ public record RecordWithAllConstraints(
       @jakarta.annotation.Nonnull final String stringRequired,
       @jakarta.annotation.Nullable final String stringRequiredNullable,
       @jakarta.annotation.Nonnull final String stringRequiredPattern,
+      @jakarta.annotation.Nonnull final String stringEmailFormat,
+      @jakarta.annotation.Nonnull final UUID stringUuidFormat,
       @jakarta.annotation.Nonnull final String stringMinLength,
       @jakarta.annotation.Nonnull final String stringMaxLength,
       @jakarta.annotation.Nonnull final String stringMinAndMaxLength,
@@ -107,6 +114,8 @@ public record RecordWithAllConstraints(
     this.stringRequired = stringRequired;
     this.stringRequiredNullable = stringRequiredNullable;
     this.stringRequiredPattern = stringRequiredPattern;
+    this.stringEmailFormat = stringEmailFormat;
+    this.stringUuidFormat = stringUuidFormat;
     this.stringMinLength = stringMinLength;
     this.stringMaxLength = stringMaxLength;
     this.stringMinAndMaxLength = stringMinAndMaxLength;

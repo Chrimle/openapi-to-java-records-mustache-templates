@@ -14,11 +14,30 @@
   limitations under the License.
 
 */
-package com.chrimle.example;
+package io.github.chrimle.example;
 
-import com.chrimle.example.utils.AssertionUtils;
+import io.github.chrimle.example.models.GeneratedClass;
+import io.github.chrimle.example.models.GeneratedField;
+import io.github.chrimle.example.utils.AssertionUtils;
 import java.util.Arrays;
 
+/**
+ * Represents a generated <i>source</i>, which contains:
+ *
+ * <ul>
+ *   <li>{@code Class<?>} <b>classUnderTest</b> which is used to assert properties using Java
+ *       Reflection API
+ *   <li>{@code GeneratedField<?>[]} <b>generatedFields</b> which is the complete set of fields
+ *       expected to have been generated for the <i>source</i>
+ *   <li>{@code PluginExecution} <b>pluginExecution</b> which represent configuration options set
+ *       for this {@code <pluginExecution>}
+ *   <li>{@code GeneratedClass} <b>generatedClass</b> which represents the <i>class/source</i> with
+ *       additional properties
+ * </ul>
+ *
+ * <p>Essentially, this class contains all details in order to be able to assert generated classes,
+ * with consideration for {@code <configuration>} properties
+ */
 public class GeneratedSource {
 
   private final Class<?> classUnderTest;
@@ -37,44 +56,45 @@ public class GeneratedSource {
         AssertionUtils.assertClassExists(generatedClass.getCanonicalClassName(pluginExecution));
   }
 
+  public GeneratedSource(
+      final PluginExecution pluginExecution, final GeneratedClass generatedClass) {
+    this(pluginExecution, generatedClass, generatedClass.getGeneratedFields());
+  }
+
   public boolean generateBuilders() {
-    return pluginExecution.generateBuilders;
+    return pluginExecution.generateBuilders();
   }
 
   public boolean hasAdditionalEnumTypeAnnotations() {
-    return pluginExecution.hasAdditionalEnumTypeAnnotations;
+    return pluginExecution.hasAdditionalEnumTypeAnnotations();
   }
 
   public boolean hasAdditionalModelTypeAnnotations() {
-    return pluginExecution.hasAdditionalModelTypeAnnotations;
+    return pluginExecution.hasAdditionalModelTypeAnnotations();
   }
 
   public boolean serializableModel() {
-    return pluginExecution.serializableModel;
+    return pluginExecution.serializableModel();
   }
 
   public boolean useBeanValidation() {
-    return pluginExecution.useBeanValidation;
+    return pluginExecution.useBeanValidation();
   }
 
   public boolean useEnumCaseInsensitive() {
-    return pluginExecution.useEnumCaseInsensitive;
+    return pluginExecution.useEnumCaseInsensitive();
   }
 
   public boolean useJakartaEe() {
-    return pluginExecution.useJakartaEe;
+    return pluginExecution.useJakartaEe();
   }
 
   public boolean isDeprecated() {
-    return generatedClass.isDeprecated;
+    return generatedClass.isDeprecated();
   }
 
-  public boolean isEnum() {
-    return generatedClass.isEnum;
-  }
-
-  public boolean hasExtraAnnotation() {
-    return generatedClass.hasExtraAnnotation;
+  public boolean hasExtraAnnotations() {
+    return generatedClass.hasExtraAnnotations();
   }
 
   public Class<?>[] fieldClasses() {

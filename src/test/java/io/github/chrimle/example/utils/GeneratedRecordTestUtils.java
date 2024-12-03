@@ -14,10 +14,10 @@
   limitations under the License.
 
 */
-package com.chrimle.example.utils;
+package io.github.chrimle.example.utils;
 
-import com.chrimle.example.GeneratedField;
-import com.chrimle.example.GeneratedSource;
+import io.github.chrimle.example.GeneratedSource;
+import io.github.chrimle.example.models.GeneratedField;
 import java.lang.reflect.Constructor;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -41,7 +41,7 @@ public class GeneratedRecordTestUtils {
     AssertionUtils.assertClassIsAnnotatedWithAdditionalTypeAnnotations(
         classUnderTest, generatedSource.hasAdditionalModelTypeAnnotations());
     AssertionUtils.assertClassIsAnnotatedWithExtraAnnotation(
-        classUnderTest, generatedSource.hasExtraAnnotation());
+        classUnderTest, generatedSource.hasExtraAnnotations());
     AssertionUtils.assertModelIsSerializable(generatedSource);
     AssertionUtils.assertRecordHasFieldsOfTypeWithNullableAnnotations(generatedSource);
     AssertionUtils.assertClassImplementsSerializable(generatedSource);

@@ -12,7 +12,7 @@
  * openapi-to-java-records-mustache-templates. For further information,
  * questions, requesting features or reporting issues, please visit:
  * https://github.com/Chrimle/openapi-to-java-records-mustache-templates.
- * Generated with Version: 2.1.0
+ * Generated with Version: 2.2.1
  *
  */
 
@@ -34,8 +34,8 @@ import jakarta.validation.Valid;
  *
  * @param field1 a boolean field
  */
-@com.chrimle.example.annotations.TestExtraAnnotation
-@com.chrimle.example.annotations.TestExtraAnnotationTwo
+@io.github.chrimle.example.annotations.TestExtraAnnotation
+@io.github.chrimle.example.annotations.TestExtraAnnotationTwo
 public record ExampleRecordWithExtraAnnotation(
     @javax.annotation.Nonnull Boolean field1) {
 

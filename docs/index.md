@@ -24,7 +24,7 @@ The mustache templates can be acquired through multiple ways.
 <dependency>
     <groupId>io.github.chrimle</groupId>
     <artifactId>openapi-to-java-records-mustache-templates</artifactId>
-    <version>2.1.0</version>
+    <version>2.2.1</version>
 </dependency>
 ```
 
@@ -55,10 +55,9 @@ Place the file(s) in desired directory. Then, in the Maven build configuration, 
 ## Additional Configurations
 The generated classes are customizable by using `<configuration>`-properties.
 
-In this example, each generated class will be named with the suffix "DTO", and fields of generated records will be annotated with [Jakarta Bean Validation annotations](https://jakarta.ee/specifications/bean-validation/3.0/jakarta-bean-validation-spec-3.0.html#builtinconstraints).
+In this example, each generated class field will be annotated with [Jakarta Bean Validation annotations](https://jakarta.ee/specifications/bean-validation/3.0/jakarta-bean-validation-spec-3.0.html#builtinconstraints).
 ```xml
   <configuration>
-    <modelNameSuffix>DTO</modelNameSuffix>
     <!-- ... more configurations ... -->
     <configOptions>
       <useBeanValidation>true</useBeanValidation>
@@ -74,24 +73,44 @@ In this example, each generated class will be named with the suffix "DTO", and f
 ```yaml
 components:
   schemas:
+    Name:
+      description: Name Information
+      type: object
+      required:
+        - firstName
+        - lastName
+      properties:
+        firstName:
+          description: First Name
+          type: string
+          minLength: 2
+        lastName:
+          description: Last Name
+          type: string
+          minLength: 2
+        middleName:
+          description: Middle Name
+          type: string
+          nullable: true
     Person:
       description: Personal information
       deprecated: true
       type: object
       required:
-        - fullName
+        - name
         - age
         - gender
         - height
         - ssn
         - aliases
+        - email
         - trackingCode
+        - uuid
       properties:
-        fullName:
-          description: Full name
-          type: string
-          minLength: 2
-          maxLength: 50
+        name:
+          description: Name
+          type: object
+          $ref: '#/components/schemas/Name'
         age:
           description: Age (years)
           type: integer
@@ -108,6 +127,10 @@ components:
           type: number
           pattern: float
           minimum: 0
+        legalGuardian:
+          description: Legal Guardian
+          type: object
+          $ref: '#/components/schemas/Person'
         ssn:
           description: Social Security Number
           type: string
@@ -124,10 +147,20 @@ components:
           description: Telephone Number
           type: string
           nullable: true
+        email:
+          description: Email Address
+          type: string
+          format: email
         trackingCode:
           description: Tracking code for Web analytics
           type: string
+          minLength: 5
+          maxLength: 50
           default: "utm_source=default"
+        uuid:
+          description: An Universally Unique Identifier
+          type: string
+          format: uuid
 ```
 
 > See [Supported OpenAPI Specification properties](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/wiki/Supported-OpenAPI-Specification-properties)
@@ -152,43 +185,55 @@ import ...;
  * Personal information
  *
  * @deprecated
- * @param fullName Full name
+ * @param name Name
  * @param age Age (years)
  * @param gender Gender
  * @param height Height (m)
+ * @param legalGuardian Person
  * @param ssn Social Security Number
  * @param aliases Known Aliases
  * @param telephoneNumber Telephone Number
+ * @param email Email Address
  * @param trackingCode Tracking code for Web analytics
+ * @param uuid An Universally Unique Identifier
  */
 @Deprecated
-public record PersonDTO(
-    @javax.annotation.Nonnull @NotNull @Size(min = 2, max = 50) String fullName,
+public record Person(
+    @javax.annotation.Nonnull @Valid @NotNull Name name,
     @javax.annotation.Nonnull @NotNull @Min(0) @Max(100) Integer age,
     @javax.annotation.Nonnull @NotNull GenderEnum gender,
     @javax.annotation.Nonnull @NotNull @DecimalMin("0") BigDecimal height,
+    @javax.annotation.Nonnull @Valid Person legalGuardian,
     @javax.annotation.Nonnull @NotNull @Pattern(regexp = "^\\d{3}-\\d{2}-\\d{4}$") String ssn,
     @javax.annotation.Nonnull @NotNull @Size(min = 1, max = 3) Set<String> aliases,
     @javax.annotation.Nullable String telephoneNumber,
-    @javax.annotation.Nonnull @NotNull String trackingCode) {
+    @javax.annotation.Nonnull @NotNull @Email String email,
+    @javax.annotation.Nonnull @NotNull @Size(min = 5, max = 50) String trackingCode,
+    @javax.annotation.Nonnull @NotNull UUID uuid) {
 
-  public PersonDTO(
-      @javax.annotation.Nonnull final String fullName,
+  public Person(
+      @javax.annotation.Nonnull final Name name,
       @javax.annotation.Nonnull final Integer age,
       @javax.annotation.Nonnull final GenderEnum gender,
       @javax.annotation.Nonnull final BigDecimal height,
+      @javax.annotation.Nonnull final Person legalGuardian,
       @javax.annotation.Nonnull final String ssn,
       @javax.annotation.Nullable final Set<String> aliases,
       @javax.annotation.Nullable final String telephoneNumber,
-      @javax.annotation.Nullable final String trackingCode) {
-    this.fullName = fullName;
+      @javax.annotation.Nonnull final String email,
+      @javax.annotation.Nullable final String trackingCode,
+      @javax.annotation.Nonnull final UUID uuid) {
+    this.name = name;
     this.age = age;
     this.gender = gender;
     this.height = height;
+    this.legalGuardian = legalGuardian;
     this.ssn = ssn;
     this.aliases = Objects.requireNonNullElse(aliases, new LinkedHashSet<>());
     this.telephoneNumber = telephoneNumber;
+    this.email = email;
     this.trackingCode = Objects.requireNonNullElse(trackingCode, "utm_source=default");
+    this.uuid = uuid;
   }
 
   /**
@@ -214,8 +259,11 @@ public record PersonDTO(
     }
 
     /**
-     * Case-sensitively parses the given string to an enum constant whose {@link #getValue()}
-     * matches the provided value.
+     * Case-sensitively matches the given {@code value} to an enum constant using {@link
+     * #getValue()}.
+     *
+     * <p><b>NOTE:</b> if multiple enum constants have a matching value, the first enum constant is
+     * returned, by the order they are declared.
      *
      * @param value of the Enum
      * @return a {@link GenderEnum } with the matching value

@@ -12,7 +12,7 @@
  * openapi-to-java-records-mustache-templates. For further information,
  * questions, requesting features or reporting issues, please visit:
  * https://github.com/Chrimle/openapi-to-java-records-mustache-templates.
- * Generated with Version: 2.1.0
+ * Generated with Version: 2.2.1
  *
  */
 
@@ -54,8 +54,11 @@ public enum ExampleEnum {
   }
 
   /**
-   * Case-insensitively parses the given string to an enum constant whose {@link #getValue()}
-   * matches the provided value.
+   * Case-insensitively matches the given {@code value} to an enum constant using {@link
+   * #getValue()}.
+   *
+   * <p><b>NOTE:</b> if multiple enum constants have a matching value, the first enum constant is
+   * returned, by the order they are declared.
    *
    * @param value of the Enum
    * @return a {@link ExampleEnum } with the matching value

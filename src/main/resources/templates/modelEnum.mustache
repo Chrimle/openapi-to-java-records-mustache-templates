@@ -15,7 +15,7 @@
 
 }}{{!
   Source: openapi-to-java-records-mustache-templates
-  Version: 2.1.0
+  Version: 2.2.1
 
   This template is overriding an official 'openapi-generator-maven-plugin' template.
 
@@ -54,16 +54,19 @@
   }
 
   /**
-   * Case-{{#useEnumCaseInsensitive}}in{{/useEnumCaseInsensitive}}sensitively parses the given string to an enum constant whose {@link #getValue()}
-   * matches the provided value.
+   * {{#isString}}Case-{{#useEnumCaseInsensitive}}in{{/useEnumCaseInsensitive}}sensitively m{{/isString}}{{^isString}}M{{/isString}}atches the given {@code value} to an enum constant using {@link
+   * #getValue()}.
+   *
+   * <p><b>NOTE:</b> if multiple enum constants have a matching value, the first enum constant is
+   * returned, by the order they are declared.
    *
    * @param value of the Enum
    * @return a {@link {{classname}} } with the matching value
    * @throws IllegalArgumentException if no enum has a value matching the given value
    */
-  public static {{classname}} fromValue(final String value) {
+  public static {{classname}} fromValue(final {{{dataType}}} value) {
     for (final {{classname}} constant : {{classname}}.values()) {
-      if (constant.getValue().equals{{#useEnumCaseInsensitive}}IgnoreCase{{/useEnumCaseInsensitive}}(value)) {
+      if (constant.getValue().equals{{#useEnumCaseInsensitive}}{{#isString}}IgnoreCase{{/isString}}{{/useEnumCaseInsensitive}}(value)) {
         return constant;
       }
     }

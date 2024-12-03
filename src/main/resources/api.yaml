@@ -122,8 +122,8 @@ components:
       type: object
       description: Example of a Record with an extra annotation
       x-class-extra-annotation: |
-        @com.chrimle.example.annotations.TestExtraAnnotation
-        @com.chrimle.example.annotations.TestExtraAnnotationTwo
+        @io.github.chrimle.example.annotations.TestExtraAnnotation
+        @io.github.chrimle.example.annotations.TestExtraAnnotationTwo
       properties:
         field1:
           type: boolean
@@ -147,6 +147,15 @@ components:
         - Some description of ENUM1
         - Some description of ENUM2
         - Some description of ENUM3
+    ExampleEnumWithIntegerValues:
+      type: integer
+      description: Example of an Enum with integer values
+      enum:
+        - 100
+        - 200
+        - 300
+        - 400
+        - 500
     DeprecatedExampleEnum:
       type: string
       deprecated: true
@@ -171,12 +180,12 @@ components:
             - Some description of ENUM2
             - Some description of ENUM3
         exampleInnerTwo:
-          type: string
-          description: Example of another inner enum class
+          type: integer
+          description: Example of another inner enum class with integer values
           enum:
-            - ENUM1
-            - ENUM2
-            - ENUM3
+            - 404
+            - 501
+            - 503
     RecordWithAllConstraints:
       type: object
       description: Example of a Record which has fields with constraints
@@ -201,6 +210,12 @@ components:
         stringRequiredPattern:
           type: string
           pattern: '^\d{3}-\d{2}-\d{4}$'
+        stringEmailFormat:
+          type: string
+          format: email
+        stringUuidFormat:
+          type: string
+          format: uuid
         stringMinLength:
           type: string
           minLength: 3
