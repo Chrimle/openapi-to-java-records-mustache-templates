@@ -16,7 +16,7 @@
  *
  */
 
-package io.github.chrimle.example.additionalModelTypeAnnotations;
+package io.github.chrimle.example.additionalEnumTypeAnnotations;
 
 import java.util.Objects;
 import com.google.gson.TypeAdapter;
@@ -32,15 +32,11 @@ import java.util.Arrays;
  *
  * @param field1 a boolean field
  */
-@io.github.chrimle.example.annotations.TestAnnotationOne
-@io.github.chrimle.example.annotations.TestAnnotationTwo
-@io.github.chrimle.example.annotations.TestAnnotationThree
 @io.github.chrimle.example.annotations.TestExtraAnnotation
-@io.github.chrimle.example.annotations.TestExtraAnnotationTwo
-public record ExampleRecordWithExtraAnnotation(
+public record ExampleRecordWithOneExtraAnnotation(
     @javax.annotation.Nonnull Boolean field1) {
 
-  public ExampleRecordWithExtraAnnotation(
+  public ExampleRecordWithOneExtraAnnotation(
       @javax.annotation.Nonnull final Boolean field1) { 
     this.field1 = field1;
   }

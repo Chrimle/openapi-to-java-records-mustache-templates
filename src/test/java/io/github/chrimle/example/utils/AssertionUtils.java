@@ -20,8 +20,6 @@ import io.github.chrimle.example.GeneratedSource;
 import io.github.chrimle.example.annotations.TestAnnotationOne;
 import io.github.chrimle.example.annotations.TestAnnotationThree;
 import io.github.chrimle.example.annotations.TestAnnotationTwo;
-import io.github.chrimle.example.annotations.TestExtraAnnotation;
-import io.github.chrimle.example.annotations.TestExtraAnnotationTwo;
 import io.github.chrimle.example.models.GeneratedField;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.DecimalMax;
@@ -61,12 +59,6 @@ public class AssertionUtils {
         classUnderTest, TestAnnotationThree.class, hasAdditionalTypeAnnotations);
   }
 
-  public static void assertClassIsAnnotatedWithExtraAnnotation(
-      final Class<?> classUnderTest, final boolean hasExtraAnnotation) {
-    assertClassIsAnnotatedWith(classUnderTest, TestExtraAnnotation.class, hasExtraAnnotation);
-    assertClassIsAnnotatedWith(classUnderTest, TestExtraAnnotationTwo.class, hasExtraAnnotation);
-  }
-
   public static void assertClassIsAnnotatedAsDeprecated(
       final Class<?> classUnderTest, final boolean isDeprecated) {
     assertClassIsAnnotatedWith(classUnderTest, Deprecated.class, isDeprecated);
@@ -81,7 +73,7 @@ public class AssertionUtils {
     }
   }
 
-  private static void assertClassIsAnnotatedWith(final Class<?> clazz, final Class<?> annotation) {
+  static void assertClassIsAnnotatedWith(final Class<?> clazz, final Class<?> annotation) {
     Assertions.assertTrue(
         Arrays.stream(clazz.getAnnotations())
             .map(Annotation::annotationType)
@@ -89,8 +81,7 @@ public class AssertionUtils {
         clazz.getCanonicalName() + " is NOT annotated with " + annotation.getCanonicalName());
   }
 
-  private static void assertClassIsNotAnnotatedWith(
-      final Class<?> clazz, final Class<?> annotation) {
+  static void assertClassIsNotAnnotatedWith(final Class<?> clazz, final Class<?> annotation) {
     Assertions.assertTrue(
         Arrays.stream(clazz.getAnnotations())
             .map(Annotation::annotationType)

@@ -17,7 +17,10 @@
 package io.github.chrimle.example.utils;
 
 import io.github.chrimle.example.GeneratedSource;
+import io.github.chrimle.example.annotations.TestExtraAnnotation;
+import io.github.chrimle.example.annotations.TestExtraAnnotationTwo;
 import io.github.chrimle.example.models.GeneratedField;
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -40,8 +43,7 @@ public class GeneratedRecordTestUtils {
         classUnderTest, generatedSource.isDeprecated());
     AssertionUtils.assertClassIsAnnotatedWithAdditionalTypeAnnotations(
         classUnderTest, generatedSource.hasAdditionalModelTypeAnnotations());
-    AssertionUtils.assertClassIsAnnotatedWithExtraAnnotation(
-        classUnderTest, generatedSource.hasExtraAnnotations());
+    assertClassIsAnnotatedWithExtraAnnotation(generatedSource);
     AssertionUtils.assertModelIsSerializable(generatedSource);
     AssertionUtils.assertRecordHasFieldsOfTypeWithNullableAnnotations(generatedSource);
     AssertionUtils.assertClassImplementsSerializable(generatedSource);
@@ -71,6 +73,19 @@ public class GeneratedRecordTestUtils {
 
     for (GeneratedField<?> generatedField : generatedSource.generatedFields()) {
       assertFieldHasTestingValueSet(generatedField, objectWithNonNullFields);
+    }
+  }
+
+  private static void assertClassIsAnnotatedWithExtraAnnotation(
+      final GeneratedSource generatedSource) {
+    final Class<?> classUnderTest = generatedSource.getClassUnderTest();
+    if (generatedSource.hasExtraAnnotations()) {
+      for (final Class<? extends Annotation> annotation : generatedSource.getExtraAnnotations()) {
+        AssertionUtils.assertClassIsAnnotatedWith(classUnderTest, annotation);
+      }
+    } else {
+      AssertionUtils.assertClassIsNotAnnotatedWith(classUnderTest, TestExtraAnnotation.class);
+      AssertionUtils.assertClassIsNotAnnotatedWith(classUnderTest, TestExtraAnnotationTwo.class);
     }
   }
 

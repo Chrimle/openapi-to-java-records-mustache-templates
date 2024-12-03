@@ -28,27 +28,27 @@ import java.io.IOException;
 import java.util.Arrays;
 
 /**
- * Example of a Record with an extra annotation
+ * Example of a Record with two extra annotations
  *
  * @param field1 a boolean field
  */
 @io.github.chrimle.example.annotations.TestExtraAnnotation
 @io.github.chrimle.example.annotations.TestExtraAnnotationTwo
-public record ExampleRecordWithExtraAnnotation(
+public record ExampleRecordWithTwoExtraAnnotations(
     @javax.annotation.Nonnull Boolean field1) {
 
-  public ExampleRecordWithExtraAnnotation(
+  public ExampleRecordWithTwoExtraAnnotations(
       @javax.annotation.Nonnull final Boolean field1) { 
     this.field1 = field1;
   }
 
-  /** Builder class for {@link ExampleRecordWithExtraAnnotation } */
+  /** Builder class for {@link ExampleRecordWithTwoExtraAnnotations } */
   public static class Builder {
 
     private Boolean field1;
 
     /**
-     * Sets the value of {@link ExampleRecordWithExtraAnnotation#field1 }.
+     * Sets the value of {@link ExampleRecordWithTwoExtraAnnotations#field1 }.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
      * @param field1 a boolean field
@@ -60,21 +60,21 @@ public record ExampleRecordWithExtraAnnotation(
     }
 
     /**
-     * Builds a {@link ExampleRecordWithExtraAnnotation }-instance with the values provided in preceding
+     * Builds a {@link ExampleRecordWithTwoExtraAnnotations }-instance with the values provided in preceding
      * builder methods.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
-     * @return a new {@link ExampleRecordWithExtraAnnotation }-instance
+     * @return a new {@link ExampleRecordWithTwoExtraAnnotations }-instance
      */
-    public ExampleRecordWithExtraAnnotation build() {
-      return new ExampleRecordWithExtraAnnotation(
+    public ExampleRecordWithTwoExtraAnnotations build() {
+      return new ExampleRecordWithTwoExtraAnnotations(
         field1
       );
     }
   }
 
   /** Creates a {@link Builder}-instance. */
-  public static ExampleRecordWithExtraAnnotation.Builder builder() {
-    return new ExampleRecordWithExtraAnnotation.Builder();
+  public static ExampleRecordWithTwoExtraAnnotations.Builder builder() {
+    return new ExampleRecordWithTwoExtraAnnotations.Builder();
   }
 }

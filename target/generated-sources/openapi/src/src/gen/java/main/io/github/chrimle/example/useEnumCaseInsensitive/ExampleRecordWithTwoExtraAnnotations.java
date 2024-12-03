@@ -28,16 +28,16 @@ import java.io.IOException;
 import java.util.Arrays;
 
 /**
- * Example of a Record with an extra annotation
+ * Example of a Record with two extra annotations
  *
  * @param field1 a boolean field
  */
 @io.github.chrimle.example.annotations.TestExtraAnnotation
 @io.github.chrimle.example.annotations.TestExtraAnnotationTwo
-public record ExampleRecordWithExtraAnnotation(
+public record ExampleRecordWithTwoExtraAnnotations(
     @javax.annotation.Nonnull Boolean field1) {
 
-  public ExampleRecordWithExtraAnnotation(
+  public ExampleRecordWithTwoExtraAnnotations(
       @javax.annotation.Nonnull final Boolean field1) { 
     this.field1 = field1;
   }

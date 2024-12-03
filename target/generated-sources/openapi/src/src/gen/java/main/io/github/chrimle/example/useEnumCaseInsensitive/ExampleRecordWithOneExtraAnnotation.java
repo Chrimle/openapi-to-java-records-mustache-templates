@@ -16,7 +16,7 @@
  *
  */
 
-package io.github.chrimle.example.serializableModel;
+package io.github.chrimle.example.useEnumCaseInsensitive;
 
 import java.util.Objects;
 import com.google.gson.TypeAdapter;
@@ -26,7 +26,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
-import java.io.Serializable;
 
 /**
  * Example of a Record with an extra annotation
@@ -34,14 +33,10 @@ import java.io.Serializable;
  * @param field1 a boolean field
  */
 @io.github.chrimle.example.annotations.TestExtraAnnotation
-@io.github.chrimle.example.annotations.TestExtraAnnotationTwo
-public record ExampleRecordWithExtraAnnotation(
-    @javax.annotation.Nonnull Boolean field1
-  ) implements Serializable {
+public record ExampleRecordWithOneExtraAnnotation(
+    @javax.annotation.Nonnull Boolean field1) {
 
-  private static final long serialVersionUID = 1L;
-
-  public ExampleRecordWithExtraAnnotation(
+  public ExampleRecordWithOneExtraAnnotation(
       @javax.annotation.Nonnull final Boolean field1) { 
     this.field1 = field1;
   }

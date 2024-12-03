@@ -17,6 +17,8 @@
 package io.github.chrimle.example.models;
 
 import io.github.chrimle.example.PluginExecution;
+import java.lang.annotation.Annotation;
+import java.util.List;
 
 /**
  * Enum class listing all expected classes ({@code record}s and {@code enum}s) to be generated from
@@ -56,6 +58,14 @@ public interface GeneratedClass {
    * @return whether the class has extra annotations.
    */
   boolean hasExtraAnnotations();
+
+  /**
+   * Returns the collection of extra {@link Annotation}s, set by the {@code
+   * x-class-extra-annotation} property.
+   *
+   * @return the collection of annotations.
+   */
+  List<Class<? extends Annotation>> getExtraAnnotations();
 
   /**
    * Returns the collection of {@link GeneratedField}s which are expected to be generated within the

@@ -16,6 +16,9 @@
 */
 package io.github.chrimle.example.models;
 
+import io.github.chrimle.example.annotations.TestExtraAnnotation;
+import io.github.chrimle.example.annotations.TestExtraAnnotationTwo;
+import java.lang.annotation.Annotation;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Set;
@@ -24,22 +27,31 @@ import java.util.UUID;
 /** Enum class listing all expected {@code record} classes to be generated from the OpenAPI spec. */
 public enum GeneratedRecord implements GeneratedClass {
   DEPRECATED_EXAMPLE_RECORD(
-      "DeprecatedExampleRecord", true, false, GeneratedField.of("field1", Boolean.class).build()),
-  EXAMPLE_RECORD("ExampleRecord", false, false, GeneratedField.of("field1", Boolean.class).build()),
+      "DeprecatedExampleRecord",
+      true,
+      List.of(),
+      GeneratedField.of("field1", Boolean.class).build()),
+  EXAMPLE_RECORD(
+      "ExampleRecord", false, List.of(), GeneratedField.of("field1", Boolean.class).build()),
   EXAMPLE_RECORD_WITH_DEFAULT_FIELDS(
       "ExampleRecordWithDefaultFields",
       false,
-      false,
+      List.of(),
       GeneratedField.of("field1", String.class).defaultValue("someDefaultValue").build()),
-  EXAMPLE_RECORD_WITH_EXTRA_ANNOTATION(
-      "ExampleRecordWithExtraAnnotation",
+  EXAMPLE_RECORD_WITH_ONE_EXTRA_ANNOTATION(
+      "ExampleRecordWithOneExtraAnnotation",
       false,
-      true,
+      List.of(TestExtraAnnotation.class),
+      GeneratedField.of("field1", Boolean.class).build()),
+  EXAMPLE_RECORD_WITH_TWO_EXTRA_ANNOTATIONS(
+      "ExampleRecordWithTwoExtraAnnotations",
+      false,
+      List.of(TestExtraAnnotation.class, TestExtraAnnotationTwo.class),
       GeneratedField.of("field1", Boolean.class).build()),
   EXAMPLE_RECORD_WITH_NULLABLE_FIELDS_OF_EACH_TYPE(
       "ExampleRecordWithNullableFieldsOfEachType",
       false,
-      false,
+      List.of(),
       GeneratedField.of("field1", Boolean.class).isNullable(true).build(),
       GeneratedField.of("field2", String.class).isNullable(true).build(),
       GeneratedField.of("field3", Integer.class).isNullable(true).build(),
@@ -52,11 +64,11 @@ public enum GeneratedRecord implements GeneratedClass {
    * io.github.chrimle.example.TestSuite}.
    */
   EXAMPLE_RECORD_WITH_REQUIRED_FIELDS_OF_EACH_TYPE(
-      "ExampleRecordWithRequiredFieldsOfEachType", false, false),
+      "ExampleRecordWithRequiredFieldsOfEachType", false, List.of()),
   RECORD_WITH_ALL_CONSTRAINTS(
       "RecordWithAllConstraints",
       false,
-      false,
+      List.of(),
       GeneratedField.of("stringStandard", String.class).build(),
       GeneratedField.of("stringDefault", String.class).defaultValue("someDefaultValue").build(),
       GeneratedField.of("stringNullable", String.class).isNullable(true).build(),
@@ -91,21 +103,23 @@ public enum GeneratedRecord implements GeneratedClass {
    * does not list all expected fields to be generated. This is done in {@link
    * io.github.chrimle.example.TestSuite}.
    */
-  RECORD_WITH_INNER_ENUMS("RecordWithInnerEnums", false, false);
+  RECORD_WITH_INNER_ENUMS("RecordWithInnerEnums", false, List.of());
 
   private final String simpleClassName;
   private final boolean isDeprecated;
   private final boolean hasExtraAnnotations;
+  private final List<Class<? extends Annotation>> extraAnnotations;
   private final GeneratedField<?>[] generatedFields;
 
   GeneratedRecord(
       final String simpleClassName,
       final boolean isDeprecated,
-      final boolean hasExtraAnnotations,
+      final List<Class<? extends Annotation>> extraAnnotations,
       final GeneratedField<?>... generatedFields) {
     this.simpleClassName = simpleClassName;
     this.isDeprecated = isDeprecated;
-    this.hasExtraAnnotations = hasExtraAnnotations;
+    this.hasExtraAnnotations = !extraAnnotations.isEmpty();
+    this.extraAnnotations = extraAnnotations;
     this.generatedFields = generatedFields;
   }
 
@@ -157,5 +171,15 @@ public enum GeneratedRecord implements GeneratedClass {
   @Override
   public boolean hasExtraAnnotations() {
     return hasExtraAnnotations;
+  }
+
+  /**
+   * {@inheritDoc}
+   *
+   * @return the collection of annotations.
+   */
+  @Override
+  public List<Class<? extends Annotation>> getExtraAnnotations() {
+    return extraAnnotations;
   }
 }
