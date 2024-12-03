@@ -73,7 +73,7 @@ public class AssertionUtils {
     }
   }
 
-  private static void assertClassIsAnnotatedWith(final Class<?> clazz, final Class<?> annotation) {
+  static void assertClassIsAnnotatedWith(final Class<?> clazz, final Class<?> annotation) {
     Assertions.assertTrue(
         Arrays.stream(clazz.getAnnotations())
             .map(Annotation::annotationType)
@@ -81,8 +81,7 @@ public class AssertionUtils {
         clazz.getCanonicalName() + " is NOT annotated with " + annotation.getCanonicalName());
   }
 
-  private static void assertClassIsNotAnnotatedWith(
-      final Class<?> clazz, final Class<?> annotation) {
+  static void assertClassIsNotAnnotatedWith(final Class<?> clazz, final Class<?> annotation) {
     Assertions.assertTrue(
         Arrays.stream(clazz.getAnnotations())
             .map(Annotation::annotationType)

@@ -17,6 +17,8 @@
 package io.github.chrimle.example.models;
 
 import io.github.chrimle.example.PluginExecution;
+import java.lang.annotation.Annotation;
+import java.util.List;
 
 /**
  * Enum class listing all expected classes ({@code record}s and {@code enum}s) to be generated from
@@ -35,8 +37,8 @@ public interface GeneratedClass {
   String getSimpleClassName();
 
   /**
-   * Whether the class is marked as deprecated. If {@code true}, the class should be annotated with
-   * {@link Deprecated}.
+   * Whether the class is marked as deprecated, set by the property {@code deprecated}. If {@code
+   * true}, the class should be annotated with {@link Deprecated}.
    *
    * @return whether the class is deprecated.
    */
@@ -51,8 +53,28 @@ public interface GeneratedClass {
   boolean isEnum();
 
   /**
+   * Whether the class has extra {@link Annotation}s, set by the {@code x-class-extra-annotation}
+   * property.
+   *
+   * <p><b>NOTE:</b> this property does not support {@code enum} classes.
+   *
+   * @return whether the class has extra annotations.
+   */
+  boolean hasExtraAnnotations();
+
+  /**
+   * Returns the collection of extra {@link Annotation}s, set by the {@code
+   * x-class-extra-annotation} property.
+   *
+   * <p><b>NOTE:</b> this property does not support {@code enum} classes.
+   *
+   * @return the collection of annotations.
+   */
+  List<Class<? extends Annotation>> getExtraAnnotations();
+
+  /**
    * Returns the collection of {@link GeneratedField}s which are expected to be generated within the
-   * class.
+   * class. Corresponds to each {@code properties}-item.
    *
    * @return the collection of generatedFields.
    */

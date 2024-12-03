@@ -16,6 +16,9 @@
 */
 package io.github.chrimle.example.models;
 
+import java.lang.annotation.Annotation;
+import java.util.List;
+
 /** Enum class listing all expected {@code enum} classes to be generated from the OpenAPI spec. */
 public enum GeneratedEnum implements GeneratedClass {
   DEPRECATED_EXAMPLE_ENUM(
@@ -92,6 +95,26 @@ public enum GeneratedEnum implements GeneratedClass {
   @Override
   public boolean isEnum() {
     return true;
+  }
+
+  /**
+   * {@inheritDoc}
+   *
+   * @return whether the class has extra annotations.
+   */
+  @Override
+  public boolean hasExtraAnnotations() {
+    return false;
+  }
+
+  /**
+   * {@inheritDoc}
+   *
+   * @return the collection of annotations.
+   */
+  @Override
+  public List<Class<? extends Annotation>> getExtraAnnotations() {
+    return List.of();
   }
 
   /**

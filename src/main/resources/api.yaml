@@ -118,6 +118,24 @@ components:
         field1:
           type: boolean
           description: a boolean field
+    ExampleRecordWithOneExtraAnnotation:
+      type: object
+      description: Example of a Record with an extra annotation
+      x-class-extra-annotation: '@io.github.chrimle.example.annotations.TestExtraAnnotation'
+      properties:
+        field1:
+          type: boolean
+          description: a boolean field
+    ExampleRecordWithTwoExtraAnnotations:
+      type: object
+      description: Example of a Record with two extra annotations
+      x-class-extra-annotation: |-
+        @io.github.chrimle.example.annotations.TestExtraAnnotation
+        @io.github.chrimle.example.annotations.TestExtraAnnotationTwo
+      properties:
+        field1:
+          type: boolean
+          description: a boolean field
     ExampleRecordWithDefaultFields:
       type: object
       description: Example of a Record with default fields

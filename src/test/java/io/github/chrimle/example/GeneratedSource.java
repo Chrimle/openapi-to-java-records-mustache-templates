@@ -19,7 +19,9 @@ package io.github.chrimle.example;
 import io.github.chrimle.example.models.GeneratedClass;
 import io.github.chrimle.example.models.GeneratedField;
 import io.github.chrimle.example.utils.AssertionUtils;
+import java.lang.annotation.Annotation;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * Represents a generated <i>source</i>, which contains:
@@ -91,6 +93,14 @@ public class GeneratedSource {
 
   public boolean isDeprecated() {
     return generatedClass.isDeprecated();
+  }
+
+  public boolean hasExtraAnnotations() {
+    return generatedClass.hasExtraAnnotations();
+  }
+
+  public List<Class<? extends Annotation>> getExtraAnnotations() {
+    return generatedClass.getExtraAnnotations();
   }
 
   public Class<?>[] fieldClasses() {
