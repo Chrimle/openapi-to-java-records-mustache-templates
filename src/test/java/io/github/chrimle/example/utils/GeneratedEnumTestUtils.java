@@ -39,16 +39,20 @@ public class GeneratedEnumTestUtils {
   }
 
   public static void assertEnumNames(final GeneratedSource generatedSource) {
-    final Enum<?>[] enumConstants =
-        (Enum<?>[]) generatedSource.getClassUnderTest().getEnumConstants();
-    final GeneratedField<?>[] generatedFields = generatedSource.generatedFields();
-
-    Assertions.assertEquals(generatedFields.length, enumConstants.length);
-    for (final GeneratedField<?> generatedField : generatedFields) {
+    for (final GeneratedField<?> generatedField : generatedSource.generatedFields()) {
       final String enumName = generatedField.name();
       Assertions.assertTrue(
-          Arrays.stream(enumConstants).map(Enum::name).anyMatch(enumName::equals));
+          Arrays.stream((Enum<?>[]) generatedSource.getClassUnderTest().getEnumConstants())
+              .map(Enum::name)
+              .anyMatch(enumName::equals));
     }
+  }
+
+  public static void assertEnumHasNumberOfConstants(final GeneratedSource generatedSource) {
+    final GeneratedField<?>[] generatedFields = generatedSource.generatedFields();
+    final Enum<?>[] enumConstants =
+        (Enum<?>[]) generatedSource.getClassUnderTest().getEnumConstants();
+    Assertions.assertEquals(generatedFields.length, enumConstants.length);
   }
 
   public static void assertEnumValues(final GeneratedSource generatedSource) {

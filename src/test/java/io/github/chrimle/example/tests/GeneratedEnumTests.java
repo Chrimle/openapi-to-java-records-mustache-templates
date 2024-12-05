@@ -40,6 +40,15 @@ public class GeneratedEnumTests {
   @ParameterizedTest
   @MethodSource("allPluginExecutionsAndGeneratedEnumCombinations")
   @DisplayName(
+      "OpenAPI `{schema}.enum.{constants}` -> Generates `enum` with expected number of constants")
+  public void whenEnumHasConstantsThenGeneratedEnumClassHasExpectedNumberOfConstants(
+      final GeneratedSource generatedSource) {
+    GeneratedEnumTestUtils.assertEnumHasNumberOfConstants(generatedSource);
+  }
+
+  @ParameterizedTest
+  @MethodSource("allPluginExecutionsAndGeneratedEnumCombinations")
+  @DisplayName(
       "OpenAPI `{schema}.enum.{constants}` -> Generates `enum` constants with expected names")
   public void whenEnumHasConstantsThenGeneratedEnumClassHasConstantsWithExpectedNames(
       final GeneratedSource generatedSource) {
