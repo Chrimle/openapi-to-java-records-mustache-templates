@@ -114,4 +114,18 @@ public class GeneratedSource {
   public Class<?> getClassUnderTest() {
     return classUnderTest;
   }
+
+  @Override
+  public String toString() {
+    return "GeneratedSource{"
+        + "pluginExecution="
+        + pluginExecution
+        + ", generatedClass="
+        + generatedClass
+        + ", classUnderTest="
+        + classUnderTest.getName()
+        + ", generatedFields="
+        + Arrays.toString(generatedFields)
+        + '}';
+  }
 }

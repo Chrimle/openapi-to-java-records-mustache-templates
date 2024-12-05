@@ -28,21 +28,17 @@ import org.junit.jupiter.api.Assertions;
 /** Generalized Test-class for testing Generated Enum-classes */
 public class GeneratedEnumTestUtils {
 
-  public static void assertEnumClass(final GeneratedSource generatedSource) {
-
-    final Class<?> classUnderTest = generatedSource.getClassUnderTest();
-
-    AssertionUtils.assertIsEnum(classUnderTest);
-    assertEnumNames(generatedSource);
-    assertEnumValues(generatedSource);
-    AssertionUtils.assertClassIsAnnotatedAsDeprecated(
-        classUnderTest, generatedSource.isDeprecated());
+  public static void assertHasAdditionalTypeAnnotations(final GeneratedSource generatedSource) {
     AssertionUtils.assertClassIsAnnotatedWithAdditionalTypeAnnotations(
-        classUnderTest, generatedSource.hasAdditionalEnumTypeAnnotations());
-    assertEnumHasCaseInsensitiveFromValueMethod(generatedSource);
+        generatedSource.getClassUnderTest(), generatedSource.hasAdditionalEnumTypeAnnotations());
   }
 
-  private static void assertEnumNames(final GeneratedSource generatedSource) {
+  public static void assertIsAnnotatedAsDeprecated(final GeneratedSource generatedSource) {
+    AssertionUtils.assertClassIsAnnotatedAsDeprecated(
+        generatedSource.getClassUnderTest(), generatedSource.isDeprecated());
+  }
+
+  public static void assertEnumNames(final GeneratedSource generatedSource) {
     final Enum<?>[] enumConstants =
         (Enum<?>[]) generatedSource.getClassUnderTest().getEnumConstants();
     final GeneratedField<?>[] generatedFields = generatedSource.generatedFields();
@@ -55,7 +51,7 @@ public class GeneratedEnumTestUtils {
     }
   }
 
-  private static void assertEnumValues(final GeneratedSource generatedSource) {
+  public static void assertEnumValues(final GeneratedSource generatedSource) {
     final Enum<?>[] enumConstants =
         (Enum<?>[]) generatedSource.getClassUnderTest().getEnumConstants();
     final GeneratedField<?>[] generatedFields = generatedSource.generatedFields();
@@ -78,7 +74,7 @@ public class GeneratedEnumTestUtils {
     }
   }
 
-  private static void assertEnumHasCaseInsensitiveFromValueMethod(
+  public static void assertEnumHasCaseInsensitiveFromValueMethod(
       final GeneratedSource generatedSource) {
     // Assert 'fromValue'-method exists
     final Method fromValueMethod =

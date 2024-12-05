@@ -21,7 +21,6 @@ import io.github.chrimle.example.models.GeneratedEnum;
 import io.github.chrimle.example.models.GeneratedField;
 import io.github.chrimle.example.models.GeneratedRecord;
 import io.github.chrimle.example.utils.AssertionUtils;
-import io.github.chrimle.example.utils.GeneratedEnumTestUtils;
 import io.github.chrimle.example.utils.GeneratedRecordTestUtils;
 import java.math.BigDecimal;
 import java.util.List;
@@ -42,17 +41,6 @@ public class TestSuite {
           getGeneratedSourceForGeneratedClass(generatedRecord, pluginExecution);
       GeneratedRecordTestUtils.assertRecord(generatedSource);
     }
-    // Asserting all generated enum classes
-    for (final GeneratedEnum generatedEnum : GeneratedEnum.values()) {
-      final GeneratedSource generatedSource =
-          getGeneratedSourceForGeneratedClass(generatedEnum, pluginExecution);
-      GeneratedEnumTestUtils.assertEnumClass(generatedSource);
-    }
-  }
-
-  private static GeneratedSource getGeneratedSourceForGeneratedClass(
-      final GeneratedEnum generatedEnum, final PluginExecution pluginExecution) {
-    return new GeneratedSource(pluginExecution, generatedEnum);
   }
 
   private static GeneratedSource getGeneratedSourceForGeneratedClass(
