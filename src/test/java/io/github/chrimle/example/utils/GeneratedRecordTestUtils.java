@@ -38,13 +38,6 @@ public class GeneratedRecordTestUtils {
     final Class<?>[] fieldClasses = generatedSource.fieldClasses();
     final Class<?> classUnderTest = generatedSource.getClassUnderTest();
 
-    AssertionUtils.assertIsRecord(classUnderTest);
-    AssertionUtils.assertClassIsAnnotatedAsDeprecated(
-        classUnderTest, generatedSource.isDeprecated());
-    AssertionUtils.assertClassIsAnnotatedWithAdditionalTypeAnnotations(
-        classUnderTest, generatedSource.hasAdditionalModelTypeAnnotations());
-    assertClassIsAnnotatedWithExtraAnnotation(generatedSource);
-    AssertionUtils.assertModelIsSerializable(generatedSource);
     AssertionUtils.assertRecordHasFieldsOfTypeWithNullableAnnotations(generatedSource);
     AssertionUtils.assertClassImplementsSerializable(generatedSource);
     AssertionUtils.assertRecordHasBuilderInnerClass(generatedSource);
@@ -76,7 +69,7 @@ public class GeneratedRecordTestUtils {
     }
   }
 
-  private static void assertClassIsAnnotatedWithExtraAnnotation(
+  public static void assertClassIsAnnotatedWithExtraAnnotation(
       final GeneratedSource generatedSource) {
     final Class<?> classUnderTest = generatedSource.getClassUnderTest();
     if (generatedSource.hasExtraAnnotations()) {

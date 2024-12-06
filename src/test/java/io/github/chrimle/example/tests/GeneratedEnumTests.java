@@ -48,7 +48,7 @@ final class GeneratedEnumTests implements GeneratedClassTests {
   @ParameterizedTest
   @MethodSource("allPluginExecutionsAndGeneratedEnumCombinations")
   @DisplayName(
-      "OpenAPI `{schema}.enum.deprecated` -> Annotates generated `enum` class with `@Deprecated`")
+      "OpenAPI `{schema}.deprecated` -> Annotates generated `enum` class with `@Deprecated`")
   void whenEnumIsDeprecatedThenGeneratedEnumClassIsAnnotatedDeprecated(
       final GeneratedSource generatedSource) {
     GeneratedEnumTestUtils.assertIsAnnotatedAsDeprecated(generatedSource);
