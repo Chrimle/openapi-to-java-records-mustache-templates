@@ -18,7 +18,6 @@ package io.github.chrimle.example;
 
 import io.github.chrimle.example.models.GeneratedClass;
 import io.github.chrimle.example.models.GeneratedField;
-import io.github.chrimle.example.utils.AssertionUtils;
 import java.lang.annotation.Annotation;
 import java.util.Arrays;
 import java.util.List;
@@ -48,19 +47,11 @@ public class GeneratedSource {
   private final GeneratedClass generatedClass;
 
   public GeneratedSource(
-      final PluginExecution pluginExecution,
-      final GeneratedClass generatedClass,
-      final GeneratedField<?>... generatedFields) {
+      final PluginExecution pluginExecution, final GeneratedClass generatedClass) {
     this.pluginExecution = pluginExecution;
     this.generatedClass = generatedClass;
-    this.generatedFields = generatedFields;
-    classUnderTest =
-        AssertionUtils.assertClassExists(generatedClass.getCanonicalClassName(pluginExecution));
-  }
-
-  public GeneratedSource(
-      final PluginExecution pluginExecution, final GeneratedClass generatedClass) {
-    this(pluginExecution, generatedClass, generatedClass.getGeneratedFields());
+    this.generatedFields = GeneratedClass.getGeneratedFields(generatedClass, pluginExecution);
+    this.classUnderTest = GeneratedClass.getClass(generatedClass, pluginExecution);
   }
 
   public boolean generateBuilders() {

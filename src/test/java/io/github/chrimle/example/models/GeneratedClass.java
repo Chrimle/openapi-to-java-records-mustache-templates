@@ -24,7 +24,7 @@ import java.util.List;
  * Enum class listing all expected classes ({@code record}s and {@code enum}s) to be generated from
  * the OpenAPI spec.
  */
-public interface GeneratedClass {
+public sealed interface GeneratedClass permits GeneratedEnum, GeneratedRecord {
 
   /** The default package name of all generated classes. */
   String PACKAGE_NAME = "io.github.chrimle.example";
@@ -91,6 +91,17 @@ public interface GeneratedClass {
   }
 
   /**
+   * Returns the {@link Class}, <i>resolved via Java Reflection API</i>, with the package name
+   * provided by {@code pluginExecution}.
+   *
+   * @param pluginExecution containing the package name.
+   * @return the loaded {@code Class}.
+   */
+  default Class<?> getClass(final PluginExecution pluginExecution) {
+    return getClass(this, pluginExecution);
+  }
+
+  /**
    * Returns the canonical class name of the provided {@code generatedClass} - including the package
    * name.
    *
@@ -101,5 +112,39 @@ public interface GeneratedClass {
   static String getCanonicalClassName(
       final String moduleName, final GeneratedClass generatedClass) {
     return String.join(".", PACKAGE_NAME, moduleName, generatedClass.getSimpleClassName());
+  }
+
+  /**
+   * Returns the {@link Class}, <i>resolved via Java Reflection API</i>, with the class name
+   * provided by {@code generatedClass} and the package name provided by {@code pluginExecution}.
+   *
+   * @param generatedClass containing the class name.
+   * @param pluginExecution containing the package name.
+   * @return the loaded {@code Class}.
+   */
+  static Class<?> getClass(
+      final GeneratedClass generatedClass, final PluginExecution pluginExecution) {
+    try {
+      return Class.forName(getCanonicalClassName(pluginExecution.getPackageName(), generatedClass));
+    } catch (ClassNotFoundException e) {
+      throw new IllegalArgumentException(e);
+    }
+  }
+
+  /**
+   * Returns the collection of {@link GeneratedField}s which are expected to be generated within the
+   * {@link GeneratedClass}. Corresponds to each {@code properties}-item.
+   *
+   * @return the collection of generatedFields.
+   */
+  static GeneratedField<?>[] getGeneratedFields(
+      final GeneratedClass generatedClass, final PluginExecution pluginExecution) {
+    if (generatedClass instanceof final GeneratedRecord generatedRecord) {
+      return GeneratedRecord.getGeneratedFields(generatedRecord, pluginExecution);
+    }
+    if (generatedClass instanceof final GeneratedEnum generatedEnum) {
+      return generatedEnum.getGeneratedFields();
+    }
+    throw new IllegalArgumentException("Unsupported `GeneratedClass`:" + generatedClass);
   }
 }
