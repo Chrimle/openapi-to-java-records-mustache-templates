@@ -27,6 +27,36 @@ final class GeneratedRecordTests implements GeneratedClassTests {
   @ParameterizedTest
   @MethodSource("allPluginExecutionsAndGeneratedRecordCombinations")
   @DisplayName(
+      "OpenAPI `{schema}.properties` -> Generates a constructor with properties as method arguments")
+  public void whenObjectHasPropertiesThenGeneratedConstructorHasMethodArguments(
+      final GeneratedSource generatedSource) {
+    AssertionUtils.assertRecordHasConstructor(
+        generatedSource.getClassUnderTest(), generatedSource.fieldClasses());
+  }
+
+  @ParameterizedTest
+  @MethodSource("allPluginExecutionsAndGeneratedRecordCombinations")
+  @DisplayName(
+      "OpenAPI `{schema}.properties.{property}` -> Instantiating the `record` will set fields to provided values")
+  public void whenObjectHasPropertiesThenFieldIsSetToProvidedValueWhenInstantiatingRecord(
+      final GeneratedSource generatedSource) {
+    GeneratedRecordTestUtils.assertInstantiatingRecordWithNullSetsFieldsToNullOrDefaultValue(
+        generatedSource);
+  }
+
+  @ParameterizedTest
+  @MethodSource("allPluginExecutionsAndGeneratedRecordCombinations")
+  @DisplayName(
+      "OpenAPI `{schema}.properties.{property}.default` -> Instantiating the `record` with `null` will set fields to `null` or `default`")
+  public void whenPropertyHasDefaultSetThenFieldIsSetToDefaultValueWhenInstantiatingWithNull(
+      final GeneratedSource generatedSource) {
+    GeneratedRecordTestUtils.assertInstantiatingRecordWithNullSetsFieldsToNullOrDefaultValue(
+        generatedSource);
+  }
+
+  @ParameterizedTest
+  @MethodSource("allPluginExecutionsAndGeneratedRecordCombinations")
+  @DisplayName(
       "OpenAPI `{schema}.deprecated` -> Annotates generated `record` class with `@Deprecated`")
   public void whenRecordIsDeprecatedThenGeneratedRecordClassIsAnnotatedDeprecated(
       final GeneratedSource generatedSource) {
@@ -58,10 +88,18 @@ final class GeneratedRecordTests implements GeneratedClassTests {
   @ParameterizedTest
   @MethodSource("allPluginExecutionsAndGeneratedRecordCombinations")
   @DisplayName(
-      "Configuration `configOptions.serializableModel` -> Generated `record` implements `Serializable` and has `serialVersionUID`-field")
-  void
-      whenConfigOptionSerializableModelIsSetThenGeneratedRecordClassImplementsSerializableAndHasSerialVersionUidField(
-          final GeneratedSource generatedSource) {
+      "Configuration `configOptions.serializableModel` -> Generated `record` has `serialVersionUID`-field")
+  void whenConfigOptionSerializableModelIsSetThenGeneratedRecordClassHasSerialVersionUidField(
+      final GeneratedSource generatedSource) {
     AssertionUtils.assertModelIsSerializable(generatedSource);
+  }
+
+  @ParameterizedTest
+  @MethodSource("allPluginExecutionsAndGeneratedRecordCombinations")
+  @DisplayName(
+      "Configuration `configOptions.serializableModel` -> Generated `record` implements `Serializable`")
+  void whenConfigOptionSerializableModelIsSetThenGeneratedRecordClassImplementsSerializable(
+      final GeneratedSource generatedSource) {
+    AssertionUtils.assertClassImplementsSerializable(generatedSource);
   }
 }
