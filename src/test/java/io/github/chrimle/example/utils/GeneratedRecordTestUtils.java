@@ -34,20 +34,7 @@ import org.junit.jupiter.api.Assertions;
 /** Generalized Test-class for testing Generated Record-classes */
 public class GeneratedRecordTestUtils {
 
-  public static void assertRecord(final GeneratedSource generatedSource) {
-
-    AssertionUtils.assertRecordHasFieldsOfTypeWithNullableAnnotations(generatedSource);
-    AssertionUtils.assertClassImplementsSerializable(generatedSource);
-    AssertionUtils.assertRecordHasBuilderInnerClass(generatedSource);
-
-    // Asserting Nullable-fields are null if unset
-    assertInstantiatingRecordWithNullSetsFieldsToNullOrDefaultValue(generatedSource);
-
-    // Asserting fields are not null when set
-    assertInstantiatingRecordWithValuesSetsFieldsToProvidedValue(generatedSource);
-  }
-
-  private static void assertInstantiatingRecordWithValuesSetsFieldsToProvidedValue(
+  public static void assertInstantiatingRecordWithValuesSetsFieldsToProvidedValue(
       final GeneratedSource generatedSource) {
     final Class<?> classUnderTest = generatedSource.getClassUnderTest();
     final Class<?>[] fieldClasses = generatedSource.fieldClasses();

@@ -12,13 +12,6 @@ final class GeneratedRecordTests implements GeneratedClassTests {
 
   @ParameterizedTest
   @MethodSource("allPluginExecutionsAndGeneratedRecordCombinations")
-  @DisplayName("Testing Plugin Executions...")
-  public void testAll(final GeneratedSource generatedSource) {
-    GeneratedRecordTestUtils.assertRecord(generatedSource);
-  }
-
-  @ParameterizedTest
-  @MethodSource("allPluginExecutionsAndGeneratedRecordCombinations")
   @DisplayName("OpenAPI `{schema}.type: object` -> Generates a `record` class")
   public void whenIsObjectThenGeneratedClassIsRecordClass(final GeneratedSource generatedSource) {
     AssertionUtils.assertIsRecord(generatedSource.getClassUnderTest());
@@ -40,7 +33,7 @@ final class GeneratedRecordTests implements GeneratedClassTests {
       "OpenAPI `{schema}.properties.{property}` -> Instantiating the `record` will set fields to provided values")
   public void whenObjectHasPropertiesThenFieldIsSetToProvidedValueWhenInstantiatingRecord(
       final GeneratedSource generatedSource) {
-    GeneratedRecordTestUtils.assertInstantiatingRecordWithNullSetsFieldsToNullOrDefaultValue(
+    GeneratedRecordTestUtils.assertInstantiatingRecordWithValuesSetsFieldsToProvidedValue(
         generatedSource);
   }
 
@@ -52,6 +45,15 @@ final class GeneratedRecordTests implements GeneratedClassTests {
       final GeneratedSource generatedSource) {
     GeneratedRecordTestUtils.assertInstantiatingRecordWithNullSetsFieldsToNullOrDefaultValue(
         generatedSource);
+  }
+
+  @ParameterizedTest
+  @MethodSource("allPluginExecutionsAndGeneratedRecordCombinations")
+  @DisplayName(
+      "OpenAPI `{schema}.properties.{property}.nullable` -> Fields of generated `record` are annotated with `@Nullable` and `@Nonnull`")
+  public void whenPropertyHasNullableSetThenFieldIsAnnotatedWithNullableOrNonnull(
+      final GeneratedSource generatedSource) {
+    AssertionUtils.assertRecordHasFieldsOfTypeWithNullableAnnotations(generatedSource);
   }
 
   @ParameterizedTest
@@ -101,5 +103,14 @@ final class GeneratedRecordTests implements GeneratedClassTests {
   void whenConfigOptionSerializableModelIsSetThenGeneratedRecordClassImplementsSerializable(
       final GeneratedSource generatedSource) {
     AssertionUtils.assertClassImplementsSerializable(generatedSource);
+  }
+
+  @ParameterizedTest
+  @MethodSource("allPluginExecutionsAndGeneratedRecordCombinations")
+  @DisplayName(
+      "Configuration `configOptions.generateBuilders` -> Generated `record` has inner `Builder`-class")
+  void whenConfigOptionGenerateBuildersIsSetThenGeneratedRecordHasInnerBuilderClass(
+      final GeneratedSource generatedSource) {
+    AssertionUtils.assertRecordHasBuilderInnerClass(generatedSource);
   }
 }
