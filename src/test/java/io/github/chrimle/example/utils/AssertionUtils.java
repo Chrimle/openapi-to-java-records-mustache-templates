@@ -81,7 +81,8 @@ public class AssertionUtils {
         clazz.getCanonicalName() + " is NOT annotated with " + annotation.getCanonicalName());
   }
 
-  public static void assertClassIsNotAnnotatedWith(final Class<?> clazz, final Class<?> annotation) {
+  public static void assertClassIsNotAnnotatedWith(
+      final Class<?> clazz, final Class<?> annotation) {
     Assertions.assertTrue(
         Arrays.stream(clazz.getAnnotations())
             .map(Annotation::annotationType)
@@ -329,65 +330,76 @@ public class AssertionUtils {
   }
 
   public static void assertClassImplementsSerializable(final GeneratedSource generatedSource) {
-    assertClassImplementsInterface(Serializable.class, generatedSource.serializableModel(),
+    assertClassImplementsInterface(
+        Serializable.class,
+        generatedSource.serializableModel(),
         generatedSource.getClassUnderTest());
   }
 
-  public static void assertClassImplementsInterface(Class<?> interfaceClass,
-      boolean expected, Class<?> classUnderTest) {
+  public static void assertClassImplementsInterface(
+      Class<?> interfaceClass, boolean expected, Class<?> classUnderTest) {
     Assertions.assertEquals(
-        expected,
-        Arrays.asList(classUnderTest.getInterfaces())
-            .contains(interfaceClass));
+        expected, Arrays.asList(classUnderTest.getInterfaces()).contains(interfaceClass));
   }
 
-  public static void assertClassImplementsInterface(final Class<?> classUnderTest, final Class<?> interfaceClass) {
+  public static void assertClassImplementsInterface(
+      final Class<?> classUnderTest, final Class<?> interfaceClass) {
     Assertions.assertTrue(Arrays.asList(classUnderTest.getInterfaces()).contains(interfaceClass));
   }
 
-  public static void assertClassDoesNotImplementsInterface(final Class<?> classUnderTest, final Class<?> interfaceClass) {
+  public static void assertClassDoesNotImplementsInterface(
+      final Class<?> classUnderTest, final Class<?> interfaceClass) {
     Assertions.assertFalse(Arrays.asList(classUnderTest.getInterfaces()).contains(interfaceClass));
   }
 
-  public static void assertRecordHasBuilderInnerClass(final GeneratedSource generatedSource) {
+  public static void assertClassHasInnerClass(
+      final Class<?> classUnderTest, String innerClassName) {
+    Assertions.assertTrue(
+        Arrays.stream(classUnderTest.getClasses())
+            .anyMatch(b -> innerClassName.equals(b.getSimpleName())),
+        () ->
+            classUnderTest.getCanonicalName()
+                + " does NOT have inner class with name: "
+                + innerClassName);
+  }
+
+  public static void assertClassDoesNotHaveInnerClass(
+      final Class<?> classUnderTest, String innerClassName) {
+    Assertions.assertTrue(
+        Arrays.stream(classUnderTest.getClasses())
+            .noneMatch(b -> innerClassName.equals(b.getSimpleName())),
+        () ->
+            classUnderTest.getCanonicalName()
+                + " DOES have inner class with name: "
+                + innerClassName);
+  }
+
+  public static void assertInnerBuilderClassExistsAndCanBuildRecord(
+      final GeneratedSource generatedSource) {
 
     final Class<?> classUnderTest = generatedSource.getClassUnderTest();
 
-    // Assert Builder can be instantiated from constructor
-    Arrays.stream(classUnderTest.getClasses())
-        .filter(b -> "Builder".equals(b.getSimpleName()))
-        .findFirst()
-        .map(AssertionUtils::assertRecordHasConstructor)
-        .map(constructor -> assertRecordInstantiateWithArgs(classUnderTest, constructor))
-        .ifPresentOrElse(
-            object -> assertRecordHasFieldsOfType(generatedSource),
-            () -> Assertions.assertFalse(generatedSource.generateBuilders()));
     // Assert Builder can be instantiated from builder()-method
-    if (generatedSource.generateBuilders()) {
-      final Method builderMethod = assertClassHasMethod(classUnderTest, "builder");
-      final Object builderObject = Assertions.assertDoesNotThrow(() -> builderMethod.invoke(null));
-      Assertions.assertNotNull(builderObject);
-      for (GeneratedField<?> generatedField : generatedSource.generatedFields()) {
-        final String fieldBuilderMethodName = generatedField.name();
-        final Class<?> fieldClass = generatedField.type();
-        final Method fieldBuilderMethod =
-            Assertions.assertDoesNotThrow(
-                () ->
-                    builderObject.getClass().getDeclaredMethod(fieldBuilderMethodName, fieldClass));
-        final Object object =
-            Assertions.assertDoesNotThrow(
-                () -> fieldBuilderMethod.invoke(builderObject, (Object) null));
-        Assertions.assertEquals(builderObject, object);
-      }
-      final Method buildMethod =
-          AssertionUtils.assertClassHasMethod(builderObject.getClass(), "build");
-      final Object classObject =
-          Assertions.assertDoesNotThrow(() -> buildMethod.invoke(builderObject));
-      Assertions.assertNotNull(classObject);
-      Assertions.assertInstanceOf(classUnderTest, classObject);
-    } else {
-      assertClassDoesNotHaveMethod(classUnderTest, "builder");
+    final Method builderMethod = assertClassHasMethod(classUnderTest, "builder");
+    final Object builderObject = Assertions.assertDoesNotThrow(() -> builderMethod.invoke(null));
+    Assertions.assertNotNull(builderObject);
+    for (GeneratedField<?> generatedField : generatedSource.generatedFields()) {
+      final String fieldBuilderMethodName = generatedField.name();
+      final Class<?> fieldClass = generatedField.type();
+      final Method fieldBuilderMethod =
+          Assertions.assertDoesNotThrow(
+              () -> builderObject.getClass().getDeclaredMethod(fieldBuilderMethodName, fieldClass));
+      final Object object =
+          Assertions.assertDoesNotThrow(
+              () -> fieldBuilderMethod.invoke(builderObject, (Object) null));
+      Assertions.assertEquals(builderObject, object);
     }
+    final Method buildMethod =
+        AssertionUtils.assertClassHasMethod(builderObject.getClass(), "build");
+    final Object classObject =
+        Assertions.assertDoesNotThrow(() -> buildMethod.invoke(builderObject));
+    Assertions.assertNotNull(classObject);
+    Assertions.assertInstanceOf(classUnderTest, classObject);
   }
 
   public static Class<?> assertClassExists(final String canonicalClassName) {
