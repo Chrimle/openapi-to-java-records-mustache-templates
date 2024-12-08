@@ -89,20 +89,6 @@ public class AssertionUtils {
         clazz.getCanonicalName() + " IS annotated with " + annotation.getCanonicalName());
   }
 
-  public static void assertRecordHasFieldsOfType(final GeneratedSource generatedSource) {
-
-    final Class<?> classUnderTest = generatedSource.getClassUnderTest();
-
-    Assertions.assertEquals(
-        generatedSource.generatedFields().length + (generatedSource.serializableModel() ? 1 : 0),
-        classUnderTest.getDeclaredFields().length,
-        classUnderTest.getCanonicalName() + " does not have the expected number of fields!");
-
-    for (final GeneratedField<?> generatedField : generatedSource.generatedFields()) {
-      assertRecordHasField(classUnderTest, generatedField.name(), generatedField.type());
-    }
-  }
-
   public static void assertRecordHasFieldsOfTypeWithNullableAnnotations(
       final GeneratedSource generatedSource) {
 
@@ -212,6 +198,14 @@ public class AssertionUtils {
         }
       }
     }
+  }
+
+  public static void assertRecordHasExpectedNumberOfFields(
+      final Class<?> classUnderTest, final int expectedCount) {
+    Assertions.assertEquals(
+        expectedCount,
+        classUnderTest.getDeclaredFields().length,
+        classUnderTest.getCanonicalName() + " does not have the expected number of fields!");
   }
 
   private static <T extends Annotation> T assertHasAnnotation(

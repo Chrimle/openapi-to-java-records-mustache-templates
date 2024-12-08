@@ -4,6 +4,7 @@ import io.github.chrimle.example.GeneratedSource;
 import io.github.chrimle.example.annotations.TestAnnotationOne;
 import io.github.chrimle.example.annotations.TestAnnotationThree;
 import io.github.chrimle.example.annotations.TestAnnotationTwo;
+import io.github.chrimle.example.models.GeneratedField;
 import io.github.chrimle.example.tests.GeneratedRecordTests.GeneratorConfigurationTests.ConfigOptionsTests;
 import io.github.chrimle.example.tests.GeneratedRecordTests.GeneratorConfigurationTests.ConfigOptionsTests.AdditionalModelTypeAnnotationsTests;
 import io.github.chrimle.example.tests.GeneratedRecordTests.GeneratorConfigurationTests.ConfigOptionsTests.GenerateBuildersTests;
@@ -94,14 +95,35 @@ final class GeneratedRecordTests implements GeneratedClassTests {
       @Nested
       @DisplayName("Testing `components.schemas.{schema}.deprecated`")
       class DeprecatedTests {
-        @ParameterizedTest
-        @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
-        @DisplayName(
-            "OpenAPI `{schema}.deprecated` -> Annotates generated `record` class with `@Deprecated`")
-        public void whenRecordIsDeprecatedThenGeneratedRecordClassIsAnnotatedDeprecated(
-            final GeneratedSource generatedSource) {
-          AssertionUtils.assertClassIsAnnotatedAsDeprecated(
-              generatedSource.getClassUnderTest(), generatedSource.isDeprecated());
+
+        @Nested
+        @DisplayName("Testing `components.schemas.{schema}.deprecated: false`")
+        class DeprecatedFalseTests {
+          @ParameterizedTest
+          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+          @DisplayName("Generated `record` is NOT annotated with `@Deprecated`")
+          public void whenRecordIsNotDeprecatedThenGeneratedRecordClassIsNotAnnotatedDeprecated(
+              final GeneratedSource generatedSource) {
+            Assumptions.assumeFalse(generatedSource.isDeprecated());
+
+            AssertionUtils.assertClassIsNotAnnotatedWith(
+                generatedSource.getClassUnderTest(), Deprecated.class);
+          }
+        }
+
+        @Nested
+        @DisplayName("Testing `components.schemas.{schema}.deprecated: true`")
+        class DeprecatedTrueTests {
+          @ParameterizedTest
+          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+          @DisplayName("Generated `record` is annotated with `@Deprecated`")
+          public void whenRecordIsDeprecatedThenGeneratedRecordClassIsAnnotatedDeprecated(
+              final GeneratedSource generatedSource) {
+            Assumptions.assumeTrue(generatedSource.isDeprecated());
+
+            AssertionUtils.assertClassIsAnnotatedWith(
+                generatedSource.getClassUnderTest(), Deprecated.class);
+          }
         }
       }
 
@@ -126,8 +148,7 @@ final class GeneratedRecordTests implements GeneratedClassTests {
 
         @ParameterizedTest
         @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
-        @DisplayName(
-            "OpenAPI `{schema}.properties` -> Generates a constructor with properties as method arguments")
+        @DisplayName("Generates a constructor with properties as method arguments")
         public void whenObjectHasPropertiesThenGeneratedConstructorHasMethodArguments(
             final GeneratedSource generatedSource) {
           AssertionUtils.assertRecordHasConstructor(
@@ -136,8 +157,29 @@ final class GeneratedRecordTests implements GeneratedClassTests {
 
         @ParameterizedTest
         @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
-        @DisplayName(
-            "OpenAPI `{schema}.properties.{property}` -> Instantiating the `record` will set fields to provided values")
+        @DisplayName("Generated `record` has same number of fields as OpenAPI properties")
+        public void whenObjectHasPropertiesThenGeneratedRecordHasSameNumberOfFields(
+            final GeneratedSource generatedSource) {
+          Assumptions.assumeFalse(generatedSource.serializableModel());
+
+          AssertionUtils.assertRecordHasExpectedNumberOfFields(
+              generatedSource.getClassUnderTest(), generatedSource.generatedFields().length);
+        }
+
+        @ParameterizedTest
+        @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+        @DisplayName("Generated `record` has fields with same name and type as OpenAPI properties")
+        public void whenObjectHasPropertiesThenGeneratedRecordHasFieldsWithSameNameAndType(
+            final GeneratedSource generatedSource) {
+          for (final GeneratedField<?> generatedField : generatedSource.generatedFields()) {
+            AssertionUtils.assertRecordHasField(
+                generatedSource.getClassUnderTest(), generatedField.name(), generatedField.type());
+          }
+        }
+
+        @ParameterizedTest
+        @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+        @DisplayName("Instantiating the `record` will set fields to provided values")
         public void whenObjectHasPropertiesThenFieldIsSetToProvidedValueWhenInstantiatingRecord(
             final GeneratedSource generatedSource) {
           GeneratedRecordTestUtils.assertInstantiatingRecordWithValuesSetsFieldsToProvidedValue(
@@ -275,6 +317,19 @@ final class GeneratedRecordTests implements GeneratedClassTests {
 
             AssertionUtils.assertClassImplementsInterface(
                 generatedSource.getClassUnderTest(), Serializable.class);
+          }
+
+          @ParameterizedTest
+          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+          @DisplayName(
+              "Generated `record` has one additional number of fields than OpenAPI properties")
+          public void
+              whenConfigOptionSerializableModelIsTrueThenGeneratedRecordHasOneAdditionalField(
+                  final GeneratedSource generatedSource) {
+            Assumptions.assumeTrue(generatedSource.serializableModel());
+
+            AssertionUtils.assertRecordHasExpectedNumberOfFields(
+                generatedSource.getClassUnderTest(), generatedSource.generatedFields().length + 1);
           }
 
           @ParameterizedTest
