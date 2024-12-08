@@ -13,12 +13,17 @@ public sealed interface GeneratedClassTests permits GeneratedEnumTests, Generate
   String GENERATED_RECORD_TESTS_METHOD_SOURCE =
       "io.github.chrimle.example.tests.GeneratedClassTests#allPluginExecutionsAndGeneratedRecordCombinations";
 
+  /** Refers to {@link #allPluginExecutionsAndGeneratedEnumCombinations()} */
+  String GENERATED_ENUM_TESTS_METHOD_SOURCE =
+      "io.github.chrimle.example.tests.GeneratedClassTests#allPluginExecutionsAndGeneratedEnumCombinations";
+
   /**
    * Generates a {@link GeneratedSource} for every possible combination of {@link PluginExecution}
    * and {@link GeneratedEnum}.
    *
    * @return a stream of {@code GeneratedSource}s.
    */
+  @SuppressWarnings("unused")
   static Stream<Arguments> allPluginExecutionsAndGeneratedEnumCombinations() {
     return Stream.of(PluginExecution.values())
         .flatMap(
