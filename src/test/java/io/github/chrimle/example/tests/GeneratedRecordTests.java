@@ -4,6 +4,8 @@ import io.github.chrimle.example.GeneratedSource;
 import io.github.chrimle.example.annotations.TestAnnotationOne;
 import io.github.chrimle.example.annotations.TestAnnotationThree;
 import io.github.chrimle.example.annotations.TestAnnotationTwo;
+import io.github.chrimle.example.annotations.TestExtraAnnotation;
+import io.github.chrimle.example.annotations.TestExtraAnnotationTwo;
 import io.github.chrimle.example.models.GeneratedField;
 import io.github.chrimle.example.tests.GeneratedRecordTests.GeneratorConfigurationTests.ConfigOptionsTests;
 import io.github.chrimle.example.tests.GeneratedRecordTests.GeneratorConfigurationTests.ConfigOptionsTests.AdditionalModelTypeAnnotationsTests;
@@ -129,14 +131,39 @@ final class GeneratedRecordTests implements GeneratedClassTests {
       @DisplayName("Testing `components.schemas.{schema}.x-class-extra-annotation`")
       class XClassExtraAnnotationTests {
 
-        @ParameterizedTest
-        @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
-        @DisplayName(
-            "OpenAPI `{schema}.x-class-extra-annotation` -> Annotates generated `record` class with extra annotations")
-        public void
-            whenRecordHasExtraClassAnnotationsThenGeneratedRecordClassIsAnnotatedWithExtraAnnotations(
-                final GeneratedSource generatedSource) {
-          GeneratedRecordTestUtils.assertClassIsAnnotatedWithExtraAnnotation(generatedSource);
+        @Nested
+        @DisplayName("Testing `components.schemas.{schema}.x-class-extra-annotation: <null>`")
+        class XClassExtraAnnotationUnsetTests {
+          @ParameterizedTest
+          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+          @DisplayName("Generated `record` has no extra annotations")
+          public void whenExtraClassAnnotationsIsNotSetThenGeneratedRecordHasNoExtraAnnotations(
+              final GeneratedSource generatedSource) {
+            Assumptions.assumeFalse(generatedSource.hasExtraAnnotations());
+
+            AssertionUtils.assertClassIsNotAnnotatedWith(
+                generatedSource.getClassUnderTest(), TestExtraAnnotation.class);
+            AssertionUtils.assertClassIsNotAnnotatedWith(
+                generatedSource.getClassUnderTest(), TestExtraAnnotationTwo.class);
+          }
+        }
+
+        @Nested
+        @DisplayName("Testing `components.schemas.{schema}.x-class-extra-annotation: <not-null>`")
+        class XClassExtraAnnotationSetTests {
+          @ParameterizedTest
+          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+          @DisplayName("Generated `record` has extra annotations")
+          public void whenExtraClassAnnotationsIsNotSetThenGeneratedRecordHasNoExtraAnnotations(
+              final GeneratedSource generatedSource) {
+            Assumptions.assumeTrue(generatedSource.hasExtraAnnotations());
+
+            for (final Class<? extends Annotation> annotation :
+                generatedSource.getExtraAnnotations()) {
+              AssertionUtils.assertClassIsAnnotatedWith(
+                  generatedSource.getClassUnderTest(), annotation);
+            }
+          }
         }
       }
 
