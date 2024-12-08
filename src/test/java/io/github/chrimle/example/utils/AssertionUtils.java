@@ -73,7 +73,7 @@ public class AssertionUtils {
     }
   }
 
-  static void assertClassIsAnnotatedWith(final Class<?> clazz, final Class<?> annotation) {
+  public static void assertClassIsAnnotatedWith(final Class<?> clazz, final Class<?> annotation) {
     Assertions.assertTrue(
         Arrays.stream(clazz.getAnnotations())
             .map(Annotation::annotationType)
@@ -81,7 +81,7 @@ public class AssertionUtils {
         clazz.getCanonicalName() + " is NOT annotated with " + annotation.getCanonicalName());
   }
 
-  static void assertClassIsNotAnnotatedWith(final Class<?> clazz, final Class<?> annotation) {
+  public static void assertClassIsNotAnnotatedWith(final Class<?> clazz, final Class<?> annotation) {
     Assertions.assertTrue(
         Arrays.stream(clazz.getAnnotations())
             .map(Annotation::annotationType)
@@ -308,7 +308,7 @@ public class AssertionUtils {
             + Arrays.toString(methodArgs));
   }
 
-  private static void assertRecordDoesNotHaveField(
+  public static void assertRecordDoesNotHaveField(
       final Class<?> classUnderTest, final String fieldName) {
     Assertions.assertThrows(
         NoSuchFieldException.class,
@@ -316,7 +316,7 @@ public class AssertionUtils {
         classUnderTest.getCanonicalName() + " unexpectedly has the field: " + fieldName);
   }
 
-  private static Field assertRecordHasField(
+  public static Field assertRecordHasField(
       final Class<?> classUnderTest, final String fieldName, final Class<?> fieldType) {
     final Field field =
         Assertions.assertDoesNotThrow(
@@ -329,10 +329,24 @@ public class AssertionUtils {
   }
 
   public static void assertClassImplementsSerializable(final GeneratedSource generatedSource) {
+    assertClassImplementsInterface(Serializable.class, generatedSource.serializableModel(),
+        generatedSource.getClassUnderTest());
+  }
+
+  public static void assertClassImplementsInterface(Class<?> interfaceClass,
+      boolean expected, Class<?> classUnderTest) {
     Assertions.assertEquals(
-        generatedSource.serializableModel(),
-        Arrays.asList(generatedSource.getClassUnderTest().getInterfaces())
-            .contains(Serializable.class));
+        expected,
+        Arrays.asList(classUnderTest.getInterfaces())
+            .contains(interfaceClass));
+  }
+
+  public static void assertClassImplementsInterface(final Class<?> classUnderTest, final Class<?> interfaceClass) {
+    Assertions.assertTrue(Arrays.asList(classUnderTest.getInterfaces()).contains(interfaceClass));
+  }
+
+  public static void assertClassDoesNotImplementsInterface(final Class<?> classUnderTest, final Class<?> interfaceClass) {
+    Assertions.assertFalse(Arrays.asList(classUnderTest.getInterfaces()).contains(interfaceClass));
   }
 
   public static void assertRecordHasBuilderInnerClass(final GeneratedSource generatedSource) {

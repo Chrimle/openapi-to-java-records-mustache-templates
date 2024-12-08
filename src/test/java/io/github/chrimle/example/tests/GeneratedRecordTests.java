@@ -1,6 +1,9 @@
 package io.github.chrimle.example.tests;
 
 import io.github.chrimle.example.GeneratedSource;
+import io.github.chrimle.example.annotations.TestAnnotationOne;
+import io.github.chrimle.example.annotations.TestAnnotationThree;
+import io.github.chrimle.example.annotations.TestAnnotationTwo;
 import io.github.chrimle.example.tests.GeneratedRecordTests.GeneratorConfigurationTests.ConfigOptionsTests;
 import io.github.chrimle.example.tests.GeneratedRecordTests.GeneratorConfigurationTests.ConfigOptionsTests.AdditionalModelTypeAnnotationsTests;
 import io.github.chrimle.example.tests.GeneratedRecordTests.GeneratorConfigurationTests.ConfigOptionsTests.GenerateBuildersTests;
@@ -13,6 +16,8 @@ import io.github.chrimle.example.tests.GeneratedRecordTests.OpenAPITests.SchemaT
 import io.github.chrimle.example.tests.GeneratedRecordTests.OpenAPITests.SchemaTests.XClassExtraAnnotationTests;
 import io.github.chrimle.example.utils.AssertionUtils;
 import io.github.chrimle.example.utils.GeneratedRecordTestUtils;
+import java.io.Serializable;
+import org.junit.jupiter.api.Assumptions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -186,17 +191,42 @@ final class GeneratedRecordTests implements GeneratedClassTests {
       @DisplayName("Testing `<additionalModelTypeAnnotations>`")
       class AdditionalModelTypeAnnotationsTests {
 
-        @ParameterizedTest
-        @MethodSource(
-            "io.github.chrimle.example.tests.GeneratedClassTests#allPluginExecutionsAndGeneratedRecordCombinations")
-        @DisplayName(
-            "Configuration `configOptions.additionalModelTypeAnnotations` -> Annotates generated `record` class with additional annotations")
-        void
-            whenConfigOptionAdditionalModelTypeAnnotationsIsSetThenGeneratedRecordClassHasAdditionalAnnotations(
-                final GeneratedSource generatedSource) {
-          AssertionUtils.assertClassIsAnnotatedWithAdditionalTypeAnnotations(
-              generatedSource.getClassUnderTest(),
-              generatedSource.hasAdditionalModelTypeAnnotations());
+        @Nested
+        @DisplayName("Testing `<additionalModelTypeAnnotations></additionalModelTypeAnnotations>`")
+        class AdditionalModelTypeAnnotationsUnsetTests {
+          @ParameterizedTest
+          @MethodSource(
+              "io.github.chrimle.example.tests.GeneratedClassTests#allPluginExecutionsAndGeneratedRecordCombinations")
+          @DisplayName("Generated `record` does NOT have additional annotations")
+          void
+          whenAdditionalModelTypeAnnotationsIsNotSetThenGeneratedRecordClassDoesNotHaveAdditionalAnnotations(
+              final GeneratedSource generatedSource) {
+
+            Assumptions.assumeFalse(generatedSource.hasAdditionalModelTypeAnnotations());
+
+            AssertionUtils.assertClassIsNotAnnotatedWith(generatedSource.getClassUnderTest(), TestAnnotationOne.class);
+            AssertionUtils.assertClassIsNotAnnotatedWith(generatedSource.getClassUnderTest(), TestAnnotationTwo.class);
+            AssertionUtils.assertClassIsNotAnnotatedWith(generatedSource.getClassUnderTest(), TestAnnotationThree.class);
+          }
+        }
+
+        @Nested
+        @DisplayName("Testing `<additionalModelTypeAnnotations>@TestAnnotationOne;@TestAnnotationTwo;@TestAnnotationThree</additionalModelTypeAnnotations>`")
+        class AdditionalModelTypeAnnotationsSetTests {
+          @ParameterizedTest
+          @MethodSource(
+              "io.github.chrimle.example.tests.GeneratedClassTests#allPluginExecutionsAndGeneratedRecordCombinations")
+          @DisplayName("Generated `record` has additional annotations")
+          void
+          whenConfigOptionAdditionalModelTypeAnnotationsIsSetThenGeneratedRecordClassHasAdditionalAnnotations(
+              final GeneratedSource generatedSource) {
+
+            Assumptions.assumeTrue(generatedSource.hasAdditionalModelTypeAnnotations());
+
+            AssertionUtils.assertClassIsAnnotatedWith(generatedSource.getClassUnderTest(), TestAnnotationOne.class);
+            AssertionUtils.assertClassIsAnnotatedWith(generatedSource.getClassUnderTest(), TestAnnotationTwo.class);
+            AssertionUtils.assertClassIsAnnotatedWith(generatedSource.getClassUnderTest(), TestAnnotationThree.class);
+          }
         }
       }
 
@@ -204,24 +234,59 @@ final class GeneratedRecordTests implements GeneratedClassTests {
       @DisplayName("Testing `<serializableModel>`")
       class SerializableModelTests {
 
-        @ParameterizedTest
-        @MethodSource(
-            "io.github.chrimle.example.tests.GeneratedClassTests#allPluginExecutionsAndGeneratedRecordCombinations")
-        @DisplayName(
-            "Configuration `configOptions.serializableModel` -> Generated `record` has `serialVersionUID`-field")
-        void whenConfigOptionSerializableModelIsSetThenGeneratedRecordClassHasSerialVersionUidField(
-            final GeneratedSource generatedSource) {
-          AssertionUtils.assertModelIsSerializable(generatedSource);
+        @Nested
+        @DisplayName("Testing `<serializableModel>false</serializableModel>`")
+        class SerializableModelFalseTests {
+
+          @ParameterizedTest
+          @MethodSource(
+              "io.github.chrimle.example.tests.GeneratedClassTests#allPluginExecutionsAndGeneratedRecordCombinations")
+          @DisplayName("Generated `record` does NOT implement `Serializable`")
+          void whenConfigOptionSerializableModelIsFalseThenGeneratedRecordClassDoesNotImplementSerializable(
+              final GeneratedSource generatedSource) {
+            Assumptions.assumeFalse(generatedSource.serializableModel());
+
+            AssertionUtils.assertClassDoesNotImplementsInterface(generatedSource.getClassUnderTest(), Serializable.class);
+          }
+
+          @ParameterizedTest
+          @MethodSource(
+              "io.github.chrimle.example.tests.GeneratedClassTests#allPluginExecutionsAndGeneratedRecordCombinations")
+          @DisplayName("Generated `record` does NOT have `serialVersionUID`-field")
+          void whenConfigOptionSerializableModelIsFalseThenGeneratedRecordClassDoesNotHaveSerialVersionUidField(
+              final GeneratedSource generatedSource) {
+            Assumptions.assumeFalse(generatedSource.serializableModel());
+
+            AssertionUtils.assertRecordDoesNotHaveField(generatedSource.getClassUnderTest(), "serialVersionUID");
+          }
+
         }
 
-        @ParameterizedTest
-        @MethodSource(
-            "io.github.chrimle.example.tests.GeneratedClassTests#allPluginExecutionsAndGeneratedRecordCombinations")
-        @DisplayName(
-            "Configuration `configOptions.serializableModel` -> Generated `record` implements `Serializable`")
-        void whenConfigOptionSerializableModelIsSetThenGeneratedRecordClassImplementsSerializable(
-            final GeneratedSource generatedSource) {
-          AssertionUtils.assertClassImplementsSerializable(generatedSource);
+        @Nested
+        @DisplayName("Testing `<serializableModel>true</serializableModel>`")
+        class SerializableModelTrueTests {
+
+          @ParameterizedTest
+          @MethodSource(
+              "io.github.chrimle.example.tests.GeneratedClassTests#allPluginExecutionsAndGeneratedRecordCombinations")
+          @DisplayName("Generated `record` implement `Serializable`")
+          void whenConfigOptionSerializableModelIsTrueThenGeneratedRecordClassImplementsSerializable(
+              final GeneratedSource generatedSource) {
+            Assumptions.assumeTrue(generatedSource.serializableModel());
+
+            AssertionUtils.assertClassImplementsInterface(generatedSource.getClassUnderTest(), Serializable.class);
+          }
+
+          @ParameterizedTest
+          @MethodSource(
+              "io.github.chrimle.example.tests.GeneratedClassTests#allPluginExecutionsAndGeneratedRecordCombinations")
+          @DisplayName("Generated `record` has `serialVersionUID`-field")
+          void whenConfigOptionSerializableModelIsTrueThenGeneratedRecordClassHasSerialVersionUidField(
+              final GeneratedSource generatedSource) {
+            Assumptions.assumeTrue(generatedSource.serializableModel());
+
+            AssertionUtils.assertRecordHasField(generatedSource.getClassUnderTest(), "serialVersionUID", long.class);
+          }
         }
       }
 
