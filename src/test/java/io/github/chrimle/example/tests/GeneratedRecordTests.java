@@ -83,8 +83,7 @@ final class GeneratedRecordTests implements GeneratedClassTests {
       class TypeTests {
 
         @ParameterizedTest
-        @MethodSource(
-            "io.github.chrimle.example.tests.GeneratedClassTests#allPluginExecutionsAndGeneratedRecordCombinations")
+        @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
         @DisplayName("OpenAPI `{schema}.type: object` -> Generates a `record` class")
         public void whenIsObjectThenGeneratedClassIsRecordClass(
             final GeneratedSource generatedSource) {
@@ -96,8 +95,7 @@ final class GeneratedRecordTests implements GeneratedClassTests {
       @DisplayName("Testing `components.schemas.{schema}.deprecated`")
       class DeprecatedTests {
         @ParameterizedTest
-        @MethodSource(
-            "io.github.chrimle.example.tests.GeneratedClassTests#allPluginExecutionsAndGeneratedRecordCombinations")
+        @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
         @DisplayName(
             "OpenAPI `{schema}.deprecated` -> Annotates generated `record` class with `@Deprecated`")
         public void whenRecordIsDeprecatedThenGeneratedRecordClassIsAnnotatedDeprecated(
@@ -112,8 +110,7 @@ final class GeneratedRecordTests implements GeneratedClassTests {
       class XClassExtraAnnotationTests {
 
         @ParameterizedTest
-        @MethodSource(
-            "io.github.chrimle.example.tests.GeneratedClassTests#allPluginExecutionsAndGeneratedRecordCombinations")
+        @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
         @DisplayName(
             "OpenAPI `{schema}.x-class-extra-annotation` -> Annotates generated `record` class with extra annotations")
         public void
@@ -128,8 +125,7 @@ final class GeneratedRecordTests implements GeneratedClassTests {
       class PropertiesTests {
 
         @ParameterizedTest
-        @MethodSource(
-            "io.github.chrimle.example.tests.GeneratedClassTests#allPluginExecutionsAndGeneratedRecordCombinations")
+        @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
         @DisplayName(
             "OpenAPI `{schema}.properties` -> Generates a constructor with properties as method arguments")
         public void whenObjectHasPropertiesThenGeneratedConstructorHasMethodArguments(
@@ -139,8 +135,7 @@ final class GeneratedRecordTests implements GeneratedClassTests {
         }
 
         @ParameterizedTest
-        @MethodSource(
-            "io.github.chrimle.example.tests.GeneratedClassTests#allPluginExecutionsAndGeneratedRecordCombinations")
+        @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
         @DisplayName(
             "OpenAPI `{schema}.properties.{property}` -> Instantiating the `record` will set fields to provided values")
         public void whenObjectHasPropertiesThenFieldIsSetToProvidedValueWhenInstantiatingRecord(
@@ -154,8 +149,7 @@ final class GeneratedRecordTests implements GeneratedClassTests {
         class PropertyTests {
 
           @ParameterizedTest
-          @MethodSource(
-              "io.github.chrimle.example.tests.GeneratedClassTests#allPluginExecutionsAndGeneratedRecordCombinations")
+          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
           @DisplayName(
               "OpenAPI `{schema}.properties.{property}.default` -> Instantiating the `record` with `null` will set fields to `null` or `default`")
           public void
@@ -166,8 +160,7 @@ final class GeneratedRecordTests implements GeneratedClassTests {
           }
 
           @ParameterizedTest
-          @MethodSource(
-              "io.github.chrimle.example.tests.GeneratedClassTests#allPluginExecutionsAndGeneratedRecordCombinations")
+          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
           @DisplayName(
               "OpenAPI `{schema}.properties.{property}.nullable` -> Fields of generated `record` are annotated with `@Nullable` and `@Nonnull`")
           public void whenPropertyHasNullableSetThenFieldIsAnnotatedWithNullableOrNonnull(
@@ -195,8 +188,7 @@ final class GeneratedRecordTests implements GeneratedClassTests {
         @DisplayName("Testing `<additionalModelTypeAnnotations></additionalModelTypeAnnotations>`")
         class AdditionalModelTypeAnnotationsUnsetTests {
           @ParameterizedTest
-          @MethodSource(
-              "io.github.chrimle.example.tests.GeneratedClassTests#allPluginExecutionsAndGeneratedRecordCombinations")
+          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
           @DisplayName("Generated `record` does NOT have additional annotations")
           void
               whenAdditionalModelTypeAnnotationsIsNotSetThenGeneratedRecordClassDoesNotHaveAdditionalAnnotations(
@@ -218,8 +210,7 @@ final class GeneratedRecordTests implements GeneratedClassTests {
             "Testing `<additionalModelTypeAnnotations>@TestAnnotationOne;@TestAnnotationTwo;@TestAnnotationThree</additionalModelTypeAnnotations>`")
         class AdditionalModelTypeAnnotationsSetTests {
           @ParameterizedTest
-          @MethodSource(
-              "io.github.chrimle.example.tests.GeneratedClassTests#allPluginExecutionsAndGeneratedRecordCombinations")
+          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
           @DisplayName("Generated `record` has additional annotations")
           void
               whenConfigOptionAdditionalModelTypeAnnotationsIsSetThenGeneratedRecordClassHasAdditionalAnnotations(
@@ -246,8 +237,7 @@ final class GeneratedRecordTests implements GeneratedClassTests {
         class SerializableModelFalseTests {
 
           @ParameterizedTest
-          @MethodSource(
-              "io.github.chrimle.example.tests.GeneratedClassTests#allPluginExecutionsAndGeneratedRecordCombinations")
+          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
           @DisplayName("Generated `record` does NOT implement `Serializable`")
           void
               whenConfigOptionSerializableModelIsFalseThenGeneratedRecordClassDoesNotImplementSerializable(
@@ -259,8 +249,7 @@ final class GeneratedRecordTests implements GeneratedClassTests {
           }
 
           @ParameterizedTest
-          @MethodSource(
-              "io.github.chrimle.example.tests.GeneratedClassTests#allPluginExecutionsAndGeneratedRecordCombinations")
+          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
           @DisplayName("Generated `record` does NOT have `serialVersionUID`-field")
           void
               whenConfigOptionSerializableModelIsFalseThenGeneratedRecordClassDoesNotHaveSerialVersionUidField(
@@ -277,8 +266,7 @@ final class GeneratedRecordTests implements GeneratedClassTests {
         class SerializableModelTrueTests {
 
           @ParameterizedTest
-          @MethodSource(
-              "io.github.chrimle.example.tests.GeneratedClassTests#allPluginExecutionsAndGeneratedRecordCombinations")
+          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
           @DisplayName("Generated `record` implement `Serializable`")
           void
               whenConfigOptionSerializableModelIsTrueThenGeneratedRecordClassImplementsSerializable(
@@ -290,8 +278,7 @@ final class GeneratedRecordTests implements GeneratedClassTests {
           }
 
           @ParameterizedTest
-          @MethodSource(
-              "io.github.chrimle.example.tests.GeneratedClassTests#allPluginExecutionsAndGeneratedRecordCombinations")
+          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
           @DisplayName("Generated `record` has `serialVersionUID`-field")
           void
               whenConfigOptionSerializableModelIsTrueThenGeneratedRecordClassHasSerialVersionUidField(
@@ -313,8 +300,7 @@ final class GeneratedRecordTests implements GeneratedClassTests {
         class GenerateBuildersFalseTests {
 
           @ParameterizedTest
-          @MethodSource(
-              "io.github.chrimle.example.tests.GeneratedClassTests#allPluginExecutionsAndGeneratedRecordCombinations")
+          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
           @DisplayName("Generated `record` does NOT have inner `Builder`-class")
           void
               whenConfigOptionGenerateBuildersIsFalseThenGeneratedRecordDoesNotHaveInnerBuilderClass(
@@ -332,8 +318,7 @@ final class GeneratedRecordTests implements GeneratedClassTests {
         @DisplayName("Testing `<generateBuilders>true</generateBuilders>`")
         class GenerateBuildersTrueTests {
           @ParameterizedTest
-          @MethodSource(
-              "io.github.chrimle.example.tests.GeneratedClassTests#allPluginExecutionsAndGeneratedRecordCombinations")
+          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
           @DisplayName("Generated `record` has inner `Builder`-class")
           void whenConfigOptionGenerateBuildersIsSetThenGeneratedRecordHasInnerBuilderClass(
               final GeneratedSource generatedSource) {
