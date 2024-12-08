@@ -30,7 +30,6 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
-import java.io.Serializable;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
 import java.lang.reflect.Constructor;
@@ -243,14 +242,6 @@ public class AssertionUtils {
             + annotation.getCanonicalName());
   }
 
-  public static void assertModelIsSerializable(final GeneratedSource generatedSource) {
-    if (generatedSource.serializableModel()) {
-      assertRecordHasField(generatedSource.getClassUnderTest(), "serialVersionUID", long.class);
-    } else {
-      assertRecordDoesNotHaveField(generatedSource.getClassUnderTest(), "serialVersionUID");
-    }
-  }
-
   public static Object assertRecordInstantiateWithArgs(
       final Class<?> classUnderTest,
       final Constructor<?> constructorUnderTest,
@@ -329,19 +320,6 @@ public class AssertionUtils {
     return field;
   }
 
-  public static void assertClassImplementsSerializable(final GeneratedSource generatedSource) {
-    assertClassImplementsInterface(
-        Serializable.class,
-        generatedSource.serializableModel(),
-        generatedSource.getClassUnderTest());
-  }
-
-  public static void assertClassImplementsInterface(
-      Class<?> interfaceClass, boolean expected, Class<?> classUnderTest) {
-    Assertions.assertEquals(
-        expected, Arrays.asList(classUnderTest.getInterfaces()).contains(interfaceClass));
-  }
-
   public static void assertClassImplementsInterface(
       final Class<?> classUnderTest, final Class<?> interfaceClass) {
     Assertions.assertTrue(Arrays.asList(classUnderTest.getInterfaces()).contains(interfaceClass));
@@ -400,9 +378,5 @@ public class AssertionUtils {
         Assertions.assertDoesNotThrow(() -> buildMethod.invoke(builderObject));
     Assertions.assertNotNull(classObject);
     Assertions.assertInstanceOf(classUnderTest, classObject);
-  }
-
-  public static Class<?> assertClassExists(final String canonicalClassName) {
-    return Assertions.assertDoesNotThrow(() -> Class.forName(canonicalClassName));
   }
 }
