@@ -9,15 +9,20 @@ import io.github.chrimle.example.tests.GeneratedRecordTests.GeneratorConfigurati
 import io.github.chrimle.example.tests.GeneratedRecordTests.GeneratorConfigurationTests.ConfigOptionsTests.AdditionalModelTypeAnnotationsTests;
 import io.github.chrimle.example.tests.GeneratedRecordTests.GeneratorConfigurationTests.ConfigOptionsTests.GenerateBuildersTests;
 import io.github.chrimle.example.tests.GeneratedRecordTests.GeneratorConfigurationTests.ConfigOptionsTests.SerializableModelTests;
+import io.github.chrimle.example.tests.GeneratedRecordTests.GeneratorConfigurationTests.ConfigOptionsTests.UseJakartaEeTests;
 import io.github.chrimle.example.tests.GeneratedRecordTests.OpenAPITests.SchemaTests;
 import io.github.chrimle.example.tests.GeneratedRecordTests.OpenAPITests.SchemaTests.DeprecatedTests;
 import io.github.chrimle.example.tests.GeneratedRecordTests.OpenAPITests.SchemaTests.PropertiesTests;
 import io.github.chrimle.example.tests.GeneratedRecordTests.OpenAPITests.SchemaTests.PropertiesTests.PropertyTests;
+import io.github.chrimle.example.tests.GeneratedRecordTests.OpenAPITests.SchemaTests.PropertiesTests.PropertyTests.DefaultTests;
+import io.github.chrimle.example.tests.GeneratedRecordTests.OpenAPITests.SchemaTests.PropertiesTests.PropertyTests.NullableTests;
 import io.github.chrimle.example.tests.GeneratedRecordTests.OpenAPITests.SchemaTests.TypeTests;
 import io.github.chrimle.example.tests.GeneratedRecordTests.OpenAPITests.SchemaTests.XClassExtraAnnotationTests;
 import io.github.chrimle.example.utils.AssertionUtils;
 import io.github.chrimle.example.utils.GeneratedRecordTestUtils;
 import java.io.Serializable;
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Field;
 import org.junit.jupiter.api.Assumptions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -40,18 +45,14 @@ import org.junit.jupiter.params.provider.MethodSource;
  * <p>{@link OpenAPITests}
  *
  * <ul>
- *   <li>{@code components.schemas.{schema}}
- *       <p>{@link SchemaTests}
- *   <li>{@code components.schemas.{schema}.type}
- *       <p>{@link TypeTests}
- *   <li>{@code components.schemas.{schema}.deprecated}
- *       <p>{@link DeprecatedTests}
- *   <li>{@code components.schemas.{schema}.x-class-extra-annotation}
- *       <p>{@link XClassExtraAnnotationTests}
- *   <li>{@code components.schemas.{schema}.properties}
- *       <p>{@link PropertiesTests}
- *   <li>{@code components.schemas.{schema}.properties.{property}}
- *       <p>{@link PropertyTests}
+ *   <li>{@link SchemaTests `components.schemas.{schema}`}
+ *   <li>{@link TypeTests `components.schemas.{schema}.type`}
+ *   <li>{@link DeprecatedTests `components.schemas.{schema}.deprecated`}
+ *   <li>{@link XClassExtraAnnotationTests `components.schemas.{schema}.x-class-extra-annotation`}
+ *   <li>{@link PropertiesTests `components.schemas.{schema}.properties`}
+ *   <li>{@link PropertyTests `components.schemas.{schema}.properties.{property}`}
+ *   <li>{@link NullableTests `components.schemas.{schema}.properties.{property}.nullable`}
+ *   <li>{@link DefaultTests `components.schemas.{schema}.properties.{property}.default`}
  * </ul>
  *
  * <p><b>`openapi-generator` Configurations</b>
@@ -59,14 +60,11 @@ import org.junit.jupiter.params.provider.MethodSource;
  * <p>{@link GeneratorConfigurationTests}
  *
  * <ul>
- *   <li>{@code <configOptions>}
- *       <p>{@link ConfigOptionsTests}
- *   <li>{@code <additionalModelTypeAnnotations>}
- *       <p>{@link AdditionalModelTypeAnnotationsTests}
- *   <li>{@code <serializableModel>}
- *       <p>{@link SerializableModelTests}
- *   <li>{@code <generateBuilders>}
- *       <p>{@link GenerateBuildersTests}
+ *   <li>{@link ConfigOptionsTests configOptions}
+ *   <li>{@link AdditionalModelTypeAnnotationsTests additionalModelTypeAnnotations}
+ *   <li>{@link SerializableModelTests serializableModel}
+ *   <li>{@link GenerateBuildersTests generateBuilders}
+ *   <li>{@link UseJakartaEeTests useJakartaEe}
  * </ul>
  */
 final class GeneratedRecordTests implements GeneratedClassTests {
@@ -190,24 +188,66 @@ final class GeneratedRecordTests implements GeneratedClassTests {
         @DisplayName("Testing `components.schemas.{schema}.properties.{property}`")
         class PropertyTests {
 
-          @ParameterizedTest
-          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
-          @DisplayName(
-              "OpenAPI `{schema}.properties.{property}.default` -> Instantiating the `record` with `null` will set fields to `null` or `default`")
-          public void
-              whenPropertyHasDefaultSetThenFieldIsSetToDefaultValueWhenInstantiatingWithNull(
-                  final GeneratedSource generatedSource) {
-            GeneratedRecordTestUtils
-                .assertInstantiatingRecordWithNullSetsFieldsToNullOrDefaultValue(generatedSource);
+          @Nested
+          @DisplayName("Testing `{schema}.properties.{property}.default`")
+          class DefaultTests {
+            @ParameterizedTest
+            @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+            @DisplayName(
+                "Instantiating the `record` with `null` will set fields to `null` or `default`")
+            public void
+                whenPropertyHasDefaultSetThenFieldIsSetToDefaultValueWhenInstantiatingWithNull(
+                    final GeneratedSource generatedSource) {
+              GeneratedRecordTestUtils
+                  .assertInstantiatingRecordWithNullSetsFieldsToNullOrDefaultValue(generatedSource);
+            }
           }
 
-          @ParameterizedTest
-          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
-          @DisplayName(
-              "OpenAPI `{schema}.properties.{property}.nullable` -> Fields of generated `record` are annotated with `@Nullable` and `@Nonnull`")
-          public void whenPropertyHasNullableSetThenFieldIsAnnotatedWithNullableOrNonnull(
-              final GeneratedSource generatedSource) {
-            AssertionUtils.assertRecordHasFieldsOfTypeWithNullableAnnotations(generatedSource);
+          @Nested
+          @DisplayName("Testing `{schema}.properties.{property}.nullable`")
+          class NullableTests {
+            @ParameterizedTest
+            @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+            @DisplayName(
+                "Fields of generated `record` are annotated with `@Nullable` or `@Nonnull`")
+            public void legacyTest(final GeneratedSource generatedSource) {
+              AssertionUtils.assertRecordHasFieldsOfTypeWithNullableAnnotations(generatedSource);
+            }
+
+            // TODO assert nullable: true -> does not throw
+            // TODO assert nullable: false -> throws
+
+            @ParameterizedTest
+            @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+            @DisplayName(
+                "Fields of generated `record` are annotated with `@Nullable` or `@Nonnull`")
+            public void whenPropertyHasNullableSetThenFieldIsAnnotatedWithNullableOrNonnull(
+                final GeneratedSource generatedSource) {
+              Assumptions.assumeFalse(generatedSource.useJakartaEe());
+
+              for (final GeneratedField<?> generatedField : generatedSource.generatedFields()) {
+                final Field field =
+                    AssertionUtils.assertRecordHasField(
+                        generatedSource.getClassUnderTest(),
+                        generatedField.name(),
+                        generatedField.type());
+
+                final Class<? extends Annotation> expectedAnnotation =
+                    generatedField.isNullable()
+                        ? javax.annotation.Nullable.class
+                        : javax.annotation.Nonnull.class;
+
+                final Class<? extends Annotation> unexpectedAnnotation =
+                    generatedField.isNullable()
+                        ? javax.annotation.Nonnull.class
+                        : javax.annotation.Nullable.class;
+
+                AssertionUtils.assertHasAnnotation(
+                    generatedSource.getClassUnderTest(), field, expectedAnnotation);
+                AssertionUtils.assertDoesNotHaveAnnotation(
+                    generatedSource.getClassUnderTest(), field, unexpectedAnnotation);
+              }
+            }
           }
         }
       }
@@ -382,6 +422,95 @@ final class GeneratedRecordTests implements GeneratedClassTests {
             AssertionUtils.assertClassHasMethod(generatedSource.getClassUnderTest(), "builder");
             AssertionUtils.assertClassHasInnerClass(generatedSource.getClassUnderTest(), "Builder");
             AssertionUtils.assertInnerBuilderClassExistsAndCanBuildRecord(generatedSource);
+          }
+        }
+      }
+
+      @Nested
+      @DisplayName("Testing `<useJakartaEe>`")
+      class UseJakartaEeTests {
+
+        @Nested
+        @DisplayName("Testing `<useJakartaEe>false</useJakartaEe>`")
+        class UseJakartaEeFalseTests {
+          @ParameterizedTest
+          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+          @DisplayName(
+              "Fields of generated `record` are NOT annotated with Jakarta `@Nullable` or `@Nonnull`")
+          public void whenUseJakartaEeIsFalseThenJakartaAnnotationsAreNotUsedForNullableAndNonnull(
+              final GeneratedSource generatedSource) {
+            Assumptions.assumeFalse(generatedSource.useJakartaEe());
+
+            for (final GeneratedField<?> generatedField : generatedSource.generatedFields()) {
+              final Field field =
+                  AssertionUtils.assertRecordHasField(
+                      generatedSource.getClassUnderTest(),
+                      generatedField.name(),
+                      generatedField.type());
+
+              AssertionUtils.assertDoesNotHaveAnnotation(
+                  generatedSource.getClassUnderTest(), field, jakarta.annotation.Nullable.class);
+              AssertionUtils.assertDoesNotHaveAnnotation(
+                  generatedSource.getClassUnderTest(), field, jakarta.annotation.Nonnull.class);
+            }
+          }
+        }
+
+        @Nested
+        @DisplayName("Testing `<useJakartaEe>true</useJakartaEe>`")
+        class UseJakartaEeTrueTests {
+          @ParameterizedTest
+          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+          @DisplayName(
+              "Fields of generated `record` are annotated with Jakarta `@Nullable` or `@Nonnull`")
+          public void whenUseJakartaEeIsTrueThenJakartaAnnotationsAreUsedForNullableAndNonnull(
+              final GeneratedSource generatedSource) {
+            Assumptions.assumeTrue(generatedSource.useJakartaEe());
+
+            for (final GeneratedField<?> generatedField : generatedSource.generatedFields()) {
+              final Field field =
+                  AssertionUtils.assertRecordHasField(
+                      generatedSource.getClassUnderTest(),
+                      generatedField.name(),
+                      generatedField.type());
+
+              final Class<? extends Annotation> expectedAnnotation =
+                  generatedField.isNullable()
+                      ? jakarta.annotation.Nullable.class
+                      : jakarta.annotation.Nonnull.class;
+
+              final Class<? extends Annotation> unexpectedAnnotation =
+                  generatedField.isNullable()
+                      ? jakarta.annotation.Nonnull.class
+                      : jakarta.annotation.Nullable.class;
+
+              AssertionUtils.assertHasAnnotation(
+                  generatedSource.getClassUnderTest(), field, expectedAnnotation);
+              AssertionUtils.assertDoesNotHaveAnnotation(
+                  generatedSource.getClassUnderTest(), field, unexpectedAnnotation);
+            }
+          }
+
+          @ParameterizedTest
+          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+          @DisplayName(
+              "Fields of generated `record` are NOT annotated with JavaX `@Nullable` or `@Nonnull`")
+          public void whenUseJakartaEeIsTrueThenJavaXAnnotationsAreNotUsedForNullableAndNonnull(
+              final GeneratedSource generatedSource) {
+            Assumptions.assumeTrue(generatedSource.useJakartaEe());
+
+            for (final GeneratedField<?> generatedField : generatedSource.generatedFields()) {
+              final Field field =
+                  AssertionUtils.assertRecordHasField(
+                      generatedSource.getClassUnderTest(),
+                      generatedField.name(),
+                      generatedField.type());
+
+              AssertionUtils.assertDoesNotHaveAnnotation(
+                  generatedSource.getClassUnderTest(), field, javax.annotation.Nullable.class);
+              AssertionUtils.assertDoesNotHaveAnnotation(
+                  generatedSource.getClassUnderTest(), field, javax.annotation.Nonnull.class);
+            }
           }
         }
       }

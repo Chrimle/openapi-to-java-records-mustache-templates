@@ -94,11 +94,6 @@ public class AssertionUtils {
 
     final Class<?> classUnderTest = generatedSource.getClassUnderTest();
 
-    Assertions.assertEquals(
-        generatedSource.generatedFields().length + (generatedSource.serializableModel() ? 1 : 0),
-        classUnderTest.getDeclaredFields().length,
-        classUnderTest.getCanonicalName() + " does not have the expected number of fields!");
-
     for (final GeneratedField<?> generatedField : generatedSource.generatedFields()) {
       final Field field =
           assertRecordHasField(classUnderTest, generatedField.name(), generatedField.type());
@@ -208,7 +203,7 @@ public class AssertionUtils {
         classUnderTest.getCanonicalName() + " does not have the expected number of fields!");
   }
 
-  private static <T extends Annotation> T assertHasAnnotation(
+  public static <T extends Annotation> T assertHasAnnotation(
       final Class<?> classUnderTest,
       final AnnotatedElement annotatedElement,
       final Class<T> annotation) {
@@ -223,7 +218,7 @@ public class AssertionUtils {
     return actualAnnotation;
   }
 
-  private static <T extends Annotation> void assertDoesNotHaveAnnotation(
+  public static <T extends Annotation> void assertDoesNotHaveAnnotation(
       final Class<?> classUnderTest,
       final AnnotatedElement annotatedElement,
       final Class<T> annotation) {
