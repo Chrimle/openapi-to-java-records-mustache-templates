@@ -2,6 +2,9 @@ package io.github.chrimle.example.tests;
 
 import io.github.chrimle.example.GeneratedSource;
 import io.github.chrimle.example.tests.GeneratedRecordTests.GeneratorConfigurationTests.ConfigOptionsTests;
+import io.github.chrimle.example.tests.GeneratedRecordTests.GeneratorConfigurationTests.ConfigOptionsTests.AdditionalModelTypeAnnotationsTests;
+import io.github.chrimle.example.tests.GeneratedRecordTests.GeneratorConfigurationTests.ConfigOptionsTests.GenerateBuildersTests;
+import io.github.chrimle.example.tests.GeneratedRecordTests.GeneratorConfigurationTests.ConfigOptionsTests.SerializableModelTests;
 import io.github.chrimle.example.tests.GeneratedRecordTests.OpenAPITests.SchemaTests;
 import io.github.chrimle.example.tests.GeneratedRecordTests.OpenAPITests.SchemaTests.DeprecatedTests;
 import io.github.chrimle.example.tests.GeneratedRecordTests.OpenAPITests.SchemaTests.PropertiesTests;
@@ -52,6 +55,12 @@ import org.junit.jupiter.params.provider.MethodSource;
  * <ul>
  *   <li>{@code <configOptions>}
  *       <p>{@link ConfigOptionsTests}
+ *   <li>{@code <additionalModelTypeAnnotations>}
+ *       <p>{@link AdditionalModelTypeAnnotationsTests}
+ *   <li>{@code <serializableModel>}
+ *       <p>{@link SerializableModelTests}
+ *   <li>{@code <generateBuilders>}
+ *       <p>{@link GenerateBuildersTests}
  * </ul>
  */
 final class GeneratedRecordTests implements GeneratedClassTests {
@@ -173,47 +182,62 @@ final class GeneratedRecordTests implements GeneratedClassTests {
     @DisplayName("Testing `<configOptions>`")
     class ConfigOptionsTests {
 
-      @ParameterizedTest
-      @MethodSource(
-          "io.github.chrimle.example.tests.GeneratedClassTests#allPluginExecutionsAndGeneratedRecordCombinations")
-      @DisplayName(
-          "Configuration `configOptions.additionalModelTypeAnnotations` -> Annotates generated `record` class with additional annotations")
-      void
-          whenConfigOptionAdditionalModelTypeAnnotationsIsSetThenGeneratedRecordClassHasAdditionalAnnotations(
-              final GeneratedSource generatedSource) {
-        AssertionUtils.assertClassIsAnnotatedWithAdditionalTypeAnnotations(
-            generatedSource.getClassUnderTest(),
-            generatedSource.hasAdditionalModelTypeAnnotations());
+      @Nested
+      @DisplayName("Testing `<additionalModelTypeAnnotations>`")
+      class AdditionalModelTypeAnnotationsTests {
+
+        @ParameterizedTest
+        @MethodSource(
+            "io.github.chrimle.example.tests.GeneratedClassTests#allPluginExecutionsAndGeneratedRecordCombinations")
+        @DisplayName(
+            "Configuration `configOptions.additionalModelTypeAnnotations` -> Annotates generated `record` class with additional annotations")
+        void
+            whenConfigOptionAdditionalModelTypeAnnotationsIsSetThenGeneratedRecordClassHasAdditionalAnnotations(
+                final GeneratedSource generatedSource) {
+          AssertionUtils.assertClassIsAnnotatedWithAdditionalTypeAnnotations(
+              generatedSource.getClassUnderTest(),
+              generatedSource.hasAdditionalModelTypeAnnotations());
+        }
       }
 
-      @ParameterizedTest
-      @MethodSource(
-          "io.github.chrimle.example.tests.GeneratedClassTests#allPluginExecutionsAndGeneratedRecordCombinations")
-      @DisplayName(
-          "Configuration `configOptions.serializableModel` -> Generated `record` has `serialVersionUID`-field")
-      void whenConfigOptionSerializableModelIsSetThenGeneratedRecordClassHasSerialVersionUidField(
-          final GeneratedSource generatedSource) {
-        AssertionUtils.assertModelIsSerializable(generatedSource);
+      @Nested
+      @DisplayName("Testing `<serializableModel>`")
+      class SerializableModelTests {
+
+        @ParameterizedTest
+        @MethodSource(
+            "io.github.chrimle.example.tests.GeneratedClassTests#allPluginExecutionsAndGeneratedRecordCombinations")
+        @DisplayName(
+            "Configuration `configOptions.serializableModel` -> Generated `record` has `serialVersionUID`-field")
+        void whenConfigOptionSerializableModelIsSetThenGeneratedRecordClassHasSerialVersionUidField(
+            final GeneratedSource generatedSource) {
+          AssertionUtils.assertModelIsSerializable(generatedSource);
+        }
+
+        @ParameterizedTest
+        @MethodSource(
+            "io.github.chrimle.example.tests.GeneratedClassTests#allPluginExecutionsAndGeneratedRecordCombinations")
+        @DisplayName(
+            "Configuration `configOptions.serializableModel` -> Generated `record` implements `Serializable`")
+        void whenConfigOptionSerializableModelIsSetThenGeneratedRecordClassImplementsSerializable(
+            final GeneratedSource generatedSource) {
+          AssertionUtils.assertClassImplementsSerializable(generatedSource);
+        }
       }
 
-      @ParameterizedTest
-      @MethodSource(
-          "io.github.chrimle.example.tests.GeneratedClassTests#allPluginExecutionsAndGeneratedRecordCombinations")
-      @DisplayName(
-          "Configuration `configOptions.serializableModel` -> Generated `record` implements `Serializable`")
-      void whenConfigOptionSerializableModelIsSetThenGeneratedRecordClassImplementsSerializable(
-          final GeneratedSource generatedSource) {
-        AssertionUtils.assertClassImplementsSerializable(generatedSource);
-      }
+      @Nested
+      @DisplayName("Testing `<generateBuilders>`")
+      class GenerateBuildersTests {
 
-      @ParameterizedTest
-      @MethodSource(
-          "io.github.chrimle.example.tests.GeneratedClassTests#allPluginExecutionsAndGeneratedRecordCombinations")
-      @DisplayName(
-          "Configuration `configOptions.generateBuilders` -> Generated `record` has inner `Builder`-class")
-      void whenConfigOptionGenerateBuildersIsSetThenGeneratedRecordHasInnerBuilderClass(
-          final GeneratedSource generatedSource) {
-        AssertionUtils.assertRecordHasBuilderInnerClass(generatedSource);
+        @ParameterizedTest
+        @MethodSource(
+            "io.github.chrimle.example.tests.GeneratedClassTests#allPluginExecutionsAndGeneratedRecordCombinations")
+        @DisplayName(
+            "Configuration `configOptions.generateBuilders` -> Generated `record` has inner `Builder`-class")
+        void whenConfigOptionGenerateBuildersIsSetThenGeneratedRecordHasInnerBuilderClass(
+            final GeneratedSource generatedSource) {
+          AssertionUtils.assertRecordHasBuilderInnerClass(generatedSource);
+        }
       }
     }
   }
