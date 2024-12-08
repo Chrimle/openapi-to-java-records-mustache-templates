@@ -25,6 +25,7 @@ import io.github.chrimle.example.utils.GeneratedRecordTestUtils;
 import java.io.Serializable;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
+import java.util.List;
 import org.junit.jupiter.api.Assumptions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -233,16 +234,6 @@ final class GeneratedRecordTests implements GeneratedClassTests {
           @Nested
           @DisplayName("Testing `{schema}.properties.{property}.nullable`")
           class NullableTests {
-            @ParameterizedTest
-            @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
-            @DisplayName(
-                "Fields of generated `record` are annotated with `@Nullable` or `@Nonnull`")
-            public void legacyTest(final GeneratedSource generatedSource) {
-              AssertionUtils.assertRecordHasFieldsOfTypeWithNullableAnnotations(generatedSource);
-            }
-
-            // TODO assert nullable: true -> does not throw
-            // TODO assert nullable: false -> throws
 
             @ParameterizedTest
             @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
@@ -538,6 +529,62 @@ final class GeneratedRecordTests implements GeneratedClassTests {
               AssertionUtils.assertDoesNotHaveAnnotation(
                   generatedSource.getClassUnderTest(), field, javax.annotation.Nonnull.class);
             }
+          }
+        }
+      }
+
+      @Nested
+      @DisplayName("Testing `<useBeanValidation>`")
+      class UseBeanValidationTests {
+
+        @Nested
+        @DisplayName("Testing `<useBeanValidation>false</useBeanValidation>`")
+        class UseBeanValidationFalseTests {
+          @ParameterizedTest
+          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+          @DisplayName(
+              "Generated `record` does NOT use Jakarta Bean Validation annotations on fields")
+          public void
+              whenUseBeanValidationIsFalseThenFieldsAreNotAnnotatedWithJakartaBeanValidationAnnotations(
+                  final GeneratedSource generatedSource) {
+            Assumptions.assumeFalse(generatedSource.useBeanValidation());
+
+            for (final GeneratedField<?> generatedField : generatedSource.generatedFields()) {
+              final Field field =
+                  AssertionUtils.assertRecordHasField(
+                      generatedSource.getClassUnderTest(),
+                      generatedField.name(),
+                      generatedField.type());
+
+              for (final Class<? extends Annotation> annotation :
+                  List.of(
+                      jakarta.validation.Valid.class,
+                      jakarta.validation.constraints.NotNull.class,
+                      jakarta.validation.constraints.Pattern.class,
+                      jakarta.validation.constraints.Size.class,
+                      jakarta.validation.constraints.Min.class,
+                      jakarta.validation.constraints.Max.class,
+                      jakarta.validation.constraints.DecimalMin.class,
+                      jakarta.validation.constraints.DecimalMax.class,
+                      jakarta.validation.constraints.Email.class)) {
+                AssertionUtils.assertDoesNotHaveAnnotation(
+                    generatedSource.getClassUnderTest(), field, annotation);
+              }
+            }
+          }
+        }
+
+        @Nested
+        @DisplayName("Testing `<useBeanValidation>true</useBeanValidation>`")
+        class UseBeanValidationTrueTests {
+          @ParameterizedTest
+          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+          @DisplayName("Generated `record` use Jakarta Bean Validation annotations on fields")
+          public void
+              whenUseBeanValidationIsTrueThenFieldsAreAnnotatedWithJakartaBeanValidationAnnotations(
+                  final GeneratedSource generatedSource) {
+            Assumptions.assumeTrue(generatedSource.useBeanValidation());
+            AssertionUtils.assertRecordHasFieldsOfTypeWithNullableAnnotations(generatedSource);
           }
         }
       }
