@@ -1,6 +1,13 @@
 package io.github.chrimle.example.tests;
 
 import io.github.chrimle.example.GeneratedSource;
+import io.github.chrimle.example.tests.GeneratedEnumTests.GeneratorConfigurationTests.ConfigOptionsTests;
+import io.github.chrimle.example.tests.GeneratedEnumTests.GeneratorConfigurationTests.ConfigOptionsTests.AdditionalEnumTypeAnnotationsTests;
+import io.github.chrimle.example.tests.GeneratedEnumTests.GeneratorConfigurationTests.ConfigOptionsTests.UseEnumCaseInsensitiveTests;
+import io.github.chrimle.example.tests.GeneratedEnumTests.OpenAPITests.SchemaTests;
+import io.github.chrimle.example.tests.GeneratedEnumTests.OpenAPITests.SchemaTests.DeprecatedTests;
+import io.github.chrimle.example.tests.GeneratedEnumTests.OpenAPITests.SchemaTests.EnumTests;
+import io.github.chrimle.example.tests.GeneratedEnumTests.OpenAPITests.SchemaTests.EnumTests.ConstantsTests;
 import io.github.chrimle.example.utils.AssertionUtils;
 import io.github.chrimle.example.utils.GeneratedEnumTestUtils;
 import org.junit.jupiter.api.Assumptions;
@@ -9,7 +16,38 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
-/** Class for testing generated {@code enum} classes. */
+/**
+ * Tests for <b>all</b> generated {@code enum} classes. Tests are grouped by the <i>method of
+ * configuring</i> the resulting {@code enum}.
+ *
+ * <p>
+ *
+ * <h2>Table of Contents</h2>
+ *
+ * <i>All tests are categorized and grouped accordingly, using {@link Nested} classes. This is the
+ * complete list of tested <i>properties</i> and <i>configurations</i>.<br>
+ *
+ * <p><b>OpenAPI Specification</b>
+ *
+ * <p>{@link OpenAPITests}
+ *
+ * <ul>
+ *   <li>{@link SchemaTests `components.schemas.{schema}`}
+ *   <li>{@link DeprecatedTests `components.schemas.{schema}.deprecated`}
+ *   <li>{@link EnumTests `components.schemas.{schema}.enum`}
+ *   <li>{@link ConstantsTests `components.schemas.{schema}.enum.{constants}`}
+ * </ul>
+ *
+ * <p><b>`openapi-generator` Configurations</b>
+ *
+ * <p>{@link GeneratorConfigurationTests}
+ *
+ * <ul>
+ *   <li>{@link ConfigOptionsTests configOptions}
+ *   <li>{@link AdditionalEnumTypeAnnotationsTests additionalEnumTypeAnnotations}
+ *   <li>{@link UseEnumCaseInsensitiveTests useEnumCaseInsensitive}
+ * </ul>
+ */
 @DisplayName("Test Generated `enum` classes")
 final class GeneratedEnumTests implements GeneratedClassTests {
 
@@ -96,23 +134,41 @@ final class GeneratedEnumTests implements GeneratedClassTests {
     }
   }
 
-  @ParameterizedTest
-  @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
-  @DisplayName(
-      "Configuration `configOptions.additionalEnumTypeAnnotations` -> Annotates generated `enum` class with additional annotations")
-  void
-      whenConfigOptionAdditionalEnumTypeAnnotationsIsSetThenGeneratedEnumClassHasAdditionalAnnotations(
-          final GeneratedSource generatedSource) {
-    GeneratedEnumTestUtils.assertHasAdditionalTypeAnnotations(generatedSource);
-  }
+  @Nested
+  @DisplayName("Testing `openapi-generator` Configurations & ConfigOptions")
+  class GeneratorConfigurationTests {
 
-  @ParameterizedTest
-  @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
-  @DisplayName(
-      "Configuration `configOptions.useEnumCaseInsensitive` -> Generated `enum` class has case-insensitive `fromValue(T)` method")
-  void
-      whenConfigOptionUseEnumCaseInsensitiveIsSetThenGeneratedEnumClassHasCaseInsensitiveFromValueMethod(
-          final GeneratedSource generatedSource) {
-    GeneratedEnumTestUtils.assertEnumHasCaseInsensitiveFromValueMethod(generatedSource);
+    @Nested
+    @DisplayName("Testing `<configOptions>`")
+    class ConfigOptionsTests {
+
+      @Nested
+      @DisplayName("Testing `<additionalEnumTypeAnnotations>`")
+      class AdditionalEnumTypeAnnotationsTests {
+        @ParameterizedTest
+        @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+        @DisplayName(
+            "Configuration `configOptions.additionalEnumTypeAnnotations` -> Annotates generated `enum` class with additional annotations")
+        void
+            whenConfigOptionAdditionalEnumTypeAnnotationsIsSetThenGeneratedEnumClassHasAdditionalAnnotations(
+                final GeneratedSource generatedSource) {
+          GeneratedEnumTestUtils.assertHasAdditionalTypeAnnotations(generatedSource);
+        }
+      }
+
+      @Nested
+      @DisplayName("Testing `<useEnumCaseInsensitive>`")
+      class UseEnumCaseInsensitiveTests {
+        @ParameterizedTest
+        @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+        @DisplayName(
+            "Configuration `configOptions.useEnumCaseInsensitive` -> Generated `enum` class has case-insensitive `fromValue(T)` method")
+        void
+            whenConfigOptionUseEnumCaseInsensitiveIsSetThenGeneratedEnumClassHasCaseInsensitiveFromValueMethod(
+                final GeneratedSource generatedSource) {
+          GeneratedEnumTestUtils.assertEnumHasCaseInsensitiveFromValueMethod(generatedSource);
+        }
+      }
+    }
   }
 }
