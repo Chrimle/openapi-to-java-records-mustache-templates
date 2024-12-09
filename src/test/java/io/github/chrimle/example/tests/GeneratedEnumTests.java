@@ -1,6 +1,9 @@
 package io.github.chrimle.example.tests;
 
 import io.github.chrimle.example.GeneratedSource;
+import io.github.chrimle.example.annotations.TestAnnotationOne;
+import io.github.chrimle.example.annotations.TestAnnotationThree;
+import io.github.chrimle.example.annotations.TestAnnotationTwo;
 import io.github.chrimle.example.tests.GeneratedEnumTests.GeneratorConfigurationTests.ConfigOptionsTests;
 import io.github.chrimle.example.tests.GeneratedEnumTests.GeneratorConfigurationTests.ConfigOptionsTests.AdditionalEnumTypeAnnotationsTests;
 import io.github.chrimle.example.tests.GeneratedEnumTests.GeneratorConfigurationTests.ConfigOptionsTests.UseEnumCaseInsensitiveTests;
@@ -145,14 +148,48 @@ final class GeneratedEnumTests implements GeneratedClassTests {
       @Nested
       @DisplayName("Testing `<additionalEnumTypeAnnotations>`")
       class AdditionalEnumTypeAnnotationsTests {
-        @ParameterizedTest
-        @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+
+        @Nested
+        @DisplayName("Testing `<additionalEnumTypeAnnotations></additionalEnumTypeAnnotations>`")
+        class AdditionalEnumTypeAnnotationsUnsetTests {
+
+          @ParameterizedTest
+          @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+          @DisplayName("Generated `enum` class is NOT annotated with additional annotations")
+          void
+              whenConfigOptionAdditionalEnumTypeAnnotationsIsUnsetThenGeneratedEnumDoesNotHaveAdditionalAnnotations(
+                  final GeneratedSource generatedSource) {
+            Assumptions.assumeFalse(generatedSource.hasAdditionalEnumTypeAnnotations());
+
+            AssertionUtils.assertClassIsNotAnnotatedWith(
+                generatedSource.getClassUnderTest(), TestAnnotationOne.class);
+            AssertionUtils.assertClassIsNotAnnotatedWith(
+                generatedSource.getClassUnderTest(), TestAnnotationTwo.class);
+            AssertionUtils.assertClassIsNotAnnotatedWith(
+                generatedSource.getClassUnderTest(), TestAnnotationThree.class);
+          }
+        }
+
+        @Nested
         @DisplayName(
-            "Configuration `configOptions.additionalEnumTypeAnnotations` -> Annotates generated `enum` class with additional annotations")
-        void
-            whenConfigOptionAdditionalEnumTypeAnnotationsIsSetThenGeneratedEnumClassHasAdditionalAnnotations(
-                final GeneratedSource generatedSource) {
-          GeneratedEnumTestUtils.assertHasAdditionalTypeAnnotations(generatedSource);
+            "Testing `<additionalEnumTypeAnnotations>@TestAnnotationOne;@TestAnnotationTwo;@TestAnnotationThree</additionalEnumTypeAnnotations>`")
+        class AdditionalEnumTypeAnnotationsSetTests {
+
+          @ParameterizedTest
+          @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+          @DisplayName("Generated `enum` class is annotated with additional annotations")
+          void
+              whenConfigOptionAdditionalEnumTypeAnnotationsIsSetThenGeneratedEnumHasAdditionalAnnotations(
+                  final GeneratedSource generatedSource) {
+            Assumptions.assumeTrue(generatedSource.hasAdditionalEnumTypeAnnotations());
+
+            AssertionUtils.assertClassIsAnnotatedWith(
+                generatedSource.getClassUnderTest(), TestAnnotationOne.class);
+            AssertionUtils.assertClassIsAnnotatedWith(
+                generatedSource.getClassUnderTest(), TestAnnotationTwo.class);
+            AssertionUtils.assertClassIsAnnotatedWith(
+                generatedSource.getClassUnderTest(), TestAnnotationThree.class);
+          }
         }
       }
 

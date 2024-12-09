@@ -28,16 +28,6 @@ import org.junit.jupiter.api.Assertions;
 /** Generalized Test-class for testing Generated Enum-classes */
 public class GeneratedEnumTestUtils {
 
-  public static void assertHasAdditionalTypeAnnotations(final GeneratedSource generatedSource) {
-    AssertionUtils.assertClassIsAnnotatedWithAdditionalTypeAnnotations(
-        generatedSource.getClassUnderTest(), generatedSource.hasAdditionalEnumTypeAnnotations());
-  }
-
-  public static void assertIsAnnotatedAsDeprecated(final GeneratedSource generatedSource) {
-    AssertionUtils.assertClassIsAnnotatedAsDeprecated(
-        generatedSource.getClassUnderTest(), generatedSource.isDeprecated());
-  }
-
   public static void assertEnumNames(final GeneratedSource generatedSource) {
     for (final GeneratedField<?> generatedField : generatedSource.generatedFields()) {
       final String enumName = generatedField.name();
