@@ -296,11 +296,23 @@ public record Person(
 </details>
 
 ## Further examples
-All supported plugin `<configuration>`-options and OpenAPI Specification-properties have been tested.
-For reference:
-- [OpenAPI Specification](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/blob/main/src/main/resources/api.yaml), used for all tests
-- [Maven plugin executions](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/blob/main/pom.xml#L166), for each different set of configurations
-- [Generated classes](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/tree/main/target/generated-sources/openapi/src/src/gen/java/main/io/github/chrimle/example) grouped by plugin-execution.
+
+Refer to the test-cases for generated classes, as these list supported plugin `<configuration>`-options and OpenAPI
+Specification-properties. The unit-tests could clarify expected behaviors, and the OpenAPI Specification could also
+provide concrete examples and use-cases. For reference:
+
+- [OpenAPI Specification](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/blob/main/src/main/resources/api.yaml)<br/>
+  Used as the input schema to generate **all** classes used in testing.
+- [Maven plugin executions](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/blob/main/pom.xml#L166)<br/>
+  Generates classes from the OpenAPI spec, with different `openapi-generator-maven-plugin` configuration options. The
+  resulting classes are placed in sub-packages, named after the plugin-execution.
+- [Generated classes](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/tree/main/target/generated-sources/openapi/src/src/gen/java/main/io/github/chrimle/example)<br/>
+  The resulting classes are organized into sub-packages, which facilitates testing. These files are - _albeit in no way
+  necessary_ - tracked and versioned in order to be accessible without needing to compile anything. Furthermore, it
+  makes it easier to spot differences in generated classes after making a change to the mustache templates.
+- [Test Suite](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/tree/main/src/test/java/io/github/chrimle/example/test)<br/>
+  Contains all test-cases for generated `record` and `enum` classes. These tests are _parameterized_, to test **all**
+  classes in the OpenAPI Specification in combination with **all** plugin-executions.
 
 ### Useful Resources
 
