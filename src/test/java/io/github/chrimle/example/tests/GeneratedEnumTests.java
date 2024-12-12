@@ -199,11 +199,26 @@ final class GeneratedEnumTests implements GeneratedClassTests {
 
         @ParameterizedTest
         @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
-        @DisplayName("Generated `enum` class ALWAYS has a `static fromValue(T)`-method ")
+        @DisplayName("Generated `enum` class ALWAYS has a `static fromValue(T)` method")
         void alwaysGenerateEnumClassWithStaticFromValueMethod(
             final GeneratedSource generatedSource) {
           AssertionUtils.assertClassHasMethod(
               generatedSource.getClassUnderTest(), "fromValue", generatedSource.fieldClasses()[0]);
+        }
+
+        @ParameterizedTest
+        @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+        @DisplayName(
+            "Generated `static fromValue(T)` method ALWAYS `throw IllegalArgumentException` when `null` is given")
+        void alwaysThrowIllegalArgumentExceptionWhenProvidingNullAsArgumentToStaticFromValueMethod(
+            final GeneratedSource generatedSource) {
+          AssertionUtils.assertStaticMethodWithArgsThrows(
+              AssertionUtils.assertClassHasMethod(
+                  generatedSource.getClassUnderTest(),
+                  "fromValue",
+                  generatedSource.fieldClasses()[0]),
+              IllegalArgumentException.class,
+              (Object) null);
         }
 
         @Nested

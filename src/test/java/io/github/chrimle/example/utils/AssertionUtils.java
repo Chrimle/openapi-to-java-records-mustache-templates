@@ -31,10 +31,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import java.lang.annotation.Annotation;
-import java.lang.reflect.AnnotatedElement;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
+import java.lang.reflect.*;
 import java.util.Arrays;
 import org.junit.jupiter.api.Assertions;
 
@@ -347,5 +344,15 @@ public class AssertionUtils {
         Assertions.assertDoesNotThrow(() -> buildMethod.invoke(builderObject));
     Assertions.assertNotNull(classObject);
     Assertions.assertInstanceOf(classUnderTest, classObject);
+  }
+
+  public static void assertStaticMethodWithArgsThrows(
+      final Method method,
+      final Class<IllegalArgumentException> expectedException,
+      final Object... args) {
+    Assertions.assertInstanceOf(
+        expectedException,
+        Assertions.assertThrows(InvocationTargetException.class, () -> method.invoke(null, args))
+            .getCause());
   }
 }

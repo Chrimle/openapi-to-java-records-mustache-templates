@@ -18,7 +18,6 @@ package io.github.chrimle.example.utils;
 
 import io.github.chrimle.example.GeneratedSource;
 import io.github.chrimle.example.models.GeneratedField;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.List;
@@ -76,14 +75,10 @@ public class GeneratedEnumTestUtils {
             generatedSource.getClassUnderTest(), "fromValue", generatedSource.fieldClasses()[0]);
 
     // Assert 'IllegalArgumentException' is thrown for unknown Enum-values
-    final InvocationTargetException invocationTargetException =
-        Assertions.assertThrows(
-            InvocationTargetException.class,
-            () ->
-                fromValueMethod.invoke(
-                    null, getInvalidTestingValue(generatedSource.fieldClasses()[0])));
-    Assertions.assertInstanceOf(
-        IllegalArgumentException.class, invocationTargetException.getCause());
+    AssertionUtils.assertStaticMethodWithArgsThrows(
+        fromValueMethod,
+        IllegalArgumentException.class,
+        getInvalidTestingValue(generatedSource.fieldClasses()[0]));
 
     if (String.class.equals(generatedSource.fieldClasses()[0])) {
       for (final String name : List.of("enum", "Enum", "EnUm", "ENUM", "eNuM")) {
@@ -96,11 +91,8 @@ public class GeneratedEnumTestUtils {
             Assertions.assertDoesNotThrow(() -> fromValueMethod.invoke(null, value));
           } else {
             // Assert 'IllegalArgumentException' is thrown when case-sensitive
-            Assertions.assertInstanceOf(
-                IllegalArgumentException.class,
-                Assertions.assertThrows(
-                        InvocationTargetException.class, () -> fromValueMethod.invoke(null, value))
-                    .getCause());
+            AssertionUtils.assertStaticMethodWithArgsThrows(
+                fromValueMethod, IllegalArgumentException.class, value);
           }
         }
       }
@@ -112,20 +104,12 @@ public class GeneratedEnumTestUtils {
         Assertions.assertDoesNotThrow(() -> fromValueMethod.invoke(null, validValue));
       }
       for (final Integer invalidValue : List.of(-12, 0, 1, 42)) {
-        Assertions.assertInstanceOf(
-            IllegalArgumentException.class,
-            Assertions.assertThrows(
-                    InvocationTargetException.class,
-                    () -> fromValueMethod.invoke(null, invalidValue))
-                .getCause());
+        AssertionUtils.assertStaticMethodWithArgsThrows(
+            fromValueMethod, IllegalArgumentException.class, invalidValue);
       }
       // Testing `null` does not match with any enum constant's value
-      Assertions.assertInstanceOf(
-          IllegalArgumentException.class,
-          Assertions.assertThrows(
-                  InvocationTargetException.class,
-                  () -> fromValueMethod.invoke(null, (Object) null))
-              .getCause());
+      AssertionUtils.assertStaticMethodWithArgsThrows(
+          fromValueMethod, IllegalArgumentException.class, (Object) null);
     }
   }
 
