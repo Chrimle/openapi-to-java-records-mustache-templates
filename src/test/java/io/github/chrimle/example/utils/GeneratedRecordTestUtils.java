@@ -17,10 +17,7 @@
 package io.github.chrimle.example.utils;
 
 import io.github.chrimle.example.GeneratedSource;
-import io.github.chrimle.example.annotations.TestExtraAnnotation;
-import io.github.chrimle.example.annotations.TestExtraAnnotationTwo;
 import io.github.chrimle.example.models.GeneratedField;
-import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -34,34 +31,13 @@ import org.junit.jupiter.api.Assertions;
 /** Generalized Test-class for testing Generated Record-classes */
 public class GeneratedRecordTestUtils {
 
-  public static void assertRecord(final GeneratedSource generatedSource) {
-    final Class<?>[] fieldClasses = generatedSource.fieldClasses();
+  public static void assertInstantiatingRecordWithValuesSetsFieldsToProvidedValue(
+      final GeneratedSource generatedSource) {
     final Class<?> classUnderTest = generatedSource.getClassUnderTest();
-
-    AssertionUtils.assertIsRecord(classUnderTest);
-    AssertionUtils.assertClassIsAnnotatedAsDeprecated(
-        classUnderTest, generatedSource.isDeprecated());
-    AssertionUtils.assertClassIsAnnotatedWithAdditionalTypeAnnotations(
-        classUnderTest, generatedSource.hasAdditionalModelTypeAnnotations());
-    assertClassIsAnnotatedWithExtraAnnotation(generatedSource);
-    AssertionUtils.assertModelIsSerializable(generatedSource);
-    AssertionUtils.assertRecordHasFieldsOfTypeWithNullableAnnotations(generatedSource);
-    AssertionUtils.assertClassImplementsSerializable(generatedSource);
-    AssertionUtils.assertRecordHasBuilderInnerClass(generatedSource);
+    final Class<?>[] fieldClasses = generatedSource.fieldClasses();
     final Constructor<?> constructor =
         AssertionUtils.assertRecordHasConstructor(classUnderTest, fieldClasses);
 
-    // Asserting Nullable-fields are null if unset
-    final Object objectWithNullFields =
-        AssertionUtils.assertRecordInstantiateWithArgs(
-            classUnderTest, constructor, Arrays.stream(fieldClasses).map(x -> null).toArray());
-    Assertions.assertInstanceOf(classUnderTest, objectWithNullFields);
-
-    for (GeneratedField<?> generatedField : generatedSource.generatedFields()) {
-      assertFieldHasEitherNullOrDefaultValueSet(generatedField, objectWithNullFields);
-    }
-
-    // Asserting fields are not null when set
     final Object objectWithNonNullFields =
         AssertionUtils.assertRecordInstantiateWithArgs(
             classUnderTest,
@@ -76,21 +52,25 @@ public class GeneratedRecordTestUtils {
     }
   }
 
-  private static void assertClassIsAnnotatedWithExtraAnnotation(
+  public static void assertInstantiatingRecordWithNullSetsFieldsToNullOrDefaultValue(
       final GeneratedSource generatedSource) {
     final Class<?> classUnderTest = generatedSource.getClassUnderTest();
-    if (generatedSource.hasExtraAnnotations()) {
-      for (final Class<? extends Annotation> annotation : generatedSource.getExtraAnnotations()) {
-        AssertionUtils.assertClassIsAnnotatedWith(classUnderTest, annotation);
-      }
-    } else {
-      AssertionUtils.assertClassIsNotAnnotatedWith(classUnderTest, TestExtraAnnotation.class);
-      AssertionUtils.assertClassIsNotAnnotatedWith(classUnderTest, TestExtraAnnotationTwo.class);
+    final Class<?>[] fieldClasses = generatedSource.fieldClasses();
+    final Constructor<?> constructor =
+        AssertionUtils.assertRecordHasConstructor(classUnderTest, fieldClasses);
+
+    final Object objectWithNullFields =
+        AssertionUtils.assertRecordInstantiateWithArgs(
+            classUnderTest, constructor, Arrays.stream(fieldClasses).map(x -> null).toArray());
+    Assertions.assertInstanceOf(classUnderTest, objectWithNullFields);
+
+    for (GeneratedField<?> generatedField : generatedSource.generatedFields()) {
+      assertFieldHasEitherNullOrDefaultValueSet(generatedField, objectWithNullFields);
     }
   }
 
   private static <T> void assertFieldHasEitherNullOrDefaultValueSet(
-      GeneratedField<T> generatedField, Object object) {
+      final GeneratedField<T> generatedField, final Object object) {
     AssertionUtils.assertInstanceMethodReturns(
         object,
         generatedField.name(),
@@ -104,7 +84,7 @@ public class GeneratedRecordTestUtils {
   }
 
   private static <T> void assertFieldHasTestingValueSet(
-      GeneratedField<T> generatedField, Object object) {
+      final GeneratedField<T> generatedField, final Object object) {
     AssertionUtils.assertInstanceMethodReturns(
         object, generatedField.name(), getClassSpecificTestingValue(generatedField.type()));
   }

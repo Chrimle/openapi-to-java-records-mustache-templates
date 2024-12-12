@@ -16,6 +16,7 @@
 */
 package io.github.chrimle.example.models;
 
+import io.github.chrimle.example.PluginExecution;
 import io.github.chrimle.example.annotations.TestExtraAnnotation;
 import io.github.chrimle.example.annotations.TestExtraAnnotationTwo;
 import java.lang.annotation.Annotation;
@@ -61,7 +62,7 @@ public enum GeneratedRecord implements GeneratedClass {
   /**
    * This class reference another class, which requires Reflection at runtime. Hence, this class
    * does not list all expected fields to be generated. This is done in {@link
-   * io.github.chrimle.example.TestSuite}.
+   * #getGeneratedFields(GeneratedClass, PluginExecution)}.
    */
   EXAMPLE_RECORD_WITH_REQUIRED_FIELDS_OF_EACH_TYPE(
       "ExampleRecordWithRequiredFieldsOfEachType", false, List.of()),
@@ -101,7 +102,7 @@ public enum GeneratedRecord implements GeneratedClass {
   /**
    * This class reference another class, which requires Reflection at runtime. Hence, this class
    * does not list all expected fields to be generated. This is done in {@link
-   * io.github.chrimle.example.TestSuite}.
+   * #getGeneratedFields(GeneratedClass, PluginExecution)}.
    */
   RECORD_WITH_INNER_ENUMS("RecordWithInnerEnums", false, List.of());
 
@@ -181,5 +182,46 @@ public enum GeneratedRecord implements GeneratedClass {
   @Override
   public List<Class<? extends Annotation>> getExtraAnnotations() {
     return extraAnnotations;
+  }
+
+  public static GeneratedField<?>[] getGeneratedFields(
+      final GeneratedRecord generatedRecord, final PluginExecution pluginExecution) {
+    return switch (generatedRecord) {
+      case RECORD_WITH_INNER_ENUMS ->
+          List.of(
+                  GeneratedField.of(
+                          "exampleInner",
+                          GeneratedEnum.EXAMPLE_INNER_ENUM.getClass(pluginExecution))
+                      .build(),
+                  GeneratedField.of(
+                          "exampleInnerTwo",
+                          GeneratedEnum.EXAMPLE_INNER_TWO_ENUM.getClass(pluginExecution))
+                      .build())
+              .toArray(new GeneratedField[] {});
+      case EXAMPLE_RECORD_WITH_REQUIRED_FIELDS_OF_EACH_TYPE ->
+          List.of(
+                  GeneratedField.of("field1", Boolean.class)
+                      .isBeanValidationNullable(false)
+                      .build(),
+                  GeneratedField.of("field2", String.class).isBeanValidationNullable(false).build(),
+                  GeneratedField.of("field3", Integer.class)
+                      .isBeanValidationNullable(false)
+                      .build(),
+                  GeneratedField.of("field4", BigDecimal.class)
+                      .isBeanValidationNullable(false)
+                      .build(),
+                  GeneratedField.of("field5", List.class).isBeanValidationNullable(false).build(),
+                  GeneratedField.of("field6", Set.class).isBeanValidationNullable(false).build(),
+                  GeneratedField.of(
+                          "field7", GeneratedRecord.EXAMPLE_RECORD.getClass(pluginExecution))
+                      .isBeanValidationNullable(false)
+                      .isCustomClass(true)
+                      .build(),
+                  GeneratedField.of("field8", GeneratedEnum.EXAMPLE_ENUM.getClass(pluginExecution))
+                      .isBeanValidationNullable(false)
+                      .build())
+              .toArray(new GeneratedField[] {});
+      default -> generatedRecord.getGeneratedFields();
+    };
   }
 }
