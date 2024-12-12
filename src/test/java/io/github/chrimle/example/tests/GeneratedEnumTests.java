@@ -196,14 +196,42 @@ final class GeneratedEnumTests implements GeneratedClassTests {
       @Nested
       @DisplayName("Testing `<useEnumCaseInsensitive>`")
       class UseEnumCaseInsensitiveTests {
+
         @ParameterizedTest
         @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
-        @DisplayName(
-            "Configuration `configOptions.useEnumCaseInsensitive` -> Generated `enum` class has case-insensitive `fromValue(T)` method")
-        void
-            whenConfigOptionUseEnumCaseInsensitiveIsSetThenGeneratedEnumClassHasCaseInsensitiveFromValueMethod(
-                final GeneratedSource generatedSource) {
-          GeneratedEnumTestUtils.assertEnumHasCaseInsensitiveFromValueMethod(generatedSource);
+        @DisplayName("Generated `enum` class ALWAYS has a `static fromValue(T)`-method ")
+        void alwaysGenerateEnumClassWithStaticFromValueMethod(
+            final GeneratedSource generatedSource) {
+          AssertionUtils.assertClassHasMethod(
+              generatedSource.getClassUnderTest(), "fromValue", generatedSource.fieldClasses()[0]);
+        }
+
+        @Nested
+        @DisplayName("Testing `<useEnumCaseInsensitive>false</useEnumCaseInsensitive>`")
+        class UseEnumCaseInsensitiveFalseTests {
+          @ParameterizedTest
+          @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+          @DisplayName("Generated `enum` class has case-sensitive `fromValue(T)` method")
+          void
+              whenConfigOptionUseEnumCaseInsensitiveIsFalseThenGeneratedEnumClassHasCaseSensitiveFromValueMethod(
+                  final GeneratedSource generatedSource) {
+            Assumptions.assumeFalse(generatedSource.useEnumCaseInsensitive());
+            GeneratedEnumTestUtils.assertEnumHasCaseInsensitiveFromValueMethod(generatedSource);
+          }
+        }
+
+        @Nested
+        @DisplayName("Testing `<useEnumCaseInsensitive>true</useEnumCaseInsensitive>`")
+        class UseEnumCaseInsensitiveTrueTests {
+          @ParameterizedTest
+          @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+          @DisplayName("Generated `enum` class has case-insensitive `fromValue(T)` method")
+          void
+              whenConfigOptionUseEnumCaseInsensitiveIsTrueThenGeneratedEnumClassHasCaseInsensitiveFromValueMethod(
+                  final GeneratedSource generatedSource) {
+            Assumptions.assumeTrue(generatedSource.useEnumCaseInsensitive());
+            GeneratedEnumTestUtils.assertEnumHasCaseInsensitiveFromValueMethod(generatedSource);
+          }
         }
       }
     }
