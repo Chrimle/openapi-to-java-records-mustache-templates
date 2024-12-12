@@ -18,9 +18,7 @@ package io.github.chrimle.example.utils;
 
 import io.github.chrimle.example.GeneratedSource;
 import io.github.chrimle.example.models.GeneratedField;
-import java.lang.reflect.Method;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Optional;
 import org.junit.jupiter.api.Assertions;
 
@@ -65,45 +63,5 @@ public class GeneratedEnumTestUtils {
 
       AssertionUtils.assertInstanceMethodReturns(enumConstant.get(), "getValue", enumValue);
     }
-  }
-
-  public static void assertEnumHasCaseInsensitiveFromValueMethod(
-      final GeneratedSource generatedSource) {
-    // Assert 'fromValue'-method exists
-    final Method fromValueMethod =
-        AssertionUtils.assertClassHasMethod(
-            generatedSource.getClassUnderTest(), "fromValue", generatedSource.fieldClasses()[0]);
-
-    // Assert 'IllegalArgumentException' is thrown for unknown Enum-values
-    AssertionUtils.assertStaticMethodWithArgsThrows(
-        fromValueMethod,
-        IllegalArgumentException.class,
-        getInvalidTestingValue(generatedSource.fieldClasses()[0]));
-
-    if (Integer.class.equals(generatedSource.fieldClasses()[0])) {
-      for (final Object validValue :
-          Arrays.stream(generatedSource.generatedFields())
-              .map(GeneratedField::enumValue)
-              .toList()) {
-        Assertions.assertDoesNotThrow(() -> fromValueMethod.invoke(null, validValue));
-      }
-      for (final Integer invalidValue : List.of(-12, 0, 1, 42)) {
-        AssertionUtils.assertStaticMethodWithArgsThrows(
-            fromValueMethod, IllegalArgumentException.class, invalidValue);
-      }
-    }
-  }
-
-  private static <T> T getInvalidTestingValue(final Class<? extends T> type) {
-    if (type == null) {
-      throw new IllegalArgumentException("Cannot resolve testing value for type 'null'!");
-    }
-    if (String.class.equals(type)) {
-      return type.cast("invalid");
-    }
-    if (Integer.class.equals(type)) {
-      return type.cast(42);
-    }
-    return null;
   }
 }

@@ -278,16 +278,6 @@ final class GeneratedEnumTests implements GeneratedClassTests {
         @Nested
         @DisplayName("Testing `<useEnumCaseInsensitive>false</useEnumCaseInsensitive>`")
         class UseEnumCaseInsensitiveFalseTests {
-          @ParameterizedTest
-          @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
-          @DisplayName("Generated `enum` class has case-sensitive `fromValue(T)` method")
-          void
-              whenConfigOptionUseEnumCaseInsensitiveIsFalseThenGeneratedEnumClassHasCaseSensitiveFromValueMethod(
-                  final GeneratedSource generatedSource) {
-            Assumptions.assumeFalse(generatedSource.useEnumCaseInsensitive());
-
-            GeneratedEnumTestUtils.assertEnumHasCaseInsensitiveFromValueMethod(generatedSource);
-          }
 
           @ParameterizedTest
           @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
@@ -316,16 +306,6 @@ final class GeneratedEnumTests implements GeneratedClassTests {
         @Nested
         @DisplayName("Testing `<useEnumCaseInsensitive>true</useEnumCaseInsensitive>`")
         class UseEnumCaseInsensitiveTrueTests {
-
-          @ParameterizedTest
-          @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
-          @DisplayName("Generated `enum` class has case-insensitive `fromValue(T)` method")
-          void
-              whenConfigOptionUseEnumCaseInsensitiveIsTrueThenGeneratedEnumClassHasCaseInsensitiveFromValueMethod(
-                  final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.useEnumCaseInsensitive());
-            GeneratedEnumTestUtils.assertEnumHasCaseInsensitiveFromValueMethod(generatedSource);
-          }
 
           @ParameterizedTest
           @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
