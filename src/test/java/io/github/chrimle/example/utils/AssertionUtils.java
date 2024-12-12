@@ -68,79 +68,77 @@ public class AssertionUtils {
       final Field field =
           assertRecordHasField(classUnderTest, generatedField.name(), generatedField.type());
 
-      if (generatedSource.useBeanValidation()) {
-        final Class<Valid> validAnnotation = Valid.class;
-        if (generatedField.isCustomClass()) {
-          assertHasAnnotation(classUnderTest, field, validAnnotation);
-        } else {
-          assertDoesNotHaveAnnotation(classUnderTest, field, validAnnotation);
-        }
-        final Class<NotNull> notNullAnnotation = NotNull.class;
-        if (generatedField.isBeanValidationNullable()) {
-          assertDoesNotHaveAnnotation(classUnderTest, field, notNullAnnotation);
-        } else {
-          assertHasAnnotation(classUnderTest, field, notNullAnnotation);
-        }
-        final Class<Pattern> patternAnnotation = Pattern.class;
-        if (generatedField.pattern().isPresent()) {
-          final Pattern actualPatternAnnotation =
-              assertHasAnnotation(classUnderTest, field, patternAnnotation);
-          Assertions.assertEquals(generatedField.pattern().get(), actualPatternAnnotation.regexp());
-        } else {
-          assertDoesNotHaveAnnotation(classUnderTest, field, patternAnnotation);
-        }
-        final Class<Size> sizeAnnotation = Size.class;
-        if (generatedField.minLength().isPresent() || generatedField.maxLength().isPresent()) {
-          final Size actualSizeAnnotation =
-              assertHasAnnotation(classUnderTest, field, sizeAnnotation);
-          Assertions.assertEquals(generatedField.minLength().orElse(0), actualSizeAnnotation.min());
-          Assertions.assertEquals(
-              generatedField.maxLength().orElse(Integer.MAX_VALUE), actualSizeAnnotation.max());
-        } else if (generatedField.minItems().isPresent() || generatedField.maxItems().isPresent()) {
-          final Size actualSizeAnnotation =
-              assertHasAnnotation(classUnderTest, field, sizeAnnotation);
-          Assertions.assertEquals(generatedField.minItems().orElse(0), actualSizeAnnotation.min());
-          Assertions.assertEquals(
-              generatedField.maxItems().orElse(Integer.MAX_VALUE), actualSizeAnnotation.max());
-        } else {
-          assertDoesNotHaveAnnotation(classUnderTest, field, sizeAnnotation);
-        }
-        final Class<Min> minAnnotation = Min.class;
-        if (generatedField.minimum().isPresent()) {
-          final Min min = assertHasAnnotation(classUnderTest, field, minAnnotation);
-          Assertions.assertEquals(generatedField.minimum().get(), min.value());
-        } else {
-          assertDoesNotHaveAnnotation(classUnderTest, field, minAnnotation);
-        }
-        final Class<Max> maxAnnotation = Max.class;
-        if (generatedField.maximum().isPresent()) {
-          final Max max = assertHasAnnotation(classUnderTest, field, maxAnnotation);
-          Assertions.assertEquals(generatedField.maximum().get(), max.value());
-        } else {
-          assertDoesNotHaveAnnotation(classUnderTest, field, maxAnnotation);
-        }
-        final Class<DecimalMin> decimalMinAnnotation = DecimalMin.class;
-        if (generatedField.decimalMin().isPresent()) {
-          final DecimalMin decimalMin =
-              assertHasAnnotation(classUnderTest, field, decimalMinAnnotation);
-          Assertions.assertEquals(generatedField.decimalMin().get(), decimalMin.value());
-        } else {
-          assertDoesNotHaveAnnotation(classUnderTest, field, decimalMinAnnotation);
-        }
-        final Class<DecimalMax> decimalMaxAnnotation = DecimalMax.class;
-        if (generatedField.decimalMax().isPresent()) {
-          final DecimalMax decimalMax =
-              assertHasAnnotation(classUnderTest, field, decimalMaxAnnotation);
-          Assertions.assertEquals(generatedField.decimalMax().get(), decimalMax.value());
-        } else {
-          assertDoesNotHaveAnnotation(classUnderTest, field, decimalMaxAnnotation);
-        }
-        final Class<Email> emailAnnotation = Email.class;
-        if (generatedField.isEmail()) {
-          assertHasAnnotation(classUnderTest, field, emailAnnotation);
-        } else {
-          assertDoesNotHaveAnnotation(classUnderTest, field, emailAnnotation);
-        }
+      final Class<Valid> validAnnotation = Valid.class;
+      if (generatedField.isCustomClass()) {
+        assertHasAnnotation(classUnderTest, field, validAnnotation);
+      } else {
+        assertDoesNotHaveAnnotation(classUnderTest, field, validAnnotation);
+      }
+      final Class<NotNull> notNullAnnotation = NotNull.class;
+      if (generatedField.isBeanValidationNullable()) {
+        assertDoesNotHaveAnnotation(classUnderTest, field, notNullAnnotation);
+      } else {
+        assertHasAnnotation(classUnderTest, field, notNullAnnotation);
+      }
+      final Class<Pattern> patternAnnotation = Pattern.class;
+      if (generatedField.pattern().isPresent()) {
+        final Pattern actualPatternAnnotation =
+            assertHasAnnotation(classUnderTest, field, patternAnnotation);
+        Assertions.assertEquals(generatedField.pattern().get(), actualPatternAnnotation.regexp());
+      } else {
+        assertDoesNotHaveAnnotation(classUnderTest, field, patternAnnotation);
+      }
+      final Class<Size> sizeAnnotation = Size.class;
+      if (generatedField.minLength().isPresent() || generatedField.maxLength().isPresent()) {
+        final Size actualSizeAnnotation =
+            assertHasAnnotation(classUnderTest, field, sizeAnnotation);
+        Assertions.assertEquals(generatedField.minLength().orElse(0), actualSizeAnnotation.min());
+        Assertions.assertEquals(
+            generatedField.maxLength().orElse(Integer.MAX_VALUE), actualSizeAnnotation.max());
+      } else if (generatedField.minItems().isPresent() || generatedField.maxItems().isPresent()) {
+        final Size actualSizeAnnotation =
+            assertHasAnnotation(classUnderTest, field, sizeAnnotation);
+        Assertions.assertEquals(generatedField.minItems().orElse(0), actualSizeAnnotation.min());
+        Assertions.assertEquals(
+            generatedField.maxItems().orElse(Integer.MAX_VALUE), actualSizeAnnotation.max());
+      } else {
+        assertDoesNotHaveAnnotation(classUnderTest, field, sizeAnnotation);
+      }
+      final Class<Min> minAnnotation = Min.class;
+      if (generatedField.minimum().isPresent()) {
+        final Min min = assertHasAnnotation(classUnderTest, field, minAnnotation);
+        Assertions.assertEquals(generatedField.minimum().get(), min.value());
+      } else {
+        assertDoesNotHaveAnnotation(classUnderTest, field, minAnnotation);
+      }
+      final Class<Max> maxAnnotation = Max.class;
+      if (generatedField.maximum().isPresent()) {
+        final Max max = assertHasAnnotation(classUnderTest, field, maxAnnotation);
+        Assertions.assertEquals(generatedField.maximum().get(), max.value());
+      } else {
+        assertDoesNotHaveAnnotation(classUnderTest, field, maxAnnotation);
+      }
+      final Class<DecimalMin> decimalMinAnnotation = DecimalMin.class;
+      if (generatedField.decimalMin().isPresent()) {
+        final DecimalMin decimalMin =
+            assertHasAnnotation(classUnderTest, field, decimalMinAnnotation);
+        Assertions.assertEquals(generatedField.decimalMin().get(), decimalMin.value());
+      } else {
+        assertDoesNotHaveAnnotation(classUnderTest, field, decimalMinAnnotation);
+      }
+      final Class<DecimalMax> decimalMaxAnnotation = DecimalMax.class;
+      if (generatedField.decimalMax().isPresent()) {
+        final DecimalMax decimalMax =
+            assertHasAnnotation(classUnderTest, field, decimalMaxAnnotation);
+        Assertions.assertEquals(generatedField.decimalMax().get(), decimalMax.value());
+      } else {
+        assertDoesNotHaveAnnotation(classUnderTest, field, decimalMaxAnnotation);
+      }
+      final Class<Email> emailAnnotation = Email.class;
+      if (generatedField.isEmail()) {
+        assertHasAnnotation(classUnderTest, field, emailAnnotation);
+      } else {
+        assertDoesNotHaveAnnotation(classUnderTest, field, emailAnnotation);
       }
     }
   }
