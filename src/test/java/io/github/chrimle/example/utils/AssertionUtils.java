@@ -17,9 +17,6 @@
 package io.github.chrimle.example.utils;
 
 import io.github.chrimle.example.GeneratedSource;
-import io.github.chrimle.example.annotations.TestAnnotationOne;
-import io.github.chrimle.example.annotations.TestAnnotationThree;
-import io.github.chrimle.example.annotations.TestAnnotationTwo;
 import io.github.chrimle.example.models.GeneratedField;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.DecimalMax;
@@ -43,30 +40,6 @@ public class AssertionUtils {
 
   public static void assertIsEnum(final Class<?> clazz) {
     Assertions.assertTrue(clazz.isEnum(), clazz.getCanonicalName() + " is NOT an enum class!");
-  }
-
-  public static void assertClassIsAnnotatedWithAdditionalTypeAnnotations(
-      final Class<?> classUnderTest, final boolean hasAdditionalTypeAnnotations) {
-    assertClassIsAnnotatedWith(
-        classUnderTest, TestAnnotationOne.class, hasAdditionalTypeAnnotations);
-    assertClassIsAnnotatedWith(
-        classUnderTest, TestAnnotationTwo.class, hasAdditionalTypeAnnotations);
-    assertClassIsAnnotatedWith(
-        classUnderTest, TestAnnotationThree.class, hasAdditionalTypeAnnotations);
-  }
-
-  public static void assertClassIsAnnotatedAsDeprecated(
-      final Class<?> classUnderTest, final boolean isDeprecated) {
-    assertClassIsAnnotatedWith(classUnderTest, Deprecated.class, isDeprecated);
-  }
-
-  private static void assertClassIsAnnotatedWith(
-      final Class<?> classUnderTest, final Class<?> annotation, final boolean hasAnnotation) {
-    if (hasAnnotation) {
-      assertClassIsAnnotatedWith(classUnderTest, annotation);
-    } else {
-      assertClassIsNotAnnotatedWith(classUnderTest, annotation);
-    }
   }
 
   public static void assertClassIsAnnotatedWith(final Class<?> clazz, final Class<?> annotation) {
