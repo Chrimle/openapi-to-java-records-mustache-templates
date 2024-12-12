@@ -15,10 +15,7 @@ import io.github.chrimle.example.tests.GeneratedEnumTests.OpenAPITests.SchemaTes
 import io.github.chrimle.example.utils.AssertionUtils;
 import io.github.chrimle.example.utils.GeneratedEnumTestUtils;
 import java.lang.reflect.Method;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Assumptions;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
@@ -227,6 +224,24 @@ final class GeneratedEnumTests implements GeneratedClassTests {
         @ParameterizedTest
         @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
         @DisplayName(
+            "Generated `static fromValue(T)` method ALWAYS `throw IllegalArgumentException` when non-matching `value`-string is given")
+        void
+            alwaysThrowIllegalArgumentExceptionWhenProvidingNonMatchingValueAsArgumentToStaticFromValueMethod(
+                final GeneratedSource generatedSource) {
+          Assumptions.assumeTrue(String.class.equals(generatedSource.generatedFields()[0].type()));
+
+          AssertionUtils.assertStaticMethodWithArgsThrows(
+              AssertionUtils.assertClassHasMethod(
+                  generatedSource.getClassUnderTest(),
+                  "fromValue",
+                  generatedSource.fieldClasses()[0]),
+              IllegalArgumentException.class,
+              "invalid");
+        }
+
+        @ParameterizedTest
+        @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+        @DisplayName(
             "Generated `static fromValue(T)` method ALWAYS return expected `enum`-constant when `value` match")
         void
             alwaysReturnEnumConstantWhenProvidingExistingEnumValueAsArgumentToStaticFromValueMethod(
@@ -252,13 +267,38 @@ final class GeneratedEnumTests implements GeneratedClassTests {
               whenConfigOptionUseEnumCaseInsensitiveIsFalseThenGeneratedEnumClassHasCaseSensitiveFromValueMethod(
                   final GeneratedSource generatedSource) {
             Assumptions.assumeFalse(generatedSource.useEnumCaseInsensitive());
+
             GeneratedEnumTestUtils.assertEnumHasCaseInsensitiveFromValueMethod(generatedSource);
+          }
+
+          @ParameterizedTest
+          @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+          @DisplayName(
+              "Generated `static fromValue(T)` method throws `IllegalArgumentException` when `value`-string has wrong case")
+          void
+              whenConfigOptionUseEnumCaseInsensitiveIsFalseThenFromValueMethodThrowsIllegalArgumentExceptionWhenGivenValueHasWrongCase(
+                  final GeneratedSource generatedSource) {
+            Assumptions.assumeFalse(generatedSource.useEnumCaseInsensitive());
+            Assumptions.assumeTrue(
+                String.class.equals(generatedSource.generatedFields()[0].type()));
+
+            final Method fromValueMethod =
+                AssertionUtils.assertClassHasMethod(
+                    generatedSource.getClassUnderTest(),
+                    "fromValue",
+                    generatedSource.fieldClasses()[0]);
+            for (final GeneratedField<?> generatedField : generatedSource.generatedFields()) {
+              final Object enumValue = ((String) generatedField.enumValue()).toLowerCase();
+              AssertionUtils.assertStaticMethodWithArgsThrows(
+                  fromValueMethod, IllegalArgumentException.class, enumValue);
+            }
           }
         }
 
         @Nested
         @DisplayName("Testing `<useEnumCaseInsensitive>true</useEnumCaseInsensitive>`")
         class UseEnumCaseInsensitiveTrueTests {
+
           @ParameterizedTest
           @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
           @DisplayName("Generated `enum` class has case-insensitive `fromValue(T)` method")
@@ -267,6 +307,28 @@ final class GeneratedEnumTests implements GeneratedClassTests {
                   final GeneratedSource generatedSource) {
             Assumptions.assumeTrue(generatedSource.useEnumCaseInsensitive());
             GeneratedEnumTestUtils.assertEnumHasCaseInsensitiveFromValueMethod(generatedSource);
+          }
+
+          @ParameterizedTest
+          @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+          @DisplayName(
+              "Generated `static fromValue(T)` method returns `enum`-constant when `value`-string has different case")
+          void
+              whenConfigOptionUseEnumCaseInsensitiveIsTrueThenFromValueMethodReturnsEnumConstantWithDifferentCase(
+                  final GeneratedSource generatedSource) {
+            Assumptions.assumeTrue(generatedSource.useEnumCaseInsensitive());
+            Assumptions.assumeTrue(
+                String.class.equals(generatedSource.generatedFields()[0].type()));
+
+            final Method fromValueMethod =
+                AssertionUtils.assertClassHasMethod(
+                    generatedSource.getClassUnderTest(),
+                    "fromValue",
+                    generatedSource.fieldClasses()[0]);
+            for (final GeneratedField<?> generatedField : generatedSource.generatedFields()) {
+              final Object enumValue = ((String) generatedField.enumValue()).toLowerCase();
+              Assertions.assertDoesNotThrow(() -> fromValueMethod.invoke(null, enumValue));
+            }
           }
         }
       }

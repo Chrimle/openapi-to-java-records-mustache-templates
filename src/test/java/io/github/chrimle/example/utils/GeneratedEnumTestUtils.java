@@ -80,23 +80,7 @@ public class GeneratedEnumTestUtils {
         IllegalArgumentException.class,
         getInvalidTestingValue(generatedSource.fieldClasses()[0]));
 
-    if (String.class.equals(generatedSource.fieldClasses()[0])) {
-      for (final String name : List.of("enum", "Enum", "EnUm", "ENUM", "eNuM")) {
-        for (int i = 1; i <= 3; i++) {
-          final String value = name + i;
-          if (generatedSource.useEnumCaseInsensitive()) {
-            // Assert all enum values can be mapped to case-insensitively
-            Assertions.assertDoesNotThrow(() -> fromValueMethod.invoke(null, value));
-          } else if ("ENUM".equals(name)) {
-            Assertions.assertDoesNotThrow(() -> fromValueMethod.invoke(null, value));
-          } else {
-            // Assert 'IllegalArgumentException' is thrown when case-sensitive
-            AssertionUtils.assertStaticMethodWithArgsThrows(
-                fromValueMethod, IllegalArgumentException.class, value);
-          }
-        }
-      }
-    } else if (Integer.class.equals(generatedSource.fieldClasses()[0])) {
+    if (Integer.class.equals(generatedSource.fieldClasses()[0])) {
       for (final Object validValue :
           Arrays.stream(generatedSource.generatedFields())
               .map(GeneratedField::enumValue)
