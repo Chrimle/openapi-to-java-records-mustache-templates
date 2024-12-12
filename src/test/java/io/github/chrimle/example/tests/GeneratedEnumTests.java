@@ -224,9 +224,9 @@ final class GeneratedEnumTests implements GeneratedClassTests {
         @ParameterizedTest
         @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
         @DisplayName(
-            "Generated `static fromValue(T)` method ALWAYS `throw IllegalArgumentException` when non-matching `value`-string is given")
+            "Generated `static fromValue(T)` method ALWAYS `throw IllegalArgumentException` when non-matching string `value` is given")
         void
-            alwaysThrowIllegalArgumentExceptionWhenProvidingNonMatchingValueAsArgumentToStaticFromValueMethod(
+            alwaysThrowIllegalArgumentExceptionWhenProvidingNonMatchingStringValueAsArgumentToStaticFromValueMethod(
                 final GeneratedSource generatedSource) {
           Assumptions.assumeTrue(String.class.equals(generatedSource.generatedFields()[0].type()));
 
@@ -237,6 +237,24 @@ final class GeneratedEnumTests implements GeneratedClassTests {
                   generatedSource.fieldClasses()[0]),
               IllegalArgumentException.class,
               "invalid");
+        }
+
+        @ParameterizedTest
+        @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+        @DisplayName(
+            "Generated `static fromValue(T)` method ALWAYS `throw IllegalArgumentException` when non-matching integer `value` is given")
+        void
+            alwaysThrowIllegalArgumentExceptionWhenProvidingNonMatchingIntegerValueAsArgumentToStaticFromValueMethod(
+                final GeneratedSource generatedSource) {
+          Assumptions.assumeTrue(Integer.class.equals(generatedSource.generatedFields()[0].type()));
+
+          AssertionUtils.assertStaticMethodWithArgsThrows(
+              AssertionUtils.assertClassHasMethod(
+                  generatedSource.getClassUnderTest(),
+                  "fromValue",
+                  generatedSource.fieldClasses()[0]),
+              IllegalArgumentException.class,
+              42);
         }
 
         @ParameterizedTest
@@ -274,7 +292,7 @@ final class GeneratedEnumTests implements GeneratedClassTests {
           @ParameterizedTest
           @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
           @DisplayName(
-              "Generated `static fromValue(T)` method throws `IllegalArgumentException` when `value`-string has wrong case")
+              "Generated `static fromValue(T)` method throws `IllegalArgumentException` when string `value` has wrong case")
           void
               whenConfigOptionUseEnumCaseInsensitiveIsFalseThenFromValueMethodThrowsIllegalArgumentExceptionWhenGivenValueHasWrongCase(
                   final GeneratedSource generatedSource) {
@@ -312,7 +330,7 @@ final class GeneratedEnumTests implements GeneratedClassTests {
           @ParameterizedTest
           @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
           @DisplayName(
-              "Generated `static fromValue(T)` method returns `enum`-constant when `value`-string has different case")
+              "Generated `static fromValue(T)` method returns `enum`-constant when string `value` has different case")
           void
               whenConfigOptionUseEnumCaseInsensitiveIsTrueThenFromValueMethodReturnsEnumConstantWithDifferentCase(
                   final GeneratedSource generatedSource) {
