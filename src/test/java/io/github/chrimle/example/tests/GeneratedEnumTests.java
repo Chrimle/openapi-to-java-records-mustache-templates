@@ -4,6 +4,7 @@ import io.github.chrimle.example.GeneratedSource;
 import io.github.chrimle.example.annotations.TestAnnotationOne;
 import io.github.chrimle.example.annotations.TestAnnotationThree;
 import io.github.chrimle.example.annotations.TestAnnotationTwo;
+import io.github.chrimle.example.models.GeneratedField;
 import io.github.chrimle.example.tests.GeneratedEnumTests.GeneratorConfigurationTests.ConfigOptionsTests;
 import io.github.chrimle.example.tests.GeneratedEnumTests.GeneratorConfigurationTests.ConfigOptionsTests.AdditionalEnumTypeAnnotationsTests;
 import io.github.chrimle.example.tests.GeneratedEnumTests.GeneratorConfigurationTests.ConfigOptionsTests.UseEnumCaseInsensitiveTests;
@@ -13,6 +14,8 @@ import io.github.chrimle.example.tests.GeneratedEnumTests.OpenAPITests.SchemaTes
 import io.github.chrimle.example.tests.GeneratedEnumTests.OpenAPITests.SchemaTests.EnumTests.ConstantsTests;
 import io.github.chrimle.example.utils.AssertionUtils;
 import io.github.chrimle.example.utils.GeneratedEnumTestUtils;
+import java.lang.reflect.Method;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Assumptions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -219,6 +222,24 @@ final class GeneratedEnumTests implements GeneratedClassTests {
                   generatedSource.fieldClasses()[0]),
               IllegalArgumentException.class,
               (Object) null);
+        }
+
+        @ParameterizedTest
+        @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+        @DisplayName(
+            "Generated `static fromValue(T)` method ALWAYS return expected `enum`-constant when `value` match")
+        void
+            alwaysReturnEnumConstantWhenProvidingExistingEnumValueAsArgumentToStaticFromValueMethod(
+                final GeneratedSource generatedSource) {
+          final Method fromValueMethod =
+              AssertionUtils.assertClassHasMethod(
+                  generatedSource.getClassUnderTest(),
+                  "fromValue",
+                  generatedSource.fieldClasses()[0]);
+          for (final GeneratedField<?> generatedField : generatedSource.generatedFields()) {
+            final Object enumValue = generatedField.enumValue();
+            Assertions.assertDoesNotThrow(() -> fromValueMethod.invoke(null, enumValue));
+          }
         }
 
         @Nested

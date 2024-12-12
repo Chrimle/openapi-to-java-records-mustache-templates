@@ -107,9 +107,6 @@ public class GeneratedEnumTestUtils {
         AssertionUtils.assertStaticMethodWithArgsThrows(
             fromValueMethod, IllegalArgumentException.class, invalidValue);
       }
-      // Testing `null` does not match with any enum constant's value
-      AssertionUtils.assertStaticMethodWithArgsThrows(
-          fromValueMethod, IllegalArgumentException.class, (Object) null);
     }
   }
 
