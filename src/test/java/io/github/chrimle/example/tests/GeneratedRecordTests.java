@@ -17,11 +17,7 @@
 package io.github.chrimle.example.tests;
 
 import io.github.chrimle.example.GeneratedSource;
-import io.github.chrimle.example.annotations.TestAnnotationOne;
-import io.github.chrimle.example.annotations.TestAnnotationThree;
-import io.github.chrimle.example.annotations.TestAnnotationTwo;
-import io.github.chrimle.example.annotations.TestExtraAnnotation;
-import io.github.chrimle.example.annotations.TestExtraAnnotationTwo;
+import io.github.chrimle.example.annotations.*;
 import io.github.chrimle.example.models.GeneratedField;
 import io.github.chrimle.example.tests.GeneratedRecordTests.GeneratorConfigurationTests.ConfigOptionsTests;
 import io.github.chrimle.example.tests.GeneratedRecordTests.GeneratorConfigurationTests.ConfigOptionsTests.AdditionalModelTypeAnnotationsTests;
@@ -34,6 +30,7 @@ import io.github.chrimle.example.tests.GeneratedRecordTests.OpenAPITests.SchemaT
 import io.github.chrimle.example.tests.GeneratedRecordTests.OpenAPITests.SchemaTests.PropertiesTests.PropertyTests;
 import io.github.chrimle.example.tests.GeneratedRecordTests.OpenAPITests.SchemaTests.PropertiesTests.PropertyTests.DefaultTests;
 import io.github.chrimle.example.tests.GeneratedRecordTests.OpenAPITests.SchemaTests.PropertiesTests.PropertyTests.NullableTests;
+import io.github.chrimle.example.tests.GeneratedRecordTests.OpenAPITests.SchemaTests.PropertiesTests.PropertyTests.XFieldExtraAnnotationTests;
 import io.github.chrimle.example.tests.GeneratedRecordTests.OpenAPITests.SchemaTests.TypeTests;
 import io.github.chrimle.example.tests.GeneratedRecordTests.OpenAPITests.SchemaTests.XClassExtraAnnotationTests;
 import io.github.chrimle.example.utils.AssertionUtils;
@@ -72,6 +69,8 @@ import org.junit.jupiter.params.provider.MethodSource;
  *   <li>{@link PropertyTests `components.schemas.{schema}.properties.{property}`}
  *   <li>{@link NullableTests `components.schemas.{schema}.properties.{property}.nullable`}
  *   <li>{@link DefaultTests `components.schemas.{schema}.properties.{property}.default`}
+ *   <li>{@link XFieldExtraAnnotationTests
+ *       `components.schemas.{schema}.properties.{property}.x-field-extra-annotation`}
  * </ul>
  *
  * <p><b>`openapi-generator` Configurations</b>
@@ -280,6 +279,70 @@ final class GeneratedRecordTests implements GeneratedClassTests {
                     generatedSource.getClassUnderTest(), field, expectedAnnotation);
                 AssertionUtils.assertDoesNotHaveAnnotation(
                     generatedSource.getClassUnderTest(), field, unexpectedAnnotation);
+              }
+            }
+          }
+
+          @Nested
+          @DisplayName("Testing `{schema}.properties.{property}.x-field-extra-annotation`")
+          class XFieldExtraAnnotationTests {
+
+            @Nested
+            @DisplayName(
+                "Testing `{schema}.properties.{property}.x-field-extra-annotation: <null>`")
+            class XFieldExtraAnnotationUnsetTests {
+
+              @ParameterizedTest
+              @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+              @DisplayName("Generated `field` is NOT annotated with extra field annotations`")
+              public void
+                  whenXFieldExtraAnnotationIsUnsetThenFieldIsNotAnnotatedWithExtraFieldAnnotation(
+                      final GeneratedSource generatedSource) {
+                for (final GeneratedField<?> generatedField : generatedSource.generatedFields()) {
+                  final Field field =
+                      AssertionUtils.assertRecordHasField(
+                          generatedSource.getClassUnderTest(),
+                          generatedField.name(),
+                          generatedField.type());
+                  if (generatedField.extraFieldAnnotations().isEmpty()) {
+                    AssertionUtils.assertDoesNotHaveAnnotation(
+                        generatedSource.getClassUnderTest(),
+                        field,
+                        TestFieldExtraAnnotationOne.class);
+                    AssertionUtils.assertDoesNotHaveAnnotation(
+                        generatedSource.getClassUnderTest(),
+                        field,
+                        TestFieldExtraAnnotationTwo.class);
+                  }
+                }
+              }
+            }
+
+            @Nested
+            @DisplayName(
+                "Testing `{schema}.properties.{property}.x-field-extra-annotation: @TestFieldExtraAnnotationOne, @TestFieldExtraAnnotationTwo`")
+            class XFieldExtraAnnotationSetTests {
+
+              @ParameterizedTest
+              @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+              @DisplayName("Generated `field` is annotated with extra field annotations`")
+              public void
+                  whenXFieldExtraAnnotationIsSetThenFieldIsAnnotatedWithExtraFieldAnnotation(
+                      final GeneratedSource generatedSource) {
+                for (final GeneratedField<?> generatedField : generatedSource.generatedFields()) {
+                  final Field field =
+                      AssertionUtils.assertRecordHasField(
+                          generatedSource.getClassUnderTest(),
+                          generatedField.name(),
+                          generatedField.type());
+                  if (!generatedField.extraFieldAnnotations().isEmpty()) {
+                    for (final Class<? extends Annotation> expectedAnnotation :
+                        generatedField.extraFieldAnnotations()) {
+                      AssertionUtils.assertHasAnnotation(
+                          generatedSource.getClassUnderTest(), field, expectedAnnotation);
+                    }
+                  }
+                }
               }
             }
           }
