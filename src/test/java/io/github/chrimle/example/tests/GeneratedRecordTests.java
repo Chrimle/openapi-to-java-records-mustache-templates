@@ -30,6 +30,7 @@ import io.github.chrimle.example.tests.GeneratedRecordTests.OpenAPITests.SchemaT
 import io.github.chrimle.example.tests.GeneratedRecordTests.OpenAPITests.SchemaTests.PropertiesTests.PropertyTests;
 import io.github.chrimle.example.tests.GeneratedRecordTests.OpenAPITests.SchemaTests.PropertiesTests.PropertyTests.DefaultTests;
 import io.github.chrimle.example.tests.GeneratedRecordTests.OpenAPITests.SchemaTests.PropertiesTests.PropertyTests.NullableTests;
+import io.github.chrimle.example.tests.GeneratedRecordTests.OpenAPITests.SchemaTests.PropertiesTests.PropertyTests.XFieldExtraAnnotationTests;
 import io.github.chrimle.example.tests.GeneratedRecordTests.OpenAPITests.SchemaTests.TypeTests;
 import io.github.chrimle.example.tests.GeneratedRecordTests.OpenAPITests.SchemaTests.XClassExtraAnnotationTests;
 import io.github.chrimle.example.utils.AssertionUtils;
@@ -68,6 +69,8 @@ import org.junit.jupiter.params.provider.MethodSource;
  *   <li>{@link PropertyTests `components.schemas.{schema}.properties.{property}`}
  *   <li>{@link NullableTests `components.schemas.{schema}.properties.{property}.nullable`}
  *   <li>{@link DefaultTests `components.schemas.{schema}.properties.{property}.default`}
+ *   <li>{@link XFieldExtraAnnotationTests
+ *       `components.schemas.{schema}.properties.{property}.x-field-extra-annotation`}
  * </ul>
  *
  * <p><b>`openapi-generator` Configurations</b>
@@ -291,8 +294,7 @@ final class GeneratedRecordTests implements GeneratedClassTests {
 
               @ParameterizedTest
               @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
-              @DisplayName(
-                  "Generated `field` is NOT annotated with extra field extraFieldAnnotations`")
+              @DisplayName("Generated `field` is NOT annotated with extra field annotations`")
               public void
                   whenXFieldExtraAnnotationIsUnsetThenFieldIsNotAnnotatedWithExtraFieldAnnotation(
                       final GeneratedSource generatedSource) {
@@ -323,7 +325,7 @@ final class GeneratedRecordTests implements GeneratedClassTests {
 
               @ParameterizedTest
               @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
-              @DisplayName("Generated `field` is annotated with extra field extraFieldAnnotations`")
+              @DisplayName("Generated `field` is annotated with extra field annotations`")
               public void
                   whenXFieldExtraAnnotationIsSetThenFieldIsAnnotatedWithExtraFieldAnnotation(
                       final GeneratedSource generatedSource) {
