@@ -16,6 +16,9 @@
 */
 package io.github.chrimle.example.models;
 
+import java.lang.annotation.Annotation;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -32,6 +35,7 @@ import java.util.Optional;
  * @param isCustomClass whether the field should be annotated with {@link jakarta.validation.Valid}
  * @param isEmail whether the field should be annotated with {@link
  *     jakarta.validation.constraints.Email}
+ * @param enumValue of the enum constant. Meant for enum classes only.
  * @param defaultValue of the field. May be inherited from openapi-generator, or be set explicitly
  *     in the OpenAPI spec.
  * @param pattern of the field. Set in the OpenAPI spec.
@@ -43,6 +47,7 @@ import java.util.Optional;
  * @param maximum of the field. Set in the OpenAPI spec.
  * @param decimalMin of the field. Set in the OpenAPI spec.
  * @param decimalMax of the field. Set in the OpenAPI spec.
+ * @param extraFieldAnnotations of the field. Set in the OpenAPI spec.
  * @see Builder for constructing this class with default values
  */
 public record GeneratedField<T>(
@@ -62,7 +67,8 @@ public record GeneratedField<T>(
     Optional<Long> minimum,
     Optional<Long> maximum,
     Optional<String> decimalMin,
-    Optional<String> decimalMax) {
+    Optional<String> decimalMax,
+    List<Class<? extends Annotation>> extraFieldAnnotations) {
 
   public static <T> Builder<T> of(final String name, final Class<T> type) {
     return new Builder<>(name, type, null);
@@ -90,6 +96,7 @@ public record GeneratedField<T>(
     private Optional<Long> maximum = Optional.empty();
     private Optional<String> decimalMin = Optional.empty();
     private Optional<String> decimalMax = Optional.empty();
+    private final List<Class<? extends Annotation>> extraFieldAnnotations = new ArrayList<>();
 
     public Builder(final String name, final Class<T> type, final T enumValue) {
       this.name = name;
@@ -172,6 +179,13 @@ public record GeneratedField<T>(
       return this;
     }
 
+    @SafeVarargs
+    public final Builder<T> withExtraFieldAnnotations(
+        final Class<? extends Annotation>... annotations) {
+      this.extraFieldAnnotations.addAll(List.of(annotations));
+      return this;
+    }
+
     public GeneratedField<T> build() {
       return new GeneratedField<>(
           name,
@@ -190,7 +204,8 @@ public record GeneratedField<T>(
           minimum,
           maximum,
           decimalMin,
-          decimalMax);
+          decimalMax,
+          extraFieldAnnotations);
     }
   }
 }

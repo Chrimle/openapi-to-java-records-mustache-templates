@@ -19,6 +19,8 @@ package io.github.chrimle.example.models;
 import io.github.chrimle.example.PluginExecution;
 import io.github.chrimle.example.annotations.TestExtraAnnotation;
 import io.github.chrimle.example.annotations.TestExtraAnnotationTwo;
+import io.github.chrimle.example.annotations.TestFieldExtraAnnotationOne;
+import io.github.chrimle.example.annotations.TestFieldExtraAnnotationTwo;
 import java.lang.annotation.Annotation;
 import java.math.BigDecimal;
 import java.util.List;
@@ -43,7 +45,13 @@ public enum GeneratedRecord implements GeneratedClass {
       "ExampleRecordWithOneExtraAnnotation",
       false,
       List.of(TestExtraAnnotation.class),
-      GeneratedField.of("field1", Boolean.class).build()),
+      GeneratedField.of("field1", Boolean.class)
+          .withExtraFieldAnnotations(TestFieldExtraAnnotationOne.class)
+          .build(),
+      GeneratedField.of("field2", Boolean.class)
+          .withExtraFieldAnnotations(
+              TestFieldExtraAnnotationOne.class, TestFieldExtraAnnotationTwo.class)
+          .build()),
   EXAMPLE_RECORD_WITH_TWO_EXTRA_ANNOTATIONS(
       "ExampleRecordWithTwoExtraAnnotations",
       false,
