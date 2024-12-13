@@ -34,7 +34,11 @@
   }}{{{vendorExtensions.x-class-extra-annotation}}}
 {{/vendorExtensions.x-class-extra-annotation}}{{!
 }}public record {{classname}}(
-    {{#vars}}@{{javaxPackage}}.annotation.{{#isNullable}}Nullable{{/isNullable}}{{^isNullable}}Nonnull{{/isNullable}}{{>useBeanValidation}} {{{datatypeWithEnum}}} {{name}}{{^-last}},
+    {{#vars}}{{!
+    }}{{#vendorExtensions.x-field-extra-annotation}}{{!
+        }}{{vendorExtensions.x-field-extra-annotation}}
+    {{/vendorExtensions.x-field-extra-annotation}}{{!
+    }}@{{javaxPackage}}.annotation.{{#isNullable}}Nullable{{/isNullable}}{{^isNullable}}Nonnull{{/isNullable}}{{>useBeanValidation}} {{{datatypeWithEnum}}} {{name}}{{^-last}},
     {{/-last}}{{/vars}}{{^serializableModel}}){{/serializableModel}}{{#serializableModel}}
   ) implements Serializable{{/serializableModel}} {
 {{>serializableModel}}
