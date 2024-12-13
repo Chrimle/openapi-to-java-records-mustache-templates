@@ -125,7 +125,14 @@ components:
       properties:
         field1:
           type: boolean
-          description: a boolean field
+          description: a boolean field with an extra field annotation
+          x-field-extra-annotation: '@io.github.chrimle.example.annotations.TestFieldExtraAnnotationOne'
+        field2:
+          type: boolean
+          description: a boolean field with two extra field annotations
+          x-field-extra-annotation: |-
+            @io.github.chrimle.example.annotations.TestFieldExtraAnnotationOne
+            @io.github.chrimle.example.annotations.TestFieldExtraAnnotationTwo
     ExampleRecordWithTwoExtraAnnotations:
       type: object
       description: Example of a Record with two extra annotations
