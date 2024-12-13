@@ -17,11 +17,7 @@
 package io.github.chrimle.example.tests;
 
 import io.github.chrimle.example.GeneratedSource;
-import io.github.chrimle.example.annotations.TestAnnotationOne;
-import io.github.chrimle.example.annotations.TestAnnotationThree;
-import io.github.chrimle.example.annotations.TestAnnotationTwo;
-import io.github.chrimle.example.annotations.TestExtraAnnotation;
-import io.github.chrimle.example.annotations.TestExtraAnnotationTwo;
+import io.github.chrimle.example.annotations.*;
 import io.github.chrimle.example.models.GeneratedField;
 import io.github.chrimle.example.tests.GeneratedRecordTests.GeneratorConfigurationTests.ConfigOptionsTests;
 import io.github.chrimle.example.tests.GeneratedRecordTests.GeneratorConfigurationTests.ConfigOptionsTests.AdditionalModelTypeAnnotationsTests;
@@ -280,6 +276,71 @@ final class GeneratedRecordTests implements GeneratedClassTests {
                     generatedSource.getClassUnderTest(), field, expectedAnnotation);
                 AssertionUtils.assertDoesNotHaveAnnotation(
                     generatedSource.getClassUnderTest(), field, unexpectedAnnotation);
+              }
+            }
+          }
+
+          @Nested
+          @DisplayName("Testing `{schema}.properties.{property}.x-field-extra-annotation`")
+          class XFieldExtraAnnotationTests {
+
+            @Nested
+            @DisplayName(
+                "Testing `{schema}.properties.{property}.x-field-extra-annotation: <null>`")
+            class XFieldExtraAnnotationUnsetTests {
+
+              @ParameterizedTest
+              @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+              @DisplayName(
+                  "Generated `field` is NOT annotated with extra field extraFieldAnnotations`")
+              public void
+                  whenXFieldExtraAnnotationIsUnsetThenFieldIsNotAnnotatedWithExtraFieldAnnotation(
+                      final GeneratedSource generatedSource) {
+                for (final GeneratedField<?> generatedField : generatedSource.generatedFields()) {
+                  final Field field =
+                      AssertionUtils.assertRecordHasField(
+                          generatedSource.getClassUnderTest(),
+                          generatedField.name(),
+                          generatedField.type());
+                  if (generatedField.extraFieldAnnotations().isEmpty()) {
+                    AssertionUtils.assertDoesNotHaveAnnotation(
+                        generatedSource.getClassUnderTest(),
+                        field,
+                        TestFieldExtraAnnotationOne.class);
+                    AssertionUtils.assertDoesNotHaveAnnotation(
+                        generatedSource.getClassUnderTest(),
+                        field,
+                        TestFieldExtraAnnotationTwo.class);
+                  }
+                }
+              }
+            }
+
+            @Nested
+            @DisplayName(
+                "Testing `{schema}.properties.{property}.x-field-extra-annotation: @TestFieldExtraAnnotationOne, @TestFieldExtraAnnotationTwo`")
+            class XFieldExtraAnnotationSetTests {
+
+              @ParameterizedTest
+              @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+              @DisplayName("Generated `field` is annotated with extra field extraFieldAnnotations`")
+              public void
+                  whenXFieldExtraAnnotationIsSetThenFieldIsAnnotatedWithExtraFieldAnnotation(
+                      final GeneratedSource generatedSource) {
+                for (final GeneratedField<?> generatedField : generatedSource.generatedFields()) {
+                  final Field field =
+                      AssertionUtils.assertRecordHasField(
+                          generatedSource.getClassUnderTest(),
+                          generatedField.name(),
+                          generatedField.type());
+                  if (!generatedField.extraFieldAnnotations().isEmpty()) {
+                    for (final Class<? extends Annotation> expectedAnnotation :
+                        generatedField.extraFieldAnnotations()) {
+                      AssertionUtils.assertHasAnnotation(
+                          generatedSource.getClassUnderTest(), field, expectedAnnotation);
+                    }
+                  }
+                }
               }
             }
           }
