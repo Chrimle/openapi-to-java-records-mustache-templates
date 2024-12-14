@@ -323,7 +323,7 @@ provide concrete examples and use-cases. For reference:
 
 ## Encountered an issue?
 Double-check that build-configurations and the OpenAPI Specification is supported. If problems persist, check the [open issues](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/issues). 
-If the problem you are facing is not already reported, please [open an issue](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/issues/new) with details and instructions to reproduce.
+If the problem you are facing is not already reported, please [open an issue](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/issues/new/choose) with details and instructions to reproduce.
 
 # License
                                  Apache License
