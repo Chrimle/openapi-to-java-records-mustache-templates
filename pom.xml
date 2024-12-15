@@ -52,6 +52,7 @@
         <jackson-annotations.version>2.18.1</jackson-annotations.version>
         <hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
         <maven-jar-plugin.version>3.4.2</maven-jar-plugin.version>
+        <maven-resources-plugin.version>3.2.0</maven-resources-plugin.version>
 
         <!-- Jacoco -->
         <jacoco-maven-plugin.version>0.8.12</jacoco-maven-plugin.version>
@@ -80,7 +81,7 @@
         <generateModelDocumentation.default>false</generateModelDocumentation.default>
         <generatorName.default>java</generatorName.default>
         <sourceFolder.default>src/gen/java/main</sourceFolder.default>
-        <templateDirectory.default>${project.basedir}/src/main/resources/templates</templateDirectory.default>
+        <templateDirectory.default>${project.build.directory}/classes/templates</templateDirectory.default>
         <inputSpec.default>${project.basedir}/src/main/resources/api.yaml</inputSpec.default>
         <!-- Default `configuration.configOptions`-option values -->
         <output.default>target/generated-sources/openapi/src</output.default>
@@ -162,18 +163,35 @@
 
 
     <build>
-        <resources>
-            <!-- Propagate Maven Project properties to any variables, such as '${project.version}' -->
-            <resource>
-                <directory>src/main/resources/templates</directory>
-                <includes>
-                    <include>**/*.mustache</include>
-                </includes>
-                <filtering>true</filtering>
-                <targetPath>src/main/resources/templates</targetPath>
-            </resource>
-        </resources>
         <plugins>
+            <!-- Propagate Maven Project properties to any variables, such as '${project.version}' -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>${maven-resources-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>propagate-maven-project-properties</id>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <resources>
+                                <resource>
+                                    <directory>src/main/resources/templates</directory>
+                                    <includes>
+                                        <include>**/*.mustache</include>
+                                    </includes>
+                                    <filtering>true</filtering>
+                                    <targetPath>classes/templates</targetPath>
+                                </resource>
+                            </resources>
+                            <outputDirectory>${project.build.directory}</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.openapitools</groupId>
                 <artifactId>openapi-generator-maven-plugin</artifactId>
