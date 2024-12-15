@@ -15,15 +15,12 @@
 
 }}{{!
   Source: openapi-to-java-records-mustache-templates
-  Version: ${project.version}
+  Version: 2.4.0
 
-  This template is a custom template, and is used by `pojo.mustache` and `modelEnum.mustache`.
+  This template is a custom template, and is used by `pojo.mustache`.
 
-}}/**
- * {{description}}{{^description}}{{classname}}{{/description}}{{#isDeprecated}}
- *
- * @deprecated{{/isDeprecated}}{{#vars}}{{#-first}}{{^isDeprecated}}
- *{{/isDeprecated}}{{/-first}}
- * @param {{name}} {{description}}{{^description}}{{{datatypeWithEnum}}}{{/description}}{{!
-}}{{/vars}}
- */
+  Enabled via configOptions.serializableModel=true
+
+}}{{#serializableModel}}
+  private static final long serialVersionUID = 1L;
+{{/serializableModel}}

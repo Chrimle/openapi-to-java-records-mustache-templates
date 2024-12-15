@@ -17,7 +17,7 @@ If you want to sponsor the project, you can do so by sharing the project with ot
 The mustache templates can be acquired through multiple ways.
 - [Maven Central Repository](https://central.sonatype.com/artifact/io.github.chrimle/openapi-to-java-records-mustache-templates)
 - [GitHub Packages](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/packages/)
-- Downloading them manually from [GitHub](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/tree/main/src/main/resources/templates)
+- Downloading them manually from [GitHub](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/tree/main/target/classes/templates)
 
 ## Import Dependency
 ```xml
