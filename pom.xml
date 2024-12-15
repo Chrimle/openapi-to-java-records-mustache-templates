@@ -162,6 +162,17 @@
 
 
     <build>
+        <resources>
+            <!-- Propagate Maven Project properties to any variables, such as '${project.version}' -->
+            <resource>
+                <directory>src/main/resources/templates</directory>
+                <includes>
+                    <include>**/*.mustache</include>
+                </includes>
+                <filtering>true</filtering>
+                <targetPath>src/main/resources/templates</targetPath>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.openapitools</groupId>
