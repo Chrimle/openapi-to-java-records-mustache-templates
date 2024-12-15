@@ -29,7 +29,6 @@ replay_pid*
 .idea
 *.iml
 
-target/classes
 target/maven-status
 target/maven-archiver
 target/surefire-reports
@@ -37,3 +36,4 @@ target/surefire-reports
 /target/site/jacoco/
 /target/jacoco.exec
 /target/spotless-index
+/target/classes/api.yaml

@@ -1,0 +1,108 @@
+{{!
+   Copyright 2024 Chrimle
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+
+}}{{!
+  Source: openapi-to-java-records-mustache-templates
+  Version: 2.4.0
+
+  This template is a custom template, and is used by `pojo.mustache`.
+
+  Enabled via configOption.useBeanValidation=true
+
+}}{{#useBeanValidation}}{{!
+  All fields of a custom type should be recursively validated, regardless of being required
+  or not, and being nullable or not.
+  For unknown reasons, some classes are considered models, but others as freeFormObjects...
+  }}{{#isModel}}{{^isFreeFormObject}}{{!
+    }} @Valid{{!
+  }}{{/isFreeFormObject}}{{/isModel}}{{!
+  }}{{^isModel}}{{#isFreeFormObject}}{{!
+    }} @Valid{{!
+  }}{{/isFreeFormObject}}{{/isModel}}{{!
+  }}{{^required}}{{!
+    When not required, the field *may* be nullable according to openapi-generator-maven-plugin.
+  }}{{/required}}{{!
+  }}{{#required}}{{!
+    }}{{#isNullable}}{{!
+       Jakarta Bean Validation does not have constraint annotations for nullable values,
+       as values are nullable by default.
+    }}{{/isNullable}}{{!
+    }}{{^isNullable}}{{!
+      }} @NotNull{{!
+    }}{{/isNullable}}{{!
+  }}{{/required}}{{!
+  }}{{#pattern}}{{!
+    }} @Pattern(regexp = "{{{.}}}"){{!
+  }}{{/pattern}}{{!
+  }}{{#minLength}}{{!
+    }}{{#maxLength}}{{!
+      }} @Size(min = {{minLength}}, max = {{maxLength}}){{!
+    }}{{/maxLength}}{{!
+  }}{{/minLength}}{{!
+  }}{{#minLength}}{{!
+    }}{{^maxLength}}{{!
+      }} @Size(min = {{minLength}}){{!
+    }}{{/maxLength}}{{!
+  }}{{/minLength}}{{!
+  }}{{^minLength}}{{!
+    }}{{#maxLength}}{{!
+      }} @Size(max = {{maxLength}}){{!
+    }}{{/maxLength}}{{!
+  }}{{/minLength}}{{!
+  }}{{#minItems}}{{!
+    }}{{#maxItems}}{{!
+      }} @Size(min = {{minItems}}, max = {{maxItems}}){{!
+    }}{{/maxItems}}{{!
+  }}{{/minItems}}{{!
+  }}{{#minItems}}{{!
+    }}{{^maxItems}}{{!
+      }} @Size(min = {{minItems}}){{!
+    }}{{/maxItems}}{{!
+  }}{{/minItems}}{{!
+  }}{{^minItems}}{{!
+    }}{{#maxItems}}{{!
+      }} @Size(max = {{maxItems}}){{!
+    }}{{/maxItems}}{{!
+  }}{{/minItems}}{{!
+  }}{{#isInteger}}{{!
+    }}{{#minimum}}{{!
+      }} @Min({{.}}){{!
+    }}{{/minimum}}{{!
+    }}{{#maximum}}{{!
+      }} @Max({{.}}){{!
+    }}{{/maximum}}{{!
+  }}{{/isInteger}}{{!
+  }}{{#isLong}}{{!
+    }}{{#minimum}}{{!
+      }} @Min({{.}}L){{!
+    }}{{/minimum}}{{!
+    }}{{#maximum}}{{!
+      }} @Max({{.}}L){{!
+    }}{{/maximum}}{{!
+  }}{{/isLong}}{{!
+  }}{{^isInteger}}{{!
+    }}{{^isLong}}{{!
+      }}{{#minimum}}{{!
+        }} @DecimalMin({{#exclusiveMinimum}}value={{/exclusiveMinimum}}"{{minimum}}"{{#exclusiveMinimum}},inclusive=false{{/exclusiveMinimum}}){{!
+      }}{{/minimum}}{{!
+      }}{{#maximum}}{{!
+        }} @DecimalMax({{#exclusiveMaximum}}value={{/exclusiveMaximum}}"{{maximum}}"{{#exclusiveMaximum}},inclusive=false{{/exclusiveMaximum}}){{!
+      }}{{/maximum}}{{!
+    }}{{/isLong}}{{!
+  }}{{/isInteger}}{{!
+  }}{{#isEmail}}{{!
+    }} @Email{{!
+  }}{{/isEmail}}{{!
+}}{{/useBeanValidation}}
