@@ -1,6 +1,11 @@
+> [More detailed description of the change] [Considerations, Context or Clarifications] [Semantic version reasoning or stress **internal refactoring**]
+
 ## Checklist
+*Each item in the list MUST either be checked ([x]) or crossed off (`~`).*
 - [ ] Closes #
-- [ ] Documentation (`README.md`) has been updated
-- [ ] Version number updated in `pom.xml` and `licenseInfo.mustache`
-- [ ] Project has been compiled with `mvn clean install`
-- [ ] Updated `generated-sources`-files have been committed
+- [ ] New Release?
+  - [ ] Update `<version>` in `pom.xml`
+  - [ ] Update `<version>` in `README.md` and `index.md`
+- [ ] Compile the project with `mvn clean install`
+- [ ] Commit all new/changed/deleted `generated-sources`-files
+- [ ] Documentation (`README.md` & `index.md`) have been updated
