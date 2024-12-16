@@ -15,7 +15,7 @@ Prior to version **2.0.0**, the project was licensed under the **MIT License**. 
 If you want to sponsor the project, you can do so by sharing the project with others - or head over to [GitHub Sponsors - @Chrimle](https://github.com/sponsors/Chrimle)!
 
 # Getting Started
-The mustache templates are best acquired by importing the project.
+The mustache templates are best acquired by importing the project as a dependency.
 
 ## Import Dependency
 > [!NOTE]
@@ -28,9 +28,8 @@ The mustache templates are best acquired by importing the project.
     <version>2.4.0</version>
 </dependency>
 ```
-It is **strongly recommended** to import the mustache templates as a dependency. These can be found here:
+It is **strongly recommended** to import the project as a dependency. It has officially been published on the following:
 - [Maven Central Repository](https://central.sonatype.com/artifact/io.github.chrimle/openapi-to-java-records-mustache-templates)
-- [MVN Repository](https://mvnrepository.com/artifact/io.github.chrimle/openapi-to-java-records-mustache-templates)
 - [GitHub Packages](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/packages/)
 
 > [!WARNING]
