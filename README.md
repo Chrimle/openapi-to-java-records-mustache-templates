@@ -28,7 +28,7 @@ The mustache templates are best acquired by importing the project as a dependenc
     <version>2.4.0</version>
 </dependency>
 ```
-It is **strongly recommended** to import the project as a dependency. It has officially been published on the following:
+It is **strongly recommended** to import the project as a dependency. It has officially been published to:
 - [Maven Central Repository](https://central.sonatype.com/artifact/io.github.chrimle/openapi-to-java-records-mustache-templates)
 - [GitHub Packages](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/packages/)
 
