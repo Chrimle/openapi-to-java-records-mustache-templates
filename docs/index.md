@@ -14,12 +14,11 @@ Prior to version **2.0.0**, the project was licensed under the **MIT License**. 
 If you want to sponsor the project, you can do so by sharing the project with others - or head over to [GitHub Sponsors - @Chrimle](https://github.com/sponsors/Chrimle)!
 
 # Getting Started
-The mustache templates can be acquired through multiple ways.
-- [Maven Central Repository](https://central.sonatype.com/artifact/io.github.chrimle/openapi-to-java-records-mustache-templates)
-- [GitHub Packages](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/packages/)
-- Downloading them manually from [GitHub](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/tree/main/target/classes/templates)
+The mustache templates are best acquired by importing the project as a dependency.
 
 ## Import Dependency
+> The Maven artifact **only** contains the mustache templates. No other files are included in the imported artifact.
+
 ```xml
 <dependency>
     <groupId>io.github.chrimle</groupId>
@@ -27,6 +26,15 @@ The mustache templates can be acquired through multiple ways.
     <version>2.4.0</version>
 </dependency>
 ```
+It is **strongly recommended** to import the project as a dependency. It has officially been published to:
+- [Maven Central Repository](https://central.sonatype.com/artifact/io.github.chrimle/openapi-to-java-records-mustache-templates)
+- [GitHub Packages](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/packages/)
+
+> While it is _possible_ to download the Mustache templates directly
+> from [GitHub](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/tree/main/target/classes/templates),
+> this approach is **not recommended**. Templates obtained this way are not guaranteed to be versioned correctly and
+> is explicitly **exempt** from the [Semantic Versioning](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/wiki/Semantic-Versioning) considerations.
+
 
 ## Use the `.mustache` templates when generating
 Place the file(s) in desired directory. Then, in the Maven build configuration, set the property `<templateDirectory>` to the directory path. Example:
