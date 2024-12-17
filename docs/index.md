@@ -16,6 +16,9 @@ If you want to sponsor the project, you can do so by sharing the project with ot
 # Getting Started
 The mustache templates are best acquired by importing the project as a dependency.
 
+> If you want a more detailed guide with simple examples to get started, check out the Wiki-page
+> [Beginner Guide (Step-by-Step)](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/wiki/Beginner-Guide-%28Step‐by‐Step%29).
+
 ## Import Dependency
 > The Maven artifact **only** contains the mustache templates. No other files are included in the imported artifact.
 
