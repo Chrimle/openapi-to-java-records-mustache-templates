@@ -79,8 +79,9 @@ public record ExampleRecordWithNullableFieldsOfEachType(
      * Sets the value of {@link ExampleRecordWithNullableFieldsOfEachType#field1 }.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
-     * @param field1 a Boolean field
-     * @return this {@link Builder}-instance for method-chaining
+     *
+     * @param field1 a Boolean field.
+     * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder field1(final Boolean field1) {
       this.field1 = field1;
@@ -91,8 +92,9 @@ public record ExampleRecordWithNullableFieldsOfEachType(
      * Sets the value of {@link ExampleRecordWithNullableFieldsOfEachType#field2 }.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
-     * @param field2 a String field
-     * @return this {@link Builder}-instance for method-chaining
+     *
+     * @param field2 a String field.
+     * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder field2(final String field2) {
       this.field2 = field2;
@@ -103,8 +105,9 @@ public record ExampleRecordWithNullableFieldsOfEachType(
      * Sets the value of {@link ExampleRecordWithNullableFieldsOfEachType#field3 }.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
-     * @param field3 an Integer field
-     * @return this {@link Builder}-instance for method-chaining
+     *
+     * @param field3 an Integer field.
+     * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder field3(final Integer field3) {
       this.field3 = field3;
@@ -115,8 +118,9 @@ public record ExampleRecordWithNullableFieldsOfEachType(
      * Sets the value of {@link ExampleRecordWithNullableFieldsOfEachType#field4 }.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
-     * @param field4 a Number field
-     * @return this {@link Builder}-instance for method-chaining
+     *
+     * @param field4 a Number field.
+     * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder field4(final BigDecimal field4) {
       this.field4 = field4;
@@ -127,8 +131,9 @@ public record ExampleRecordWithNullableFieldsOfEachType(
      * Sets the value of {@link ExampleRecordWithNullableFieldsOfEachType#field5 }.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
-     * @param field5 an Array of Boolean field
-     * @return this {@link Builder}-instance for method-chaining
+     *
+     * @param field5 an Array of Boolean field.
+     * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder field5(final List<Boolean> field5) {
       this.field5 = field5;
@@ -139,8 +144,9 @@ public record ExampleRecordWithNullableFieldsOfEachType(
      * Sets the value of {@link ExampleRecordWithNullableFieldsOfEachType#field6 }.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
-     * @param field6 a Set field
-     * @return this {@link Builder}-instance for method-chaining
+     *
+     * @param field6 a Set field.
+     * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder field6(final Set<Boolean> field6) {
       this.field6 = field6;
@@ -152,7 +158,8 @@ public record ExampleRecordWithNullableFieldsOfEachType(
      * builder methods.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
-     * @return a new {@link ExampleRecordWithNullableFieldsOfEachType }-instance
+     *
+     * @return a new {@link ExampleRecordWithNullableFieldsOfEachType }-instance.
      */
     public ExampleRecordWithNullableFieldsOfEachType build() {
       return new ExampleRecordWithNullableFieldsOfEachType(
@@ -166,7 +173,7 @@ public record ExampleRecordWithNullableFieldsOfEachType(
     }
   }
 
-  /** Creates a {@link Builder}-instance. */
+  /** Creates a new {@link Builder}-instance. */
   public static ExampleRecordWithNullableFieldsOfEachType.Builder builder() {
     return new ExampleRecordWithNullableFieldsOfEachType.Builder();
   }

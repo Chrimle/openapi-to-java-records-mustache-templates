@@ -51,8 +51,9 @@ public record ExampleRecordWithTwoExtraAnnotations(
      * Sets the value of {@link ExampleRecordWithTwoExtraAnnotations#field1 }.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
-     * @param field1 a boolean field
-     * @return this {@link Builder}-instance for method-chaining
+     *
+     * @param field1 a boolean field.
+     * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder field1(final Boolean field1) {
       this.field1 = field1;
@@ -64,7 +65,8 @@ public record ExampleRecordWithTwoExtraAnnotations(
      * builder methods.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
-     * @return a new {@link ExampleRecordWithTwoExtraAnnotations }-instance
+     *
+     * @return a new {@link ExampleRecordWithTwoExtraAnnotations }-instance.
      */
     public ExampleRecordWithTwoExtraAnnotations build() {
       return new ExampleRecordWithTwoExtraAnnotations(
@@ -73,7 +75,7 @@ public record ExampleRecordWithTwoExtraAnnotations(
     }
   }
 
-  /** Creates a {@link Builder}-instance. */
+  /** Creates a new {@link Builder}-instance. */
   public static ExampleRecordWithTwoExtraAnnotations.Builder builder() {
     return new ExampleRecordWithTwoExtraAnnotations.Builder();
   }

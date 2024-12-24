@@ -54,8 +54,9 @@ public record RecordWithInnerEnums(
      * Sets the value of {@link RecordWithInnerEnums#exampleInner }.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
-     * @param exampleInner Example of an inner enum class
-     * @return this {@link Builder}-instance for method-chaining
+     *
+     * @param exampleInner Example of an inner enum class.
+     * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder exampleInner(final ExampleInnerEnum exampleInner) {
       this.exampleInner = exampleInner;
@@ -66,8 +67,9 @@ public record RecordWithInnerEnums(
      * Sets the value of {@link RecordWithInnerEnums#exampleInnerTwo }.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
-     * @param exampleInnerTwo Example of another inner enum class with integer values
-     * @return this {@link Builder}-instance for method-chaining
+     *
+     * @param exampleInnerTwo Example of another inner enum class with integer values.
+     * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder exampleInnerTwo(final ExampleInnerTwoEnum exampleInnerTwo) {
       this.exampleInnerTwo = exampleInnerTwo;
@@ -79,7 +81,8 @@ public record RecordWithInnerEnums(
      * builder methods.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
-     * @return a new {@link RecordWithInnerEnums }-instance
+     *
+     * @return a new {@link RecordWithInnerEnums }-instance.
      */
     public RecordWithInnerEnums build() {
       return new RecordWithInnerEnums(
@@ -89,7 +92,7 @@ public record RecordWithInnerEnums(
     }
   }
 
-  /** Creates a {@link Builder}-instance. */
+  /** Creates a new {@link Builder}-instance. */
   public static RecordWithInnerEnums.Builder builder() {
     return new RecordWithInnerEnums.Builder();
   }
