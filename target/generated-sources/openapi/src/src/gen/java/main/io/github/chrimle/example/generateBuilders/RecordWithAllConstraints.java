@@ -12,7 +12,7 @@
  * openapi-to-java-records-mustache-templates. For further information,
  * questions, requesting features or reporting issues, please visit:
  * https://github.com/Chrimle/openapi-to-java-records-mustache-templates.
- * Generated with Version: 2.4.0
+ * Generated with Version: 2.5.0
  *
  */
 
@@ -133,7 +133,7 @@ public record RecordWithAllConstraints(
     this.bigDecimalMinimumAndMaximum = bigDecimalMinimumAndMaximum;
   }
 
-  /** Builder class for {@link RecordWithAllConstraints } */
+  /** Builder class for {@link RecordWithAllConstraints }. */
   public static class Builder {
 
     private String stringStandard;
@@ -164,8 +164,9 @@ public record RecordWithAllConstraints(
      * Sets the value of {@link RecordWithAllConstraints#stringStandard }.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
-     * @param stringStandard sets the value of stringStandard
-     * @return this {@link Builder}-instance for method-chaining
+     *
+     * @param stringStandard sets the value of stringStandard.
+     * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder stringStandard(final String stringStandard) {
       this.stringStandard = stringStandard;
@@ -176,8 +177,9 @@ public record RecordWithAllConstraints(
      * Sets the value of {@link RecordWithAllConstraints#stringDefault }.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
-     * @param stringDefault sets the value of stringDefault
-     * @return this {@link Builder}-instance for method-chaining
+     *
+     * @param stringDefault sets the value of stringDefault.
+     * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder stringDefault(final String stringDefault) {
       this.stringDefault = stringDefault;
@@ -188,8 +190,9 @@ public record RecordWithAllConstraints(
      * Sets the value of {@link RecordWithAllConstraints#stringNullable }.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
-     * @param stringNullable sets the value of stringNullable
-     * @return this {@link Builder}-instance for method-chaining
+     *
+     * @param stringNullable sets the value of stringNullable.
+     * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder stringNullable(final String stringNullable) {
       this.stringNullable = stringNullable;
@@ -200,8 +203,9 @@ public record RecordWithAllConstraints(
      * Sets the value of {@link RecordWithAllConstraints#stringRequired }.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
-     * @param stringRequired sets the value of stringRequired
-     * @return this {@link Builder}-instance for method-chaining
+     *
+     * @param stringRequired sets the value of stringRequired.
+     * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder stringRequired(final String stringRequired) {
       this.stringRequired = stringRequired;
@@ -212,8 +216,9 @@ public record RecordWithAllConstraints(
      * Sets the value of {@link RecordWithAllConstraints#stringRequiredNullable }.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
-     * @param stringRequiredNullable sets the value of stringRequiredNullable
-     * @return this {@link Builder}-instance for method-chaining
+     *
+     * @param stringRequiredNullable sets the value of stringRequiredNullable.
+     * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder stringRequiredNullable(final String stringRequiredNullable) {
       this.stringRequiredNullable = stringRequiredNullable;
@@ -224,8 +229,9 @@ public record RecordWithAllConstraints(
      * Sets the value of {@link RecordWithAllConstraints#stringRequiredPattern }.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
-     * @param stringRequiredPattern sets the value of stringRequiredPattern
-     * @return this {@link Builder}-instance for method-chaining
+     *
+     * @param stringRequiredPattern sets the value of stringRequiredPattern.
+     * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder stringRequiredPattern(final String stringRequiredPattern) {
       this.stringRequiredPattern = stringRequiredPattern;
@@ -236,8 +242,9 @@ public record RecordWithAllConstraints(
      * Sets the value of {@link RecordWithAllConstraints#stringEmailFormat }.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
-     * @param stringEmailFormat sets the value of stringEmailFormat
-     * @return this {@link Builder}-instance for method-chaining
+     *
+     * @param stringEmailFormat sets the value of stringEmailFormat.
+     * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder stringEmailFormat(final String stringEmailFormat) {
       this.stringEmailFormat = stringEmailFormat;
@@ -248,8 +255,9 @@ public record RecordWithAllConstraints(
      * Sets the value of {@link RecordWithAllConstraints#stringUuidFormat }.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
-     * @param stringUuidFormat sets the value of stringUuidFormat
-     * @return this {@link Builder}-instance for method-chaining
+     *
+     * @param stringUuidFormat sets the value of stringUuidFormat.
+     * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder stringUuidFormat(final UUID stringUuidFormat) {
       this.stringUuidFormat = stringUuidFormat;
@@ -260,8 +268,9 @@ public record RecordWithAllConstraints(
      * Sets the value of {@link RecordWithAllConstraints#stringMinLength }.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
-     * @param stringMinLength sets the value of stringMinLength
-     * @return this {@link Builder}-instance for method-chaining
+     *
+     * @param stringMinLength sets the value of stringMinLength.
+     * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder stringMinLength(final String stringMinLength) {
       this.stringMinLength = stringMinLength;
@@ -272,8 +281,9 @@ public record RecordWithAllConstraints(
      * Sets the value of {@link RecordWithAllConstraints#stringMaxLength }.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
-     * @param stringMaxLength sets the value of stringMaxLength
-     * @return this {@link Builder}-instance for method-chaining
+     *
+     * @param stringMaxLength sets the value of stringMaxLength.
+     * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder stringMaxLength(final String stringMaxLength) {
       this.stringMaxLength = stringMaxLength;
@@ -284,8 +294,9 @@ public record RecordWithAllConstraints(
      * Sets the value of {@link RecordWithAllConstraints#stringMinAndMaxLength }.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
-     * @param stringMinAndMaxLength sets the value of stringMinAndMaxLength
-     * @return this {@link Builder}-instance for method-chaining
+     *
+     * @param stringMinAndMaxLength sets the value of stringMinAndMaxLength.
+     * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder stringMinAndMaxLength(final String stringMinAndMaxLength) {
       this.stringMinAndMaxLength = stringMinAndMaxLength;
@@ -296,8 +307,9 @@ public record RecordWithAllConstraints(
      * Sets the value of {@link RecordWithAllConstraints#arrayMinItems }.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
-     * @param arrayMinItems sets the value of arrayMinItems
-     * @return this {@link Builder}-instance for method-chaining
+     *
+     * @param arrayMinItems sets the value of arrayMinItems.
+     * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder arrayMinItems(final List<String> arrayMinItems) {
       this.arrayMinItems = arrayMinItems;
@@ -308,8 +320,9 @@ public record RecordWithAllConstraints(
      * Sets the value of {@link RecordWithAllConstraints#arrayMaxItems }.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
-     * @param arrayMaxItems sets the value of arrayMaxItems
-     * @return this {@link Builder}-instance for method-chaining
+     *
+     * @param arrayMaxItems sets the value of arrayMaxItems.
+     * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder arrayMaxItems(final List<String> arrayMaxItems) {
       this.arrayMaxItems = arrayMaxItems;
@@ -320,8 +333,9 @@ public record RecordWithAllConstraints(
      * Sets the value of {@link RecordWithAllConstraints#arrayMinAndMaxItems }.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
-     * @param arrayMinAndMaxItems sets the value of arrayMinAndMaxItems
-     * @return this {@link Builder}-instance for method-chaining
+     *
+     * @param arrayMinAndMaxItems sets the value of arrayMinAndMaxItems.
+     * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder arrayMinAndMaxItems(final List<String> arrayMinAndMaxItems) {
       this.arrayMinAndMaxItems = arrayMinAndMaxItems;
@@ -332,8 +346,9 @@ public record RecordWithAllConstraints(
      * Sets the value of {@link RecordWithAllConstraints#intMinimum }.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
-     * @param intMinimum sets the value of intMinimum
-     * @return this {@link Builder}-instance for method-chaining
+     *
+     * @param intMinimum sets the value of intMinimum.
+     * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder intMinimum(final Integer intMinimum) {
       this.intMinimum = intMinimum;
@@ -344,8 +359,9 @@ public record RecordWithAllConstraints(
      * Sets the value of {@link RecordWithAllConstraints#intMaximum }.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
-     * @param intMaximum sets the value of intMaximum
-     * @return this {@link Builder}-instance for method-chaining
+     *
+     * @param intMaximum sets the value of intMaximum.
+     * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder intMaximum(final Integer intMaximum) {
       this.intMaximum = intMaximum;
@@ -356,8 +372,9 @@ public record RecordWithAllConstraints(
      * Sets the value of {@link RecordWithAllConstraints#intMinimumAndMaximum }.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
-     * @param intMinimumAndMaximum sets the value of intMinimumAndMaximum
-     * @return this {@link Builder}-instance for method-chaining
+     *
+     * @param intMinimumAndMaximum sets the value of intMinimumAndMaximum.
+     * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder intMinimumAndMaximum(final Integer intMinimumAndMaximum) {
       this.intMinimumAndMaximum = intMinimumAndMaximum;
@@ -368,8 +385,9 @@ public record RecordWithAllConstraints(
      * Sets the value of {@link RecordWithAllConstraints#longMinimum }.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
-     * @param longMinimum sets the value of longMinimum
-     * @return this {@link Builder}-instance for method-chaining
+     *
+     * @param longMinimum sets the value of longMinimum.
+     * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder longMinimum(final Long longMinimum) {
       this.longMinimum = longMinimum;
@@ -380,8 +398,9 @@ public record RecordWithAllConstraints(
      * Sets the value of {@link RecordWithAllConstraints#longMaximum }.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
-     * @param longMaximum sets the value of longMaximum
-     * @return this {@link Builder}-instance for method-chaining
+     *
+     * @param longMaximum sets the value of longMaximum.
+     * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder longMaximum(final Long longMaximum) {
       this.longMaximum = longMaximum;
@@ -392,8 +411,9 @@ public record RecordWithAllConstraints(
      * Sets the value of {@link RecordWithAllConstraints#longMinimumAndMaximum }.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
-     * @param longMinimumAndMaximum sets the value of longMinimumAndMaximum
-     * @return this {@link Builder}-instance for method-chaining
+     *
+     * @param longMinimumAndMaximum sets the value of longMinimumAndMaximum.
+     * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder longMinimumAndMaximum(final Long longMinimumAndMaximum) {
       this.longMinimumAndMaximum = longMinimumAndMaximum;
@@ -404,8 +424,9 @@ public record RecordWithAllConstraints(
      * Sets the value of {@link RecordWithAllConstraints#bigDecimalMinimum }.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
-     * @param bigDecimalMinimum sets the value of bigDecimalMinimum
-     * @return this {@link Builder}-instance for method-chaining
+     *
+     * @param bigDecimalMinimum sets the value of bigDecimalMinimum.
+     * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder bigDecimalMinimum(final BigDecimal bigDecimalMinimum) {
       this.bigDecimalMinimum = bigDecimalMinimum;
@@ -416,8 +437,9 @@ public record RecordWithAllConstraints(
      * Sets the value of {@link RecordWithAllConstraints#bigDecimalMaximum }.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
-     * @param bigDecimalMaximum sets the value of bigDecimalMaximum
-     * @return this {@link Builder}-instance for method-chaining
+     *
+     * @param bigDecimalMaximum sets the value of bigDecimalMaximum.
+     * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder bigDecimalMaximum(final BigDecimal bigDecimalMaximum) {
       this.bigDecimalMaximum = bigDecimalMaximum;
@@ -428,8 +450,9 @@ public record RecordWithAllConstraints(
      * Sets the value of {@link RecordWithAllConstraints#bigDecimalMinimumAndMaximum }.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
-     * @param bigDecimalMinimumAndMaximum sets the value of bigDecimalMinimumAndMaximum
-     * @return this {@link Builder}-instance for method-chaining
+     *
+     * @param bigDecimalMinimumAndMaximum sets the value of bigDecimalMinimumAndMaximum.
+     * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder bigDecimalMinimumAndMaximum(final BigDecimal bigDecimalMinimumAndMaximum) {
       this.bigDecimalMinimumAndMaximum = bigDecimalMinimumAndMaximum;
@@ -441,7 +464,8 @@ public record RecordWithAllConstraints(
      * builder methods.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
-     * @return a new {@link RecordWithAllConstraints }-instance
+     *
+     * @return a new {@link RecordWithAllConstraints }-instance.
      */
     public RecordWithAllConstraints build() {
       return new RecordWithAllConstraints(
@@ -472,7 +496,7 @@ public record RecordWithAllConstraints(
     }
   }
 
-  /** Creates a {@link Builder}-instance. */
+  /** Creates a new {@link Builder}-instance. */
   public static RecordWithAllConstraints.Builder builder() {
     return new RecordWithAllConstraints.Builder();
   }

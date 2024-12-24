@@ -12,7 +12,7 @@
  * openapi-to-java-records-mustache-templates. For further information,
  * questions, requesting features or reporting issues, please visit:
  * https://github.com/Chrimle/openapi-to-java-records-mustache-templates.
- * Generated with Version: 2.4.0
+ * Generated with Version: 2.5.0
  *
  */
 
@@ -48,7 +48,7 @@ public record ExampleRecordWithOneExtraAnnotation(
     this.field2 = field2;
   }
 
-  /** Builder class for {@link ExampleRecordWithOneExtraAnnotation } */
+  /** Builder class for {@link ExampleRecordWithOneExtraAnnotation }. */
   public static class Builder {
 
     private Boolean field1;
@@ -58,8 +58,9 @@ public record ExampleRecordWithOneExtraAnnotation(
      * Sets the value of {@link ExampleRecordWithOneExtraAnnotation#field1 }.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
-     * @param field1 a boolean field with an extra field annotation
-     * @return this {@link Builder}-instance for method-chaining
+     *
+     * @param field1 a boolean field with an extra field annotation.
+     * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder field1(final Boolean field1) {
       this.field1 = field1;
@@ -70,8 +71,9 @@ public record ExampleRecordWithOneExtraAnnotation(
      * Sets the value of {@link ExampleRecordWithOneExtraAnnotation#field2 }.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
-     * @param field2 a boolean field with two extra field annotations
-     * @return this {@link Builder}-instance for method-chaining
+     *
+     * @param field2 a boolean field with two extra field annotations.
+     * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder field2(final Boolean field2) {
       this.field2 = field2;
@@ -83,7 +85,8 @@ public record ExampleRecordWithOneExtraAnnotation(
      * builder methods.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
-     * @return a new {@link ExampleRecordWithOneExtraAnnotation }-instance
+     *
+     * @return a new {@link ExampleRecordWithOneExtraAnnotation }-instance.
      */
     public ExampleRecordWithOneExtraAnnotation build() {
       return new ExampleRecordWithOneExtraAnnotation(
@@ -93,7 +96,7 @@ public record ExampleRecordWithOneExtraAnnotation(
     }
   }
 
-  /** Creates a {@link Builder}-instance. */
+  /** Creates a new {@link Builder}-instance. */
   public static ExampleRecordWithOneExtraAnnotation.Builder builder() {
     return new ExampleRecordWithOneExtraAnnotation.Builder();
   }

@@ -12,7 +12,7 @@
  * openapi-to-java-records-mustache-templates. For further information,
  * questions, requesting features or reporting issues, please visit:
  * https://github.com/Chrimle/openapi-to-java-records-mustache-templates.
- * Generated with Version: 2.4.0
+ * Generated with Version: 2.5.0
  *
  */
 
@@ -40,7 +40,7 @@ public record ExampleRecord(
     this.field1 = field1;
   }
 
-  /** Builder class for {@link ExampleRecord } */
+  /** Builder class for {@link ExampleRecord }. */
   public static class Builder {
 
     private Boolean field1;
@@ -49,8 +49,9 @@ public record ExampleRecord(
      * Sets the value of {@link ExampleRecord#field1 }.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
-     * @param field1 a boolean field
-     * @return this {@link Builder}-instance for method-chaining
+     *
+     * @param field1 a boolean field.
+     * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder field1(final Boolean field1) {
       this.field1 = field1;
@@ -62,7 +63,8 @@ public record ExampleRecord(
      * builder methods.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
-     * @return a new {@link ExampleRecord }-instance
+     *
+     * @return a new {@link ExampleRecord }-instance.
      */
     public ExampleRecord build() {
       return new ExampleRecord(
@@ -71,7 +73,7 @@ public record ExampleRecord(
     }
   }
 
-  /** Creates a {@link Builder}-instance. */
+  /** Creates a new {@link Builder}-instance. */
   public static ExampleRecord.Builder builder() {
     return new ExampleRecord.Builder();
   }

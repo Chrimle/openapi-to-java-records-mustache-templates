@@ -12,7 +12,7 @@
  * openapi-to-java-records-mustache-templates. For further information,
  * questions, requesting features or reporting issues, please visit:
  * https://github.com/Chrimle/openapi-to-java-records-mustache-templates.
- * Generated with Version: 2.4.0
+ * Generated with Version: 2.5.0
  *
  */
 
@@ -73,7 +73,7 @@ public record RecordWithInnerEnums(
     /**
      * Gets the {@code value} of this enum.
      *
-     * @return value of this enum
+     * @return the value of this enum.
      */
     public String getValue() {
       return value;
@@ -86,9 +86,9 @@ public record RecordWithInnerEnums(
      * <p><b>NOTE:</b> if multiple enum constants have a matching value, the first enum constant is
      * returned, by the order they are declared.
      *
-     * @param value of the Enum
-     * @return a {@link ExampleInnerEnum } with the matching value
-     * @throws IllegalArgumentException if no enum has a value matching the given value
+     * @param value of the enum.
+     * @return a {@link ExampleInnerEnum } with the matching value.
+     * @throws IllegalArgumentException if no enum has a value matching the given value.
      */
     public static ExampleInnerEnum fromValue(final String value) {
       for (final ExampleInnerEnum constant : ExampleInnerEnum.values()) {
@@ -117,7 +117,7 @@ public record RecordWithInnerEnums(
     /**
      * Gets the {@code value} of this enum.
      *
-     * @return value of this enum
+     * @return the value of this enum.
      */
     public Integer getValue() {
       return value;
@@ -130,9 +130,9 @@ public record RecordWithInnerEnums(
      * <p><b>NOTE:</b> if multiple enum constants have a matching value, the first enum constant is
      * returned, by the order they are declared.
      *
-     * @param value of the Enum
-     * @return a {@link ExampleInnerTwoEnum } with the matching value
-     * @throws IllegalArgumentException if no enum has a value matching the given value
+     * @param value of the enum.
+     * @return a {@link ExampleInnerTwoEnum } with the matching value.
+     * @throws IllegalArgumentException if no enum has a value matching the given value.
      */
     public static ExampleInnerTwoEnum fromValue(final Integer value) {
       for (final ExampleInnerTwoEnum constant : ExampleInnerTwoEnum.values()) {

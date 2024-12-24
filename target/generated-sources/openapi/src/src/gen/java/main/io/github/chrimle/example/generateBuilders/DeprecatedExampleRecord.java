@@ -12,7 +12,7 @@
  * openapi-to-java-records-mustache-templates. For further information,
  * questions, requesting features or reporting issues, please visit:
  * https://github.com/Chrimle/openapi-to-java-records-mustache-templates.
- * Generated with Version: 2.4.0
+ * Generated with Version: 2.5.0
  *
  */
 
@@ -42,7 +42,7 @@ public record DeprecatedExampleRecord(
     this.field1 = field1;
   }
 
-  /** Builder class for {@link DeprecatedExampleRecord } */
+  /** Builder class for {@link DeprecatedExampleRecord }. */
   public static class Builder {
 
     private Boolean field1;
@@ -51,8 +51,9 @@ public record DeprecatedExampleRecord(
      * Sets the value of {@link DeprecatedExampleRecord#field1 }.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
-     * @param field1 a boolean field
-     * @return this {@link Builder}-instance for method-chaining
+     *
+     * @param field1 a boolean field.
+     * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder field1(final Boolean field1) {
       this.field1 = field1;
@@ -64,7 +65,8 @@ public record DeprecatedExampleRecord(
      * builder methods.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
-     * @return a new {@link DeprecatedExampleRecord }-instance
+     *
+     * @return a new {@link DeprecatedExampleRecord }-instance.
      */
     public DeprecatedExampleRecord build() {
       return new DeprecatedExampleRecord(
@@ -73,7 +75,7 @@ public record DeprecatedExampleRecord(
     }
   }
 
-  /** Creates a {@link Builder}-instance. */
+  /** Creates a new {@link Builder}-instance. */
   public static DeprecatedExampleRecord.Builder builder() {
     return new DeprecatedExampleRecord.Builder();
   }

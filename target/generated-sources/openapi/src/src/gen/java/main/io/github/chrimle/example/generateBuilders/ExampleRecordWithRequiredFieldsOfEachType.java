@@ -12,7 +12,7 @@
  * openapi-to-java-records-mustache-templates. For further information,
  * questions, requesting features or reporting issues, please visit:
  * https://github.com/Chrimle/openapi-to-java-records-mustache-templates.
- * Generated with Version: 2.4.0
+ * Generated with Version: 2.5.0
  *
  */
 
@@ -75,7 +75,7 @@ public record ExampleRecordWithRequiredFieldsOfEachType(
     this.field8 = field8;
   }
 
-  /** Builder class for {@link ExampleRecordWithRequiredFieldsOfEachType } */
+  /** Builder class for {@link ExampleRecordWithRequiredFieldsOfEachType }. */
   public static class Builder {
 
     private Boolean field1;
@@ -91,8 +91,9 @@ public record ExampleRecordWithRequiredFieldsOfEachType(
      * Sets the value of {@link ExampleRecordWithRequiredFieldsOfEachType#field1 }.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
-     * @param field1 a Boolean field
-     * @return this {@link Builder}-instance for method-chaining
+     *
+     * @param field1 a Boolean field.
+     * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder field1(final Boolean field1) {
       this.field1 = field1;
@@ -103,8 +104,9 @@ public record ExampleRecordWithRequiredFieldsOfEachType(
      * Sets the value of {@link ExampleRecordWithRequiredFieldsOfEachType#field2 }.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
-     * @param field2 a String field
-     * @return this {@link Builder}-instance for method-chaining
+     *
+     * @param field2 a String field.
+     * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder field2(final String field2) {
       this.field2 = field2;
@@ -115,8 +117,9 @@ public record ExampleRecordWithRequiredFieldsOfEachType(
      * Sets the value of {@link ExampleRecordWithRequiredFieldsOfEachType#field3 }.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
-     * @param field3 an Integer field
-     * @return this {@link Builder}-instance for method-chaining
+     *
+     * @param field3 an Integer field.
+     * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder field3(final Integer field3) {
       this.field3 = field3;
@@ -127,8 +130,9 @@ public record ExampleRecordWithRequiredFieldsOfEachType(
      * Sets the value of {@link ExampleRecordWithRequiredFieldsOfEachType#field4 }.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
-     * @param field4 a Number field
-     * @return this {@link Builder}-instance for method-chaining
+     *
+     * @param field4 a Number field.
+     * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder field4(final BigDecimal field4) {
       this.field4 = field4;
@@ -139,8 +143,9 @@ public record ExampleRecordWithRequiredFieldsOfEachType(
      * Sets the value of {@link ExampleRecordWithRequiredFieldsOfEachType#field5 }.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
-     * @param field5 an Array of Boolean field
-     * @return this {@link Builder}-instance for method-chaining
+     *
+     * @param field5 an Array of Boolean field.
+     * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder field5(final List<Boolean> field5) {
       this.field5 = field5;
@@ -151,8 +156,9 @@ public record ExampleRecordWithRequiredFieldsOfEachType(
      * Sets the value of {@link ExampleRecordWithRequiredFieldsOfEachType#field6 }.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
-     * @param field6 a Set field
-     * @return this {@link Builder}-instance for method-chaining
+     *
+     * @param field6 a Set field.
+     * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder field6(final Set<Boolean> field6) {
       this.field6 = field6;
@@ -163,8 +169,9 @@ public record ExampleRecordWithRequiredFieldsOfEachType(
      * Sets the value of {@link ExampleRecordWithRequiredFieldsOfEachType#field7 }.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
-     * @param field7 sets the value of field7
-     * @return this {@link Builder}-instance for method-chaining
+     *
+     * @param field7 sets the value of field7.
+     * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder field7(final ExampleRecord field7) {
       this.field7 = field7;
@@ -175,8 +182,9 @@ public record ExampleRecordWithRequiredFieldsOfEachType(
      * Sets the value of {@link ExampleRecordWithRequiredFieldsOfEachType#field8 }.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
-     * @param field8 sets the value of field8
-     * @return this {@link Builder}-instance for method-chaining
+     *
+     * @param field8 sets the value of field8.
+     * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder field8(final ExampleEnum field8) {
       this.field8 = field8;
@@ -188,7 +196,8 @@ public record ExampleRecordWithRequiredFieldsOfEachType(
      * builder methods.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
-     * @return a new {@link ExampleRecordWithRequiredFieldsOfEachType }-instance
+     *
+     * @return a new {@link ExampleRecordWithRequiredFieldsOfEachType }-instance.
      */
     public ExampleRecordWithRequiredFieldsOfEachType build() {
       return new ExampleRecordWithRequiredFieldsOfEachType(
@@ -204,7 +213,7 @@ public record ExampleRecordWithRequiredFieldsOfEachType(
     }
   }
 
-  /** Creates a {@link Builder}-instance. */
+  /** Creates a new {@link Builder}-instance. */
   public static ExampleRecordWithRequiredFieldsOfEachType.Builder builder() {
     return new ExampleRecordWithRequiredFieldsOfEachType.Builder();
   }

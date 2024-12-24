@@ -12,7 +12,7 @@
  * openapi-to-java-records-mustache-templates. For further information,
  * questions, requesting features or reporting issues, please visit:
  * https://github.com/Chrimle/openapi-to-java-records-mustache-templates.
- * Generated with Version: 2.4.0
+ * Generated with Version: 2.5.0
  *
  */
 
@@ -40,7 +40,7 @@ public record ExampleRecordWithDefaultFields(
     this.field1 = Objects.requireNonNullElse(field1, "someDefaultValue");
   }
 
-  /** Builder class for {@link ExampleRecordWithDefaultFields } */
+  /** Builder class for {@link ExampleRecordWithDefaultFields }. */
   public static class Builder {
 
     private String field1;
@@ -49,8 +49,9 @@ public record ExampleRecordWithDefaultFields(
      * Sets the value of {@link ExampleRecordWithDefaultFields#field1 }.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
-     * @param field1 a String field with a default value
-     * @return this {@link Builder}-instance for method-chaining
+     *
+     * @param field1 a String field with a default value.
+     * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder field1(final String field1) {
       this.field1 = field1;
@@ -62,7 +63,8 @@ public record ExampleRecordWithDefaultFields(
      * builder methods.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
-     * @return a new {@link ExampleRecordWithDefaultFields }-instance
+     *
+     * @return a new {@link ExampleRecordWithDefaultFields }-instance.
      */
     public ExampleRecordWithDefaultFields build() {
       return new ExampleRecordWithDefaultFields(
@@ -71,7 +73,7 @@ public record ExampleRecordWithDefaultFields(
     }
   }
 
-  /** Creates a {@link Builder}-instance. */
+  /** Creates a new {@link Builder}-instance. */
   public static ExampleRecordWithDefaultFields.Builder builder() {
     return new ExampleRecordWithDefaultFields.Builder();
   }

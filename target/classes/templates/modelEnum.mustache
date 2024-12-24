@@ -15,7 +15,7 @@
 
 }}{{!
   Source: openapi-to-java-records-mustache-templates
-  Version: 2.4.0
+  Version: 2.5.0
 
   This template is overriding an official 'openapi-generator-maven-plugin' template.
 
@@ -47,7 +47,7 @@
   /**
    * Gets the {@code value} of this enum.
    *
-   * @return value of this enum
+   * @return the value of this enum.
    */
   public {{{dataType}}} getValue() {
     return value;
@@ -60,9 +60,9 @@
    * <p><b>NOTE:</b> if multiple enum constants have a matching value, the first enum constant is
    * returned, by the order they are declared.
    *
-   * @param value of the Enum
-   * @return a {@link {{classname}} } with the matching value
-   * @throws IllegalArgumentException if no enum has a value matching the given value
+   * @param value of the enum.
+   * @return a {@link {{classname}} } with the matching value.
+   * @throws IllegalArgumentException if no enum has a value matching the given value.
    */
   public static {{classname}} fromValue(final {{{dataType}}} value) {
     for (final {{classname}} constant : {{classname}}.values()) {
