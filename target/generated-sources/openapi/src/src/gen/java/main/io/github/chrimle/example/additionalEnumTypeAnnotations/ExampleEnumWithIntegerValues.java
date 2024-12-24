@@ -43,7 +43,7 @@ public enum ExampleEnumWithIntegerValues {
   /**
    * Gets the {@code value} of this enum.
    *
-   * @return value of this enum
+   * @return the value of this enum.
    */
   public Integer getValue() {
     return value;
@@ -56,9 +56,9 @@ public enum ExampleEnumWithIntegerValues {
    * <p><b>NOTE:</b> if multiple enum constants have a matching value, the first enum constant is
    * returned, by the order they are declared.
    *
-   * @param value of the Enum
-   * @return a {@link ExampleEnumWithIntegerValues } with the matching value
-   * @throws IllegalArgumentException if no enum has a value matching the given value
+   * @param value of the enum.
+   * @return a {@link ExampleEnumWithIntegerValues } with the matching value.
+   * @throws IllegalArgumentException if no enum has a value matching the given value.
    */
   public static ExampleEnumWithIntegerValues fromValue(final Integer value) {
     for (final ExampleEnumWithIntegerValues constant : ExampleEnumWithIntegerValues.values()) {

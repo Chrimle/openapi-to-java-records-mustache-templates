@@ -50,7 +50,7 @@ public enum ExampleEnum {
   /**
    * Gets the {@code value} of this enum.
    *
-   * @return value of this enum
+   * @return the value of this enum.
    */
   public String getValue() {
     return value;
@@ -63,9 +63,9 @@ public enum ExampleEnum {
    * <p><b>NOTE:</b> if multiple enum constants have a matching value, the first enum constant is
    * returned, by the order they are declared.
    *
-   * @param value of the Enum
-   * @return a {@link ExampleEnum } with the matching value
-   * @throws IllegalArgumentException if no enum has a value matching the given value
+   * @param value of the enum.
+   * @return a {@link ExampleEnum } with the matching value.
+   * @throws IllegalArgumentException if no enum has a value matching the given value.
    */
   public static ExampleEnum fromValue(final String value) {
     for (final ExampleEnum constant : ExampleEnum.values()) {
