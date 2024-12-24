@@ -35,8 +35,9 @@
      * Sets the value of {@link {{classname}}#{{name}} }.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
-     * @param {{name}} {{description}}{{^description}}sets the value of {{name}}{{/description}}
-     * @return this {@link Builder}-instance for method-chaining
+     *
+     * @param {{name}} {{description}}{{^description}}sets the value of {{name}}{{/description}}.
+     * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder {{name}}(final {{{datatypeWithEnum}}} {{name}}) {
       this.{{name}} = {{name}};
@@ -49,7 +50,8 @@
      * builder methods.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
-     * @return a new {@link {{classname}} }-instance
+     *
+     * @return a new {@link {{classname}} }-instance.
      */
     public {{classname}} build() {
       return new {{classname}}(
@@ -59,7 +61,7 @@
     }
   }
 
-  /** Creates a {@link Builder}-instance. */
+  /** Creates a new {@link Builder}-instance. */
   public static {{classname}}.Builder builder() {
     return new {{classname}}.Builder();
   }{{!
