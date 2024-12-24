@@ -42,7 +42,7 @@ public record ExampleRecordWithTwoExtraAnnotations(
     this.field1 = field1;
   }
 
-  /** Builder class for {@link ExampleRecordWithTwoExtraAnnotations } */
+  /** Builder class for {@link ExampleRecordWithTwoExtraAnnotations }. */
   public static class Builder {
 
     private Boolean field1;

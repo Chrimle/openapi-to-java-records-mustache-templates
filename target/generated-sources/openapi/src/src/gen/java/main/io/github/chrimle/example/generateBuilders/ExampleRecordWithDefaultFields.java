@@ -40,7 +40,7 @@ public record ExampleRecordWithDefaultFields(
     this.field1 = Objects.requireNonNullElse(field1, "someDefaultValue");
   }
 
-  /** Builder class for {@link ExampleRecordWithDefaultFields } */
+  /** Builder class for {@link ExampleRecordWithDefaultFields }. */
   public static class Builder {
 
     private String field1;

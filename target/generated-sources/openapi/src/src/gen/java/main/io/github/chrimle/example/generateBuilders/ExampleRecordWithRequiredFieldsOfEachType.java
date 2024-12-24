@@ -75,7 +75,7 @@ public record ExampleRecordWithRequiredFieldsOfEachType(
     this.field8 = field8;
   }
 
-  /** Builder class for {@link ExampleRecordWithRequiredFieldsOfEachType } */
+  /** Builder class for {@link ExampleRecordWithRequiredFieldsOfEachType }. */
   public static class Builder {
 
     private Boolean field1;

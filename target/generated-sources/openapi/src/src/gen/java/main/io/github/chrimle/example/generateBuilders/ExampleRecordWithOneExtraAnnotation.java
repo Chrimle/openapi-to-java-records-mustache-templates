@@ -48,7 +48,7 @@ public record ExampleRecordWithOneExtraAnnotation(
     this.field2 = field2;
   }
 
-  /** Builder class for {@link ExampleRecordWithOneExtraAnnotation } */
+  /** Builder class for {@link ExampleRecordWithOneExtraAnnotation }. */
   public static class Builder {
 
     private Boolean field1;

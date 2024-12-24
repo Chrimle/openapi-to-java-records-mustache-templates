@@ -65,7 +65,7 @@ public record ExampleRecordWithNullableFieldsOfEachType(
     this.field6 = field6;
   }
 
-  /** Builder class for {@link ExampleRecordWithNullableFieldsOfEachType } */
+  /** Builder class for {@link ExampleRecordWithNullableFieldsOfEachType }. */
   public static class Builder {
 
     private Boolean field1;

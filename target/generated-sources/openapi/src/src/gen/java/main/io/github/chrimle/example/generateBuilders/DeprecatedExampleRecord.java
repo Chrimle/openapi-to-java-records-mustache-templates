@@ -42,7 +42,7 @@ public record DeprecatedExampleRecord(
     this.field1 = field1;
   }
 
-  /** Builder class for {@link DeprecatedExampleRecord } */
+  /** Builder class for {@link DeprecatedExampleRecord }. */
   public static class Builder {
 
     private Boolean field1;

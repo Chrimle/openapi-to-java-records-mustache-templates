@@ -40,7 +40,7 @@ public record ExampleRecord(
     this.field1 = field1;
   }
 
-  /** Builder class for {@link ExampleRecord } */
+  /** Builder class for {@link ExampleRecord }. */
   public static class Builder {
 
     private Boolean field1;

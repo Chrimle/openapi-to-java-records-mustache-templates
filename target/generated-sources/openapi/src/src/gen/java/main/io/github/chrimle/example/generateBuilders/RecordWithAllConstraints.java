@@ -133,7 +133,7 @@ public record RecordWithAllConstraints(
     this.bigDecimalMinimumAndMaximum = bigDecimalMinimumAndMaximum;
   }
 
-  /** Builder class for {@link RecordWithAllConstraints } */
+  /** Builder class for {@link RecordWithAllConstraints }. */
   public static class Builder {
 
     private String stringStandard;

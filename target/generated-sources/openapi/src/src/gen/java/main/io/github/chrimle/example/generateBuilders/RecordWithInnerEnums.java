@@ -44,7 +44,7 @@ public record RecordWithInnerEnums(
     this.exampleInnerTwo = exampleInnerTwo;
   }
 
-  /** Builder class for {@link RecordWithInnerEnums } */
+  /** Builder class for {@link RecordWithInnerEnums }. */
   public static class Builder {
 
     private ExampleInnerEnum exampleInner;
