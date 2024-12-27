@@ -16,10 +16,14 @@
 }}{{!
   Source: openapi-to-java-records-mustache-templates
   Version: ${project.version}
-
-  This template is a custom template, and is used by `pojo.mustache`.
-
-  Enabled via configOptions.generateBuilders=true
+  Type: Custom
+  Dependencies:
+    - none
+  Dependents:
+    - `pojo.mustache`
+  Additional Context:
+    - Enabled via configOptions.generateBuilders=true
+    - Generates a `Builder`-class, intended to be an inner class of a `record`-class.
 
 }}{{#generateBuilders}}
 
