@@ -22,6 +22,9 @@
 # SHA 256
 *.sha256
 
+# Backups
+*.versionsBackup
+
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
@@ -29,11 +32,11 @@ replay_pid*
 .idea
 *.iml
 
-target/maven-status
-target/maven-archiver
-target/surefire-reports
-/target/generated-sources/openapi/.openapi-generator/api.yaml-default.sha256
-/target/site/jacoco/
-/target/jacoco.exec
-/target/spotless-index
-/target/classes/api.yaml
+mustache-templates/target/maven-status
+mustache-templates/target/maven-archiver
+mustache-templates/target/surefire-reports
+mustache-templates/target/generated-sources/openapi/.openapi-generator/api.yaml-default.sha256
+mustache-templates/target/site/jacoco
+mustache-templates/target/jacoco.exec
+mustache-templates/target/spotless-index
+mustache-templates/target/classes/api.yaml

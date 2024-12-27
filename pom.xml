@@ -1,11 +1,15 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.github.chrimle</groupId>
-    <artifactId>openapi-to-java-records-mustache-templates</artifactId>
+    <artifactId>openapi-to-java-records-mustache-templates-parent</artifactId>
     <version>2.5.0</version>
+    <packaging>pom</packaging>
+    <modules>
+        <module>mustache-templates</module>
+    </modules>
 
     <!-- Project Information -->
     <name>OpenAPI to Java records :: Mustache Templates</name>
@@ -39,23 +43,22 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.release>17</maven.compiler.release>
-        <openapi-generator-maven-plugin.version>7.8.0</openapi-generator-maven-plugin.version>
-        <maven.plugin.validation>VERBOSE</maven.plugin.validation>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
+        <maven.plugin.validation>VERBOSE</maven.plugin.validation>
+
+        <!-- Dependency Versions -->
+        <openapi-generator-maven-plugin.version>7.8.0</openapi-generator-maven-plugin.version>
         <junit-jupiter.version>5.11.4</junit-jupiter.version>
         <gson.version>2.11.0</gson.version>
-        <jackson-databind-nullable.version>0.2.6
-        </jackson-databind-nullable.version>
+        <jackson-databind-nullable.version>0.2.6</jackson-databind-nullable.version>
         <jsr305.version>3.0.2</jsr305.version>
         <jakarta.annotation-api.version>3.0.0</jakarta.annotation-api.version>
         <jackson-annotations.version>2.18.1</jackson-annotations.version>
         <hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
         <maven-jar-plugin.version>3.4.2</maven-jar-plugin.version>
         <maven-resources-plugin.version>3.3.1</maven-resources-plugin.version>
-
-        <!-- Location of updated `.mustache` template files -->
-        <updated-mustache-templates-directory>${project.build.directory}/classes/templates</updated-mustache-templates-directory>
+        <!-- / Dependency Versions -->
 
         <!-- Jacoco -->
         <jacoco-maven-plugin.version>0.8.12</jacoco-maven-plugin.version>
@@ -74,503 +77,57 @@
         <maven-source-plugin.version>3.3.1</maven-source-plugin.version>
         <central-publishing-maven-plugin.version>0.6.0</central-publishing-maven-plugin.version>
         <!-- /Publish to Maven Central Repository -->
-
-        <!-- Default `configuration`-option values -->
-        <modelPackage.default>${project.groupId}.example</modelPackage.default>
-        <generateModels.default>true</generateModels.default>
-        <generateApis.default>false</generateApis.default>
-        <generateSupportingFiles.default>false</generateSupportingFiles.default>
-        <generateModelTests.default>false</generateModelTests.default>
-        <generateModelDocumentation.default>false</generateModelDocumentation.default>
-        <generatorName.default>java</generatorName.default>
-        <sourceFolder.default>src/gen/java/main</sourceFolder.default>
-        <templateDirectory.default>${updated-mustache-templates-directory}</templateDirectory.default>
-        <inputSpec.default>${project.basedir}/src/main/resources/api.yaml</inputSpec.default>
-        <!-- Default `configuration.configOptions`-option values -->
-        <output.default>target/generated-sources/openapi/src</output.default>
-        <useEnumCaseInsensitive.default>false</useEnumCaseInsensitive.default>
-        <serializableModel.default>false</serializableModel.default>
-        <generateBuilders.default>false</generateBuilders.default>
-        <useJakartaEe.default>false</useJakartaEe.default>
-        <useBeanValidation.default>false</useBeanValidation.default>
-
-        <!-- Plugin Executions -->
-        <!-- The Plugin Execution with Standard Configurations -->
-        <execution.standard>standard</execution.standard>
-        <!-- The Plugin Execution with useEnumCaseInsensitive=true -->
-        <execution.useEnumCaseInsensitive>useEnumCaseInsensitive</execution.useEnumCaseInsensitive>
-        <!-- The Plugin Execution with additionalModelTypeAnnotations set -->
-        <execution.additionalModelTypeAnnotations>additionalModelTypeAnnotations</execution.additionalModelTypeAnnotations>
-        <!-- The Plugin Execution with serializableModel=true -->
-        <execution.serializableModel>serializableModel</execution.serializableModel>
-        <!-- The Plugin Execution with additionalEnumTypeAnnotations set -->
-        <execution.additionalEnumTypeAnnotations>additionalEnumTypeAnnotations</execution.additionalEnumTypeAnnotations>
-        <!-- The Plugin Execution with generateBuilders=true -->
-        <execution.generateBuilders>generateBuilders</execution.generateBuilders>
-        <!-- The Plugin Execution with useJakartaEe=true -->
-        <execution.useJakartaEe>useJakartaEe</execution.useJakartaEe>
-        <!-- The Plugin Execution with useBeanValidation=true -->
-        <execution.useBeanValidation>useBeanValidation</execution.useBeanValidation>
     </properties>
 
-
-    <dependencies>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>${junit-jupiter.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-params</artifactId>
-            <version>${junit-jupiter.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <!-- Needed when library=okhttp-gson -->
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-            <version>${gson.version}</version>
-        </dependency>
-        <dependency>
-            <!-- Needed when configOptions.useJakartaEe=true -->
-            <groupId>jakarta.annotation</groupId>
-            <artifactId>jakarta.annotation-api</artifactId>
-            <version>${jakarta.annotation-api.version}</version>
-        </dependency>
-        <dependency>
-            <!-- Needed when configOptions.useJakartaEe=false -->
-            <groupId>com.google.code.findbugs</groupId>
-            <artifactId>jsr305</artifactId>
-            <version>${jsr305.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.openapitools</groupId>
-            <artifactId>jackson-databind-nullable</artifactId>
-            <version>${jackson-databind-nullable.version}</version>
-        </dependency>
-        <dependency>
-            <!-- Needed when library=webclient -->
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-annotations</artifactId>
-            <version>${jackson-annotations.version}</version>
-        </dependency>
-        <dependency>
-            <!-- Needed when useBeanValidation=true -->
-            <groupId>org.hibernate.validator</groupId>
-            <artifactId>hibernate-validator</artifactId>
-            <version>${hibernate-validator.version}</version>
-        </dependency>
-    </dependencies>
-
-
-    <build>
-        <plugins>
-            <!-- Propagate Maven Project properties to any variables, such as '${project.version}' -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-resources-plugin</artifactId>
-                <version>${maven-resources-plugin.version}</version>
-                <executions>
-                    <execution>
-                        <id>propagate-maven-project-properties</id>
-                        <phase>initialize</phase>
-                        <goals>
-                            <goal>copy-resources</goal>
-                        </goals>
-                        <configuration>
-                            <resources>
-                                <resource>
-                                    <directory>src/main/resources/templates</directory>
-                                    <includes>
-                                        <include>**/*.mustache</include>
-                                    </includes>
-                                    <filtering>true</filtering>
-                                </resource>
-                            </resources>
-                            <outputDirectory>${updated-mustache-templates-directory}</outputDirectory>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-api</artifactId>
+                <version>${junit-jupiter.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-params</artifactId>
+                <version>${junit-jupiter.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <!-- Needed when library=okhttp-gson -->
+                <groupId>com.google.code.gson</groupId>
+                <artifactId>gson</artifactId>
+                <version>${gson.version}</version>
+            </dependency>
+            <dependency>
+                <!-- Needed when configOptions.useJakartaEe=true -->
+                <groupId>jakarta.annotation</groupId>
+                <artifactId>jakarta.annotation-api</artifactId>
+                <version>${jakarta.annotation-api.version}</version>
+            </dependency>
+            <dependency>
+                <!-- Needed when configOptions.useJakartaEe=false -->
+                <groupId>com.google.code.findbugs</groupId>
+                <artifactId>jsr305</artifactId>
+                <version>${jsr305.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>org.openapitools</groupId>
-                <artifactId>openapi-generator-maven-plugin</artifactId>
-                <version>${openapi-generator-maven-plugin.version}</version>
-                <executions>
-                    <execution>
-                        <id>generate-${execution.standard}</id>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                        <configuration>
-                            <output>${output.default}</output>
-                            <modelPackage>${modelPackage.default}.${execution.standard}</modelPackage>
-                            <generateModels>${generateModels.default}</generateModels>
-                            <generateApis>${generateApis.default}</generateApis>
-                            <generateSupportingFiles>${generateSupportingFiles.default}</generateSupportingFiles>
-                            <generateModelTests>${generateModelTests.default}</generateModelTests>
-                            <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
-                            <inputSpec>${inputSpec.default}</inputSpec>
-                            <templateDirectory>${templateDirectory.default}</templateDirectory>
-                            <generatorName>${generatorName.default}</generatorName>
-                            <configOptions>
-                                <sourceFolder>${sourceFolder.default}</sourceFolder>
-                                <useEnumCaseInsensitive>${useEnumCaseInsensitive.default}</useEnumCaseInsensitive>
-                                <serializableModel>${serializableModel.default}</serializableModel>
-                                <generateBuilders>${generateBuilders.default}</generateBuilders>
-                                <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
-                                <useBeanValidation>${useBeanValidation.default}</useBeanValidation>
-                            </configOptions>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>generate-${execution.useEnumCaseInsensitive}</id>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                        <configuration>
-                            <output>${output.default}</output>
-                            <modelPackage>${modelPackage.default}.${execution.useEnumCaseInsensitive}</modelPackage>
-                            <generateModels>${generateModels.default}</generateModels>
-                            <generateApis>${generateApis.default}</generateApis>
-                            <generateSupportingFiles>${generateSupportingFiles.default}</generateSupportingFiles>
-                            <generateModelTests>${generateModelTests.default}</generateModelTests>
-                            <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
-                            <inputSpec>${inputSpec.default}</inputSpec>
-                            <templateDirectory>${templateDirectory.default}</templateDirectory>
-                            <generatorName>${generatorName.default}</generatorName>
-                            <configOptions>
-                                <sourceFolder>${sourceFolder.default}</sourceFolder>
-                                <useEnumCaseInsensitive>true</useEnumCaseInsensitive>
-                                <serializableModel>${serializableModel.default}</serializableModel>
-                                <generateBuilders>${generateBuilders.default}</generateBuilders>
-                                <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
-                                <useBeanValidation>${useBeanValidation.default}</useBeanValidation>
-                            </configOptions>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>generate-${execution.additionalModelTypeAnnotations}</id>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                        <configuration>
-                            <output>${output.default}</output>
-                            <modelPackage>${modelPackage.default}.${execution.additionalModelTypeAnnotations}</modelPackage>
-                            <generateModels>${generateModels.default}</generateModels>
-                            <generateApis>${generateApis.default}</generateApis>
-                            <generateSupportingFiles>${generateSupportingFiles.default}</generateSupportingFiles>
-                            <generateModelTests>${generateModelTests.default}</generateModelTests>
-                            <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
-                            <inputSpec>${inputSpec.default}</inputSpec>
-                            <templateDirectory>${templateDirectory.default}</templateDirectory>
-                            <generatorName>${generatorName.default}</generatorName>
-                            <configOptions>
-                                <additionalModelTypeAnnotations>
-                                    @io.github.chrimle.example.annotations.TestAnnotationOne
-                                    @io.github.chrimle.example.annotations.TestAnnotationTwo
-                                    @io.github.chrimle.example.annotations.TestAnnotationThree
-                                </additionalModelTypeAnnotations>
-                                <sourceFolder>${sourceFolder.default}</sourceFolder>
-                                <useEnumCaseInsensitive>${useEnumCaseInsensitive.default}</useEnumCaseInsensitive>
-                                <serializableModel>${serializableModel.default}</serializableModel>
-                                <generateBuilders>${generateBuilders.default}</generateBuilders>
-                                <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
-                                <useBeanValidation>${useBeanValidation.default}</useBeanValidation>
-                            </configOptions>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>generate-${execution.additionalEnumTypeAnnotations}</id>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                        <configuration>
-                            <output>${output.default}</output>
-                            <modelPackage>${modelPackage.default}.${execution.additionalEnumTypeAnnotations}</modelPackage>
-                            <generateModels>${generateModels.default}</generateModels>
-                            <generateApis>${generateApis.default}</generateApis>
-                            <generateSupportingFiles>${generateSupportingFiles.default}</generateSupportingFiles>
-                            <generateModelTests>${generateModelTests.default}</generateModelTests>
-                            <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
-                            <inputSpec>${inputSpec.default}</inputSpec>
-                            <templateDirectory>${templateDirectory.default}</templateDirectory>
-                            <generatorName>${generatorName.default}</generatorName>
-                            <configOptions>
-                                <additionalEnumTypeAnnotations>@io.github.chrimle.example.annotations.TestAnnotationOne;@io.github.chrimle.example.annotations.TestAnnotationTwo;@io.github.chrimle.example.annotations.TestAnnotationThree;</additionalEnumTypeAnnotations>
-                                <sourceFolder>${sourceFolder.default}</sourceFolder>
-                                <useEnumCaseInsensitive>${useEnumCaseInsensitive.default}</useEnumCaseInsensitive>
-                                <serializableModel>${serializableModel.default}</serializableModel>
-                                <generateBuilders>${generateBuilders.default}</generateBuilders>
-                                <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
-                                <useBeanValidation>${useBeanValidation.default}</useBeanValidation>
-                            </configOptions>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>generate-${execution.serializableModel}</id>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                        <configuration>
-                            <output>${output.default}</output>
-                            <modelPackage>${modelPackage.default}.${execution.serializableModel}</modelPackage>
-                            <generateModels>${generateModels.default}</generateModels>
-                            <generateApis>${generateApis.default}</generateApis>
-                            <generateSupportingFiles>${generateSupportingFiles.default}</generateSupportingFiles>
-                            <generateModelTests>${generateModelTests.default}</generateModelTests>
-                            <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
-                            <inputSpec>${inputSpec.default}</inputSpec>
-                            <templateDirectory>${templateDirectory.default}</templateDirectory>
-                            <generatorName>${generatorName.default}</generatorName>
-                            <configOptions>
-                                <sourceFolder>${sourceFolder.default}</sourceFolder>
-                                <useEnumCaseInsensitive>${useEnumCaseInsensitive.default}</useEnumCaseInsensitive>
-                                <serializableModel>true</serializableModel>
-                                <generateBuilders>${generateBuilders.default}</generateBuilders>
-                                <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
-                                <useBeanValidation>${useBeanValidation.default}</useBeanValidation>
-                            </configOptions>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>generate-${execution.generateBuilders}</id>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                        <configuration>
-                            <output>${output.default}</output>
-                            <modelPackage>${modelPackage.default}.${execution.generateBuilders}</modelPackage>
-                            <generateModels>${generateModels.default}</generateModels>
-                            <generateApis>${generateApis.default}</generateApis>
-                            <generateSupportingFiles>${generateSupportingFiles.default}</generateSupportingFiles>
-                            <generateModelTests>${generateModelTests.default}</generateModelTests>
-                            <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
-                            <inputSpec>${inputSpec.default}</inputSpec>
-                            <templateDirectory>${templateDirectory.default}</templateDirectory>
-                            <generatorName>${generatorName.default}</generatorName>
-                            <configOptions>
-                                <sourceFolder>${sourceFolder.default}</sourceFolder>
-                                <useEnumCaseInsensitive>${useEnumCaseInsensitive.default}</useEnumCaseInsensitive>
-                                <serializableModel>${serializableModel.default}</serializableModel>
-                                <generateBuilders>true</generateBuilders>
-                                <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
-                                <useBeanValidation>${useBeanValidation.default}</useBeanValidation>
-                            </configOptions>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>generate-${execution.useJakartaEe}</id>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                        <configuration>
-                            <output>${output.default}</output>
-                            <modelPackage>${modelPackage.default}.${execution.useJakartaEe}</modelPackage>
-                            <generateModels>${generateModels.default}</generateModels>
-                            <generateApis>${generateApis.default}</generateApis>
-                            <generateSupportingFiles>${generateSupportingFiles.default}</generateSupportingFiles>
-                            <generateModelTests>${generateModelTests.default}</generateModelTests>
-                            <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
-                            <inputSpec>${inputSpec.default}</inputSpec>
-                            <templateDirectory>${templateDirectory.default}</templateDirectory>
-                            <generatorName>${generatorName.default}</generatorName>
-                            <configOptions>
-                                <sourceFolder>${sourceFolder.default}</sourceFolder>
-                                <useEnumCaseInsensitive>${useEnumCaseInsensitive.default}</useEnumCaseInsensitive>
-                                <serializableModel>${serializableModel.default}</serializableModel>
-                                <generateBuilders>${generateBuilders.default}</generateBuilders>
-                                <useJakartaEe>true</useJakartaEe>
-                                <useBeanValidation>${useBeanValidation.default}</useBeanValidation>
-                            </configOptions>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>generate-${execution.useBeanValidation}</id>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                        <configuration>
-                            <output>${output.default}</output>
-                            <modelPackage>${modelPackage.default}.${execution.useBeanValidation}</modelPackage>
-                            <generateModels>${generateModels.default}</generateModels>
-                            <generateApis>${generateApis.default}</generateApis>
-                            <generateSupportingFiles>${generateSupportingFiles.default}</generateSupportingFiles>
-                            <generateModelTests>${generateModelTests.default}</generateModelTests>
-                            <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
-                            <inputSpec>${inputSpec.default}</inputSpec>
-                            <templateDirectory>${templateDirectory.default}</templateDirectory>
-                            <generatorName>${generatorName.default}</generatorName>
-                            <configOptions>
-                                <sourceFolder>${sourceFolder.default}</sourceFolder>
-                                <useEnumCaseInsensitive>${useEnumCaseInsensitive.default}</useEnumCaseInsensitive>
-                                <serializableModel>${serializableModel.default}</serializableModel>
-                                <generateBuilders>${generateBuilders.default}</generateBuilders>
-                                <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
-                                <useBeanValidation>true</useBeanValidation>
-                            </configOptions>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.jacoco</groupId>
-                <artifactId>jacoco-maven-plugin</artifactId>
-                <version>${jacoco-maven-plugin.version}</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>prepare-agent</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>report</id>
-                        <phase>prepare-package</phase>
-                        <goals>
-                            <goal>report</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>jacoco-check</id>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                        <configuration>
-                            <rules>
-                                <rule>
-                                    <element>PACKAGE</element>
-                                    <limits>
-                                        <limit>
-                                            <counter>LINE</counter>
-                                            <value>COVEREDRATIO</value>
-                                            <minimum>${jacoco-maven-plugin.minimumPackageLineCoveredRatio}</minimum>
-                                        </limit>
-                                    </limits>
-                                </rule>
-                                <rule>
-                                    <element>BUNDLE</element>
-                                    <limits>
-                                        <limit>
-                                            <counter>CLASS</counter>
-                                            <value>MISSEDCOUNT</value>
-                                            <minimum>${jacoco-maven-plugin.expectedBundleClassMissedCount}</minimum>
-                                            <maximum>${jacoco-maven-plugin.expectedBundleClassMissedCount}</maximum>
-                                        </limit>
-                                    </limits>
-                                </rule>
-                            </rules>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>${maven-jar-plugin.version}</version>
-                <configuration>
-                    <includes>
-                        <include>**/*.mustache</include>
-                    </includes>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>com.diffplug.spotless</groupId>
-                <artifactId>spotless-maven-plugin</artifactId>
-                <version>${spotless-maven-plugin.version}</version>
-                <configuration>
-                    <java>
-                        <lineEndings>UNIX</lineEndings>
-                        <googleJavaFormat>
-                            <version>${googleJavaFormat.version}</version>
-                            <style>GOOGLE</style>
-                        </googleJavaFormat>
-                    </java>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>apply</goal>
-                        </goals>
-                        <phase>validate</phase>
-                        <configuration>
-                            <java>
-                                <includes>
-                                    <include>src/main/**/*.java</include>
-                                    <include>src/test/**/*.java</include>
-                                </includes>
-                            </java>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
-    <distributionManagement>
-        <repository>
-            <id>github</id>
-            <name>GitHub Chrimle Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/chrimle/${project.artifactId}</url>
-        </repository>
-    </distributionManagement>
-    <scm>
-        <connection>scm:git:git://github.com/chrimle/openapi-to-java-records-mustache-templates.git</connection>
-        <developerConnection>scm:git:ssh://github.com:chrimle/openapi-to-java-records-mustache-templates.git</developerConnection>
-        <url>http://github.com/chrimle/openapi-to-java-records-mustache-templates/tree/main</url>
-    </scm>
-    <profiles>
-        <profile>
-            <id>deploy-to-maven-central</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.sonatype.central</groupId>
-                        <artifactId>central-publishing-maven-plugin</artifactId>
-                        <version>${central-publishing-maven-plugin.version}</version>
-                        <extensions>true</extensions>
-                        <configuration>
-                            <publishingServerId>central</publishingServerId>
-                            <tokenAuth>true</tokenAuth>
-                            <autoPublish>true</autoPublish>
-                        </configuration>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-source-plugin</artifactId>
-                        <version>${maven-source-plugin.version}</version>
-                        <executions>
-                            <execution>
-                                <id>attach-sources</id>
-                                <phase>verify</phase>
-                                <goals>
-                                    <goal>jar-no-fork</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-gpg-plugin</artifactId>
-                        <version>${maven-gpg-plugin.version}</version>
-                        <executions>
-                            <execution>
-                                <id>sign-artifacts</id>
-                                <phase>verify</phase>
-                                <goals>
-                                    <goal>sign</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                        <configuration>
-                            <gpgArguments>
-                                <arg>--pinentry-mode</arg>
-                                <arg>loopback</arg>
-                            </gpgArguments>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
+                <artifactId>jackson-databind-nullable</artifactId>
+                <version>${jackson-databind-nullable.version}</version>
+            </dependency>
+            <dependency>
+                <!-- Needed when library=webclient -->
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-annotations</artifactId>
+                <version>${jackson-annotations.version}</version>
+            </dependency>
+            <dependency>
+                <!-- Needed when useBeanValidation=true -->
+                <groupId>org.hibernate.validator</groupId>
+                <artifactId>hibernate-validator</artifactId>
+                <version>${hibernate-validator.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 </project>
