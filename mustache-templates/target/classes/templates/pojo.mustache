@@ -16,15 +16,17 @@
 }}{{!
   Source: openapi-to-java-records-mustache-templates
   Version: 2.5.0
-
-  This template is overriding an official 'openapi-generator-maven-plugin' template.
-
-  Imported mustache templates (generation will fail without them):
+  Type: Override
+  Dependencies:
     - `additionalModelTypeAnnotations.mustache` (Official)
     - `generateBuilders.mustache`
     - `javadoc.mustache`
     - `serializableModel.mustache`
     - `useBeanValidation.mustache`
+  Dependents:
+    - Official Templates
+  Additional Context:
+    - This template is overriding an official 'openapi-generator-maven-plugin' template.
 
 }}{{>javadoc}}{{!
 }}{{#isDeprecated}}@Deprecated

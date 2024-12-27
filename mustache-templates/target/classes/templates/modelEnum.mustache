@@ -16,12 +16,15 @@
 }}{{!
   Source: openapi-to-java-records-mustache-templates
   Version: 2.5.0
-
-  This template is overriding an official 'openapi-generator-maven-plugin' template.
-
-  Imported mustache templates (generation will fail without them):
-    - `javadoc.mustache`
+  Type: Override
+  Dependencies:
     - `additionalEnumTypeAnnotations.mustache` (Official)
+    - `javadoc.mustache`
+  Dependents:
+    - Official Templates
+  Additional Context:
+    - This template is overriding an official 'openapi-generator-maven-plugin' template.
+    - Generates an `enum` class.
 
 }}{{>javadoc}}{{!
 }}{{#isDeprecated}}@Deprecated
