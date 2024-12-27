@@ -26,10 +26,10 @@
     - Generates the JavaDoc for a `enum` or `record` class.
 
 }}/**
- * {{description}}{{^description}}{{classname}}{{/description}}{{#isDeprecated}}
+ * {{description}}{{^description}}{{classname}}.{{/description}}{{#isDeprecated}}
  *
  * @deprecated{{/isDeprecated}}{{#vars}}{{#-first}}{{^isDeprecated}}
  *{{/isDeprecated}}{{/-first}}
- * @param {{name}} {{description}}{{^description}}{{{datatypeWithEnum}}}{{/description}}{{!
+ * @param {{name}} {{description}}{{^description}}{{{datatypeWithEnum}}}.{{/description}}{{!
 }}{{/vars}}
  */
