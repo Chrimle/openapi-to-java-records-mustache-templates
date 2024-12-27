@@ -15,7 +15,7 @@
 
 }}{{!
   Source: openapi-to-java-records-mustache-templates
-  Version: 2.5.0
+  Version: 2.5.1
   Type: Custom
   Dependencies:
     - none
@@ -26,10 +26,10 @@
     - Generates the JavaDoc for a `enum` or `record` class.
 
 }}/**
- * {{description}}{{^description}}{{classname}}{{/description}}{{#isDeprecated}}
+ * {{description}}{{^description}}{{classname}}.{{/description}}{{#isDeprecated}}
  *
  * @deprecated{{/isDeprecated}}{{#vars}}{{#-first}}{{^isDeprecated}}
  *{{/isDeprecated}}{{/-first}}
- * @param {{name}} {{description}}{{^description}}{{{datatypeWithEnum}}}{{/description}}{{!
+ * @param {{name}} {{description}}{{^description}}{{{datatypeWithEnum}}}.{{/description}}{{!
 }}{{/vars}}
  */
