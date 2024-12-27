@@ -16,8 +16,14 @@
 }}{{!
   Source: openapi-to-java-records-mustache-templates
   Version: ${project.version}
-
-  This template is a custom template, and is used by `pojo.mustache` and `modelEnum.mustache`.
+  Type: Custom
+  Dependencies:
+    - none
+  Dependents:
+    - `modelEnum.mustache`
+    - `pojo.mustache`
+  Additional Context:
+    - Generates the JavaDoc for a `enum` or `record` class.
 
 }}/**
  * {{description}}{{^description}}{{classname}}{{/description}}{{#isDeprecated}}
