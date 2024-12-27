@@ -37,29 +37,29 @@ import jakarta.validation.Valid;
 /**
  * Example of a Record which has fields with constraints
  *
- * @param stringStandard String
- * @param stringDefault String
- * @param stringNullable String
- * @param stringRequired String
- * @param stringRequiredNullable String
- * @param stringRequiredPattern String
- * @param stringEmailFormat String
- * @param stringUuidFormat UUID
- * @param stringMinLength String
- * @param stringMaxLength String
- * @param stringMinAndMaxLength String
- * @param arrayMinItems List<String>
- * @param arrayMaxItems List<String>
- * @param arrayMinAndMaxItems List<String>
- * @param intMinimum Integer
- * @param intMaximum Integer
- * @param intMinimumAndMaximum Integer
- * @param longMinimum Long
- * @param longMaximum Long
- * @param longMinimumAndMaximum Long
- * @param bigDecimalMinimum BigDecimal
- * @param bigDecimalMaximum BigDecimal
- * @param bigDecimalMinimumAndMaximum BigDecimal
+ * @param stringStandard String.
+ * @param stringDefault String.
+ * @param stringNullable String.
+ * @param stringRequired String.
+ * @param stringRequiredNullable String.
+ * @param stringRequiredPattern String.
+ * @param stringEmailFormat String.
+ * @param stringUuidFormat UUID.
+ * @param stringMinLength String.
+ * @param stringMaxLength String.
+ * @param stringMinAndMaxLength String.
+ * @param arrayMinItems List<String>.
+ * @param arrayMaxItems List<String>.
+ * @param arrayMinAndMaxItems List<String>.
+ * @param intMinimum Integer.
+ * @param intMaximum Integer.
+ * @param intMinimumAndMaximum Integer.
+ * @param longMinimum Long.
+ * @param longMaximum Long.
+ * @param longMinimumAndMaximum Long.
+ * @param bigDecimalMinimum BigDecimal.
+ * @param bigDecimalMaximum BigDecimal.
+ * @param bigDecimalMinimumAndMaximum BigDecimal.
  */
 public record RecordWithAllConstraints(
     @javax.annotation.Nonnull String stringStandard,

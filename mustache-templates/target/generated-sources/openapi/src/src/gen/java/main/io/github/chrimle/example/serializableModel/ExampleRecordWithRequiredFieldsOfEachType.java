@@ -44,8 +44,8 @@ import java.io.Serializable;
  * @param field4 a Number field
  * @param field5 an Array of Boolean field
  * @param field6 a Set field
- * @param field7 ExampleRecord
- * @param field8 ExampleEnum
+ * @param field7 ExampleRecord.
+ * @param field8 ExampleEnum.
  */
 public record ExampleRecordWithRequiredFieldsOfEachType(
     @javax.annotation.Nonnull Boolean field1,

@@ -43,8 +43,8 @@ import java.util.Set;
  * @param field4 a Number field
  * @param field5 an Array of Boolean field
  * @param field6 a Set field
- * @param field7 ExampleRecord
- * @param field8 ExampleEnum
+ * @param field7 ExampleRecord.
+ * @param field8 ExampleEnum.
  */
 @io.github.chrimle.example.annotations.TestAnnotationOne
 @io.github.chrimle.example.annotations.TestAnnotationTwo
