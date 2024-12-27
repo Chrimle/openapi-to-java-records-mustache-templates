@@ -16,8 +16,14 @@
 }}{{!
   Source: openapi-to-java-records-mustache-templates
   Version: 2.5.0
-
-  This template is overriding an official 'openapi-generator-maven-plugin' template.
+  Type: Override
+  Dependencies:
+    - none
+  Dependents:
+    - Official Templates
+  Additional Context:
+    - This template is overriding an official 'openapi-generator-maven-plugin' template.
+    - Generates a comment block in the header of each generated class.
 
 }}/*
  * {{{appName}}}

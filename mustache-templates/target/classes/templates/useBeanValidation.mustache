@@ -16,10 +16,14 @@
 }}{{!
   Source: openapi-to-java-records-mustache-templates
   Version: 2.5.0
-
-  This template is a custom template, and is used by `pojo.mustache`.
-
-  Enabled via configOption.useBeanValidation=true
+  Type: Custom
+  Dependencies:
+    - none
+  Dependents:
+    - `pojo.mustache`
+  Additional Context:
+    - Enabled via configOption.useBeanValidation=true
+    - Generates Jakarta Bean Validation annotations.
 
 }}{{#useBeanValidation}}{{!
   All fields of a custom type should be recursively validated, regardless of being required
