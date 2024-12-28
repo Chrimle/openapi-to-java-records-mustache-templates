@@ -39,7 +39,7 @@
             <url>https://www.chrimle.com</url>
         </developer>
     </developers>
-    <!-- -->
+    <!-- / Project Information -->
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
