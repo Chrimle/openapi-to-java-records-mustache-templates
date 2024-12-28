@@ -9,6 +9,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>mustache-templates</module>
+        <module>tests</module>
     </modules>
 
     <!-- Project Information -->
