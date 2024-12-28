@@ -24,10 +24,10 @@ jobs:
         distribution: 'temurin'
 
     - name: Build with Maven
-      run: mvn -B package -pl mustache-templates --file pom.xml
+      run: mvn -B package --file pom.xml
 
     - name: Publish to GitHub Packages Apache Maven
-      run: mvn deploy -Djacoco.skip=true -pl mustache-templates
+      run: mvn deploy -Djacoco.skip=true
       env:
         GITHUB_TOKEN: ${{ github.token }}
 
@@ -43,7 +43,7 @@ jobs:
         gpg-passphrase: MAVEN_GPG_PASSPHRASE # env variable for GPG private key passphrase
 
     - name: Publish to Apache Maven Central
-      run: mvn -P deploy-to-maven-central deploy -Djacoco.skip=true -pl mustache-templates
+      run: mvn -P deploy-to-maven-central deploy -Djacoco.skip=true
       env:
         MAVEN_USERNAME: ${{ secrets.MAVEN_CENTRAL_USERNAME }}
         MAVEN_CENTRAL_TOKEN: ${{ secrets.MAVEN_CENTRAL_PASSWORD }}
