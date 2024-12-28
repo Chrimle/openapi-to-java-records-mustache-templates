@@ -41,6 +41,19 @@
     </developers>
     <!-- / Project Information -->
 
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub Chrimle Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/chrimle/openapi-to-java-records-mustache-templates</url>
+        </repository>
+        <snapshotRepository>
+            <id>github</id>
+            <name>GitHub Chrimle Apache Maven Snapshot Packages</name>
+            <url>https://maven.pkg.github.com/chrimle/openapi-to-java-records-mustache-templates</url>
+        </snapshotRepository>
+    </distributionManagement>
+
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
@@ -397,17 +410,4 @@
             </plugin>
         </plugins>
     </build>
-
-    <distributionManagement>
-        <repository>
-            <id>github</id>
-            <name>GitHub Chrimle Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/chrimle/${project.artifactId}</url>
-        </repository>
-        <snapshotRepository>
-            <id>github</id>
-            <name>GitHub Chrimle Apache Maven Snapshot Packages</name>
-            <url>https://maven.pkg.github.com/chrimle/${project.artifactId}</url>
-        </snapshotRepository>
-    </distributionManagement>
 </project>
