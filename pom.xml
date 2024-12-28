@@ -56,28 +56,7 @@
         <jakarta.annotation-api.version>3.0.0</jakarta.annotation-api.version>
         <jackson-annotations.version>2.18.1</jackson-annotations.version>
         <hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
-        <maven-jar-plugin.version>3.4.2</maven-jar-plugin.version>
-        <maven-resources-plugin.version>3.3.1</maven-resources-plugin.version>
-        <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
         <!-- / Dependency Versions -->
-
-        <!-- Jacoco -->
-        <jacoco-maven-plugin.version>0.8.12</jacoco-maven-plugin.version>
-        <jacoco-maven-plugin.minimumPackageLineCoveredRatio>1</jacoco-maven-plugin.minimumPackageLineCoveredRatio>
-        <jacoco-maven-plugin.expectedBundleClassMissedCount>0</jacoco-maven-plugin.expectedBundleClassMissedCount>
-        <!-- /Jacoco -->
-
-        <!-- Spotless -->
-        <spotless.check.skip>false</spotless.check.skip> <!-- Unused imports causes build to fail -->
-        <spotless-maven-plugin.version>2.43.0</spotless-maven-plugin.version>
-        <googleJavaFormat.version>1.23.0</googleJavaFormat.version>
-        <!-- /Spotless -->
-
-        <!-- Publish to Maven Central Repository -->
-        <maven-gpg-plugin.version>3.2.7</maven-gpg-plugin.version>
-        <maven-source-plugin.version>3.3.1</maven-source-plugin.version>
-        <central-publishing-maven-plugin.version>0.6.0</central-publishing-maven-plugin.version>
-        <!-- /Publish to Maven Central Repository -->
     </properties>
 
     <dependencyManagement>
@@ -131,18 +110,4 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-deploy-plugin</artifactId>
-                <version>${maven-deploy-plugin.version}</version>
-                <configuration>
-                    <skip>true</skip>
-                </configuration>
-                <inherited>false</inherited>
-            </plugin>
-        </plugins>
-    </build>
 </project>
