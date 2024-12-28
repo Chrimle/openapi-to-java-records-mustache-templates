@@ -48,4 +48,7 @@ tests/target/surefire-reports
 tests/target/generated-sources/openapi/.openapi-generator/api.yaml-default.sha256
 tests/target/site/jacoco
 tests/target/jacoco.exec
+
+# Ignore Imported Files
+tests/target/classes/templates
 tests/target/classes/api.yaml
