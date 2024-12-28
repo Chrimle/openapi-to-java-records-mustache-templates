@@ -24,10 +24,10 @@ jobs:
         distribution: 'temurin'
 
     - name: Build with Maven
-      run: mvn -B package -pl mustache-templates --file pom.xml
+      run: mvn -B -am package -pl mustache-templates --file pom.xml
 
     - name: Publish to GitHub Packages Apache Maven
-      run: mvn deploy -Djacoco.skip=true -pl mustache-templates
+      run: mvn deploy -am -Djacoco.skip=true -pl mustache-templates
       env:
         GITHUB_TOKEN: ${{ github.token }}
 
