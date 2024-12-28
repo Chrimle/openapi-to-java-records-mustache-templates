@@ -44,6 +44,7 @@ jobs:
 
     - name: Publish to Apache Maven Central
       run: mvn -P deploy-to-maven-central deploy -Djacoco.skip=true -pl mustache-templates
+
       env:
         MAVEN_USERNAME: ${{ secrets.MAVEN_CENTRAL_USERNAME }}
         MAVEN_CENTRAL_TOKEN: ${{ secrets.MAVEN_CENTRAL_PASSWORD }}
