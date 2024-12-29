@@ -65,11 +65,11 @@ public class AssertionUtils {
       if (generatedField.isCustomClass()) {
         assertHasAnnotation(field, validAnnotation);
       } else {
-        assertDoesNotHaveAnnotation(classUnderTest, field, validAnnotation);
+        assertDoesNotHaveAnnotation(field, validAnnotation);
       }
       final Class<NotNull> notNullAnnotation = NotNull.class;
       if (generatedField.isBeanValidationNullable()) {
-        assertDoesNotHaveAnnotation(classUnderTest, field, notNullAnnotation);
+        assertDoesNotHaveAnnotation(field, notNullAnnotation);
       } else {
         assertHasAnnotation(field, notNullAnnotation);
       }
@@ -78,7 +78,7 @@ public class AssertionUtils {
         final Pattern actualPatternAnnotation = assertHasAnnotation(field, patternAnnotation);
         Assertions.assertEquals(generatedField.pattern().get(), actualPatternAnnotation.regexp());
       } else {
-        assertDoesNotHaveAnnotation(classUnderTest, field, patternAnnotation);
+        assertDoesNotHaveAnnotation(field, patternAnnotation);
       }
       final Class<Size> sizeAnnotation = Size.class;
       if (generatedField.minLength().isPresent() || generatedField.maxLength().isPresent()) {
@@ -92,41 +92,41 @@ public class AssertionUtils {
         Assertions.assertEquals(
             generatedField.maxItems().orElse(Integer.MAX_VALUE), actualSizeAnnotation.max());
       } else {
-        assertDoesNotHaveAnnotation(classUnderTest, field, sizeAnnotation);
+        assertDoesNotHaveAnnotation(field, sizeAnnotation);
       }
       final Class<Min> minAnnotation = Min.class;
       if (generatedField.minimum().isPresent()) {
         final Min min = assertHasAnnotation(field, minAnnotation);
         Assertions.assertEquals(generatedField.minimum().get(), min.value());
       } else {
-        assertDoesNotHaveAnnotation(classUnderTest, field, minAnnotation);
+        assertDoesNotHaveAnnotation(field, minAnnotation);
       }
       final Class<Max> maxAnnotation = Max.class;
       if (generatedField.maximum().isPresent()) {
         final Max max = assertHasAnnotation(field, maxAnnotation);
         Assertions.assertEquals(generatedField.maximum().get(), max.value());
       } else {
-        assertDoesNotHaveAnnotation(classUnderTest, field, maxAnnotation);
+        assertDoesNotHaveAnnotation(field, maxAnnotation);
       }
       final Class<DecimalMin> decimalMinAnnotation = DecimalMin.class;
       if (generatedField.decimalMin().isPresent()) {
         final DecimalMin decimalMin = assertHasAnnotation(field, decimalMinAnnotation);
         Assertions.assertEquals(generatedField.decimalMin().get(), decimalMin.value());
       } else {
-        assertDoesNotHaveAnnotation(classUnderTest, field, decimalMinAnnotation);
+        assertDoesNotHaveAnnotation(field, decimalMinAnnotation);
       }
       final Class<DecimalMax> decimalMaxAnnotation = DecimalMax.class;
       if (generatedField.decimalMax().isPresent()) {
         final DecimalMax decimalMax = assertHasAnnotation(field, decimalMaxAnnotation);
         Assertions.assertEquals(generatedField.decimalMax().get(), decimalMax.value());
       } else {
-        assertDoesNotHaveAnnotation(classUnderTest, field, decimalMaxAnnotation);
+        assertDoesNotHaveAnnotation(field, decimalMaxAnnotation);
       }
       final Class<Email> emailAnnotation = Email.class;
       if (generatedField.isEmail()) {
         assertHasAnnotation(field, emailAnnotation);
       } else {
-        assertDoesNotHaveAnnotation(classUnderTest, field, emailAnnotation);
+        assertDoesNotHaveAnnotation(field, emailAnnotation);
       }
     }
   }
@@ -145,9 +145,7 @@ public class AssertionUtils {
   }
 
   public static <T extends Annotation> void assertDoesNotHaveAnnotation(
-      final Class<?> classUnderTest,
-      final AnnotatedElement annotatedElement,
-      final Class<T> annotation) {
+      final AnnotatedElement annotatedElement, final Class<T> annotation) {
     CustomAssertions.assertAnnotatedElementIsNotAnnotatedWith(annotatedElement, annotation);
   }
 

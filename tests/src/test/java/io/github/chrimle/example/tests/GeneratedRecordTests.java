@@ -276,8 +276,7 @@ final class GeneratedRecordTests implements GeneratedClassTests {
                         : javax.annotation.Nullable.class;
 
                 AssertionUtils.assertHasAnnotation(field, expectedAnnotation);
-                AssertionUtils.assertDoesNotHaveAnnotation(
-                    generatedSource.getClassUnderTest(), field, unexpectedAnnotation);
+                AssertionUtils.assertDoesNotHaveAnnotation(field, unexpectedAnnotation);
               }
             }
           }
@@ -305,13 +304,9 @@ final class GeneratedRecordTests implements GeneratedClassTests {
                           generatedField.type());
                   if (generatedField.extraFieldAnnotations().isEmpty()) {
                     AssertionUtils.assertDoesNotHaveAnnotation(
-                        generatedSource.getClassUnderTest(),
-                        field,
-                        TestFieldExtraAnnotationOne.class);
+                        field, TestFieldExtraAnnotationOne.class);
                     AssertionUtils.assertDoesNotHaveAnnotation(
-                        generatedSource.getClassUnderTest(),
-                        field,
-                        TestFieldExtraAnnotationTwo.class);
+                        field, TestFieldExtraAnnotationTwo.class);
                   }
                 }
               }
@@ -543,10 +538,8 @@ final class GeneratedRecordTests implements GeneratedClassTests {
                       generatedField.name(),
                       generatedField.type());
 
-              AssertionUtils.assertDoesNotHaveAnnotation(
-                  generatedSource.getClassUnderTest(), field, jakarta.annotation.Nullable.class);
-              AssertionUtils.assertDoesNotHaveAnnotation(
-                  generatedSource.getClassUnderTest(), field, jakarta.annotation.Nonnull.class);
+              AssertionUtils.assertDoesNotHaveAnnotation(field, jakarta.annotation.Nullable.class);
+              AssertionUtils.assertDoesNotHaveAnnotation(field, jakarta.annotation.Nonnull.class);
             }
           }
         }
@@ -580,8 +573,7 @@ final class GeneratedRecordTests implements GeneratedClassTests {
                       : jakarta.annotation.Nullable.class;
 
               AssertionUtils.assertHasAnnotation(field, expectedAnnotation);
-              AssertionUtils.assertDoesNotHaveAnnotation(
-                  generatedSource.getClassUnderTest(), field, unexpectedAnnotation);
+              AssertionUtils.assertDoesNotHaveAnnotation(field, unexpectedAnnotation);
             }
           }
 
@@ -600,10 +592,8 @@ final class GeneratedRecordTests implements GeneratedClassTests {
                       generatedField.name(),
                       generatedField.type());
 
-              AssertionUtils.assertDoesNotHaveAnnotation(
-                  generatedSource.getClassUnderTest(), field, javax.annotation.Nullable.class);
-              AssertionUtils.assertDoesNotHaveAnnotation(
-                  generatedSource.getClassUnderTest(), field, javax.annotation.Nonnull.class);
+              AssertionUtils.assertDoesNotHaveAnnotation(field, javax.annotation.Nullable.class);
+              AssertionUtils.assertDoesNotHaveAnnotation(field, javax.annotation.Nonnull.class);
             }
           }
         }
@@ -643,8 +633,7 @@ final class GeneratedRecordTests implements GeneratedClassTests {
                       jakarta.validation.constraints.DecimalMin.class,
                       jakarta.validation.constraints.DecimalMax.class,
                       jakarta.validation.constraints.Email.class)) {
-                AssertionUtils.assertDoesNotHaveAnnotation(
-                    generatedSource.getClassUnderTest(), field, annotation);
+                AssertionUtils.assertDoesNotHaveAnnotation(field, annotation);
               }
             }
           }
