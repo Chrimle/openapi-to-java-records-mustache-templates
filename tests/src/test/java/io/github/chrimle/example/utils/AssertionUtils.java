@@ -228,10 +228,7 @@ public class AssertionUtils {
 
   public static Field assertRecordHasField(
       final Class<?> classUnderTest, final String fieldName, final Class<?> fieldType) {
-    final Field field =
-        Assertions.assertDoesNotThrow(
-            () -> classUnderTest.getDeclaredField(fieldName),
-            () -> classUnderTest.getCanonicalName() + " does not have the field: " + fieldName);
+    final Field field = CustomAssertions.assertClassHasFieldWithName(classUnderTest, fieldName);
 
     Assertions.assertEquals(fieldType, field.getType());
 
