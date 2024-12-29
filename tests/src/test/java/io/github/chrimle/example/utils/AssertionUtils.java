@@ -35,11 +35,11 @@ import org.junit.jupiter.api.Assertions;
 public class AssertionUtils {
 
   public static void assertIsRecord(final Class<?> clazz) {
-    Assertions.assertTrue(clazz.isRecord(), clazz.getCanonicalName() + " is NOT a record class!");
+    CustomAssertions.assertClassIsRecordClass(clazz);
   }
 
   public static void assertIsEnum(final Class<?> clazz) {
-    Assertions.assertTrue(clazz.isEnum(), clazz.getCanonicalName() + " is NOT an enum class!");
+    CustomAssertions.assertClassIsEnumClass(clazz);
   }
 
   public static void assertClassIsAnnotatedWith(
