@@ -140,13 +140,13 @@ public class AssertionUtils {
   }
 
   public static <T extends Annotation> T assertHasAnnotation(
-      final AnnotatedElement annotatedElement, final Class<T> annotation) {
-    return CustomAssertions.assertAnnotatedElementIsAnnotatedWith(annotatedElement, annotation);
+      final Field field, final Class<T> annotation) {
+    return CustomAssertions.assertFieldIsAnnotatedWith(field, annotation);
   }
 
   public static <T extends Annotation> void assertDoesNotHaveAnnotation(
-      final AnnotatedElement annotatedElement, final Class<T> annotation) {
-    CustomAssertions.assertAnnotatedElementIsNotAnnotatedWith(annotatedElement, annotation);
+      final Field field, final Class<T> annotation) {
+    CustomAssertions.assertFieldIsNotAnnotatedWith(field, annotation);
   }
 
   public static Object assertRecordInstantiateWithArgs(

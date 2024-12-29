@@ -17,7 +17,7 @@
 package io.github.chrimle.example.utils;
 
 import java.lang.annotation.Annotation;
-import java.lang.reflect.AnnotatedElement;
+import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.function.Supplier;
 import org.junit.jupiter.api.Assertions;
@@ -142,31 +142,30 @@ public interface CustomAssertions {
   }
 
   /**
-   * Asserts that the {@code annotatedElement} is annotated with the {@code annotation}.
+   * Asserts that the {@code field} is annotated with the {@code annotation}.
    *
-   * @param annotatedElement to be asserted.
-   * @param annotation which the {@code annotatedElement} is expected to be annotated with.
+   * @param field to be asserted.
+   * @param annotation which the {@code field} is expected to be annotated with.
    * @param <T> the type of the {@code annotation}.
-   * @return the {@code annotation} instance from the {@code annotatedElement}.
+   * @return the {@code annotation} instance from the {@code field}.
    */
-  static <T extends Annotation> T assertAnnotatedElementIsAnnotatedWith(
-      final AnnotatedElement annotatedElement, final Class<T> annotation) {
+  static <T extends Annotation> T assertFieldIsAnnotatedWith(
+      final Field field, final Class<T> annotation) {
     return assertNotNull(
-        () -> annotatedElement.getAnnotation(annotation),
-        () -> annotatedElement + " is NOT annotated with " + annotation.getCanonicalName());
+        () -> field.getAnnotation(annotation),
+        () -> field + " is NOT annotated with " + annotation.getCanonicalName());
   }
 
   /**
-   * Asserts that the {@code annotatedElement} is <b>not</b> annotated with the {@code annotation}.
+   * Asserts that the {@code field} is <b>not</b> annotated with the {@code annotation}.
    *
-   * @param annotatedElement to be asserted.
-   * @param annotation which the {@code annotatedElement} is expected <b>not</b> to be annotated
-   *     with.
+   * @param field to be asserted.
+   * @param annotation which the {@code field} is expected <b>not</b> to be annotated with.
    */
-  static void assertAnnotatedElementIsNotAnnotatedWith(
-      final AnnotatedElement annotatedElement, final Class<? extends Annotation> annotation) {
+  static void assertFieldIsNotAnnotatedWith(
+      final Field field, final Class<? extends Annotation> annotation) {
     assertNull(
-        () -> annotatedElement.getAnnotation(annotation),
-        () -> annotatedElement + " IS annotated with " + annotation.getCanonicalName());
+        () -> field.getAnnotation(annotation),
+        () -> field + " IS annotated with " + annotation.getCanonicalName());
   }
 }
