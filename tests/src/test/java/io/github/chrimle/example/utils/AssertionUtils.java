@@ -47,7 +47,7 @@ public class AssertionUtils {
         Arrays.stream(clazz.getAnnotations())
             .map(Annotation::annotationType)
             .anyMatch(aClass -> aClass.equals(annotation)),
-        clazz.getCanonicalName() + " is NOT annotated with " + annotation.getCanonicalName());
+        () -> clazz.getCanonicalName() + " is NOT annotated with " + annotation.getCanonicalName());
   }
 
   public static void assertClassIsNotAnnotatedWith(
@@ -56,7 +56,7 @@ public class AssertionUtils {
         Arrays.stream(clazz.getAnnotations())
             .map(Annotation::annotationType)
             .noneMatch(aClass -> aClass.equals(annotation)),
-        clazz.getCanonicalName() + " IS annotated with " + annotation.getCanonicalName());
+        () -> clazz.getCanonicalName() + " IS annotated with " + annotation.getCanonicalName());
   }
 
   public static void assertRecordHasFieldsOfTypeWithNullableAnnotations(
@@ -148,7 +148,7 @@ public class AssertionUtils {
     Assertions.assertEquals(
         expectedCount,
         classUnderTest.getDeclaredFields().length,
-        classUnderTest.getCanonicalName() + " does not have the expected number of fields!");
+        () -> classUnderTest.getCanonicalName() + " does not have the expected number of fields!");
   }
 
   public static <T extends Annotation> T assertHasAnnotation(
@@ -158,11 +158,12 @@ public class AssertionUtils {
     final T actualAnnotation = annotatedElement.getAnnotation(annotation);
     Assertions.assertNotNull(
         actualAnnotation,
-        classUnderTest.getCanonicalName()
-            + "'s field "
-            + annotatedElement
-            + " is not annotated with "
-            + annotation.getCanonicalName());
+        () ->
+            classUnderTest.getCanonicalName()
+                + "'s field "
+                + annotatedElement
+                + " is not annotated with "
+                + annotation.getCanonicalName());
     return actualAnnotation;
   }
 
@@ -172,11 +173,12 @@ public class AssertionUtils {
       final Class<T> annotation) {
     Assertions.assertNull(
         annotatedElement.getAnnotation(annotation),
-        classUnderTest.getCanonicalName()
-            + "'s field "
-            + annotatedElement
-            + " is annotated with "
-            + annotation.getCanonicalName());
+        () ->
+            classUnderTest.getCanonicalName()
+                + "'s field "
+                + annotatedElement
+                + " is annotated with "
+                + annotation.getCanonicalName());
   }
 
   public static Object assertRecordInstantiateWithArgs(
@@ -185,18 +187,20 @@ public class AssertionUtils {
       final Object... constructorArgs) {
     return Assertions.assertDoesNotThrow(
         () -> constructorUnderTest.newInstance(constructorArgs),
-        classUnderTest.getCanonicalName()
-            + " could not be instantiated with constructorArgs: "
-            + Arrays.toString(constructorArgs));
+        () ->
+            classUnderTest.getCanonicalName()
+                + " could not be instantiated with constructorArgs: "
+                + Arrays.toString(constructorArgs));
   }
 
   public static Constructor<?> assertRecordHasConstructor(
       final Class<?> classUnderTest, final Class<?>... constructorArgs) {
     return Assertions.assertDoesNotThrow(
         () -> classUnderTest.getDeclaredConstructor(constructorArgs),
-        classUnderTest.getCanonicalName()
-            + " does not have the expected constructor with arguments: "
-            + Arrays.toString(constructorArgs));
+        () ->
+            classUnderTest.getCanonicalName()
+                + " does not have the expected constructor with arguments: "
+                + Arrays.toString(constructorArgs));
   }
 
   public static void assertInstanceMethodReturns(
@@ -207,11 +211,18 @@ public class AssertionUtils {
     final Object actualValue =
         Assertions.assertDoesNotThrow(
             () -> method.invoke(objectUnderTest),
-            classUnderTest.getCanonicalName() + " could not invoke method: " + method.getName());
+            () ->
+                classUnderTest.getCanonicalName()
+                    + " could not invoke method: "
+                    + method.getName());
     Assertions.assertEquals(
         expectedValue,
         actualValue,
-        classUnderTest.getCanonicalName() + " method '" + methodName + "' has unexpected value");
+        () ->
+            classUnderTest.getCanonicalName()
+                + " method '"
+                + methodName
+                + "' has unexpected value");
   }
 
   public static void assertClassDoesNotHaveMethod(
@@ -219,22 +230,24 @@ public class AssertionUtils {
     Assertions.assertThrows(
         NoSuchMethodException.class,
         () -> classUnderTest.getMethod(methodName, methodArgs),
-        classUnderTest.getCanonicalName()
-            + " unexpectedly has method: "
-            + methodName
-            + " with methodArgs: "
-            + Arrays.toString(methodArgs));
+        () ->
+            classUnderTest.getCanonicalName()
+                + " unexpectedly has method: "
+                + methodName
+                + " with methodArgs: "
+                + Arrays.toString(methodArgs));
   }
 
   public static Method assertClassHasMethod(
       final Class<?> classUnderTest, final String methodName, final Class<?>... methodArgs) {
     return Assertions.assertDoesNotThrow(
         () -> classUnderTest.getDeclaredMethod(methodName, methodArgs),
-        classUnderTest.getCanonicalName()
-            + " does not have method: "
-            + methodName
-            + " with methodArgs: "
-            + Arrays.toString(methodArgs));
+        () ->
+            classUnderTest.getCanonicalName()
+                + " does not have method: "
+                + methodName
+                + " with methodArgs: "
+                + Arrays.toString(methodArgs));
   }
 
   public static void assertRecordDoesNotHaveField(
@@ -242,7 +255,7 @@ public class AssertionUtils {
     Assertions.assertThrows(
         NoSuchFieldException.class,
         () -> classUnderTest.getDeclaredField(fieldName),
-        classUnderTest.getCanonicalName() + " unexpectedly has the field: " + fieldName);
+        () -> classUnderTest.getCanonicalName() + " unexpectedly has the field: " + fieldName);
   }
 
   public static Field assertRecordHasField(
@@ -250,7 +263,7 @@ public class AssertionUtils {
     final Field field =
         Assertions.assertDoesNotThrow(
             () -> classUnderTest.getDeclaredField(fieldName),
-            classUnderTest.getCanonicalName() + " does not have the field: " + fieldName);
+            () -> classUnderTest.getCanonicalName() + " does not have the field: " + fieldName);
 
     Assertions.assertEquals(fieldType, field.getType());
 

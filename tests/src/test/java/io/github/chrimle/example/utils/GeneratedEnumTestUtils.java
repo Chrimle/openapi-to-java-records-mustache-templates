@@ -56,10 +56,11 @@ public class GeneratedEnumTestUtils {
 
       Assertions.assertTrue(
           enumConstant.isPresent(),
-          "Enum-class '"
-              + generatedSource.getClassUnderTest().getCanonicalName()
-              + "' does not have an enum constant with the name: "
-              + enumName);
+          () ->
+              "Enum-class '"
+                  + generatedSource.getClassUnderTest().getCanonicalName()
+                  + "' does not have an enum constant with the name: "
+                  + enumName);
 
       AssertionUtils.assertInstanceMethodReturns(enumConstant.get(), "getValue", enumValue);
     }
