@@ -44,9 +44,7 @@ public class AssertionUtils {
 
   public static void assertClassIsAnnotatedWith(
       final Class<?> clazz, final Class<? extends Annotation> annotation) {
-    Assertions.assertNotNull(
-        clazz.getAnnotation(annotation),
-        () -> clazz.getCanonicalName() + " is NOT annotated with " + annotation.getCanonicalName());
+    CustomAssertions.assertClassIsAnnotatedWith(clazz, annotation);
   }
 
   public static void assertClassIsNotAnnotatedWith(

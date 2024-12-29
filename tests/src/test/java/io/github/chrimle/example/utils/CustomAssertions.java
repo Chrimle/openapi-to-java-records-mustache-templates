@@ -16,10 +16,38 @@
 */
 package io.github.chrimle.example.utils;
 
+import java.lang.annotation.Annotation;
+import java.util.function.Supplier;
 import org.junit.jupiter.api.Assertions;
 
 /** Collection of custom assertion methods for the purpose of re-use. */
 public interface CustomAssertions {
+
+  /**
+   * Asserts that the {@code object} is not {@code null}.
+   *
+   * @param object to be asserted.
+   * @param messageSupplier for the assertion message.
+   * @param <T> type of the {@code object}.
+   * @return the {@code object} if it is not {@code null}.
+   */
+  static <T> T assertNotNull(final T object, final Supplier<String> messageSupplier) {
+    Assertions.assertNotNull(object, messageSupplier);
+    return object;
+  }
+
+  /**
+   * Asserts that the {@code objectSupplier} returns an {@link Object} which is not {@code null}.
+   *
+   * @param objectSupplier of the object to be asserted.
+   * @param messageSupplier for the assertion message.
+   * @param <T> the type of the object.
+   * @return the object if it is not {@code null}.
+   */
+  static <T> T assertNotNull(
+      final Supplier<T> objectSupplier, final Supplier<String> messageSupplier) {
+    return assertNotNull(objectSupplier.get(), messageSupplier);
+  }
 
   /**
    * Asserts that the {@code aClass} is a <i>record</i> class.
@@ -37,5 +65,21 @@ public interface CustomAssertions {
    */
   static void assertClassIsEnumClass(final Class<?> aClass) {
     Assertions.assertTrue(aClass::isEnum, () -> aClass + " is NOT an enum class");
+  }
+
+  /**
+   * Asserts that the {@code aClass} is annotated with the {@code annotation}.
+   *
+   * @param aClass to be asserted.
+   * @param annotation which the {@code aClass} is expected to be annotated with.
+   * @param <T> the type of the {@code annotation}.
+   * @return the {@code annotation} instance from the {@code aClass}.
+   */
+  static <T extends Annotation> T assertClassIsAnnotatedWith(
+      final Class<?> aClass, final Class<T> annotation) {
+    return assertNotNull(
+        () -> aClass.getAnnotation(annotation),
+        () ->
+            aClass.getCanonicalName() + " is NOT annotated with " + annotation.getCanonicalName());
   }
 }
