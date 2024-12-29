@@ -319,7 +319,7 @@ public class AssertionUtils {
 
   public static void assertStaticMethodWithArgsThrows(
       final Method method,
-      final Class<IllegalArgumentException> expectedException,
+      final Class<? extends Throwable> expectedException,
       final Object... args) {
     Assertions.assertInstanceOf(
         expectedException,
