@@ -63,7 +63,7 @@ public class AssertionUtils {
 
       final Class<Valid> validAnnotation = Valid.class;
       if (generatedField.isCustomClass()) {
-        assertHasAnnotation(classUnderTest, field, validAnnotation);
+        assertHasAnnotation(field, validAnnotation);
       } else {
         assertDoesNotHaveAnnotation(classUnderTest, field, validAnnotation);
       }
@@ -71,26 +71,23 @@ public class AssertionUtils {
       if (generatedField.isBeanValidationNullable()) {
         assertDoesNotHaveAnnotation(classUnderTest, field, notNullAnnotation);
       } else {
-        assertHasAnnotation(classUnderTest, field, notNullAnnotation);
+        assertHasAnnotation(field, notNullAnnotation);
       }
       final Class<Pattern> patternAnnotation = Pattern.class;
       if (generatedField.pattern().isPresent()) {
-        final Pattern actualPatternAnnotation =
-            assertHasAnnotation(classUnderTest, field, patternAnnotation);
+        final Pattern actualPatternAnnotation = assertHasAnnotation(field, patternAnnotation);
         Assertions.assertEquals(generatedField.pattern().get(), actualPatternAnnotation.regexp());
       } else {
         assertDoesNotHaveAnnotation(classUnderTest, field, patternAnnotation);
       }
       final Class<Size> sizeAnnotation = Size.class;
       if (generatedField.minLength().isPresent() || generatedField.maxLength().isPresent()) {
-        final Size actualSizeAnnotation =
-            assertHasAnnotation(classUnderTest, field, sizeAnnotation);
+        final Size actualSizeAnnotation = assertHasAnnotation(field, sizeAnnotation);
         Assertions.assertEquals(generatedField.minLength().orElse(0), actualSizeAnnotation.min());
         Assertions.assertEquals(
             generatedField.maxLength().orElse(Integer.MAX_VALUE), actualSizeAnnotation.max());
       } else if (generatedField.minItems().isPresent() || generatedField.maxItems().isPresent()) {
-        final Size actualSizeAnnotation =
-            assertHasAnnotation(classUnderTest, field, sizeAnnotation);
+        final Size actualSizeAnnotation = assertHasAnnotation(field, sizeAnnotation);
         Assertions.assertEquals(generatedField.minItems().orElse(0), actualSizeAnnotation.min());
         Assertions.assertEquals(
             generatedField.maxItems().orElse(Integer.MAX_VALUE), actualSizeAnnotation.max());
@@ -99,37 +96,35 @@ public class AssertionUtils {
       }
       final Class<Min> minAnnotation = Min.class;
       if (generatedField.minimum().isPresent()) {
-        final Min min = assertHasAnnotation(classUnderTest, field, minAnnotation);
+        final Min min = assertHasAnnotation(field, minAnnotation);
         Assertions.assertEquals(generatedField.minimum().get(), min.value());
       } else {
         assertDoesNotHaveAnnotation(classUnderTest, field, minAnnotation);
       }
       final Class<Max> maxAnnotation = Max.class;
       if (generatedField.maximum().isPresent()) {
-        final Max max = assertHasAnnotation(classUnderTest, field, maxAnnotation);
+        final Max max = assertHasAnnotation(field, maxAnnotation);
         Assertions.assertEquals(generatedField.maximum().get(), max.value());
       } else {
         assertDoesNotHaveAnnotation(classUnderTest, field, maxAnnotation);
       }
       final Class<DecimalMin> decimalMinAnnotation = DecimalMin.class;
       if (generatedField.decimalMin().isPresent()) {
-        final DecimalMin decimalMin =
-            assertHasAnnotation(classUnderTest, field, decimalMinAnnotation);
+        final DecimalMin decimalMin = assertHasAnnotation(field, decimalMinAnnotation);
         Assertions.assertEquals(generatedField.decimalMin().get(), decimalMin.value());
       } else {
         assertDoesNotHaveAnnotation(classUnderTest, field, decimalMinAnnotation);
       }
       final Class<DecimalMax> decimalMaxAnnotation = DecimalMax.class;
       if (generatedField.decimalMax().isPresent()) {
-        final DecimalMax decimalMax =
-            assertHasAnnotation(classUnderTest, field, decimalMaxAnnotation);
+        final DecimalMax decimalMax = assertHasAnnotation(field, decimalMaxAnnotation);
         Assertions.assertEquals(generatedField.decimalMax().get(), decimalMax.value());
       } else {
         assertDoesNotHaveAnnotation(classUnderTest, field, decimalMaxAnnotation);
       }
       final Class<Email> emailAnnotation = Email.class;
       if (generatedField.isEmail()) {
-        assertHasAnnotation(classUnderTest, field, emailAnnotation);
+        assertHasAnnotation(field, emailAnnotation);
       } else {
         assertDoesNotHaveAnnotation(classUnderTest, field, emailAnnotation);
       }
@@ -145,9 +140,7 @@ public class AssertionUtils {
   }
 
   public static <T extends Annotation> T assertHasAnnotation(
-      final Class<?> classUnderTest,
-      final AnnotatedElement annotatedElement,
-      final Class<T> annotation) {
+      final AnnotatedElement annotatedElement, final Class<T> annotation) {
     return CustomAssertions.assertAnnotatedElementIsAnnotatedWith(annotatedElement, annotation);
   }
 
