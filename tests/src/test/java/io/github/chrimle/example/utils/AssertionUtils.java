@@ -268,7 +268,7 @@ public class AssertionUtils {
   }
 
   public static void assertClassHasInnerClass(
-      final Class<?> classUnderTest, String innerClassName) {
+      final Class<?> classUnderTest, final String innerClassName) {
     Assertions.assertTrue(
         Arrays.stream(classUnderTest.getClasses())
             .anyMatch(b -> innerClassName.equals(b.getSimpleName())),
@@ -279,7 +279,7 @@ public class AssertionUtils {
   }
 
   public static void assertClassDoesNotHaveInnerClass(
-      final Class<?> classUnderTest, String innerClassName) {
+      final Class<?> classUnderTest, final String innerClassName) {
     Assertions.assertTrue(
         Arrays.stream(classUnderTest.getClasses())
             .noneMatch(b -> innerClassName.equals(b.getSimpleName())),
