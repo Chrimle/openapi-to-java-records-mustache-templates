@@ -46,7 +46,7 @@ public class AssertionUtils {
     Assertions.assertTrue(
         Arrays.stream(clazz.getAnnotations())
             .map(Annotation::annotationType)
-            .anyMatch(aClass -> aClass.equals(annotation)),
+            .anyMatch(annotation::equals),
         () -> clazz.getCanonicalName() + " is NOT annotated with " + annotation.getCanonicalName());
   }
 
@@ -55,7 +55,7 @@ public class AssertionUtils {
     Assertions.assertTrue(
         Arrays.stream(clazz.getAnnotations())
             .map(Annotation::annotationType)
-            .noneMatch(aClass -> aClass.equals(annotation)),
+            .noneMatch(annotation::equals),
         () -> clazz.getCanonicalName() + " IS annotated with " + annotation.getCanonicalName());
   }
 
