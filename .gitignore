@@ -32,11 +32,23 @@ replay_pid*
 .idea
 *.iml
 
-mustache-templates/target/maven-status
-mustache-templates/target/maven-archiver
-mustache-templates/target/surefire-reports
-mustache-templates/target/generated-sources/openapi/.openapi-generator/api.yaml-default.sha256
-mustache-templates/target/site/jacoco
-mustache-templates/target/jacoco.exec
+# Spotless
+target/spotless-index
 mustache-templates/target/spotless-index
-mustache-templates/target/classes/api.yaml
+tests/target/spotless-index
+
+# Maven Archiver & Status
+mustache-templates/target/maven-archiver
+mustache-templates/target/maven-status
+tests/target/maven-archiver
+tests/target/maven-status
+
+tests/target/dependency-maven-plugin-markers
+tests/target/surefire-reports
+tests/target/generated-sources/openapi/.openapi-generator/api.yaml-default.sha256
+tests/target/site/jacoco
+tests/target/jacoco.exec
+
+# Ignore Imported Files
+tests/target/classes/templates
+tests/target/classes/api.yaml
