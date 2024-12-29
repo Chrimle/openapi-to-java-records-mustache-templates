@@ -66,6 +66,7 @@
         <!-- / Build Plugin Versions -->
 
         <!-- Location of updated `.mustache` template files -->
+        <original-mustache-templates-directory>src/main/resources/templates</original-mustache-templates-directory>
         <updated-mustache-templates-directory>${project.build.outputDirectory}/templates</updated-mustache-templates-directory>
     </properties>
 
@@ -86,7 +87,7 @@
                         <configuration>
                             <resources>
                                 <resource>
-                                    <directory>src/main/resources/templates</directory>
+                                    <directory>${original-mustache-templates-directory}</directory>
                                     <includes>
                                         <include>**/*.mustache</include>
                                     </includes>
