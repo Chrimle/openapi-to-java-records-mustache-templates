@@ -248,6 +248,7 @@
                             <publishingServerId>central</publishingServerId>
                             <tokenAuth>true</tokenAuth>
                             <autoPublish>true</autoPublish>
+                            <excludeArtifacts>openapi-to-java-records-mustache-templates-tests</excludeArtifacts>
                         </configuration>
                     </plugin>
                     <plugin>
