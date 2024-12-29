@@ -24,6 +24,18 @@ import org.junit.jupiter.api.Assertions;
 public interface CustomAssertions {
 
   /**
+   * Asserts that the {@code objectSupplier} returns an {@link Object} which is {@code null}.
+   *
+   * @param objectSupplier of the object to be asserted.
+   * @param messageSupplier for the assertion message.
+   * @param <T> the type of the object.
+   */
+  static <T> void assertNull(
+      final Supplier<T> objectSupplier, final Supplier<String> messageSupplier) {
+    Assertions.assertNull(objectSupplier.get(), messageSupplier);
+  }
+
+  /**
    * Asserts that the {@code object} is not {@code null}.
    *
    * @param object to be asserted.
@@ -81,5 +93,18 @@ public interface CustomAssertions {
         () -> aClass.getAnnotation(annotation),
         () ->
             aClass.getCanonicalName() + " is NOT annotated with " + annotation.getCanonicalName());
+  }
+
+  /**
+   * Asserts that the {@code aClass} is <b>not</b> annotated with the {@code annotation}.
+   *
+   * @param aClass to be asserted.
+   * @param annotation which the {@code aClass} is expected <b>not</b> to be annotated with.
+   */
+  static void assertClassIsNotAnnotatedWith(
+      final Class<?> aClass, final Class<? extends Annotation> annotation) {
+    assertNull(
+        () -> aClass.getAnnotation(annotation),
+        () -> aClass.getCanonicalName() + " IS annotated with " + annotation.getCanonicalName());
   }
 }

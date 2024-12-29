@@ -49,9 +49,7 @@ public class AssertionUtils {
 
   public static void assertClassIsNotAnnotatedWith(
       final Class<?> clazz, final Class<? extends Annotation> annotation) {
-    Assertions.assertNull(
-        clazz.getAnnotation(annotation),
-        () -> clazz.getCanonicalName() + " IS annotated with " + annotation.getCanonicalName());
+    CustomAssertions.assertClassIsNotAnnotatedWith(clazz, annotation);
   }
 
   public static void assertRecordHasFieldsOfTypeWithNullableAnnotations(
