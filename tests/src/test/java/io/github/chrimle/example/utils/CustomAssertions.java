@@ -157,7 +157,21 @@ public interface CustomAssertions {
   }
 
   /**
-   * Asserts that the {@code aClass} has a field with the matching {@code fieldName}.
+   * Asserts that the {@code aClass} has a field named {@code fieldName} and of type {@code
+   * fieldType}.
+   *
+   * @param aClass to be asserted.
+   * @param fieldName of the field which {@code aClass} is expected to have.
+   * @param fieldType of the field which {@code aClass} is expected to have.
+   * @return the {@link Field} with the matching name and type.
+   */
+  static Field assertClassHasField(
+      final Class<?> aClass, final String fieldName, final Class<?> fieldType) {
+    return assertFieldIsOfType(assertClassHasFieldWithName(aClass, fieldName), fieldType);
+  }
+
+  /**
+   * Asserts that the {@code aClass} has a field named {@code fieldName}.
    *
    * @param aClass to be asserted.
    * @param fieldName of the field which {@code aClass} is expected to have.
