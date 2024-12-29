@@ -6,7 +6,7 @@
     <parent>
         <groupId>io.github.chrimle</groupId>
         <artifactId>openapi-to-java-records-mustache-templates-parent</artifactId>
-        <version>2.5.3-SNAPSHOT</version>
+        <version>2.5.3</version>
     </parent>
 
     <artifactId>openapi-to-java-records-mustache-templates</artifactId>
@@ -66,6 +66,7 @@
         <!-- / Build Plugin Versions -->
 
         <!-- Location of updated `.mustache` template files -->
+        <original-mustache-templates-directory>src/main/resources/templates</original-mustache-templates-directory>
         <updated-mustache-templates-directory>${project.build.outputDirectory}/templates</updated-mustache-templates-directory>
     </properties>
 
@@ -86,7 +87,7 @@
                         <configuration>
                             <resources>
                                 <resource>
-                                    <directory>src/main/resources/templates</directory>
+                                    <directory>${original-mustache-templates-directory}</directory>
                                     <includes>
                                         <include>**/*.mustache</include>
                                     </includes>
