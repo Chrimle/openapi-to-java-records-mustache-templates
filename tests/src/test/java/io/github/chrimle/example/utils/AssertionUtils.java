@@ -42,20 +42,17 @@ public class AssertionUtils {
     Assertions.assertTrue(clazz.isEnum(), clazz.getCanonicalName() + " is NOT an enum class!");
   }
 
-  public static void assertClassIsAnnotatedWith(final Class<?> clazz, final Class<?> annotation) {
-    Assertions.assertTrue(
-        Arrays.stream(clazz.getAnnotations())
-            .map(Annotation::annotationType)
-            .anyMatch(annotation::equals),
+  public static void assertClassIsAnnotatedWith(
+      final Class<?> clazz, final Class<? extends Annotation> annotation) {
+    Assertions.assertNotNull(
+        clazz.getAnnotation(annotation),
         () -> clazz.getCanonicalName() + " is NOT annotated with " + annotation.getCanonicalName());
   }
 
   public static void assertClassIsNotAnnotatedWith(
-      final Class<?> clazz, final Class<?> annotation) {
-    Assertions.assertTrue(
-        Arrays.stream(clazz.getAnnotations())
-            .map(Annotation::annotationType)
-            .noneMatch(annotation::equals),
+      final Class<?> clazz, final Class<? extends Annotation> annotation) {
+    Assertions.assertNull(
+        clazz.getAnnotation(annotation),
         () -> clazz.getCanonicalName() + " IS annotated with " + annotation.getCanonicalName());
   }
 
