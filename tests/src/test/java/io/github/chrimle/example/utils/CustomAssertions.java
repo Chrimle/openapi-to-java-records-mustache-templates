@@ -155,4 +155,18 @@ public interface CustomAssertions {
         () -> annotatedElement.getAnnotation(annotation),
         () -> annotatedElement + " is NOT annotated with " + annotation.getCanonicalName());
   }
+
+  /**
+   * Asserts that the {@code annotatedElement} is <b>not</b> annotated with the {@code annotation}.
+   *
+   * @param annotatedElement to be asserted.
+   * @param annotation which the {@code annotatedElement} is expected <b>not</b> to be annotated
+   *     with.
+   */
+  static void assertAnnotatedElementIsNotAnnotatedWith(
+      final AnnotatedElement annotatedElement, final Class<? extends Annotation> annotation) {
+    assertNull(
+        () -> annotatedElement.getAnnotation(annotation),
+        () -> annotatedElement + " IS annotated with " + annotation.getCanonicalName());
+  }
 }

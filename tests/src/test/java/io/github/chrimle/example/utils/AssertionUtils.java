@@ -148,14 +148,7 @@ public class AssertionUtils {
       final Class<?> classUnderTest,
       final AnnotatedElement annotatedElement,
       final Class<T> annotation) {
-    Assertions.assertNull(
-        annotatedElement.getAnnotation(annotation),
-        () ->
-            classUnderTest.getCanonicalName()
-                + "'s field "
-                + annotatedElement
-                + " is annotated with "
-                + annotation.getCanonicalName());
+    CustomAssertions.assertAnnotatedElementIsNotAnnotatedWith(annotatedElement, annotation);
   }
 
   public static Object assertRecordInstantiateWithArgs(
