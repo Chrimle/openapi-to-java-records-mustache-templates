@@ -148,16 +148,7 @@ public class AssertionUtils {
       final Class<?> classUnderTest,
       final AnnotatedElement annotatedElement,
       final Class<T> annotation) {
-    final T actualAnnotation = annotatedElement.getAnnotation(annotation);
-    Assertions.assertNotNull(
-        actualAnnotation,
-        () ->
-            classUnderTest.getCanonicalName()
-                + "'s field "
-                + annotatedElement
-                + " is not annotated with "
-                + annotation.getCanonicalName());
-    return actualAnnotation;
+    return CustomAssertions.assertAnnotatedElementIsAnnotatedWith(annotatedElement, annotation);
   }
 
   public static <T extends Annotation> void assertDoesNotHaveAnnotation(

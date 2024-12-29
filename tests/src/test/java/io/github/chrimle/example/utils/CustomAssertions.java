@@ -17,6 +17,7 @@
 package io.github.chrimle.example.utils;
 
 import java.lang.annotation.Annotation;
+import java.lang.reflect.AnnotatedElement;
 import java.util.Arrays;
 import java.util.function.Supplier;
 import org.junit.jupiter.api.Assertions;
@@ -138,5 +139,20 @@ public interface CustomAssertions {
             aClass.getCanonicalName()
                 + " DOES implement the interface "
                 + interfaceClass.getCanonicalName());
+  }
+
+  /**
+   * Asserts that the {@code annotatedElement} is annotated with the {@code annotation}.
+   *
+   * @param annotatedElement to be asserted.
+   * @param annotation which the {@code annotatedElement} is expected to be annotated with.
+   * @param <T> the type of the {@code annotation}.
+   * @return the {@code annotation} instance from the {@code annotatedElement}.
+   */
+  static <T extends Annotation> T assertAnnotatedElementIsAnnotatedWith(
+      final AnnotatedElement annotatedElement, final Class<T> annotation) {
+    return assertNotNull(
+        () -> annotatedElement.getAnnotation(annotation),
+        () -> annotatedElement + " is NOT annotated with " + annotation.getCanonicalName());
   }
 }
