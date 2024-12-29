@@ -220,10 +220,7 @@ public class AssertionUtils {
 
   public static void assertRecordDoesNotHaveField(
       final Class<?> classUnderTest, final String fieldName) {
-    Assertions.assertThrows(
-        NoSuchFieldException.class,
-        () -> classUnderTest.getDeclaredField(fieldName),
-        () -> classUnderTest.getCanonicalName() + " unexpectedly has the field: " + fieldName);
+    CustomAssertions.assertClassDoesNotHaveFieldWithName(classUnderTest, fieldName);
   }
 
   public static Field assertRecordHasField(

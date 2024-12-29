@@ -155,6 +155,20 @@ public interface CustomAssertions {
   }
 
   /**
+   * Asserts that the {@code aClass} does <b>not</b> have a field with the matching {@code
+   * fieldName}.
+   *
+   * @param aClass to be asserted.
+   * @param fieldName of the field which {@code aClass} is expected <b>not</b> to have.
+   */
+  static void assertClassDoesNotHaveFieldWithName(final Class<?> aClass, final String fieldName) {
+    Assertions.assertThrows(
+        NoSuchFieldException.class,
+        () -> aClass.getDeclaredField(fieldName),
+        () -> aClass.getCanonicalName() + " DOES have a field with name " + fieldName);
+  }
+
+  /**
    * Asserts that the {@code field} is annotated with the {@code annotation}.
    *
    * @param field to be asserted.
