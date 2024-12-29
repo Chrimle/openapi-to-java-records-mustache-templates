@@ -64,6 +64,21 @@ public interface CustomAssertions {
   }
 
   /**
+   * Asserts that the {@code actualSupplier} returns an object which is <i>equal</i> to {@code
+   * expected}.
+   *
+   * @param expected value to be asserted.
+   * @param actualSupplier of the value to be asserted.
+   * @param messageSupplier for the assertion message.
+   */
+  static void assertEquals(
+      final Object expected,
+      final Supplier<?> actualSupplier,
+      final Supplier<String> messageSupplier) {
+    Assertions.assertEquals(expected, actualSupplier.get(), messageSupplier);
+  }
+
+  /**
    * Asserts that the {@code aClass} is a <i>record</i> class.
    *
    * @param aClass to be asserted.
@@ -194,5 +209,17 @@ public interface CustomAssertions {
     assertNull(
         () -> field.getAnnotation(annotation),
         () -> field + " IS annotated with " + annotation.getCanonicalName());
+  }
+
+  /**
+   * Asserts that the {@code field} is of type {@code type}.
+   *
+   * @param field to be asserted.
+   * @param type which the {@code field} is expected to be.
+   * @return the {@code field}.
+   */
+  static Field assertFieldIsOfType(final Field field, final Class<?> type) {
+    assertEquals(type, field::getType, () -> field + " is NOT of type " + type.getCanonicalName());
+    return field;
   }
 }

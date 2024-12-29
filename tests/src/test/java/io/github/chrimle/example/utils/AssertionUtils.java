@@ -226,10 +226,7 @@ public class AssertionUtils {
   public static Field assertRecordHasField(
       final Class<?> classUnderTest, final String fieldName, final Class<?> fieldType) {
     final Field field = CustomAssertions.assertClassHasFieldWithName(classUnderTest, fieldName);
-
-    Assertions.assertEquals(fieldType, field.getType());
-
-    return field;
+    return CustomAssertions.assertFieldIsOfType(field, fieldType);
   }
 
   public static void assertClassImplementsInterface(
