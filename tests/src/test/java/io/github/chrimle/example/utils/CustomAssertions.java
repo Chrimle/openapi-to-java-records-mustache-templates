@@ -123,4 +123,20 @@ public interface CustomAssertions {
                 + " does NOT implement the interface "
                 + interfaceClass.getCanonicalName());
   }
+
+  /**
+   * Asserts that the {@code aClass} does <b>not</b> <i>implement</i> the {@code interfaceClass}.
+   *
+   * @param aClass to be asserted.
+   * @param interfaceClass which the {@code aClass} is expected <b>not</b> to <i>implement</i>.
+   */
+  static void assertClassDoesNotImplementInterface(
+      final Class<?> aClass, final Class<?> interfaceClass) {
+    Assertions.assertFalse(
+        () -> Arrays.asList(aClass.getInterfaces()).contains(interfaceClass),
+        () ->
+            aClass.getCanonicalName()
+                + " DOES implement the interface "
+                + interfaceClass.getCanonicalName());
+  }
 }

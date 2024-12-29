@@ -270,7 +270,7 @@ public class AssertionUtils {
 
   public static void assertClassDoesNotImplementsInterface(
       final Class<?> classUnderTest, final Class<?> interfaceClass) {
-    Assertions.assertFalse(Arrays.asList(classUnderTest.getInterfaces()).contains(interfaceClass));
+    CustomAssertions.assertClassDoesNotImplementInterface(classUnderTest, interfaceClass);
   }
 
   public static void assertClassHasInnerClass(
