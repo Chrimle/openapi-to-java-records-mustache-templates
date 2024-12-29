@@ -265,7 +265,7 @@ public class AssertionUtils {
 
   public static void assertClassImplementsInterface(
       final Class<?> classUnderTest, final Class<?> interfaceClass) {
-    Assertions.assertTrue(Arrays.asList(classUnderTest.getInterfaces()).contains(interfaceClass));
+    CustomAssertions.assertClassImplementsInterface(classUnderTest, interfaceClass);
   }
 
   public static void assertClassDoesNotImplementsInterface(

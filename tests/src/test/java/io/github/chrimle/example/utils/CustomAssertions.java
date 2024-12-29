@@ -17,6 +17,7 @@
 package io.github.chrimle.example.utils;
 
 import java.lang.annotation.Annotation;
+import java.util.Arrays;
 import java.util.function.Supplier;
 import org.junit.jupiter.api.Assertions;
 
@@ -106,5 +107,20 @@ public interface CustomAssertions {
     assertNull(
         () -> aClass.getAnnotation(annotation),
         () -> aClass.getCanonicalName() + " IS annotated with " + annotation.getCanonicalName());
+  }
+
+  /**
+   * Asserts that the {@code aClass} <i>implements</i> the {@code interfaceClass}.
+   *
+   * @param aClass to be asserted.
+   * @param interfaceClass which the {@code aClass} is expected to <i>implement</i>.
+   */
+  static void assertClassImplementsInterface(final Class<?> aClass, final Class<?> interfaceClass) {
+    Assertions.assertTrue(
+        () -> Arrays.asList(aClass.getInterfaces()).contains(interfaceClass),
+        () ->
+            aClass.getCanonicalName()
+                + " does NOT implement the interface "
+                + interfaceClass.getCanonicalName());
   }
 }
