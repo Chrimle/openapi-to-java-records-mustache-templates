@@ -350,7 +350,7 @@ final class GeneratedEnumTests implements GeneratedClassTests {
                     generatedSource.fieldClasses()[0]);
             for (final GeneratedField<?> generatedField : generatedSource.generatedFields()) {
               final Object enumValue = ((String) generatedField.enumValue()).toLowerCase();
-              Assertions.assertDoesNotThrow(() -> fromValueMethod.invoke(null, enumValue));
+              CustomAssertions.assertStaticMethodReturnsNonNull(fromValueMethod, enumValue);
             }
           }
         }
