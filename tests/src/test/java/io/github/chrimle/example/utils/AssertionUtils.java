@@ -148,14 +148,4 @@ public class AssertionUtils {
             CustomAssertions.assertClassHasMethod(builderObject.getClass(), "build"),
             builderObject));
   }
-
-  public static void assertStaticMethodWithArgsThrows(
-      final Method method,
-      final Class<? extends Throwable> expectedException,
-      final Object... args) {
-    Assertions.assertInstanceOf(
-        expectedException,
-        Assertions.assertThrows(InvocationTargetException.class, () -> method.invoke(null, args))
-            .getCause());
-  }
 }

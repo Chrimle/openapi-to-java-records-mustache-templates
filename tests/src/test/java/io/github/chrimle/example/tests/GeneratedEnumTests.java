@@ -28,7 +28,6 @@ import io.github.chrimle.example.tests.GeneratedEnumTests.OpenAPITests.SchemaTes
 import io.github.chrimle.example.tests.GeneratedEnumTests.OpenAPITests.SchemaTests.DeprecatedTests;
 import io.github.chrimle.example.tests.GeneratedEnumTests.OpenAPITests.SchemaTests.EnumTests;
 import io.github.chrimle.example.tests.GeneratedEnumTests.OpenAPITests.SchemaTests.EnumTests.ConstantsTests;
-import io.github.chrimle.example.utils.AssertionUtils;
 import io.github.chrimle.example.utils.CustomAssertions;
 import io.github.chrimle.example.utils.GeneratedEnumTestUtils;
 import java.lang.reflect.Method;
@@ -229,7 +228,7 @@ final class GeneratedEnumTests implements GeneratedClassTests {
             "Generated `static fromValue(T)` method ALWAYS `throw IllegalArgumentException` when `null` is given")
         void alwaysThrowIllegalArgumentExceptionWhenProvidingNullAsArgumentToStaticFromValueMethod(
             final GeneratedSource generatedSource) {
-          AssertionUtils.assertStaticMethodWithArgsThrows(
+          CustomAssertions.assertStaticMethodThrowsWhenInvoked(
               CustomAssertions.assertClassHasMethod(
                   generatedSource.getClassUnderTest(),
                   "fromValue",
@@ -247,7 +246,7 @@ final class GeneratedEnumTests implements GeneratedClassTests {
                 final GeneratedSource generatedSource) {
           Assumptions.assumeTrue(String.class.equals(generatedSource.generatedFields()[0].type()));
 
-          AssertionUtils.assertStaticMethodWithArgsThrows(
+          CustomAssertions.assertStaticMethodThrowsWhenInvoked(
               CustomAssertions.assertClassHasMethod(
                   generatedSource.getClassUnderTest(),
                   "fromValue",
@@ -265,7 +264,7 @@ final class GeneratedEnumTests implements GeneratedClassTests {
                 final GeneratedSource generatedSource) {
           Assumptions.assumeTrue(Integer.class.equals(generatedSource.generatedFields()[0].type()));
 
-          AssertionUtils.assertStaticMethodWithArgsThrows(
+          CustomAssertions.assertStaticMethodThrowsWhenInvoked(
               CustomAssertions.assertClassHasMethod(
                   generatedSource.getClassUnderTest(),
                   "fromValue",
@@ -314,7 +313,7 @@ final class GeneratedEnumTests implements GeneratedClassTests {
                     generatedSource.fieldClasses()[0]);
             for (final GeneratedField<?> generatedField : generatedSource.generatedFields()) {
               final Object enumValue = ((String) generatedField.enumValue()).toLowerCase();
-              AssertionUtils.assertStaticMethodWithArgsThrows(
+              CustomAssertions.assertStaticMethodThrowsWhenInvoked(
                   fromValueMethod, IllegalArgumentException.class, enumValue);
             }
           }

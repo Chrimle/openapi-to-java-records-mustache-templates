@@ -19,6 +19,7 @@ package io.github.chrimle.example.utils;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.function.Supplier;
@@ -232,6 +233,31 @@ public interface CustomAssertions {
                 + methodName
                 + "' with parameterTypes "
                 + Arrays.toString(methodParameterTypes));
+  }
+
+  /**
+   * Asserts that the {@code method} throws {@code expectedException} when invoked with the {@code
+   * methodArguments}.
+   *
+   * @param method to be asserted.
+   * @param expectedException to be thrown when invoking the method.
+   * @param methodArguments to use when invoking the method.
+   */
+  static void assertStaticMethodThrowsWhenInvoked(
+      final Method method,
+      final Class<? extends Throwable> expectedException,
+      final Object... methodArguments) {
+    Assertions.assertInstanceOf(
+        expectedException,
+        Assertions.assertThrows(
+                InvocationTargetException.class, () -> method.invoke(null, methodArguments))
+            .getCause(),
+        () ->
+            method
+                + " did NOT throw "
+                + expectedException.getCanonicalName()
+                + " when invoked with arguments "
+                + Arrays.toString(methodArguments));
   }
 
   /**
