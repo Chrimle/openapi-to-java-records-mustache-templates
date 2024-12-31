@@ -180,6 +180,28 @@ public interface CustomAssertions {
   }
 
   /**
+   * Asserts that the {@code aClass} does <b>not</b> have a <i>method</i> named {@code methodName}
+   * and with method parameters of types {@code methodParameterTypes}. The <i>method</i> may either
+   * be an instance method, or a {@code static} method.
+   *
+   * @param aClass to be asserted.
+   * @param methodName of the method which {@code aClass} is expected <b>not</b> to have.
+   * @param methodParameterTypes of the method which {@code aClass} is expected <b>not</b> to have.
+   */
+  static void assertClassDoesNotHaveMethod(
+      final Class<?> aClass, final String methodName, final Class<?>... methodParameterTypes) {
+    Assertions.assertThrows(
+        NoSuchMethodException.class,
+        () -> aClass.getDeclaredMethod(methodName, methodParameterTypes),
+        () ->
+            aClass.getCanonicalName()
+                + " DOES have method '"
+                + methodName
+                + "' with parameterTypes "
+                + Arrays.toString(methodParameterTypes));
+  }
+
+  /**
    * Asserts that the {@code aClass} has a field named {@code fieldName} and of type {@code
    * fieldType}.
    *

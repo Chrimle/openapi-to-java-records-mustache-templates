@@ -195,15 +195,7 @@ public class AssertionUtils {
 
   public static void assertClassDoesNotHaveMethod(
       final Class<?> classUnderTest, final String methodName, final Class<?>... methodArgs) {
-    Assertions.assertThrows(
-        NoSuchMethodException.class,
-        () -> classUnderTest.getMethod(methodName, methodArgs),
-        () ->
-            classUnderTest.getCanonicalName()
-                + " unexpectedly has method: "
-                + methodName
-                + " with methodArgs: "
-                + Arrays.toString(methodArgs));
+    CustomAssertions.assertClassDoesNotHaveMethod(classUnderTest, methodName, methodArgs);
   }
 
   public static Method assertClassHasMethod(
