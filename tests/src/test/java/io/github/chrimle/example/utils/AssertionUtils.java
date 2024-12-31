@@ -174,12 +174,9 @@ public class AssertionUtils {
     final Method method = assertClassHasMethod(classUnderTest, methodName);
 
     final Object actualValue =
-        Assertions.assertDoesNotThrow(
-            () -> method.invoke(objectUnderTest),
-            () ->
-                classUnderTest.getCanonicalName()
-                    + " could not invoke method: "
-                    + method.getName());
+        CustomAssertions.assertInstanceMethodCanBeInvoked(
+            method, objectUnderTest
+        );
     Assertions.assertEquals(
         expectedValue,
         actualValue,
@@ -257,14 +254,14 @@ public class AssertionUtils {
           CustomAssertions.assertClassHasMethod(
               builderObject.getClass(), fieldBuilderMethodName, fieldClass);
       final Object object =
-          Assertions.assertDoesNotThrow(
-              () -> fieldBuilderMethod.invoke(builderObject, (Object) null));
+          CustomAssertions.assertInstanceMethodCanBeInvoked(
+              fieldBuilderMethod, builderObject, (Object) null);
       Assertions.assertEquals(builderObject, object);
     }
     final Method buildMethod =
         AssertionUtils.assertClassHasMethod(builderObject.getClass(), "build");
     final Object classObject =
-        Assertions.assertDoesNotThrow(() -> buildMethod.invoke(builderObject));
+        CustomAssertions.assertInstanceMethodCanBeInvoked(buildMethod, builderObject);
     Assertions.assertNotNull(classObject);
     Assertions.assertInstanceOf(classUnderTest, classObject);
   }
