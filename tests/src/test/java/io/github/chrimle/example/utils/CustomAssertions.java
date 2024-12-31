@@ -455,4 +455,17 @@ public final class CustomAssertions extends CustomUtilityAssertions {
             aClass::getEnumConstants,
             () -> aClass.getCanonicalName() + " does NOT have enum constants");
   }
+
+  /**
+   * Asserts that the {@code aClass} has {@code expectedCount} number of <i>enum constants</i>.
+   *
+   * @param aClass to be asserted.
+   * @param expectedCount of enum constants within the {@code aClass}.
+   */
+  public static void assertClassHasEnumConstants(final Class<?> aClass, final int expectedCount) {
+    assertEquals(
+        expectedCount,
+        () -> assertClassHasEnumConstants(aClass).length,
+        () -> aClass.getCanonicalName() + " does NOT have " + expectedCount + " enum constants");
+  }
 }

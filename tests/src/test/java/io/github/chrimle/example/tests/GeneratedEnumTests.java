@@ -96,7 +96,8 @@ final class GeneratedEnumTests implements GeneratedClassTests {
           @DisplayName("Generates an `enum` with expected number of constants")
           void whenEnumHasConstantsThenGeneratedEnumClassHasExpectedNumberOfConstants(
               final GeneratedSource generatedSource) {
-            GeneratedEnumTestUtils.assertEnumHasNumberOfConstants(generatedSource);
+            CustomAssertions.assertClassHasEnumConstants(
+                generatedSource.getClassUnderTest(), generatedSource.generatedFields().length);
           }
 
           @ParameterizedTest
