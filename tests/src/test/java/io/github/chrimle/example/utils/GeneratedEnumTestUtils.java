@@ -37,7 +37,7 @@ public class GeneratedEnumTestUtils {
 
   public static void assertEnumValues(final GeneratedSource generatedSource) {
     final Enum<?>[] enumConstants =
-        (Enum<?>[]) generatedSource.getClassUnderTest().getEnumConstants();
+        CustomAssertions.assertClassHasEnumConstants(generatedSource.getClassUnderTest());
     final GeneratedField<?>[] generatedFields = generatedSource.generatedFields();
 
     for (final GeneratedField<?> generatedField : generatedFields) {
