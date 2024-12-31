@@ -202,6 +202,19 @@ public interface CustomAssertions {
   }
 
   /**
+   * Asserts that the {@code aClass} has number of fields equal to {@code numberOfFields}.
+   *
+   * @param aClass to be asserted.
+   * @param numberOfFields which the {@code aClass} is expected to have.
+   */
+  static void assertClassHasNumberOfFields(final Class<?> aClass, final int numberOfFields) {
+    assertEquals(
+        numberOfFields,
+        () -> aClass.getDeclaredFields().length,
+        () -> aClass.getCanonicalName() + " does NOT have " + numberOfFields + " fields");
+  }
+
+  /**
    * Asserts that the {@code aClass} has a field named {@code fieldName} and of type {@code
    * fieldType}.
    *

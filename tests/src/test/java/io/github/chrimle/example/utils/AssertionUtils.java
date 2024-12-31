@@ -133,10 +133,7 @@ public class AssertionUtils {
 
   public static void assertRecordHasExpectedNumberOfFields(
       final Class<?> classUnderTest, final int expectedCount) {
-    Assertions.assertEquals(
-        expectedCount,
-        classUnderTest.getDeclaredFields().length,
-        () -> classUnderTest.getCanonicalName() + " does not have the expected number of fields!");
+    CustomAssertions.assertClassHasNumberOfFields(classUnderTest, expectedCount);
   }
 
   public static <T extends Annotation> T assertHasAnnotation(
