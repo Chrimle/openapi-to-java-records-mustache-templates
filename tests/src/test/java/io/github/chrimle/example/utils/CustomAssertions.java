@@ -217,6 +217,21 @@ public interface CustomAssertions {
   }
 
   /**
+   * Asserts that the <b>static</b> {@code method} returns a non-{@code null} value when invoked
+   * with the {@code methodArguments}.
+   *
+   * @param method to be asserted.
+   * @param methodArguments to use when invoking the method.
+   * @return the non-null value from invoking the method.
+   */
+  static Object assertStaticMethodReturnsNonNull(
+      final Method method, final Object... methodArguments) {
+    return assertNotNull(
+        () -> assertStaticMethodCanBeInvoked(method, methodArguments),
+        () -> method + " returned null when invoked with " + Arrays.toString(methodArguments));
+  }
+
+  /**
    * Asserts that the {@code aClass} has number of fields equal to {@code numberOfFields}.
    *
    * @param aClass to be asserted.
