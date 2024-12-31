@@ -460,12 +460,27 @@ public final class CustomAssertions extends CustomUtilityAssertions {
    * Asserts that the {@code aClass} has {@code expectedCount} number of <i>enum constants</i>.
    *
    * @param aClass to be asserted.
-   * @param expectedCount of enum constants within the {@code aClass}.
+   * @param expectedCount of the enum constants within the {@code aClass}.
    */
   public static void assertClassHasEnumConstants(final Class<?> aClass, final int expectedCount) {
     assertEquals(
         expectedCount,
         () -> assertClassHasEnumConstants(aClass).length,
         () -> aClass.getCanonicalName() + " does NOT have " + expectedCount + " enum constants");
+  }
+
+  /**
+   * Asserts that the {@code aClass} has <i>enum constants</i> with names exactly matching {@code
+   * expectedNames}, and in the same order.
+   *
+   * @param aClass to be asserted.
+   * @param expectedNames of the enum constants within the {@code aClass}.
+   */
+  public static void assertClassHasEnumConstantsWithNames(
+      final Class<?> aClass, final String... expectedNames) {
+    Assertions.assertArrayEquals(
+        expectedNames,
+        Arrays.stream(assertClassHasEnumConstants(aClass)).map(Enum::name).toArray(),
+        () -> aClass.getCanonicalName() + " does NOT have the expected enum constants");
   }
 }

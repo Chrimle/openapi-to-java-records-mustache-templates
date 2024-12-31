@@ -25,17 +25,6 @@ import org.junit.jupiter.api.Assertions;
 /** Generalized Test-class for testing Generated Enum-classes */
 public class GeneratedEnumTestUtils {
 
-  public static void assertEnumNames(final GeneratedSource generatedSource) {
-    for (final GeneratedField<?> generatedField : generatedSource.generatedFields()) {
-      final String enumName = generatedField.name();
-      Assertions.assertTrue(
-          Arrays.stream(
-                  CustomAssertions.assertClassHasEnumConstants(generatedSource.getClassUnderTest()))
-              .map(Enum::name)
-              .anyMatch(enumName::equals));
-    }
-  }
-
   public static void assertEnumValues(final GeneratedSource generatedSource) {
     final Enum<?>[] enumConstants =
         CustomAssertions.assertClassHasEnumConstants(generatedSource.getClassUnderTest());
