@@ -29,7 +29,6 @@ import io.github.chrimle.example.tests.GeneratedEnumTests.OpenAPITests.SchemaTes
 import io.github.chrimle.example.tests.GeneratedEnumTests.OpenAPITests.SchemaTests.EnumTests;
 import io.github.chrimle.example.tests.GeneratedEnumTests.OpenAPITests.SchemaTests.EnumTests.ConstantsTests;
 import io.github.chrimle.example.utils.CustomAssertions;
-import io.github.chrimle.example.utils.GeneratedEnumTestUtils;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import org.junit.jupiter.api.*;
@@ -119,7 +118,11 @@ final class GeneratedEnumTests implements GeneratedClassTests {
               "OpenAPI `{schema}.enum.{constants}` -> Generates `enum` constants with expected values")
           void whenEnumHasConstantsThenGeneratedEnumClassHasConstantsWithExpectedValues(
               final GeneratedSource generatedSource) {
-            GeneratedEnumTestUtils.assertEnumValues(generatedSource);
+            CustomAssertions.assertClassHasEnumConstantsWithValues(
+                generatedSource.getClassUnderTest(),
+                Arrays.stream(generatedSource.generatedFields())
+                    .map(GeneratedField::enumValue)
+                    .toArray());
           }
         }
       }

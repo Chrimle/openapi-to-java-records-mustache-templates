@@ -448,6 +448,7 @@ public final class CustomAssertions extends CustomUtilityAssertions {
    *
    * @param aClass to be asserted.
    * @return the <i>enum constants</i>, as an {@code Array}, in the order they are declared.
+   * @since 2.5.3
    */
   public static Enum<?>[] assertClassHasEnumConstants(final Class<?> aClass) {
     return (Enum<?>[])
@@ -461,6 +462,7 @@ public final class CustomAssertions extends CustomUtilityAssertions {
    *
    * @param aClass to be asserted.
    * @param expectedCount of the enum constants within the {@code aClass}.
+   * @since 2.5.3
    */
   public static void assertClassHasEnumConstants(final Class<?> aClass, final int expectedCount) {
     assertEquals(
@@ -475,12 +477,34 @@ public final class CustomAssertions extends CustomUtilityAssertions {
    *
    * @param aClass to be asserted.
    * @param expectedNames of the enum constants within the {@code aClass}.
+   * @since 2.5.3
    */
   public static void assertClassHasEnumConstantsWithNames(
       final Class<?> aClass, final String... expectedNames) {
     Assertions.assertArrayEquals(
         expectedNames,
         Arrays.stream(assertClassHasEnumConstants(aClass)).map(Enum::name).toArray(),
+        () -> aClass.getCanonicalName() + " does NOT have the expected enum constants");
+  }
+
+  /**
+   * Asserts that the {@code aClass} has <i>enum constants</i> with the <i>values</i> exactly
+   * matching {@code expectedValues}, and in the same order.
+   *
+   * @param aClass to be asserted.
+   * @param expectedValues of the enum constants within the {@code aClass}.
+   * @since 2.5.3
+   */
+  public static void assertClassHasEnumConstantsWithValues(
+      final Class<?> aClass, final Object... expectedValues) {
+    final Method getValueMethod = assertClassHasMethod(aClass, "getValue");
+    Assertions.assertArrayEquals(
+        expectedValues,
+        Arrays.stream(assertClassHasEnumConstants(aClass))
+            .map(
+                enumConstant ->
+                    Assertions.assertDoesNotThrow(() -> getValueMethod.invoke(enumConstant)))
+            .toArray(),
         () -> aClass.getCanonicalName() + " does NOT have the expected enum constants");
   }
 }
