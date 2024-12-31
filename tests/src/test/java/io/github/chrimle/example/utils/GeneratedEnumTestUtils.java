@@ -38,7 +38,7 @@ public class GeneratedEnumTestUtils {
   public static void assertEnumHasNumberOfConstants(final GeneratedSource generatedSource) {
     final GeneratedField<?>[] generatedFields = generatedSource.generatedFields();
     final Enum<?>[] enumConstants =
-        (Enum<?>[]) generatedSource.getClassUnderTest().getEnumConstants();
+        CustomAssertions.assertClassHasEnumConstants(generatedSource.getClassUnderTest());
     Assertions.assertEquals(generatedFields.length, enumConstants.length);
   }
 

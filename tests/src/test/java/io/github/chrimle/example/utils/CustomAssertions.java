@@ -25,7 +25,8 @@ import java.util.Arrays;
 import org.junit.jupiter.api.Assertions;
 
 /**
- * Collection of custom assertion methods for the purpose of re-use.
+ * Collection of custom assertion methods which complements {@link Assertions} and {@link
+ * org.junit.platform.commons.util.ReflectionUtils}.
  *
  * @since 2.5.3
  */
@@ -440,5 +441,18 @@ public final class CustomAssertions extends CustomUtilityAssertions {
   public static Field assertFieldIsOfType(final Field field, final Class<?> type) {
     assertEquals(type, field::getType, () -> field + " is NOT of type " + type.getCanonicalName());
     return field;
+  }
+
+  /**
+   * Asserts that the {@code aClass} has <i>enum constants</i>, also implying it is an enum class.
+   *
+   * @param aClass to be asserted.
+   * @return the <i>enum constants</i>, as an {@code Array}, in the order they are declared.
+   */
+  public static Enum<?>[] assertClassHasEnumConstants(final Class<?> aClass) {
+    return (Enum<?>[])
+        assertNotNull(
+            aClass::getEnumConstants,
+            () -> aClass.getCanonicalName() + " does NOT have enum constants");
   }
 }
