@@ -295,8 +295,8 @@ final class GeneratedEnumTests implements GeneratedClassTests {
                   "fromValue",
                   generatedSource.fieldClasses()[0]);
           for (final GeneratedField<?> generatedField : generatedSource.generatedFields()) {
-            final Object enumValue = generatedField.enumValue();
-            Assertions.assertDoesNotThrow(() -> fromValueMethod.invoke(null, enumValue));
+            CustomAssertions.assertStaticMethodReturnsNonNull(
+                fromValueMethod, generatedField.enumValue());
           }
         }
 

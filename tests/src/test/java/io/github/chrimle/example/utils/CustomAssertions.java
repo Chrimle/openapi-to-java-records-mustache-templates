@@ -261,6 +261,28 @@ public final class CustomAssertions extends CustomUtilityAssertions {
   }
 
   /**
+   * Asserts that the <b>static</b> {@code method} returns the {@code expectedValue} when invoked
+   * with the {@code methodArguments}.
+   *
+   * @param method to be asserted.
+   * @param expectedValue of the value returned from invoking the method.
+   * @param methodArguments to invoke the method with.
+   * @since 2.5.3
+   */
+  public static void assertStaticMethodReturnsValue(
+      final Method method, final Object expectedValue, final Object... methodArguments) {
+    assertEquals(
+        expectedValue,
+        () -> assertStaticMethodCanBeInvoked(method, methodArguments),
+        () ->
+            method
+                + " did NOT return value "
+                + expectedValue
+                + " when invoked with "
+                + Arrays.toString(methodArguments));
+  }
+
+  /**
    * Asserts that the <b>instance</b> {@code method} can be invoked on the {@code object} with the
    * {@code methodArguments}.
    *
@@ -300,7 +322,7 @@ public final class CustomAssertions extends CustomUtilityAssertions {
    * with the {@code methodArguments}.
    *
    * @param method to be asserted.
-   * @param expectedValue of the returned value from invoking the method.
+   * @param expectedValue of the value returned from invoking the method.
    * @param object to invoke the method on.
    * @param methodArguments to invoke the method with.
    * @since 2.5.3
