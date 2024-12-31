@@ -242,8 +242,7 @@ public class AssertionUtils {
     final Method buildMethod =
         AssertionUtils.assertClassHasMethod(builderObject.getClass(), "build");
     final Object classObject =
-        CustomAssertions.assertInstanceMethodCanBeInvoked(buildMethod, builderObject);
-    Assertions.assertNotNull(classObject);
+        CustomAssertions.assertInstanceMethodReturnsNonNull(buildMethod, builderObject);
     Assertions.assertInstanceOf(classUnderTest, classObject);
   }
 

@@ -250,6 +250,22 @@ public interface CustomAssertions {
   }
 
   /**
+   * Asserts that the <b>instance</b> {@code method} returns a non-{@code null} value when invoked
+   * with the {@code methodArguments}.
+   *
+   * @param method to be asserted.
+   * @param object to invoke the method on.
+   * @param methodArguments to invoke the method with.
+   * @return the non-null value from invoking the method.
+   */
+  static Object assertInstanceMethodReturnsNonNull(
+      final Method method, final Object object, final Object... methodArguments) {
+    return assertNotNull(
+        () -> assertInstanceMethodCanBeInvoked(method, object, methodArguments),
+        () -> method + " returned null when invoked with " + Arrays.toString(methodArguments));
+  }
+
+  /**
    * Asserts that the <b>instance</b> {@code method} returns the {@code expectedValue} when invoked
    * with the {@code methodArguments}.
    *
@@ -280,6 +296,7 @@ public interface CustomAssertions {
    *
    * @param aClass to be asserted.
    * @param parameterTypes of the constructor which {@code aClass} is expected to have.
+   * @param <T> type of the {@code aClass}.
    * @return the {@link Constructor}, with the matching parameter types.
    */
   static <T> Constructor<T> assertClassHasConstructor(
