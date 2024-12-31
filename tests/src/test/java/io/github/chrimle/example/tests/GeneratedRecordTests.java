@@ -34,6 +34,7 @@ import io.github.chrimle.example.tests.GeneratedRecordTests.OpenAPITests.SchemaT
 import io.github.chrimle.example.tests.GeneratedRecordTests.OpenAPITests.SchemaTests.TypeTests;
 import io.github.chrimle.example.tests.GeneratedRecordTests.OpenAPITests.SchemaTests.XClassExtraAnnotationTests;
 import io.github.chrimle.example.utils.AssertionUtils;
+import io.github.chrimle.example.utils.CustomAssertions;
 import io.github.chrimle.example.utils.GeneratedRecordTestUtils;
 import java.io.Serializable;
 import java.lang.annotation.Annotation;
@@ -104,7 +105,7 @@ final class GeneratedRecordTests implements GeneratedClassTests {
         @DisplayName("OpenAPI `{schema}.type: object` -> Generates a `record` class")
         public void whenIsObjectThenGeneratedClassIsRecordClass(
             final GeneratedSource generatedSource) {
-          AssertionUtils.assertIsRecord(generatedSource.getClassUnderTest());
+          CustomAssertions.assertClassIsRecordClass(generatedSource.getClassUnderTest());
         }
       }
 
@@ -122,7 +123,7 @@ final class GeneratedRecordTests implements GeneratedClassTests {
               final GeneratedSource generatedSource) {
             Assumptions.assumeFalse(generatedSource.isDeprecated());
 
-            AssertionUtils.assertClassIsNotAnnotatedWith(
+            CustomAssertions.assertClassIsNotAnnotatedWith(
                 generatedSource.getClassUnderTest(), Deprecated.class);
           }
         }
@@ -137,7 +138,7 @@ final class GeneratedRecordTests implements GeneratedClassTests {
               final GeneratedSource generatedSource) {
             Assumptions.assumeTrue(generatedSource.isDeprecated());
 
-            AssertionUtils.assertClassIsAnnotatedWith(
+            CustomAssertions.assertClassIsAnnotatedWith(
                 generatedSource.getClassUnderTest(), Deprecated.class);
           }
         }
@@ -157,9 +158,9 @@ final class GeneratedRecordTests implements GeneratedClassTests {
               final GeneratedSource generatedSource) {
             Assumptions.assumeFalse(generatedSource.hasExtraAnnotations());
 
-            AssertionUtils.assertClassIsNotAnnotatedWith(
+            CustomAssertions.assertClassIsNotAnnotatedWith(
                 generatedSource.getClassUnderTest(), TestExtraAnnotation.class);
-            AssertionUtils.assertClassIsNotAnnotatedWith(
+            CustomAssertions.assertClassIsNotAnnotatedWith(
                 generatedSource.getClassUnderTest(), TestExtraAnnotationTwo.class);
           }
         }
@@ -176,7 +177,7 @@ final class GeneratedRecordTests implements GeneratedClassTests {
 
             for (final Class<? extends Annotation> annotation :
                 generatedSource.getExtraAnnotations()) {
-              AssertionUtils.assertClassIsAnnotatedWith(
+              CustomAssertions.assertClassIsAnnotatedWith(
                   generatedSource.getClassUnderTest(), annotation);
             }
           }
@@ -192,7 +193,7 @@ final class GeneratedRecordTests implements GeneratedClassTests {
         @DisplayName("Generates a constructor with properties as method arguments")
         public void whenObjectHasPropertiesThenGeneratedConstructorHasMethodArguments(
             final GeneratedSource generatedSource) {
-          AssertionUtils.assertRecordHasConstructor(
+          CustomAssertions.assertClassHasConstructor(
               generatedSource.getClassUnderTest(), generatedSource.fieldClasses());
         }
 
@@ -203,7 +204,7 @@ final class GeneratedRecordTests implements GeneratedClassTests {
             final GeneratedSource generatedSource) {
           Assumptions.assumeFalse(generatedSource.serializableModel());
 
-          AssertionUtils.assertRecordHasExpectedNumberOfFields(
+          CustomAssertions.assertClassHasNumberOfFields(
               generatedSource.getClassUnderTest(), generatedSource.generatedFields().length);
         }
 
@@ -213,7 +214,7 @@ final class GeneratedRecordTests implements GeneratedClassTests {
         public void whenObjectHasPropertiesThenGeneratedRecordHasFieldsWithSameNameAndType(
             final GeneratedSource generatedSource) {
           for (final GeneratedField<?> generatedField : generatedSource.generatedFields()) {
-            AssertionUtils.assertRecordHasField(
+            CustomAssertions.assertClassHasField(
                 generatedSource.getClassUnderTest(), generatedField.name(), generatedField.type());
           }
         }
@@ -260,7 +261,7 @@ final class GeneratedRecordTests implements GeneratedClassTests {
 
               for (final GeneratedField<?> generatedField : generatedSource.generatedFields()) {
                 final Field field =
-                    AssertionUtils.assertRecordHasField(
+                    CustomAssertions.assertClassHasField(
                         generatedSource.getClassUnderTest(),
                         generatedField.name(),
                         generatedField.type());
@@ -275,8 +276,8 @@ final class GeneratedRecordTests implements GeneratedClassTests {
                         ? javax.annotation.Nonnull.class
                         : javax.annotation.Nullable.class;
 
-                AssertionUtils.assertHasAnnotation(field, expectedAnnotation);
-                AssertionUtils.assertDoesNotHaveAnnotation(field, unexpectedAnnotation);
+                CustomAssertions.assertFieldIsAnnotatedWith(field, expectedAnnotation);
+                CustomAssertions.assertFieldIsNotAnnotatedWith(field, unexpectedAnnotation);
               }
             }
           }
@@ -298,14 +299,14 @@ final class GeneratedRecordTests implements GeneratedClassTests {
                       final GeneratedSource generatedSource) {
                 for (final GeneratedField<?> generatedField : generatedSource.generatedFields()) {
                   final Field field =
-                      AssertionUtils.assertRecordHasField(
+                      CustomAssertions.assertClassHasField(
                           generatedSource.getClassUnderTest(),
                           generatedField.name(),
                           generatedField.type());
                   if (generatedField.extraFieldAnnotations().isEmpty()) {
-                    AssertionUtils.assertDoesNotHaveAnnotation(
+                    CustomAssertions.assertFieldIsNotAnnotatedWith(
                         field, TestFieldExtraAnnotationOne.class);
-                    AssertionUtils.assertDoesNotHaveAnnotation(
+                    CustomAssertions.assertFieldIsNotAnnotatedWith(
                         field, TestFieldExtraAnnotationTwo.class);
                   }
                 }
@@ -325,14 +326,14 @@ final class GeneratedRecordTests implements GeneratedClassTests {
                       final GeneratedSource generatedSource) {
                 for (final GeneratedField<?> generatedField : generatedSource.generatedFields()) {
                   final Field field =
-                      AssertionUtils.assertRecordHasField(
+                      CustomAssertions.assertClassHasField(
                           generatedSource.getClassUnderTest(),
                           generatedField.name(),
                           generatedField.type());
                   if (!generatedField.extraFieldAnnotations().isEmpty()) {
                     for (final Class<? extends Annotation> expectedAnnotation :
                         generatedField.extraFieldAnnotations()) {
-                      AssertionUtils.assertHasAnnotation(field, expectedAnnotation);
+                      CustomAssertions.assertFieldIsAnnotatedWith(field, expectedAnnotation);
                     }
                   }
                 }
@@ -368,11 +369,11 @@ final class GeneratedRecordTests implements GeneratedClassTests {
 
             Assumptions.assumeFalse(generatedSource.hasAdditionalModelTypeAnnotations());
 
-            AssertionUtils.assertClassIsNotAnnotatedWith(
+            CustomAssertions.assertClassIsNotAnnotatedWith(
                 generatedSource.getClassUnderTest(), TestAnnotationOne.class);
-            AssertionUtils.assertClassIsNotAnnotatedWith(
+            CustomAssertions.assertClassIsNotAnnotatedWith(
                 generatedSource.getClassUnderTest(), TestAnnotationTwo.class);
-            AssertionUtils.assertClassIsNotAnnotatedWith(
+            CustomAssertions.assertClassIsNotAnnotatedWith(
                 generatedSource.getClassUnderTest(), TestAnnotationThree.class);
           }
         }
@@ -390,11 +391,11 @@ final class GeneratedRecordTests implements GeneratedClassTests {
 
             Assumptions.assumeTrue(generatedSource.hasAdditionalModelTypeAnnotations());
 
-            AssertionUtils.assertClassIsAnnotatedWith(
+            CustomAssertions.assertClassIsAnnotatedWith(
                 generatedSource.getClassUnderTest(), TestAnnotationOne.class);
-            AssertionUtils.assertClassIsAnnotatedWith(
+            CustomAssertions.assertClassIsAnnotatedWith(
                 generatedSource.getClassUnderTest(), TestAnnotationTwo.class);
-            AssertionUtils.assertClassIsAnnotatedWith(
+            CustomAssertions.assertClassIsAnnotatedWith(
                 generatedSource.getClassUnderTest(), TestAnnotationThree.class);
           }
         }
@@ -416,7 +417,7 @@ final class GeneratedRecordTests implements GeneratedClassTests {
                   final GeneratedSource generatedSource) {
             Assumptions.assumeFalse(generatedSource.serializableModel());
 
-            AssertionUtils.assertClassDoesNotImplementsInterface(
+            CustomAssertions.assertClassDoesNotImplementInterface(
                 generatedSource.getClassUnderTest(), Serializable.class);
           }
 
@@ -428,7 +429,7 @@ final class GeneratedRecordTests implements GeneratedClassTests {
                   final GeneratedSource generatedSource) {
             Assumptions.assumeFalse(generatedSource.serializableModel());
 
-            AssertionUtils.assertRecordDoesNotHaveField(
+            CustomAssertions.assertClassDoesNotHaveFieldWithName(
                 generatedSource.getClassUnderTest(), "serialVersionUID");
           }
         }
@@ -445,7 +446,7 @@ final class GeneratedRecordTests implements GeneratedClassTests {
                   final GeneratedSource generatedSource) {
             Assumptions.assumeTrue(generatedSource.serializableModel());
 
-            AssertionUtils.assertClassImplementsInterface(
+            CustomAssertions.assertClassImplementsInterface(
                 generatedSource.getClassUnderTest(), Serializable.class);
           }
 
@@ -458,7 +459,7 @@ final class GeneratedRecordTests implements GeneratedClassTests {
                   final GeneratedSource generatedSource) {
             Assumptions.assumeTrue(generatedSource.serializableModel());
 
-            AssertionUtils.assertRecordHasExpectedNumberOfFields(
+            CustomAssertions.assertClassHasNumberOfFields(
                 generatedSource.getClassUnderTest(), generatedSource.generatedFields().length + 1);
           }
 
@@ -470,7 +471,7 @@ final class GeneratedRecordTests implements GeneratedClassTests {
                   final GeneratedSource generatedSource) {
             Assumptions.assumeTrue(generatedSource.serializableModel());
 
-            AssertionUtils.assertRecordHasField(
+            CustomAssertions.assertClassHasField(
                 generatedSource.getClassUnderTest(), "serialVersionUID", long.class);
           }
         }
@@ -492,9 +493,9 @@ final class GeneratedRecordTests implements GeneratedClassTests {
                   final GeneratedSource generatedSource) {
             Assumptions.assumeFalse(generatedSource.generateBuilders());
 
-            AssertionUtils.assertClassDoesNotHaveMethod(
+            CustomAssertions.assertClassDoesNotHaveMethod(
                 generatedSource.getClassUnderTest(), "builder");
-            AssertionUtils.assertClassDoesNotHaveInnerClass(
+            CustomAssertions.assertClassDoesNotHaveInnerClass(
                 generatedSource.getClassUnderTest(), "Builder");
           }
         }
@@ -509,8 +510,9 @@ final class GeneratedRecordTests implements GeneratedClassTests {
               final GeneratedSource generatedSource) {
             Assumptions.assumeTrue(generatedSource.generateBuilders());
 
-            AssertionUtils.assertClassHasMethod(generatedSource.getClassUnderTest(), "builder");
-            AssertionUtils.assertClassHasInnerClass(generatedSource.getClassUnderTest(), "Builder");
+            CustomAssertions.assertClassHasMethod(generatedSource.getClassUnderTest(), "builder");
+            CustomAssertions.assertClassHasInnerClass(
+                generatedSource.getClassUnderTest(), "Builder");
             AssertionUtils.assertInnerBuilderClassExistsAndCanBuildRecord(generatedSource);
           }
         }
@@ -533,13 +535,15 @@ final class GeneratedRecordTests implements GeneratedClassTests {
 
             for (final GeneratedField<?> generatedField : generatedSource.generatedFields()) {
               final Field field =
-                  AssertionUtils.assertRecordHasField(
+                  CustomAssertions.assertClassHasField(
                       generatedSource.getClassUnderTest(),
                       generatedField.name(),
                       generatedField.type());
 
-              AssertionUtils.assertDoesNotHaveAnnotation(field, jakarta.annotation.Nullable.class);
-              AssertionUtils.assertDoesNotHaveAnnotation(field, jakarta.annotation.Nonnull.class);
+              CustomAssertions.assertFieldIsNotAnnotatedWith(
+                  field, jakarta.annotation.Nullable.class);
+              CustomAssertions.assertFieldIsNotAnnotatedWith(
+                  field, jakarta.annotation.Nonnull.class);
             }
           }
         }
@@ -557,7 +561,7 @@ final class GeneratedRecordTests implements GeneratedClassTests {
 
             for (final GeneratedField<?> generatedField : generatedSource.generatedFields()) {
               final Field field =
-                  AssertionUtils.assertRecordHasField(
+                  CustomAssertions.assertClassHasField(
                       generatedSource.getClassUnderTest(),
                       generatedField.name(),
                       generatedField.type());
@@ -572,8 +576,8 @@ final class GeneratedRecordTests implements GeneratedClassTests {
                       ? jakarta.annotation.Nonnull.class
                       : jakarta.annotation.Nullable.class;
 
-              AssertionUtils.assertHasAnnotation(field, expectedAnnotation);
-              AssertionUtils.assertDoesNotHaveAnnotation(field, unexpectedAnnotation);
+              CustomAssertions.assertFieldIsAnnotatedWith(field, expectedAnnotation);
+              CustomAssertions.assertFieldIsNotAnnotatedWith(field, unexpectedAnnotation);
             }
           }
 
@@ -587,13 +591,14 @@ final class GeneratedRecordTests implements GeneratedClassTests {
 
             for (final GeneratedField<?> generatedField : generatedSource.generatedFields()) {
               final Field field =
-                  AssertionUtils.assertRecordHasField(
+                  CustomAssertions.assertClassHasField(
                       generatedSource.getClassUnderTest(),
                       generatedField.name(),
                       generatedField.type());
 
-              AssertionUtils.assertDoesNotHaveAnnotation(field, javax.annotation.Nullable.class);
-              AssertionUtils.assertDoesNotHaveAnnotation(field, javax.annotation.Nonnull.class);
+              CustomAssertions.assertFieldIsNotAnnotatedWith(
+                  field, javax.annotation.Nullable.class);
+              CustomAssertions.assertFieldIsNotAnnotatedWith(field, javax.annotation.Nonnull.class);
             }
           }
         }
@@ -617,7 +622,7 @@ final class GeneratedRecordTests implements GeneratedClassTests {
 
             for (final GeneratedField<?> generatedField : generatedSource.generatedFields()) {
               final Field field =
-                  AssertionUtils.assertRecordHasField(
+                  CustomAssertions.assertClassHasField(
                       generatedSource.getClassUnderTest(),
                       generatedField.name(),
                       generatedField.type());
@@ -633,7 +638,7 @@ final class GeneratedRecordTests implements GeneratedClassTests {
                       jakarta.validation.constraints.DecimalMin.class,
                       jakarta.validation.constraints.DecimalMax.class,
                       jakarta.validation.constraints.Email.class)) {
-                AssertionUtils.assertDoesNotHaveAnnotation(field, annotation);
+                CustomAssertions.assertFieldIsNotAnnotatedWith(field, annotation);
               }
             }
           }

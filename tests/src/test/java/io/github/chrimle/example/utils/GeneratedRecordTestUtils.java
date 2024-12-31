@@ -36,7 +36,7 @@ public class GeneratedRecordTestUtils {
     final Class<?> classUnderTest = generatedSource.getClassUnderTest();
     final Class<?>[] fieldClasses = generatedSource.fieldClasses();
     final Constructor<?> constructor =
-        AssertionUtils.assertRecordHasConstructor(classUnderTest, fieldClasses);
+        CustomAssertions.assertClassHasConstructor(classUnderTest, fieldClasses);
 
     final Object objectWithNonNullFields =
         AssertionUtils.assertRecordInstantiateWithArgs(
@@ -57,7 +57,7 @@ public class GeneratedRecordTestUtils {
     final Class<?> classUnderTest = generatedSource.getClassUnderTest();
     final Class<?>[] fieldClasses = generatedSource.fieldClasses();
     final Constructor<?> constructor =
-        AssertionUtils.assertRecordHasConstructor(classUnderTest, fieldClasses);
+        CustomAssertions.assertClassHasConstructor(classUnderTest, fieldClasses);
 
     final Object objectWithNullFields =
         AssertionUtils.assertRecordInstantiateWithArgs(
@@ -71,22 +71,24 @@ public class GeneratedRecordTestUtils {
 
   private static <T> void assertFieldHasEitherNullOrDefaultValueSet(
       final GeneratedField<T> generatedField, final Object object) {
-    AssertionUtils.assertInstanceMethodReturns(
-        object,
-        generatedField.name(),
+    CustomAssertions.assertInstanceMethodReturnsValue(
+        CustomAssertions.assertClassHasMethod(object.getClass(), generatedField.name()),
         generatedField
             .defaultValue()
             .orElseGet(
                 () ->
                     generatedField.isNullable()
                         ? null
-                        : getClassSpecificDefaultValue(generatedField.type())));
+                        : getClassSpecificDefaultValue(generatedField.type())),
+        object);
   }
 
   private static <T> void assertFieldHasTestingValueSet(
       final GeneratedField<T> generatedField, final Object object) {
-    AssertionUtils.assertInstanceMethodReturns(
-        object, generatedField.name(), getClassSpecificTestingValue(generatedField.type()));
+    CustomAssertions.assertInstanceMethodReturnsValue(
+        CustomAssertions.assertClassHasMethod(object.getClass(), generatedField.name()),
+        getClassSpecificTestingValue(generatedField.type()),
+        object);
   }
 
   /**

@@ -27,122 +27,93 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
-import java.lang.annotation.Annotation;
 import java.lang.reflect.*;
 import java.util.Arrays;
 import org.junit.jupiter.api.Assertions;
 
 public class AssertionUtils {
 
-  public static void assertIsRecord(final Class<?> clazz) {
-    CustomAssertions.assertClassIsRecordClass(clazz);
-  }
-
-  public static void assertIsEnum(final Class<?> clazz) {
-    CustomAssertions.assertClassIsEnumClass(clazz);
-  }
-
-  public static void assertClassIsAnnotatedWith(
-      final Class<?> clazz, final Class<? extends Annotation> annotation) {
-    CustomAssertions.assertClassIsAnnotatedWith(clazz, annotation);
-  }
-
-  public static void assertClassIsNotAnnotatedWith(
-      final Class<?> clazz, final Class<? extends Annotation> annotation) {
-    CustomAssertions.assertClassIsNotAnnotatedWith(clazz, annotation);
-  }
-
   public static void assertRecordHasFieldsOfTypeWithNullableAnnotations(
       final GeneratedSource generatedSource) {
 
     for (final GeneratedField<?> generatedField : generatedSource.generatedFields()) {
       final Field field =
-          assertRecordHasField(
+          CustomAssertions.assertClassHasField(
               generatedSource.getClassUnderTest(), generatedField.name(), generatedField.type());
 
       final Class<Valid> validAnnotation = Valid.class;
       if (generatedField.isCustomClass()) {
-        assertHasAnnotation(field, validAnnotation);
+        CustomAssertions.assertFieldIsAnnotatedWith(field, validAnnotation);
       } else {
-        assertDoesNotHaveAnnotation(field, validAnnotation);
+        CustomAssertions.assertFieldIsNotAnnotatedWith(field, validAnnotation);
       }
       final Class<NotNull> notNullAnnotation = NotNull.class;
       if (generatedField.isBeanValidationNullable()) {
-        assertDoesNotHaveAnnotation(field, notNullAnnotation);
+        CustomAssertions.assertFieldIsNotAnnotatedWith(field, notNullAnnotation);
       } else {
-        assertHasAnnotation(field, notNullAnnotation);
+        CustomAssertions.assertFieldIsAnnotatedWith(field, notNullAnnotation);
       }
       final Class<Pattern> patternAnnotation = Pattern.class;
       if (generatedField.pattern().isPresent()) {
-        final Pattern actualPatternAnnotation = assertHasAnnotation(field, patternAnnotation);
+        final Pattern actualPatternAnnotation =
+            CustomAssertions.assertFieldIsAnnotatedWith(field, patternAnnotation);
         Assertions.assertEquals(generatedField.pattern().get(), actualPatternAnnotation.regexp());
       } else {
-        assertDoesNotHaveAnnotation(field, patternAnnotation);
+        CustomAssertions.assertFieldIsNotAnnotatedWith(field, patternAnnotation);
       }
       final Class<Size> sizeAnnotation = Size.class;
       if (generatedField.minLength().isPresent() || generatedField.maxLength().isPresent()) {
-        final Size actualSizeAnnotation = assertHasAnnotation(field, sizeAnnotation);
+        final Size actualSizeAnnotation =
+            CustomAssertions.assertFieldIsAnnotatedWith(field, sizeAnnotation);
         Assertions.assertEquals(generatedField.minLength().orElse(0), actualSizeAnnotation.min());
         Assertions.assertEquals(
             generatedField.maxLength().orElse(Integer.MAX_VALUE), actualSizeAnnotation.max());
       } else if (generatedField.minItems().isPresent() || generatedField.maxItems().isPresent()) {
-        final Size actualSizeAnnotation = assertHasAnnotation(field, sizeAnnotation);
+        final Size actualSizeAnnotation =
+            CustomAssertions.assertFieldIsAnnotatedWith(field, sizeAnnotation);
         Assertions.assertEquals(generatedField.minItems().orElse(0), actualSizeAnnotation.min());
         Assertions.assertEquals(
             generatedField.maxItems().orElse(Integer.MAX_VALUE), actualSizeAnnotation.max());
       } else {
-        assertDoesNotHaveAnnotation(field, sizeAnnotation);
+        CustomAssertions.assertFieldIsNotAnnotatedWith(field, sizeAnnotation);
       }
       final Class<Min> minAnnotation = Min.class;
       if (generatedField.minimum().isPresent()) {
-        final Min min = assertHasAnnotation(field, minAnnotation);
+        final Min min = CustomAssertions.assertFieldIsAnnotatedWith(field, minAnnotation);
         Assertions.assertEquals(generatedField.minimum().get(), min.value());
       } else {
-        assertDoesNotHaveAnnotation(field, minAnnotation);
+        CustomAssertions.assertFieldIsNotAnnotatedWith(field, minAnnotation);
       }
       final Class<Max> maxAnnotation = Max.class;
       if (generatedField.maximum().isPresent()) {
-        final Max max = assertHasAnnotation(field, maxAnnotation);
+        final Max max = CustomAssertions.assertFieldIsAnnotatedWith(field, maxAnnotation);
         Assertions.assertEquals(generatedField.maximum().get(), max.value());
       } else {
-        assertDoesNotHaveAnnotation(field, maxAnnotation);
+        CustomAssertions.assertFieldIsNotAnnotatedWith(field, maxAnnotation);
       }
       final Class<DecimalMin> decimalMinAnnotation = DecimalMin.class;
       if (generatedField.decimalMin().isPresent()) {
-        final DecimalMin decimalMin = assertHasAnnotation(field, decimalMinAnnotation);
+        final DecimalMin decimalMin =
+            CustomAssertions.assertFieldIsAnnotatedWith(field, decimalMinAnnotation);
         Assertions.assertEquals(generatedField.decimalMin().get(), decimalMin.value());
       } else {
-        assertDoesNotHaveAnnotation(field, decimalMinAnnotation);
+        CustomAssertions.assertFieldIsNotAnnotatedWith(field, decimalMinAnnotation);
       }
       final Class<DecimalMax> decimalMaxAnnotation = DecimalMax.class;
       if (generatedField.decimalMax().isPresent()) {
-        final DecimalMax decimalMax = assertHasAnnotation(field, decimalMaxAnnotation);
+        final DecimalMax decimalMax =
+            CustomAssertions.assertFieldIsAnnotatedWith(field, decimalMaxAnnotation);
         Assertions.assertEquals(generatedField.decimalMax().get(), decimalMax.value());
       } else {
-        assertDoesNotHaveAnnotation(field, decimalMaxAnnotation);
+        CustomAssertions.assertFieldIsNotAnnotatedWith(field, decimalMaxAnnotation);
       }
       final Class<Email> emailAnnotation = Email.class;
       if (generatedField.isEmail()) {
-        assertHasAnnotation(field, emailAnnotation);
+        CustomAssertions.assertFieldIsAnnotatedWith(field, emailAnnotation);
       } else {
-        assertDoesNotHaveAnnotation(field, emailAnnotation);
+        CustomAssertions.assertFieldIsNotAnnotatedWith(field, emailAnnotation);
       }
     }
-  }
-
-  public static void assertRecordHasExpectedNumberOfFields(
-      final Class<?> classUnderTest, final int expectedCount) {
-    CustomAssertions.assertClassHasNumberOfFields(classUnderTest, expectedCount);
-  }
-
-  public static <T extends Annotation> T assertHasAnnotation(
-      final Field field, final Class<T> annotation) {
-    return CustomAssertions.assertFieldIsAnnotatedWith(field, annotation);
-  }
-
-  public static <T extends Annotation> void assertDoesNotHaveAnnotation(
-      final Field field, final Class<T> annotation) {
-    CustomAssertions.assertFieldIsNotAnnotatedWith(field, annotation);
   }
 
   public static Object assertRecordInstantiateWithArgs(
@@ -157,64 +128,12 @@ public class AssertionUtils {
                 + Arrays.toString(constructorArgs));
   }
 
-  public static Constructor<?> assertRecordHasConstructor(
-      final Class<?> classUnderTest, final Class<?>... constructorArgs) {
-    return CustomAssertions.assertClassHasConstructor(classUnderTest, constructorArgs);
-  }
-
-  public static void assertInstanceMethodReturns(
-      final Object objectUnderTest, final String methodName, final Object expectedValue) {
-    final Class<?> classUnderTest = objectUnderTest.getClass();
-    final Method method = assertClassHasMethod(classUnderTest, methodName);
-    CustomAssertions.assertInstanceMethodReturnsValue(method, expectedValue, objectUnderTest);
-  }
-
-  public static void assertClassDoesNotHaveMethod(
-      final Class<?> classUnderTest, final String methodName, final Class<?>... methodArgs) {
-    CustomAssertions.assertClassDoesNotHaveMethod(classUnderTest, methodName, methodArgs);
-  }
-
-  public static Method assertClassHasMethod(
-      final Class<?> classUnderTest, final String methodName, final Class<?>... methodArgs) {
-    return CustomAssertions.assertClassHasMethod(classUnderTest, methodName, methodArgs);
-  }
-
-  public static void assertRecordDoesNotHaveField(
-      final Class<?> classUnderTest, final String fieldName) {
-    CustomAssertions.assertClassDoesNotHaveFieldWithName(classUnderTest, fieldName);
-  }
-
-  public static Field assertRecordHasField(
-      final Class<?> classUnderTest, final String fieldName, final Class<?> fieldType) {
-    return CustomAssertions.assertClassHasField(classUnderTest, fieldName, fieldType);
-  }
-
-  public static void assertClassImplementsInterface(
-      final Class<?> classUnderTest, final Class<?> interfaceClass) {
-    CustomAssertions.assertClassImplementsInterface(classUnderTest, interfaceClass);
-  }
-
-  public static void assertClassDoesNotImplementsInterface(
-      final Class<?> classUnderTest, final Class<?> interfaceClass) {
-    CustomAssertions.assertClassDoesNotImplementInterface(classUnderTest, interfaceClass);
-  }
-
-  public static void assertClassHasInnerClass(
-      final Class<?> classUnderTest, final String innerClassName) {
-    CustomAssertions.assertClassHasInnerClass(classUnderTest, innerClassName);
-  }
-
-  public static void assertClassDoesNotHaveInnerClass(
-      final Class<?> classUnderTest, final String innerClassName) {
-    CustomAssertions.assertClassDoesNotHaveInnerClass(classUnderTest, innerClassName);
-  }
-
   public static void assertInnerBuilderClassExistsAndCanBuildRecord(
       final GeneratedSource generatedSource) {
     // Assert Builder can be instantiated from builder()-method
     final Object builderObject =
         CustomAssertions.assertStaticMethodReturnsNonNull(
-            assertClassHasMethod(generatedSource.getClassUnderTest(), "builder"));
+            CustomAssertions.assertClassHasMethod(generatedSource.getClassUnderTest(), "builder"));
     for (GeneratedField<?> generatedField : generatedSource.generatedFields()) {
       CustomAssertions.assertInstanceMethodReturnsValue(
           CustomAssertions.assertClassHasMethod(
@@ -226,7 +145,8 @@ public class AssertionUtils {
     Assertions.assertInstanceOf(
         generatedSource.getClassUnderTest(),
         CustomAssertions.assertInstanceMethodReturnsNonNull(
-            AssertionUtils.assertClassHasMethod(builderObject.getClass(), "build"), builderObject));
+            CustomAssertions.assertClassHasMethod(builderObject.getClass(), "build"),
+            builderObject));
   }
 
   public static void assertStaticMethodWithArgsThrows(

@@ -29,6 +29,7 @@ import io.github.chrimle.example.tests.GeneratedEnumTests.OpenAPITests.SchemaTes
 import io.github.chrimle.example.tests.GeneratedEnumTests.OpenAPITests.SchemaTests.EnumTests;
 import io.github.chrimle.example.tests.GeneratedEnumTests.OpenAPITests.SchemaTests.EnumTests.ConstantsTests;
 import io.github.chrimle.example.utils.AssertionUtils;
+import io.github.chrimle.example.utils.CustomAssertions;
 import io.github.chrimle.example.utils.GeneratedEnumTestUtils;
 import java.lang.reflect.Method;
 import org.junit.jupiter.api.*;
@@ -85,7 +86,7 @@ final class GeneratedEnumTests implements GeneratedClassTests {
         @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
         @DisplayName("Generates an `enum` class")
         void whenIsEnumThenGeneratedClassIsEnumClass(final GeneratedSource generatedSource) {
-          AssertionUtils.assertIsEnum(generatedSource.getClassUnderTest());
+          CustomAssertions.assertClassIsEnumClass(generatedSource.getClassUnderTest());
         }
 
         @Nested
@@ -131,7 +132,7 @@ final class GeneratedEnumTests implements GeneratedClassTests {
           void whenEnumIsNotDeprecatedThenGeneratedEnumClassNotIsAnnotatedDeprecated(
               final GeneratedSource generatedSource) {
             Assumptions.assumeFalse(generatedSource.isDeprecated());
-            AssertionUtils.assertClassIsNotAnnotatedWith(
+            CustomAssertions.assertClassIsNotAnnotatedWith(
                 generatedSource.getClassUnderTest(), Deprecated.class);
           }
         }
@@ -145,7 +146,7 @@ final class GeneratedEnumTests implements GeneratedClassTests {
           void whenEnumIsDeprecatedThenGeneratedEnumClassIsAnnotatedDeprecated(
               final GeneratedSource generatedSource) {
             Assumptions.assumeTrue(generatedSource.isDeprecated());
-            AssertionUtils.assertClassIsAnnotatedWith(
+            CustomAssertions.assertClassIsAnnotatedWith(
                 generatedSource.getClassUnderTest(), Deprecated.class);
           }
         }
@@ -177,11 +178,11 @@ final class GeneratedEnumTests implements GeneratedClassTests {
                   final GeneratedSource generatedSource) {
             Assumptions.assumeFalse(generatedSource.hasAdditionalEnumTypeAnnotations());
 
-            AssertionUtils.assertClassIsNotAnnotatedWith(
+            CustomAssertions.assertClassIsNotAnnotatedWith(
                 generatedSource.getClassUnderTest(), TestAnnotationOne.class);
-            AssertionUtils.assertClassIsNotAnnotatedWith(
+            CustomAssertions.assertClassIsNotAnnotatedWith(
                 generatedSource.getClassUnderTest(), TestAnnotationTwo.class);
-            AssertionUtils.assertClassIsNotAnnotatedWith(
+            CustomAssertions.assertClassIsNotAnnotatedWith(
                 generatedSource.getClassUnderTest(), TestAnnotationThree.class);
           }
         }
@@ -199,11 +200,11 @@ final class GeneratedEnumTests implements GeneratedClassTests {
                   final GeneratedSource generatedSource) {
             Assumptions.assumeTrue(generatedSource.hasAdditionalEnumTypeAnnotations());
 
-            AssertionUtils.assertClassIsAnnotatedWith(
+            CustomAssertions.assertClassIsAnnotatedWith(
                 generatedSource.getClassUnderTest(), TestAnnotationOne.class);
-            AssertionUtils.assertClassIsAnnotatedWith(
+            CustomAssertions.assertClassIsAnnotatedWith(
                 generatedSource.getClassUnderTest(), TestAnnotationTwo.class);
-            AssertionUtils.assertClassIsAnnotatedWith(
+            CustomAssertions.assertClassIsAnnotatedWith(
                 generatedSource.getClassUnderTest(), TestAnnotationThree.class);
           }
         }
@@ -218,7 +219,7 @@ final class GeneratedEnumTests implements GeneratedClassTests {
         @DisplayName("Generated `enum` class ALWAYS has a `static fromValue(T)` method")
         void alwaysGenerateEnumClassWithStaticFromValueMethod(
             final GeneratedSource generatedSource) {
-          AssertionUtils.assertClassHasMethod(
+          CustomAssertions.assertClassHasMethod(
               generatedSource.getClassUnderTest(), "fromValue", generatedSource.fieldClasses()[0]);
         }
 
@@ -229,7 +230,7 @@ final class GeneratedEnumTests implements GeneratedClassTests {
         void alwaysThrowIllegalArgumentExceptionWhenProvidingNullAsArgumentToStaticFromValueMethod(
             final GeneratedSource generatedSource) {
           AssertionUtils.assertStaticMethodWithArgsThrows(
-              AssertionUtils.assertClassHasMethod(
+              CustomAssertions.assertClassHasMethod(
                   generatedSource.getClassUnderTest(),
                   "fromValue",
                   generatedSource.fieldClasses()[0]),
@@ -247,7 +248,7 @@ final class GeneratedEnumTests implements GeneratedClassTests {
           Assumptions.assumeTrue(String.class.equals(generatedSource.generatedFields()[0].type()));
 
           AssertionUtils.assertStaticMethodWithArgsThrows(
-              AssertionUtils.assertClassHasMethod(
+              CustomAssertions.assertClassHasMethod(
                   generatedSource.getClassUnderTest(),
                   "fromValue",
                   generatedSource.fieldClasses()[0]),
@@ -265,7 +266,7 @@ final class GeneratedEnumTests implements GeneratedClassTests {
           Assumptions.assumeTrue(Integer.class.equals(generatedSource.generatedFields()[0].type()));
 
           AssertionUtils.assertStaticMethodWithArgsThrows(
-              AssertionUtils.assertClassHasMethod(
+              CustomAssertions.assertClassHasMethod(
                   generatedSource.getClassUnderTest(),
                   "fromValue",
                   generatedSource.fieldClasses()[0]),
@@ -281,7 +282,7 @@ final class GeneratedEnumTests implements GeneratedClassTests {
             alwaysReturnEnumConstantWhenProvidingExistingEnumValueAsArgumentToStaticFromValueMethod(
                 final GeneratedSource generatedSource) {
           final Method fromValueMethod =
-              AssertionUtils.assertClassHasMethod(
+              CustomAssertions.assertClassHasMethod(
                   generatedSource.getClassUnderTest(),
                   "fromValue",
                   generatedSource.fieldClasses()[0]);
@@ -307,7 +308,7 @@ final class GeneratedEnumTests implements GeneratedClassTests {
                 String.class.equals(generatedSource.generatedFields()[0].type()));
 
             final Method fromValueMethod =
-                AssertionUtils.assertClassHasMethod(
+                CustomAssertions.assertClassHasMethod(
                     generatedSource.getClassUnderTest(),
                     "fromValue",
                     generatedSource.fieldClasses()[0]);
@@ -335,7 +336,7 @@ final class GeneratedEnumTests implements GeneratedClassTests {
                 String.class.equals(generatedSource.generatedFields()[0].type()));
 
             final Method fromValueMethod =
-                AssertionUtils.assertClassHasMethod(
+                CustomAssertions.assertClassHasMethod(
                     generatedSource.getClassUnderTest(),
                     "fromValue",
                     generatedSource.fieldClasses()[0]);

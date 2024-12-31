@@ -62,7 +62,10 @@ public class GeneratedEnumTestUtils {
                   + "' does not have an enum constant with the name: "
                   + enumName);
 
-      AssertionUtils.assertInstanceMethodReturns(enumConstant.get(), "getValue", enumValue);
+      CustomAssertions.assertInstanceMethodReturnsValue(
+          CustomAssertions.assertClassHasMethod(enumConstant.get().getClass(), "getValue"),
+          enumValue,
+          enumConstant.get());
     }
   }
 }
