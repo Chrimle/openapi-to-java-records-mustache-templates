@@ -29,7 +29,8 @@ public class GeneratedEnumTestUtils {
     for (final GeneratedField<?> generatedField : generatedSource.generatedFields()) {
       final String enumName = generatedField.name();
       Assertions.assertTrue(
-          Arrays.stream((Enum<?>[]) generatedSource.getClassUnderTest().getEnumConstants())
+          Arrays.stream(
+                  CustomAssertions.assertClassHasEnumConstants(generatedSource.getClassUnderTest()))
               .map(Enum::name)
               .anyMatch(enumName::equals));
     }
