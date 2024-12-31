@@ -17,6 +17,7 @@
 package io.github.chrimle.example.utils;
 
 import java.lang.annotation.Annotation;
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.Arrays;
@@ -164,7 +165,7 @@ public interface CustomAssertions {
    *
    * @param aClass to be asserted.
    * @param methodName of the method which {@code aClass} is expected to have.
-   * @param methodParameterTypes of te method which {@code aClass} is expected to have.
+   * @param methodParameterTypes of the method which {@code aClass} is expected to have.
    * @return the {@link Method} with the matching name and parameter types.
    */
   static Method assertClassHasMethod(
@@ -271,6 +272,24 @@ public interface CustomAssertions {
                 + expectedValue
                 + " when invoked with "
                 + Arrays.toString(methodArguments));
+  }
+
+  /**
+   * Asserts that the {@code aClass} has a constructor with method parameter types of {@code
+   * parameterTypes}.
+   *
+   * @param aClass to be asserted.
+   * @param parameterTypes of the constructor which {@code aClass} is expected to have.
+   * @return the {@link Constructor}, with the matching parameter types.
+   */
+  static <T> Constructor<T> assertClassHasConstructor(
+      final Class<T> aClass, final Class<?>... parameterTypes) {
+    return Assertions.assertDoesNotThrow(
+        () -> aClass.getDeclaredConstructor(parameterTypes),
+        () ->
+            aClass.getCanonicalName()
+                + " does NOT have a constructor with parameter types "
+                + Arrays.toString(parameterTypes));
   }
 
   /**

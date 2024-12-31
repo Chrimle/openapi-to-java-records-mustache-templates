@@ -160,12 +160,7 @@ public class AssertionUtils {
 
   public static Constructor<?> assertRecordHasConstructor(
       final Class<?> classUnderTest, final Class<?>... constructorArgs) {
-    return Assertions.assertDoesNotThrow(
-        () -> classUnderTest.getDeclaredConstructor(constructorArgs),
-        () ->
-            classUnderTest.getCanonicalName()
-                + " does not have the expected constructor with arguments: "
-                + Arrays.toString(constructorArgs));
+    return CustomAssertions.assertClassHasConstructor(classUnderTest, constructorArgs);
   }
 
   public static void assertInstanceMethodReturns(
