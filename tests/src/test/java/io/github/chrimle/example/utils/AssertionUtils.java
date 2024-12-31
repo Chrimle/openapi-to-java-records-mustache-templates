@@ -249,7 +249,7 @@ public class AssertionUtils {
 
     // Assert Builder can be instantiated from builder()-method
     final Method builderMethod = assertClassHasMethod(classUnderTest, "builder");
-    final Object builderObject = Assertions.assertDoesNotThrow(() -> builderMethod.invoke(null));
+    final Object builderObject = CustomAssertions.assertStaticMethodCanBeInvoked(builderMethod);
     Assertions.assertNotNull(builderObject);
     for (GeneratedField<?> generatedField : generatedSource.generatedFields()) {
       final String fieldBuilderMethodName = generatedField.name();
