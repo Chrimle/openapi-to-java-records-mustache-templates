@@ -55,11 +55,10 @@ public class AssertionUtils {
   public static void assertRecordHasFieldsOfTypeWithNullableAnnotations(
       final GeneratedSource generatedSource) {
 
-    final Class<?> classUnderTest = generatedSource.getClassUnderTest();
-
     for (final GeneratedField<?> generatedField : generatedSource.generatedFields()) {
       final Field field =
-          assertRecordHasField(classUnderTest, generatedField.name(), generatedField.type());
+          assertRecordHasField(
+              generatedSource.getClassUnderTest(), generatedField.name(), generatedField.type());
 
       final Class<Valid> validAnnotation = Valid.class;
       if (generatedField.isCustomClass()) {
@@ -218,26 +217,22 @@ public class AssertionUtils {
 
   public static void assertInnerBuilderClassExistsAndCanBuildRecord(
       final GeneratedSource generatedSource) {
-
-    final Class<?> classUnderTest = generatedSource.getClassUnderTest();
-
     // Assert Builder can be instantiated from builder()-method
-    final Method builderMethod = assertClassHasMethod(classUnderTest, "builder");
-    final Object builderObject = CustomAssertions.assertStaticMethodReturnsNonNull(builderMethod);
+    final Object builderObject =
+        CustomAssertions.assertStaticMethodReturnsNonNull(
+            assertClassHasMethod(generatedSource.getClassUnderTest(), "builder"));
     for (GeneratedField<?> generatedField : generatedSource.generatedFields()) {
-      final String fieldBuilderMethodName = generatedField.name();
-      final Class<?> fieldClass = generatedField.type();
-      final Method fieldBuilderMethod =
-          CustomAssertions.assertClassHasMethod(
-              builderObject.getClass(), fieldBuilderMethodName, fieldClass);
       CustomAssertions.assertInstanceMethodReturnsValue(
-          fieldBuilderMethod, builderObject, builderObject, (Object) null);
+          CustomAssertions.assertClassHasMethod(
+              builderObject.getClass(), generatedField.name(), generatedField.type()),
+          builderObject,
+          builderObject,
+          (Object) null);
     }
-    final Method buildMethod =
-        AssertionUtils.assertClassHasMethod(builderObject.getClass(), "build");
-    final Object classObject =
-        CustomAssertions.assertInstanceMethodReturnsNonNull(buildMethod, builderObject);
-    Assertions.assertInstanceOf(classUnderTest, classObject);
+    Assertions.assertInstanceOf(
+        generatedSource.getClassUnderTest(),
+        CustomAssertions.assertInstanceMethodReturnsNonNull(
+            AssertionUtils.assertClassHasMethod(builderObject.getClass(), "build"), builderObject));
   }
 
   public static void assertStaticMethodWithArgsThrows(
