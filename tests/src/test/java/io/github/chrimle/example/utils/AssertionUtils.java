@@ -208,14 +208,7 @@ public class AssertionUtils {
 
   public static Method assertClassHasMethod(
       final Class<?> classUnderTest, final String methodName, final Class<?>... methodArgs) {
-    return Assertions.assertDoesNotThrow(
-        () -> classUnderTest.getDeclaredMethod(methodName, methodArgs),
-        () ->
-            classUnderTest.getCanonicalName()
-                + " does not have method: "
-                + methodName
-                + " with methodArgs: "
-                + Arrays.toString(methodArgs));
+    return CustomAssertions.assertClassHasMethod(classUnderTest, methodName, methodArgs);
   }
 
   public static void assertRecordDoesNotHaveField(

@@ -18,6 +18,7 @@ package io.github.chrimle.example.utils;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.function.Supplier;
 import org.junit.jupiter.api.Assertions;
@@ -154,6 +155,28 @@ public interface CustomAssertions {
             aClass.getCanonicalName()
                 + " DOES implement the interface "
                 + interfaceClass.getCanonicalName());
+  }
+
+  /**
+   * Asserts that the {@code aClass} has a <i>method</i> named {@code methodName} and with method
+   * parameters of types {@code methodParameterTypes}. The <i>method</i> may either be an instance
+   * method, or a {@code static} method.
+   *
+   * @param aClass to be asserted.
+   * @param methodName of the method which {@code aClass} is expected to have.
+   * @param methodParameterTypes of te method which {@code aClass} is expected to have.
+   * @return the {@link Method} with the matching name and parameter types.
+   */
+  static Method assertClassHasMethod(
+      final Class<?> aClass, final String methodName, final Class<?>... methodParameterTypes) {
+    return Assertions.assertDoesNotThrow(
+        () -> aClass.getDeclaredMethod(methodName, methodParameterTypes),
+        () ->
+            aClass.getCanonicalName()
+                + " does NOT have method '"
+                + methodName
+                + "' with parameterTypes "
+                + Arrays.toString(methodParameterTypes));
   }
 
   /**
