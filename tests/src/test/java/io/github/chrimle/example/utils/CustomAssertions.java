@@ -25,7 +25,11 @@ import java.util.Arrays;
 import java.util.function.Supplier;
 import org.junit.jupiter.api.Assertions;
 
-/** Collection of custom assertion methods for the purpose of re-use. */
+/**
+ * Collection of custom assertion methods for the purpose of re-use.
+ *
+ * @since 2.5.3
+ */
 public interface CustomAssertions {
 
   /**
@@ -34,6 +38,7 @@ public interface CustomAssertions {
    * @param objectSupplier of the object to be asserted.
    * @param messageSupplier for the assertion message.
    * @param <T> the type of the object.
+   * @since 2.5.3
    */
   static <T> void assertNull(
       final Supplier<T> objectSupplier, final Supplier<String> messageSupplier) {
@@ -47,6 +52,7 @@ public interface CustomAssertions {
    * @param messageSupplier for the assertion message.
    * @param <T> type of the {@code object}.
    * @return the {@code object} if it is not {@code null}.
+   * @since 2.5.3
    */
   static <T> T assertNotNull(final T object, final Supplier<String> messageSupplier) {
     Assertions.assertNotNull(object, messageSupplier);
@@ -60,6 +66,7 @@ public interface CustomAssertions {
    * @param messageSupplier for the assertion message.
    * @param <T> the type of the object.
    * @return the object if it is not {@code null}.
+   * @since 2.5.3
    */
   static <T> T assertNotNull(
       final Supplier<T> objectSupplier, final Supplier<String> messageSupplier) {
@@ -73,6 +80,7 @@ public interface CustomAssertions {
    * @param expected value to be asserted.
    * @param actualSupplier of the value to be asserted.
    * @param messageSupplier for the assertion message.
+   * @since 2.5.3
    */
   static void assertEquals(
       final Object expected,
@@ -85,6 +93,7 @@ public interface CustomAssertions {
    * Asserts that the {@code aClass} is a <i>record</i> class.
    *
    * @param aClass to be asserted.
+   * @since 2.5.3
    */
   static void assertClassIsRecordClass(final Class<?> aClass) {
     Assertions.assertTrue(aClass::isRecord, () -> aClass + " is NOT a record class");
@@ -94,6 +103,7 @@ public interface CustomAssertions {
    * Asserts that the {@code aClass} is an <i>enum</i> class.
    *
    * @param aClass to be asserted.
+   * @since 2.5.3
    */
   static void assertClassIsEnumClass(final Class<?> aClass) {
     Assertions.assertTrue(aClass::isEnum, () -> aClass + " is NOT an enum class");
@@ -106,6 +116,7 @@ public interface CustomAssertions {
    * @param annotation which the {@code aClass} is expected to be annotated with.
    * @param <T> the type of the {@code annotation}.
    * @return the {@code annotation} instance from the {@code aClass}.
+   * @since 2.5.3
    */
   static <T extends Annotation> T assertClassIsAnnotatedWith(
       final Class<?> aClass, final Class<T> annotation) {
@@ -120,6 +131,7 @@ public interface CustomAssertions {
    *
    * @param aClass to be asserted.
    * @param annotation which the {@code aClass} is expected <b>not</b> to be annotated with.
+   * @since 2.5.3
    */
   static void assertClassIsNotAnnotatedWith(
       final Class<?> aClass, final Class<? extends Annotation> annotation) {
@@ -133,6 +145,7 @@ public interface CustomAssertions {
    *
    * @param aClass to be asserted.
    * @param interfaceClass which the {@code aClass} is expected to <i>implement</i>.
+   * @since 2.5.3
    */
   static void assertClassImplementsInterface(final Class<?> aClass, final Class<?> interfaceClass) {
     Assertions.assertTrue(
@@ -148,6 +161,7 @@ public interface CustomAssertions {
    *
    * @param aClass to be asserted.
    * @param interfaceClass which the {@code aClass} is expected <b>not</b> to <i>implement</i>.
+   * @since 2.5.3
    */
   static void assertClassDoesNotImplementInterface(
       final Class<?> aClass, final Class<?> interfaceClass) {
@@ -164,6 +178,7 @@ public interface CustomAssertions {
    *
    * @param aClass to be asserted.
    * @param innerClassName of the inner class which the {@code aClass} is expected to have.
+   * @since 2.5.3
    */
   static void assertClassHasInnerClass(final Class<?> aClass, final String innerClassName) {
     Assertions.assertTrue(
@@ -181,6 +196,7 @@ public interface CustomAssertions {
    * @param aClass to be asserted.
    * @param innerClassName of the inner class which the {@code aClass} is expected <b>not</b> to
    *     have.
+   * @since 2.5.3
    */
   static void assertClassDoesNotHaveInnerClass(final Class<?> aClass, final String innerClassName) {
     Assertions.assertTrue(
@@ -200,6 +216,7 @@ public interface CustomAssertions {
    * @param methodName of the method which {@code aClass} is expected to have.
    * @param methodParameterTypes of the method which {@code aClass} is expected to have.
    * @return the {@link Method} with the matching name and parameter types.
+   * @since 2.5.3
    */
   static Method assertClassHasMethod(
       final Class<?> aClass, final String methodName, final Class<?>... methodParameterTypes) {
@@ -221,6 +238,7 @@ public interface CustomAssertions {
    * @param aClass to be asserted.
    * @param methodName of the method which {@code aClass} is expected <b>not</b> to have.
    * @param methodParameterTypes of the method which {@code aClass} is expected <b>not</b> to have.
+   * @since 2.5.3
    */
   static void assertClassDoesNotHaveMethod(
       final Class<?> aClass, final String methodName, final Class<?>... methodParameterTypes) {
@@ -242,6 +260,7 @@ public interface CustomAssertions {
    * @param method to be asserted.
    * @param expectedException to be thrown when invoking the method.
    * @param methodArguments to use when invoking the method.
+   * @since 2.5.3
    */
   static void assertStaticMethodThrowsWhenInvoked(
       final Method method,
@@ -267,6 +286,7 @@ public interface CustomAssertions {
    * @param methodArguments to use when invoking the method.
    * @return the value from invoking the method, or {@code null} if the method has return type
    *     {@code void}.
+   * @since 2.5.3
    */
   static Object assertStaticMethodCanBeInvoked(
       final Method method, final Object... methodArguments) {
@@ -282,6 +302,7 @@ public interface CustomAssertions {
    * @param method to be asserted.
    * @param methodArguments to use when invoking the method.
    * @return the non-null value from invoking the method.
+   * @since 2.5.3
    */
   static Object assertStaticMethodReturnsNonNull(
       final Method method, final Object... methodArguments) {
@@ -299,6 +320,7 @@ public interface CustomAssertions {
    * @param methodArguments to invoke the method with.
    * @return the value from invoking the method, or {@code null} if the method has return type
    *     {@code void}.
+   * @since 2.5.3
    */
   static Object assertInstanceMethodCanBeInvoked(
       final Method method, final Object object, final Object... methodArguments) {
@@ -315,6 +337,7 @@ public interface CustomAssertions {
    * @param object to invoke the method on.
    * @param methodArguments to invoke the method with.
    * @return the non-null value from invoking the method.
+   * @since 2.5.3
    */
   static Object assertInstanceMethodReturnsNonNull(
       final Method method, final Object object, final Object... methodArguments) {
@@ -331,6 +354,7 @@ public interface CustomAssertions {
    * @param expectedValue of the returned value from invoking the method.
    * @param object to invoke the method on.
    * @param methodArguments to invoke the method with.
+   * @since 2.5.3
    */
   static void assertInstanceMethodReturnsValue(
       final Method method,
@@ -356,6 +380,7 @@ public interface CustomAssertions {
    * @param parameterTypes of the constructor which {@code aClass} is expected to have.
    * @param <T> type of the {@code aClass}.
    * @return the {@link Constructor}, with the matching parameter types.
+   * @since 2.5.3
    */
   static <T> Constructor<T> assertClassHasConstructor(
       final Class<T> aClass, final Class<?>... parameterTypes) {
@@ -372,6 +397,7 @@ public interface CustomAssertions {
    *
    * @param aClass to be asserted.
    * @param numberOfFields which the {@code aClass} is expected to have.
+   * @since 2.5.3
    */
   static void assertClassHasNumberOfFields(final Class<?> aClass, final int numberOfFields) {
     assertEquals(
@@ -388,6 +414,7 @@ public interface CustomAssertions {
    * @param fieldName of the field which {@code aClass} is expected to have.
    * @param fieldType of the field which {@code aClass} is expected to have.
    * @return the {@link Field} with the matching name and type.
+   * @since 2.5.3
    */
   static Field assertClassHasField(
       final Class<?> aClass, final String fieldName, final Class<?> fieldType) {
@@ -400,6 +427,7 @@ public interface CustomAssertions {
    * @param aClass to be asserted.
    * @param fieldName of the field which {@code aClass} is expected to have.
    * @return the {@link Field} with the matching name.
+   * @since 2.5.3
    */
   static Field assertClassHasFieldWithName(final Class<?> aClass, final String fieldName) {
     return Assertions.assertDoesNotThrow(
@@ -413,6 +441,7 @@ public interface CustomAssertions {
    *
    * @param aClass to be asserted.
    * @param fieldName of the field which {@code aClass} is expected <b>not</b> to have.
+   * @since 2.5.3
    */
   static void assertClassDoesNotHaveFieldWithName(final Class<?> aClass, final String fieldName) {
     Assertions.assertThrows(
@@ -428,6 +457,7 @@ public interface CustomAssertions {
    * @param annotation which the {@code field} is expected to be annotated with.
    * @param <T> the type of the {@code annotation}.
    * @return the {@code annotation} instance from the {@code field}.
+   * @since 2.5.3
    */
   static <T extends Annotation> T assertFieldIsAnnotatedWith(
       final Field field, final Class<T> annotation) {
@@ -441,6 +471,7 @@ public interface CustomAssertions {
    *
    * @param field to be asserted.
    * @param annotation which the {@code field} is expected <b>not</b> to be annotated with.
+   * @since 2.5.3
    */
   static void assertFieldIsNotAnnotatedWith(
       final Field field, final Class<? extends Annotation> annotation) {
@@ -455,6 +486,7 @@ public interface CustomAssertions {
    * @param field to be asserted.
    * @param type which the {@code field} is expected to be.
    * @return the {@code field}.
+   * @since 2.5.3
    */
   static Field assertFieldIsOfType(final Field field, final Class<?> type) {
     assertEquals(type, field::getType, () -> field + " is NOT of type " + type.getCanonicalName());
