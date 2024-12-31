@@ -172,19 +172,7 @@ public class AssertionUtils {
       final Object objectUnderTest, final String methodName, final Object expectedValue) {
     final Class<?> classUnderTest = objectUnderTest.getClass();
     final Method method = assertClassHasMethod(classUnderTest, methodName);
-
-    final Object actualValue =
-        CustomAssertions.assertInstanceMethodCanBeInvoked(
-            method, objectUnderTest
-        );
-    Assertions.assertEquals(
-        expectedValue,
-        actualValue,
-        () ->
-            classUnderTest.getCanonicalName()
-                + " method '"
-                + methodName
-                + "' has unexpected value");
+    CustomAssertions.assertInstanceMethodReturnsValue(method, expectedValue, objectUnderTest);
   }
 
   public static void assertClassDoesNotHaveMethod(
@@ -253,10 +241,8 @@ public class AssertionUtils {
       final Method fieldBuilderMethod =
           CustomAssertions.assertClassHasMethod(
               builderObject.getClass(), fieldBuilderMethodName, fieldClass);
-      final Object object =
-          CustomAssertions.assertInstanceMethodCanBeInvoked(
-              fieldBuilderMethod, builderObject, (Object) null);
-      Assertions.assertEquals(builderObject, object);
+      CustomAssertions.assertInstanceMethodReturnsValue(
+          fieldBuilderMethod, builderObject, builderObject, (Object) null);
     }
     final Method buildMethod =
         AssertionUtils.assertClassHasMethod(builderObject.getClass(), "build");
