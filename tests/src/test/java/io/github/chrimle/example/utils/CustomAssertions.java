@@ -159,6 +159,21 @@ public interface CustomAssertions {
   }
 
   /**
+   * Asserts that the {@code aClass} has an inner class named {@code innerClassName}.
+   *
+   * @param aClass to be asserted.
+   * @param innerClassName of the inner class which the {@code aClass} is expected to have.
+   */
+  static void assertClassHasInnerClass(final Class<?> aClass, final String innerClassName) {
+    Assertions.assertTrue(
+        () ->
+            Arrays.stream(aClass.getClasses())
+                .map(Class::getSimpleName)
+                .anyMatch(innerClassName::equals),
+        () -> aClass.getCanonicalName() + " does NOT have inner class " + innerClassName);
+  }
+
+  /**
    * Asserts that the {@code aClass} has a <i>method</i> named {@code methodName} and with method
    * parameters of types {@code methodParameterTypes}. The <i>method</i> may either be an instance
    * method, or a {@code static} method.

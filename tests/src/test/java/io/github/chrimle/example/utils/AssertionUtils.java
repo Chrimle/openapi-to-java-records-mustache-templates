@@ -202,13 +202,7 @@ public class AssertionUtils {
 
   public static void assertClassHasInnerClass(
       final Class<?> classUnderTest, final String innerClassName) {
-    Assertions.assertTrue(
-        Arrays.stream(classUnderTest.getClasses())
-            .anyMatch(b -> innerClassName.equals(b.getSimpleName())),
-        () ->
-            classUnderTest.getCanonicalName()
-                + " does NOT have inner class with name: "
-                + innerClassName);
+    CustomAssertions.assertClassHasInnerClass(classUnderTest, innerClassName);
   }
 
   public static void assertClassDoesNotHaveInnerClass(
