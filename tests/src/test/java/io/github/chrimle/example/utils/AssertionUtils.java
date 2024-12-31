@@ -254,8 +254,8 @@ public class AssertionUtils {
       final String fieldBuilderMethodName = generatedField.name();
       final Class<?> fieldClass = generatedField.type();
       final Method fieldBuilderMethod =
-          Assertions.assertDoesNotThrow(
-              () -> builderObject.getClass().getDeclaredMethod(fieldBuilderMethodName, fieldClass));
+          CustomAssertions.assertClassHasMethod(
+              builderObject.getClass(), fieldBuilderMethodName, fieldClass);
       final Object object =
           Assertions.assertDoesNotThrow(
               () -> fieldBuilderMethod.invoke(builderObject, (Object) null));
