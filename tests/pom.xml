@@ -27,7 +27,7 @@
         <!-- / Build Plugin Versions -->
 
         <!-- Default `configuration`-option values -->
-        <modelPackage.default>${project.groupId}.example</modelPackage.default>
+        <modelPackage.default>${project.groupId}.o2jrm</modelPackage.default>
         <generateModels.default>true</generateModels.default>
         <generateApis.default>false</generateApis.default>
         <generateSupportingFiles.default>false</generateSupportingFiles.default>
