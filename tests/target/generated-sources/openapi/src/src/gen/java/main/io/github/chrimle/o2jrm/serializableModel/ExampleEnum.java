@@ -16,12 +16,11 @@
  *
  */
 
-package io.github.chrimle.example.useBeanValidation;
+package io.github.chrimle.o2jrm.serializableModel;
 
 import java.util.Objects;
 import com.google.gson.annotations.SerializedName;
-import jakarta.validation.constraints.*;
-import jakarta.validation.Valid;
+import java.io.Serializable;
 
 /**
  * Example of an Enum

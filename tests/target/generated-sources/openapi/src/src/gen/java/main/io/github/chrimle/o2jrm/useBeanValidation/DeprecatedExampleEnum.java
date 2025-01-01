@@ -16,10 +16,12 @@
  *
  */
 
-package io.github.chrimle.example.standard;
+package io.github.chrimle.o2jrm.useBeanValidation;
 
 import java.util.Objects;
 import com.google.gson.annotations.SerializedName;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 /**
  * Example of a deprecated Enum

@@ -16,7 +16,7 @@
  *
  */
 
-package io.github.chrimle.example.additionalModelTypeAnnotations;
+package io.github.chrimle.o2jrm.additionalModelTypeAnnotations;
 
 import java.util.Objects;
 import com.google.gson.annotations.SerializedName;
