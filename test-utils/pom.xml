@@ -21,10 +21,6 @@
         <maven.compiler.target>17</maven.compiler.target>
         <maven.compiler.release>17</maven.compiler.release>
         <maven.plugin.validation>VERBOSE</maven.plugin.validation>
-
-        <!-- Build Plugin Versions -->
-        <maven-deploy-plugin.version>3.1.2</maven-deploy-plugin.version>
-        <!-- / Build Plugin Versions -->
     </properties>
 
     <dependencies>

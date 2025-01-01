@@ -73,6 +73,11 @@
         <hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
         <!-- / Dependency Versions -->
 
+        <!-- Build Plugin Versions -->
+        <maven-dependency-plugin.version>3.8.1</maven-dependency-plugin.version>
+        <maven-deploy-plugin.version>3.1.3</maven-deploy-plugin.version>
+        <!-- / Build Plugin Versions -->
+
         <!-- Publish to Maven Central Repository -->
         <maven-gpg-plugin.version>3.2.7</maven-gpg-plugin.version>
         <maven-source-plugin.version>3.3.1</maven-source-plugin.version>
