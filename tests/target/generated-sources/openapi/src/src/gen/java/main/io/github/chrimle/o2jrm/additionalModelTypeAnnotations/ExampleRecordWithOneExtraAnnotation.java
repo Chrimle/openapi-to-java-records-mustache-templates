@@ -16,7 +16,7 @@
  *
  */
 
-package io.github.chrimle.example.additionalModelTypeAnnotations;
+package io.github.chrimle.o2jrm.additionalModelTypeAnnotations;
 
 import java.util.Objects;
 import com.google.gson.TypeAdapter;
@@ -33,15 +33,15 @@ import java.util.Arrays;
  * @param field1 a boolean field with an extra field annotation
  * @param field2 a boolean field with two extra field annotations
  */
-@io.github.chrimle.example.annotations.TestAnnotationOne
-@io.github.chrimle.example.annotations.TestAnnotationTwo
-@io.github.chrimle.example.annotations.TestAnnotationThree
-@io.github.chrimle.example.annotations.TestExtraAnnotation
+@io.github.chrimle.o2jrm.annotations.TestAnnotationOne
+@io.github.chrimle.o2jrm.annotations.TestAnnotationTwo
+@io.github.chrimle.o2jrm.annotations.TestAnnotationThree
+@io.github.chrimle.o2jrm.annotations.TestExtraAnnotation
 public record ExampleRecordWithOneExtraAnnotation(
-    @io.github.chrimle.example.annotations.TestFieldExtraAnnotationOne
+    @io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationOne
     @javax.annotation.Nonnull Boolean field1,
-    @io.github.chrimle.example.annotations.TestFieldExtraAnnotationOne
-@io.github.chrimle.example.annotations.TestFieldExtraAnnotationTwo
+    @io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationOne
+@io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationTwo
     @javax.annotation.Nonnull Boolean field2) {
 
   public ExampleRecordWithOneExtraAnnotation(

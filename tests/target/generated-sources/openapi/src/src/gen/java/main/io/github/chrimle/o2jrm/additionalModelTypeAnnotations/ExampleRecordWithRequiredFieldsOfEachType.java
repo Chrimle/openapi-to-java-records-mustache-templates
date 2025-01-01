@@ -16,7 +16,7 @@
  *
  */
 
-package io.github.chrimle.example.additionalModelTypeAnnotations;
+package io.github.chrimle.o2jrm.additionalModelTypeAnnotations;
 
 import java.util.Objects;
 import com.google.gson.TypeAdapter;
@@ -24,8 +24,8 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.github.chrimle.example.additionalModelTypeAnnotations.ExampleEnum;
-import io.github.chrimle.example.additionalModelTypeAnnotations.ExampleRecord;
+import io.github.chrimle.o2jrm.additionalModelTypeAnnotations.ExampleEnum;
+import io.github.chrimle.o2jrm.additionalModelTypeAnnotations.ExampleRecord;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -46,9 +46,9 @@ import java.util.Set;
  * @param field7 ExampleRecord.
  * @param field8 ExampleEnum.
  */
-@io.github.chrimle.example.annotations.TestAnnotationOne
-@io.github.chrimle.example.annotations.TestAnnotationTwo
-@io.github.chrimle.example.annotations.TestAnnotationThree
+@io.github.chrimle.o2jrm.annotations.TestAnnotationOne
+@io.github.chrimle.o2jrm.annotations.TestAnnotationTwo
+@io.github.chrimle.o2jrm.annotations.TestAnnotationThree
 public record ExampleRecordWithRequiredFieldsOfEachType(
     @javax.annotation.Nonnull Boolean field1,
     @javax.annotation.Nonnull String field2,

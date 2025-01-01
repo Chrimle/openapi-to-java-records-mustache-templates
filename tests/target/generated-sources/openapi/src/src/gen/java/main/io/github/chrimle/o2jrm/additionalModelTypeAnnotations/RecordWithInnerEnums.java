@@ -16,7 +16,7 @@
  *
  */
 
-package io.github.chrimle.example.additionalModelTypeAnnotations;
+package io.github.chrimle.o2jrm.additionalModelTypeAnnotations;
 
 import java.util.Objects;
 import com.google.gson.TypeAdapter;
@@ -33,9 +33,9 @@ import java.util.Arrays;
  * @param exampleInner Example of an inner enum class
  * @param exampleInnerTwo Example of another inner enum class with integer values
  */
-@io.github.chrimle.example.annotations.TestAnnotationOne
-@io.github.chrimle.example.annotations.TestAnnotationTwo
-@io.github.chrimle.example.annotations.TestAnnotationThree
+@io.github.chrimle.o2jrm.annotations.TestAnnotationOne
+@io.github.chrimle.o2jrm.annotations.TestAnnotationTwo
+@io.github.chrimle.o2jrm.annotations.TestAnnotationThree
 public record RecordWithInnerEnums(
     @javax.annotation.Nonnull ExampleInnerEnum exampleInner,
     @javax.annotation.Nonnull ExampleInnerTwoEnum exampleInnerTwo) {

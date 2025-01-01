@@ -16,7 +16,7 @@
  *
  */
 
-package io.github.chrimle.example.additionalModelTypeAnnotations;
+package io.github.chrimle.o2jrm.additionalModelTypeAnnotations;
 
 import java.util.Objects;
 import com.google.gson.TypeAdapter;
@@ -28,19 +28,19 @@ import java.io.IOException;
 import java.util.Arrays;
 
 /**
- * Example of a Record with two extra annotations
+ * Example of a deprecated Record
  *
+ * @deprecated
  * @param field1 a boolean field
  */
-@io.github.chrimle.example.annotations.TestAnnotationOne
-@io.github.chrimle.example.annotations.TestAnnotationTwo
-@io.github.chrimle.example.annotations.TestAnnotationThree
-@io.github.chrimle.example.annotations.TestExtraAnnotation
-@io.github.chrimle.example.annotations.TestExtraAnnotationTwo
-public record ExampleRecordWithTwoExtraAnnotations(
+@Deprecated
+@io.github.chrimle.o2jrm.annotations.TestAnnotationOne
+@io.github.chrimle.o2jrm.annotations.TestAnnotationTwo
+@io.github.chrimle.o2jrm.annotations.TestAnnotationThree
+public record DeprecatedExampleRecord(
     @javax.annotation.Nonnull Boolean field1) {
 
-  public ExampleRecordWithTwoExtraAnnotations(
+  public DeprecatedExampleRecord(
       @javax.annotation.Nonnull final Boolean field1) { 
     this.field1 = field1;
   }

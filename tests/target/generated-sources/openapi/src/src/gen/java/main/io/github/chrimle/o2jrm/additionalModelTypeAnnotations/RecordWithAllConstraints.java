@@ -16,7 +16,7 @@
  *
  */
 
-package io.github.chrimle.example.additionalModelTypeAnnotations;
+package io.github.chrimle.o2jrm.additionalModelTypeAnnotations;
 
 import java.util.Objects;
 import com.google.gson.TypeAdapter;
@@ -59,9 +59,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * @param bigDecimalMaximum BigDecimal.
  * @param bigDecimalMinimumAndMaximum BigDecimal.
  */
-@io.github.chrimle.example.annotations.TestAnnotationOne
-@io.github.chrimle.example.annotations.TestAnnotationTwo
-@io.github.chrimle.example.annotations.TestAnnotationThree
+@io.github.chrimle.o2jrm.annotations.TestAnnotationOne
+@io.github.chrimle.o2jrm.annotations.TestAnnotationTwo
+@io.github.chrimle.o2jrm.annotations.TestAnnotationThree
 public record RecordWithAllConstraints(
     @javax.annotation.Nonnull String stringStandard,
     @javax.annotation.Nonnull String stringDefault,
