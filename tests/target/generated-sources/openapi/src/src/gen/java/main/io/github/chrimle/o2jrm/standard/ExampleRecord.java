@@ -16,7 +16,7 @@
  *
  */
 
-package io.github.chrimle.example.standard;
+package io.github.chrimle.o2jrm.standard;
 
 import java.util.Objects;
 import com.google.gson.TypeAdapter;
@@ -28,16 +28,14 @@ import java.io.IOException;
 import java.util.Arrays;
 
 /**
- * Example of a deprecated Record
+ * Example of a Record
  *
- * @deprecated
  * @param field1 a boolean field
  */
-@Deprecated
-public record DeprecatedExampleRecord(
+public record ExampleRecord(
     @javax.annotation.Nonnull Boolean field1) {
 
-  public DeprecatedExampleRecord(
+  public ExampleRecord(
       @javax.annotation.Nonnull final Boolean field1) { 
     this.field1 = field1;
   }

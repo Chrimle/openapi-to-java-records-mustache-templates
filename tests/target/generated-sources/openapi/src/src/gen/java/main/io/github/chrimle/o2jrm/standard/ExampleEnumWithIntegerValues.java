@@ -16,7 +16,7 @@
  *
  */
 
-package io.github.chrimle.example.standard;
+package io.github.chrimle.o2jrm.standard;
 
 import java.util.Objects;
 import com.google.gson.annotations.SerializedName;
