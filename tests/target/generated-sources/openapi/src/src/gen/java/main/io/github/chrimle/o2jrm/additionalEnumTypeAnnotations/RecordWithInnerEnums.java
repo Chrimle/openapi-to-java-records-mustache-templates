@@ -16,7 +16,7 @@
  *
  */
 
-package io.github.chrimle.example.useJakartaEe;
+package io.github.chrimle.o2jrm.additionalEnumTypeAnnotations;
 
 import java.util.Objects;
 import com.google.gson.TypeAdapter;
@@ -34,12 +34,12 @@ import java.util.Arrays;
  * @param exampleInnerTwo Example of another inner enum class with integer values
  */
 public record RecordWithInnerEnums(
-    @jakarta.annotation.Nonnull ExampleInnerEnum exampleInner,
-    @jakarta.annotation.Nonnull ExampleInnerTwoEnum exampleInnerTwo) {
+    @javax.annotation.Nonnull ExampleInnerEnum exampleInner,
+    @javax.annotation.Nonnull ExampleInnerTwoEnum exampleInnerTwo) {
 
   public RecordWithInnerEnums(
-      @jakarta.annotation.Nonnull final ExampleInnerEnum exampleInner,
-      @jakarta.annotation.Nonnull final ExampleInnerTwoEnum exampleInnerTwo) { 
+      @javax.annotation.Nonnull final ExampleInnerEnum exampleInner,
+      @javax.annotation.Nonnull final ExampleInnerTwoEnum exampleInnerTwo) { 
     this.exampleInner = exampleInner;
     this.exampleInnerTwo = exampleInnerTwo;
   }
@@ -47,6 +47,9 @@ public record RecordWithInnerEnums(
   /**
    * Example of an inner enum class
    */
+  @io.github.chrimle.o2jrm.annotations.TestAnnotationOne
+  @io.github.chrimle.o2jrm.annotations.TestAnnotationTwo
+  @io.github.chrimle.o2jrm.annotations.TestAnnotationThree
   public enum ExampleInnerEnum {
     /**
      * Some description of ENUM1
@@ -100,6 +103,9 @@ public record RecordWithInnerEnums(
   /**
    * Example of another inner enum class with integer values
    */
+  @io.github.chrimle.o2jrm.annotations.TestAnnotationOne
+  @io.github.chrimle.o2jrm.annotations.TestAnnotationTwo
+  @io.github.chrimle.o2jrm.annotations.TestAnnotationThree
   public enum ExampleInnerTwoEnum {
     NUMBER_404(404),
     NUMBER_501(501),

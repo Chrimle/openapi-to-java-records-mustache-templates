@@ -16,7 +16,7 @@
  *
  */
 
-package io.github.chrimle.example.useEnumCaseInsensitive;
+package io.github.chrimle.o2jrm.useBeanValidation;
 
 import java.util.Objects;
 import com.google.gson.TypeAdapter;
@@ -26,6 +26,8 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 /**
  * Example of a Record with inner enum classes
@@ -77,7 +79,7 @@ public record RecordWithInnerEnums(
     }
 
     /**
-     * Case-insensitively matches the given {@code value} to an enum constant using {@link
+     * Case-sensitively matches the given {@code value} to an enum constant using {@link
      * #getValue()}.
      *
      * <p><b>NOTE:</b> if multiple enum constants have a matching value, the first enum constant is
@@ -89,7 +91,7 @@ public record RecordWithInnerEnums(
      */
     public static ExampleInnerEnum fromValue(final String value) {
       for (final ExampleInnerEnum constant : ExampleInnerEnum.values()) {
-        if (constant.getValue().equalsIgnoreCase(value)) {
+        if (constant.getValue().equals(value)) {
           return constant;
         }
       }

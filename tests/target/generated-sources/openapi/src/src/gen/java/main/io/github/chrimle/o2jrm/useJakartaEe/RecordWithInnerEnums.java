@@ -16,7 +16,7 @@
  *
  */
 
-package io.github.chrimle.example.useBeanValidation;
+package io.github.chrimle.o2jrm.useJakartaEe;
 
 import java.util.Objects;
 import com.google.gson.TypeAdapter;
@@ -26,8 +26,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
-import jakarta.validation.constraints.*;
-import jakarta.validation.Valid;
 
 /**
  * Example of a Record with inner enum classes
@@ -36,12 +34,12 @@ import jakarta.validation.Valid;
  * @param exampleInnerTwo Example of another inner enum class with integer values
  */
 public record RecordWithInnerEnums(
-    @javax.annotation.Nonnull ExampleInnerEnum exampleInner,
-    @javax.annotation.Nonnull ExampleInnerTwoEnum exampleInnerTwo) {
+    @jakarta.annotation.Nonnull ExampleInnerEnum exampleInner,
+    @jakarta.annotation.Nonnull ExampleInnerTwoEnum exampleInnerTwo) {
 
   public RecordWithInnerEnums(
-      @javax.annotation.Nonnull final ExampleInnerEnum exampleInner,
-      @javax.annotation.Nonnull final ExampleInnerTwoEnum exampleInnerTwo) { 
+      @jakarta.annotation.Nonnull final ExampleInnerEnum exampleInner,
+      @jakarta.annotation.Nonnull final ExampleInnerTwoEnum exampleInnerTwo) { 
     this.exampleInner = exampleInner;
     this.exampleInnerTwo = exampleInnerTwo;
   }

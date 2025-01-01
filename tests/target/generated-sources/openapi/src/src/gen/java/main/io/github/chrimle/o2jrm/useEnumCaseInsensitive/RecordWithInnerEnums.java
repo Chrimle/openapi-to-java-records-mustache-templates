@@ -16,7 +16,7 @@
  *
  */
 
-package io.github.chrimle.example.additionalEnumTypeAnnotations;
+package io.github.chrimle.o2jrm.useEnumCaseInsensitive;
 
 import java.util.Objects;
 import com.google.gson.TypeAdapter;
@@ -47,9 +47,6 @@ public record RecordWithInnerEnums(
   /**
    * Example of an inner enum class
    */
-  @io.github.chrimle.o2jrm.annotations.TestAnnotationOne
-  @io.github.chrimle.o2jrm.annotations.TestAnnotationTwo
-  @io.github.chrimle.o2jrm.annotations.TestAnnotationThree
   public enum ExampleInnerEnum {
     /**
      * Some description of ENUM1
@@ -80,7 +77,7 @@ public record RecordWithInnerEnums(
     }
 
     /**
-     * Case-sensitively matches the given {@code value} to an enum constant using {@link
+     * Case-insensitively matches the given {@code value} to an enum constant using {@link
      * #getValue()}.
      *
      * <p><b>NOTE:</b> if multiple enum constants have a matching value, the first enum constant is
@@ -92,7 +89,7 @@ public record RecordWithInnerEnums(
      */
     public static ExampleInnerEnum fromValue(final String value) {
       for (final ExampleInnerEnum constant : ExampleInnerEnum.values()) {
-        if (constant.getValue().equals(value)) {
+        if (constant.getValue().equalsIgnoreCase(value)) {
           return constant;
         }
       }
@@ -103,9 +100,6 @@ public record RecordWithInnerEnums(
   /**
    * Example of another inner enum class with integer values
    */
-  @io.github.chrimle.o2jrm.annotations.TestAnnotationOne
-  @io.github.chrimle.o2jrm.annotations.TestAnnotationTwo
-  @io.github.chrimle.o2jrm.annotations.TestAnnotationThree
   public enum ExampleInnerTwoEnum {
     NUMBER_404(404),
     NUMBER_501(501),

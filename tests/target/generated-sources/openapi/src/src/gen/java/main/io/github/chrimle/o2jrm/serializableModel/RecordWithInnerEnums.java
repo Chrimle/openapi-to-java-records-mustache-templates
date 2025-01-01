@@ -16,7 +16,7 @@
  *
  */
 
-package io.github.chrimle.example.generateBuilders;
+package io.github.chrimle.o2jrm.serializableModel;
 
 import java.util.Objects;
 import com.google.gson.TypeAdapter;
@@ -26,6 +26,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import java.io.Serializable;
 
 /**
  * Example of a Record with inner enum classes
@@ -35,66 +36,16 @@ import java.util.Arrays;
  */
 public record RecordWithInnerEnums(
     @javax.annotation.Nonnull ExampleInnerEnum exampleInner,
-    @javax.annotation.Nonnull ExampleInnerTwoEnum exampleInnerTwo) {
+    @javax.annotation.Nonnull ExampleInnerTwoEnum exampleInnerTwo
+  ) implements Serializable {
+
+  private static final long serialVersionUID = 1L;
 
   public RecordWithInnerEnums(
       @javax.annotation.Nonnull final ExampleInnerEnum exampleInner,
       @javax.annotation.Nonnull final ExampleInnerTwoEnum exampleInnerTwo) { 
     this.exampleInner = exampleInner;
     this.exampleInnerTwo = exampleInnerTwo;
-  }
-
-  /** Builder class for {@link RecordWithInnerEnums }. */
-  public static class Builder {
-
-    private ExampleInnerEnum exampleInner;
-    private ExampleInnerTwoEnum exampleInnerTwo;
-
-    /**
-     * Sets the value of {@link RecordWithInnerEnums#exampleInner }.
-     *
-     * <p><b>NOTE:</b> Pass-by-reference is used!
-     *
-     * @param exampleInner Example of an inner enum class.
-     * @return this {@link Builder}-instance for method-chaining.
-     */
-    public Builder exampleInner(final ExampleInnerEnum exampleInner) {
-      this.exampleInner = exampleInner;
-      return this;
-    }
-
-    /**
-     * Sets the value of {@link RecordWithInnerEnums#exampleInnerTwo }.
-     *
-     * <p><b>NOTE:</b> Pass-by-reference is used!
-     *
-     * @param exampleInnerTwo Example of another inner enum class with integer values.
-     * @return this {@link Builder}-instance for method-chaining.
-     */
-    public Builder exampleInnerTwo(final ExampleInnerTwoEnum exampleInnerTwo) {
-      this.exampleInnerTwo = exampleInnerTwo;
-      return this;
-    }
-
-    /**
-     * Builds a {@link RecordWithInnerEnums }-instance with the values provided in preceding
-     * builder methods.
-     *
-     * <p><b>NOTE:</b> Pass-by-reference is used!
-     *
-     * @return a new {@link RecordWithInnerEnums }-instance.
-     */
-    public RecordWithInnerEnums build() {
-      return new RecordWithInnerEnums(
-        exampleInner,
-        exampleInnerTwo
-      );
-    }
-  }
-
-  /** Creates a new {@link Builder}-instance. */
-  public static RecordWithInnerEnums.Builder builder() {
-    return new RecordWithInnerEnums.Builder();
   }
 
   /**
