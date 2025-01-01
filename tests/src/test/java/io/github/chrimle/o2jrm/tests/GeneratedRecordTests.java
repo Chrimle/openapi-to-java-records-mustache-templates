@@ -17,7 +17,6 @@
 package io.github.chrimle.o2jrm.tests;
 
 import io.github.chrimle.o2jrm.GeneratedSource;
-import io.github.chrimle.o2jrm.annotations.*;
 import io.github.chrimle.o2jrm.models.GeneratedField;
 import io.github.chrimle.o2jrm.tests.GeneratedRecordTests.GeneratorConfigurationTests.ConfigOptionsTests;
 import io.github.chrimle.o2jrm.tests.GeneratedRecordTests.GeneratorConfigurationTests.ConfigOptionsTests.AdditionalModelTypeAnnotationsTests;
@@ -36,6 +35,7 @@ import io.github.chrimle.o2jrm.tests.GeneratedRecordTests.OpenAPITests.SchemaTes
 import io.github.chrimle.o2jrm.utils.AssertionUtils;
 import io.github.chrimle.o2jrm.utils.CustomAssertions;
 import io.github.chrimle.o2jrm.utils.GeneratedRecordTestUtils;
+import io.github.chrimle.o2jrm.annotations.*;
 import java.io.Serializable;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
