@@ -10,6 +10,7 @@
     <modules>
         <module>mustache-templates</module>
         <module>tests</module>
+        <module>test-utils</module>
     </modules>
 
     <!-- Project Information -->
@@ -249,6 +250,7 @@
                             <tokenAuth>true</tokenAuth>
                             <autoPublish>true</autoPublish>
                             <excludeArtifacts>openapi-to-java-records-mustache-templates-tests</excludeArtifacts>
+                            <excludeArtifacts>openapi-to-java-records-mustache-templates-test-utils</excludeArtifacts>
                         </configuration>
                     </plugin>
                     <plugin>
