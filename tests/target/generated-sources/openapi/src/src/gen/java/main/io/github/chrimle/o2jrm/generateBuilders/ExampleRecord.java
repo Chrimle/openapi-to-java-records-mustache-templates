@@ -16,7 +16,7 @@
  *
  */
 
-package io.github.chrimle.example.generateBuilders;
+package io.github.chrimle.o2jrm.generateBuilders;
 
 import java.util.Objects;
 import com.google.gson.TypeAdapter;
@@ -28,27 +28,25 @@ import java.io.IOException;
 import java.util.Arrays;
 
 /**
- * Example of a Record with two extra annotations
+ * Example of a Record
  *
  * @param field1 a boolean field
  */
-@io.github.chrimle.example.annotations.TestExtraAnnotation
-@io.github.chrimle.example.annotations.TestExtraAnnotationTwo
-public record ExampleRecordWithTwoExtraAnnotations(
+public record ExampleRecord(
     @javax.annotation.Nonnull Boolean field1) {
 
-  public ExampleRecordWithTwoExtraAnnotations(
+  public ExampleRecord(
       @javax.annotation.Nonnull final Boolean field1) { 
     this.field1 = field1;
   }
 
-  /** Builder class for {@link ExampleRecordWithTwoExtraAnnotations }. */
+  /** Builder class for {@link ExampleRecord }. */
   public static class Builder {
 
     private Boolean field1;
 
     /**
-     * Sets the value of {@link ExampleRecordWithTwoExtraAnnotations#field1 }.
+     * Sets the value of {@link ExampleRecord#field1 }.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
      *
@@ -61,22 +59,22 @@ public record ExampleRecordWithTwoExtraAnnotations(
     }
 
     /**
-     * Builds a {@link ExampleRecordWithTwoExtraAnnotations }-instance with the values provided in preceding
+     * Builds a {@link ExampleRecord }-instance with the values provided in preceding
      * builder methods.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
      *
-     * @return a new {@link ExampleRecordWithTwoExtraAnnotations }-instance.
+     * @return a new {@link ExampleRecord }-instance.
      */
-    public ExampleRecordWithTwoExtraAnnotations build() {
-      return new ExampleRecordWithTwoExtraAnnotations(
+    public ExampleRecord build() {
+      return new ExampleRecord(
         field1
       );
     }
   }
 
   /** Creates a new {@link Builder}-instance. */
-  public static ExampleRecordWithTwoExtraAnnotations.Builder builder() {
-    return new ExampleRecordWithTwoExtraAnnotations.Builder();
+  public static ExampleRecord.Builder builder() {
+    return new ExampleRecord.Builder();
   }
 }

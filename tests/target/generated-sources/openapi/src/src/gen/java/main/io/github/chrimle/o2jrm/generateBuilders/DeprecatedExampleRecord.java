@@ -16,7 +16,7 @@
  *
  */
 
-package io.github.chrimle.example.generateBuilders;
+package io.github.chrimle.o2jrm.generateBuilders;
 
 import java.util.Objects;
 import com.google.gson.TypeAdapter;
@@ -28,53 +28,55 @@ import java.io.IOException;
 import java.util.Arrays;
 
 /**
- * Example of a Record with default fields
+ * Example of a deprecated Record
  *
- * @param field1 a String field with a default value
+ * @deprecated
+ * @param field1 a boolean field
  */
-public record ExampleRecordWithDefaultFields(
-    @javax.annotation.Nonnull String field1) {
+@Deprecated
+public record DeprecatedExampleRecord(
+    @javax.annotation.Nonnull Boolean field1) {
 
-  public ExampleRecordWithDefaultFields(
-      @javax.annotation.Nullable final String field1) { 
-    this.field1 = Objects.requireNonNullElse(field1, "someDefaultValue");
+  public DeprecatedExampleRecord(
+      @javax.annotation.Nonnull final Boolean field1) { 
+    this.field1 = field1;
   }
 
-  /** Builder class for {@link ExampleRecordWithDefaultFields }. */
+  /** Builder class for {@link DeprecatedExampleRecord }. */
   public static class Builder {
 
-    private String field1;
+    private Boolean field1;
 
     /**
-     * Sets the value of {@link ExampleRecordWithDefaultFields#field1 }.
+     * Sets the value of {@link DeprecatedExampleRecord#field1 }.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
      *
-     * @param field1 a String field with a default value.
+     * @param field1 a boolean field.
      * @return this {@link Builder}-instance for method-chaining.
      */
-    public Builder field1(final String field1) {
+    public Builder field1(final Boolean field1) {
       this.field1 = field1;
       return this;
     }
 
     /**
-     * Builds a {@link ExampleRecordWithDefaultFields }-instance with the values provided in preceding
+     * Builds a {@link DeprecatedExampleRecord }-instance with the values provided in preceding
      * builder methods.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
      *
-     * @return a new {@link ExampleRecordWithDefaultFields }-instance.
+     * @return a new {@link DeprecatedExampleRecord }-instance.
      */
-    public ExampleRecordWithDefaultFields build() {
-      return new ExampleRecordWithDefaultFields(
+    public DeprecatedExampleRecord build() {
+      return new DeprecatedExampleRecord(
         field1
       );
     }
   }
 
   /** Creates a new {@link Builder}-instance. */
-  public static ExampleRecordWithDefaultFields.Builder builder() {
-    return new ExampleRecordWithDefaultFields.Builder();
+  public static DeprecatedExampleRecord.Builder builder() {
+    return new DeprecatedExampleRecord.Builder();
   }
 }

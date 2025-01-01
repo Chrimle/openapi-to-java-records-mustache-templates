@@ -16,7 +16,7 @@
  *
  */
 
-package io.github.chrimle.example.generateBuilders;
+package io.github.chrimle.o2jrm.generateBuilders;
 
 import java.util.Objects;
 import com.google.gson.TypeAdapter;
@@ -28,53 +28,53 @@ import java.io.IOException;
 import java.util.Arrays;
 
 /**
- * Example of a Record
+ * Example of a Record with default fields
  *
- * @param field1 a boolean field
+ * @param field1 a String field with a default value
  */
-public record ExampleRecord(
-    @javax.annotation.Nonnull Boolean field1) {
+public record ExampleRecordWithDefaultFields(
+    @javax.annotation.Nonnull String field1) {
 
-  public ExampleRecord(
-      @javax.annotation.Nonnull final Boolean field1) { 
-    this.field1 = field1;
+  public ExampleRecordWithDefaultFields(
+      @javax.annotation.Nullable final String field1) { 
+    this.field1 = Objects.requireNonNullElse(field1, "someDefaultValue");
   }
 
-  /** Builder class for {@link ExampleRecord }. */
+  /** Builder class for {@link ExampleRecordWithDefaultFields }. */
   public static class Builder {
 
-    private Boolean field1;
+    private String field1;
 
     /**
-     * Sets the value of {@link ExampleRecord#field1 }.
+     * Sets the value of {@link ExampleRecordWithDefaultFields#field1 }.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
      *
-     * @param field1 a boolean field.
+     * @param field1 a String field with a default value.
      * @return this {@link Builder}-instance for method-chaining.
      */
-    public Builder field1(final Boolean field1) {
+    public Builder field1(final String field1) {
       this.field1 = field1;
       return this;
     }
 
     /**
-     * Builds a {@link ExampleRecord }-instance with the values provided in preceding
+     * Builds a {@link ExampleRecordWithDefaultFields }-instance with the values provided in preceding
      * builder methods.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
      *
-     * @return a new {@link ExampleRecord }-instance.
+     * @return a new {@link ExampleRecordWithDefaultFields }-instance.
      */
-    public ExampleRecord build() {
-      return new ExampleRecord(
+    public ExampleRecordWithDefaultFields build() {
+      return new ExampleRecordWithDefaultFields(
         field1
       );
     }
   }
 
   /** Creates a new {@link Builder}-instance. */
-  public static ExampleRecord.Builder builder() {
-    return new ExampleRecord.Builder();
+  public static ExampleRecordWithDefaultFields.Builder builder() {
+    return new ExampleRecordWithDefaultFields.Builder();
   }
 }

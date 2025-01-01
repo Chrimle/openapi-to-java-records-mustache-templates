@@ -16,7 +16,7 @@
  *
  */
 
-package io.github.chrimle.example.generateBuilders;
+package io.github.chrimle.o2jrm.generateBuilders;
 
 import java.util.Objects;
 import com.google.gson.TypeAdapter;
@@ -28,27 +28,27 @@ import java.io.IOException;
 import java.util.Arrays;
 
 /**
- * Example of a deprecated Record
+ * Example of a Record with two extra annotations
  *
- * @deprecated
  * @param field1 a boolean field
  */
-@Deprecated
-public record DeprecatedExampleRecord(
+@io.github.chrimle.o2jrm.annotations.TestExtraAnnotation
+@io.github.chrimle.o2jrm.annotations.TestExtraAnnotationTwo
+public record ExampleRecordWithTwoExtraAnnotations(
     @javax.annotation.Nonnull Boolean field1) {
 
-  public DeprecatedExampleRecord(
+  public ExampleRecordWithTwoExtraAnnotations(
       @javax.annotation.Nonnull final Boolean field1) { 
     this.field1 = field1;
   }
 
-  /** Builder class for {@link DeprecatedExampleRecord }. */
+  /** Builder class for {@link ExampleRecordWithTwoExtraAnnotations }. */
   public static class Builder {
 
     private Boolean field1;
 
     /**
-     * Sets the value of {@link DeprecatedExampleRecord#field1 }.
+     * Sets the value of {@link ExampleRecordWithTwoExtraAnnotations#field1 }.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
      *
@@ -61,22 +61,22 @@ public record DeprecatedExampleRecord(
     }
 
     /**
-     * Builds a {@link DeprecatedExampleRecord }-instance with the values provided in preceding
+     * Builds a {@link ExampleRecordWithTwoExtraAnnotations }-instance with the values provided in preceding
      * builder methods.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
      *
-     * @return a new {@link DeprecatedExampleRecord }-instance.
+     * @return a new {@link ExampleRecordWithTwoExtraAnnotations }-instance.
      */
-    public DeprecatedExampleRecord build() {
-      return new DeprecatedExampleRecord(
+    public ExampleRecordWithTwoExtraAnnotations build() {
+      return new ExampleRecordWithTwoExtraAnnotations(
         field1
       );
     }
   }
 
   /** Creates a new {@link Builder}-instance. */
-  public static DeprecatedExampleRecord.Builder builder() {
-    return new DeprecatedExampleRecord.Builder();
+  public static ExampleRecordWithTwoExtraAnnotations.Builder builder() {
+    return new ExampleRecordWithTwoExtraAnnotations.Builder();
   }
 }

@@ -16,7 +16,7 @@
  *
  */
 
-package io.github.chrimle.example.generateBuilders;
+package io.github.chrimle.o2jrm.generateBuilders;
 
 import java.util.Objects;
 import com.google.gson.TypeAdapter;
