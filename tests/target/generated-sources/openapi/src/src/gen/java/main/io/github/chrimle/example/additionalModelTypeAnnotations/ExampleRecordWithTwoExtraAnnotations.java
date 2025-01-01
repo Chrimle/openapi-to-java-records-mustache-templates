@@ -32,11 +32,11 @@ import java.util.Arrays;
  *
  * @param field1 a boolean field
  */
-@io.github.chrimle.o2jrm.annotations.TestAnnotationOne
-@io.github.chrimle.o2jrm.annotations.TestAnnotationTwo
-@io.github.chrimle.o2jrm.annotations.TestAnnotationThree
-@io.github.chrimle.o2jrm.annotations.TestExtraAnnotation
-@io.github.chrimle.o2jrm.annotations.TestExtraAnnotationTwo
+@io.github.chrimle.example.annotations.TestAnnotationOne
+@io.github.chrimle.example.annotations.TestAnnotationTwo
+@io.github.chrimle.example.annotations.TestAnnotationThree
+@io.github.chrimle.example.annotations.TestExtraAnnotation
+@io.github.chrimle.example.annotations.TestExtraAnnotationTwo
 public record ExampleRecordWithTwoExtraAnnotations(
     @javax.annotation.Nonnull Boolean field1) {
 

@@ -33,8 +33,8 @@ import java.io.Serializable;
  *
  * @param field1 a boolean field
  */
-@io.github.chrimle.o2jrm.annotations.TestExtraAnnotation
-@io.github.chrimle.o2jrm.annotations.TestExtraAnnotationTwo
+@io.github.chrimle.example.annotations.TestExtraAnnotation
+@io.github.chrimle.example.annotations.TestExtraAnnotationTwo
 public record ExampleRecordWithTwoExtraAnnotations(
     @javax.annotation.Nonnull Boolean field1
   ) implements Serializable {
