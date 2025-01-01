@@ -16,7 +16,7 @@
  *
  */
 
-package io.github.chrimle.example.additionalEnumTypeAnnotations;
+package io.github.chrimle.o2jrm.standard;
 
 import java.util.Objects;
 import com.google.gson.TypeAdapter;
@@ -28,15 +28,17 @@ import java.io.IOException;
 import java.util.Arrays;
 
 /**
- * Example of a Record with default fields
+ * Example of a Record with two extra annotations
  *
- * @param field1 a String field with a default value
+ * @param field1 a boolean field
  */
-public record ExampleRecordWithDefaultFields(
-    @javax.annotation.Nonnull String field1) {
+@io.github.chrimle.o2jrm.annotations.TestExtraAnnotation
+@io.github.chrimle.o2jrm.annotations.TestExtraAnnotationTwo
+public record ExampleRecordWithTwoExtraAnnotations(
+    @javax.annotation.Nonnull Boolean field1) {
 
-  public ExampleRecordWithDefaultFields(
-      @javax.annotation.Nullable final String field1) { 
-    this.field1 = Objects.requireNonNullElse(field1, "someDefaultValue");
+  public ExampleRecordWithTwoExtraAnnotations(
+      @javax.annotation.Nonnull final Boolean field1) { 
+    this.field1 = field1;
   }
 }

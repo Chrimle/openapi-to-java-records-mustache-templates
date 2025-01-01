@@ -16,11 +16,10 @@
  *
  */
 
-package io.github.chrimle.example.serializableModel;
+package io.github.chrimle.o2jrm.useJakartaEe;
 
 import java.util.Objects;
 import com.google.gson.annotations.SerializedName;
-import java.io.Serializable;
 
 /**
  * Example of an Enum with integer values

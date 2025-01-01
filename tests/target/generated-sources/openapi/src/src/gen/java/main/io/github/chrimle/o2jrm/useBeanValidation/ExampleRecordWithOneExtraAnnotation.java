@@ -16,7 +16,7 @@
  *
  */
 
-package io.github.chrimle.example.useEnumCaseInsensitive;
+package io.github.chrimle.o2jrm.useBeanValidation;
 
 import java.util.Objects;
 import com.google.gson.TypeAdapter;
@@ -26,6 +26,8 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 /**
  * Example of a Record with an extra annotation

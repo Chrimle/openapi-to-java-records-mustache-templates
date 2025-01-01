@@ -16,7 +16,7 @@
  *
  */
 
-package io.github.chrimle.example.useEnumCaseInsensitive;
+package io.github.chrimle.o2jrm.useEnumCaseInsensitive;
 
 import java.util.Objects;
 import com.google.gson.TypeAdapter;
@@ -24,8 +24,8 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.github.chrimle.example.useEnumCaseInsensitive.ExampleEnum;
-import io.github.chrimle.example.useEnumCaseInsensitive.ExampleRecord;
+import io.github.chrimle.o2jrm.useEnumCaseInsensitive.ExampleEnum;
+import io.github.chrimle.o2jrm.useEnumCaseInsensitive.ExampleRecord;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;

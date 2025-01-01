@@ -16,10 +16,12 @@
  *
  */
 
-package io.github.chrimle.example.useEnumCaseInsensitive;
+package io.github.chrimle.o2jrm.useBeanValidation;
 
 import java.util.Objects;
 import com.google.gson.annotations.SerializedName;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 /**
  * Example of an Enum with integer values

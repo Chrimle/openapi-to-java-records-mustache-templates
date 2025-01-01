@@ -16,7 +16,7 @@
  *
  */
 
-package io.github.chrimle.example.useBeanValidation;
+package io.github.chrimle.o2jrm.useEnumCaseInsensitive;
 
 import java.util.Objects;
 import com.google.gson.TypeAdapter;
@@ -26,27 +26,19 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
-import jakarta.validation.constraints.*;
-import jakarta.validation.Valid;
 
 /**
- * Example of a Record with an extra annotation
+ * Example of a Record with two extra annotations
  *
- * @param field1 a boolean field with an extra field annotation
- * @param field2 a boolean field with two extra field annotations
+ * @param field1 a boolean field
  */
 @io.github.chrimle.o2jrm.annotations.TestExtraAnnotation
-public record ExampleRecordWithOneExtraAnnotation(
-    @io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationOne
-    @javax.annotation.Nonnull Boolean field1,
-    @io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationOne
-@io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationTwo
-    @javax.annotation.Nonnull Boolean field2) {
+@io.github.chrimle.o2jrm.annotations.TestExtraAnnotationTwo
+public record ExampleRecordWithTwoExtraAnnotations(
+    @javax.annotation.Nonnull Boolean field1) {
 
-  public ExampleRecordWithOneExtraAnnotation(
-      @javax.annotation.Nonnull final Boolean field1,
-      @javax.annotation.Nonnull final Boolean field2) { 
+  public ExampleRecordWithTwoExtraAnnotations(
+      @javax.annotation.Nonnull final Boolean field1) { 
     this.field1 = field1;
-    this.field2 = field2;
   }
 }
