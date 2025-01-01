@@ -16,7 +16,7 @@
  *
  */
 
-package io.github.chrimle.example.useJakartaEe;
+package io.github.chrimle.o2jrm.useJakartaEe;
 
 import java.util.Objects;
 import com.google.gson.TypeAdapter;
@@ -28,16 +28,16 @@ import java.io.IOException;
 import java.util.Arrays;
 
 /**
- * Example of a deprecated Record
+ * Example of a Record with two extra annotations
  *
- * @deprecated
  * @param field1 a boolean field
  */
-@Deprecated
-public record DeprecatedExampleRecord(
+@io.github.chrimle.o2jrm.annotations.TestExtraAnnotation
+@io.github.chrimle.o2jrm.annotations.TestExtraAnnotationTwo
+public record ExampleRecordWithTwoExtraAnnotations(
     @jakarta.annotation.Nonnull Boolean field1) {
 
-  public DeprecatedExampleRecord(
+  public ExampleRecordWithTwoExtraAnnotations(
       @jakarta.annotation.Nonnull final Boolean field1) { 
     this.field1 = field1;
   }

@@ -16,7 +16,7 @@
  *
  */
 
-package io.github.chrimle.example.useJakartaEe;
+package io.github.chrimle.o2jrm.useJakartaEe;
 
 import java.util.Objects;
 import com.google.gson.TypeAdapter;
@@ -28,15 +28,23 @@ import java.io.IOException;
 import java.util.Arrays;
 
 /**
- * Example of a Record with default fields
+ * Example of a Record with an extra annotation
  *
- * @param field1 a String field with a default value
+ * @param field1 a boolean field with an extra field annotation
+ * @param field2 a boolean field with two extra field annotations
  */
-public record ExampleRecordWithDefaultFields(
-    @jakarta.annotation.Nonnull String field1) {
+@io.github.chrimle.o2jrm.annotations.TestExtraAnnotation
+public record ExampleRecordWithOneExtraAnnotation(
+    @io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationOne
+    @jakarta.annotation.Nonnull Boolean field1,
+    @io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationOne
+@io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationTwo
+    @jakarta.annotation.Nonnull Boolean field2) {
 
-  public ExampleRecordWithDefaultFields(
-      @jakarta.annotation.Nullable final String field1) { 
-    this.field1 = Objects.requireNonNullElse(field1, "someDefaultValue");
+  public ExampleRecordWithOneExtraAnnotation(
+      @jakarta.annotation.Nonnull final Boolean field1,
+      @jakarta.annotation.Nonnull final Boolean field2) { 
+    this.field1 = field1;
+    this.field2 = field2;
   }
 }

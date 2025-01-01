@@ -16,7 +16,7 @@
  *
  */
 
-package io.github.chrimle.example.useJakartaEe;
+package io.github.chrimle.o2jrm.useJakartaEe;
 
 import java.util.Objects;
 import com.google.gson.TypeAdapter;

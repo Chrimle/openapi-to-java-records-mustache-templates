@@ -16,7 +16,7 @@
  *
  */
 
-package io.github.chrimle.example.useJakartaEe;
+package io.github.chrimle.o2jrm.useJakartaEe;
 
 import java.util.Objects;
 import com.google.gson.TypeAdapter;
@@ -24,8 +24,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.github.chrimle.example.useJakartaEe.ExampleEnum;
-import io.github.chrimle.example.useJakartaEe.ExampleRecord;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -43,35 +41,27 @@ import java.util.Set;
  * @param field4 a Number field
  * @param field5 an Array of Boolean field
  * @param field6 a Set field
- * @param field7 ExampleRecord.
- * @param field8 ExampleEnum.
  */
-public record ExampleRecordWithRequiredFieldsOfEachType(
-    @jakarta.annotation.Nonnull Boolean field1,
-    @jakarta.annotation.Nonnull String field2,
-    @jakarta.annotation.Nonnull Integer field3,
-    @jakarta.annotation.Nonnull BigDecimal field4,
-    @jakarta.annotation.Nonnull List<Boolean> field5,
-    @jakarta.annotation.Nonnull Set<Boolean> field6,
-    @jakarta.annotation.Nonnull ExampleRecord field7,
-    @jakarta.annotation.Nonnull ExampleEnum field8) {
+public record ExampleRecordWithNullableFieldsOfEachType(
+    @jakarta.annotation.Nullable Boolean field1,
+    @jakarta.annotation.Nullable String field2,
+    @jakarta.annotation.Nullable Integer field3,
+    @jakarta.annotation.Nullable BigDecimal field4,
+    @jakarta.annotation.Nullable List<Boolean> field5,
+    @jakarta.annotation.Nullable Set<Boolean> field6) {
 
-  public ExampleRecordWithRequiredFieldsOfEachType(
-      @jakarta.annotation.Nonnull final Boolean field1,
-      @jakarta.annotation.Nonnull final String field2,
-      @jakarta.annotation.Nonnull final Integer field3,
-      @jakarta.annotation.Nonnull final BigDecimal field4,
+  public ExampleRecordWithNullableFieldsOfEachType(
+      @jakarta.annotation.Nullable final Boolean field1,
+      @jakarta.annotation.Nullable final String field2,
+      @jakarta.annotation.Nullable final Integer field3,
+      @jakarta.annotation.Nullable final BigDecimal field4,
       @jakarta.annotation.Nullable final List<Boolean> field5,
-      @jakarta.annotation.Nullable final Set<Boolean> field6,
-      @jakarta.annotation.Nonnull final ExampleRecord field7,
-      @jakarta.annotation.Nonnull final ExampleEnum field8) { 
+      @jakarta.annotation.Nullable final Set<Boolean> field6) { 
     this.field1 = field1;
     this.field2 = field2;
     this.field3 = field3;
     this.field4 = field4;
-    this.field5 = Objects.requireNonNullElse(field5, new ArrayList<>());
-    this.field6 = Objects.requireNonNullElse(field6, new LinkedHashSet<>());
-    this.field7 = field7;
-    this.field8 = field8;
+    this.field5 = field5;
+    this.field6 = field6;
   }
 }
