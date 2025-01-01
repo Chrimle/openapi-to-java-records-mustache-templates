@@ -16,7 +16,7 @@
  *
  */
 
-package io.github.chrimle.example.serializableModel;
+package io.github.chrimle.o2jrm.serializableModel;
 
 import java.util.Objects;
 import com.google.gson.TypeAdapter;
@@ -29,18 +29,26 @@ import java.util.Arrays;
 import java.io.Serializable;
 
 /**
- * Example of a Record with default fields
+ * Example of a Record with an extra annotation
  *
- * @param field1 a String field with a default value
+ * @param field1 a boolean field with an extra field annotation
+ * @param field2 a boolean field with two extra field annotations
  */
-public record ExampleRecordWithDefaultFields(
-    @javax.annotation.Nonnull String field1
+@io.github.chrimle.o2jrm.annotations.TestExtraAnnotation
+public record ExampleRecordWithOneExtraAnnotation(
+    @io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationOne
+    @javax.annotation.Nonnull Boolean field1,
+    @io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationOne
+@io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationTwo
+    @javax.annotation.Nonnull Boolean field2
   ) implements Serializable {
 
   private static final long serialVersionUID = 1L;
 
-  public ExampleRecordWithDefaultFields(
-      @javax.annotation.Nullable final String field1) { 
-    this.field1 = Objects.requireNonNullElse(field1, "someDefaultValue");
+  public ExampleRecordWithOneExtraAnnotation(
+      @javax.annotation.Nonnull final Boolean field1,
+      @javax.annotation.Nonnull final Boolean field2) { 
+    this.field1 = field1;
+    this.field2 = field2;
   }
 }

@@ -16,7 +16,7 @@
  *
  */
 
-package io.github.chrimle.example.serializableModel;
+package io.github.chrimle.o2jrm.serializableModel;
 
 import java.util.Objects;
 import com.google.gson.TypeAdapter;
@@ -29,17 +29,19 @@ import java.util.Arrays;
 import java.io.Serializable;
 
 /**
- * Example of a Record
+ * Example of a deprecated Record
  *
+ * @deprecated
  * @param field1 a boolean field
  */
-public record ExampleRecord(
+@Deprecated
+public record DeprecatedExampleRecord(
     @javax.annotation.Nonnull Boolean field1
   ) implements Serializable {
 
   private static final long serialVersionUID = 1L;
 
-  public ExampleRecord(
+  public DeprecatedExampleRecord(
       @javax.annotation.Nonnull final Boolean field1) { 
     this.field1 = field1;
   }
