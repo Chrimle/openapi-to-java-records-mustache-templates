@@ -202,7 +202,7 @@ Unless the configuration property `<output>` has been set, the generated classes
 <summary>Resulting Java record from example OpenAPI spec.</summary>
 
 ```java
-package io.github.chrimle.example;
+package io.github.chrimle.o2jrm;
 
 import ...;
 
