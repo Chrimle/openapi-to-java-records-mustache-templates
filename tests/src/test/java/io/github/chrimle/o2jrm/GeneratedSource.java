@@ -14,10 +14,10 @@
   limitations under the License.
 
 */
-package io.github.chrimle.example;
+package io.github.chrimle.o2jrm;
 
-import io.github.chrimle.example.models.GeneratedClass;
-import io.github.chrimle.example.models.GeneratedField;
+import io.github.chrimle.o2jrm.models.GeneratedClass;
+import io.github.chrimle.o2jrm.models.GeneratedField;
 import java.lang.annotation.Annotation;
 import java.util.Arrays;
 import java.util.List;

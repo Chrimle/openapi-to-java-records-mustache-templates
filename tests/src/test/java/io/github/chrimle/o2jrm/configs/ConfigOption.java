@@ -14,7 +14,7 @@
   limitations under the License.
 
 */
-package io.github.chrimle.example.configs;
+package io.github.chrimle.o2jrm.configs;
 
 /** Represents a {@code <configOption>}-property in the Maven {@code <configuration>}. */
 public enum ConfigOption {

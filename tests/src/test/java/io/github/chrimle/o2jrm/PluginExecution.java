@@ -14,9 +14,9 @@
   limitations under the License.
 
 */
-package io.github.chrimle.example;
+package io.github.chrimle.o2jrm;
 
-import io.github.chrimle.example.configs.ConfigOption;
+import io.github.chrimle.o2jrm.configs.ConfigOption;
 import java.util.List;
 
 /**

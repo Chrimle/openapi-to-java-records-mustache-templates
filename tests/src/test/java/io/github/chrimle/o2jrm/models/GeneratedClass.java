@@ -14,9 +14,9 @@
   limitations under the License.
 
 */
-package io.github.chrimle.example.models;
+package io.github.chrimle.o2jrm.models;
 
-import io.github.chrimle.example.PluginExecution;
+import io.github.chrimle.o2jrm.PluginExecution;
 import java.lang.annotation.Annotation;
 import java.util.List;
 
@@ -27,7 +27,7 @@ import java.util.List;
 public sealed interface GeneratedClass permits GeneratedEnum, GeneratedRecord {
 
   /** The default package name of all generated classes. */
-  String PACKAGE_NAME = "io.github.chrimle.example";
+  String PACKAGE_NAME = "io.github.chrimle.o2jrm";
 
   /**
    * Returns the simple name of the class - excluding the package name.

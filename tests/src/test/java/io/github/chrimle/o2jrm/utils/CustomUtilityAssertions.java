@@ -14,7 +14,7 @@
   limitations under the License.
 
 */
-package io.github.chrimle.example.utils;
+package io.github.chrimle.o2jrm.utils;
 
 import java.util.function.Supplier;
 import org.junit.jupiter.api.Assertions;

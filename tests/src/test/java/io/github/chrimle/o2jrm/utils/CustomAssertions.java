@@ -14,7 +14,7 @@
   limitations under the License.
 
 */
-package io.github.chrimle.example.utils;
+package io.github.chrimle.o2jrm.utils;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;

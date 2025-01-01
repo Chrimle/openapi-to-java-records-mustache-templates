@@ -14,10 +14,10 @@
   limitations under the License.
 
 */
-package io.github.chrimle.example.utils;
+package io.github.chrimle.o2jrm.utils;
 
-import io.github.chrimle.example.GeneratedSource;
-import io.github.chrimle.example.models.GeneratedField;
+import io.github.chrimle.o2jrm.GeneratedSource;
+import io.github.chrimle.o2jrm.models.GeneratedField;
 import java.lang.reflect.Constructor;
 import java.math.BigDecimal;
 import java.util.ArrayList;

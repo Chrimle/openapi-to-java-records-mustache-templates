@@ -14,7 +14,7 @@
   limitations under the License.
 
 */
-package io.github.chrimle.example.models;
+package io.github.chrimle.o2jrm.models;
 
 import java.lang.annotation.Annotation;
 import java.util.List;

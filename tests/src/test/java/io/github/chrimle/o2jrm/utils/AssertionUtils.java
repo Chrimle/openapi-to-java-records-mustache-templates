@@ -14,10 +14,10 @@
   limitations under the License.
 
 */
-package io.github.chrimle.example.utils;
+package io.github.chrimle.o2jrm.utils;
 
-import io.github.chrimle.example.GeneratedSource;
-import io.github.chrimle.example.models.GeneratedField;
+import io.github.chrimle.o2jrm.GeneratedSource;
+import io.github.chrimle.o2jrm.models.GeneratedField;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.DecimalMax;
 import jakarta.validation.constraints.DecimalMin;
