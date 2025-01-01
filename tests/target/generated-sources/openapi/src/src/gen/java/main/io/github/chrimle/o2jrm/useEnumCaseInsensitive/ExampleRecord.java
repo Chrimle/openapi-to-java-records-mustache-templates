@@ -16,7 +16,7 @@
  *
  */
 
-package io.github.chrimle.example.useEnumCaseInsensitive;
+package io.github.chrimle.o2jrm.useEnumCaseInsensitive;
 
 import java.util.Objects;
 import com.google.gson.TypeAdapter;
@@ -28,15 +28,15 @@ import java.io.IOException;
 import java.util.Arrays;
 
 /**
- * Example of a Record with default fields
+ * Example of a Record
  *
- * @param field1 a String field with a default value
+ * @param field1 a boolean field
  */
-public record ExampleRecordWithDefaultFields(
-    @javax.annotation.Nonnull String field1) {
+public record ExampleRecord(
+    @javax.annotation.Nonnull Boolean field1) {
 
-  public ExampleRecordWithDefaultFields(
-      @javax.annotation.Nullable final String field1) { 
-    this.field1 = Objects.requireNonNullElse(field1, "someDefaultValue");
+  public ExampleRecord(
+      @javax.annotation.Nonnull final Boolean field1) { 
+    this.field1 = field1;
   }
 }

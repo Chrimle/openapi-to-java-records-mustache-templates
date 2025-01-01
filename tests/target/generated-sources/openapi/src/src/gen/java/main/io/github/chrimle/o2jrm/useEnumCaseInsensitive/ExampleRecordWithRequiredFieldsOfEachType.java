@@ -16,7 +16,7 @@
  *
  */
 
-package io.github.chrimle.example.useEnumCaseInsensitive;
+package io.github.chrimle.o2jrm.useEnumCaseInsensitive;
 
 import java.util.Objects;
 import com.google.gson.TypeAdapter;
@@ -24,6 +24,8 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import io.github.chrimle.o2jrm.useEnumCaseInsensitive.ExampleEnum;
+import io.github.chrimle.o2jrm.useEnumCaseInsensitive.ExampleRecord;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -41,27 +43,35 @@ import java.util.Set;
  * @param field4 a Number field
  * @param field5 an Array of Boolean field
  * @param field6 a Set field
+ * @param field7 ExampleRecord.
+ * @param field8 ExampleEnum.
  */
-public record ExampleRecordWithNullableFieldsOfEachType(
-    @javax.annotation.Nullable Boolean field1,
-    @javax.annotation.Nullable String field2,
-    @javax.annotation.Nullable Integer field3,
-    @javax.annotation.Nullable BigDecimal field4,
-    @javax.annotation.Nullable List<Boolean> field5,
-    @javax.annotation.Nullable Set<Boolean> field6) {
+public record ExampleRecordWithRequiredFieldsOfEachType(
+    @javax.annotation.Nonnull Boolean field1,
+    @javax.annotation.Nonnull String field2,
+    @javax.annotation.Nonnull Integer field3,
+    @javax.annotation.Nonnull BigDecimal field4,
+    @javax.annotation.Nonnull List<Boolean> field5,
+    @javax.annotation.Nonnull Set<Boolean> field6,
+    @javax.annotation.Nonnull ExampleRecord field7,
+    @javax.annotation.Nonnull ExampleEnum field8) {
 
-  public ExampleRecordWithNullableFieldsOfEachType(
-      @javax.annotation.Nullable final Boolean field1,
-      @javax.annotation.Nullable final String field2,
-      @javax.annotation.Nullable final Integer field3,
-      @javax.annotation.Nullable final BigDecimal field4,
+  public ExampleRecordWithRequiredFieldsOfEachType(
+      @javax.annotation.Nonnull final Boolean field1,
+      @javax.annotation.Nonnull final String field2,
+      @javax.annotation.Nonnull final Integer field3,
+      @javax.annotation.Nonnull final BigDecimal field4,
       @javax.annotation.Nullable final List<Boolean> field5,
-      @javax.annotation.Nullable final Set<Boolean> field6) { 
+      @javax.annotation.Nullable final Set<Boolean> field6,
+      @javax.annotation.Nonnull final ExampleRecord field7,
+      @javax.annotation.Nonnull final ExampleEnum field8) { 
     this.field1 = field1;
     this.field2 = field2;
     this.field3 = field3;
     this.field4 = field4;
-    this.field5 = field5;
-    this.field6 = field6;
+    this.field5 = Objects.requireNonNullElse(field5, new ArrayList<>());
+    this.field6 = Objects.requireNonNullElse(field6, new LinkedHashSet<>());
+    this.field7 = field7;
+    this.field8 = field8;
   }
 }

@@ -16,7 +16,7 @@
  *
  */
 
-package io.github.chrimle.example.useEnumCaseInsensitive;
+package io.github.chrimle.o2jrm.useEnumCaseInsensitive;
 
 import java.util.Objects;
 import com.google.gson.TypeAdapter;
@@ -28,23 +28,17 @@ import java.io.IOException;
 import java.util.Arrays;
 
 /**
- * Example of a Record with an extra annotation
+ * Example of a deprecated Record
  *
- * @param field1 a boolean field with an extra field annotation
- * @param field2 a boolean field with two extra field annotations
+ * @deprecated
+ * @param field1 a boolean field
  */
-@io.github.chrimle.example.annotations.TestExtraAnnotation
-public record ExampleRecordWithOneExtraAnnotation(
-    @io.github.chrimle.example.annotations.TestFieldExtraAnnotationOne
-    @javax.annotation.Nonnull Boolean field1,
-    @io.github.chrimle.example.annotations.TestFieldExtraAnnotationOne
-@io.github.chrimle.example.annotations.TestFieldExtraAnnotationTwo
-    @javax.annotation.Nonnull Boolean field2) {
+@Deprecated
+public record DeprecatedExampleRecord(
+    @javax.annotation.Nonnull Boolean field1) {
 
-  public ExampleRecordWithOneExtraAnnotation(
-      @javax.annotation.Nonnull final Boolean field1,
-      @javax.annotation.Nonnull final Boolean field2) { 
+  public DeprecatedExampleRecord(
+      @javax.annotation.Nonnull final Boolean field1) { 
     this.field1 = field1;
-    this.field2 = field2;
   }
 }
