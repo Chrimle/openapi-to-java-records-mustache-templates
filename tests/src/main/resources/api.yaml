@@ -121,24 +121,24 @@ components:
     ExampleRecordWithOneExtraAnnotation:
       type: object
       description: Example of a Record with an extra annotation
-      x-class-extra-annotation: '@io.github.chrimle.example.annotations.TestExtraAnnotation'
+      x-class-extra-annotation: '@io.github.chrimle.o2jrm.annotations.TestExtraAnnotation'
       properties:
         field1:
           type: boolean
           description: a boolean field with an extra field annotation
-          x-field-extra-annotation: '@io.github.chrimle.example.annotations.TestFieldExtraAnnotationOne'
+          x-field-extra-annotation: '@io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationOne'
         field2:
           type: boolean
           description: a boolean field with two extra field annotations
           x-field-extra-annotation: |-
-            @io.github.chrimle.example.annotations.TestFieldExtraAnnotationOne
-            @io.github.chrimle.example.annotations.TestFieldExtraAnnotationTwo
+            @io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationOne
+            @io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationTwo
     ExampleRecordWithTwoExtraAnnotations:
       type: object
       description: Example of a Record with two extra annotations
       x-class-extra-annotation: |-
-        @io.github.chrimle.example.annotations.TestExtraAnnotation
-        @io.github.chrimle.example.annotations.TestExtraAnnotationTwo
+        @io.github.chrimle.o2jrm.annotations.TestExtraAnnotation
+        @io.github.chrimle.o2jrm.annotations.TestExtraAnnotationTwo
       properties:
         field1:
           type: boolean
