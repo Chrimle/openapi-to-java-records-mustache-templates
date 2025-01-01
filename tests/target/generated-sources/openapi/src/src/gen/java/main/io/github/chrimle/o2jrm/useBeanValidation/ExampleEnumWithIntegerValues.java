@@ -16,7 +16,7 @@
  *
  */
 
-package io.github.chrimle.example.useBeanValidation;
+package io.github.chrimle.o2jrm.useBeanValidation;
 
 import java.util.Objects;
 import com.google.gson.annotations.SerializedName;
@@ -24,25 +24,18 @@ import jakarta.validation.constraints.*;
 import jakarta.validation.Valid;
 
 /**
- * Example of an Enum
+ * Example of an Enum with integer values
  */
-public enum ExampleEnum {
-  /**
-   * Some description of ENUM1
-   */
-  ENUM1("ENUM1"),
-  /**
-   * Some description of ENUM2
-   */
-  ENUM2("ENUM2"),
-  /**
-   * Some description of ENUM3
-   */
-  ENUM3("ENUM3");
+public enum ExampleEnumWithIntegerValues {
+  NUMBER_100(100),
+  NUMBER_200(200),
+  NUMBER_300(300),
+  NUMBER_400(400),
+  NUMBER_500(500);
 
-  private final String value;
+  private final Integer value;
 
-  ExampleEnum(final String value) {
+  ExampleEnumWithIntegerValues(final Integer value) {
     this.value = value;
   }
 
@@ -51,23 +44,23 @@ public enum ExampleEnum {
    *
    * @return the value of this enum.
    */
-  public String getValue() {
+  public Integer getValue() {
     return value;
   }
 
   /**
-   * Case-sensitively matches the given {@code value} to an enum constant using {@link
+   * Matches the given {@code value} to an enum constant using {@link
    * #getValue()}.
    *
    * <p><b>NOTE:</b> if multiple enum constants have a matching value, the first enum constant is
    * returned, by the order they are declared.
    *
    * @param value of the enum.
-   * @return a {@link ExampleEnum } with the matching value.
+   * @return a {@link ExampleEnumWithIntegerValues } with the matching value.
    * @throws IllegalArgumentException if no enum has a value matching the given value.
    */
-  public static ExampleEnum fromValue(final String value) {
-    for (final ExampleEnum constant : ExampleEnum.values()) {
+  public static ExampleEnumWithIntegerValues fromValue(final Integer value) {
+    for (final ExampleEnumWithIntegerValues constant : ExampleEnumWithIntegerValues.values()) {
       if (constant.getValue().equals(value)) {
         return constant;
       }

@@ -16,7 +16,7 @@
  *
  */
 
-package io.github.chrimle.example.useBeanValidation;
+package io.github.chrimle.o2jrm.useBeanValidation;
 
 import java.util.Objects;
 import com.google.gson.TypeAdapter;

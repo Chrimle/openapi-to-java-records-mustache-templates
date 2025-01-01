@@ -16,7 +16,7 @@
  *
  */
 
-package io.github.chrimle.example.useBeanValidation;
+package io.github.chrimle.o2jrm.useBeanValidation;
 
 import java.util.Objects;
 import com.google.gson.annotations.SerializedName;
@@ -24,18 +24,19 @@ import jakarta.validation.constraints.*;
 import jakarta.validation.Valid;
 
 /**
- * Example of an Enum with integer values
+ * Example of a deprecated Enum
+ *
+ * @deprecated
  */
-public enum ExampleEnumWithIntegerValues {
-  NUMBER_100(100),
-  NUMBER_200(200),
-  NUMBER_300(300),
-  NUMBER_400(400),
-  NUMBER_500(500);
+@Deprecated
+public enum DeprecatedExampleEnum {
+  ENUM1("ENUM1"),
+  ENUM2("ENUM2"),
+  ENUM3("ENUM3");
 
-  private final Integer value;
+  private final String value;
 
-  ExampleEnumWithIntegerValues(final Integer value) {
+  DeprecatedExampleEnum(final String value) {
     this.value = value;
   }
 
@@ -44,23 +45,23 @@ public enum ExampleEnumWithIntegerValues {
    *
    * @return the value of this enum.
    */
-  public Integer getValue() {
+  public String getValue() {
     return value;
   }
 
   /**
-   * Matches the given {@code value} to an enum constant using {@link
+   * Case-sensitively matches the given {@code value} to an enum constant using {@link
    * #getValue()}.
    *
    * <p><b>NOTE:</b> if multiple enum constants have a matching value, the first enum constant is
    * returned, by the order they are declared.
    *
    * @param value of the enum.
-   * @return a {@link ExampleEnumWithIntegerValues } with the matching value.
+   * @return a {@link DeprecatedExampleEnum } with the matching value.
    * @throws IllegalArgumentException if no enum has a value matching the given value.
    */
-  public static ExampleEnumWithIntegerValues fromValue(final Integer value) {
-    for (final ExampleEnumWithIntegerValues constant : ExampleEnumWithIntegerValues.values()) {
+  public static DeprecatedExampleEnum fromValue(final String value) {
+    for (final DeprecatedExampleEnum constant : DeprecatedExampleEnum.values()) {
       if (constant.getValue().equals(value)) {
         return constant;
       }
