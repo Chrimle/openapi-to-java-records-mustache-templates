@@ -16,34 +16,28 @@
  *
  */
 
-package io.github.chrimle.example.additionalEnumTypeAnnotations;
+package io.github.chrimle.o2jrm.additionalEnumTypeAnnotations;
 
 import java.util.Objects;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Example of an Enum
+ * Example of a deprecated Enum
+ *
+ * @deprecated
  */
-@io.github.chrimle.example.annotations.TestAnnotationOne
-@io.github.chrimle.example.annotations.TestAnnotationTwo
-@io.github.chrimle.example.annotations.TestAnnotationThree
-public enum ExampleEnum {
-  /**
-   * Some description of ENUM1
-   */
+@Deprecated
+@io.github.chrimle.o2jrm.annotations.TestAnnotationOne
+@io.github.chrimle.o2jrm.annotations.TestAnnotationTwo
+@io.github.chrimle.o2jrm.annotations.TestAnnotationThree
+public enum DeprecatedExampleEnum {
   ENUM1("ENUM1"),
-  /**
-   * Some description of ENUM2
-   */
   ENUM2("ENUM2"),
-  /**
-   * Some description of ENUM3
-   */
   ENUM3("ENUM3");
 
   private final String value;
 
-  ExampleEnum(final String value) {
+  DeprecatedExampleEnum(final String value) {
     this.value = value;
   }
 
@@ -64,11 +58,11 @@ public enum ExampleEnum {
    * returned, by the order they are declared.
    *
    * @param value of the enum.
-   * @return a {@link ExampleEnum } with the matching value.
+   * @return a {@link DeprecatedExampleEnum } with the matching value.
    * @throws IllegalArgumentException if no enum has a value matching the given value.
    */
-  public static ExampleEnum fromValue(final String value) {
-    for (final ExampleEnum constant : ExampleEnum.values()) {
+  public static DeprecatedExampleEnum fromValue(final String value) {
+    for (final DeprecatedExampleEnum constant : DeprecatedExampleEnum.values()) {
       if (constant.getValue().equals(value)) {
         return constant;
       }

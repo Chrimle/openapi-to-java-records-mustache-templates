@@ -16,7 +16,7 @@
  *
  */
 
-package io.github.chrimle.example.additionalEnumTypeAnnotations;
+package io.github.chrimle.o2jrm.additionalEnumTypeAnnotations;
 
 import java.util.Objects;
 import com.google.gson.TypeAdapter;

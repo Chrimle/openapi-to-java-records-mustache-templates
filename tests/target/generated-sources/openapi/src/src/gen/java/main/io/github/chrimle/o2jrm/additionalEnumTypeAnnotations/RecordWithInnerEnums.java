@@ -16,7 +16,7 @@
  *
  */
 
-package io.github.chrimle.example.additionalEnumTypeAnnotations;
+package io.github.chrimle.o2jrm.additionalEnumTypeAnnotations;
 
 import java.util.Objects;
 import com.google.gson.TypeAdapter;
@@ -47,9 +47,9 @@ public record RecordWithInnerEnums(
   /**
    * Example of an inner enum class
    */
-  @io.github.chrimle.example.annotations.TestAnnotationOne
-  @io.github.chrimle.example.annotations.TestAnnotationTwo
-  @io.github.chrimle.example.annotations.TestAnnotationThree
+  @io.github.chrimle.o2jrm.annotations.TestAnnotationOne
+  @io.github.chrimle.o2jrm.annotations.TestAnnotationTwo
+  @io.github.chrimle.o2jrm.annotations.TestAnnotationThree
   public enum ExampleInnerEnum {
     /**
      * Some description of ENUM1
@@ -103,9 +103,9 @@ public record RecordWithInnerEnums(
   /**
    * Example of another inner enum class with integer values
    */
-  @io.github.chrimle.example.annotations.TestAnnotationOne
-  @io.github.chrimle.example.annotations.TestAnnotationTwo
-  @io.github.chrimle.example.annotations.TestAnnotationThree
+  @io.github.chrimle.o2jrm.annotations.TestAnnotationOne
+  @io.github.chrimle.o2jrm.annotations.TestAnnotationTwo
+  @io.github.chrimle.o2jrm.annotations.TestAnnotationThree
   public enum ExampleInnerTwoEnum {
     NUMBER_404(404),
     NUMBER_501(501),
