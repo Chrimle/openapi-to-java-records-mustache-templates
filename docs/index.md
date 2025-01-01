@@ -188,7 +188,7 @@ mvn compile
 Unless the configuration property `<output>` has been set, the generated classes should be found under `./target/generated-sources/openapi`.
 
 ```java
-package io.github.chrimle.example;
+package io.github.chrimle.o2jrm;
 
 import ...;
 
