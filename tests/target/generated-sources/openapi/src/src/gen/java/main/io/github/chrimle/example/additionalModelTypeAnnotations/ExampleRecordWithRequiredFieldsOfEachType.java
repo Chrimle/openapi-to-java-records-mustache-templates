@@ -46,9 +46,9 @@ import java.util.Set;
  * @param field7 ExampleRecord.
  * @param field8 ExampleEnum.
  */
-@io.github.chrimle.example.annotations.TestAnnotationOne
-@io.github.chrimle.example.annotations.TestAnnotationTwo
-@io.github.chrimle.example.annotations.TestAnnotationThree
+@io.github.chrimle.o2jrm.annotations.TestAnnotationOne
+@io.github.chrimle.o2jrm.annotations.TestAnnotationTwo
+@io.github.chrimle.o2jrm.annotations.TestAnnotationThree
 public record ExampleRecordWithRequiredFieldsOfEachType(
     @javax.annotation.Nonnull Boolean field1,
     @javax.annotation.Nonnull String field2,
