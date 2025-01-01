@@ -70,7 +70,7 @@
         <jsr305.version>3.0.2</jsr305.version>
         <jakarta.annotation-api.version>3.0.0</jakarta.annotation-api.version>
         <jackson-annotations.version>2.18.2</jackson-annotations.version>
-        <hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
+        <hibernate-validator.version>8.0.2.Final</hibernate-validator.version>
         <!-- / Dependency Versions -->
 
         <!-- Build Plugin Versions -->
