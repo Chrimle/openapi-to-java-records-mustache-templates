@@ -9,7 +9,11 @@
         <version>2.5.3</version>
     </parent>
 
+    <!-- Project Information -->
+    <name>OpenAPI to Java records :: Mustache Templates :: Test Utils</name>
     <artifactId>openapi-to-java-records-mustache-templates-test-utils</artifactId>
+    <!-- / Project Information -->
+
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -22,6 +26,14 @@
         <maven-deploy-plugin.version>3.1.2</maven-deploy-plugin.version>
         <!-- / Build Plugin Versions -->
     </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
 
     <build>
         <plugins>
