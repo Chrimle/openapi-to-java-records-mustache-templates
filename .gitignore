@@ -36,12 +36,15 @@ replay_pid*
 target/spotless-index
 mustache-templates/target/spotless-index
 tests/target/spotless-index
+test-utils/target/spotless-index
 
 # Maven Archiver & Status
 mustache-templates/target/maven-archiver
 mustache-templates/target/maven-status
 tests/target/maven-archiver
 tests/target/maven-status
+test-utils/target/maven-archiver
+test-utils/target/maven-status
 
 tests/target/dependency-maven-plugin-markers
 tests/target/surefire-reports
