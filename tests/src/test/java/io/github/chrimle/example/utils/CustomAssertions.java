@@ -364,6 +364,23 @@ public final class CustomAssertions extends CustomUtilityAssertions {
   }
 
   /**
+   * Asserts that the {@code constructor} can be invoked with the {@code methodArguments} to
+   * instantiate a new object of type {@link T}.
+   *
+   * @param constructor to be asserted.
+   * @param methodArguments to invoke the constructor with.
+   * @param <T> type of the instantiated object.
+   * @return the instantiated object of type {@link T}.
+   * @since 2.5.3
+   */
+  public static <T> T assertConstructorCanInstantiateObject(
+      final Constructor<T> constructor, final Object... methodArguments) {
+    return Assertions.assertDoesNotThrow(
+        () -> constructor.newInstance(methodArguments),
+        () -> constructor + " could NOT be instantiated with " + Arrays.toString(methodArguments));
+  }
+
+  /**
    * Asserts that the {@code aClass} has number of fields equal to {@code numberOfFields}.
    *
    * @param aClass to be asserted.

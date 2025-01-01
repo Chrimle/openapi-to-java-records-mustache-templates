@@ -28,7 +28,6 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import java.lang.reflect.*;
-import java.util.Arrays;
 import org.junit.jupiter.api.Assertions;
 
 public class AssertionUtils {
@@ -114,18 +113,6 @@ public class AssertionUtils {
         CustomAssertions.assertFieldIsNotAnnotatedWith(field, emailAnnotation);
       }
     }
-  }
-
-  public static Object assertRecordInstantiateWithArgs(
-      final Class<?> classUnderTest,
-      final Constructor<?> constructorUnderTest,
-      final Object... constructorArgs) {
-    return Assertions.assertDoesNotThrow(
-        () -> constructorUnderTest.newInstance(constructorArgs),
-        () ->
-            classUnderTest.getCanonicalName()
-                + " could not be instantiated with constructorArgs: "
-                + Arrays.toString(constructorArgs));
   }
 
   public static void assertInnerBuilderClassExistsAndCanBuildRecord(

@@ -39,8 +39,7 @@ public class GeneratedRecordTestUtils {
         CustomAssertions.assertClassHasConstructor(classUnderTest, fieldClasses);
 
     final Object objectWithNonNullFields =
-        AssertionUtils.assertRecordInstantiateWithArgs(
-            classUnderTest,
+        CustomAssertions.assertConstructorCanInstantiateObject(
             constructor,
             Arrays.stream(fieldClasses)
                 .map(GeneratedRecordTestUtils::getClassSpecificTestingValue)
@@ -60,8 +59,8 @@ public class GeneratedRecordTestUtils {
         CustomAssertions.assertClassHasConstructor(classUnderTest, fieldClasses);
 
     final Object objectWithNullFields =
-        AssertionUtils.assertRecordInstantiateWithArgs(
-            classUnderTest, constructor, Arrays.stream(fieldClasses).map(x -> null).toArray());
+        CustomAssertions.assertConstructorCanInstantiateObject(
+            constructor, Arrays.stream(fieldClasses).map(x -> null).toArray());
     Assertions.assertInstanceOf(classUnderTest, objectWithNullFields);
 
     for (GeneratedField<?> generatedField : generatedSource.generatedFields()) {
