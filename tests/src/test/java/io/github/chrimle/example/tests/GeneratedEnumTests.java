@@ -17,9 +17,6 @@
 package io.github.chrimle.example.tests;
 
 import io.github.chrimle.example.GeneratedSource;
-import io.github.chrimle.example.annotations.TestAnnotationOne;
-import io.github.chrimle.example.annotations.TestAnnotationThree;
-import io.github.chrimle.example.annotations.TestAnnotationTwo;
 import io.github.chrimle.example.models.GeneratedField;
 import io.github.chrimle.example.tests.GeneratedEnumTests.GeneratorConfigurationTests.ConfigOptionsTests;
 import io.github.chrimle.example.tests.GeneratedEnumTests.GeneratorConfigurationTests.ConfigOptionsTests.AdditionalEnumTypeAnnotationsTests;
@@ -29,6 +26,9 @@ import io.github.chrimle.example.tests.GeneratedEnumTests.OpenAPITests.SchemaTes
 import io.github.chrimle.example.tests.GeneratedEnumTests.OpenAPITests.SchemaTests.EnumTests;
 import io.github.chrimle.example.tests.GeneratedEnumTests.OpenAPITests.SchemaTests.EnumTests.ConstantsTests;
 import io.github.chrimle.example.utils.CustomAssertions;
+import io.github.chrimle.o2jrm.annotations.TestAnnotationOne;
+import io.github.chrimle.o2jrm.annotations.TestAnnotationThree;
+import io.github.chrimle.o2jrm.annotations.TestAnnotationTwo;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import org.junit.jupiter.api.*;

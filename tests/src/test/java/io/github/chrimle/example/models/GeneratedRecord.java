@@ -17,10 +17,10 @@
 package io.github.chrimle.example.models;
 
 import io.github.chrimle.example.PluginExecution;
-import io.github.chrimle.example.annotations.TestExtraAnnotation;
-import io.github.chrimle.example.annotations.TestExtraAnnotationTwo;
-import io.github.chrimle.example.annotations.TestFieldExtraAnnotationOne;
-import io.github.chrimle.example.annotations.TestFieldExtraAnnotationTwo;
+import io.github.chrimle.o2jrm.annotations.TestExtraAnnotation;
+import io.github.chrimle.o2jrm.annotations.TestExtraAnnotationTwo;
+import io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationOne;
+import io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationTwo;
 import java.lang.annotation.Annotation;
 import java.math.BigDecimal;
 import java.util.List;

@@ -14,7 +14,7 @@
   limitations under the License.
 
 */
-package io.github.chrimle.example.annotations;
+package io.github.chrimle.o2jrm.annotations;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
