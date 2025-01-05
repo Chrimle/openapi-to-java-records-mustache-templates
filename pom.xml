@@ -67,7 +67,7 @@
         <junit-jupiter.version>5.11.4</junit-jupiter.version>
         <gson.version>2.11.0</gson.version>
         <jackson-databind-nullable.version>0.2.6</jackson-databind-nullable.version>
-        <jsr305.version>3.0.2</jsr305.version>
+        <spotbugs-annotations.version>3.1.12</spotbugs-annotations.version>
         <jakarta.annotation-api.version>3.0.0</jakarta.annotation-api.version>
         <jackson-annotations.version>2.18.2</jackson-annotations.version>
         <hibernate-validator.version>8.0.2.Final</hibernate-validator.version>
@@ -131,9 +131,9 @@
             </dependency>
             <dependency>
                 <!-- Needed when configOptions.useJakartaEe=false -->
-                <groupId>com.google.code.findbugs</groupId>
-                <artifactId>jsr305</artifactId>
-                <version>${jsr305.version}</version>
+                <groupId>com.github.spotbugs</groupId>
+                <artifactId>spotbugs-annotations</artifactId>
+                <version>${spotbugs-annotations.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.openapitools</groupId>
