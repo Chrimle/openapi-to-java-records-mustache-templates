@@ -88,8 +88,8 @@
         </dependency>
         <dependency>
             <!-- Needed when configOptions.useJakartaEe=false -->
-            <groupId>com.google.code.findbugs</groupId>
-            <artifactId>jsr305</artifactId>
+            <groupId>com.github.spotbugs</groupId>
+            <artifactId>spotbugs-annotations</artifactId>
         </dependency>
         <dependency>
             <groupId>org.openapitools</groupId>
