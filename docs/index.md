@@ -511,7 +511,7 @@ If the problem you are facing is not already reported, please [open an issue](ht
       same "printed page" as the copyright notice for easier
       identification within third-party archives.
 
-   Copyright 2024 Chrimle
+   Copyright 2024-2025 Chrimle
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
