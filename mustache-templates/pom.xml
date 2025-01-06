@@ -106,6 +106,7 @@
                 <configuration>
                     <includes>
                         <include>**/*.mustache</include>
+                        <include>**/LICENSE.txt</include>
                     </includes>
                 </configuration>
             </plugin>
