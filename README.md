@@ -216,11 +216,11 @@ package io.github.chrimle.o2jrm;
  * Personal information
  *
  * @deprecated
- * @param name Name
+ * @param name Name.
  * @param age Age (years)
  * @param gender Gender
  * @param height Height (m)
- * @param legalGuardian Person
+ * @param legalGuardian Person.
  * @param ssn Social Security Number
  * @param aliases Known Aliases
  * @param telephoneNumber Telephone Number
@@ -283,7 +283,7 @@ public record Person(
     /**
      * Gets the {@code value} of this enum.
      *
-     * @return value of this enum
+     * @return the value of this enum.
      */
     public String getValue() {
       return value;
@@ -296,9 +296,9 @@ public record Person(
      * <p><b>NOTE:</b> if multiple enum constants have a matching value, the first enum constant is
      * returned, by the order they are declared.
      *
-     * @param value of the Enum
-     * @return a {@link GenderEnum } with the matching value
-     * @throws IllegalArgumentException if no enum has a value matching the given value
+     * @param value of the enum.
+     * @return a {@link GenderEnum } with the matching value.
+     * @throws IllegalArgumentException if no enum has a value matching the given value.
      */
     public static GenderEnum fromValue(final String value) {
       for (final GenderEnum constant : GenderEnum.values()) {
