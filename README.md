@@ -7,12 +7,12 @@ Project containing [Mustache-templates](https://mustache.github.io/) used by [op
 
 This project contains the **mustache templates**.
 
-# Apache License 2.0
+## Apache License 2.0
 Starting with project version **2.0.0**, the project is licensed under the **Apache License 2.0**.
 > [!NOTE]
 > Prior to version **2.0.0**, the project was licensed under the **MIT License**. See [License](#license).
 
-# Support the Project
+## Support the Project
 If you find this project useful, please ⭐ **Star** ⭐ it and share it with others!
 This is the best way to show appreciation for this project - Thank you! ❤️
 
