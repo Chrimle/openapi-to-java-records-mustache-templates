@@ -204,8 +204,6 @@ Unless the configuration property `<output>` has been set, the generated classes
 ```java
 package io.github.chrimle.o2jrm;
 
-import ...;
-
 /**
  * Personal information
  *
