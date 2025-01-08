@@ -341,8 +341,26 @@ provide concrete examples and use-cases. For reference:
 - [Mustache](https://mustache.github.io/)
 
 ## Encountered an issue?
-Double-check that build-configurations and the OpenAPI Specification is supported. If problems persist, check the [open issues](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/issues). 
-If the problem you are facing is not already reported, please [open an issue](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/issues/new/choose) with details and instructions to reproduce.
+Firstly, make a minimal reproducible example - it will greatly facilitate troubleshooting!
+
+Please, verify these steps _without_ custom mustache-template files:
+1. Verify that the Maven Build Configuration is correct.
+2. Verify that the OpenAPI Specification is valid.
+3. Verify that classes are generated successfully.
+4. Verify that needed dependencies are imported.
+
+Once verified, use the custom mustache-template files and verify the following:
+1. Verify that the `openapi-generator-maven-plugin` configuration options are supported. See [Supported 'openapi‐generator‐maven‐plugin' Configuration options](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/wiki/Supported-%27openapi‐generator‐maven‐plugin%27-Configuration-options).
+   - If no configuration options are set, please proceed to the next step.
+   - If the configuration option is not listed as supported - please request it via [open an issue](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/issues/new/choose).
+2. Verify that the OpenAPI Specification properties are supported. See [Supported OpenAPI Specification properties](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/wiki/Supported-OpenAPI-Specification-properties).
+   - If the property is not listed as supported - please request it via [open an issue](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/issues/new/choose).
+3. Compare `openapi-generator-maven-plugin` versions
+   - As a last resort, it could be due to using an older/newer version than what is used within this project for testing.
+     Even if this would solve the issue - please report it via [open an issue](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/issues/new/choose).
+
+If problems persist, check the [open issues](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/issues). 
+If the problem you are facing has not already been reported, please [open an issue](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/issues/new/choose) with details and instructions to reproduce.
 
 # License
                                  Apache License
