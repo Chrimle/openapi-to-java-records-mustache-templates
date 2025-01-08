@@ -12,8 +12,15 @@ Starting with project version **2.0.0**, the project is licensed under the **Apa
 > [!NOTE]
 > Prior to version **2.0.0**, the project was licensed under the **MIT License**. See [License](#license).
 
-# Sponsorship
-If you want to sponsor the project, you can do so by sharing the project with others - or head over to [GitHub Sponsors - @Chrimle](https://github.com/sponsors/Chrimle)!
+# Support the Project
+If you find this project useful, please **Star** it and share it with others!
+This is the best way to show appreciation for this project - Thank you!
+
+If you have feedback or suggestions, please share it in either [Discussions](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/discussions) or [Issues](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/issues)!
+
+> [!NOTE]
+> This project is, _and will continue to be_, solely maintained by [Chrimle](https://github.com/Chrimle). 
+> While _direct_ code contributions are disallowed, your feedback is the most valuable contribution - please share it!
 
 # Getting Started
 The mustache templates are best acquired by importing the project as a dependency.
