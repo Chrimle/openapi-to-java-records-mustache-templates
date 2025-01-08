@@ -13,8 +13,8 @@ Starting with project version **2.0.0**, the project is licensed under the **Apa
 > Prior to version **2.0.0**, the project was licensed under the **MIT License**. See [License](#license).
 
 # Support the Project
-If you find this project useful, please **Star** it and share it with others!
-This is the best way to show appreciation for this project - Thank you!
+If you find this project useful, please ⭐ **Star** ⭐ it and share it with others!
+This is the best way to show appreciation for this project - Thank you! ❤️
 
 If you have feedback or suggestions, please share it in either [Discussions](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/discussions) or [Issues](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/issues)!
 
@@ -31,7 +31,7 @@ The mustache templates are best acquired by importing the project as a dependenc
 
 ## Import Dependency
 > [!NOTE]
-> The Maven artifact **only** contains the mustache templates. No other files are included in the imported artifact.
+> The Maven artifact **only** contains the `.mustache` template files and a `LICENSE.txt`. No other files are included in the imported artifact.
 
 ```xml
 <dependency>
