@@ -333,13 +333,6 @@ provide concrete examples and use-cases. For reference:
   Contains all test-cases for generated `record` and `enum` classes. These tests are _parameterized_, to test **all**
   classes in the OpenAPI Specification in combination with **all** plugin-executions.
 
-### Useful Resources
-
-- [Maven in 5 minutes](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html)
-- [OpenAPI Basic Structure](https://swagger.io/docs/specification/basic-structure/)
-- [openapi-generator-maven-plugin](https://github.com/OpenAPITools/openapi-generator/blob/master/modules/openapi-generator-maven-plugin/README.md)
-- [Mustache](https://mustache.github.io/)
-
 ## Encountered an issue?
 Firstly, make a minimal reproducible example - it will greatly facilitate troubleshooting!
 
@@ -361,6 +354,13 @@ Once verified, use the custom mustache-template files and verify the following:
 
 If problems persist, check the [open issues](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/issues). 
 If the problem you are facing has not already been reported, please [open an issue](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/issues/new/choose) with details and instructions to reproduce.
+
+### Useful Resources
+
+- [Maven in 5 minutes](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html)
+- [OpenAPI Basic Structure](https://swagger.io/docs/specification/basic-structure/)
+- [openapi-generator-maven-plugin](https://github.com/OpenAPITools/openapi-generator/blob/master/modules/openapi-generator-maven-plugin/README.md)
+- [Mustache](https://mustache.github.io/)
 
 # License
                                  Apache License
