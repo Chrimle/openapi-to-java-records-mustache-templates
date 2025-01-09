@@ -6,12 +6,18 @@ Project containing [Mustache-templates](https://mustache.github.io/) used by [op
 
 This project contains the **mustache templates**.
 
-# Apache License 2.0
+## Apache License 2.0
 Starting with project version **2.0.0**, the project is licensed under the **Apache License 2.0**.
-Prior to version **2.0.0**, the project was licensed under the **MIT License**. See [License](#license).
+> Prior to version **2.0.0**, the project was licensed under the **MIT License**. See [License](#license).
 
-# Sponsorship
-If you want to sponsor the project, you can do so by sharing the project with others - or head over to [GitHub Sponsors - @Chrimle](https://github.com/sponsors/Chrimle)!
+## Support the Project
+If you find this project useful, please ⭐ **Star** ⭐ it and share it with others!
+This is the best way to show appreciation for this project - Thank you! ❤️
+
+If you have feedback or suggestions, please share it in either [Discussions](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/discussions) or [Issues](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/issues)!
+
+> This project is, _and will continue to be_, solely maintained by [Chrimle](https://github.com/Chrimle).
+> While _direct_ code contributions are disallowed, your feedback is the most valuable contribution - please share it!
 
 # Getting Started
 The mustache templates are best acquired by importing the project as a dependency.
@@ -20,7 +26,7 @@ The mustache templates are best acquired by importing the project as a dependenc
 > [Beginner Guide (Step-by-Step)](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/wiki/Beginner-Guide-%28Step‐by‐Step%29).
 
 ## Import Dependency
-> The Maven artifact **only** contains the mustache templates. No other files are included in the imported artifact.
+> The Maven artifact **only** contains the `.mustache` template files and a `LICENSE.txt`. No other files are included in the imported artifact.
 
 ```xml
 <dependency>
@@ -37,7 +43,6 @@ It is **strongly recommended** to import the project as a dependency. It has off
 > from [GitHub](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/tree/main/mustache-templates/target/classes/templates),
 > this approach is **not recommended**. Templates obtained this way are not guaranteed to be versioned correctly and
 > is explicitly **exempt** from the [Semantic Versioning](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/wiki/Semantic-Versioning) considerations.
-
 
 ## Use the `.mustache` templates when generating
 Place the file(s) in desired directory. Then, in the Maven build configuration, set the property `<templateDirectory>` to the directory path. Example:
@@ -190,17 +195,15 @@ Unless the configuration property `<output>` has been set, the generated classes
 ```java
 package io.github.chrimle.o2jrm;
 
-import ...;
-
 /**
  * Personal information
  *
  * @deprecated
- * @param name Name
+ * @param name Name.
  * @param age Age (years)
  * @param gender Gender
  * @param height Height (m)
- * @param legalGuardian Person
+ * @param legalGuardian Person.
  * @param ssn Social Security Number
  * @param aliases Known Aliases
  * @param telephoneNumber Telephone Number
@@ -263,7 +266,7 @@ public record Person(
     /**
      * Gets the {@code value} of this enum.
      *
-     * @return value of this enum
+     * @return the value of this enum.
      */
     public String getValue() {
       return value;
@@ -276,9 +279,9 @@ public record Person(
      * <p><b>NOTE:</b> if multiple enum constants have a matching value, the first enum constant is
      * returned, by the order they are declared.
      *
-     * @param value of the Enum
-     * @return a {@link GenderEnum } with the matching value
-     * @throws IllegalArgumentException if no enum has a value matching the given value
+     * @param value of the enum.
+     * @return a {@link GenderEnum } with the matching value.
+     * @throws IllegalArgumentException if no enum has a value matching the given value.
      */
     public static GenderEnum fromValue(final String value) {
       for (final GenderEnum constant : GenderEnum.values()) {
@@ -303,13 +306,35 @@ provide concrete examples and use-cases. For reference:
 - [Maven plugin executions](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/blob/main/tests/pom.xml#L139)<br/>
   Generates classes from the OpenAPI spec, with different `openapi-generator-maven-plugin` configuration options. The
   resulting classes are placed in sub-packages, named after the plugin-execution.
-- [Generated classes](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/tree/main/tests/target/generated-sources/openapi/src/src/gen/java/main/io/github/chrimle/example)<br/>
+- [Generated classes](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/tree/main/tests/target/generated-sources/openapi/src/src/gen/java/main/io/github/chrimle/o2jrm)<br/>
   The resulting classes are organized into sub-packages, which facilitates testing. These files are - _albeit in no way
   necessary_ - tracked and versioned in order to be accessible without needing to compile anything. Furthermore, it
   makes it easier to spot differences in generated classes after making a change to the mustache templates.
-- [Test Suite](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/tree/main/tests/src/test/java/io/github/chrimle/example/tests)<br/>
+- [Test Suite](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/tree/main/tests/src/test/java/io/github/chrimle/o2jrm/tests)<br/>
   Contains all test-cases for generated `record` and `enum` classes. These tests are _parameterized_, to test **all**
   classes in the OpenAPI Specification in combination with **all** plugin-executions.
+
+## Encountered an issue?
+Firstly, make a minimal reproducible example - it will greatly facilitate troubleshooting!
+
+Please, verify these steps _without_ custom mustache-template files:
+1. Verify that the Maven Build Configuration is correct.
+2. Verify that the OpenAPI Specification is valid.
+3. Verify that classes are generated successfully.
+4. Verify that needed dependencies are imported.
+
+Once verified, use the custom mustache-template files and verify the following:
+1. Verify that the `openapi-generator-maven-plugin` configuration options are supported. See [Supported 'openapi‐generator‐maven‐plugin' Configuration options](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/wiki/Supported-%27openapi‐generator‐maven‐plugin%27-Configuration-options).
+    - If no configuration options are set, please proceed to the next step.
+    - If the configuration option is not listed as supported - please request it via [open an issue](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/issues/new/choose).
+2. Verify that the OpenAPI Specification properties are supported. See [Supported OpenAPI Specification properties](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/wiki/Supported-OpenAPI-Specification-properties).
+    - If the property is not listed as supported - please request it via [open an issue](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/issues/new/choose).
+3. Compare `openapi-generator-maven-plugin` versions
+    - As a last resort, it could be due to using an older/newer version than what is used within this project for testing.
+      Even if this would solve the issue - please report it via [open an issue](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/issues/new/choose).
+
+If problems persist, check the [open issues](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/issues).
+If the problem you are facing has not already been reported, please [open an issue](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/issues/new/choose) with details and instructions to reproduce.
 
 ### Useful Resources
 
@@ -317,10 +342,6 @@ provide concrete examples and use-cases. For reference:
 - [OpenAPI Basic Structure](https://swagger.io/docs/specification/basic-structure/)
 - [openapi-generator-maven-plugin](https://github.com/OpenAPITools/openapi-generator/blob/master/modules/openapi-generator-maven-plugin/README.md)
 - [Mustache](https://mustache.github.io/)
-
-## Encountered an issue?
-Double-check that build-configurations and the OpenAPI Specification is supported. If problems persist, check the [open issues](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/issues).
-If the problem you are facing is not already reported, please [open an issue](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/issues/new/choose) with details and instructions to reproduce.
 
 # License
                                  Apache License
