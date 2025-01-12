@@ -28,7 +28,7 @@ import java.util.Set;
 import java.util.UUID;
 
 /** Enum class listing all expected {@code record} classes to be generated from the OpenAPI spec. */
-public enum GeneratedRecord implements GeneratedClass {
+public enum GeneratedRecord implements GeneratedRecordClass {
   DEPRECATED_EXAMPLE_RECORD(
       "DeprecatedExampleRecord",
       true,

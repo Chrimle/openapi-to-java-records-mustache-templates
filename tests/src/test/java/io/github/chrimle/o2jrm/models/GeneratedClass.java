@@ -25,7 +25,7 @@ import java.util.List;
  * properties that are expected to hold true for the generated class. These properties originate
  * from the input OpenAPI Specification.
  */
-public sealed interface GeneratedClass permits GeneratedEnumClass, GeneratedRecord {
+public sealed interface GeneratedClass permits GeneratedEnumClass, GeneratedRecordClass {
 
   /** The default package name of all generated classes. */
   String PACKAGE_NAME = "io.github.chrimle.o2jrm";
