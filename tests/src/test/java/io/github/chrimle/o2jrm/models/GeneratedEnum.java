@@ -16,11 +16,10 @@
 */
 package io.github.chrimle.o2jrm.models;
 
-import java.lang.annotation.Annotation;
-import java.util.List;
+import io.github.chrimle.o2jrm.PluginExecution;
 
 /** Enum class listing all expected {@code enum} classes to be generated from the OpenAPI spec. */
-public enum GeneratedEnum implements GeneratedClass {
+public enum GeneratedEnum implements GeneratedEnumClass {
   DEPRECATED_EXAMPLE_ENUM(
       "DeprecatedExampleEnum",
       true,
@@ -90,40 +89,14 @@ public enum GeneratedEnum implements GeneratedClass {
   /**
    * {@inheritDoc}
    *
-   * @return whether the class is an {@code enum} class.
-   */
-  @Override
-  public boolean isEnum() {
-    return true;
-  }
-
-  /**
-   * {@inheritDoc}
-   *
-   * @return whether the class has extra annotations.
-   */
-  @Override
-  public boolean hasExtraAnnotations() {
-    return false;
-  }
-
-  /**
-   * {@inheritDoc}
-   *
-   * @return the collection of annotations.
-   */
-  @Override
-  public List<Class<? extends Annotation>> getExtraAnnotations() {
-    return List.of();
-  }
-
-  /**
-   * {@inheritDoc}
-   *
+   * @param pluginExecution ignored. Used for resolving inner classes via <i>Java Reflection
+   *     API</i>.
    * @return the collection of generatedFields.
+   * @apiNote This method will ignore the given {@link PluginExecution}, since {@code enum} classes
+   *     will not have inner classes.
    */
   @Override
-  public GeneratedField<?>[] getGeneratedFields() {
+  public GeneratedField<?>[] getGeneratedFields(final PluginExecution pluginExecution) {
     return generatedFields;
   }
 }

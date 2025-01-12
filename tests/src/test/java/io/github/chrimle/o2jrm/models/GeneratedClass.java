@@ -21,10 +21,11 @@ import java.lang.annotation.Annotation;
 import java.util.List;
 
 /**
- * Enum class listing all expected classes ({@code record}s and {@code enum}s) to be generated from
- * the OpenAPI spec.
+ * Represents a class, which is expected to have been generated. This object contains further
+ * properties that are expected to hold true for the generated class. These properties originate
+ * from the input OpenAPI Specification.
  */
-public sealed interface GeneratedClass permits GeneratedEnum, GeneratedRecord {
+public sealed interface GeneratedClass permits GeneratedEnumClass, GeneratedRecord {
 
   /** The default package name of all generated classes. */
   String PACKAGE_NAME = "io.github.chrimle.o2jrm";
@@ -45,20 +46,26 @@ public sealed interface GeneratedClass permits GeneratedEnum, GeneratedRecord {
   boolean isDeprecated();
 
   /**
-   * Whether the class is an {@code enum} class. If {@code false}, the class is a {@code record}
-   * class.
+   * Whether the class is an {@code enum} class.
    *
    * @return whether the class is an {@code enum} class.
    */
   boolean isEnum();
 
   /**
+   * Whether the class is a {@code record} class.
+   *
+   * @return whether the class is a {@code record} class.
+   */
+  boolean isRecord();
+
+  /**
    * Whether the class has extra {@link Annotation}s, set by the {@code x-class-extra-annotation}
    * property.
    *
-   * <p><b>NOTE:</b> this property does not support {@code enum} classes.
-   *
    * @return whether the class has extra annotations.
+   * @apiNote The property {@code x-class-extra-annotation} does not support {@code enum} classes,
+   *     thus this method always returns {@code false} for enum classes.
    */
   boolean hasExtraAnnotations();
 
@@ -66,9 +73,9 @@ public sealed interface GeneratedClass permits GeneratedEnum, GeneratedRecord {
    * Returns the collection of extra {@link Annotation}s, set by the {@code
    * x-class-extra-annotation} property.
    *
-   * <p><b>NOTE:</b> this property does not support {@code enum} classes.
-   *
    * @return the collection of annotations.
+   * @apiNote The property {@code x-class-extra-annotation} does not support {@code enum} classes,
+   *     thus this method always returns an empty {@link List} for enum classes.
    */
   List<Class<? extends Annotation>> getExtraAnnotations();
 
@@ -76,9 +83,12 @@ public sealed interface GeneratedClass permits GeneratedEnum, GeneratedRecord {
    * Returns the collection of {@link GeneratedField}s which are expected to be generated within the
    * class. Corresponds to each {@code properties}-item.
    *
+   * @param pluginExecution from which the package name is retrieved.
    * @return the collection of generatedFields.
+   * @apiNote This method is intended to be used when the class is expected to have an inner class,
+   *     which will be <i>resolved via Java Reflection API</i>.
    */
-  GeneratedField<?>[] getGeneratedFields();
+  GeneratedField<?>[] getGeneratedFields(final PluginExecution pluginExecution);
 
   /**
    * Returns the canonical class name of this instance - including the package name.
@@ -129,22 +139,5 @@ public sealed interface GeneratedClass permits GeneratedEnum, GeneratedRecord {
     } catch (ClassNotFoundException e) {
       throw new IllegalArgumentException(e);
     }
-  }
-
-  /**
-   * Returns the collection of {@link GeneratedField}s which are expected to be generated within the
-   * {@link GeneratedClass}. Corresponds to each {@code properties}-item.
-   *
-   * @return the collection of generatedFields.
-   */
-  static GeneratedField<?>[] getGeneratedFields(
-      final GeneratedClass generatedClass, final PluginExecution pluginExecution) {
-    if (generatedClass instanceof final GeneratedRecord generatedRecord) {
-      return GeneratedRecord.getGeneratedFields(generatedRecord, pluginExecution);
-    }
-    if (generatedClass instanceof final GeneratedEnum generatedEnum) {
-      return generatedEnum.getGeneratedFields();
-    }
-    throw new IllegalArgumentException("Unsupported `GeneratedClass`:" + generatedClass);
   }
 }

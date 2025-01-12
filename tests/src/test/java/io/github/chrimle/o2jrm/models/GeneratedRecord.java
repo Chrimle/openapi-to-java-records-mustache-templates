@@ -70,7 +70,7 @@ public enum GeneratedRecord implements GeneratedClass {
   /**
    * This class reference another class, which requires Reflection at runtime. Hence, this class
    * does not list all expected fields to be generated. This is done in {@link
-   * #getGeneratedFields(GeneratedClass, PluginExecution)}.
+   * #getGeneratedFields(PluginExecution)}.
    */
   EXAMPLE_RECORD_WITH_REQUIRED_FIELDS_OF_EACH_TYPE(
       "ExampleRecordWithRequiredFieldsOfEachType", false, List.of()),
@@ -110,7 +110,7 @@ public enum GeneratedRecord implements GeneratedClass {
   /**
    * This class reference another class, which requires Reflection at runtime. Hence, this class
    * does not list all expected fields to be generated. This is done in {@link
-   * #getGeneratedFields(GeneratedClass, PluginExecution)}.
+   * #getGeneratedFields(PluginExecution)}.
    */
   RECORD_WITH_INNER_ENUMS("RecordWithInnerEnums", false, List.of());
 
@@ -155,7 +155,7 @@ public enum GeneratedRecord implements GeneratedClass {
   /**
    * {@inheritDoc}
    *
-   * @return whether the class is an {@code enum} class.
+   * @return whether the class is an {@code enum} class. Always returns {@code false}.
    */
   @Override
   public boolean isEnum() {
@@ -163,13 +163,13 @@ public enum GeneratedRecord implements GeneratedClass {
   }
 
   /**
-   * {@inheritDoc}
+   * Whether the class is a {@code record} class.
    *
-   * @return the collection of generatedFields.
+   * @return whether the class is a {@code record} class. Always returns {@code true}.
    */
   @Override
-  public GeneratedField<?>[] getGeneratedFields() {
-    return generatedFields;
+  public boolean isRecord() {
+    return true;
   }
 
   /**
@@ -192,9 +192,18 @@ public enum GeneratedRecord implements GeneratedClass {
     return extraAnnotations;
   }
 
-  public static GeneratedField<?>[] getGeneratedFields(
-      final GeneratedRecord generatedRecord, final PluginExecution pluginExecution) {
-    return switch (generatedRecord) {
+  /**
+   * {@inheritDoc}
+   *
+   * @param pluginExecution for resolving the full name of inner classes via <i>Java Reflection
+   *     API</i>.
+   * @return the collection of generatedFields.
+   * @apiNote This method is intended to be used when the class is expected to have an inner class,
+   *     which will be <i>resolved via Java Reflection API</i>.
+   */
+  @Override
+  public GeneratedField<?>[] getGeneratedFields(final PluginExecution pluginExecution) {
+    return switch (this) {
       case RECORD_WITH_INNER_ENUMS ->
           List.of(
                   GeneratedField.of(
@@ -229,7 +238,7 @@ public enum GeneratedRecord implements GeneratedClass {
                       .isBeanValidationNullable(false)
                       .build())
               .toArray(new GeneratedField[] {});
-      default -> generatedRecord.getGeneratedFields();
+      default -> generatedFields;
     };
   }
 }
