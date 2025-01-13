@@ -67,7 +67,9 @@ public sealed interface GeneratedClass permits GeneratedEnumClass, GeneratedReco
    * @apiNote The property {@code x-class-extra-annotation} does not support {@code enum} classes,
    *     thus this method always returns {@code false} for enum classes.
    */
-  boolean hasExtraAnnotations();
+  default boolean hasExtraAnnotations() {
+    return !getExtraAnnotations().isEmpty();
+  }
 
   /**
    * Returns the collection of extra {@link Annotation}s, set by the {@code

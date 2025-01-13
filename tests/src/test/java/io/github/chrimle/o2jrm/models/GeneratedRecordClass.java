@@ -21,4 +21,25 @@ package io.github.chrimle.o2jrm.models;
  * further properties that are expected to hold true for the generated class. These properties
  * originate from the input OpenAPI Specification.
  */
-public sealed interface GeneratedRecordClass extends GeneratedClass permits GeneratedRecord {}
+public sealed interface GeneratedRecordClass extends GeneratedClass permits GeneratedRecord {
+
+  /**
+   * Whether the class is an {@code enum} class.
+   *
+   * @return whether the class is an {@code enum} class. Always returns {@code false}.
+   */
+  @Override
+  default boolean isEnum() {
+    return false;
+  }
+
+  /**
+   * {@inheritDoc}
+   *
+   * @return whether the class is a {@code record} class. Always returns {@code true}.
+   */
+  @Override
+  default boolean isRecord() {
+    return true;
+  }
+}

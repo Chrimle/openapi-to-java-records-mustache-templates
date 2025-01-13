@@ -116,7 +116,6 @@ public enum GeneratedRecord implements GeneratedRecordClass {
 
   private final String simpleClassName;
   private final boolean isDeprecated;
-  private final boolean hasExtraAnnotations;
   private final List<Class<? extends Annotation>> extraAnnotations;
   private final GeneratedField<?>[] generatedFields;
 
@@ -127,7 +126,6 @@ public enum GeneratedRecord implements GeneratedRecordClass {
       final GeneratedField<?>... generatedFields) {
     this.simpleClassName = simpleClassName;
     this.isDeprecated = isDeprecated;
-    this.hasExtraAnnotations = !extraAnnotations.isEmpty();
     this.extraAnnotations = extraAnnotations;
     this.generatedFields = generatedFields;
   }
@@ -150,36 +148,6 @@ public enum GeneratedRecord implements GeneratedRecordClass {
   @Override
   public boolean isDeprecated() {
     return isDeprecated;
-  }
-
-  /**
-   * {@inheritDoc}
-   *
-   * @return whether the class is an {@code enum} class. Always returns {@code false}.
-   */
-  @Override
-  public boolean isEnum() {
-    return false;
-  }
-
-  /**
-   * Whether the class is a {@code record} class.
-   *
-   * @return whether the class is a {@code record} class. Always returns {@code true}.
-   */
-  @Override
-  public boolean isRecord() {
-    return true;
-  }
-
-  /**
-   * {@inheritDoc}
-   *
-   * @return whether the class has extra annotations.
-   */
-  @Override
-  public boolean hasExtraAnnotations() {
-    return hasExtraAnnotations;
   }
 
   /**
