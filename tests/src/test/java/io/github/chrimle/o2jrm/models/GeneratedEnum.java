@@ -16,8 +16,6 @@
 */
 package io.github.chrimle.o2jrm.models;
 
-import io.github.chrimle.o2jrm.PluginExecution;
-
 /** Enum class listing all expected {@code enum} classes to be generated from the OpenAPI spec. */
 public enum GeneratedEnum implements GeneratedEnumClass {
   DEPRECATED_EXAMPLE_ENUM(

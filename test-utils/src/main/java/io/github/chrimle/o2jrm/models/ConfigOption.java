@@ -14,7 +14,7 @@
   limitations under the License.
 
 */
-package io.github.chrimle.o2jrm.configs;
+package io.github.chrimle.o2jrm.models;
 
 /** Represents a {@code <configOption>}-property in the Maven {@code <configuration>}. */
 public enum ConfigOption {
@@ -63,8 +63,8 @@ public enum ConfigOption {
   /**
    * {@code <useJakartaEe>}
    *
-   * <p>Replaces all {@link javax.annotation.Nullable} and {@link javax.annotation.Nonnull}
-   * annotations with {@link jakarta.annotation.Nullable} and {@link jakarta.annotation.Nonnull},
+   * <p>Replaces all {@code @javax.annotation.Nullable} and {@code @javax.annotation.Nonnull}
+   * annotations with {@code @jakarta.annotation.Nullable} and {@code @jakarta.annotation.Nonnull},
    * respectively.
    */
   USE_JAKARTA_EE

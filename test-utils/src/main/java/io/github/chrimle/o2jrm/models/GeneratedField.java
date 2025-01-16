@@ -28,13 +28,13 @@ import java.util.Optional;
  * @param <T> type of the field. Used for type-safe casting.
  * @param name of the field
  * @param type of the field
- * @param isNullable whether the field should be annotated with {@link jakarta.annotation.Nullable}
- *     or {@link jakarta.annotation.Nonnull}
- * @param isBeanValidationNullable whether the field should be annotated with {@link
- *     jakarta.validation.constraints.NotNull}
- * @param isCustomClass whether the field should be annotated with {@link jakarta.validation.Valid}
- * @param isEmail whether the field should be annotated with {@link
- *     jakarta.validation.constraints.Email}
+ * @param isNullable whether the field should be annotated with {@code @jakarta.annotation.Nullable}
+ *     or {@code @jakarta.annotation.Nonnull}
+ * @param isBeanValidationNullable whether the field should be annotated with {@code
+ *     @jakarta.validation.constraints.NotNull}
+ * @param isCustomClass whether the field should be annotated with {@code @jakarta.validation.Valid}
+ * @param isEmail whether the field should be annotated with {@code
+ *     @jakarta.validation.constraints.Email}
  * @param enumValue of the enum constant. Meant for enum classes only.
  * @param defaultValue of the field. May be inherited from openapi-generator, or be set explicitly
  *     in the OpenAPI spec.

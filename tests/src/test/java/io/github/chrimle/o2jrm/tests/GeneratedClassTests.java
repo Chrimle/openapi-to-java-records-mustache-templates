@@ -17,10 +17,10 @@
 package io.github.chrimle.o2jrm.tests;
 
 import io.github.chrimle.o2jrm.GeneratedSource;
-import io.github.chrimle.o2jrm.PluginExecution;
 import io.github.chrimle.o2jrm.models.GeneratedClass;
 import io.github.chrimle.o2jrm.models.GeneratedEnum;
 import io.github.chrimle.o2jrm.models.GeneratedRecord;
+import io.github.chrimle.o2jrm.models.PluginExecution;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 import org.junit.jupiter.params.provider.Arguments;

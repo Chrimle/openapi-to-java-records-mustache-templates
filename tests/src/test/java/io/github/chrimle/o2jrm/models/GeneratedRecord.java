@@ -16,7 +16,6 @@
 */
 package io.github.chrimle.o2jrm.models;
 
-import io.github.chrimle.o2jrm.PluginExecution;
 import io.github.chrimle.o2jrm.annotations.TestExtraAnnotation;
 import io.github.chrimle.o2jrm.annotations.TestExtraAnnotationTwo;
 import io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationOne;

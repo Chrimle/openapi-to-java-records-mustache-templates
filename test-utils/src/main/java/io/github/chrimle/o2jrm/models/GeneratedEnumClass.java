@@ -24,7 +24,7 @@ import java.util.List;
  * further properties that are expected to hold true for the generated class. These properties
  * originate from the input OpenAPI Specification.
  */
-public sealed interface GeneratedEnumClass extends GeneratedClass permits GeneratedEnum {
+public interface GeneratedEnumClass extends GeneratedClass {
 
   /**
    * {@inheritDoc}

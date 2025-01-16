@@ -16,7 +16,6 @@
 */
 package io.github.chrimle.o2jrm.models;
 
-import io.github.chrimle.o2jrm.PluginExecution;
 import java.lang.annotation.Annotation;
 import java.util.List;
 
@@ -25,7 +24,7 @@ import java.util.List;
  * properties that are expected to hold true for the generated class. These properties originate
  * from the input OpenAPI Specification.
  */
-public sealed interface GeneratedClass permits GeneratedEnumClass, GeneratedRecordClass {
+public interface GeneratedClass {
 
   /** The default package name of all generated classes. */
   String PACKAGE_NAME = "io.github.chrimle.o2jrm";

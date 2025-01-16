@@ -18,6 +18,7 @@ package io.github.chrimle.o2jrm;
 
 import io.github.chrimle.o2jrm.models.GeneratedClass;
 import io.github.chrimle.o2jrm.models.GeneratedField;
+import io.github.chrimle.o2jrm.models.PluginExecution;
 import java.lang.annotation.Annotation;
 import java.util.Arrays;
 import java.util.List;
