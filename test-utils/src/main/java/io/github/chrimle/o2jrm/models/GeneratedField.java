@@ -49,7 +49,7 @@ import java.util.Optional;
  * @param decimalMax of the field. Set in the OpenAPI spec.
  * @param extraFieldAnnotations of the field. Set in the OpenAPI spec.
  * @see Builder for constructing this class with default values
- *                                 @since 2.6.1
+ * @since 2.6.1
  */
 public record GeneratedField<T>(
     String name,
