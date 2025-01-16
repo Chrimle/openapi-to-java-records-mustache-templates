@@ -23,6 +23,8 @@ import java.util.List;
  * Represents a class, which is expected to have been generated. This object contains further
  * properties that are expected to hold true for the generated class. These properties originate
  * from the input OpenAPI Specification.
+ *
+ * @since 2.6.1
  */
 public interface GeneratedClass {
 
@@ -33,6 +35,7 @@ public interface GeneratedClass {
    * Returns the simple name of the class - excluding the package name.
    *
    * @return the class name as a {@link String}.
+   * @since 2.6.1
    */
   String getSimpleClassName();
 
@@ -41,6 +44,7 @@ public interface GeneratedClass {
    * true}, the class should be annotated with {@link Deprecated}.
    *
    * @return whether the class is deprecated.
+   * @since 2.6.1
    */
   boolean isDeprecated();
 
@@ -48,6 +52,7 @@ public interface GeneratedClass {
    * Whether the class is an {@code enum} class.
    *
    * @return whether the class is an {@code enum} class.
+   * @since 2.6.1
    */
   boolean isEnum();
 
@@ -55,6 +60,7 @@ public interface GeneratedClass {
    * Whether the class is a {@code record} class.
    *
    * @return whether the class is a {@code record} class.
+   * @since 2.6.1
    */
   boolean isRecord();
 
@@ -65,6 +71,7 @@ public interface GeneratedClass {
    * @return whether the class has extra annotations.
    * @apiNote The property {@code x-class-extra-annotation} does not support {@code enum} classes,
    *     thus this method always returns {@code false} for enum classes.
+   * @since 2.6.1
    */
   default boolean hasExtraAnnotations() {
     return !getExtraAnnotations().isEmpty();
@@ -77,6 +84,7 @@ public interface GeneratedClass {
    * @return the collection of annotations.
    * @apiNote The property {@code x-class-extra-annotation} does not support {@code enum} classes,
    *     thus this method always returns an empty {@link List} for enum classes.
+   * @since 2.6.1
    */
   List<Class<? extends Annotation>> getExtraAnnotations();
 
@@ -88,6 +96,7 @@ public interface GeneratedClass {
    * @return the collection of generatedFields.
    * @apiNote This method is intended to be used when the class is expected to have an inner class,
    *     which will be <i>resolved via Java Reflection API</i>.
+   * @since 2.6.1
    */
   GeneratedField<?>[] getGeneratedFields(final PluginExecution pluginExecution);
 
@@ -96,6 +105,7 @@ public interface GeneratedClass {
    *
    * @param pluginExecution from which the package name is retrieved.
    * @return the canonical class name.
+   * @since 2.6.1
    */
   default String getCanonicalClassName(final PluginExecution pluginExecution) {
     return GeneratedClass.getCanonicalClassName(pluginExecution.getPackageName(), this);
@@ -107,6 +117,7 @@ public interface GeneratedClass {
    *
    * @param pluginExecution containing the package name.
    * @return the loaded {@code Class}.
+   * @since 2.6.1
    */
   default Class<?> getClass(final PluginExecution pluginExecution) {
     return getClass(this, pluginExecution);
@@ -119,6 +130,7 @@ public interface GeneratedClass {
    * @param moduleName to be pre-appended to the class name.
    * @param generatedClass for which the canonical class name is derived.
    * @return the canonical class name.
+   * @since 2.6.1
    */
   static String getCanonicalClassName(
       final String moduleName, final GeneratedClass generatedClass) {
@@ -132,6 +144,7 @@ public interface GeneratedClass {
    * @param generatedClass containing the class name.
    * @param pluginExecution containing the package name.
    * @return the loaded {@code Class}.
+   * @since 2.6.1
    */
   static Class<?> getClass(
       final GeneratedClass generatedClass, final PluginExecution pluginExecution) {

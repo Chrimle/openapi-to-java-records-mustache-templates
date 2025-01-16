@@ -22,6 +22,8 @@ import java.util.List;
  * Represents each {@code <pluginExecution>} present in the Maven {@code <build>} step. This is used
  * to assert {@code <configuration>} or {@code <configOption>}-specific properties or behaviours of
  * generated classes.
+ *
+ * @since 2.6.1
  */
 public enum PluginExecution {
   GENERATE_BUILDERS("generateBuilders", ConfigOption.GENERATE_BUILDERS),

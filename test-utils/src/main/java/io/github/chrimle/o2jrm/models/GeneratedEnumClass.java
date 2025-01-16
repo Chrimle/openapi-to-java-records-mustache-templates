@@ -23,6 +23,8 @@ import java.util.List;
  * Represents an {@code enum} class, which is expected to have been generated. This object contains
  * further properties that are expected to hold true for the generated class. These properties
  * originate from the input OpenAPI Specification.
+ *
+ * @since 2.6.1
  */
 public interface GeneratedEnumClass extends GeneratedClass {
 
