@@ -16,11 +16,13 @@
 */
 package io.github.chrimle.o2jrm.tests;
 
-import io.github.chrimle.o2jrm.GeneratedSource;
 import io.github.chrimle.o2jrm.annotations.TestAnnotationOne;
 import io.github.chrimle.o2jrm.annotations.TestAnnotationThree;
 import io.github.chrimle.o2jrm.annotations.TestAnnotationTwo;
+import io.github.chrimle.o2jrm.models.GeneratedEnum;
 import io.github.chrimle.o2jrm.models.GeneratedField;
+import io.github.chrimle.o2jrm.models.GeneratedSource;
+import io.github.chrimle.o2jrm.models.PluginExecution;
 import io.github.chrimle.o2jrm.tests.GeneratedEnumTests.GeneratorConfigurationTests.ConfigOptionsTests;
 import io.github.chrimle.o2jrm.tests.GeneratedEnumTests.GeneratorConfigurationTests.ConfigOptionsTests.AdditionalEnumTypeAnnotationsTests;
 import io.github.chrimle.o2jrm.tests.GeneratedEnumTests.GeneratorConfigurationTests.ConfigOptionsTests.UseEnumCaseInsensitiveTests;
@@ -31,8 +33,10 @@ import io.github.chrimle.o2jrm.tests.GeneratedEnumTests.OpenAPITests.SchemaTests
 import io.github.chrimle.o2jrm.utils.CustomAssertions;
 import java.lang.reflect.Method;
 import java.util.Arrays;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 /**
@@ -68,7 +72,22 @@ import org.junit.jupiter.params.provider.MethodSource;
  * </ul>
  */
 @DisplayName("Test Generated `enum` classes")
-final class GeneratedEnumTests implements GeneratedClassTests {
+public class GeneratedEnumTests {
+
+  /** Refers to {@link #allPluginExecutionsAndGeneratedEnumCombinations()} */
+  public static final String GENERATED_ENUM_TESTS_METHOD_SOURCE =
+      "io.github.chrimle.o2jrm.tests.GeneratedEnumTests#allPluginExecutionsAndGeneratedEnumCombinations";
+
+  /**
+   * Generates a {@link GeneratedSource} for every possible combination of {@link PluginExecution}
+   * and {@link GeneratedEnum}.
+   *
+   * @return a stream of {@code GeneratedSource}s.
+   */
+  @SuppressWarnings("unused")
+  public static Stream<Arguments> allPluginExecutionsAndGeneratedEnumCombinations() {
+    return GeneratedSource.createFromAllPluginExecutionsAndClasses(GeneratedEnum::values);
+  }
 
   @Nested
   @DisplayName("Testing OpenAPI Schemas & Properties")
@@ -85,7 +104,7 @@ final class GeneratedEnumTests implements GeneratedClassTests {
         @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
         @DisplayName("Generates an `enum` class")
         void whenIsEnumThenGeneratedClassIsEnumClass(final GeneratedSource generatedSource) {
-          CustomAssertions.assertClassIsEnumClass(generatedSource.getClassUnderTest());
+          GeneratedClassTests.whenIsEnumThenGeneratedClassIsEnumClass(generatedSource);
         }
 
         @Nested
@@ -96,8 +115,9 @@ final class GeneratedEnumTests implements GeneratedClassTests {
           @DisplayName("Generates an `enum` with expected number of constants")
           void whenEnumHasConstantsThenGeneratedEnumClassHasExpectedNumberOfConstants(
               final GeneratedSource generatedSource) {
-            CustomAssertions.assertClassHasEnumConstants(
-                generatedSource.getClassUnderTest(), generatedSource.generatedFields().length);
+            GeneratedClassTests
+                .whenEnumHasConstantsThenGeneratedEnumClassHasExpectedNumberOfConstants(
+                    generatedSource);
           }
 
           @ParameterizedTest

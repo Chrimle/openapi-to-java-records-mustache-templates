@@ -16,9 +16,11 @@
 */
 package io.github.chrimle.o2jrm.tests;
 
-import io.github.chrimle.o2jrm.GeneratedSource;
 import io.github.chrimle.o2jrm.annotations.*;
 import io.github.chrimle.o2jrm.models.GeneratedField;
+import io.github.chrimle.o2jrm.models.GeneratedRecord;
+import io.github.chrimle.o2jrm.models.GeneratedSource;
+import io.github.chrimle.o2jrm.models.PluginExecution;
 import io.github.chrimle.o2jrm.tests.GeneratedRecordTests.GeneratorConfigurationTests.ConfigOptionsTests;
 import io.github.chrimle.o2jrm.tests.GeneratedRecordTests.GeneratorConfigurationTests.ConfigOptionsTests.AdditionalModelTypeAnnotationsTests;
 import io.github.chrimle.o2jrm.tests.GeneratedRecordTests.GeneratorConfigurationTests.ConfigOptionsTests.GenerateBuildersTests;
@@ -40,10 +42,12 @@ import java.io.Serializable;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.util.List;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.Assumptions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 /**
@@ -86,7 +90,22 @@ import org.junit.jupiter.params.provider.MethodSource;
  *   <li>{@link UseJakartaEeTests useJakartaEe}
  * </ul>
  */
-final class GeneratedRecordTests implements GeneratedClassTests {
+public class GeneratedRecordTests {
+
+  /** Refers to {@link #allPluginExecutionsAndGeneratedRecordCombinations()} */
+  public static final String GENERATED_RECORD_TESTS_METHOD_SOURCE =
+      "io.github.chrimle.o2jrm.tests.GeneratedRecordTests#allPluginExecutionsAndGeneratedRecordCombinations";
+
+  /**
+   * Generates a {@link GeneratedSource} for every possible combination of {@link PluginExecution}
+   * and {@link GeneratedRecord}.
+   *
+   * @return a stream of {@code GeneratedSource}s.
+   */
+  @SuppressWarnings("unused")
+  public static Stream<Arguments> allPluginExecutionsAndGeneratedRecordCombinations() {
+    return GeneratedSource.createFromAllPluginExecutionsAndClasses(GeneratedRecord::values);
+  }
 
   @Nested
   @DisplayName("Testing OpenAPI Schemas & Properties")

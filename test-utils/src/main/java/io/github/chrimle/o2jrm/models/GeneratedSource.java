@@ -14,14 +14,14 @@
   limitations under the License.
 
 */
-package io.github.chrimle.o2jrm;
+package io.github.chrimle.o2jrm.models;
 
-import io.github.chrimle.o2jrm.models.GeneratedClass;
-import io.github.chrimle.o2jrm.models.GeneratedField;
-import io.github.chrimle.o2jrm.models.PluginExecution;
 import java.lang.annotation.Annotation;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Supplier;
+import java.util.stream.Stream;
+import org.junit.jupiter.params.provider.Arguments;
 
 /**
  * Represents a generated <i>source</i>, which contains:
@@ -87,6 +87,14 @@ public class GeneratedSource {
     return generatedClass.isDeprecated();
   }
 
+  public boolean isEnum() {
+    return generatedClass.isEnum();
+  }
+
+  public boolean isRecord() {
+    return generatedClass.isRecord();
+  }
+
   public boolean hasExtraAnnotations() {
     return generatedClass.hasExtraAnnotations();
   }
@@ -119,5 +127,22 @@ public class GeneratedSource {
         + ", generatedFields="
         + Arrays.toString(generatedFields)
         + '}';
+  }
+
+  /**
+   * Generates a {@link GeneratedSource} for every possible combination of {@link PluginExecution}
+   * and the given {@link GeneratedClass}.
+   *
+   * @return a stream of {@code GeneratedSource}s.
+   * @since 2.6.1
+   */
+  public static Stream<Arguments> createFromAllPluginExecutionsAndClasses(
+      final Supplier<GeneratedClass[]> generatedClassSupplier) {
+    return Stream.of(PluginExecution.values())
+        .flatMap(
+            pluginExecution ->
+                Stream.of(generatedClassSupplier.get())
+                    .map(generatedClass -> new GeneratedSource(pluginExecution, generatedClass)))
+        .map(Arguments::of);
   }
 }

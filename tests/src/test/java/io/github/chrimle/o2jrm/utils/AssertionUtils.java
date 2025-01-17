@@ -16,8 +16,8 @@
 */
 package io.github.chrimle.o2jrm.utils;
 
-import io.github.chrimle.o2jrm.GeneratedSource;
 import io.github.chrimle.o2jrm.models.GeneratedField;
+import io.github.chrimle.o2jrm.models.GeneratedSource;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.DecimalMax;
 import jakarta.validation.constraints.DecimalMin;
