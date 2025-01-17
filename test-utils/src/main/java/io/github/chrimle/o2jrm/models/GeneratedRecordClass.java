@@ -26,7 +26,7 @@ package io.github.chrimle.o2jrm.models;
 public interface GeneratedRecordClass extends GeneratedClass {
 
   /**
-   * Whether the class is an {@code enum} class.
+   * {@inheritDoc}
    *
    * @return whether the class is an {@code enum} class. Always returns {@code false}.
    */

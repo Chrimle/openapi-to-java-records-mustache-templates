@@ -57,6 +57,13 @@ public sealed interface GeneratedClassTests permits GeneratedEnumTests, Generate
     return createGeneratedSourcesForAllPluginExecutionsAndClasses(GeneratedRecord::values);
   }
 
+  /**
+   * Generates a {@link GeneratedSource} for every possible combination of {@link PluginExecution}
+   * and the given {@link GeneratedClass}.
+   *
+   * @return a stream of {@code GeneratedSource}s.
+   * @since 2.6.1
+   */
   static Stream<Arguments> createGeneratedSourcesForAllPluginExecutionsAndClasses(
       final Supplier<GeneratedClass[]> generatedClassSupplier) {
     return Stream.of(PluginExecution.values())
