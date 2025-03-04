@@ -92,7 +92,7 @@
 
         <!-- Spotless -->
         <spotless.check.skip>false</spotless.check.skip> <!-- Unused imports causes build to fail -->
-        <spotless-maven-plugin.version>2.44.2</spotless-maven-plugin.version>
+        <spotless-maven-plugin.version>2.44.3</spotless-maven-plugin.version>
         <googleJavaFormat.version>1.23.0</googleJavaFormat.version>
         <!-- /Spotless -->
     </properties>
