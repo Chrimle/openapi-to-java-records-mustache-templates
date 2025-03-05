@@ -33,6 +33,7 @@
         <inputSpec.default>${project.basedir}/src/main/resources/api.yaml</inputSpec.default>
         <templateDirectory.default>${project.build.outputDirectory}/templates</templateDirectory.default>
         <!-- Default `configuration.configOptions`-option values -->
+        <enumUnknownDefaultCase.default>false</enumUnknownDefaultCase.default>
         <output.default>target/generated-sources/openapi/src</output.default>
         <useEnumCaseInsensitive.default>false</useEnumCaseInsensitive.default>
         <serializableModel.default>false</serializableModel.default>
@@ -43,6 +44,8 @@
         <!-- Plugin Executions -->
         <!-- The Plugin Execution with Standard Configurations -->
         <execution.standard>standard</execution.standard>
+        <!-- The Plugin Execution with enumUnknownDefaultCase=true -->
+        <execution.enumUnknownDefaultCase>enumUnknownDefaultCase</execution.enumUnknownDefaultCase>
         <!-- The Plugin Execution with useEnumCaseInsensitive=true -->
         <execution.useEnumCaseInsensitive>useEnumCaseInsensitive</execution.useEnumCaseInsensitive>
         <!-- The Plugin Execution with additionalModelTypeAnnotations set -->
@@ -160,6 +163,7 @@
                             <generatorName>${generatorName.default}</generatorName>
                             <configOptions>
                                 <sourceFolder>${sourceFolder.default}</sourceFolder>
+                                <enumUnknownDefaultCase>${enumUnknownDefaultCase.default}</enumUnknownDefaultCase>
                                 <useEnumCaseInsensitive>${useEnumCaseInsensitive.default}</useEnumCaseInsensitive>
                                 <serializableModel>${serializableModel.default}</serializableModel>
                                 <generateBuilders>${generateBuilders.default}</generateBuilders>
@@ -186,6 +190,7 @@
                             <generatorName>${generatorName.default}</generatorName>
                             <configOptions>
                                 <sourceFolder>${sourceFolder.default}</sourceFolder>
+                                <enumUnknownDefaultCase>${enumUnknownDefaultCase.default}</enumUnknownDefaultCase>
                                 <useEnumCaseInsensitive>true</useEnumCaseInsensitive>
                                 <serializableModel>${serializableModel.default}</serializableModel>
                                 <generateBuilders>${generateBuilders.default}</generateBuilders>
@@ -217,6 +222,7 @@
                                     @io.github.chrimle.o2jrm.annotations.TestAnnotationThree
                                 </additionalModelTypeAnnotations>
                                 <sourceFolder>${sourceFolder.default}</sourceFolder>
+                                <enumUnknownDefaultCase>${enumUnknownDefaultCase.default}</enumUnknownDefaultCase>
                                 <useEnumCaseInsensitive>${useEnumCaseInsensitive.default}</useEnumCaseInsensitive>
                                 <serializableModel>${serializableModel.default}</serializableModel>
                                 <generateBuilders>${generateBuilders.default}</generateBuilders>
@@ -244,6 +250,7 @@
                             <configOptions>
                                 <additionalEnumTypeAnnotations>@io.github.chrimle.o2jrm.annotations.TestAnnotationOne;@io.github.chrimle.o2jrm.annotations.TestAnnotationTwo;@io.github.chrimle.o2jrm.annotations.TestAnnotationThree;</additionalEnumTypeAnnotations>
                                 <sourceFolder>${sourceFolder.default}</sourceFolder>
+                                <enumUnknownDefaultCase>${enumUnknownDefaultCase.default}</enumUnknownDefaultCase>
                                 <useEnumCaseInsensitive>${useEnumCaseInsensitive.default}</useEnumCaseInsensitive>
                                 <serializableModel>${serializableModel.default}</serializableModel>
                                 <generateBuilders>${generateBuilders.default}</generateBuilders>
@@ -270,6 +277,7 @@
                             <generatorName>${generatorName.default}</generatorName>
                             <configOptions>
                                 <sourceFolder>${sourceFolder.default}</sourceFolder>
+                                <enumUnknownDefaultCase>${enumUnknownDefaultCase.default}</enumUnknownDefaultCase>
                                 <useEnumCaseInsensitive>${useEnumCaseInsensitive.default}</useEnumCaseInsensitive>
                                 <serializableModel>true</serializableModel>
                                 <generateBuilders>${generateBuilders.default}</generateBuilders>
@@ -296,6 +304,7 @@
                             <generatorName>${generatorName.default}</generatorName>
                             <configOptions>
                                 <sourceFolder>${sourceFolder.default}</sourceFolder>
+                                <enumUnknownDefaultCase>${enumUnknownDefaultCase.default}</enumUnknownDefaultCase>
                                 <useEnumCaseInsensitive>${useEnumCaseInsensitive.default}</useEnumCaseInsensitive>
                                 <serializableModel>${serializableModel.default}</serializableModel>
                                 <generateBuilders>true</generateBuilders>
@@ -322,6 +331,7 @@
                             <generatorName>${generatorName.default}</generatorName>
                             <configOptions>
                                 <sourceFolder>${sourceFolder.default}</sourceFolder>
+                                <enumUnknownDefaultCase>${enumUnknownDefaultCase.default}</enumUnknownDefaultCase>
                                 <useEnumCaseInsensitive>${useEnumCaseInsensitive.default}</useEnumCaseInsensitive>
                                 <serializableModel>${serializableModel.default}</serializableModel>
                                 <generateBuilders>${generateBuilders.default}</generateBuilders>
@@ -348,11 +358,39 @@
                             <generatorName>${generatorName.default}</generatorName>
                             <configOptions>
                                 <sourceFolder>${sourceFolder.default}</sourceFolder>
+                                <enumUnknownDefaultCase>${enumUnknownDefaultCase.default}</enumUnknownDefaultCase>
                                 <useEnumCaseInsensitive>${useEnumCaseInsensitive.default}</useEnumCaseInsensitive>
                                 <serializableModel>${serializableModel.default}</serializableModel>
                                 <generateBuilders>${generateBuilders.default}</generateBuilders>
                                 <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
                                 <useBeanValidation>true</useBeanValidation>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>generate-${execution.enumUnknownDefaultCase}</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <output>${output.default}</output>
+                            <modelPackage>${modelPackage.default}.${execution.enumUnknownDefaultCase}</modelPackage>
+                            <generateModels>${generateModels.default}</generateModels>
+                            <generateApis>${generateApis.default}</generateApis>
+                            <generateSupportingFiles>${generateSupportingFiles.default}</generateSupportingFiles>
+                            <generateModelTests>${generateModelTests.default}</generateModelTests>
+                            <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
+                            <inputSpec>${inputSpec.default}</inputSpec>
+                            <templateDirectory>${templateDirectory.default}</templateDirectory>
+                            <generatorName>${generatorName.default}</generatorName>
+                            <configOptions>
+                                <sourceFolder>${sourceFolder.default}</sourceFolder>
+                                <enumUnknownDefaultCase>true</enumUnknownDefaultCase>
+                                <useEnumCaseInsensitive>${useEnumCaseInsensitive.default}</useEnumCaseInsensitive>
+                                <serializableModel>${serializableModel.default}</serializableModel>
+                                <generateBuilders>${generateBuilders.default}</generateBuilders>
+                                <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
+                                <useBeanValidation>${useBeanValidation.default}</useBeanValidation>
                             </configOptions>
                         </configuration>
                     </execution>
