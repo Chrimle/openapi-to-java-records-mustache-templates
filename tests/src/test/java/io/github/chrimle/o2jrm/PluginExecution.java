@@ -34,6 +34,7 @@ public enum PluginExecution {
   STANDARD("standard"),
   USE_BEAN_VALIDATION("useBeanValidation", ConfigOption.USE_BEAN_VALIDATION),
   USE_ENUM_CASE_INSENSITIVE("useEnumCaseInsensitive", ConfigOption.USE_ENUM_CASE_INSENSITIVE),
+  ENUM_UNKNOWN_DEFAULT_CASE("enumUnknownDefaultCase", ConfigOption.ENUM_UNKNOWN_DEFAULT_CASE),
   USE_JAKARTA_EE("useJakartaEe", ConfigOption.USE_JAKARTA_EE);
 
   private final String packageName;
@@ -54,6 +55,10 @@ public enum PluginExecution {
 
   public boolean useEnumCaseInsensitive() {
     return hasConfigOption(ConfigOption.USE_ENUM_CASE_INSENSITIVE);
+  }
+
+  public boolean enumUnknownDefaultCase() {
+    return hasConfigOption(ConfigOption.ENUM_UNKNOWN_DEFAULT_CASE);
   }
 
   public boolean useBeanValidation() {

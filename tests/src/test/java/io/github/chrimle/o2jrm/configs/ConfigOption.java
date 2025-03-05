@@ -58,6 +58,8 @@ public enum ConfigOption {
    * <p>Modifies the {@code fromValue(T value)} method in generated {@code enum} classes, to
    * <i>case-insensitively</i> match against the {@code value} of enum constants, if {@code T} is of
    * type {@link String}.
+   *
+   * @see #ENUM_UNKNOWN_DEFAULT_CASE
    */
   USE_ENUM_CASE_INSENSITIVE,
   /**
@@ -67,5 +69,17 @@ public enum ConfigOption {
    * annotations with {@link jakarta.annotation.Nullable} and {@link jakarta.annotation.Nonnull},
    * respectively.
    */
-  USE_JAKARTA_EE
+  USE_JAKARTA_EE,
+  /**
+   * {@code <enumUnknownDefaultCase>}
+   *
+   * <p>Generated {@code enum} classes have a <i>default</i> {@code enum} constant with the {@link
+   * Enum#name()} as {@code UNKNOWN_DEFAULT_OPEN_API} and the <i>value</i> as {@code
+   * "unknown_default_open_api"} (when a {@link String}) or the <i>value</i> as {@code 11184809}
+   * (when a number). The {@code fromValue(T value)} method will return this <i>default</i> constant
+   * if no matching constant was found.
+   *
+   * @see #USE_ENUM_CASE_INSENSITIVE
+   */
+  ENUM_UNKNOWN_DEFAULT_CASE
 }
