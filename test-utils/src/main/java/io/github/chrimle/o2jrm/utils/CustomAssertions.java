@@ -511,6 +511,23 @@ public final class CustomAssertions extends CustomUtilityAssertions {
   }
 
   /**
+   * Asserts that the {@code aClass} does <b>not</b> have an <i>enum constant</i> matching the
+   * {@code unexpectedName}.
+   *
+   * @param aClass to be asserted.
+   * @param unexpectedName of the enum constant within the {@code aClass}.
+   * @since TODO: 2.7.0?
+   */
+  public static void assertClassDoesNotHaveEnumConstantWithName(
+      final Class<?> aClass, final String unexpectedName) {
+    Assertions.assertTrue(
+        () ->
+            Arrays.stream(assertClassHasEnumConstants(aClass))
+                .map(Enum::name)
+                .noneMatch(unexpectedName::equals));
+  }
+
+  /**
    * Asserts that the {@code aClass} has <i>enum constants</i> with names exactly matching {@code
    * expectedNames}, and in the same order.
    *
