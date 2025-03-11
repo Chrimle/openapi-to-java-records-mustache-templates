@@ -100,7 +100,7 @@
           return constant;
         }
       }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+      {{#enumUnknownDefaultCase}}{{#allowableValues}}{{#enumVars}}{{#-last}}return {{{name}}};{{/-last}}{{/enumVars}}{{/allowableValues}}{{/enumUnknownDefaultCase}}{{^enumUnknownDefaultCase}}throw new IllegalArgumentException("Unexpected value '" + value + "'");{{/enumUnknownDefaultCase}}
     }
   }{{/isEnum}}{{/vars}}
 }
