@@ -241,6 +241,7 @@ final class GeneratedEnumTests implements GeneratedClassTests {
             "Generated `static fromValue(T)` method ALWAYS `throw IllegalArgumentException` when `null` is given")
         void alwaysThrowIllegalArgumentExceptionWhenProvidingNullAsArgumentToStaticFromValueMethod(
             final GeneratedSource generatedSource) {
+          Assumptions.assumeFalse(generatedSource.enumUnknownDefaultCase());
           CustomAssertions.assertStaticMethodThrowsWhenInvoked(
               CustomAssertions.assertClassHasMethod(
                   generatedSource.getClassUnderTest(),
@@ -257,6 +258,7 @@ final class GeneratedEnumTests implements GeneratedClassTests {
         void
             alwaysThrowIllegalArgumentExceptionWhenProvidingNonMatchingStringValueAsArgumentToStaticFromValueMethod(
                 final GeneratedSource generatedSource) {
+          Assumptions.assumeFalse(generatedSource.enumUnknownDefaultCase());
           Assumptions.assumeTrue(String.class.equals(generatedSource.generatedFields()[0].type()));
 
           CustomAssertions.assertStaticMethodThrowsWhenInvoked(
@@ -275,6 +277,7 @@ final class GeneratedEnumTests implements GeneratedClassTests {
         void
             alwaysThrowIllegalArgumentExceptionWhenProvidingNonMatchingIntegerValueAsArgumentToStaticFromValueMethod(
                 final GeneratedSource generatedSource) {
+          Assumptions.assumeFalse(generatedSource.enumUnknownDefaultCase());
           Assumptions.assumeTrue(Integer.class.equals(generatedSource.generatedFields()[0].type()));
 
           CustomAssertions.assertStaticMethodThrowsWhenInvoked(
@@ -315,6 +318,7 @@ final class GeneratedEnumTests implements GeneratedClassTests {
           void
               whenConfigOptionUseEnumCaseInsensitiveIsFalseThenFromValueMethodThrowsIllegalArgumentExceptionWhenGivenValueHasWrongCase(
                   final GeneratedSource generatedSource) {
+            Assumptions.assumeFalse(generatedSource.enumUnknownDefaultCase());
             Assumptions.assumeFalse(generatedSource.useEnumCaseInsensitive());
             Assumptions.assumeTrue(
                 String.class.equals(generatedSource.generatedFields()[0].type()));
@@ -408,6 +412,24 @@ final class GeneratedEnumTests implements GeneratedClassTests {
             CustomAssertions.assertClassDoesNotHaveEnumConstantWithName(
                 generatedSource.getClassUnderTest(), "NUMBER_unknown_default_open_api");
           }
+
+          @ParameterizedTest
+          @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+          @DisplayName(
+              "Generated `static fromValue(T)` method ALWAYS `throw IllegalArgumentException` when `null` is given")
+          void
+              alwaysThrowIllegalArgumentExceptionWhenProvidingNullAsArgumentToStaticFromValueMethod(
+                  final GeneratedSource generatedSource) {
+            Assumptions.assumeFalse(generatedSource.enumUnknownDefaultCase());
+
+            CustomAssertions.assertStaticMethodThrowsWhenInvoked(
+                CustomAssertions.assertClassHasMethod(
+                    generatedSource.getClassUnderTest(),
+                    "fromValue",
+                    generatedSource.fieldClasses()[0]),
+                IllegalArgumentException.class,
+                (Object) null);
+          }
         }
 
         @Nested
@@ -484,6 +506,41 @@ final class GeneratedEnumTests implements GeneratedClassTests {
 
             CustomAssertions.assertClassHasEnumConstantWithValue(
                 generatedSource.getClassUnderTest(), 11184809);
+          }
+
+          @ParameterizedTest
+          @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+          @DisplayName(
+              "Generated `static fromValue(T)` method returns `NUMBER_unknown_default_open_api` when `null` is given")
+          void whenConfigOptionEnumUnknownDefaultCaseIsTrueThenFromValueReturnsIntegerDefaultValue(
+              final GeneratedSource generatedSource) {
+            Assumptions.assumeTrue(generatedSource.enumUnknownDefaultCase());
+            Assumptions.assumeTrue(
+                Integer.class.equals(generatedSource.generatedFields()[0].type()));
+            CustomAssertions.assertStaticMethodReturnsNonNull(
+                CustomAssertions.assertClassHasMethod(
+                    generatedSource.getClassUnderTest(),
+                    "fromValue",
+                    generatedSource.fieldClasses()[0]),
+                (Object) null);
+          }
+
+          @ParameterizedTest
+          @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+          @DisplayName(
+              "Generated `static fromValue(T)` method returns `\"NUMBER_unknown_default_open_api\"` when `null` is given")
+          void whenConfigOptionEnumUnknownDefaultCaseIsTrueThenFromValueReturnsStringDefaultValue(
+              final GeneratedSource generatedSource) {
+            Assumptions.assumeTrue(generatedSource.enumUnknownDefaultCase());
+            Assumptions.assumeTrue(
+                String.class.equals(generatedSource.generatedFields()[0].type()));
+
+            CustomAssertions.assertStaticMethodReturnsNonNull(
+                CustomAssertions.assertClassHasMethod(
+                    generatedSource.getClassUnderTest(),
+                    "fromValue",
+                    generatedSource.fieldClasses()[0]),
+                (Object) null);
           }
         }
       }
