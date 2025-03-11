@@ -511,6 +511,22 @@ public final class CustomAssertions extends CustomUtilityAssertions {
   }
 
   /**
+   * Asserts that the {@code aClass} has an <i>enum constant</i> matching the {@code expectedName}.
+   *
+   * @param aClass to be asserted.
+   * @param expectedName of the enum constant within the {@code aClass}
+   * @since TODO: 2.7.0
+   */
+  public static void assertClassHasEnumConstantWithName(
+      final Class<?> aClass, final String expectedName) {
+    Assertions.assertTrue(
+        () ->
+            Arrays.stream(assertClassHasEnumConstants(aClass))
+                .map(Enum::name)
+                .anyMatch(expectedName::equals));
+  }
+
+  /**
    * Asserts that the {@code aClass} does <b>not</b> have an <i>enum constant</i> matching the
    * {@code unexpectedName}.
    *
@@ -562,5 +578,24 @@ public final class CustomAssertions extends CustomUtilityAssertions {
                     Assertions.assertDoesNotThrow(() -> getValueMethod.invoke(enumConstant)))
             .toArray(),
         () -> aClass.getCanonicalName() + " does NOT have the expected enum constants");
+  }
+
+  /**
+   * Asserts that the {@code aClass} has an <i>enum constant</i> with a <i>value</i> exactly
+   * matching {@code expectedValue}.
+   *
+   * @param aClass to be asserted.
+   * @param expectedValue of the enum constant within the {@code aClass}.
+   * @since TODO: 2.7.0
+   */
+  public static void assertClassHasEnumConstantWithValue(
+      final Class<?> aClass, final Object expectedValue) {
+    final Method getValueMethod = assertClassHasMethod(aClass, "getValue");
+    Assertions.assertTrue(
+        Arrays.stream(assertClassHasEnumConstants(aClass))
+            .map(
+                enumConstant ->
+                    Assertions.assertDoesNotThrow(() -> getValueMethod.invoke(enumConstant)))
+            .anyMatch(expectedValue::equals));
   }
 }
