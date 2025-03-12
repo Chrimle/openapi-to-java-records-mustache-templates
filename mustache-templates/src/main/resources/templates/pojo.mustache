@@ -91,7 +91,8 @@
      * returned, by the order they are declared.
      *
      * @param value of the enum.
-     * @return a {@link {{datatypeWithEnum}} } with the matching value.{{^enumUnknownDefaultCase}}
+     * @return a {@link {{datatypeWithEnum}} } with the matching value{{#enumUnknownDefaultCase}}, or
+     *     {@link #{{#allowableValues}}{{#enumVars}}{{#-last}}{{{name}}} }{{/-last}}{{/enumVars}}{{/allowableValues}} if no match is found.{{/enumUnknownDefaultCase}}{{^enumUnknownDefaultCase}}.
      * @throws IllegalArgumentException if no enum has a value matching the given value.{{/enumUnknownDefaultCase}}
      */
     public static {{datatypeWithEnum}} fromValue(final {{{dataType}}} value) {
