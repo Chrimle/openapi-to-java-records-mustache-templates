@@ -515,7 +515,7 @@ public final class CustomAssertions extends CustomUtilityAssertions {
    *
    * @param aClass to be asserted.
    * @param expectedName of the enum constant within the {@code aClass}
-   * @since TODO: 2.7.0
+   * @since 2.7.0
    */
   public static void assertClassHasEnumConstantWithName(
       final Class<?> aClass, final String expectedName) {
@@ -532,7 +532,7 @@ public final class CustomAssertions extends CustomUtilityAssertions {
    *
    * @param aClass to be asserted.
    * @param unexpectedName of the enum constant within the {@code aClass}.
-   * @since TODO: 2.7.0?
+   * @since 2.7.0?
    */
   public static void assertClassDoesNotHaveEnumConstantWithName(
       final Class<?> aClass, final String unexpectedName) {
@@ -586,7 +586,7 @@ public final class CustomAssertions extends CustomUtilityAssertions {
    *
    * @param aClass to be asserted.
    * @param expectedValue of the enum constant within the {@code aClass}.
-   * @since TODO: 2.7.0
+   * @since 2.7.0
    */
   public static void assertClassHasEnumConstantWithValue(
       final Class<?> aClass, final Object expectedValue) {
