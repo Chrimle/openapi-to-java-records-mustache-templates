@@ -532,7 +532,7 @@ public final class CustomAssertions extends CustomUtilityAssertions {
    *
    * @param aClass to be asserted.
    * @param unexpectedName of the enum constant within the {@code aClass}.
-   * @since 2.7.0?
+   * @since 2.7.0
    */
   public static void assertClassDoesNotHaveEnumConstantWithName(
       final Class<?> aClass, final String unexpectedName) {
