@@ -85,7 +85,8 @@ public record RecordWithInnerEnums(
      * returned, by the order they are declared.
      *
      * @param value of the enum.
-     * @return a {@link ExampleInnerEnum } with the matching value.
+     * @return a {@link ExampleInnerEnum } with the matching value, or
+     *     {@link #UNKNOWN_DEFAULT_OPEN_API } if no match is found.
      */
     public static ExampleInnerEnum fromValue(final String value) {
       for (final ExampleInnerEnum constant : ExampleInnerEnum.values()) {
@@ -129,7 +130,8 @@ public record RecordWithInnerEnums(
      * returned, by the order they are declared.
      *
      * @param value of the enum.
-     * @return a {@link ExampleInnerTwoEnum } with the matching value.
+     * @return a {@link ExampleInnerTwoEnum } with the matching value, or
+     *     {@link #NUMBER_unknown_default_open_api } if no match is found.
      */
     public static ExampleInnerTwoEnum fromValue(final Integer value) {
       for (final ExampleInnerTwoEnum constant : ExampleInnerTwoEnum.values()) {
