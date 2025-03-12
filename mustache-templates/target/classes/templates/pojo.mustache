@@ -15,7 +15,7 @@
 
 }}{{!
   Source: openapi-to-java-records-mustache-templates
-  Version: 2.6.1
+  Version: 2.7.0
   Type: Override
   Dependencies:
     - `additionalModelTypeAnnotations.mustache` (Official)
@@ -91,8 +91,9 @@
      * returned, by the order they are declared.
      *
      * @param value of the enum.
-     * @return a {@link {{datatypeWithEnum}} } with the matching value.
-     * @throws IllegalArgumentException if no enum has a value matching the given value.
+     * @return a {@link {{datatypeWithEnum}} } with the matching value{{#enumUnknownDefaultCase}}, or
+     *     {@link #{{#allowableValues}}{{#enumVars}}{{#-last}}{{{name}}} }{{/-last}}{{/enumVars}}{{/allowableValues}} if no match is found.{{/enumUnknownDefaultCase}}{{^enumUnknownDefaultCase}}.
+     * @throws IllegalArgumentException if no enum has a value matching the given value.{{/enumUnknownDefaultCase}}
      */
     public static {{datatypeWithEnum}} fromValue(final {{{dataType}}} value) {
       for (final {{datatypeWithEnum}} constant : {{datatypeWithEnum}}.values()) {
@@ -100,7 +101,7 @@
           return constant;
         }
       }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+      {{#enumUnknownDefaultCase}}{{#allowableValues}}{{#enumVars}}{{#-last}}return {{{name}}};{{/-last}}{{/enumVars}}{{/allowableValues}}{{/enumUnknownDefaultCase}}{{^enumUnknownDefaultCase}}throw new IllegalArgumentException("Unexpected value '" + value + "'");{{/enumUnknownDefaultCase}}
     }
   }{{/isEnum}}{{/vars}}
 }

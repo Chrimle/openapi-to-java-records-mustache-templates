@@ -78,6 +78,10 @@ public class GeneratedSource {
     return pluginExecution.useEnumCaseInsensitive();
   }
 
+  public boolean enumUnknownDefaultCase() {
+    return pluginExecution.enumUnknownDefaultCase();
+  }
+
   public boolean useJakartaEe() {
     return pluginExecution.useJakartaEe();
   }
