@@ -64,8 +64,8 @@
    * returned, by the order they are declared.
    *
    * @param value of the enum.
-   * @return a {@link {{classname}} } with the matching value.
-   * @throws IllegalArgumentException if no enum has a value matching the given value.
+   * @return a {@link {{classname}} } with the matching value.{{^enumUnknownDefaultCase}}
+   * @throws IllegalArgumentException if no enum has a value matching the given value.{{/enumUnknownDefaultCase}}
    */
   public static {{classname}} fromValue(final {{{dataType}}} value) {
     for (final {{classname}} constant : {{classname}}.values()) {
