@@ -35,6 +35,14 @@ public enum PluginExecution {
   USE_BEAN_VALIDATION("useBeanValidation", ConfigOption.USE_BEAN_VALIDATION),
   USE_ENUM_CASE_INSENSITIVE("useEnumCaseInsensitive", ConfigOption.USE_ENUM_CASE_INSENSITIVE),
   ENUM_UNKNOWN_DEFAULT_CASE("enumUnknownDefaultCase", ConfigOption.ENUM_UNKNOWN_DEFAULT_CASE),
+  /**
+   * This PluginExecution tests the compatibility of {@link ConfigOption#ENUM_UNKNOWN_DEFAULT_CASE}
+   * and {@link ConfigOption#USE_ENUM_CASE_INSENSITIVE}.
+   */
+  ENUM_DEFAULT_CASE_AND_CASE_INSENSITIVE(
+      "enumDefaultCaseAndCaseInsensitive",
+      ConfigOption.ENUM_UNKNOWN_DEFAULT_CASE,
+      ConfigOption.USE_ENUM_CASE_INSENSITIVE),
   USE_JAKARTA_EE("useJakartaEe", ConfigOption.USE_JAKARTA_EE);
 
   private final String packageName;

@@ -60,6 +60,8 @@
         <execution.useJakartaEe>useJakartaEe</execution.useJakartaEe>
         <!-- The Plugin Execution with useBeanValidation=true -->
         <execution.useBeanValidation>useBeanValidation</execution.useBeanValidation>
+        <!-- The Plugin Execution with enumUnknownDefaultCase=true && useEnumCaseInsensitive=true -->
+        <execution.enumDefaultCaseAndCaseInsensitive>enumDefaultCaseAndCaseInsensitive</execution.enumDefaultCaseAndCaseInsensitive>
     </properties>
 
     <dependencies>
@@ -387,6 +389,33 @@
                                 <sourceFolder>${sourceFolder.default}</sourceFolder>
                                 <enumUnknownDefaultCase>true</enumUnknownDefaultCase>
                                 <useEnumCaseInsensitive>${useEnumCaseInsensitive.default}</useEnumCaseInsensitive>
+                                <serializableModel>${serializableModel.default}</serializableModel>
+                                <generateBuilders>${generateBuilders.default}</generateBuilders>
+                                <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
+                                <useBeanValidation>${useBeanValidation.default}</useBeanValidation>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>generate-${execution.enumDefaultCaseAndCaseInsensitive}</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <output>${output.default}</output>
+                            <modelPackage>${modelPackage.default}.${execution.enumDefaultCaseAndCaseInsensitive}</modelPackage>
+                            <generateModels>${generateModels.default}</generateModels>
+                            <generateApis>${generateApis.default}</generateApis>
+                            <generateSupportingFiles>${generateSupportingFiles.default}</generateSupportingFiles>
+                            <generateModelTests>${generateModelTests.default}</generateModelTests>
+                            <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
+                            <inputSpec>${inputSpec.default}</inputSpec>
+                            <templateDirectory>${templateDirectory.default}</templateDirectory>
+                            <generatorName>${generatorName.default}</generatorName>
+                            <configOptions>
+                                <sourceFolder>${sourceFolder.default}</sourceFolder>
+                                <enumUnknownDefaultCase>true</enumUnknownDefaultCase>
+                                <useEnumCaseInsensitive>true</useEnumCaseInsensitive>
                                 <serializableModel>${serializableModel.default}</serializableModel>
                                 <generateBuilders>${generateBuilders.default}</generateBuilders>
                                 <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
