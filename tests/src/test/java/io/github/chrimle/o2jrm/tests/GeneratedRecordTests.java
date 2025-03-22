@@ -42,6 +42,7 @@ import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Assumptions;
@@ -211,7 +212,7 @@ final class GeneratedRecordTests implements GeneratedClassTests {
           Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
 
           CustomAssertions.assertClassHasNumberOfFields(
-              generatedSource.getClassUnderTest(), generatedSource.generatedFields().length + 1);
+              generatedSource.getClassUnderTest(), generatedSource.generatedFields().length + 2);
         }
 
         @ParameterizedTest
@@ -394,6 +395,25 @@ final class GeneratedRecordTests implements GeneratedClassTests {
                   .collect(Collectors.toSet()),
               actualValue);
         }
+
+        @ParameterizedTest
+        @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+        @DisplayName("Generated `record` HAS `openapiRequiredFields`-field")
+        void whenLibraryIsOkHttpGsonThenGeneratedRecordHasOpenApiRequiredFieldsField(
+            final GeneratedSource generatedSource) throws IllegalAccessException {
+          Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+
+          final Field openapiRequiredFields =
+              CustomAssertions.assertClassHasField(
+                  generatedSource.getClassUnderTest(), "openapiRequiredFields", HashSet.class);
+          final HashSet<String> actualValue = (HashSet<String>) openapiRequiredFields.get(null);
+          final Set<String> expectedValue =
+              Arrays.stream(generatedSource.generatedFields())
+                  .filter(GeneratedField::isRequired)
+                  .map(GeneratedField::name)
+                  .collect(Collectors.toSet());
+          Assertions.assertEquals(expectedValue, actualValue);
+        }
       }
 
       @Nested
@@ -409,6 +429,17 @@ final class GeneratedRecordTests implements GeneratedClassTests {
 
           CustomAssertions.assertClassDoesNotHaveFieldWithName(
               generatedSource.getClassUnderTest(), "openapiFields");
+        }
+
+        @ParameterizedTest
+        @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+        @DisplayName("Generated `record` does NOT have `openapiRequiredFields`-field")
+        void whenLibraryIsWebClientThenGeneratedRecordDoesNotHaveOpenApiRequiredFieldsField(
+            final GeneratedSource generatedSource) {
+          Assumptions.assumeTrue(generatedSource.isLibraryWebClient());
+
+          CustomAssertions.assertClassDoesNotHaveFieldWithName(
+              generatedSource.getClassUnderTest(), "openapiRequiredFields");
         }
       }
     }
@@ -525,7 +556,7 @@ final class GeneratedRecordTests implements GeneratedClassTests {
             Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
 
             CustomAssertions.assertClassHasNumberOfFields(
-                generatedSource.getClassUnderTest(), generatedSource.generatedFields().length + 2);
+                generatedSource.getClassUnderTest(), generatedSource.generatedFields().length + 3);
           }
 
           @ParameterizedTest
