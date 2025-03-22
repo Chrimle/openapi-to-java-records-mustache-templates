@@ -19,7 +19,9 @@
 package io.github.chrimle.o2jrm.webclient.useBeanValidation;
 
 import java.util.Objects;
-import com.google.gson.annotations.SerializedName;
+import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import jakarta.validation.constraints.*;
 import jakarta.validation.Valid;
 

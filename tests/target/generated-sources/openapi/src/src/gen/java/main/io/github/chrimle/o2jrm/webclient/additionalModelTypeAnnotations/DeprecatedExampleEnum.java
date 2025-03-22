@@ -19,7 +19,9 @@
 package io.github.chrimle.o2jrm.webclient.additionalModelTypeAnnotations;
 
 import java.util.Objects;
-import com.google.gson.annotations.SerializedName;
+import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * Example of a deprecated Enum
