@@ -56,6 +56,12 @@ import java.util.Set;
           Set.of({{#allVars}}"{{baseName}}"{{^-last}},
               {{/-last}}{{/allVars}}));
 
+  /** A set containing the names of all required fields defined in this class. */
+  public static final HashSet<String> openapiRequiredFields =
+      new HashSet<String>(
+          Set.of({{#requiredVars}}"{{baseName}}"{{^-last}},
+              {{/-last}}{{/requiredVars}}));
+
 {{/gson}}
   public {{classname}}(
       {{#vars}}@{{javaxPackage}}.annotation.{{#isNullable}}Nullable{{/isNullable}}{{^isNullable}}{{#defaultValue}}Nullable{{/defaultValue}}{{^defaultValue}}Nonnull{{/defaultValue}}{{/isNullable}} final {{{datatypeWithEnum}}} {{name}}{{^-last}},
