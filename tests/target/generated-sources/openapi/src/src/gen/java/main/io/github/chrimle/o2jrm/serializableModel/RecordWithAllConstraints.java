@@ -35,6 +35,7 @@ import java.io.Serializable;
 
 import java.util.HashSet;
 import java.util.Set;
+
 /**
  * Example of a Record which has fields with constraints
  *

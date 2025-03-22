@@ -32,6 +32,7 @@ import jakarta.validation.Valid;
 
 import java.util.HashSet;
 import java.util.Set;
+
 /**
  * Example of a Record with inner enum classes
  *
