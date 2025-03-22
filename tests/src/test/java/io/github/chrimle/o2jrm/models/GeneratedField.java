@@ -28,6 +28,7 @@ import java.util.Optional;
  * @param <T> type of the field. Used for type-safe casting.
  * @param name of the field
  * @param type of the field
+ * @param isRequired whether the field is listed as <i>required</i> in the OpenAPI spec.
  * @param isNullable whether the field should be annotated with {@link jakarta.annotation.Nullable}
  *     or {@link jakarta.annotation.Nonnull}
  * @param isBeanValidationNullable whether the field should be annotated with {@link
@@ -53,6 +54,7 @@ import java.util.Optional;
 public record GeneratedField<T>(
     String name,
     Class<T> type,
+    boolean isRequired,
     boolean isNullable,
     boolean isBeanValidationNullable,
     boolean isCustomClass,
@@ -81,6 +83,7 @@ public record GeneratedField<T>(
   public static class Builder<T> {
     private final String name;
     private final Class<T> type;
+    private boolean isRequired = false;
     private boolean isNullable = false;
     private boolean isBeanValidationNullable = true;
     private boolean isCustomClass = false;
@@ -102,6 +105,11 @@ public record GeneratedField<T>(
       this.name = name;
       this.type = type;
       this.enumValue = enumValue;
+    }
+
+    public Builder<T> isRequired(final boolean isRequired) {
+      this.isRequired = isRequired;
+      return this;
     }
 
     public Builder<T> isNullable(final boolean isNullable) {
@@ -190,6 +198,7 @@ public record GeneratedField<T>(
       return new GeneratedField<>(
           name,
           type,
+          isRequired,
           isNullable,
           isBeanValidationNullable,
           isCustomClass,
