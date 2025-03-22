@@ -110,6 +110,14 @@ public class GeneratedSource {
     return classUnderTest;
   }
 
+  public boolean isLibraryOkHttpGson() {
+    return pluginExecution.isLibraryOkHttpGson();
+  }
+
+  public boolean isLibraryWebClient() {
+    return pluginExecution.isLibraryWebClient();
+  }
+
   @Override
   public String toString() {
     return "GeneratedSource{"
