@@ -232,6 +232,7 @@
                             <inputSpec>${inputSpec.default}</inputSpec>
                             <templateDirectory>${templateDirectory.default}</templateDirectory>
                             <generatorName>${generatorName.default}</generatorName>
+                            <library>webclient</library>
                             <configOptions>
                                 <sourceFolder>${sourceFolder.default}</sourceFolder>
                                 <useEnumCaseInsensitive>true</useEnumCaseInsensitive>
@@ -280,6 +281,7 @@
                             <inputSpec>${inputSpec.default}</inputSpec>
                             <templateDirectory>${templateDirectory.default}</templateDirectory>
                             <generatorName>${generatorName.default}</generatorName>
+                            <library>webclient</library>
                             <configOptions>
                                 <sourceFolder>${sourceFolder.default}</sourceFolder>
                                 <additionalModelTypeAnnotations>
@@ -328,6 +330,7 @@
                             <inputSpec>${inputSpec.default}</inputSpec>
                             <templateDirectory>${templateDirectory.default}</templateDirectory>
                             <generatorName>${generatorName.default}</generatorName>
+                            <library>webclient</library>
                             <configOptions>
                                 <sourceFolder>${sourceFolder.default}</sourceFolder>
                                 <additionalEnumTypeAnnotations>@io.github.chrimle.o2jrm.annotations.TestAnnotationOne;@io.github.chrimle.o2jrm.annotations.TestAnnotationTwo;@io.github.chrimle.o2jrm.annotations.TestAnnotationThree;</additionalEnumTypeAnnotations>
@@ -372,6 +375,7 @@
                             <inputSpec>${inputSpec.default}</inputSpec>
                             <templateDirectory>${templateDirectory.default}</templateDirectory>
                             <generatorName>${generatorName.default}</generatorName>
+                            <library>webclient</library>
                             <configOptions>
                                 <sourceFolder>${sourceFolder.default}</sourceFolder>
                                 <serializableModel>true</serializableModel>
@@ -416,6 +420,7 @@
                             <inputSpec>${inputSpec.default}</inputSpec>
                             <templateDirectory>${templateDirectory.default}</templateDirectory>
                             <generatorName>${generatorName.default}</generatorName>
+                            <library>webclient</library>
                             <configOptions>
                                 <sourceFolder>${sourceFolder.default}</sourceFolder>
                                 <generateBuilders>true</generateBuilders>
@@ -460,6 +465,7 @@
                             <inputSpec>${inputSpec.default}</inputSpec>
                             <templateDirectory>${templateDirectory.default}</templateDirectory>
                             <generatorName>${generatorName.default}</generatorName>
+                            <library>webclient</library>
                             <configOptions>
                                 <sourceFolder>${sourceFolder.default}</sourceFolder>
                                 <useJakartaEe>true</useJakartaEe>
@@ -504,6 +510,7 @@
                             <inputSpec>${inputSpec.default}</inputSpec>
                             <templateDirectory>${templateDirectory.default}</templateDirectory>
                             <generatorName>${generatorName.default}</generatorName>
+                            <library>webclient</library>
                             <configOptions>
                                 <sourceFolder>${sourceFolder.default}</sourceFolder>
                                 <useBeanValidation>true</useBeanValidation>
@@ -548,6 +555,7 @@
                             <inputSpec>${inputSpec.default}</inputSpec>
                             <templateDirectory>${templateDirectory.default}</templateDirectory>
                             <generatorName>${generatorName.default}</generatorName>
+                            <library>webclient</library>
                             <configOptions>
                                 <sourceFolder>${sourceFolder.default}</sourceFolder>
                                 <enumUnknownDefaultCase>true</enumUnknownDefaultCase>
@@ -593,6 +601,7 @@
                             <inputSpec>${inputSpec.default}</inputSpec>
                             <templateDirectory>${templateDirectory.default}</templateDirectory>
                             <generatorName>${generatorName.default}</generatorName>
+                            <library>webclient</library>
                             <configOptions>
                                 <sourceFolder>${sourceFolder.default}</sourceFolder>
                                 <enumUnknownDefaultCase>true</enumUnknownDefaultCase>
