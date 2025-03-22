@@ -34,7 +34,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 import java.util.HashSet;
 import java.util.Set;
-
 /**
  * Example of a Record which has fields with constraints
  *
@@ -90,8 +89,7 @@ public record RecordWithAllConstraints(
   /** A set containing the names of all instance fields defined in this class. */
   public static final HashSet<String> openapiFields =
       new HashSet<String>(
-          Set.of(
-              "stringStandard",
+          Set.of("stringStandard",
               "stringDefault",
               "stringNullable",
               "stringRequired",
@@ -118,7 +116,9 @@ public record RecordWithAllConstraints(
   /** A set containing the names of all required fields defined in this class. */
   public static final HashSet<String> openapiRequiredFields =
       new HashSet<String>(
-          Set.of("stringRequired", "stringRequiredNullable", "stringRequiredPattern"));
+          Set.of("stringRequired",
+              "stringRequiredNullable",
+              "stringRequiredPattern"));
 
   public RecordWithAllConstraints(
       @javax.annotation.Nonnull final String stringStandard,
@@ -143,7 +143,7 @@ public record RecordWithAllConstraints(
       @javax.annotation.Nonnull final Long longMinimumAndMaximum,
       @javax.annotation.Nonnull final BigDecimal bigDecimalMinimum,
       @javax.annotation.Nonnull final BigDecimal bigDecimalMaximum,
-      @javax.annotation.Nonnull final BigDecimal bigDecimalMinimumAndMaximum) {
+      @javax.annotation.Nonnull final BigDecimal bigDecimalMinimumAndMaximum) { 
     this.stringStandard = stringStandard;
     this.stringDefault = Objects.requireNonNullElse(stringDefault, "someDefaultValue");
     this.stringNullable = stringNullable;

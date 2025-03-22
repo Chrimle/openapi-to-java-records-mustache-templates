@@ -36,7 +36,6 @@ import java.util.Set;
 
 import java.util.HashSet;
 import java.util.Set;
-
 /**
  * Example of a Record with fields of each type
  *
@@ -62,12 +61,14 @@ public record ExampleRecordWithRequiredFieldsOfEachType(
   /** A set containing the names of all instance fields defined in this class. */
   public static final HashSet<String> openapiFields =
       new HashSet<String>(
-          Set.of("field1", "field2", "field3", "field4", "field5", "field6", "field7", "field8"));
-
-  /** A set containing the names of all required fields defined in this class. */
-  public static final HashSet<String> openapiRequiredFields =
-      new HashSet<String>(
-          Set.of("field1", "field2", "field3", "field4", "field5", "field6", "field7", "field8"));
+          Set.of("field1",
+              "field2",
+              "field3",
+              "field4",
+              "field5",
+              "field6",
+              "field7",
+              "field8"));
 
   /** A set containing the names of all required fields defined in this class. */
   public static final HashSet<String> openapiRequiredFields =
@@ -89,7 +90,7 @@ public record ExampleRecordWithRequiredFieldsOfEachType(
       @javax.annotation.Nullable final List<Boolean> field5,
       @javax.annotation.Nullable final Set<Boolean> field6,
       @javax.annotation.Nonnull final ExampleRecord field7,
-      @javax.annotation.Nonnull final ExampleEnum field8) {
+      @javax.annotation.Nonnull final ExampleEnum field8) { 
     this.field1 = field1;
     this.field2 = field2;
     this.field3 = field3;
