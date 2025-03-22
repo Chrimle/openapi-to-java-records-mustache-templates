@@ -71,8 +71,6 @@ components:
         - field4
         - field5
         - field6
-        - field7
-        - field8
       properties:
         field1:
           type: boolean
