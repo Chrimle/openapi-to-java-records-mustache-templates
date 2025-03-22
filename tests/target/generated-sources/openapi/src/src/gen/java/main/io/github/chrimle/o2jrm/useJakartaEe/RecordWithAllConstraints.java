@@ -113,6 +113,13 @@ public record RecordWithAllConstraints(
               "bigDecimalMaximum",
               "bigDecimalMinimumAndMaximum"));
 
+  /** A set containing the names of all required fields defined in this class. */
+  public static final HashSet<String> openapiRequiredFields =
+      new HashSet<String>(
+          Set.of("stringRequired",
+              "stringRequiredNullable",
+              "stringRequiredPattern"));
+
   public RecordWithAllConstraints(
       @jakarta.annotation.Nonnull final String stringStandard,
       @jakarta.annotation.Nullable final String stringDefault,

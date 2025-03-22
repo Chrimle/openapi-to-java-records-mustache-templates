@@ -74,6 +74,18 @@ public record ExampleRecordWithRequiredFieldsOfEachType(
               "field7",
               "field8"));
 
+  /** A set containing the names of all required fields defined in this class. */
+  public static final HashSet<String> openapiRequiredFields =
+      new HashSet<String>(
+          Set.of("field1",
+              "field2",
+              "field3",
+              "field4",
+              "field5",
+              "field6",
+              "field7",
+              "field8"));
+
   public ExampleRecordWithRequiredFieldsOfEachType(
       @javax.annotation.Nonnull final Boolean field1,
       @javax.annotation.Nonnull final String field2,

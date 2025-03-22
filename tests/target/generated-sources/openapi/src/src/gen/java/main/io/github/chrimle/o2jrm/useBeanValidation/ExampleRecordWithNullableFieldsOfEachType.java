@@ -64,6 +64,16 @@ public record ExampleRecordWithNullableFieldsOfEachType(
               "field5",
               "field6"));
 
+  /** A set containing the names of all required fields defined in this class. */
+  public static final HashSet<String> openapiRequiredFields =
+      new HashSet<String>(
+          Set.of("field1",
+              "field2",
+              "field3",
+              "field4",
+              "field5",
+              "field6"));
+
   public ExampleRecordWithNullableFieldsOfEachType(
       @javax.annotation.Nullable final Boolean field1,
       @javax.annotation.Nullable final String field2,
