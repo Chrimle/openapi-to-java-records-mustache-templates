@@ -29,6 +29,8 @@ import java.util.Arrays;
 import jakarta.validation.constraints.*;
 import jakarta.validation.Valid;
 
+import java.util.HashSet;
+import java.util.Set;
 /**
  * Example of a deprecated Record
  *
@@ -38,6 +40,11 @@ import jakarta.validation.Valid;
 @Deprecated
 public record DeprecatedExampleRecord(
     @javax.annotation.Nonnull Boolean field1) {
+
+  /** A set containing the names of all instance fields defined in this class. */
+  public static final HashSet<String> openapiFields =
+      new HashSet<String>(
+          Set.of("field1"));
 
   public DeprecatedExampleRecord(
       @javax.annotation.Nonnull final Boolean field1) { 

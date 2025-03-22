@@ -27,6 +27,8 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
 
+import java.util.HashSet;
+import java.util.Set;
 /**
  * Example of a Record
  *
@@ -34,6 +36,11 @@ import java.util.Arrays;
  */
 public record ExampleRecord(
     @jakarta.annotation.Nonnull Boolean field1) {
+
+  /** A set containing the names of all instance fields defined in this class. */
+  public static final HashSet<String> openapiFields =
+      new HashSet<String>(
+          Set.of("field1"));
 
   public ExampleRecord(
       @jakarta.annotation.Nonnull final Boolean field1) { 

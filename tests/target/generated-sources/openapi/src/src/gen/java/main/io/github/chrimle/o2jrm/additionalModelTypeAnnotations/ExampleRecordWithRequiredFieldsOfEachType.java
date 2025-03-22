@@ -34,6 +34,8 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
+import java.util.HashSet;
+import java.util.Set;
 /**
  * Example of a Record with fields of each type
  *
@@ -58,6 +60,18 @@ public record ExampleRecordWithRequiredFieldsOfEachType(
     @javax.annotation.Nonnull Set<Boolean> field6,
     @javax.annotation.Nonnull ExampleRecord field7,
     @javax.annotation.Nonnull ExampleEnum field8) {
+
+  /** A set containing the names of all instance fields defined in this class. */
+  public static final HashSet<String> openapiFields =
+      new HashSet<String>(
+          Set.of("field1",
+              "field2",
+              "field3",
+              "field4",
+              "field5",
+              "field6",
+              "field7",
+              "field8"));
 
   public ExampleRecordWithRequiredFieldsOfEachType(
       @javax.annotation.Nonnull final Boolean field1,

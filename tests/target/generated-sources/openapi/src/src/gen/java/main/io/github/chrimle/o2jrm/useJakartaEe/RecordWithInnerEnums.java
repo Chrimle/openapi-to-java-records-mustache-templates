@@ -28,6 +28,8 @@ import java.io.IOException;
 import java.net.URI;
 import java.util.Arrays;
 
+import java.util.HashSet;
+import java.util.Set;
 /**
  * Example of a Record with inner enum classes
  *
@@ -39,6 +41,12 @@ public record RecordWithInnerEnums(
     @jakarta.annotation.Nonnull ExampleInnerEnum exampleInner,
     @jakarta.annotation.Nonnull ExampleInnerTwoEnum exampleInnerTwo,
     @jakarta.annotation.Nonnull ExampleInnerThreeEnum exampleInnerThree) {
+
+  /** A set containing the names of all instance fields defined in this class. */
+  public static final HashSet<String> openapiFields =
+      new HashSet<String>(
+          Set.of("exampleInner",
+              "exampleInnerTwo"));
 
   public RecordWithInnerEnums(
       @jakarta.annotation.Nonnull final ExampleInnerEnum exampleInner,

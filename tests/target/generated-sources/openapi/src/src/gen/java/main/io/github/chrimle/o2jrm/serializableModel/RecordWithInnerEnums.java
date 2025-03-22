@@ -29,6 +29,8 @@ import java.net.URI;
 import java.util.Arrays;
 import java.io.Serializable;
 
+import java.util.HashSet;
+import java.util.Set;
 /**
  * Example of a Record with inner enum classes
  *
@@ -43,6 +45,12 @@ public record RecordWithInnerEnums(
   ) implements Serializable {
 
   private static final long serialVersionUID = 1L;
+
+  /** A set containing the names of all instance fields defined in this class. */
+  public static final HashSet<String> openapiFields =
+      new HashSet<String>(
+          Set.of("exampleInner",
+              "exampleInnerTwo"));
 
   public RecordWithInnerEnums(
       @javax.annotation.Nonnull final ExampleInnerEnum exampleInner,

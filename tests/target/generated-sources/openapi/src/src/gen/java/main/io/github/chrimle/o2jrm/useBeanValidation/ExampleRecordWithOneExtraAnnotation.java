@@ -29,6 +29,8 @@ import java.util.Arrays;
 import jakarta.validation.constraints.*;
 import jakarta.validation.Valid;
 
+import java.util.HashSet;
+import java.util.Set;
 /**
  * Example of a Record with an extra annotation
  *
@@ -42,6 +44,12 @@ public record ExampleRecordWithOneExtraAnnotation(
     @io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationOne
 @io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationTwo
     @javax.annotation.Nonnull Boolean field2) {
+
+  /** A set containing the names of all instance fields defined in this class. */
+  public static final HashSet<String> openapiFields =
+      new HashSet<String>(
+          Set.of("field1",
+              "field2"));
 
   public ExampleRecordWithOneExtraAnnotation(
       @javax.annotation.Nonnull final Boolean field1,

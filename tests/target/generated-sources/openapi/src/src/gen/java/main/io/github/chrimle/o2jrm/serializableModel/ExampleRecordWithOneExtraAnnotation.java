@@ -28,6 +28,8 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.io.Serializable;
 
+import java.util.HashSet;
+import java.util.Set;
 /**
  * Example of a Record with an extra annotation
  *
@@ -44,6 +46,12 @@ public record ExampleRecordWithOneExtraAnnotation(
   ) implements Serializable {
 
   private static final long serialVersionUID = 1L;
+
+  /** A set containing the names of all instance fields defined in this class. */
+  public static final HashSet<String> openapiFields =
+      new HashSet<String>(
+          Set.of("field1",
+              "field2"));
 
   public ExampleRecordWithOneExtraAnnotation(
       @javax.annotation.Nonnull final Boolean field1,

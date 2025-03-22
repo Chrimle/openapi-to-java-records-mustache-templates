@@ -33,6 +33,8 @@ import java.util.List;
 import java.util.Set;
 import java.io.Serializable;
 
+import java.util.HashSet;
+import java.util.Set;
 /**
  * Example of a Record with fields of each type
  *
@@ -53,6 +55,16 @@ public record ExampleRecordWithNullableFieldsOfEachType(
   ) implements Serializable {
 
   private static final long serialVersionUID = 1L;
+
+  /** A set containing the names of all instance fields defined in this class. */
+  public static final HashSet<String> openapiFields =
+      new HashSet<String>(
+          Set.of("field1",
+              "field2",
+              "field3",
+              "field4",
+              "field5",
+              "field6"));
 
   public ExampleRecordWithNullableFieldsOfEachType(
       @javax.annotation.Nullable final Boolean field1,

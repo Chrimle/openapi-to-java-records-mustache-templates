@@ -32,6 +32,8 @@ import java.util.List;
 import java.util.UUID;
 import org.openapitools.jackson.nullable.JsonNullable;
 
+import java.util.HashSet;
+import java.util.Set;
 /**
  * Example of a Record which has fields with constraints
  *
@@ -86,6 +88,33 @@ public record RecordWithAllConstraints(
     @javax.annotation.Nonnull BigDecimal bigDecimalMinimum,
     @javax.annotation.Nonnull BigDecimal bigDecimalMaximum,
     @javax.annotation.Nonnull BigDecimal bigDecimalMinimumAndMaximum) {
+
+  /** A set containing the names of all instance fields defined in this class. */
+  public static final HashSet<String> openapiFields =
+      new HashSet<String>(
+          Set.of("stringStandard",
+              "stringDefault",
+              "stringNullable",
+              "stringRequired",
+              "stringRequiredNullable",
+              "stringRequiredPattern",
+              "stringEmailFormat",
+              "stringUuidFormat",
+              "stringMinLength",
+              "stringMaxLength",
+              "stringMinAndMaxLength",
+              "arrayMinItems",
+              "arrayMaxItems",
+              "arrayMinAndMaxItems",
+              "intMinimum",
+              "intMaximum",
+              "intMinimumAndMaximum",
+              "longMinimum",
+              "longMaximum",
+              "longMinimumAndMaximum",
+              "bigDecimalMinimum",
+              "bigDecimalMaximum",
+              "bigDecimalMinimumAndMaximum"));
 
   public RecordWithAllConstraints(
       @javax.annotation.Nonnull final String stringStandard,

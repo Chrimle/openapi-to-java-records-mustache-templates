@@ -34,6 +34,8 @@ import java.util.Set;
 import jakarta.validation.constraints.*;
 import jakarta.validation.Valid;
 
+import java.util.HashSet;
+import java.util.Set;
 /**
  * Example of a Record with fields of each type
  *
@@ -51,6 +53,16 @@ public record ExampleRecordWithNullableFieldsOfEachType(
     @javax.annotation.Nullable BigDecimal field4,
     @javax.annotation.Nullable List<Boolean> field5,
     @javax.annotation.Nullable Set<Boolean> field6) {
+
+  /** A set containing the names of all instance fields defined in this class. */
+  public static final HashSet<String> openapiFields =
+      new HashSet<String>(
+          Set.of("field1",
+              "field2",
+              "field3",
+              "field4",
+              "field5",
+              "field6"));
 
   public ExampleRecordWithNullableFieldsOfEachType(
       @javax.annotation.Nullable final Boolean field1,
