@@ -126,7 +126,7 @@ public record RecordWithInnerEnums(
      * Validates the JSON Element and throws an exception if issues are found.
      *
      * @param jsonElement to validate.
-     * @throws IOException if the JSON Element is not a valid RecordWithInnerEnums object.
+     * @throws IOException if the JSON Element is not a valid ExampleInnerEnum object.
      */
     public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
       final String value = jsonElement.getAsString();
@@ -181,7 +181,7 @@ public record RecordWithInnerEnums(
      * Validates the JSON Element and throws an exception if issues are found.
      *
      * @param jsonElement to validate.
-     * @throws IOException if the JSON Element is not a valid RecordWithInnerEnums object.
+     * @throws IOException if the JSON Element is not a valid ExampleInnerTwoEnum object.
      */
     public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
       final Integer value = jsonElement.getAsInt();
@@ -235,7 +235,7 @@ public record RecordWithInnerEnums(
      * Validates the JSON Element and throws an exception if issues are found.
      *
      * @param jsonElement to validate.
-     * @throws IOException if the JSON Element is not a valid RecordWithInnerEnums object.
+     * @throws IOException if the JSON Element is not a valid ExampleInnerThreeEnum object.
      */
     public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
       final URI value = URI.create(jsonElement.getAsString());
