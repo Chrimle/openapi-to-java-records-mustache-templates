@@ -66,7 +66,20 @@ public enum GeneratedEnum implements GeneratedClass {
       false,
       GeneratedField.of("NUMBER_404", Integer.class, 404).build(),
       GeneratedField.of("NUMBER_501", Integer.class, 501).build(),
-      GeneratedField.of("NUMBER_503", Integer.class, 503).build());
+      GeneratedField.of("NUMBER_503", Integer.class, 503).build()),
+  EXAMPLE_INNER_THREE_ENUM(
+      "RecordWithInnerEnums$ExampleInnerThreeEnum",
+      false,
+      GeneratedField.of(
+              "GITHUB_COM_CHRIMLE_OPENAPI_TO_JAVA_RECORDS_MUSTACHE_TEMPLATES",
+              URI.class,
+              URI.create("https://github.com/Chrimle/openapi-to-java-records-mustache-templates"))
+          .build(),
+      GeneratedField.of(
+              "CHRIMLE_GITHUB_IO_OPENAPI_TO_JAVA_RECORDS_MUSTACHE_TEMPLATES_",
+              URI.class,
+              URI.create("https://chrimle.github.io/openapi-to-java-records-mustache-templates/"))
+          .build());
 
   private final String simpleClassName;
   private final boolean isDeprecated;
