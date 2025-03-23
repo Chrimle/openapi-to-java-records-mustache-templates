@@ -120,6 +120,17 @@ public record RecordWithInnerEnums(
       }
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues are found.
+     *
+     * @param jsonElement to validate.
+     * @throws IOException if the JSON Element is not a valid RecordWithInnerEnums object.
+     */
+    public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
+      final String value = jsonElement.getAsString();
+      ExampleInnerEnum.fromValue(value);
+    }
   }
 
   /**
@@ -164,6 +175,17 @@ public record RecordWithInnerEnums(
       }
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues are found.
+     *
+     * @param jsonElement to validate.
+     * @throws IOException if the JSON Element is not a valid RecordWithInnerEnums object.
+     */
+    public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
+      final Integer value = jsonElement.getAsInt();
+      ExampleInnerTwoEnum.fromValue(value);
+    }
   }
 
   /**
@@ -206,6 +228,17 @@ public record RecordWithInnerEnums(
         }
       }
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues are found.
+     *
+     * @param jsonElement to validate.
+     * @throws IOException if the JSON Element is not a valid RecordWithInnerEnums object.
+     */
+    public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
+      final URI value = URI.create(jsonElement.getAsString());
+      ExampleInnerThreeEnum.fromValue(value);
     }
   }
 
