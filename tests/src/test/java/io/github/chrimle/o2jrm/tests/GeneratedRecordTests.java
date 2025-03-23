@@ -16,6 +16,7 @@
 */
 package io.github.chrimle.o2jrm.tests;
 
+import com.google.gson.JsonElement;
 import io.github.chrimle.o2jrm.GeneratedSource;
 import io.github.chrimle.o2jrm.annotations.*;
 import io.github.chrimle.o2jrm.models.GeneratedField;
@@ -39,6 +40,7 @@ import io.github.chrimle.o2jrm.utils.GeneratedRecordTestUtils;
 import java.io.Serializable;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -414,6 +416,19 @@ final class GeneratedRecordTests implements GeneratedClassTests {
                   .collect(Collectors.toSet());
           Assertions.assertEquals(expectedValue, actualValue);
         }
+
+        @ParameterizedTest
+        @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+        @DisplayName("Generated `record` HAS `validateJsonElement`-method")
+        void whenLibraryIsOkHttpGsonThenGeneratedRecordHasValidateJsonElementMethod(
+            final GeneratedSource generatedSource) {
+          Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+
+          final Method validateJsonElementMethod =
+              CustomAssertions.assertClassHasMethod(
+                  generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
+          CustomAssertions.assertStaticMethodCanBeInvoked(validateJsonElementMethod, (Object) null);
+        }
       }
 
       @Nested
@@ -440,6 +455,17 @@ final class GeneratedRecordTests implements GeneratedClassTests {
 
           CustomAssertions.assertClassDoesNotHaveFieldWithName(
               generatedSource.getClassUnderTest(), "openapiRequiredFields");
+        }
+
+        @ParameterizedTest
+        @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+        @DisplayName("Generated `record` does NOT have `validateJsonElement`-method")
+        void whenLibraryIsWebClientThenGeneratedRecordDoesNotHaveValidateJsonElementMethod(
+            final GeneratedSource generatedSource) {
+          Assumptions.assumeTrue(generatedSource.isLibraryWebClient());
+
+          CustomAssertions.assertClassDoesNotHaveMethod(
+              generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
         }
       }
     }
