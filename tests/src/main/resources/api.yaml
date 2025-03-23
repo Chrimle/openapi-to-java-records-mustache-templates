@@ -208,6 +208,13 @@ components:
             - 404
             - 501
             - 503
+        exampleInnerThree:
+          type: string
+          format: uri
+          description: Example of another inner enum class with URI values
+          enum:
+            - "https://github.com/Chrimle/openapi-to-java-records-mustache-templates"
+            - "https://chrimle.github.io/openapi-to-java-records-mustache-templates/"
     RecordWithAllConstraints:
       type: object
       description: Example of a Record which has fields with constraints
