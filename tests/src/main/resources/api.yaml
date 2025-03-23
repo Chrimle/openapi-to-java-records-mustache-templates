@@ -162,6 +162,13 @@ components:
         - Some description of ENUM1
         - Some description of ENUM2
         - Some description of ENUM3
+    ExampleUriEnum:
+      type: string
+      format: uri
+      description: Example of an Enum with URI values
+      enum:
+        - "https://github.com/Chrimle/openapi-to-java-records-mustache-templates"
+        - "https://chrimle.github.io/openapi-to-java-records-mustache-templates/"
     ExampleEnumWithIntegerValues:
       type: integer
       description: Example of an Enum with integer values
