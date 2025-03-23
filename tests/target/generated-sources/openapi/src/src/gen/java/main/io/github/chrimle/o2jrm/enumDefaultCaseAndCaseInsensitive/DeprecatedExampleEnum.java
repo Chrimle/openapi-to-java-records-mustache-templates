@@ -21,6 +21,9 @@ package io.github.chrimle.o2jrm.enumDefaultCaseAndCaseInsensitive;
 import java.util.Objects;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.IOException;
+import com.google.gson.JsonElement;
+
 /**
  * Example of a deprecated Enum
  *
@@ -66,5 +69,16 @@ public enum DeprecatedExampleEnum {
       }
     }
     return UNKNOWN_DEFAULT_OPEN_API;
+  }
+
+  /**
+   * Validates the JSON Element and throws an exception if issues are found.
+   *
+   * @param jsonElement to validate.
+   * @throws IOException if the JSON Element is not a valid DeprecatedExampleEnum object.
+   */
+  public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
+    final String value = jsonElement.getAsString();
+    DeprecatedExampleEnum.fromValue(value);
   }
 }

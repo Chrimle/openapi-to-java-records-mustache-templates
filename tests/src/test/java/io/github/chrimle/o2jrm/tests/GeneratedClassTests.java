@@ -61,7 +61,7 @@ public sealed interface GeneratedClassTests permits GeneratedEnumTests, Generate
         .flatMap(
             pluginExecution ->
                 Stream.of(GeneratedRecord.values())
-                    .map(generatedEnum -> new GeneratedSource(pluginExecution, generatedEnum)))
+                    .map(generatedRecord -> new GeneratedSource(pluginExecution, generatedRecord)))
         .map(Arguments::of);
   }
 }

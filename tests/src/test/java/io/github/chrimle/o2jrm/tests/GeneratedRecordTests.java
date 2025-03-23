@@ -16,6 +16,7 @@
 */
 package io.github.chrimle.o2jrm.tests;
 
+import com.google.gson.JsonElement;
 import io.github.chrimle.o2jrm.GeneratedSource;
 import io.github.chrimle.o2jrm.annotations.*;
 import io.github.chrimle.o2jrm.models.GeneratedField;
@@ -39,7 +40,13 @@ import io.github.chrimle.o2jrm.utils.GeneratedRecordTestUtils;
 import java.io.Serializable;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Assumptions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -199,10 +206,25 @@ final class GeneratedRecordTests implements GeneratedClassTests {
 
         @ParameterizedTest
         @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
-        @DisplayName("Generated `record` has same number of fields as OpenAPI properties")
-        public void whenObjectHasPropertiesThenGeneratedRecordHasSameNumberOfFields(
+        @DisplayName(
+            "[okhttp-gson] Generated `record` has same number of fields as OpenAPI properties")
+        public void whenObjectHasPropertiesThenGeneratedRecordHasSameNumberOfFields_okhttp_gson(
             final GeneratedSource generatedSource) {
           Assumptions.assumeFalse(generatedSource.serializableModel());
+          Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+
+          CustomAssertions.assertClassHasNumberOfFields(
+              generatedSource.getClassUnderTest(), generatedSource.generatedFields().length + 2);
+        }
+
+        @ParameterizedTest
+        @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+        @DisplayName(
+            "[webclient] Generated `record` has same number of fields as OpenAPI properties")
+        public void whenObjectHasPropertiesThenGeneratedRecordHasSameNumberOfFields_webclient(
+            final GeneratedSource generatedSource) {
+          Assumptions.assumeFalse(generatedSource.serializableModel());
+          Assumptions.assumeTrue(generatedSource.isLibraryWebClient());
 
           CustomAssertions.assertClassHasNumberOfFields(
               generatedSource.getClassUnderTest(), generatedSource.generatedFields().length);
@@ -350,6 +372,105 @@ final class GeneratedRecordTests implements GeneratedClassTests {
   class GeneratorConfigurationTests {
 
     @Nested
+    @DisplayName("Testing `<library>`")
+    class LibraryTests {
+
+      @Nested
+      @DisplayName("Testing `<library>okhttp-gson</library>` (default)")
+      class OkHttpGsonTests {
+
+        @ParameterizedTest
+        @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+        @DisplayName("Generated `record` HAS `openapiFields`-field")
+        void whenLibraryIsOkHttpGsonThenGeneratedRecordHasOpenApiFieldsField(
+            final GeneratedSource generatedSource) throws IllegalAccessException {
+          Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+
+          final Field openapiFields =
+              CustomAssertions.assertClassHasField(
+                  generatedSource.getClassUnderTest(), "openapiFields", HashSet.class);
+          final HashSet<String> actualValue = (HashSet<String>) openapiFields.get(null);
+          Assertions.assertEquals(generatedSource.generatedFields().length, actualValue.size());
+          Assertions.assertEquals(
+              Arrays.stream(generatedSource.generatedFields())
+                  .map(GeneratedField::name)
+                  .collect(Collectors.toSet()),
+              actualValue);
+        }
+
+        @ParameterizedTest
+        @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+        @DisplayName("Generated `record` HAS `openapiRequiredFields`-field")
+        void whenLibraryIsOkHttpGsonThenGeneratedRecordHasOpenApiRequiredFieldsField(
+            final GeneratedSource generatedSource) throws IllegalAccessException {
+          Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+
+          final Field openapiRequiredFields =
+              CustomAssertions.assertClassHasField(
+                  generatedSource.getClassUnderTest(), "openapiRequiredFields", HashSet.class);
+          final HashSet<String> actualValue = (HashSet<String>) openapiRequiredFields.get(null);
+          final Set<String> expectedValue =
+              Arrays.stream(generatedSource.generatedFields())
+                  .filter(GeneratedField::isRequired)
+                  .map(GeneratedField::name)
+                  .collect(Collectors.toSet());
+          Assertions.assertEquals(expectedValue, actualValue);
+        }
+
+        @ParameterizedTest
+        @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+        @DisplayName("Generated `record` HAS `validateJsonElement`-method")
+        void whenLibraryIsOkHttpGsonThenGeneratedRecordHasValidateJsonElementMethod(
+            final GeneratedSource generatedSource) {
+          Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+
+          final Method validateJsonElementMethod =
+              CustomAssertions.assertClassHasMethod(
+                  generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
+          CustomAssertions.assertStaticMethodCanBeInvoked(validateJsonElementMethod, (Object) null);
+        }
+      }
+
+      @Nested
+      @DisplayName("Testing `<library>webclient</library>`")
+      class WebClientTests {
+
+        @ParameterizedTest
+        @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+        @DisplayName("Generated `record` does NOT have `openapiFields`-field")
+        void whenLibraryIsWebClientThenGeneratedRecordDoesNotHaveOpenApiFieldsField(
+            final GeneratedSource generatedSource) {
+          Assumptions.assumeTrue(generatedSource.isLibraryWebClient());
+
+          CustomAssertions.assertClassDoesNotHaveFieldWithName(
+              generatedSource.getClassUnderTest(), "openapiFields");
+        }
+
+        @ParameterizedTest
+        @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+        @DisplayName("Generated `record` does NOT have `openapiRequiredFields`-field")
+        void whenLibraryIsWebClientThenGeneratedRecordDoesNotHaveOpenApiRequiredFieldsField(
+            final GeneratedSource generatedSource) {
+          Assumptions.assumeTrue(generatedSource.isLibraryWebClient());
+
+          CustomAssertions.assertClassDoesNotHaveFieldWithName(
+              generatedSource.getClassUnderTest(), "openapiRequiredFields");
+        }
+
+        @ParameterizedTest
+        @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+        @DisplayName("Generated `record` does NOT have `validateJsonElement`-method")
+        void whenLibraryIsWebClientThenGeneratedRecordDoesNotHaveValidateJsonElementMethod(
+            final GeneratedSource generatedSource) {
+          Assumptions.assumeTrue(generatedSource.isLibraryWebClient());
+
+          CustomAssertions.assertClassDoesNotHaveMethod(
+              generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
+        }
+      }
+    }
+
+    @Nested
     @DisplayName("Testing `<configOptions>`")
     class ConfigOptionsTests {
 
@@ -453,11 +574,26 @@ final class GeneratedRecordTests implements GeneratedClassTests {
           @ParameterizedTest
           @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
           @DisplayName(
-              "Generated `record` has one additional number of fields than OpenAPI properties")
+              "[okhttp-gson] Generated `record` has one additional number of fields than OpenAPI properties")
           public void
-              whenConfigOptionSerializableModelIsTrueThenGeneratedRecordHasOneAdditionalField(
+              whenConfigOptionSerializableModelIsTrueThenGeneratedRecordHasOneAdditionalField_okhttp_gson(
                   final GeneratedSource generatedSource) {
             Assumptions.assumeTrue(generatedSource.serializableModel());
+            Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+
+            CustomAssertions.assertClassHasNumberOfFields(
+                generatedSource.getClassUnderTest(), generatedSource.generatedFields().length + 3);
+          }
+
+          @ParameterizedTest
+          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+          @DisplayName(
+              "[webclient] Generated `record` has one additional number of fields than OpenAPI properties")
+          public void
+              whenConfigOptionSerializableModelIsTrueThenGeneratedRecordHasOneAdditionalField_webclient(
+                  final GeneratedSource generatedSource) {
+            Assumptions.assumeTrue(generatedSource.serializableModel());
+            Assumptions.assumeTrue(generatedSource.isLibraryWebClient());
 
             CustomAssertions.assertClassHasNumberOfFields(
                 generatedSource.getClassUnderTest(), generatedSource.generatedFields().length + 1);

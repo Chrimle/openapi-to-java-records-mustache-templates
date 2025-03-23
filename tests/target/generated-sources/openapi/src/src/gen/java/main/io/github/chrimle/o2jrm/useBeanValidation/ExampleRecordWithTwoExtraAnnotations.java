@@ -29,6 +29,11 @@ import java.util.Arrays;
 import jakarta.validation.constraints.*;
 import jakarta.validation.Valid;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * Example of a Record with two extra annotations
  *
@@ -39,8 +44,28 @@ import jakarta.validation.Valid;
 public record ExampleRecordWithTwoExtraAnnotations(
     @javax.annotation.Nonnull Boolean field1) {
 
+  /** A set containing the names of all instance fields defined in this class. */
+  public static final HashSet<String> openapiFields =
+      new HashSet<String>(
+          Set.of("field1"));
+
+  /** A set containing the names of all required fields defined in this class. */
+  public static final HashSet<String> openapiRequiredFields =
+      new HashSet<String>(
+          Set.of());
+
   public ExampleRecordWithTwoExtraAnnotations(
       @javax.annotation.Nonnull final Boolean field1) { 
     this.field1 = field1;
+  }
+
+  /**
+   * Validates the JSON Element and throws an exception if issues are found.
+   *
+   * @param jsonElement to validate.
+   * @throws IOException if the JSON Element is not a valid ExampleRecordWithTwoExtraAnnotations object.
+   */
+  public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
+
   }
 }

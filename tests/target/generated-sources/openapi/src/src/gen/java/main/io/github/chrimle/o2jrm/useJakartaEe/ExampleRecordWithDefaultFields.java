@@ -27,6 +27,11 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * Example of a Record with default fields
  *
@@ -35,8 +40,28 @@ import java.util.Arrays;
 public record ExampleRecordWithDefaultFields(
     @jakarta.annotation.Nonnull String field1) {
 
+  /** A set containing the names of all instance fields defined in this class. */
+  public static final HashSet<String> openapiFields =
+      new HashSet<String>(
+          Set.of("field1"));
+
+  /** A set containing the names of all required fields defined in this class. */
+  public static final HashSet<String> openapiRequiredFields =
+      new HashSet<String>(
+          Set.of());
+
   public ExampleRecordWithDefaultFields(
       @jakarta.annotation.Nullable final String field1) { 
     this.field1 = Objects.requireNonNullElse(field1, "someDefaultValue");
+  }
+
+  /**
+   * Validates the JSON Element and throws an exception if issues are found.
+   *
+   * @param jsonElement to validate.
+   * @throws IOException if the JSON Element is not a valid ExampleRecordWithDefaultFields object.
+   */
+  public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
+
   }
 }

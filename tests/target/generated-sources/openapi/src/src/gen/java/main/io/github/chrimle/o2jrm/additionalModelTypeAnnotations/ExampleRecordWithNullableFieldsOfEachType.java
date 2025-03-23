@@ -32,6 +32,11 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * Example of a Record with fields of each type
  *
@@ -53,6 +58,26 @@ public record ExampleRecordWithNullableFieldsOfEachType(
     @javax.annotation.Nullable List<Boolean> field5,
     @javax.annotation.Nullable Set<Boolean> field6) {
 
+  /** A set containing the names of all instance fields defined in this class. */
+  public static final HashSet<String> openapiFields =
+      new HashSet<String>(
+          Set.of("field1",
+              "field2",
+              "field3",
+              "field4",
+              "field5",
+              "field6"));
+
+  /** A set containing the names of all required fields defined in this class. */
+  public static final HashSet<String> openapiRequiredFields =
+      new HashSet<String>(
+          Set.of("field1",
+              "field2",
+              "field3",
+              "field4",
+              "field5",
+              "field6"));
+
   public ExampleRecordWithNullableFieldsOfEachType(
       @javax.annotation.Nullable final Boolean field1,
       @javax.annotation.Nullable final String field2,
@@ -66,5 +91,15 @@ public record ExampleRecordWithNullableFieldsOfEachType(
     this.field4 = field4;
     this.field5 = field5;
     this.field6 = field6;
+  }
+
+  /**
+   * Validates the JSON Element and throws an exception if issues are found.
+   *
+   * @param jsonElement to validate.
+   * @throws IOException if the JSON Element is not a valid ExampleRecordWithNullableFieldsOfEachType object.
+   */
+  public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
+
   }
 }

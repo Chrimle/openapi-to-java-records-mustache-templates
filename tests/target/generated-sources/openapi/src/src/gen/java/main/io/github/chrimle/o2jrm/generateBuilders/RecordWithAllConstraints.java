@@ -32,6 +32,11 @@ import java.util.List;
 import java.util.UUID;
 import org.openapitools.jackson.nullable.JsonNullable;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * Example of a Record which has fields with constraints
  *
@@ -83,6 +88,40 @@ public record RecordWithAllConstraints(
     @javax.annotation.Nonnull BigDecimal bigDecimalMinimum,
     @javax.annotation.Nonnull BigDecimal bigDecimalMaximum,
     @javax.annotation.Nonnull BigDecimal bigDecimalMinimumAndMaximum) {
+
+  /** A set containing the names of all instance fields defined in this class. */
+  public static final HashSet<String> openapiFields =
+      new HashSet<String>(
+          Set.of("stringStandard",
+              "stringDefault",
+              "stringNullable",
+              "stringRequired",
+              "stringRequiredNullable",
+              "stringRequiredPattern",
+              "stringEmailFormat",
+              "stringUuidFormat",
+              "stringMinLength",
+              "stringMaxLength",
+              "stringMinAndMaxLength",
+              "arrayMinItems",
+              "arrayMaxItems",
+              "arrayMinAndMaxItems",
+              "intMinimum",
+              "intMaximum",
+              "intMinimumAndMaximum",
+              "longMinimum",
+              "longMaximum",
+              "longMinimumAndMaximum",
+              "bigDecimalMinimum",
+              "bigDecimalMaximum",
+              "bigDecimalMinimumAndMaximum"));
+
+  /** A set containing the names of all required fields defined in this class. */
+  public static final HashSet<String> openapiRequiredFields =
+      new HashSet<String>(
+          Set.of("stringRequired",
+              "stringRequiredNullable",
+              "stringRequiredPattern"));
 
   public RecordWithAllConstraints(
       @javax.annotation.Nonnull final String stringStandard,
@@ -499,5 +538,15 @@ public record RecordWithAllConstraints(
   /** Creates a new {@link Builder}-instance. */
   public static RecordWithAllConstraints.Builder builder() {
     return new RecordWithAllConstraints.Builder();
+  }
+
+  /**
+   * Validates the JSON Element and throws an exception if issues are found.
+   *
+   * @param jsonElement to validate.
+   * @throws IOException if the JSON Element is not a valid RecordWithAllConstraints object.
+   */
+  public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
+
   }
 }

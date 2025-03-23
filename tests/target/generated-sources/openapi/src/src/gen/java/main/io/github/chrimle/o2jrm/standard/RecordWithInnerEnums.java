@@ -28,6 +28,11 @@ import java.io.IOException;
 import java.net.URI;
 import java.util.Arrays;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * Example of a Record with inner enum classes
  *
@@ -39,6 +44,18 @@ public record RecordWithInnerEnums(
     @javax.annotation.Nonnull ExampleInnerEnum exampleInner,
     @javax.annotation.Nonnull ExampleInnerTwoEnum exampleInnerTwo,
     @javax.annotation.Nonnull ExampleInnerThreeEnum exampleInnerThree) {
+
+  /** A set containing the names of all instance fields defined in this class. */
+  public static final HashSet<String> openapiFields =
+      new HashSet<String>(
+          Set.of("exampleInner",
+              "exampleInnerTwo",
+              "exampleInnerThree"));
+
+  /** A set containing the names of all required fields defined in this class. */
+  public static final HashSet<String> openapiRequiredFields =
+      new HashSet<String>(
+          Set.of());
 
   public RecordWithInnerEnums(
       @javax.annotation.Nonnull final ExampleInnerEnum exampleInner,
@@ -100,6 +117,17 @@ public record RecordWithInnerEnums(
       }
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues are found.
+     *
+     * @param jsonElement to validate.
+     * @throws IOException if the JSON Element is not a valid ExampleInnerEnum object.
+     */
+    public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
+      final String value = jsonElement.getAsString();
+      ExampleInnerEnum.fromValue(value);
+    }
   }
 
   /**
@@ -144,6 +172,17 @@ public record RecordWithInnerEnums(
       }
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues are found.
+     *
+     * @param jsonElement to validate.
+     * @throws IOException if the JSON Element is not a valid ExampleInnerTwoEnum object.
+     */
+    public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
+      final Integer value = jsonElement.getAsInt();
+      ExampleInnerTwoEnum.fromValue(value);
+    }
   }
 
   /**
@@ -187,5 +226,26 @@ public record RecordWithInnerEnums(
       }
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues are found.
+     *
+     * @param jsonElement to validate.
+     * @throws IOException if the JSON Element is not a valid ExampleInnerThreeEnum object.
+     */
+    public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
+      final URI value = URI.create(jsonElement.getAsString());
+      ExampleInnerThreeEnum.fromValue(value);
+    }
+  }
+
+  /**
+   * Validates the JSON Element and throws an exception if issues are found.
+   *
+   * @param jsonElement to validate.
+   * @throws IOException if the JSON Element is not a valid RecordWithInnerEnums object.
+   */
+  public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
+
   }
 }

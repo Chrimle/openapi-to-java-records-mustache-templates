@@ -21,6 +21,9 @@ package io.github.chrimle.o2jrm.additionalEnumTypeAnnotations;
 import java.util.Objects;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.IOException;
+import com.google.gson.JsonElement;
+
 import java.net.URI;
 
 /**
@@ -66,5 +69,16 @@ public enum ExampleUriEnum {
       }
     }
     throw new IllegalArgumentException("Unexpected value '" + value + "'");
+  }
+
+  /**
+   * Validates the JSON Element and throws an exception if issues are found.
+   *
+   * @param jsonElement to validate.
+   * @throws IOException if the JSON Element is not a valid ExampleUriEnum object.
+   */
+  public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
+    final URI value = URI.create(jsonElement.getAsString());
+    ExampleUriEnum.fromValue(value);
   }
 }

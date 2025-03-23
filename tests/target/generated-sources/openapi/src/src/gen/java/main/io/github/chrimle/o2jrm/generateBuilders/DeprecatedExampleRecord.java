@@ -27,6 +27,11 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * Example of a deprecated Record
  *
@@ -36,6 +41,16 @@ import java.util.Arrays;
 @Deprecated
 public record DeprecatedExampleRecord(
     @javax.annotation.Nonnull Boolean field1) {
+
+  /** A set containing the names of all instance fields defined in this class. */
+  public static final HashSet<String> openapiFields =
+      new HashSet<String>(
+          Set.of("field1"));
+
+  /** A set containing the names of all required fields defined in this class. */
+  public static final HashSet<String> openapiRequiredFields =
+      new HashSet<String>(
+          Set.of());
 
   public DeprecatedExampleRecord(
       @javax.annotation.Nonnull final Boolean field1) { 
@@ -78,5 +93,15 @@ public record DeprecatedExampleRecord(
   /** Creates a new {@link Builder}-instance. */
   public static DeprecatedExampleRecord.Builder builder() {
     return new DeprecatedExampleRecord.Builder();
+  }
+
+  /**
+   * Validates the JSON Element and throws an exception if issues are found.
+   *
+   * @param jsonElement to validate.
+   * @throws IOException if the JSON Element is not a valid DeprecatedExampleRecord object.
+   */
+  public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
+
   }
 }

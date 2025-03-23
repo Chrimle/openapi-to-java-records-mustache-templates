@@ -33,6 +33,11 @@ import java.util.UUID;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.io.Serializable;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * Example of a Record which has fields with constraints
  *
@@ -88,6 +93,40 @@ public record RecordWithAllConstraints(
 
   private static final long serialVersionUID = 1L;
 
+  /** A set containing the names of all instance fields defined in this class. */
+  public static final HashSet<String> openapiFields =
+      new HashSet<String>(
+          Set.of("stringStandard",
+              "stringDefault",
+              "stringNullable",
+              "stringRequired",
+              "stringRequiredNullable",
+              "stringRequiredPattern",
+              "stringEmailFormat",
+              "stringUuidFormat",
+              "stringMinLength",
+              "stringMaxLength",
+              "stringMinAndMaxLength",
+              "arrayMinItems",
+              "arrayMaxItems",
+              "arrayMinAndMaxItems",
+              "intMinimum",
+              "intMaximum",
+              "intMinimumAndMaximum",
+              "longMinimum",
+              "longMaximum",
+              "longMinimumAndMaximum",
+              "bigDecimalMinimum",
+              "bigDecimalMaximum",
+              "bigDecimalMinimumAndMaximum"));
+
+  /** A set containing the names of all required fields defined in this class. */
+  public static final HashSet<String> openapiRequiredFields =
+      new HashSet<String>(
+          Set.of("stringRequired",
+              "stringRequiredNullable",
+              "stringRequiredPattern"));
+
   public RecordWithAllConstraints(
       @javax.annotation.Nonnull final String stringStandard,
       @javax.annotation.Nullable final String stringDefault,
@@ -135,5 +174,15 @@ public record RecordWithAllConstraints(
     this.bigDecimalMinimum = bigDecimalMinimum;
     this.bigDecimalMaximum = bigDecimalMaximum;
     this.bigDecimalMinimumAndMaximum = bigDecimalMinimumAndMaximum;
+  }
+
+  /**
+   * Validates the JSON Element and throws an exception if issues are found.
+   *
+   * @param jsonElement to validate.
+   * @throws IOException if the JSON Element is not a valid RecordWithAllConstraints object.
+   */
+  public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
+
   }
 }

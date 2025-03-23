@@ -28,6 +28,11 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.io.Serializable;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * Example of a Record with an extra annotation
  *
@@ -45,10 +50,31 @@ public record ExampleRecordWithOneExtraAnnotation(
 
   private static final long serialVersionUID = 1L;
 
+  /** A set containing the names of all instance fields defined in this class. */
+  public static final HashSet<String> openapiFields =
+      new HashSet<String>(
+          Set.of("field1",
+              "field2"));
+
+  /** A set containing the names of all required fields defined in this class. */
+  public static final HashSet<String> openapiRequiredFields =
+      new HashSet<String>(
+          Set.of());
+
   public ExampleRecordWithOneExtraAnnotation(
       @javax.annotation.Nonnull final Boolean field1,
       @javax.annotation.Nonnull final Boolean field2) { 
     this.field1 = field1;
     this.field2 = field2;
+  }
+
+  /**
+   * Validates the JSON Element and throws an exception if issues are found.
+   *
+   * @param jsonElement to validate.
+   * @throws IOException if the JSON Element is not a valid ExampleRecordWithOneExtraAnnotation object.
+   */
+  public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
+
   }
 }
