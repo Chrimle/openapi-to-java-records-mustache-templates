@@ -124,7 +124,8 @@ import java.util.Set;
         }
       }
       {{#enumUnknownDefaultCase}}{{#allowableValues}}{{#enumVars}}{{#-last}}return {{{name}}};{{/-last}}{{/enumVars}}{{/allowableValues}}{{/enumUnknownDefaultCase}}{{^enumUnknownDefaultCase}}throw new IllegalArgumentException("Unexpected value '" + value + "'");{{/enumUnknownDefaultCase}}
-    }{{#gson}}
+    }
+{{#gson}}
 
     /**
      * Validates the JSON Element and throws an exception if issues are found.
@@ -136,7 +137,7 @@ import java.util.Set;
       final {{^isNumber}}{{{dataType}}}{{/isNumber}}{{#isNumber}}String{{/isNumber}} value = {{#isUri}}URI.create({{/isUri}}jsonElement.{{#isNumber}}getAsString(){{/isNumber}}{{#isInteger}}getAsInt(){{/isInteger}}{{#isUri}}getAsString()){{/isUri}}{{^isNumber}}{{^isInteger}}{{^isUri}}getAs{{{dataType}}}(){{/isUri}}{{/isInteger}}{{/isNumber}};
       {{{datatypeWithEnum}}}{{^datatypeWithEnum}}{{{classname}}}{{/datatypeWithEnum}}.fromValue({{#isNumber}}new BigDecimal({{/isNumber}}value{{#isNumber}}){{/isNumber}});
     }
-    {{/gson}}
+{{/gson}}
   }{{/isEnum}}{{/vars}}
 {{#gson}}
 
