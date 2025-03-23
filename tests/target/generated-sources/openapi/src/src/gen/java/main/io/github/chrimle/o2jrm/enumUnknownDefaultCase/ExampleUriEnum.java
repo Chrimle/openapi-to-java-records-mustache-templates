@@ -23,12 +23,12 @@ import com.google.gson.annotations.SerializedName;
 
 import java.net.URI;
 
-/** Example of an Enum with URI values */
+/**
+ * Example of an Enum with URI values
+ */
 public enum ExampleUriEnum {
-  GITHUB_COM_CHRIMLE_OPENAPI_TO_JAVA_RECORDS_MUSTACHE_TEMPLATES(
-      URI.create("https://github.com/Chrimle/openapi-to-java-records-mustache-templates")),
-  CHRIMLE_GITHUB_IO_OPENAPI_TO_JAVA_RECORDS_MUSTACHE_TEMPLATES_(
-      URI.create("https://chrimle.github.io/openapi-to-java-records-mustache-templates/")),
+  GITHUB_COM_CHRIMLE_OPENAPI_TO_JAVA_RECORDS_MUSTACHE_TEMPLATES(URI.create("https://github.com/Chrimle/openapi-to-java-records-mustache-templates")),
+  CHRIMLE_GITHUB_IO_OPENAPI_TO_JAVA_RECORDS_MUSTACHE_TEMPLATES_(URI.create("https://chrimle.github.io/openapi-to-java-records-mustache-templates/")),
   UNKNOWN_DEFAULT_OPEN_API(URI.create("11184809"));
 
   private final URI value;
@@ -47,14 +47,15 @@ public enum ExampleUriEnum {
   }
 
   /**
-   * Matches the given {@code value} to an enum constant using {@link #getValue()}.
+   * Matches the given {@code value} to an enum constant using {@link
+   * #getValue()}.
    *
    * <p><b>NOTE:</b> if multiple enum constants have a matching value, the first enum constant is
    * returned, by the order they are declared.
    *
    * @param value of the enum.
-   * @return a {@link ExampleUriEnum } with the matching value, or {@link #UNKNOWN_DEFAULT_OPEN_API
-   *     } if no match is found.
+   * @return a {@link ExampleUriEnum } with the matching value, or {@link
+   *     #UNKNOWN_DEFAULT_OPEN_API } if no match is found.
    */
   public static ExampleUriEnum fromValue(final URI value) {
     for (final ExampleUriEnum constant : ExampleUriEnum.values()) {
