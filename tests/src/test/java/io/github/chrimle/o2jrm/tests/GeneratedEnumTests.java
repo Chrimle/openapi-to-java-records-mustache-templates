@@ -593,8 +593,7 @@ final class GeneratedEnumTests implements GeneratedClassTests {
           void whenConfigOptionEnumUnknownDefaultCaseIsTrueThenFromValueReturnsUriDefaultValue(
               final GeneratedSource generatedSource) {
             Assumptions.assumeTrue(generatedSource.enumUnknownDefaultCase());
-            Assumptions.assumeTrue(
-                URI.class.equals(generatedSource.generatedFields()[0].type()));
+            Assumptions.assumeTrue(URI.class.equals(generatedSource.generatedFields()[0].type()));
 
             CustomAssertions.assertStaticMethodReturnsNonNull(
                 CustomAssertions.assertClassHasMethod(
