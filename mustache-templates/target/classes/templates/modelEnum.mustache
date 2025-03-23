@@ -15,7 +15,7 @@
 
 }}{{!
   Source: openapi-to-java-records-mustache-templates
-  Version: 2.7.0
+  Version: 2.7.1
   Type: Override
   Dependencies:
     - `additionalEnumTypeAnnotations.mustache` (Official)
@@ -26,7 +26,9 @@
     - This template is overriding an official 'openapi-generator-maven-plugin' template.
     - Generates an `enum` class.
 
-}}{{>javadoc}}{{!
+}}{{#isUri}}import java.net.URI;
+
+{{/isUri}}{{>javadoc}}{{!
 }}{{#isDeprecated}}@Deprecated
 {{/isDeprecated}}{{!
 }}{{>additionalEnumTypeAnnotations}}{{!

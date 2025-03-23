@@ -204,6 +204,10 @@ public enum GeneratedRecord implements GeneratedClass {
                   GeneratedField.of(
                           "exampleInnerTwo",
                           GeneratedEnum.EXAMPLE_INNER_TWO_ENUM.getClass(pluginExecution))
+                      .build(),
+                  GeneratedField.of(
+                          "exampleInnerThree",
+                          GeneratedEnum.EXAMPLE_INNER_THREE_ENUM.getClass(pluginExecution))
                       .build())
               .toArray(new GeneratedField[] {});
       case EXAMPLE_RECORD_WITH_REQUIRED_FIELDS_OF_EACH_TYPE ->

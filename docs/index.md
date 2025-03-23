@@ -32,7 +32,7 @@ The mustache templates are best acquired by importing the project as a dependenc
 <dependency>
     <groupId>io.github.chrimle</groupId>
     <artifactId>openapi-to-java-records-mustache-templates</artifactId>
-    <version>2.7.0</version>
+    <version>2.7.1</version>
 </dependency>
 ```
 It is **strongly recommended** to import the project as a dependency. It has officially been published to:

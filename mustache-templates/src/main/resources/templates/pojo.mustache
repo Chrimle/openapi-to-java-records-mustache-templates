@@ -97,7 +97,7 @@
      */
     public static {{datatypeWithEnum}} fromValue(final {{{dataType}}} value) {
       for (final {{datatypeWithEnum}} constant : {{datatypeWithEnum}}.values()) {
-        if (constant.getValue().equals{{#useEnumCaseInsensitive}}{{#isString}}IgnoreCase{{/isString}}{{/useEnumCaseInsensitive}}(value)) {
+        if (constant.getValue().equals{{#useEnumCaseInsensitive}}{{#isString}}{{^isUri}}IgnoreCase{{/isUri}}{{/isString}}{{/useEnumCaseInsensitive}}(value)) {
           return constant;
         }
       }
