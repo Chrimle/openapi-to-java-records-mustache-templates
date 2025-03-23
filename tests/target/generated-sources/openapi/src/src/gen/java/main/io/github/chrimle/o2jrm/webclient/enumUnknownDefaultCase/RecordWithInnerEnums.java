@@ -12,7 +12,7 @@
  * openapi-to-java-records-mustache-templates. For further information,
  * questions, requesting features or reporting issues, please visit:
  * https://github.com/Chrimle/openapi-to-java-records-mustache-templates.
- * Generated with Version: 2.7.0
+ * Generated with Version: 2.7.1
  *
  */
 
@@ -25,6 +25,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import java.net.URI;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
@@ -33,16 +34,20 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  *
  * @param exampleInner Example of an inner enum class
  * @param exampleInnerTwo Example of another inner enum class with integer values
+ * @param exampleInnerThree Example of another inner enum class with URI values
  */
 public record RecordWithInnerEnums(
     @javax.annotation.Nonnull ExampleInnerEnum exampleInner,
-    @javax.annotation.Nonnull ExampleInnerTwoEnum exampleInnerTwo) {
+    @javax.annotation.Nonnull ExampleInnerTwoEnum exampleInnerTwo,
+    @javax.annotation.Nonnull ExampleInnerThreeEnum exampleInnerThree) {
 
   public RecordWithInnerEnums(
       @javax.annotation.Nonnull final ExampleInnerEnum exampleInner,
-      @javax.annotation.Nonnull final ExampleInnerTwoEnum exampleInnerTwo) { 
+      @javax.annotation.Nonnull final ExampleInnerTwoEnum exampleInnerTwo,
+      @javax.annotation.Nonnull final ExampleInnerThreeEnum exampleInnerThree) { 
     this.exampleInner = exampleInner;
     this.exampleInnerTwo = exampleInnerTwo;
+    this.exampleInnerThree = exampleInnerThree;
   }
 
   /**
@@ -141,6 +146,50 @@ public record RecordWithInnerEnums(
         }
       }
       return NUMBER_unknown_default_open_api;
+    }
+  }
+
+  /**
+   * Example of another inner enum class with URI values
+   */
+  public enum ExampleInnerThreeEnum {
+    GITHUB_COM_CHRIMLE_OPENAPI_TO_JAVA_RECORDS_MUSTACHE_TEMPLATES(URI.create("https://github.com/Chrimle/openapi-to-java-records-mustache-templates")),
+    CHRIMLE_GITHUB_IO_OPENAPI_TO_JAVA_RECORDS_MUSTACHE_TEMPLATES_(URI.create("https://chrimle.github.io/openapi-to-java-records-mustache-templates/")),
+    UNKNOWN_DEFAULT_OPEN_API(URI.create("11184809"));
+
+    private final URI value;
+
+    ExampleInnerThreeEnum(final URI value) {
+      this.value = value;
+    }
+
+    /**
+     * Gets the {@code value} of this enum.
+     *
+     * @return the value of this enum.
+     */
+    public URI getValue() {
+      return value;
+    }
+
+    /**
+     * Case-sensitively matches the given {@code value} to an enum constant using {@link
+     * #getValue()}.
+     *
+     * <p><b>NOTE:</b> if multiple enum constants have a matching value, the first enum constant is
+     * returned, by the order they are declared.
+     *
+     * @param value of the enum.
+     * @return a {@link ExampleInnerThreeEnum } with the matching value, or
+     *     {@link #UNKNOWN_DEFAULT_OPEN_API } if no match is found.
+     */
+    public static ExampleInnerThreeEnum fromValue(final URI value) {
+      for (final ExampleInnerThreeEnum constant : ExampleInnerThreeEnum.values()) {
+        if (constant.getValue().equals(value)) {
+          return constant;
+        }
+      }
+      return UNKNOWN_DEFAULT_OPEN_API;
     }
   }
 }

@@ -34,6 +34,8 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -243,5 +245,15 @@ public record ExampleRecordWithRequiredFieldsOfEachType(
   /** Creates a new {@link Builder}-instance. */
   public static ExampleRecordWithRequiredFieldsOfEachType.Builder builder() {
     return new ExampleRecordWithRequiredFieldsOfEachType.Builder();
+  }
+
+  /**
+   * Validates the JSON Element and throws an exception if issues are found.
+   *
+   * @param jsonElement to validate.
+   * @throws IOException if the JSON Element is not a valid ExampleRecordWithRequiredFieldsOfEachType object.
+   */
+  public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
+
   }
 }

@@ -29,6 +29,8 @@ import java.net.URI;
 import java.util.Arrays;
 import java.io.Serializable;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -51,7 +53,8 @@ public record RecordWithInnerEnums(
   public static final HashSet<String> openapiFields =
       new HashSet<String>(
           Set.of("exampleInner",
-              "exampleInnerTwo"));
+              "exampleInnerTwo",
+              "exampleInnerThree"));
 
   /** A set containing the names of all required fields defined in this class. */
   public static final HashSet<String> openapiRequiredFields =
@@ -205,5 +208,15 @@ public record RecordWithInnerEnums(
       }
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
+  }
+
+  /**
+   * Validates the JSON Element and throws an exception if issues are found.
+   *
+   * @param jsonElement to validate.
+   * @throws IOException if the JSON Element is not a valid RecordWithInnerEnums object.
+   */
+  public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
+
   }
 }

@@ -36,6 +36,8 @@ import java.util.Set;
 import jakarta.validation.constraints.*;
 import jakarta.validation.Valid;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -102,5 +104,15 @@ public record ExampleRecordWithRequiredFieldsOfEachType(
     this.field6 = Objects.requireNonNullElse(field6, new LinkedHashSet<>());
     this.field7 = field7;
     this.field8 = field8;
+  }
+
+  /**
+   * Validates the JSON Element and throws an exception if issues are found.
+   *
+   * @param jsonElement to validate.
+   * @throws IOException if the JSON Element is not a valid ExampleRecordWithRequiredFieldsOfEachType object.
+   */
+  public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
+
   }
 }

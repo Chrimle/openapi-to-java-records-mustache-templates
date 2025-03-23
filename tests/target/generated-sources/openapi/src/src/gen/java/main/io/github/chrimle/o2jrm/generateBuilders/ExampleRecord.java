@@ -27,6 +27,8 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -89,5 +91,15 @@ public record ExampleRecord(
   /** Creates a new {@link Builder}-instance. */
   public static ExampleRecord.Builder builder() {
     return new ExampleRecord.Builder();
+  }
+
+  /**
+   * Validates the JSON Element and throws an exception if issues are found.
+   *
+   * @param jsonElement to validate.
+   * @throws IOException if the JSON Element is not a valid ExampleRecord object.
+   */
+  public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
+
   }
 }
