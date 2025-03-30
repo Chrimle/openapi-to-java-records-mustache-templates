@@ -148,9 +148,14 @@ import java.util.Set;
    * @throws IOException if the JSON Element is not a valid {{classname}} object.
    */
   public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
-    if (jsonElement == null && !{{classname}}.openapiRequiredFields.isEmpty()) {
-      throw new IllegalArgumentException(String.format("The required field(s) %s in {{{classname}}} is not found in the empty JSON string", {{classname}}.openapiRequiredFields.toString()));
+    {{#requiredVars}}{{#-first}}{{!
+  }}if (jsonElement == null && !{{classname}}.openapiRequiredFields.isEmpty()) {
+      throw new IllegalArgumentException(
+          String.format(
+              "The required field(s) %s in {{{classname}}} is not found in the empty JSON string",
+              {{classname}}.openapiRequiredFields.toString()));
     }
+{{/-first}}{{/requiredVars}}
   }
 {{/gson}}
 }
