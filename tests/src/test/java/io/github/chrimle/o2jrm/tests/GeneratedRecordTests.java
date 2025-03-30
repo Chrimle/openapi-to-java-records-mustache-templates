@@ -455,8 +455,8 @@ final class GeneratedRecordTests implements GeneratedClassTests {
           @ParameterizedTest
           @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
           @DisplayName(
-              "When `jsonElement` is `null` and `record` has no required fields Then `validateJsonElement`-method does NOT throw")
-          void whenJsonElementIsNullAndRecordHasNoRequiredFieldsThenNothingIsThrown(
+              "When `jsonElement` is `null` and `record` has no required fields Then `validateJsonElement`-method throws `NullPointerException`")
+          void whenJsonElementIsNullAndRecordHasNoRequiredFieldsThenNullPointerExceptionIsThrown(
               final GeneratedSource generatedSource) {
             Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
             Assumptions.assumeTrue(
@@ -466,23 +466,79 @@ final class GeneratedRecordTests implements GeneratedClassTests {
             final Method validateJsonElementMethod =
                 CustomAssertions.assertClassHasMethod(
                     generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
-            CustomAssertions.assertStaticMethodCanBeInvoked(
-                validateJsonElementMethod, (Object) null);
+            CustomAssertions.assertStaticMethodThrowsWhenInvoked(
+                validateJsonElementMethod, NullPointerException.class, (Object) null);
           }
 
           @ParameterizedTest
           @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
           @DisplayName(
-              "When `jsonElement` is NOT `null` Then `validateJsonElement`-method does NOT throw")
-          void whenJsonElementIsNotNullThenNothingIsThrown(final GeneratedSource generatedSource) {
+              "When `jsonElement` has unexpected key Then `validateJsonElement`-method throws `IllegalArgumentException`")
+          void whenJsonElementHasUnexpectedKeyThenIllegalArgumentExceptionIsThrown(
+              final GeneratedSource generatedSource) {
             Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
 
             final Method validateJsonElementMethod =
                 CustomAssertions.assertClassHasMethod(
                     generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
-            final JsonElement jsonObject = JsonParser.parseString("{'testArg': 42}");
-            CustomAssertions.assertStaticMethodCanBeInvoked(
-                validateJsonElementMethod, jsonObject.getAsJsonObject().get("testArg"));
+            final JsonElement jsonObject = JsonParser.parseString("{'unexpectedKey': 42}");
+            CustomAssertions.assertStaticMethodThrowsWhenInvoked(
+                validateJsonElementMethod, IllegalArgumentException.class, jsonObject);
+          }
+
+          @ParameterizedTest
+          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+          @DisplayName(
+              "When `jsonElement` has expected keys Then `validateJsonElement`-method does NOT throw")
+          void whenJsonElementHasExpectedKeysThenNothingIsThrown(
+              final GeneratedSource generatedSource) {
+            Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+
+            final Method validateJsonElementMethod =
+                CustomAssertions.assertClassHasMethod(
+                    generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
+            String jsonString = "{";
+            for (int i = 0; i < generatedSource.generatedFields().length; i++) {
+              final GeneratedField<?> generatedField = generatedSource.generatedFields()[i];
+              jsonString += "'" + generatedField.name() + "': 42";
+              if (i + 1 < generatedSource.generatedFields().length) {
+                jsonString += ",";
+              }
+            }
+            jsonString += "}";
+            final JsonElement jsonObject = JsonParser.parseString(jsonString);
+            CustomAssertions.assertStaticMethodCanBeInvoked(validateJsonElementMethod, jsonObject);
+          }
+
+          @ParameterizedTest
+          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+          @DisplayName(
+              "When `jsonElement` does NOT have expected key Then `validateJsonElement`-method throws `IllegalArgumentException`")
+          void whenJsonElementDoesNotHaveExpectedKeyThenIllegalArgumentExceptionIsThrown(
+              final GeneratedSource generatedSource) {
+            Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+            Assumptions.assumeTrue(
+                Arrays.stream(generatedSource.generatedFields())
+                    .anyMatch(GeneratedField::isRequired));
+
+            final Method validateJsonElementMethod =
+                CustomAssertions.assertClassHasMethod(
+                    generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
+            String jsonString = "{";
+            boolean hasSkippedRequiredKey = false;
+            for (int i = 0; i < generatedSource.generatedFields().length - 1; i++) {
+              final GeneratedField<?> generatedField = generatedSource.generatedFields()[i];
+              if (generatedField.isRequired() && !hasSkippedRequiredKey) {
+                hasSkippedRequiredKey = true;
+                continue;
+              }
+              jsonString += "'" + generatedField.name() + "': 42,";
+            }
+            jsonString = jsonString.substring(0, jsonString.length() - 1);
+            jsonString += "}";
+            final JsonElement jsonObject = JsonParser.parseString(jsonString);
+            CustomAssertions.assertStaticMethodThrowsWhenInvoked(
+                validateJsonElementMethod, IllegalArgumentException.class, jsonObject);
           }
         }
       }
