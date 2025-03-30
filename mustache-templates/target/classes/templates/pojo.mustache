@@ -34,6 +34,7 @@
 }}import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 {{/gson}}{{!
@@ -147,15 +148,34 @@ import java.util.Set;
    * @param jsonElement to validate.
    * @throws IOException if the JSON Element is not a valid {{classname}} object.
    */
-  public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
-    {{#requiredVars}}{{#-first}}{{!
-  }}if (jsonElement == null && !{{classname}}.openapiRequiredFields.isEmpty()) {
+  public static void validateJsonElement(final JsonElement jsonElement) throws IOException { {{#requiredVars}}{{#-first}}
+    if (jsonElement == null && !{{classname}}.openapiRequiredFields.isEmpty()) {
       throw new IllegalArgumentException(
           String.format(
               "The required field(s) %s in {{{classname}}} is not found in the empty JSON string",
               {{classname}}.openapiRequiredFields.toString()));
     }
-{{/-first}}{{/requiredVars}}
-  }
+{{/-first}}{{/requiredVars}}{{!
+}}{{^hasChildren}}{{^isAdditionalPropertiesTrue}}
+    for (final String key : jsonElement.getAsJsonObject().keySet()) {
+      if (!{{classname}}.openapiFields.contains(key)) {
+        throw new IllegalArgumentException(
+            String.format(
+                "The field `%s` in the JSON string is not defined in the `{{classname}}` properties. JSON: %s",
+                key, jsonElement));
+      }
+    }
+{{/isAdditionalPropertiesTrue}}{{!
+}}{{#requiredVars}}{{#-first}}
+    for (final String requiredField : {{classname}}.openapiRequiredFields) {
+      if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+        throw new IllegalArgumentException(
+            String.format(
+                "The required field `%s` is not found in the JSON string: %s",
+                requiredField, jsonElement));
+      }
+    }
+{{/-first}}{{/requiredVars}}{{/hasChildren}}{{!
+}}  }
 {{/gson}}
 }
