@@ -92,7 +92,8 @@ public record RecordWithAllConstraints(
   /** A set containing the names of all instance fields defined in this class. */
   public static final HashSet<String> openapiFields =
       new HashSet<String>(
-          Set.of("stringStandard",
+          Set.of(
+              "stringStandard",
               "stringDefault",
               "stringNullable",
               "stringRequired",
@@ -119,9 +120,7 @@ public record RecordWithAllConstraints(
   /** A set containing the names of all required fields defined in this class. */
   public static final HashSet<String> openapiRequiredFields =
       new HashSet<String>(
-          Set.of("stringRequired",
-              "stringRequiredNullable",
-              "stringRequiredPattern"));
+          Set.of("stringRequired", "stringRequiredNullable", "stringRequiredPattern"));
 
   public RecordWithAllConstraints(
       @jakarta.annotation.Nonnull final String stringStandard,
@@ -146,7 +145,7 @@ public record RecordWithAllConstraints(
       @jakarta.annotation.Nonnull final Long longMinimumAndMaximum,
       @jakarta.annotation.Nonnull final BigDecimal bigDecimalMinimum,
       @jakarta.annotation.Nonnull final BigDecimal bigDecimalMaximum,
-      @jakarta.annotation.Nonnull final BigDecimal bigDecimalMinimumAndMaximum) { 
+      @jakarta.annotation.Nonnull final BigDecimal bigDecimalMinimumAndMaximum) {
     this.stringStandard = stringStandard;
     this.stringDefault = Objects.requireNonNullElse(stringDefault, "someDefaultValue");
     this.stringNullable = stringNullable;
@@ -179,6 +178,11 @@ public record RecordWithAllConstraints(
    * @throws IOException if the JSON Element is not a valid RecordWithAllConstraints object.
    */
   public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
-
+    if (jsonElement == null && !RecordWithAllConstraints.openapiRequiredFields.isEmpty()) {
+      throw new IllegalArgumentException(
+          String.format(
+              "The required field(s) %s in RecordWithAllConstraints is not found in the empty JSON string",
+              RecordWithAllConstraints.openapiRequiredFields.toString()));
+    }
   }
 }

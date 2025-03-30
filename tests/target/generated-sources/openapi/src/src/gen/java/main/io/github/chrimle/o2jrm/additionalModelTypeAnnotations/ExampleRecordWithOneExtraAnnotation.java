@@ -74,6 +74,6 @@ public record ExampleRecordWithOneExtraAnnotation(
    * @throws IOException if the JSON Element is not a valid ExampleRecordWithOneExtraAnnotation object.
    */
   public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
-
+    
   }
 }

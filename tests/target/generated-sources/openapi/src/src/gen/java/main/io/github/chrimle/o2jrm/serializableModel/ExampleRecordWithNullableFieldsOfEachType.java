@@ -101,6 +101,12 @@ public record ExampleRecordWithNullableFieldsOfEachType(
    * @throws IOException if the JSON Element is not a valid ExampleRecordWithNullableFieldsOfEachType object.
    */
   public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
+    if (jsonElement == null && !ExampleRecordWithNullableFieldsOfEachType.openapiRequiredFields.isEmpty()) {
+      throw new IllegalArgumentException(
+          String.format(
+              "The required field(s) %s in ExampleRecordWithNullableFieldsOfEachType is not found in the empty JSON string",
+              ExampleRecordWithNullableFieldsOfEachType.openapiRequiredFields.toString()));
+    }
 
   }
 }

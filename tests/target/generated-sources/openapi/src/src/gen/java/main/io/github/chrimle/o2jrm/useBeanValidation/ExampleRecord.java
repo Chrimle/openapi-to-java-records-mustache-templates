@@ -64,6 +64,6 @@ public record ExampleRecord(
    * @throws IOException if the JSON Element is not a valid ExampleRecord object.
    */
   public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
-
+    
   }
 }

@@ -66,6 +66,6 @@ public record ExampleRecordWithDefaultFields(
    * @throws IOException if the JSON Element is not a valid ExampleRecordWithDefaultFields object.
    */
   public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
-
+    
   }
 }

@@ -102,6 +102,6 @@ public record ExampleRecordWithTwoExtraAnnotations(
    * @throws IOException if the JSON Element is not a valid ExampleRecordWithTwoExtraAnnotations object.
    */
   public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
-
+    
   }
 }

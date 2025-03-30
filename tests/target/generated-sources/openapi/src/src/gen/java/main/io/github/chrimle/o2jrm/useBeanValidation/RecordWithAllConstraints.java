@@ -181,6 +181,12 @@ public record RecordWithAllConstraints(
    * @throws IOException if the JSON Element is not a valid RecordWithAllConstraints object.
    */
   public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
+    if (jsonElement == null && !RecordWithAllConstraints.openapiRequiredFields.isEmpty()) {
+      throw new IllegalArgumentException(
+          String.format(
+              "The required field(s) %s in RecordWithAllConstraints is not found in the empty JSON string",
+              RecordWithAllConstraints.openapiRequiredFields.toString()));
+    }
 
   }
 }

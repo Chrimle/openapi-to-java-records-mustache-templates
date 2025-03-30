@@ -314,6 +314,6 @@ public record RecordWithInnerEnums(
    * @throws IOException if the JSON Element is not a valid RecordWithInnerEnums object.
    */
   public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
-
+    
   }
 }

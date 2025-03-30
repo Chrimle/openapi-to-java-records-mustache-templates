@@ -113,6 +113,12 @@ public record ExampleRecordWithRequiredFieldsOfEachType(
    * @throws IOException if the JSON Element is not a valid ExampleRecordWithRequiredFieldsOfEachType object.
    */
   public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
+    if (jsonElement == null && !ExampleRecordWithRequiredFieldsOfEachType.openapiRequiredFields.isEmpty()) {
+      throw new IllegalArgumentException(
+          String.format(
+              "The required field(s) %s in ExampleRecordWithRequiredFieldsOfEachType is not found in the empty JSON string",
+              ExampleRecordWithRequiredFieldsOfEachType.openapiRequiredFields.toString()));
+    }
 
   }
 }
