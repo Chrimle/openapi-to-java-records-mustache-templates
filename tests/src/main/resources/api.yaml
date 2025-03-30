@@ -101,6 +101,35 @@ components:
           nullable: true
           items:
             type: boolean
+    ExampleRecordWithCollectionsOfRecords:
+      type: object
+      description: Example of a Record with collections of records.
+      required:
+        - requiredRecordList
+        - requiredRecordSet
+      properties:
+        optionalRecordList:
+          type: array
+          description: Optional field
+          items:
+            $ref: '#/components/schemas/ExampleRecord'
+        requiredRecordList:
+          type: array
+          description: Required field
+          items:
+            $ref: '#/components/schemas/ExampleRecord'
+        optionalRecordSet:
+          type: array
+          description: Another Optional field
+          uniqueItems: true
+          items:
+            $ref: '#/components/schemas/ExampleRecord'
+        requiredRecordSet:
+          type: array
+          description: Another required field
+          uniqueItems: true
+          items:
+            $ref: '#/components/schemas/ExampleRecord'
     ExampleRecord:
       type: object
       description: Example of a Record

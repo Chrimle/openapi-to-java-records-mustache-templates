@@ -119,7 +119,13 @@ public enum GeneratedRecord implements GeneratedClass {
    * does not list all expected fields to be generated. This is done in {@link
    * #getGeneratedFields(GeneratedClass, PluginExecution)}.
    */
-  RECORD_WITH_INNER_ENUMS("RecordWithInnerEnums", false, List.of());
+  RECORD_WITH_INNER_ENUMS("RecordWithInnerEnums", false, List.of()),
+  /**
+   * This class reference another class, which requires Reflection at runtime. Hence, this class
+   * does not list all expected fields to be generated. This is done in {@link
+   * #getGeneratedFields(GeneratedClass, PluginExecution)}.
+   */
+  RECORD_WITH_COLLECTIONS_OF_RECORDS("ExampleRecordWithCollectionsOfRecords", false, List.of());
 
   private final String simpleClassName;
   private final boolean isDeprecated;
@@ -252,6 +258,19 @@ public enum GeneratedRecord implements GeneratedClass {
                   GeneratedField.of("field8", GeneratedEnum.EXAMPLE_ENUM.getClass(pluginExecution))
                       .isRequired(true)
                       .isBeanValidationNullable(false)
+                      .build())
+              .toArray(new GeneratedField[] {});
+      case RECORD_WITH_COLLECTIONS_OF_RECORDS ->
+          List.of(
+                  GeneratedField.of("optionalRecordList", List.class).build(),
+                  GeneratedField.of("requiredRecordList", List.class)
+                      .isBeanValidationNullable(false)
+                      .isRequired(true)
+                      .build(),
+                  GeneratedField.of("optionalRecordSet", Set.class).build(),
+                  GeneratedField.of("requiredRecordSet", Set.class)
+                      .isBeanValidationNullable(false)
+                      .isRequired(true)
                       .build())
               .toArray(new GeneratedField[] {});
       default -> generatedRecord.getGeneratedFields();
