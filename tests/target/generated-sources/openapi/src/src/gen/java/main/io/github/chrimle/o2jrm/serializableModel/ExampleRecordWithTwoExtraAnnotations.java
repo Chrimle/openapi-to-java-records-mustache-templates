@@ -31,6 +31,7 @@ import java.io.Serializable;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -67,7 +68,14 @@ public record ExampleRecordWithTwoExtraAnnotations(
    * @param jsonElement to validate.
    * @throws IOException if the JSON Element is not a valid ExampleRecordWithTwoExtraAnnotations object.
    */
-  public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
-    
+  public static void validateJsonElement(final JsonElement jsonElement) throws IOException { 
+    for (final String key : jsonElement.getAsJsonObject().keySet()) {
+      if (!ExampleRecordWithTwoExtraAnnotations.openapiFields.contains(key)) {
+        throw new IllegalArgumentException(
+            String.format(
+                "The field `%s` in the JSON string is not defined in the `ExampleRecordWithTwoExtraAnnotations` properties. JSON: %s",
+                key, jsonElement));
+      }
+    }
   }
 }

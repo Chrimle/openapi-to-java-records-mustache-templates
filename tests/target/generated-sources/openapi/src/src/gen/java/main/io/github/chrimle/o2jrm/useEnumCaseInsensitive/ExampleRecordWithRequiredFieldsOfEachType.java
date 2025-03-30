@@ -37,6 +37,7 @@ import java.util.Set;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -110,7 +111,7 @@ public record ExampleRecordWithRequiredFieldsOfEachType(
    * @param jsonElement to validate.
    * @throws IOException if the JSON Element is not a valid ExampleRecordWithRequiredFieldsOfEachType object.
    */
-  public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
+  public static void validateJsonElement(final JsonElement jsonElement) throws IOException { 
     if (jsonElement == null && !ExampleRecordWithRequiredFieldsOfEachType.openapiRequiredFields.isEmpty()) {
       throw new IllegalArgumentException(
           String.format(
@@ -118,5 +119,22 @@ public record ExampleRecordWithRequiredFieldsOfEachType(
               ExampleRecordWithRequiredFieldsOfEachType.openapiRequiredFields.toString()));
     }
 
+    for (final String key : jsonElement.getAsJsonObject().keySet()) {
+      if (!ExampleRecordWithRequiredFieldsOfEachType.openapiFields.contains(key)) {
+        throw new IllegalArgumentException(
+            String.format(
+                "The field `%s` in the JSON string is not defined in the `ExampleRecordWithRequiredFieldsOfEachType` properties. JSON: %s",
+                key, jsonElement));
+      }
+    }
+
+    for (final String requiredField : ExampleRecordWithRequiredFieldsOfEachType.openapiRequiredFields) {
+      if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+        throw new IllegalArgumentException(
+            String.format(
+                "The required field `%s` is not found in the JSON string: %s",
+                requiredField, jsonElement));
+      }
+    }
   }
 }

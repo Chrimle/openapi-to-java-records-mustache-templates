@@ -35,6 +35,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -92,8 +93,7 @@ public record RecordWithAllConstraints(
   /** A set containing the names of all instance fields defined in this class. */
   public static final HashSet<String> openapiFields =
       new HashSet<String>(
-          Set.of(
-              "stringStandard",
+          Set.of("stringStandard",
               "stringDefault",
               "stringNullable",
               "stringRequired",
@@ -120,7 +120,9 @@ public record RecordWithAllConstraints(
   /** A set containing the names of all required fields defined in this class. */
   public static final HashSet<String> openapiRequiredFields =
       new HashSet<String>(
-          Set.of("stringRequired", "stringRequiredNullable", "stringRequiredPattern"));
+          Set.of("stringRequired",
+              "stringRequiredNullable",
+              "stringRequiredPattern"));
 
   public RecordWithAllConstraints(
       @jakarta.annotation.Nonnull final String stringStandard,
@@ -145,7 +147,7 @@ public record RecordWithAllConstraints(
       @jakarta.annotation.Nonnull final Long longMinimumAndMaximum,
       @jakarta.annotation.Nonnull final BigDecimal bigDecimalMinimum,
       @jakarta.annotation.Nonnull final BigDecimal bigDecimalMaximum,
-      @jakarta.annotation.Nonnull final BigDecimal bigDecimalMinimumAndMaximum) {
+      @jakarta.annotation.Nonnull final BigDecimal bigDecimalMinimumAndMaximum) { 
     this.stringStandard = stringStandard;
     this.stringDefault = Objects.requireNonNullElse(stringDefault, "someDefaultValue");
     this.stringNullable = stringNullable;
@@ -177,12 +179,30 @@ public record RecordWithAllConstraints(
    * @param jsonElement to validate.
    * @throws IOException if the JSON Element is not a valid RecordWithAllConstraints object.
    */
-  public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
+  public static void validateJsonElement(final JsonElement jsonElement) throws IOException { 
     if (jsonElement == null && !RecordWithAllConstraints.openapiRequiredFields.isEmpty()) {
       throw new IllegalArgumentException(
           String.format(
               "The required field(s) %s in RecordWithAllConstraints is not found in the empty JSON string",
               RecordWithAllConstraints.openapiRequiredFields.toString()));
+    }
+
+    for (final String key : jsonElement.getAsJsonObject().keySet()) {
+      if (!RecordWithAllConstraints.openapiFields.contains(key)) {
+        throw new IllegalArgumentException(
+            String.format(
+                "The field `%s` in the JSON string is not defined in the `RecordWithAllConstraints` properties. JSON: %s",
+                key, jsonElement));
+      }
+    }
+
+    for (final String requiredField : RecordWithAllConstraints.openapiRequiredFields) {
+      if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+        throw new IllegalArgumentException(
+            String.format(
+                "The required field `%s` is not found in the JSON string: %s",
+                requiredField, jsonElement));
+      }
     }
   }
 }
