@@ -17,6 +17,7 @@
 package io.github.chrimle.o2jrm.tests;
 
 import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 import io.github.chrimle.o2jrm.GeneratedSource;
 import io.github.chrimle.o2jrm.annotations.*;
 import io.github.chrimle.o2jrm.models.GeneratedField;
@@ -93,6 +94,7 @@ import org.junit.jupiter.params.provider.MethodSource;
  *   <li>{@link UseJakartaEeTests useJakartaEe}
  * </ul>
  */
+@DisplayName("Testing Generated `record` classes")
 final class GeneratedRecordTests implements GeneratedClassTests {
 
   @Nested
@@ -424,10 +426,64 @@ final class GeneratedRecordTests implements GeneratedClassTests {
             final GeneratedSource generatedSource) {
           Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
 
-          final Method validateJsonElementMethod =
-              CustomAssertions.assertClassHasMethod(
-                  generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
-          CustomAssertions.assertStaticMethodCanBeInvoked(validateJsonElementMethod, (Object) null);
+          CustomAssertions.assertClassHasMethod(
+              generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
+        }
+
+        @Nested
+        @DisplayName("Testing the `validateJsonElement`-method")
+        class ValidateJsonElementMethodTests {
+
+          @ParameterizedTest
+          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+          @DisplayName(
+              "When `jsonElement` is `null` and `record` has required fields Then `validateJsonElement`-method throws `IllegalArgumentException`")
+          void whenJsonElementIsNullAndRecordHasRequiredFieldsThenIllegalArgumentExceptionIsThrown(
+              final GeneratedSource generatedSource) {
+            Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+            Assumptions.assumeTrue(
+                Arrays.stream(generatedSource.generatedFields())
+                    .anyMatch(GeneratedField::isRequired));
+
+            final Method validateJsonElementMethod =
+                CustomAssertions.assertClassHasMethod(
+                    generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
+            CustomAssertions.assertStaticMethodThrowsWhenInvoked(
+                validateJsonElementMethod, IllegalArgumentException.class, (Object) null);
+          }
+
+          @ParameterizedTest
+          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+          @DisplayName(
+              "When `jsonElement` is `null` and `record` has no required fields Then `validateJsonElement`-method does NOT throw")
+          void whenJsonElementIsNullAndRecordHasNoRequiredFieldsThenNothingIsThrown(
+              final GeneratedSource generatedSource) {
+            Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+            Assumptions.assumeTrue(
+                Arrays.stream(generatedSource.generatedFields())
+                    .noneMatch(GeneratedField::isRequired));
+
+            final Method validateJsonElementMethod =
+                CustomAssertions.assertClassHasMethod(
+                    generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
+            CustomAssertions.assertStaticMethodCanBeInvoked(
+                validateJsonElementMethod, (Object) null);
+          }
+
+          @ParameterizedTest
+          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+          @DisplayName(
+              "When `jsonElement` is NOT `null` Then `validateJsonElement`-method does NOT throw")
+          void whenJsonElementIsNotNullThenNothingIsThrown(final GeneratedSource generatedSource) {
+            Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+
+            final Method validateJsonElementMethod =
+                CustomAssertions.assertClassHasMethod(
+                    generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
+            final JsonElement jsonObject = JsonParser.parseString("{'testArg': 42}");
+            CustomAssertions.assertStaticMethodCanBeInvoked(
+                validateJsonElementMethod, jsonObject.getAsJsonObject().get("testArg"));
+          }
         }
       }
 
