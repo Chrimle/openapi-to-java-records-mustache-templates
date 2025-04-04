@@ -665,8 +665,6 @@ final class GeneratedRecordTests implements GeneratedClassTests {
                   hasInvalidKey = true;
                   isSkippedFieldOfTypeEnum = generatedField.type().isEnum();
                   isSkippedFieldCustomClass = generatedField.isCustomClass();
-                  // TODO check if gf.isEnum, then the exception should be UnsupportedOperation,
-                  // from the enum class.
                 } else {
                   jsonString += generatedField.getKeyAndValueAsJson();
                 }
@@ -687,6 +685,55 @@ final class GeneratedRecordTests implements GeneratedClassTests {
                 }
                 CustomAssertions.assertStaticMethodThrowsWhenInvoked(
                     validateJsonElementMethod, expectedException, jsonObject);
+              } else {
+                CustomAssertions.assertStaticMethodCanBeInvoked(
+                    validateJsonElementMethod, jsonObject);
+              }
+            }
+          }
+
+          @ParameterizedTest
+          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+          @DisplayName(
+              "When required `jsonElement` value is unexpectedly not JSON primitive Then `validateJsonElement`-method throws `IllegalArgumentException`")
+          void
+              whenRequiredJsonElementValueIsUnexpectedlyNotJsonPrimitiveThenIllegalArgumentExceptionIsThrown(
+                  final GeneratedSource generatedSource) {
+            Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+            Assumptions.assumeTrue(
+                Arrays.stream(generatedSource.generatedFields())
+                    .anyMatch(GeneratedField::isRequired));
+
+            final Method validateJsonElementMethod =
+                CustomAssertions.assertClassHasMethod(
+                    generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
+            for (int j = 0; j < generatedSource.generatedFields().length; j++) {
+              String jsonString = "{";
+              boolean hasInvalidKey = false;
+              boolean hasReplacedFieldOwnValidateJsonElement = false;
+              for (int i = 0; i < generatedSource.generatedFields().length; i++) {
+                final GeneratedField<?> generatedField = generatedSource.generatedFields()[i];
+                if (i == j && generatedField.isJsonPrimitive()) {
+                  jsonString += "'" + generatedField.name() + "': []";
+                  hasInvalidKey = true;
+                  hasReplacedFieldOwnValidateJsonElement =
+                      generatedField.isCustomClass() || generatedField.type().isEnum();
+                } else {
+                  jsonString += generatedField.getKeyAndValueAsJson();
+                }
+                if (i + 1 < generatedSource.generatedFields().length) {
+                  jsonString += ",";
+                }
+              }
+              jsonString += "}";
+              final JsonElement jsonObject = JsonParser.parseString(jsonString);
+              if (hasInvalidKey) {
+                CustomAssertions.assertStaticMethodThrowsWhenInvoked(
+                    validateJsonElementMethod,
+                    hasReplacedFieldOwnValidateJsonElement
+                        ? IllegalStateException.class
+                        : IllegalArgumentException.class,
+                    jsonObject);
               } else {
                 CustomAssertions.assertStaticMethodCanBeInvoked(
                     validateJsonElementMethod, jsonObject);
