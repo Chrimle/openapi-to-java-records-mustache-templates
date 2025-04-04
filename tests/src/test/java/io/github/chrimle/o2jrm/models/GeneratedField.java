@@ -73,6 +73,32 @@ public record GeneratedField<T>(
     Optional<String> decimalMax,
     List<Class<? extends Annotation>> extraFieldAnnotations) {
 
+  /**
+   * Whether this field is <i>expected</i> to be a {@link com.google.gson.JsonPrimitive}, based on
+   * the {@link #type} of this field.
+   *
+   * @return if this field is a JSON Primitive.
+   */
+  public boolean isJsonPrimitive() {
+    // Java Primitives
+    if (Integer.class == type) return true;
+    if (Long.class == type) return true;
+    if (BigDecimal.class == type) return true;
+    if (String.class == type) return true;
+    if (Boolean.class == type) return true;
+    if (UUID.class == type) return true;
+    // Java classes are JSON wrappers/objects
+    if (type.isEnum()) return true;
+    if (type.isRecord()) return true;
+
+    // Arrays are not JSON Primitives
+    if (List.class == type) return false;
+    if (Set.class == type) return false;
+
+    throw new UnsupportedOperationException(
+        "Cannot determine if the `type` should be a JSON Primitive or not!");
+  }
+
   public String getKeyAndValueAsJson() {
     if (type == String.class) {
       return "'" + name + "': 'testString'";
