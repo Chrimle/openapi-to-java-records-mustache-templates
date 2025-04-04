@@ -65,8 +65,14 @@ public enum GeneratedRecord implements GeneratedClass {
       GeneratedField.of("field2", String.class).isNullable(true).isRequired(true).build(),
       GeneratedField.of("field3", Integer.class).isNullable(true).isRequired(true).build(),
       GeneratedField.of("field4", BigDecimal.class).isNullable(true).isRequired(true).build(),
-      GeneratedField.of("field5", List.class).isNullable(true).isRequired(true).build(),
-      GeneratedField.of("field6", Set.class).isNullable(true).isRequired(true).build()),
+      GeneratedField.of("field5", List.class, Boolean.class)
+          .isNullable(true)
+          .isRequired(true)
+          .build(),
+      GeneratedField.of("field6", Set.class, Boolean.class)
+          .isNullable(true)
+          .isRequired(true)
+          .build()),
   /**
    * This class reference another class, which requires Reflection at runtime. Hence, this class
    * does not list all expected fields to be generated. This is done in {@link
@@ -99,9 +105,12 @@ public enum GeneratedRecord implements GeneratedClass {
       GeneratedField.of("stringMinLength", String.class).minLength(3).build(),
       GeneratedField.of("stringMaxLength", String.class).maxLength(7).build(),
       GeneratedField.of("stringMinAndMaxLength", String.class).minLength(3).maxLength(7).build(),
-      GeneratedField.of("arrayMinItems", List.class).minItems(1).build(),
-      GeneratedField.of("arrayMaxItems", List.class).maxItems(10).build(),
-      GeneratedField.of("arrayMinAndMaxItems", List.class).minItems(1).maxItems(10).build(),
+      GeneratedField.of("arrayMinItems", List.class, String.class).minItems(1).build(),
+      GeneratedField.of("arrayMaxItems", List.class, String.class).maxItems(10).build(),
+      GeneratedField.of("arrayMinAndMaxItems", List.class, String.class)
+          .minItems(1)
+          .maxItems(10)
+          .build(),
       GeneratedField.of("intMinimum", Integer.class).minimum(18).build(),
       GeneratedField.of("intMaximum", Integer.class).maximum(100).build(),
       GeneratedField.of("intMinimumAndMaximum", Integer.class).minimum(0).maximum(100).build(),
@@ -241,11 +250,11 @@ public enum GeneratedRecord implements GeneratedClass {
                       .isRequired(true)
                       .isBeanValidationNullable(false)
                       .build(),
-                  GeneratedField.of("field5", List.class)
+                  GeneratedField.of("field5", List.class, Boolean.class)
                       .isRequired(true)
                       .isBeanValidationNullable(false)
                       .build(),
-                  GeneratedField.of("field6", Set.class)
+                  GeneratedField.of("field6", Set.class, Boolean.class)
                       .isRequired(true)
                       .isBeanValidationNullable(false)
                       .build(),
@@ -262,13 +271,27 @@ public enum GeneratedRecord implements GeneratedClass {
               .toArray(new GeneratedField[] {});
       case RECORD_WITH_COLLECTIONS_OF_RECORDS ->
           List.of(
-                  GeneratedField.of("optionalRecordList", List.class).build(),
-                  GeneratedField.of("requiredRecordList", List.class)
+                  GeneratedField.of(
+                          "optionalRecordList",
+                          List.class,
+                          GeneratedRecord.EXAMPLE_RECORD.getClass(pluginExecution))
+                      .build(),
+                  GeneratedField.of(
+                          "requiredRecordList",
+                          List.class,
+                          GeneratedRecord.EXAMPLE_RECORD.getClass(pluginExecution))
                       .isBeanValidationNullable(false)
                       .isRequired(true)
                       .build(),
-                  GeneratedField.of("optionalRecordSet", Set.class).build(),
-                  GeneratedField.of("requiredRecordSet", Set.class)
+                  GeneratedField.of(
+                          "optionalRecordSet",
+                          Set.class,
+                          GeneratedRecord.EXAMPLE_RECORD.getClass(pluginExecution))
+                      .build(),
+                  GeneratedField.of(
+                          "requiredRecordSet",
+                          Set.class,
+                          GeneratedRecord.EXAMPLE_RECORD.getClass(pluginExecution))
                       .isBeanValidationNullable(false)
                       .isRequired(true)
                       .build())

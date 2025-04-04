@@ -55,6 +55,7 @@ import org.junit.platform.commons.util.ReflectionUtils;
 public record GeneratedField<T>(
     String name,
     Class<T> type,
+    Optional<Class<?>> compositeType,
     boolean isRequired,
     boolean isNullable,
     boolean isBeanValidationNullable,
@@ -118,10 +119,26 @@ public record GeneratedField<T>(
     if (type == UUID.class) {
       return "'" + name + "': '00000000-0000-0000-0000-000000000001'";
     }
-    if (type == List.class) {
-      return "'" + name + "': []";
-    }
-    if (type == Set.class) {
+    if (type == List.class || type == Set.class) {
+      if (compositeType.isPresent()) {
+        if (compositeType.get().isEnum()) {
+          try {
+            return "'"
+                + name
+                + "': ['"
+                + ReflectionUtils.getRequiredMethod(type, "getValue")
+                    .invoke(type.getEnumConstants()[0])
+                + "']";
+          } catch (IllegalAccessException e) {
+            throw new RuntimeException(e);
+          } catch (InvocationTargetException e) {
+            throw new RuntimeException(e);
+          }
+        }
+        if (compositeType.get().isRecord()) {
+          return "'" + name + "': [{'field1': true}]";
+        }
+      }
       return "'" + name + "': []";
     }
     if (type.isEnum()) {
@@ -144,16 +161,22 @@ public record GeneratedField<T>(
   }
 
   public static <T> Builder<T> of(final String name, final Class<T> type) {
-    return new Builder<>(name, type, null);
+    return new Builder<>(name, type, null, null);
+  }
+
+  public static <T> Builder<T> of(
+      final String name, final Class<T> type, final Class<?> compositeType) {
+    return new Builder<>(name, type, null, compositeType);
   }
 
   public static <T> Builder<T> of(final String name, final Class<T> type, final T enumValue) {
-    return new Builder<>(name, type, enumValue);
+    return new Builder<>(name, type, enumValue, null);
   }
 
   public static class Builder<T> {
     private final String name;
     private final Class<T> type;
+    private final Optional<Class<?>> compositeType;
     private boolean isRequired = false;
     private boolean isNullable = false;
     private boolean isBeanValidationNullable = true;
@@ -172,9 +195,11 @@ public record GeneratedField<T>(
     private Optional<String> decimalMax = Optional.empty();
     private final List<Class<? extends Annotation>> extraFieldAnnotations = new ArrayList<>();
 
-    public Builder(final String name, final Class<T> type, final T enumValue) {
+    public Builder(
+        final String name, final Class<T> type, final T enumValue, final Class<?> compositeType) {
       this.name = name;
       this.type = type;
+      this.compositeType = Optional.ofNullable(compositeType);
       this.enumValue = enumValue;
     }
 
@@ -269,6 +294,7 @@ public record GeneratedField<T>(
       return new GeneratedField<>(
           name,
           type,
+          compositeType,
           isRequired,
           isNullable,
           isBeanValidationNullable,
