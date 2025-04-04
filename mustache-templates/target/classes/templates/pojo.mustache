@@ -196,7 +196,8 @@ import java.util.Set;
     }
 {{/required}}{{!
 }}{{^required}}
-    if (jsonObj.get("{{{baseName}}}") != null && !jsonObj.get("{{{baseName}}}").isJsonNull()) {
+    if (jsonObj.get("{{{baseName}}}") != null
+        && !jsonObj.get("{{{baseName}}}").isJsonNull()) {
       if (!jsonObj.get("{{{baseName}}}").isJsonArray()) {
         throw new IllegalArgumentException(
             String.format(
@@ -243,7 +244,8 @@ import java.util.Set;
     {{{datatypeWithEnum}}}.validateJsonElement(jsonObj.get("{{{baseName}}}"));
 {{/required}}{{!
   }}{{^required}}
-    if (jsonObj.get("{{{baseName}}}") != null && !jsonObj.get("{{{baseName}}}").isJsonNull()) {
+    if (jsonObj.get("{{{baseName}}}") != null
+        && !jsonObj.get("{{{baseName}}}").isJsonNull()) {
       {{{datatypeWithEnum}}}.validateJsonElement(jsonObj.get("{{{baseName}}}"));
     }
 {{/required}}{{/isEnum}}{{!
@@ -252,7 +254,8 @@ import java.util.Set;
     {{{dataType}}}.validateJsonElement(jsonObj.get("{{{baseName}}}"));
 {{/required}}{{!
   }}{{^required}}
-    if (jsonObj.get("{{{baseName}}}") != null && !jsonObj.get("{{{baseName}}}").isJsonNull()) {
+    if (jsonObj.get("{{{baseName}}}") != null
+        && !jsonObj.get("{{{baseName}}}").isJsonNull()) {
       {{{dataType}}}.validateJsonElement(jsonObj.get("{{{baseName}}}"));
     }
 {{/required}}{{/isEnumRef}}{{/isContainer}}{{/vars}}{{/discriminator}}{{!
