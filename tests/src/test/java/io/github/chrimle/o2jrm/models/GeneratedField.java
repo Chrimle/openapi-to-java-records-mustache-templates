@@ -17,9 +17,10 @@
 package io.github.chrimle.o2jrm.models;
 
 import java.lang.annotation.Annotation;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.lang.reflect.InvocationTargetException;
+import java.math.BigDecimal;
+import java.util.*;
+import org.junit.platform.commons.util.ReflectionUtils;
 
 /**
  * Represents a generated field, along with additional properties which are expected to be true for
@@ -71,6 +72,50 @@ public record GeneratedField<T>(
     Optional<String> decimalMin,
     Optional<String> decimalMax,
     List<Class<? extends Annotation>> extraFieldAnnotations) {
+
+  public String getKeyAndValueAsJson() {
+    if (type == String.class) {
+      return "'" + name + "': 'testString'";
+    }
+    if (type == Integer.class) {
+      return "'" + name + "': 42";
+    }
+    if (type == BigDecimal.class) {
+      return "'" + name + "': 42";
+    }
+    if (type == Long.class) {
+      return "'" + name + "': 42";
+    }
+    if (type == Boolean.class) {
+      return "'" + name + "': true";
+    }
+    if (type == UUID.class) {
+      return "'" + name + "': '00000000-0000-0000-0000-000000000001'";
+    }
+    if (type == List.class) {
+      return "'" + name + "': []";
+    }
+    if (type == Set.class) {
+      return "'" + name + "': []";
+    }
+    if (type.isEnum()) {
+      try {
+        return "'"
+            + name
+            + "': '"
+            + ReflectionUtils.getRequiredMethod(type, "getValue").invoke(type.getEnumConstants()[0])
+            + "'";
+      } catch (IllegalAccessException e) {
+        throw new RuntimeException(e);
+      } catch (InvocationTargetException e) {
+        throw new RuntimeException(e);
+      }
+    }
+    if (type.isRecord()) {
+      return "'" + name + "': {'field1': true}";
+    }
+    throw new UnsupportedOperationException();
+  }
 
   public static <T> Builder<T> of(final String name, final Class<T> type) {
     return new Builder<>(name, type, null);
