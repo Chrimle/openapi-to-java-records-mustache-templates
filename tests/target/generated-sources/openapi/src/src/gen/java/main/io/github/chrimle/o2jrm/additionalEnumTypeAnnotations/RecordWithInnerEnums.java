@@ -268,15 +268,18 @@ public record RecordWithInnerEnums(
 
     final JsonObject jsonObj = jsonElement.getAsJsonObject();
 
-    if (jsonObj.get("exampleInner") != null && !jsonObj.get("exampleInner").isJsonNull()) {
+    if (jsonObj.get("exampleInner") != null
+        && !jsonObj.get("exampleInner").isJsonNull()) {
       ExampleInnerEnum.validateJsonElement(jsonObj.get("exampleInner"));
     }
 
-    if (jsonObj.get("exampleInnerTwo") != null && !jsonObj.get("exampleInnerTwo").isJsonNull()) {
+    if (jsonObj.get("exampleInnerTwo") != null
+        && !jsonObj.get("exampleInnerTwo").isJsonNull()) {
       ExampleInnerTwoEnum.validateJsonElement(jsonObj.get("exampleInnerTwo"));
     }
 
-    if (jsonObj.get("exampleInnerThree") != null && !jsonObj.get("exampleInnerThree").isJsonNull()) {
+    if (jsonObj.get("exampleInnerThree") != null
+        && !jsonObj.get("exampleInnerThree").isJsonNull()) {
       ExampleInnerThreeEnum.validateJsonElement(jsonObj.get("exampleInnerThree"));
     }
   }
