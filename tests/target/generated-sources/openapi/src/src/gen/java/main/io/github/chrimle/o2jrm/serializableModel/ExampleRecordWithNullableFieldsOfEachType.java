@@ -33,6 +33,7 @@ import java.util.List;
 import java.util.Set;
 import java.io.Serializable;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import java.util.HashSet;
@@ -102,7 +103,7 @@ public record ExampleRecordWithNullableFieldsOfEachType(
    * @throws IOException if the JSON Element is not a valid ExampleRecordWithNullableFieldsOfEachType object.
    */
   public static void validateJsonElement(final JsonElement jsonElement) throws IOException { 
-    if (jsonElement == null && !ExampleRecordWithNullableFieldsOfEachType.openapiRequiredFields.isEmpty()) {
+    if (jsonElement == null) {
       throw new IllegalArgumentException(
           String.format(
               "The required field(s) %s in ExampleRecordWithNullableFieldsOfEachType is not found in the empty JSON string",
@@ -125,6 +126,50 @@ public record ExampleRecordWithNullableFieldsOfEachType(
                 "The required field `%s` is not found in the JSON string: %s",
                 requiredField, jsonElement));
       }
+    }
+
+    final JsonObject jsonObj = jsonElement.getAsJsonObject();
+
+    if (!jsonObj.get("field1").isJsonPrimitive()) {
+      throw new IllegalArgumentException(
+          String.format(
+              "Expected the field `field1` to be a primitive type in the JSON string but got `%s`",
+              jsonObj.get("field1")));
+    }
+
+    if (!jsonObj.get("field2").isJsonPrimitive()) {
+      throw new IllegalArgumentException(
+          String.format(
+              "Expected the field `field2` to be a primitive type in the JSON string but got `%s`",
+              jsonObj.get("field2")));
+    }
+
+    if (!jsonObj.get("field3").isJsonPrimitive()) {
+      throw new IllegalArgumentException(
+          String.format(
+              "Expected the field `field3` to be a primitive type in the JSON string but got `%s`",
+              jsonObj.get("field3")));
+    }
+
+    if (!jsonObj.get("field4").isJsonPrimitive()) {
+      throw new IllegalArgumentException(
+          String.format(
+              "Expected the field `field4` to be a primitive type in the JSON string but got `%s`",
+              jsonObj.get("field4")));
+    }
+
+    if (!jsonObj.get("field5").isJsonArray()) {
+      throw new IllegalArgumentException(
+          String.format(
+              "Expected the field `field5` to be an array in the JSON string but got `%s`",
+              jsonObj.get("field5")));
+    }
+
+    if (!jsonObj.get("field6").isJsonArray()) {
+      throw new IllegalArgumentException(
+          String.format(
+              "Expected the field `field6` to be an array in the JSON string but got `%s`",
+              jsonObj.get("field6")));
     }
   }
 }

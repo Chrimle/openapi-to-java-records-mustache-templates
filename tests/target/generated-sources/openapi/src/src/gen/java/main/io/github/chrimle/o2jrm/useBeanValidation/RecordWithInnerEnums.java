@@ -30,6 +30,7 @@ import java.util.Arrays;
 import jakarta.validation.constraints.*;
 import jakarta.validation.Valid;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import java.util.HashSet;
@@ -256,6 +257,20 @@ public record RecordWithInnerEnums(
                 "The field `%s` in the JSON string is not defined in the `RecordWithInnerEnums` properties. JSON: %s",
                 key, jsonElement));
       }
+    }
+
+    final JsonObject jsonObj = jsonElement.getAsJsonObject();
+
+    if (jsonObj.get("exampleInner") != null && !jsonObj.get("exampleInner").isJsonNull()) {
+      ExampleInnerEnum.validateJsonElement(jsonObj.get("exampleInner"));
+    }
+
+    if (jsonObj.get("exampleInnerTwo") != null && !jsonObj.get("exampleInnerTwo").isJsonNull()) {
+      ExampleInnerTwoEnum.validateJsonElement(jsonObj.get("exampleInnerTwo"));
+    }
+
+    if (jsonObj.get("exampleInnerThree") != null && !jsonObj.get("exampleInnerThree").isJsonNull()) {
+      ExampleInnerThreeEnum.validateJsonElement(jsonObj.get("exampleInnerThree"));
     }
   }
 }

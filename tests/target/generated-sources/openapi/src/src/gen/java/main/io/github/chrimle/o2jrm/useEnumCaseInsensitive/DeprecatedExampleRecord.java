@@ -27,6 +27,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import java.util.HashSet;
@@ -72,6 +73,17 @@ public record DeprecatedExampleRecord(
                 "The field `%s` in the JSON string is not defined in the `DeprecatedExampleRecord` properties. JSON: %s",
                 key, jsonElement));
       }
+    }
+
+    final JsonObject jsonObj = jsonElement.getAsJsonObject();
+
+    if (jsonObj.get("field1") != null
+        && !jsonObj.get("field1").isJsonNull()
+        && !jsonObj.get("field1").isJsonPrimitive()) {
+      throw new IllegalArgumentException(
+          String.format(
+              "Expected the field `field1` to be a primitive type in the JSON string but got `%s`",
+              jsonObj.get("field1")));
     }
   }
 }
