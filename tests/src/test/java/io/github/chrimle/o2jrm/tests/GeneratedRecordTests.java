@@ -638,9 +638,6 @@ final class GeneratedRecordTests implements GeneratedClassTests {
           void whenRequiredJsonElementValueIsUnexpectedTypeThenIllegalArgumentExceptionIsThrown(
               final GeneratedSource generatedSource) {
             Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-            Assumptions.assumeTrue(
-                Arrays.stream(generatedSource.generatedFields())
-                    .anyMatch(GeneratedField::isRequired));
 
             final Method validateJsonElementMethod =
                 CustomAssertions.assertClassHasMethod(
@@ -655,8 +652,6 @@ final class GeneratedRecordTests implements GeneratedClassTests {
                 if (i == j
                     && generatedField.type() != Integer.class
                     && generatedField.type() != Long.class
-                    && generatedField.type() != List.class
-                    && generatedField.type() != Set.class
                     && generatedField.type() != BigDecimal.class
                     && generatedField.type() != Boolean.class
                     && generatedField.type() != UUID.class) {
@@ -700,9 +695,6 @@ final class GeneratedRecordTests implements GeneratedClassTests {
               whenRequiredJsonElementValueIsUnexpectedlyNotJsonPrimitiveThenIllegalArgumentExceptionIsThrown(
                   final GeneratedSource generatedSource) {
             Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-            Assumptions.assumeTrue(
-                Arrays.stream(generatedSource.generatedFields())
-                    .anyMatch(GeneratedField::isRequired));
 
             final Method validateJsonElementMethod =
                 CustomAssertions.assertClassHasMethod(
