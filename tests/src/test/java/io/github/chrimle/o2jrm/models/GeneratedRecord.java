@@ -36,6 +36,11 @@ public enum GeneratedRecord implements GeneratedClass {
       GeneratedField.of("field1", Boolean.class).build()),
   EXAMPLE_RECORD(
       "ExampleRecord", false, List.of(), GeneratedField.of("field1", Boolean.class).build()),
+  EXAMPLE_NULLABLE_RECORD(
+      "ExampleNullableRecord",
+      false,
+      List.of(),
+      GeneratedField.of("field1", Boolean.class).build()),
   EXAMPLE_RECORD_WITH_DEFAULT_FIELDS(
       "ExampleRecordWithDefaultFields",
       false,
@@ -57,22 +62,13 @@ public enum GeneratedRecord implements GeneratedClass {
       false,
       List.of(TestExtraAnnotation.class, TestExtraAnnotationTwo.class),
       GeneratedField.of("field1", Boolean.class).build()),
+  /**
+   * This class reference another class, which requires Reflection at runtime. Hence, this class
+   * does not list all expected fields to be generated. This is done in {@link
+   * #getGeneratedFields(GeneratedClass, PluginExecution)}.
+   */
   EXAMPLE_RECORD_WITH_NULLABLE_FIELDS_OF_EACH_TYPE(
-      "ExampleRecordWithNullableFieldsOfEachType",
-      false,
-      List.of(),
-      GeneratedField.of("field1", Boolean.class).isNullable(true).isRequired(true).build(),
-      GeneratedField.of("field2", String.class).isNullable(true).isRequired(true).build(),
-      GeneratedField.of("field3", Integer.class).isNullable(true).isRequired(true).build(),
-      GeneratedField.of("field4", BigDecimal.class).isNullable(true).isRequired(true).build(),
-      GeneratedField.of("field5", List.class, Boolean.class)
-          .isNullable(true)
-          .isRequired(true)
-          .build(),
-      GeneratedField.of("field6", Set.class, Boolean.class)
-          .isNullable(true)
-          .isRequired(true)
-          .build()),
+      "ExampleRecordWithNullableFieldsOfEachType", false, List.of()),
   /**
    * This class reference another class, which requires Reflection at runtime. Hence, this class
    * does not list all expected fields to be generated. This is done in {@link
@@ -267,6 +263,45 @@ public enum GeneratedRecord implements GeneratedClass {
                   GeneratedField.of("field8", GeneratedEnum.EXAMPLE_ENUM.getClass(pluginExecution))
                       .isRequired(true)
                       .isBeanValidationNullable(false)
+                      .build())
+              .toArray(new GeneratedField[] {});
+      case EXAMPLE_RECORD_WITH_NULLABLE_FIELDS_OF_EACH_TYPE ->
+          List.of(
+                  GeneratedField.of("field1", Boolean.class)
+                      .isNullable(true)
+                      .isRequired(true)
+                      .build(),
+                  GeneratedField.of("field2", String.class)
+                      .isNullable(true)
+                      .isRequired(true)
+                      .build(),
+                  GeneratedField.of("field3", Integer.class)
+                      .isNullable(true)
+                      .isRequired(true)
+                      .build(),
+                  GeneratedField.of("field4", BigDecimal.class)
+                      .isNullable(true)
+                      .isRequired(true)
+                      .build(),
+                  GeneratedField.of("field5", List.class, Boolean.class)
+                      .isNullable(true)
+                      .isRequired(true)
+                      .build(),
+                  GeneratedField.of("field6", Set.class, Boolean.class)
+                      .isNullable(true)
+                      .isRequired(true)
+                      .build(),
+                  GeneratedField.of(
+                          "field7",
+                          GeneratedRecord.EXAMPLE_NULLABLE_RECORD.getClass(pluginExecution))
+                      .isRequired(false)
+                      .isNullable(true)
+                      .isCustomClass(true)
+                      .build(),
+                  GeneratedField.of(
+                          "field8", GeneratedEnum.EXAMPLE_NULLABLE_ENUM.getClass(pluginExecution))
+                      .isRequired(false)
+                      .isNullable(true)
                       .build())
               .toArray(new GeneratedField[] {});
       case RECORD_WITH_COLLECTIONS_OF_RECORDS ->
