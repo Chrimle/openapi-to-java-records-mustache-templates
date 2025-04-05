@@ -658,7 +658,6 @@ final class GeneratedRecordTests implements GeneratedClassTests {
                 }
               }
               jsonString += "}";
-              System.out.println(jsonString);
               final JsonElement jsonObject = JsonParser.parseString(jsonString);
               CustomAssertions.assertStaticMethodCanBeInvoked(
                   validateJsonElementMethod, jsonObject);
