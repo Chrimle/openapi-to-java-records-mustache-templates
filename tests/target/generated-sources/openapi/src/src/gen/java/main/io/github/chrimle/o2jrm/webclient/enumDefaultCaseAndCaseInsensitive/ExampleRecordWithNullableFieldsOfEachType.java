@@ -25,12 +25,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import io.github.chrimle.o2jrm.webclient.enumDefaultCaseAndCaseInsensitive.ExampleNullableEnum;
+import io.github.chrimle.o2jrm.webclient.enumDefaultCaseAndCaseInsensitive.ExampleNullableRecord;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
+import org.openapitools.jackson.nullable.JsonNullable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
@@ -43,6 +49,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  * @param field4 a Number field
  * @param field5 an Array of Boolean field
  * @param field6 a Set field
+ * @param field7 ExampleNullableRecord.
+ * @param field8 ExampleNullableEnum.
  */
 public record ExampleRecordWithNullableFieldsOfEachType(
     @javax.annotation.Nullable Boolean field1,
@@ -50,7 +58,9 @@ public record ExampleRecordWithNullableFieldsOfEachType(
     @javax.annotation.Nullable Integer field3,
     @javax.annotation.Nullable BigDecimal field4,
     @javax.annotation.Nullable List<Boolean> field5,
-    @javax.annotation.Nullable Set<Boolean> field6) {
+    @javax.annotation.Nullable Set<Boolean> field6,
+    @javax.annotation.Nullable ExampleNullableRecord field7,
+    @javax.annotation.Nullable ExampleNullableEnum field8) {
 
   public ExampleRecordWithNullableFieldsOfEachType(
       @javax.annotation.Nullable final Boolean field1,
@@ -58,12 +68,16 @@ public record ExampleRecordWithNullableFieldsOfEachType(
       @javax.annotation.Nullable final Integer field3,
       @javax.annotation.Nullable final BigDecimal field4,
       @javax.annotation.Nullable final List<Boolean> field5,
-      @javax.annotation.Nullable final Set<Boolean> field6) { 
+      @javax.annotation.Nullable final Set<Boolean> field6,
+      @javax.annotation.Nullable final ExampleNullableRecord field7,
+      @javax.annotation.Nullable final ExampleNullableEnum field8) { 
     this.field1 = field1;
     this.field2 = field2;
     this.field3 = field3;
     this.field4 = field4;
     this.field5 = field5;
     this.field6 = field6;
+    this.field7 = field7;
+    this.field8 = field8;
   }
 }

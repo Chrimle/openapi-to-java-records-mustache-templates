@@ -24,6 +24,8 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import io.github.chrimle.o2jrm.useEnumCaseInsensitive.ExampleNullableEnum;
+import io.github.chrimle.o2jrm.useEnumCaseInsensitive.ExampleNullableRecord;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -31,6 +33,7 @@ import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -48,6 +51,8 @@ import java.util.Set;
  * @param field4 a Number field
  * @param field5 an Array of Boolean field
  * @param field6 a Set field
+ * @param field7 ExampleNullableRecord.
+ * @param field8 ExampleNullableEnum.
  */
 public record ExampleRecordWithNullableFieldsOfEachType(
     @javax.annotation.Nullable Boolean field1,
@@ -55,7 +60,9 @@ public record ExampleRecordWithNullableFieldsOfEachType(
     @javax.annotation.Nullable Integer field3,
     @javax.annotation.Nullable BigDecimal field4,
     @javax.annotation.Nullable List<Boolean> field5,
-    @javax.annotation.Nullable Set<Boolean> field6) {
+    @javax.annotation.Nullable Set<Boolean> field6,
+    @javax.annotation.Nullable ExampleNullableRecord field7,
+    @javax.annotation.Nullable ExampleNullableEnum field8) {
 
   /** A set containing the names of all instance fields defined in this class. */
   public static final HashSet<String> openapiFields =
@@ -65,7 +72,9 @@ public record ExampleRecordWithNullableFieldsOfEachType(
               "field3",
               "field4",
               "field5",
-              "field6"));
+              "field6",
+              "field7",
+              "field8"));
 
   /** A set containing the names of all required fields defined in this class. */
   public static final HashSet<String> openapiRequiredFields =
@@ -83,13 +92,17 @@ public record ExampleRecordWithNullableFieldsOfEachType(
       @javax.annotation.Nullable final Integer field3,
       @javax.annotation.Nullable final BigDecimal field4,
       @javax.annotation.Nullable final List<Boolean> field5,
-      @javax.annotation.Nullable final Set<Boolean> field6) { 
+      @javax.annotation.Nullable final Set<Boolean> field6,
+      @javax.annotation.Nullable final ExampleNullableRecord field7,
+      @javax.annotation.Nullable final ExampleNullableEnum field8) { 
     this.field1 = field1;
     this.field2 = field2;
     this.field3 = field3;
     this.field4 = field4;
     this.field5 = field5;
     this.field6 = field6;
+    this.field7 = field7;
+    this.field8 = field8;
   }
 
   /**
@@ -166,6 +179,16 @@ public record ExampleRecordWithNullableFieldsOfEachType(
           String.format(
               "Expected the field `field6` to be an array in the JSON string but got `%s`",
               jsonObj.get("field6")));
+    }
+
+    if (jsonObj.get("field7") != null
+        && !jsonObj.get("field7").isJsonNull()) {
+      ExampleNullableRecord.validateJsonElement(jsonObj.get("field7"));
+    }
+
+    if (jsonObj.get("field8") != null
+        && !jsonObj.get("field8").isJsonNull()) {
+      ExampleNullableEnum.validateJsonElement(jsonObj.get("field8"));
     }
   }
 }
