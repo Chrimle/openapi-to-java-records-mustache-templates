@@ -302,30 +302,33 @@ public record RecordWithAllConstraints(
     }
 
     if (jsonObj.get("arrayMinItems") != null
-        && !jsonObj.get("arrayMinItems").isJsonNull()
-        && !jsonObj.get("arrayMinItems").isJsonArray()) {
-      throw new IllegalArgumentException(
-          String.format(
-              "Expected the field `arrayMinItems` to be an array in the JSON string but got `%s`",
-              jsonObj.get("arrayMinItems")));
+        && !jsonObj.get("arrayMinItems").isJsonNull()) { 
+      if (!jsonObj.get("arrayMinItems").isJsonArray()) {
+        throw new IllegalArgumentException(
+            String.format(
+                "Expected the field `arrayMinItems` to be an array in the JSON string but got `%s`",
+                jsonObj.get("arrayMinItems")));
+      }
     }
 
     if (jsonObj.get("arrayMaxItems") != null
-        && !jsonObj.get("arrayMaxItems").isJsonNull()
-        && !jsonObj.get("arrayMaxItems").isJsonArray()) {
-      throw new IllegalArgumentException(
-          String.format(
-              "Expected the field `arrayMaxItems` to be an array in the JSON string but got `%s`",
-              jsonObj.get("arrayMaxItems")));
+        && !jsonObj.get("arrayMaxItems").isJsonNull()) { 
+      if (!jsonObj.get("arrayMaxItems").isJsonArray()) {
+        throw new IllegalArgumentException(
+            String.format(
+                "Expected the field `arrayMaxItems` to be an array in the JSON string but got `%s`",
+                jsonObj.get("arrayMaxItems")));
+      }
     }
 
     if (jsonObj.get("arrayMinAndMaxItems") != null
-        && !jsonObj.get("arrayMinAndMaxItems").isJsonNull()
-        && !jsonObj.get("arrayMinAndMaxItems").isJsonArray()) {
-      throw new IllegalArgumentException(
-          String.format(
-              "Expected the field `arrayMinAndMaxItems` to be an array in the JSON string but got `%s`",
-              jsonObj.get("arrayMinAndMaxItems")));
+        && !jsonObj.get("arrayMinAndMaxItems").isJsonNull()) { 
+      if (!jsonObj.get("arrayMinAndMaxItems").isJsonArray()) {
+        throw new IllegalArgumentException(
+            String.format(
+                "Expected the field `arrayMinAndMaxItems` to be an array in the JSON string but got `%s`",
+                jsonObj.get("arrayMinAndMaxItems")));
+      }
     }
 
     if (jsonObj.get("intMinimum") != null
