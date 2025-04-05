@@ -56,22 +56,21 @@ public record ExampleRecordWithCollectionsOfRecords(
   /** A set containing the names of all instance fields defined in this class. */
   public static final HashSet<String> openapiFields =
       new HashSet<String>(
-          Set.of("optionalRecordList",
+          Set.of(
+              "optionalRecordList",
               "requiredRecordList",
               "optionalRecordSet",
               "requiredRecordSet"));
 
   /** A set containing the names of all required fields defined in this class. */
   public static final HashSet<String> openapiRequiredFields =
-      new HashSet<String>(
-          Set.of("requiredRecordList",
-              "requiredRecordSet"));
+      new HashSet<String>(Set.of("requiredRecordList", "requiredRecordSet"));
 
   public ExampleRecordWithCollectionsOfRecords(
       @javax.annotation.Nullable final List<ExampleRecord> optionalRecordList,
       @javax.annotation.Nullable final List<ExampleRecord> requiredRecordList,
       @javax.annotation.Nullable final Set<ExampleRecord> optionalRecordSet,
-      @javax.annotation.Nullable final Set<ExampleRecord> requiredRecordSet) { 
+      @javax.annotation.Nullable final Set<ExampleRecord> requiredRecordSet) {
     this.optionalRecordList = Objects.requireNonNullElse(optionalRecordList, new ArrayList<>());
     this.requiredRecordList = Objects.requireNonNullElse(requiredRecordList, new ArrayList<>());
     this.optionalRecordSet = Objects.requireNonNullElse(optionalRecordSet, new LinkedHashSet<>());
@@ -82,9 +81,10 @@ public record ExampleRecordWithCollectionsOfRecords(
    * Validates the JSON Element and throws an exception if issues are found.
    *
    * @param jsonElement to validate.
-   * @throws IOException if the JSON Element is not a valid ExampleRecordWithCollectionsOfRecords object.
+   * @throws IOException if the JSON Element is not a valid ExampleRecordWithCollectionsOfRecords
+   *     object.
    */
-  public static void validateJsonElement(final JsonElement jsonElement) throws IOException { 
+  public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
     if (jsonElement == null) {
       throw new IllegalArgumentException(
           String.format(
@@ -120,6 +120,7 @@ public record ExampleRecordWithCollectionsOfRecords(
                 "Expected the field `optionalRecordList` to be an array in the JSON string but got `%s`",
                 jsonObj.get("optionalRecordList")));
       }
+
       for (final JsonElement element : jsonObj.getAsJsonArray("optionalRecordList").asList()) {
         ExampleRecord.validateJsonElement(element);
       }
@@ -144,6 +145,7 @@ public record ExampleRecordWithCollectionsOfRecords(
                 "Expected the field `optionalRecordSet` to be an array in the JSON string but got `%s`",
                 jsonObj.get("optionalRecordSet")));
       }
+
       for (final JsonElement element : jsonObj.getAsJsonArray("optionalRecordSet").asList()) {
         ExampleRecord.validateJsonElement(element);
       }

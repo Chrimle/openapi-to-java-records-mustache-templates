@@ -113,13 +113,14 @@ public record ExampleRecordWithCollectionsOfRecords(
     final JsonObject jsonObj = jsonElement.getAsJsonObject();
 
     if (jsonObj.get("optionalRecordList") != null
-        && !jsonObj.get("optionalRecordList").isJsonNull()) {
+        && !jsonObj.get("optionalRecordList").isJsonNull()) { 
       if (!jsonObj.get("optionalRecordList").isJsonArray()) {
         throw new IllegalArgumentException(
             String.format(
                 "Expected the field `optionalRecordList` to be an array in the JSON string but got `%s`",
                 jsonObj.get("optionalRecordList")));
       }
+
       for (final JsonElement element : jsonObj.getAsJsonArray("optionalRecordList").asList()) {
         ExampleRecord.validateJsonElement(element);
       }
@@ -137,13 +138,14 @@ public record ExampleRecordWithCollectionsOfRecords(
     }
 
     if (jsonObj.get("optionalRecordSet") != null
-        && !jsonObj.get("optionalRecordSet").isJsonNull()) {
+        && !jsonObj.get("optionalRecordSet").isJsonNull()) { 
       if (!jsonObj.get("optionalRecordSet").isJsonArray()) {
         throw new IllegalArgumentException(
             String.format(
                 "Expected the field `optionalRecordSet` to be an array in the JSON string but got `%s`",
                 jsonObj.get("optionalRecordSet")));
       }
+
       for (final JsonElement element : jsonObj.getAsJsonArray("optionalRecordSet").asList()) {
         ExampleRecord.validateJsonElement(element);
       }
