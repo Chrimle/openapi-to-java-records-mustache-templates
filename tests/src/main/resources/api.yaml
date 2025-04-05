@@ -101,6 +101,13 @@ components:
           nullable: true
           items:
             type: boolean
+        field7:
+          description: an ExampleNullableRecord field
+          $ref: '#/components/schemas/ExampleNullableRecord'
+        field8:
+          description: an ExampleEnum field
+          nullable: true
+          $ref: '#/components/schemas/ExampleNullableEnum'
     ExampleRecordWithCollectionsOfRecords:
       type: object
       description: Example of a Record with collections of records.
@@ -133,6 +140,14 @@ components:
     ExampleRecord:
       type: object
       description: Example of a Record
+      properties:
+        field1:
+          type: boolean
+          description: a boolean field
+    ExampleNullableRecord:
+      type: object
+      description: Example of a Record
+      nullable: true
       properties:
         field1:
           type: boolean
@@ -181,6 +196,18 @@ components:
     ExampleEnum:
       type: string
       description: Example of an Enum
+      enum:
+        - ENUM1
+        - ENUM2
+        - ENUM3
+      x-enum-descriptions:
+        - Some description of ENUM1
+        - Some description of ENUM2
+        - Some description of ENUM3
+    ExampleNullableEnum:
+      type: string
+      description: Example of an Enum
+      nullable: true
       enum:
         - ENUM1
         - ENUM2
