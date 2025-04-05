@@ -187,7 +187,7 @@ public record ExampleRecordWithNullableFieldsOfEachType(
     }
 
     if (jsonObj.get("field8") != null
-        && !jsonObj.get("field8").isJsonNull()) {
+        && !jsonObj.get("field8").isJsonNull()) { 
       ExampleNullableEnum.validateJsonElement(jsonObj.get("field8"));
     }
   }
