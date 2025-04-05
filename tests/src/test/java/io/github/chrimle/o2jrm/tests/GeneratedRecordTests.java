@@ -634,6 +634,40 @@ final class GeneratedRecordTests implements GeneratedClassTests {
           @ParameterizedTest
           @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
           @DisplayName(
+              "When optional `jsonElement` values is not present Then `validateJsonElement`-method throws nothing")
+          void whenOptionalJsonElementValuesIsNotPresentThenNothingIsThrown(
+              final GeneratedSource generatedSource) {
+            Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+
+            final Method validateJsonElementMethod =
+                CustomAssertions.assertClassHasMethod(
+                    generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
+            for (int j = 0; j < generatedSource.generatedFields().length; j++) {
+              String jsonString = "{";
+              boolean skipNextSeparator = false;
+              for (int i = 0; i < generatedSource.generatedFields().length; i++) {
+                final GeneratedField<?> generatedField = generatedSource.generatedFields()[i];
+                if (i == j && !generatedField.isRequired()) {
+                  if (i == 0) skipNextSeparator = true;
+                } else {
+                  if (i != 0 && !skipNextSeparator) {
+                    jsonString += ",";
+                  }
+                  jsonString += generatedField.getKeyAndValueAsJson();
+                  skipNextSeparator = false;
+                }
+              }
+              jsonString += "}";
+              System.out.println(jsonString);
+              final JsonElement jsonObject = JsonParser.parseString(jsonString);
+              CustomAssertions.assertStaticMethodCanBeInvoked(
+                  validateJsonElementMethod, jsonObject);
+            }
+          }
+
+          @ParameterizedTest
+          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+          @DisplayName(
               "When `jsonElement` value is valid Then `validateJsonElement`-method throws nothing")
           void whenJsonElementIsValidThenNothingIsThrown(final GeneratedSource generatedSource) {
             Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
