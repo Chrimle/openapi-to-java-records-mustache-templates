@@ -105,7 +105,7 @@ components:
           description: an ExampleNullableRecord field
           $ref: '#/components/schemas/ExampleNullableRecord'
         field8:
-          description: an ExampleEnum field
+          description: an ExampleNullableEnum field
           nullable: true
           $ref: '#/components/schemas/ExampleNullableEnum'
     ExampleRecordWithCollectionsOfRecords:
