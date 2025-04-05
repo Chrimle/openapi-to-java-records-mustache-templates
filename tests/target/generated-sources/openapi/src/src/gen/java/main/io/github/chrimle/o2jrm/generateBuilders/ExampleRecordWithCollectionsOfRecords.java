@@ -203,7 +203,6 @@ public record ExampleRecordWithCollectionsOfRecords(
                 "Expected the field `optionalRecordList` to be an array in the JSON string but got `%s`",
                 jsonObj.get("optionalRecordList")));
       }
-
       for (final JsonElement element : jsonObj.getAsJsonArray("optionalRecordList").asList()) {
         ExampleRecord.validateJsonElement(element);
       }
@@ -215,7 +214,6 @@ public record ExampleRecordWithCollectionsOfRecords(
               "Expected the field `requiredRecordList` to be an array in the JSON string but got `%s`",
               jsonObj.get("requiredRecordList")));
     }
-
     for (final JsonElement element : jsonObj.getAsJsonArray("requiredRecordList").asList()) {
       ExampleRecord.validateJsonElement(element);
     }
@@ -228,7 +226,6 @@ public record ExampleRecordWithCollectionsOfRecords(
                 "Expected the field `optionalRecordSet` to be an array in the JSON string but got `%s`",
                 jsonObj.get("optionalRecordSet")));
       }
-
       for (final JsonElement element : jsonObj.getAsJsonArray("optionalRecordSet").asList()) {
         ExampleRecord.validateJsonElement(element);
       }
@@ -240,7 +237,6 @@ public record ExampleRecordWithCollectionsOfRecords(
               "Expected the field `requiredRecordSet` to be an array in the JSON string but got `%s`",
               jsonObj.get("requiredRecordSet")));
     }
-
     for (final JsonElement element : jsonObj.getAsJsonArray("requiredRecordSet").asList()) {
       ExampleRecord.validateJsonElement(element);
     }
