@@ -188,14 +188,16 @@ import java.util.Set;
 {{^required}}  {{/required}}          String.format(
 {{^required}}  {{/required}}              "Expected the field `{{{baseName}}}` to be {{#isArray}}an array{{/isArray}}{{^isArray}}a primitive type{{/isArray}} in the JSON string but got `%s`",
 {{^required}}  {{/required}}              jsonObj.get("{{{baseName}}}")));
-{{^required}}  {{/required}}    }{{/isEnum}}{{/isEnumRef}}{{/isModel}}
-{{#items.isModel}}
+{{^required}}  {{/required}}    }{{/isEnum}}{{/isEnumRef}}{{/isModel}}{{#items.isModel}}
 {{^required}}  {{/required}}    for (final JsonElement element : jsonObj.getAsJsonArray("{{{baseName}}}").asList()) {
 {{^required}}  {{/required}}      {{{items.dataType}}}.validateJsonElement(element);
-{{^required}}  {{/required}}    }{{/items.isModel}}{{^isContainer}}{{#isModel}}{{!
-}}{{^required}}  {{/required}}    {{{dataType}}}.validateJsonElement(jsonObj.get("{{{baseName}}}"));{{/isModel}}{{/isContainer}}{{!
-}}{{#isEnum}}{{^required}}  {{/required}}    {{{datatypeWithEnum}}}.validateJsonElement(jsonObj.get("{{{baseName}}}"));{{/isEnum}}{{!
-}}{{#isEnumRef}}{{^required}}  {{/required}}    {{{dataType}}}.validateJsonElement(jsonObj.get("{{{baseName}}}"));{{/isEnumRef}}
+{{^required}}  {{/required}}    }{{/items.isModel}}{{!
+}}{{^isContainer}}{{#isModel}}
+{{^required}}  {{/required}}    {{{dataType}}}.validateJsonElement(jsonObj.get("{{{baseName}}}"));{{/isModel}}{{/isContainer}}{{!
+}}{{#isEnum}}
+{{^required}}  {{/required}}    {{{datatypeWithEnum}}}.validateJsonElement(jsonObj.get("{{{baseName}}}"));{{/isEnum}}{{!
+}}{{#isEnumRef}}
+{{^required}}  {{/required}}    {{{dataType}}}.validateJsonElement(jsonObj.get("{{{baseName}}}"));{{/isEnumRef}}
 {{^required}}
     }
 {{/required}}{{/vars}}{{/discriminator}}{{!
