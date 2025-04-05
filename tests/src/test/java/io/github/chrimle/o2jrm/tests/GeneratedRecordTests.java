@@ -588,24 +588,47 @@ final class GeneratedRecordTests implements GeneratedClassTests {
           void whenOptionalJsonElementValuesAreNullThenNothingIsThrown(
               final GeneratedSource generatedSource) {
             Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-            Assumptions.assumeTrue(
-                Arrays.stream(generatedSource.generatedFields())
-                    .noneMatch(GeneratedField::isRequired));
 
             final Method validateJsonElementMethod =
                 CustomAssertions.assertClassHasMethod(
                     generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
-            String jsonString = "{";
-            for (int i = 0; i < generatedSource.generatedFields().length; i++) {
-              final GeneratedField<?> generatedField = generatedSource.generatedFields()[i];
-              jsonString += "'" + generatedField.name() + "': null";
-              if (i + 1 < generatedSource.generatedFields().length) {
-                jsonString += ",";
+            for (int j = 0; j < generatedSource.generatedFields().length; j++) {
+              String jsonString = "{";
+              boolean hasInvalidKey = false;
+              boolean isRequired = false;
+              boolean isEnum = false;
+              boolean isCustomClass = false;
+              for (int i = 0; i < generatedSource.generatedFields().length; i++) {
+                final GeneratedField<?> generatedField = generatedSource.generatedFields()[i];
+                if (i == j) {
+                  jsonString += "'" + generatedField.name() + "': null";
+                  hasInvalidKey = true;
+                  isRequired = generatedField.isRequired();
+                  isEnum = generatedField.type().isEnum();
+                  isCustomClass = generatedField.isCustomClass();
+                } else {
+                  jsonString += generatedField.getKeyAndValueAsJson();
+                }
+                if (i + 1 < generatedSource.generatedFields().length) {
+                  jsonString += ",";
+                }
+              }
+              jsonString += "}";
+              final JsonElement jsonObject = JsonParser.parseString(jsonString);
+              if (hasInvalidKey && isRequired) {
+                final Class<? extends Exception> expectedException =
+                    isEnum
+                        ? UnsupportedOperationException.class
+                        : isCustomClass
+                            ? IllegalStateException.class
+                            : IllegalArgumentException.class;
+                CustomAssertions.assertStaticMethodThrowsWhenInvoked(
+                    validateJsonElementMethod, expectedException, jsonObject);
+              } else {
+                CustomAssertions.assertStaticMethodCanBeInvoked(
+                    validateJsonElementMethod, jsonObject);
               }
             }
-            jsonString += "}";
-            final JsonElement jsonObject = JsonParser.parseString(jsonString);
-            CustomAssertions.assertStaticMethodCanBeInvoked(validateJsonElementMethod, jsonObject);
           }
 
           @ParameterizedTest
