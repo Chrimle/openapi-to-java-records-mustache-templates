@@ -151,14 +151,12 @@ public record ExampleRecordWithRequiredFieldsOfEachType(
               jsonObj.get("field1")));
     }
 
-
     if (!jsonObj.get("field2").isJsonPrimitive()) {
       throw new IllegalArgumentException(
           String.format(
               "Expected the field `field2` to be a primitive type in the JSON string but got `%s`",
               jsonObj.get("field2")));
     }
-
 
     if (!jsonObj.get("field3").isJsonPrimitive()) {
       throw new IllegalArgumentException(
@@ -167,14 +165,12 @@ public record ExampleRecordWithRequiredFieldsOfEachType(
               jsonObj.get("field3")));
     }
 
-
     if (!jsonObj.get("field4").isJsonPrimitive()) {
       throw new IllegalArgumentException(
           String.format(
               "Expected the field `field4` to be a primitive type in the JSON string but got `%s`",
               jsonObj.get("field4")));
     }
-
 
     if (!jsonObj.get("field5").isJsonArray()) {
       throw new IllegalArgumentException(
@@ -183,14 +179,12 @@ public record ExampleRecordWithRequiredFieldsOfEachType(
               jsonObj.get("field5")));
     }
 
-
     if (!jsonObj.get("field6").isJsonArray()) {
       throw new IllegalArgumentException(
           String.format(
               "Expected the field `field6` to be an array in the JSON string but got `%s`",
               jsonObj.get("field6")));
     }
-
 
     ExampleRecord.validateJsonElement(jsonObj.get("field7"));
 

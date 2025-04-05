@@ -95,7 +95,6 @@ public record ExampleRecordWithOneExtraAnnotation(
                 "Expected the field `field1` to be a primitive type in the JSON string but got `%s`",
                 jsonObj.get("field1")));
       }
-
     }
 
     if (jsonObj.get("field2") != null
@@ -106,7 +105,6 @@ public record ExampleRecordWithOneExtraAnnotation(
                 "Expected the field `field2` to be a primitive type in the JSON string but got `%s`",
                 jsonObj.get("field2")));
       }
-
     }
   }
 }

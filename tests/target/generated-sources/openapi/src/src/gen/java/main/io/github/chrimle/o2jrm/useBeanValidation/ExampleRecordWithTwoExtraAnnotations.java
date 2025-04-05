@@ -87,7 +87,6 @@ public record ExampleRecordWithTwoExtraAnnotations(
                 "Expected the field `field1` to be a primitive type in the JSON string but got `%s`",
                 jsonObj.get("field1")));
       }
-
     }
   }
 }

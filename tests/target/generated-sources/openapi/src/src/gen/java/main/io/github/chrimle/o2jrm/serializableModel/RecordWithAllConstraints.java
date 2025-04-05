@@ -220,7 +220,6 @@ public record RecordWithAllConstraints(
                 "Expected the field `stringStandard` to be a primitive type in the JSON string but got `%s`",
                 jsonObj.get("stringStandard")));
       }
-
     }
 
     if (jsonObj.get("stringDefault") != null
@@ -231,7 +230,6 @@ public record RecordWithAllConstraints(
                 "Expected the field `stringDefault` to be a primitive type in the JSON string but got `%s`",
                 jsonObj.get("stringDefault")));
       }
-
     }
 
     if (jsonObj.get("stringNullable") != null
@@ -242,7 +240,6 @@ public record RecordWithAllConstraints(
                 "Expected the field `stringNullable` to be a primitive type in the JSON string but got `%s`",
                 jsonObj.get("stringNullable")));
       }
-
     }
 
     if (!jsonObj.get("stringRequired").isJsonPrimitive()) {
@@ -252,7 +249,6 @@ public record RecordWithAllConstraints(
               jsonObj.get("stringRequired")));
     }
 
-
     if (!jsonObj.get("stringRequiredNullable").isJsonPrimitive()) {
       throw new IllegalArgumentException(
           String.format(
@@ -260,14 +256,12 @@ public record RecordWithAllConstraints(
               jsonObj.get("stringRequiredNullable")));
     }
 
-
     if (!jsonObj.get("stringRequiredPattern").isJsonPrimitive()) {
       throw new IllegalArgumentException(
           String.format(
               "Expected the field `stringRequiredPattern` to be a primitive type in the JSON string but got `%s`",
               jsonObj.get("stringRequiredPattern")));
     }
-
 
     if (jsonObj.get("stringEmailFormat") != null
         && !jsonObj.get("stringEmailFormat").isJsonNull()) { 
@@ -277,7 +271,6 @@ public record RecordWithAllConstraints(
                 "Expected the field `stringEmailFormat` to be a primitive type in the JSON string but got `%s`",
                 jsonObj.get("stringEmailFormat")));
       }
-
     }
 
     if (jsonObj.get("stringUuidFormat") != null
@@ -288,7 +281,6 @@ public record RecordWithAllConstraints(
                 "Expected the field `stringUuidFormat` to be a primitive type in the JSON string but got `%s`",
                 jsonObj.get("stringUuidFormat")));
       }
-
     }
 
     if (jsonObj.get("stringMinLength") != null
@@ -299,7 +291,6 @@ public record RecordWithAllConstraints(
                 "Expected the field `stringMinLength` to be a primitive type in the JSON string but got `%s`",
                 jsonObj.get("stringMinLength")));
       }
-
     }
 
     if (jsonObj.get("stringMaxLength") != null
@@ -310,7 +301,6 @@ public record RecordWithAllConstraints(
                 "Expected the field `stringMaxLength` to be a primitive type in the JSON string but got `%s`",
                 jsonObj.get("stringMaxLength")));
       }
-
     }
 
     if (jsonObj.get("stringMinAndMaxLength") != null
@@ -321,7 +311,6 @@ public record RecordWithAllConstraints(
                 "Expected the field `stringMinAndMaxLength` to be a primitive type in the JSON string but got `%s`",
                 jsonObj.get("stringMinAndMaxLength")));
       }
-
     }
 
     if (jsonObj.get("arrayMinItems") != null
@@ -332,7 +321,6 @@ public record RecordWithAllConstraints(
                 "Expected the field `arrayMinItems` to be an array in the JSON string but got `%s`",
                 jsonObj.get("arrayMinItems")));
       }
-
     }
 
     if (jsonObj.get("arrayMaxItems") != null
@@ -343,7 +331,6 @@ public record RecordWithAllConstraints(
                 "Expected the field `arrayMaxItems` to be an array in the JSON string but got `%s`",
                 jsonObj.get("arrayMaxItems")));
       }
-
     }
 
     if (jsonObj.get("arrayMinAndMaxItems") != null
@@ -354,7 +341,6 @@ public record RecordWithAllConstraints(
                 "Expected the field `arrayMinAndMaxItems` to be an array in the JSON string but got `%s`",
                 jsonObj.get("arrayMinAndMaxItems")));
       }
-
     }
 
     if (jsonObj.get("intMinimum") != null
@@ -365,7 +351,6 @@ public record RecordWithAllConstraints(
                 "Expected the field `intMinimum` to be a primitive type in the JSON string but got `%s`",
                 jsonObj.get("intMinimum")));
       }
-
     }
 
     if (jsonObj.get("intMaximum") != null
@@ -376,7 +361,6 @@ public record RecordWithAllConstraints(
                 "Expected the field `intMaximum` to be a primitive type in the JSON string but got `%s`",
                 jsonObj.get("intMaximum")));
       }
-
     }
 
     if (jsonObj.get("intMinimumAndMaximum") != null
@@ -387,7 +371,6 @@ public record RecordWithAllConstraints(
                 "Expected the field `intMinimumAndMaximum` to be a primitive type in the JSON string but got `%s`",
                 jsonObj.get("intMinimumAndMaximum")));
       }
-
     }
 
     if (jsonObj.get("longMinimum") != null
@@ -398,7 +381,6 @@ public record RecordWithAllConstraints(
                 "Expected the field `longMinimum` to be a primitive type in the JSON string but got `%s`",
                 jsonObj.get("longMinimum")));
       }
-
     }
 
     if (jsonObj.get("longMaximum") != null
@@ -409,7 +391,6 @@ public record RecordWithAllConstraints(
                 "Expected the field `longMaximum` to be a primitive type in the JSON string but got `%s`",
                 jsonObj.get("longMaximum")));
       }
-
     }
 
     if (jsonObj.get("longMinimumAndMaximum") != null
@@ -420,7 +401,6 @@ public record RecordWithAllConstraints(
                 "Expected the field `longMinimumAndMaximum` to be a primitive type in the JSON string but got `%s`",
                 jsonObj.get("longMinimumAndMaximum")));
       }
-
     }
 
     if (jsonObj.get("bigDecimalMinimum") != null
@@ -431,7 +411,6 @@ public record RecordWithAllConstraints(
                 "Expected the field `bigDecimalMinimum` to be a primitive type in the JSON string but got `%s`",
                 jsonObj.get("bigDecimalMinimum")));
       }
-
     }
 
     if (jsonObj.get("bigDecimalMaximum") != null
@@ -442,7 +421,6 @@ public record RecordWithAllConstraints(
                 "Expected the field `bigDecimalMaximum` to be a primitive type in the JSON string but got `%s`",
                 jsonObj.get("bigDecimalMaximum")));
       }
-
     }
 
     if (jsonObj.get("bigDecimalMinimumAndMaximum") != null
@@ -453,7 +431,6 @@ public record RecordWithAllConstraints(
                 "Expected the field `bigDecimalMinimumAndMaximum` to be a primitive type in the JSON string but got `%s`",
                 jsonObj.get("bigDecimalMinimumAndMaximum")));
       }
-
     }
   }
 }
