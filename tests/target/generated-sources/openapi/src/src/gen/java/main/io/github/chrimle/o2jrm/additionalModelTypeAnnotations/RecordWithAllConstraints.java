@@ -212,30 +212,36 @@ public record RecordWithAllConstraints(
     final JsonObject jsonObj = jsonElement.getAsJsonObject();
 
     if (jsonObj.get("stringStandard") != null
-        && !jsonObj.get("stringStandard").isJsonNull()
-        && !jsonObj.get("stringStandard").isJsonPrimitive()) {
-      throw new IllegalArgumentException(
-          String.format(
-              "Expected the field `stringStandard` to be a primitive type in the JSON string but got `%s`",
-              jsonObj.get("stringStandard")));
+        && !jsonObj.get("stringStandard").isJsonNull()) { 
+      if (!jsonObj.get("stringStandard").isJsonPrimitive()) {
+        throw new IllegalArgumentException(
+            String.format(
+                "Expected the field `stringStandard` to be a primitive type in the JSON string but got `%s`",
+                jsonObj.get("stringStandard")));
+      }
+
     }
 
     if (jsonObj.get("stringDefault") != null
-        && !jsonObj.get("stringDefault").isJsonNull()
-        && !jsonObj.get("stringDefault").isJsonPrimitive()) {
-      throw new IllegalArgumentException(
-          String.format(
-              "Expected the field `stringDefault` to be a primitive type in the JSON string but got `%s`",
-              jsonObj.get("stringDefault")));
+        && !jsonObj.get("stringDefault").isJsonNull()) { 
+      if (!jsonObj.get("stringDefault").isJsonPrimitive()) {
+        throw new IllegalArgumentException(
+            String.format(
+                "Expected the field `stringDefault` to be a primitive type in the JSON string but got `%s`",
+                jsonObj.get("stringDefault")));
+      }
+
     }
 
     if (jsonObj.get("stringNullable") != null
-        && !jsonObj.get("stringNullable").isJsonNull()
-        && !jsonObj.get("stringNullable").isJsonPrimitive()) {
-      throw new IllegalArgumentException(
-          String.format(
-              "Expected the field `stringNullable` to be a primitive type in the JSON string but got `%s`",
-              jsonObj.get("stringNullable")));
+        && !jsonObj.get("stringNullable").isJsonNull()) { 
+      if (!jsonObj.get("stringNullable").isJsonPrimitive()) {
+        throw new IllegalArgumentException(
+            String.format(
+                "Expected the field `stringNullable` to be a primitive type in the JSON string but got `%s`",
+                jsonObj.get("stringNullable")));
+      }
+
     }
 
     if (!jsonObj.get("stringRequired").isJsonPrimitive()) {
@@ -245,12 +251,14 @@ public record RecordWithAllConstraints(
               jsonObj.get("stringRequired")));
     }
 
+
     if (!jsonObj.get("stringRequiredNullable").isJsonPrimitive()) {
       throw new IllegalArgumentException(
           String.format(
               "Expected the field `stringRequiredNullable` to be a primitive type in the JSON string but got `%s`",
               jsonObj.get("stringRequiredNullable")));
     }
+
 
     if (!jsonObj.get("stringRequiredPattern").isJsonPrimitive()) {
       throw new IllegalArgumentException(
@@ -259,49 +267,60 @@ public record RecordWithAllConstraints(
               jsonObj.get("stringRequiredPattern")));
     }
 
+
     if (jsonObj.get("stringEmailFormat") != null
-        && !jsonObj.get("stringEmailFormat").isJsonNull()
-        && !jsonObj.get("stringEmailFormat").isJsonPrimitive()) {
-      throw new IllegalArgumentException(
-          String.format(
-              "Expected the field `stringEmailFormat` to be a primitive type in the JSON string but got `%s`",
-              jsonObj.get("stringEmailFormat")));
+        && !jsonObj.get("stringEmailFormat").isJsonNull()) { 
+      if (!jsonObj.get("stringEmailFormat").isJsonPrimitive()) {
+        throw new IllegalArgumentException(
+            String.format(
+                "Expected the field `stringEmailFormat` to be a primitive type in the JSON string but got `%s`",
+                jsonObj.get("stringEmailFormat")));
+      }
+
     }
 
     if (jsonObj.get("stringUuidFormat") != null
-        && !jsonObj.get("stringUuidFormat").isJsonNull()
-        && !jsonObj.get("stringUuidFormat").isJsonPrimitive()) {
-      throw new IllegalArgumentException(
-          String.format(
-              "Expected the field `stringUuidFormat` to be a primitive type in the JSON string but got `%s`",
-              jsonObj.get("stringUuidFormat")));
+        && !jsonObj.get("stringUuidFormat").isJsonNull()) { 
+      if (!jsonObj.get("stringUuidFormat").isJsonPrimitive()) {
+        throw new IllegalArgumentException(
+            String.format(
+                "Expected the field `stringUuidFormat` to be a primitive type in the JSON string but got `%s`",
+                jsonObj.get("stringUuidFormat")));
+      }
+
     }
 
     if (jsonObj.get("stringMinLength") != null
-        && !jsonObj.get("stringMinLength").isJsonNull()
-        && !jsonObj.get("stringMinLength").isJsonPrimitive()) {
-      throw new IllegalArgumentException(
-          String.format(
-              "Expected the field `stringMinLength` to be a primitive type in the JSON string but got `%s`",
-              jsonObj.get("stringMinLength")));
+        && !jsonObj.get("stringMinLength").isJsonNull()) { 
+      if (!jsonObj.get("stringMinLength").isJsonPrimitive()) {
+        throw new IllegalArgumentException(
+            String.format(
+                "Expected the field `stringMinLength` to be a primitive type in the JSON string but got `%s`",
+                jsonObj.get("stringMinLength")));
+      }
+
     }
 
     if (jsonObj.get("stringMaxLength") != null
-        && !jsonObj.get("stringMaxLength").isJsonNull()
-        && !jsonObj.get("stringMaxLength").isJsonPrimitive()) {
-      throw new IllegalArgumentException(
-          String.format(
-              "Expected the field `stringMaxLength` to be a primitive type in the JSON string but got `%s`",
-              jsonObj.get("stringMaxLength")));
+        && !jsonObj.get("stringMaxLength").isJsonNull()) { 
+      if (!jsonObj.get("stringMaxLength").isJsonPrimitive()) {
+        throw new IllegalArgumentException(
+            String.format(
+                "Expected the field `stringMaxLength` to be a primitive type in the JSON string but got `%s`",
+                jsonObj.get("stringMaxLength")));
+      }
+
     }
 
     if (jsonObj.get("stringMinAndMaxLength") != null
-        && !jsonObj.get("stringMinAndMaxLength").isJsonNull()
-        && !jsonObj.get("stringMinAndMaxLength").isJsonPrimitive()) {
-      throw new IllegalArgumentException(
-          String.format(
-              "Expected the field `stringMinAndMaxLength` to be a primitive type in the JSON string but got `%s`",
-              jsonObj.get("stringMinAndMaxLength")));
+        && !jsonObj.get("stringMinAndMaxLength").isJsonNull()) { 
+      if (!jsonObj.get("stringMinAndMaxLength").isJsonPrimitive()) {
+        throw new IllegalArgumentException(
+            String.format(
+                "Expected the field `stringMinAndMaxLength` to be a primitive type in the JSON string but got `%s`",
+                jsonObj.get("stringMinAndMaxLength")));
+      }
+
     }
 
     if (jsonObj.get("arrayMinItems") != null
@@ -312,6 +331,7 @@ public record RecordWithAllConstraints(
                 "Expected the field `arrayMinItems` to be an array in the JSON string but got `%s`",
                 jsonObj.get("arrayMinItems")));
       }
+
     }
 
     if (jsonObj.get("arrayMaxItems") != null
@@ -322,6 +342,7 @@ public record RecordWithAllConstraints(
                 "Expected the field `arrayMaxItems` to be an array in the JSON string but got `%s`",
                 jsonObj.get("arrayMaxItems")));
       }
+
     }
 
     if (jsonObj.get("arrayMinAndMaxItems") != null
@@ -332,87 +353,106 @@ public record RecordWithAllConstraints(
                 "Expected the field `arrayMinAndMaxItems` to be an array in the JSON string but got `%s`",
                 jsonObj.get("arrayMinAndMaxItems")));
       }
+
     }
 
     if (jsonObj.get("intMinimum") != null
-        && !jsonObj.get("intMinimum").isJsonNull()
-        && !jsonObj.get("intMinimum").isJsonPrimitive()) {
-      throw new IllegalArgumentException(
-          String.format(
-              "Expected the field `intMinimum` to be a primitive type in the JSON string but got `%s`",
-              jsonObj.get("intMinimum")));
+        && !jsonObj.get("intMinimum").isJsonNull()) { 
+      if (!jsonObj.get("intMinimum").isJsonPrimitive()) {
+        throw new IllegalArgumentException(
+            String.format(
+                "Expected the field `intMinimum` to be a primitive type in the JSON string but got `%s`",
+                jsonObj.get("intMinimum")));
+      }
+
     }
 
     if (jsonObj.get("intMaximum") != null
-        && !jsonObj.get("intMaximum").isJsonNull()
-        && !jsonObj.get("intMaximum").isJsonPrimitive()) {
-      throw new IllegalArgumentException(
-          String.format(
-              "Expected the field `intMaximum` to be a primitive type in the JSON string but got `%s`",
-              jsonObj.get("intMaximum")));
+        && !jsonObj.get("intMaximum").isJsonNull()) { 
+      if (!jsonObj.get("intMaximum").isJsonPrimitive()) {
+        throw new IllegalArgumentException(
+            String.format(
+                "Expected the field `intMaximum` to be a primitive type in the JSON string but got `%s`",
+                jsonObj.get("intMaximum")));
+      }
+
     }
 
     if (jsonObj.get("intMinimumAndMaximum") != null
-        && !jsonObj.get("intMinimumAndMaximum").isJsonNull()
-        && !jsonObj.get("intMinimumAndMaximum").isJsonPrimitive()) {
-      throw new IllegalArgumentException(
-          String.format(
-              "Expected the field `intMinimumAndMaximum` to be a primitive type in the JSON string but got `%s`",
-              jsonObj.get("intMinimumAndMaximum")));
+        && !jsonObj.get("intMinimumAndMaximum").isJsonNull()) { 
+      if (!jsonObj.get("intMinimumAndMaximum").isJsonPrimitive()) {
+        throw new IllegalArgumentException(
+            String.format(
+                "Expected the field `intMinimumAndMaximum` to be a primitive type in the JSON string but got `%s`",
+                jsonObj.get("intMinimumAndMaximum")));
+      }
+
     }
 
     if (jsonObj.get("longMinimum") != null
-        && !jsonObj.get("longMinimum").isJsonNull()
-        && !jsonObj.get("longMinimum").isJsonPrimitive()) {
-      throw new IllegalArgumentException(
-          String.format(
-              "Expected the field `longMinimum` to be a primitive type in the JSON string but got `%s`",
-              jsonObj.get("longMinimum")));
+        && !jsonObj.get("longMinimum").isJsonNull()) { 
+      if (!jsonObj.get("longMinimum").isJsonPrimitive()) {
+        throw new IllegalArgumentException(
+            String.format(
+                "Expected the field `longMinimum` to be a primitive type in the JSON string but got `%s`",
+                jsonObj.get("longMinimum")));
+      }
+
     }
 
     if (jsonObj.get("longMaximum") != null
-        && !jsonObj.get("longMaximum").isJsonNull()
-        && !jsonObj.get("longMaximum").isJsonPrimitive()) {
-      throw new IllegalArgumentException(
-          String.format(
-              "Expected the field `longMaximum` to be a primitive type in the JSON string but got `%s`",
-              jsonObj.get("longMaximum")));
+        && !jsonObj.get("longMaximum").isJsonNull()) { 
+      if (!jsonObj.get("longMaximum").isJsonPrimitive()) {
+        throw new IllegalArgumentException(
+            String.format(
+                "Expected the field `longMaximum` to be a primitive type in the JSON string but got `%s`",
+                jsonObj.get("longMaximum")));
+      }
+
     }
 
     if (jsonObj.get("longMinimumAndMaximum") != null
-        && !jsonObj.get("longMinimumAndMaximum").isJsonNull()
-        && !jsonObj.get("longMinimumAndMaximum").isJsonPrimitive()) {
-      throw new IllegalArgumentException(
-          String.format(
-              "Expected the field `longMinimumAndMaximum` to be a primitive type in the JSON string but got `%s`",
-              jsonObj.get("longMinimumAndMaximum")));
+        && !jsonObj.get("longMinimumAndMaximum").isJsonNull()) { 
+      if (!jsonObj.get("longMinimumAndMaximum").isJsonPrimitive()) {
+        throw new IllegalArgumentException(
+            String.format(
+                "Expected the field `longMinimumAndMaximum` to be a primitive type in the JSON string but got `%s`",
+                jsonObj.get("longMinimumAndMaximum")));
+      }
+
     }
 
     if (jsonObj.get("bigDecimalMinimum") != null
-        && !jsonObj.get("bigDecimalMinimum").isJsonNull()
-        && !jsonObj.get("bigDecimalMinimum").isJsonPrimitive()) {
-      throw new IllegalArgumentException(
-          String.format(
-              "Expected the field `bigDecimalMinimum` to be a primitive type in the JSON string but got `%s`",
-              jsonObj.get("bigDecimalMinimum")));
+        && !jsonObj.get("bigDecimalMinimum").isJsonNull()) { 
+      if (!jsonObj.get("bigDecimalMinimum").isJsonPrimitive()) {
+        throw new IllegalArgumentException(
+            String.format(
+                "Expected the field `bigDecimalMinimum` to be a primitive type in the JSON string but got `%s`",
+                jsonObj.get("bigDecimalMinimum")));
+      }
+
     }
 
     if (jsonObj.get("bigDecimalMaximum") != null
-        && !jsonObj.get("bigDecimalMaximum").isJsonNull()
-        && !jsonObj.get("bigDecimalMaximum").isJsonPrimitive()) {
-      throw new IllegalArgumentException(
-          String.format(
-              "Expected the field `bigDecimalMaximum` to be a primitive type in the JSON string but got `%s`",
-              jsonObj.get("bigDecimalMaximum")));
+        && !jsonObj.get("bigDecimalMaximum").isJsonNull()) { 
+      if (!jsonObj.get("bigDecimalMaximum").isJsonPrimitive()) {
+        throw new IllegalArgumentException(
+            String.format(
+                "Expected the field `bigDecimalMaximum` to be a primitive type in the JSON string but got `%s`",
+                jsonObj.get("bigDecimalMaximum")));
+      }
+
     }
 
     if (jsonObj.get("bigDecimalMinimumAndMaximum") != null
-        && !jsonObj.get("bigDecimalMinimumAndMaximum").isJsonNull()
-        && !jsonObj.get("bigDecimalMinimumAndMaximum").isJsonPrimitive()) {
-      throw new IllegalArgumentException(
-          String.format(
-              "Expected the field `bigDecimalMinimumAndMaximum` to be a primitive type in the JSON string but got `%s`",
-              jsonObj.get("bigDecimalMinimumAndMaximum")));
+        && !jsonObj.get("bigDecimalMinimumAndMaximum").isJsonNull()) { 
+      if (!jsonObj.get("bigDecimalMinimumAndMaximum").isJsonPrimitive()) {
+        throw new IllegalArgumentException(
+            String.format(
+                "Expected the field `bigDecimalMinimumAndMaximum` to be a primitive type in the JSON string but got `%s`",
+                jsonObj.get("bigDecimalMinimumAndMaximum")));
+      }
+
     }
   }
 }

@@ -82,12 +82,14 @@ public record DeprecatedExampleRecord(
     final JsonObject jsonObj = jsonElement.getAsJsonObject();
 
     if (jsonObj.get("field1") != null
-        && !jsonObj.get("field1").isJsonNull()
-        && !jsonObj.get("field1").isJsonPrimitive()) {
-      throw new IllegalArgumentException(
-          String.format(
-              "Expected the field `field1` to be a primitive type in the JSON string but got `%s`",
-              jsonObj.get("field1")));
+        && !jsonObj.get("field1").isJsonNull()) { 
+      if (!jsonObj.get("field1").isJsonPrimitive()) {
+        throw new IllegalArgumentException(
+            String.format(
+                "Expected the field `field1` to be a primitive type in the JSON string but got `%s`",
+                jsonObj.get("field1")));
+      }
+
     }
   }
 }
