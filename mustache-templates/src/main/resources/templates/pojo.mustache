@@ -207,13 +207,11 @@ import java.util.Set;
     }
 {{/isEnumRef}}{{/isEnum}}{{/isModel}}{{!
 }}{{#isModel}}{{!
-}}{{#required}}
-    {{{dataType}}}.validateJsonElement(jsonObj.get("{{{baseName}}}"));
-{{/required}}{{!
-   }}{{^required}}
+}}{{^required}}
     if (jsonObj.get("{{{baseName}}}") != null
-        && !jsonObj.get("{{{baseName}}}").isJsonNull()) {
-      {{{dataType}}}.validateJsonElement(jsonObj.get("{{{baseName}}}"));
+        && !jsonObj.get("{{{baseName}}}").isJsonNull()) { {{/required}}
+{{^required}}  {{/required}}    {{{dataType}}}.validateJsonElement(jsonObj.get("{{{baseName}}}"));
+{{^required}}
     }
 {{/required}}{{/isModel}}{{!
 }}{{#isEnum}}{{!
