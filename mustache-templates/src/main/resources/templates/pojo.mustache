@@ -190,7 +190,6 @@ import java.util.Set;
 {{^required}}  {{/required}}              jsonObj.get("{{{baseName}}}")));
 {{^required}}  {{/required}}    }{{/isEnum}}{{/isEnumRef}}{{/isModel}}
 {{#items.isModel}}
-
 {{^required}}  {{/required}}    for (final JsonElement element : jsonObj.getAsJsonArray("{{{baseName}}}").asList()) {
 {{^required}}  {{/required}}      {{{items.dataType}}}.validateJsonElement(element);
 {{^required}}  {{/required}}    }{{/items.isModel}}{{^isContainer}}{{#isModel}}{{!
