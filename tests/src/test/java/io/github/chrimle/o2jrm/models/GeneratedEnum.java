@@ -34,6 +34,12 @@ public enum GeneratedEnum implements GeneratedClass {
       GeneratedField.of("ENUM1", String.class, "ENUM1").build(),
       GeneratedField.of("ENUM2", String.class, "ENUM2").build(),
       GeneratedField.of("ENUM3", String.class, "ENUM3").build()),
+  EXAMPLE_NULLABLE_ENUM(
+      "ExampleNullableEnum",
+      false,
+      GeneratedField.of("ENUM1", String.class, "ENUM1").build(),
+      GeneratedField.of("ENUM2", String.class, "ENUM2").build(),
+      GeneratedField.of("ENUM3", String.class, "ENUM3").build()),
   EXAMPLE_URI_ENUM(
       "ExampleUriEnum",
       false,

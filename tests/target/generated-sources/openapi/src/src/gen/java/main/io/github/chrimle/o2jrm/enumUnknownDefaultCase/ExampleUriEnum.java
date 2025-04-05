@@ -12,7 +12,7 @@
  * openapi-to-java-records-mustache-templates. For further information,
  * questions, requesting features or reporting issues, please visit:
  * https://github.com/Chrimle/openapi-to-java-records-mustache-templates.
- * Generated with Version: 2.7.1
+ * Generated with Version: 2.8.0
  *
  */
 
@@ -20,6 +20,9 @@ package io.github.chrimle.o2jrm.enumUnknownDefaultCase;
 
 import java.util.Objects;
 import com.google.gson.annotations.SerializedName;
+
+import java.io.IOException;
+import com.google.gson.JsonElement;
 
 import java.net.URI;
 
@@ -64,5 +67,16 @@ public enum ExampleUriEnum {
       }
     }
     return UNKNOWN_DEFAULT_OPEN_API;
+  }
+
+  /**
+   * Validates the JSON Element and throws an exception if issues are found.
+   *
+   * @param jsonElement to validate.
+   * @throws IOException if the JSON Element is not a valid ExampleUriEnum object.
+   */
+  public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
+    final URI value = URI.create(jsonElement.getAsString());
+    ExampleUriEnum.fromValue(value);
   }
 }

@@ -12,7 +12,7 @@
  * openapi-to-java-records-mustache-templates. For further information,
  * questions, requesting features or reporting issues, please visit:
  * https://github.com/Chrimle/openapi-to-java-records-mustache-templates.
- * Generated with Version: 2.7.1
+ * Generated with Version: 2.8.0
  *
  */
 
@@ -20,6 +20,9 @@ package io.github.chrimle.o2jrm.enumUnknownDefaultCase;
 
 import java.util.Objects;
 import com.google.gson.annotations.SerializedName;
+
+import java.io.IOException;
+import com.google.gson.JsonElement;
 
 /**
  * Example of an Enum with integer values
@@ -65,5 +68,16 @@ public enum ExampleEnumWithIntegerValues {
       }
     }
     return NUMBER_unknown_default_open_api;
+  }
+
+  /**
+   * Validates the JSON Element and throws an exception if issues are found.
+   *
+   * @param jsonElement to validate.
+   * @throws IOException if the JSON Element is not a valid ExampleEnumWithIntegerValues object.
+   */
+  public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
+    final Integer value = jsonElement.getAsInt();
+    ExampleEnumWithIntegerValues.fromValue(value);
   }
 }

@@ -26,6 +26,11 @@
     - This template is overriding an official 'openapi-generator-maven-plugin' template.
     - Generates an `enum` class.
 
+}}{{!
+}}{{#gson}}import java.io.IOException;
+import com.google.gson.JsonElement;
+
+{{/gson}}{{!
 }}{{#isUri}}import java.net.URI;
 
 {{/isUri}}{{>javadoc}}{{!
@@ -78,4 +83,17 @@
     }
     {{#enumUnknownDefaultCase}}{{#allowableValues}}{{#enumVars}}{{#-last}}return {{{name}}};{{/-last}}{{/enumVars}}{{/allowableValues}}{{/enumUnknownDefaultCase}}{{^enumUnknownDefaultCase}}throw new IllegalArgumentException("Unexpected value '" + value + "'");{{/enumUnknownDefaultCase}}
   }
+{{#gson}}
+
+  /**
+   * Validates the JSON Element and throws an exception if issues are found.
+   *
+   * @param jsonElement to validate.
+   * @throws IOException if the JSON Element is not a valid {{classname}} object.
+   */
+  public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
+    final {{^isNumber}}{{{dataType}}}{{/isNumber}}{{#isNumber}}String{{/isNumber}} value = {{#isUri}}URI.create({{/isUri}}jsonElement.{{#isNumber}}getAsString(){{/isNumber}}{{#isInteger}}getAsInt(){{/isInteger}}{{#isUri}}getAsString()){{/isUri}}{{^isNumber}}{{^isInteger}}{{^isUri}}getAs{{{dataType}}}(){{/isUri}}{{/isInteger}}{{/isNumber}};
+    {{{datatypeWithEnum}}}{{^datatypeWithEnum}}{{{classname}}}{{/datatypeWithEnum}}.fromValue({{#isNumber}}new BigDecimal({{/isNumber}}value{{#isNumber}}){{/isNumber}});
+  }
+{{/gson}}
 }

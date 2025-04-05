@@ -12,7 +12,7 @@
  * openapi-to-java-records-mustache-templates. For further information,
  * questions, requesting features or reporting issues, please visit:
  * https://github.com/Chrimle/openapi-to-java-records-mustache-templates.
- * Generated with Version: 2.7.1
+ * Generated with Version: 2.8.0
  *
  */
 
@@ -31,6 +31,13 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 import org.openapitools.jackson.nullable.JsonNullable;
+
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * Example of a Record which has fields with constraints
@@ -87,6 +94,40 @@ public record RecordWithAllConstraints(
     @javax.annotation.Nonnull BigDecimal bigDecimalMaximum,
     @javax.annotation.Nonnull BigDecimal bigDecimalMinimumAndMaximum) {
 
+  /** A set containing the names of all instance fields defined in this class. */
+  public static final HashSet<String> openapiFields =
+      new HashSet<String>(
+          Set.of("stringStandard",
+              "stringDefault",
+              "stringNullable",
+              "stringRequired",
+              "stringRequiredNullable",
+              "stringRequiredPattern",
+              "stringEmailFormat",
+              "stringUuidFormat",
+              "stringMinLength",
+              "stringMaxLength",
+              "stringMinAndMaxLength",
+              "arrayMinItems",
+              "arrayMaxItems",
+              "arrayMinAndMaxItems",
+              "intMinimum",
+              "intMaximum",
+              "intMinimumAndMaximum",
+              "longMinimum",
+              "longMaximum",
+              "longMinimumAndMaximum",
+              "bigDecimalMinimum",
+              "bigDecimalMaximum",
+              "bigDecimalMinimumAndMaximum"));
+
+  /** A set containing the names of all required fields defined in this class. */
+  public static final HashSet<String> openapiRequiredFields =
+      new HashSet<String>(
+          Set.of("stringRequired",
+              "stringRequiredNullable",
+              "stringRequiredPattern"));
+
   public RecordWithAllConstraints(
       @javax.annotation.Nonnull final String stringStandard,
       @javax.annotation.Nullable final String stringDefault,
@@ -134,5 +175,261 @@ public record RecordWithAllConstraints(
     this.bigDecimalMinimum = bigDecimalMinimum;
     this.bigDecimalMaximum = bigDecimalMaximum;
     this.bigDecimalMinimumAndMaximum = bigDecimalMinimumAndMaximum;
+  }
+
+  /**
+   * Validates the JSON Element and throws an exception if issues are found.
+   *
+   * @param jsonElement to validate.
+   * @throws IOException if the JSON Element is not a valid RecordWithAllConstraints object.
+   */
+  public static void validateJsonElement(final JsonElement jsonElement) throws IOException { 
+    if (jsonElement == null) {
+      throw new IllegalArgumentException(
+          String.format(
+              "The required field(s) %s in RecordWithAllConstraints is not found in the empty JSON string",
+              RecordWithAllConstraints.openapiRequiredFields.toString()));
+    }
+
+    for (final String key : jsonElement.getAsJsonObject().keySet()) {
+      if (!RecordWithAllConstraints.openapiFields.contains(key)) {
+        throw new IllegalArgumentException(
+            String.format(
+                "The field `%s` in the JSON string is not defined in the `RecordWithAllConstraints` properties. JSON: %s",
+                key, jsonElement));
+      }
+    }
+
+    for (final String requiredField : RecordWithAllConstraints.openapiRequiredFields) {
+      if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+        throw new IllegalArgumentException(
+            String.format(
+                "The required field `%s` is not found in the JSON string: %s",
+                requiredField, jsonElement));
+      }
+    }
+
+    final JsonObject jsonObj = jsonElement.getAsJsonObject();
+
+    if (jsonObj.get("stringStandard") != null
+        && !jsonObj.get("stringStandard").isJsonNull()) { 
+      if (!jsonObj.get("stringStandard").isJsonPrimitive()) {
+        throw new IllegalArgumentException(
+            String.format(
+                "Expected the field `stringStandard` to be a primitive type in the JSON string but got `%s`",
+                jsonObj.get("stringStandard")));
+      }
+    }
+
+    if (jsonObj.get("stringDefault") != null
+        && !jsonObj.get("stringDefault").isJsonNull()) { 
+      if (!jsonObj.get("stringDefault").isJsonPrimitive()) {
+        throw new IllegalArgumentException(
+            String.format(
+                "Expected the field `stringDefault` to be a primitive type in the JSON string but got `%s`",
+                jsonObj.get("stringDefault")));
+      }
+    }
+
+    if (jsonObj.get("stringNullable") != null
+        && !jsonObj.get("stringNullable").isJsonNull()) { 
+      if (!jsonObj.get("stringNullable").isJsonPrimitive()) {
+        throw new IllegalArgumentException(
+            String.format(
+                "Expected the field `stringNullable` to be a primitive type in the JSON string but got `%s`",
+                jsonObj.get("stringNullable")));
+      }
+    }
+
+    if (!jsonObj.get("stringRequired").isJsonPrimitive()) {
+      throw new IllegalArgumentException(
+          String.format(
+              "Expected the field `stringRequired` to be a primitive type in the JSON string but got `%s`",
+              jsonObj.get("stringRequired")));
+    }
+
+    if (!jsonObj.get("stringRequiredNullable").isJsonPrimitive()) {
+      throw new IllegalArgumentException(
+          String.format(
+              "Expected the field `stringRequiredNullable` to be a primitive type in the JSON string but got `%s`",
+              jsonObj.get("stringRequiredNullable")));
+    }
+
+    if (!jsonObj.get("stringRequiredPattern").isJsonPrimitive()) {
+      throw new IllegalArgumentException(
+          String.format(
+              "Expected the field `stringRequiredPattern` to be a primitive type in the JSON string but got `%s`",
+              jsonObj.get("stringRequiredPattern")));
+    }
+
+    if (jsonObj.get("stringEmailFormat") != null
+        && !jsonObj.get("stringEmailFormat").isJsonNull()) { 
+      if (!jsonObj.get("stringEmailFormat").isJsonPrimitive()) {
+        throw new IllegalArgumentException(
+            String.format(
+                "Expected the field `stringEmailFormat` to be a primitive type in the JSON string but got `%s`",
+                jsonObj.get("stringEmailFormat")));
+      }
+    }
+
+    if (jsonObj.get("stringUuidFormat") != null
+        && !jsonObj.get("stringUuidFormat").isJsonNull()) { 
+      if (!jsonObj.get("stringUuidFormat").isJsonPrimitive()) {
+        throw new IllegalArgumentException(
+            String.format(
+                "Expected the field `stringUuidFormat` to be a primitive type in the JSON string but got `%s`",
+                jsonObj.get("stringUuidFormat")));
+      }
+    }
+
+    if (jsonObj.get("stringMinLength") != null
+        && !jsonObj.get("stringMinLength").isJsonNull()) { 
+      if (!jsonObj.get("stringMinLength").isJsonPrimitive()) {
+        throw new IllegalArgumentException(
+            String.format(
+                "Expected the field `stringMinLength` to be a primitive type in the JSON string but got `%s`",
+                jsonObj.get("stringMinLength")));
+      }
+    }
+
+    if (jsonObj.get("stringMaxLength") != null
+        && !jsonObj.get("stringMaxLength").isJsonNull()) { 
+      if (!jsonObj.get("stringMaxLength").isJsonPrimitive()) {
+        throw new IllegalArgumentException(
+            String.format(
+                "Expected the field `stringMaxLength` to be a primitive type in the JSON string but got `%s`",
+                jsonObj.get("stringMaxLength")));
+      }
+    }
+
+    if (jsonObj.get("stringMinAndMaxLength") != null
+        && !jsonObj.get("stringMinAndMaxLength").isJsonNull()) { 
+      if (!jsonObj.get("stringMinAndMaxLength").isJsonPrimitive()) {
+        throw new IllegalArgumentException(
+            String.format(
+                "Expected the field `stringMinAndMaxLength` to be a primitive type in the JSON string but got `%s`",
+                jsonObj.get("stringMinAndMaxLength")));
+      }
+    }
+
+    if (jsonObj.get("arrayMinItems") != null
+        && !jsonObj.get("arrayMinItems").isJsonNull()) { 
+      if (!jsonObj.get("arrayMinItems").isJsonArray()) {
+        throw new IllegalArgumentException(
+            String.format(
+                "Expected the field `arrayMinItems` to be an array in the JSON string but got `%s`",
+                jsonObj.get("arrayMinItems")));
+      }
+    }
+
+    if (jsonObj.get("arrayMaxItems") != null
+        && !jsonObj.get("arrayMaxItems").isJsonNull()) { 
+      if (!jsonObj.get("arrayMaxItems").isJsonArray()) {
+        throw new IllegalArgumentException(
+            String.format(
+                "Expected the field `arrayMaxItems` to be an array in the JSON string but got `%s`",
+                jsonObj.get("arrayMaxItems")));
+      }
+    }
+
+    if (jsonObj.get("arrayMinAndMaxItems") != null
+        && !jsonObj.get("arrayMinAndMaxItems").isJsonNull()) { 
+      if (!jsonObj.get("arrayMinAndMaxItems").isJsonArray()) {
+        throw new IllegalArgumentException(
+            String.format(
+                "Expected the field `arrayMinAndMaxItems` to be an array in the JSON string but got `%s`",
+                jsonObj.get("arrayMinAndMaxItems")));
+      }
+    }
+
+    if (jsonObj.get("intMinimum") != null
+        && !jsonObj.get("intMinimum").isJsonNull()) { 
+      if (!jsonObj.get("intMinimum").isJsonPrimitive()) {
+        throw new IllegalArgumentException(
+            String.format(
+                "Expected the field `intMinimum` to be a primitive type in the JSON string but got `%s`",
+                jsonObj.get("intMinimum")));
+      }
+    }
+
+    if (jsonObj.get("intMaximum") != null
+        && !jsonObj.get("intMaximum").isJsonNull()) { 
+      if (!jsonObj.get("intMaximum").isJsonPrimitive()) {
+        throw new IllegalArgumentException(
+            String.format(
+                "Expected the field `intMaximum` to be a primitive type in the JSON string but got `%s`",
+                jsonObj.get("intMaximum")));
+      }
+    }
+
+    if (jsonObj.get("intMinimumAndMaximum") != null
+        && !jsonObj.get("intMinimumAndMaximum").isJsonNull()) { 
+      if (!jsonObj.get("intMinimumAndMaximum").isJsonPrimitive()) {
+        throw new IllegalArgumentException(
+            String.format(
+                "Expected the field `intMinimumAndMaximum` to be a primitive type in the JSON string but got `%s`",
+                jsonObj.get("intMinimumAndMaximum")));
+      }
+    }
+
+    if (jsonObj.get("longMinimum") != null
+        && !jsonObj.get("longMinimum").isJsonNull()) { 
+      if (!jsonObj.get("longMinimum").isJsonPrimitive()) {
+        throw new IllegalArgumentException(
+            String.format(
+                "Expected the field `longMinimum` to be a primitive type in the JSON string but got `%s`",
+                jsonObj.get("longMinimum")));
+      }
+    }
+
+    if (jsonObj.get("longMaximum") != null
+        && !jsonObj.get("longMaximum").isJsonNull()) { 
+      if (!jsonObj.get("longMaximum").isJsonPrimitive()) {
+        throw new IllegalArgumentException(
+            String.format(
+                "Expected the field `longMaximum` to be a primitive type in the JSON string but got `%s`",
+                jsonObj.get("longMaximum")));
+      }
+    }
+
+    if (jsonObj.get("longMinimumAndMaximum") != null
+        && !jsonObj.get("longMinimumAndMaximum").isJsonNull()) { 
+      if (!jsonObj.get("longMinimumAndMaximum").isJsonPrimitive()) {
+        throw new IllegalArgumentException(
+            String.format(
+                "Expected the field `longMinimumAndMaximum` to be a primitive type in the JSON string but got `%s`",
+                jsonObj.get("longMinimumAndMaximum")));
+      }
+    }
+
+    if (jsonObj.get("bigDecimalMinimum") != null
+        && !jsonObj.get("bigDecimalMinimum").isJsonNull()) { 
+      if (!jsonObj.get("bigDecimalMinimum").isJsonPrimitive()) {
+        throw new IllegalArgumentException(
+            String.format(
+                "Expected the field `bigDecimalMinimum` to be a primitive type in the JSON string but got `%s`",
+                jsonObj.get("bigDecimalMinimum")));
+      }
+    }
+
+    if (jsonObj.get("bigDecimalMaximum") != null
+        && !jsonObj.get("bigDecimalMaximum").isJsonNull()) { 
+      if (!jsonObj.get("bigDecimalMaximum").isJsonPrimitive()) {
+        throw new IllegalArgumentException(
+            String.format(
+                "Expected the field `bigDecimalMaximum` to be a primitive type in the JSON string but got `%s`",
+                jsonObj.get("bigDecimalMaximum")));
+      }
+    }
+
+    if (jsonObj.get("bigDecimalMinimumAndMaximum") != null
+        && !jsonObj.get("bigDecimalMinimumAndMaximum").isJsonNull()) { 
+      if (!jsonObj.get("bigDecimalMinimumAndMaximum").isJsonPrimitive()) {
+        throw new IllegalArgumentException(
+            String.format(
+                "Expected the field `bigDecimalMinimumAndMaximum` to be a primitive type in the JSON string but got `%s`",
+                jsonObj.get("bigDecimalMinimumAndMaximum")));
+      }
+    }
   }
 }

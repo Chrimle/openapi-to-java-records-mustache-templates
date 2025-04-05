@@ -6,7 +6,7 @@
     <parent>
         <groupId>io.github.chrimle</groupId>
         <artifactId>openapi-to-java-records-mustache-templates-parent</artifactId>
-        <version>2.7.1</version>
+        <version>2.8.0</version>
     </parent>
 
     <!-- Project Information -->
@@ -33,35 +33,39 @@
         <inputSpec.default>${project.basedir}/src/main/resources/api.yaml</inputSpec.default>
         <templateDirectory.default>${project.build.outputDirectory}/templates</templateDirectory.default>
         <!-- Default `configuration.configOptions`-option values -->
-        <enumUnknownDefaultCase.default>false</enumUnknownDefaultCase.default>
         <output.default>target/generated-sources/openapi/src</output.default>
-        <useEnumCaseInsensitive.default>false</useEnumCaseInsensitive.default>
-        <serializableModel.default>false</serializableModel.default>
-        <generateBuilders.default>false</generateBuilders.default>
-        <useJakartaEe.default>false</useJakartaEe.default>
-        <useBeanValidation.default>false</useBeanValidation.default>
 
         <!-- Plugin Executions -->
         <!-- The Plugin Execution with Standard Configurations -->
         <execution.standard>standard</execution.standard>
+        <execution.webclient.standard>webclient.standard</execution.webclient.standard>
         <!-- The Plugin Execution with enumUnknownDefaultCase=true -->
         <execution.enumUnknownDefaultCase>enumUnknownDefaultCase</execution.enumUnknownDefaultCase>
+        <execution.webclient.enumUnknownDefaultCase>webclient.enumUnknownDefaultCase</execution.webclient.enumUnknownDefaultCase>
         <!-- The Plugin Execution with useEnumCaseInsensitive=true -->
         <execution.useEnumCaseInsensitive>useEnumCaseInsensitive</execution.useEnumCaseInsensitive>
+        <execution.webclient.useEnumCaseInsensitive>webclient.useEnumCaseInsensitive</execution.webclient.useEnumCaseInsensitive>
         <!-- The Plugin Execution with additionalModelTypeAnnotations set -->
         <execution.additionalModelTypeAnnotations>additionalModelTypeAnnotations</execution.additionalModelTypeAnnotations>
+        <execution.webclient.additionalModelTypeAnnotations>webclient.additionalModelTypeAnnotations</execution.webclient.additionalModelTypeAnnotations>
         <!-- The Plugin Execution with serializableModel=true -->
         <execution.serializableModel>serializableModel</execution.serializableModel>
+        <execution.webclient.serializableModel>webclient.serializableModel</execution.webclient.serializableModel>
         <!-- The Plugin Execution with additionalEnumTypeAnnotations set -->
         <execution.additionalEnumTypeAnnotations>additionalEnumTypeAnnotations</execution.additionalEnumTypeAnnotations>
+        <execution.webclient.additionalEnumTypeAnnotations>webclient.additionalEnumTypeAnnotations</execution.webclient.additionalEnumTypeAnnotations>
         <!-- The Plugin Execution with generateBuilders=true -->
         <execution.generateBuilders>generateBuilders</execution.generateBuilders>
+        <execution.webclient.generateBuilders>webclient.generateBuilders</execution.webclient.generateBuilders>
         <!-- The Plugin Execution with useJakartaEe=true -->
         <execution.useJakartaEe>useJakartaEe</execution.useJakartaEe>
+        <execution.webclient.useJakartaEe>webclient.useJakartaEe</execution.webclient.useJakartaEe>
         <!-- The Plugin Execution with useBeanValidation=true -->
         <execution.useBeanValidation>useBeanValidation</execution.useBeanValidation>
+        <execution.webclient.useBeanValidation>webclient.useBeanValidation</execution.webclient.useBeanValidation>
         <!-- The Plugin Execution with enumUnknownDefaultCase=true && useEnumCaseInsensitive=true -->
         <execution.enumDefaultCaseAndCaseInsensitive>enumDefaultCaseAndCaseInsensitive</execution.enumDefaultCaseAndCaseInsensitive>
+        <execution.webclient.enumDefaultCaseAndCaseInsensitive>webclient.enumDefaultCaseAndCaseInsensitive</execution.webclient.enumDefaultCaseAndCaseInsensitive>
     </properties>
 
     <dependencies>
@@ -165,12 +169,28 @@
                             <generatorName>${generatorName.default}</generatorName>
                             <configOptions>
                                 <sourceFolder>${sourceFolder.default}</sourceFolder>
-                                <enumUnknownDefaultCase>${enumUnknownDefaultCase.default}</enumUnknownDefaultCase>
-                                <useEnumCaseInsensitive>${useEnumCaseInsensitive.default}</useEnumCaseInsensitive>
-                                <serializableModel>${serializableModel.default}</serializableModel>
-                                <generateBuilders>${generateBuilders.default}</generateBuilders>
-                                <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
-                                <useBeanValidation>${useBeanValidation.default}</useBeanValidation>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>generate-${execution.webclient.standard}</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <output>${output.default}</output>
+                            <modelPackage>${modelPackage.default}.${execution.webclient.standard}</modelPackage>
+                            <generateModels>${generateModels.default}</generateModels>
+                            <generateApis>${generateApis.default}</generateApis>
+                            <generateSupportingFiles>${generateSupportingFiles.default}</generateSupportingFiles>
+                            <generateModelTests>${generateModelTests.default}</generateModelTests>
+                            <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
+                            <inputSpec>${inputSpec.default}</inputSpec>
+                            <templateDirectory>${templateDirectory.default}</templateDirectory>
+                            <generatorName>${generatorName.default}</generatorName>
+                            <library>webclient</library>
+                            <configOptions>
+                                <sourceFolder>${sourceFolder.default}</sourceFolder>
                             </configOptions>
                         </configuration>
                     </execution>
@@ -192,12 +212,30 @@
                             <generatorName>${generatorName.default}</generatorName>
                             <configOptions>
                                 <sourceFolder>${sourceFolder.default}</sourceFolder>
-                                <enumUnknownDefaultCase>${enumUnknownDefaultCase.default}</enumUnknownDefaultCase>
                                 <useEnumCaseInsensitive>true</useEnumCaseInsensitive>
-                                <serializableModel>${serializableModel.default}</serializableModel>
-                                <generateBuilders>${generateBuilders.default}</generateBuilders>
-                                <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
-                                <useBeanValidation>${useBeanValidation.default}</useBeanValidation>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>generate-${execution.webclient.useEnumCaseInsensitive}</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <output>${output.default}</output>
+                            <modelPackage>${modelPackage.default}.${execution.webclient.useEnumCaseInsensitive}</modelPackage>
+                            <generateModels>${generateModels.default}</generateModels>
+                            <generateApis>${generateApis.default}</generateApis>
+                            <generateSupportingFiles>${generateSupportingFiles.default}</generateSupportingFiles>
+                            <generateModelTests>${generateModelTests.default}</generateModelTests>
+                            <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
+                            <inputSpec>${inputSpec.default}</inputSpec>
+                            <templateDirectory>${templateDirectory.default}</templateDirectory>
+                            <generatorName>${generatorName.default}</generatorName>
+                            <library>webclient</library>
+                            <configOptions>
+                                <sourceFolder>${sourceFolder.default}</sourceFolder>
+                                <useEnumCaseInsensitive>true</useEnumCaseInsensitive>
                             </configOptions>
                         </configuration>
                     </execution>
@@ -218,18 +256,39 @@
                             <templateDirectory>${templateDirectory.default}</templateDirectory>
                             <generatorName>${generatorName.default}</generatorName>
                             <configOptions>
+                                <sourceFolder>${sourceFolder.default}</sourceFolder>
                                 <additionalModelTypeAnnotations>
                                     @io.github.chrimle.o2jrm.annotations.TestAnnotationOne
                                     @io.github.chrimle.o2jrm.annotations.TestAnnotationTwo
                                     @io.github.chrimle.o2jrm.annotations.TestAnnotationThree
                                 </additionalModelTypeAnnotations>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>generate-${execution.webclient.additionalModelTypeAnnotations}</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <output>${output.default}</output>
+                            <modelPackage>${modelPackage.default}.${execution.webclient.additionalModelTypeAnnotations}</modelPackage>
+                            <generateModels>${generateModels.default}</generateModels>
+                            <generateApis>${generateApis.default}</generateApis>
+                            <generateSupportingFiles>${generateSupportingFiles.default}</generateSupportingFiles>
+                            <generateModelTests>${generateModelTests.default}</generateModelTests>
+                            <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
+                            <inputSpec>${inputSpec.default}</inputSpec>
+                            <templateDirectory>${templateDirectory.default}</templateDirectory>
+                            <generatorName>${generatorName.default}</generatorName>
+                            <library>webclient</library>
+                            <configOptions>
                                 <sourceFolder>${sourceFolder.default}</sourceFolder>
-                                <enumUnknownDefaultCase>${enumUnknownDefaultCase.default}</enumUnknownDefaultCase>
-                                <useEnumCaseInsensitive>${useEnumCaseInsensitive.default}</useEnumCaseInsensitive>
-                                <serializableModel>${serializableModel.default}</serializableModel>
-                                <generateBuilders>${generateBuilders.default}</generateBuilders>
-                                <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
-                                <useBeanValidation>${useBeanValidation.default}</useBeanValidation>
+                                <additionalModelTypeAnnotations>
+                                    @io.github.chrimle.o2jrm.annotations.TestAnnotationOne
+                                    @io.github.chrimle.o2jrm.annotations.TestAnnotationTwo
+                                    @io.github.chrimle.o2jrm.annotations.TestAnnotationThree
+                                </additionalModelTypeAnnotations>
                             </configOptions>
                         </configuration>
                     </execution>
@@ -250,14 +309,31 @@
                             <templateDirectory>${templateDirectory.default}</templateDirectory>
                             <generatorName>${generatorName.default}</generatorName>
                             <configOptions>
-                                <additionalEnumTypeAnnotations>@io.github.chrimle.o2jrm.annotations.TestAnnotationOne;@io.github.chrimle.o2jrm.annotations.TestAnnotationTwo;@io.github.chrimle.o2jrm.annotations.TestAnnotationThree;</additionalEnumTypeAnnotations>
                                 <sourceFolder>${sourceFolder.default}</sourceFolder>
-                                <enumUnknownDefaultCase>${enumUnknownDefaultCase.default}</enumUnknownDefaultCase>
-                                <useEnumCaseInsensitive>${useEnumCaseInsensitive.default}</useEnumCaseInsensitive>
-                                <serializableModel>${serializableModel.default}</serializableModel>
-                                <generateBuilders>${generateBuilders.default}</generateBuilders>
-                                <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
-                                <useBeanValidation>${useBeanValidation.default}</useBeanValidation>
+                                <additionalEnumTypeAnnotations>@io.github.chrimle.o2jrm.annotations.TestAnnotationOne;@io.github.chrimle.o2jrm.annotations.TestAnnotationTwo;@io.github.chrimle.o2jrm.annotations.TestAnnotationThree;</additionalEnumTypeAnnotations>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>generate-${execution.webclient.additionalEnumTypeAnnotations}</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <output>${output.default}</output>
+                            <modelPackage>${modelPackage.default}.${execution.webclient.additionalEnumTypeAnnotations}</modelPackage>
+                            <generateModels>${generateModels.default}</generateModels>
+                            <generateApis>${generateApis.default}</generateApis>
+                            <generateSupportingFiles>${generateSupportingFiles.default}</generateSupportingFiles>
+                            <generateModelTests>${generateModelTests.default}</generateModelTests>
+                            <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
+                            <inputSpec>${inputSpec.default}</inputSpec>
+                            <templateDirectory>${templateDirectory.default}</templateDirectory>
+                            <generatorName>${generatorName.default}</generatorName>
+                            <library>webclient</library>
+                            <configOptions>
+                                <sourceFolder>${sourceFolder.default}</sourceFolder>
+                                <additionalEnumTypeAnnotations>@io.github.chrimle.o2jrm.annotations.TestAnnotationOne;@io.github.chrimle.o2jrm.annotations.TestAnnotationTwo;@io.github.chrimle.o2jrm.annotations.TestAnnotationThree;</additionalEnumTypeAnnotations>
                             </configOptions>
                         </configuration>
                     </execution>
@@ -279,12 +355,30 @@
                             <generatorName>${generatorName.default}</generatorName>
                             <configOptions>
                                 <sourceFolder>${sourceFolder.default}</sourceFolder>
-                                <enumUnknownDefaultCase>${enumUnknownDefaultCase.default}</enumUnknownDefaultCase>
-                                <useEnumCaseInsensitive>${useEnumCaseInsensitive.default}</useEnumCaseInsensitive>
                                 <serializableModel>true</serializableModel>
-                                <generateBuilders>${generateBuilders.default}</generateBuilders>
-                                <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
-                                <useBeanValidation>${useBeanValidation.default}</useBeanValidation>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>generate-${execution.webclient.serializableModel}</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <output>${output.default}</output>
+                            <modelPackage>${modelPackage.default}.${execution.webclient.serializableModel}</modelPackage>
+                            <generateModels>${generateModels.default}</generateModels>
+                            <generateApis>${generateApis.default}</generateApis>
+                            <generateSupportingFiles>${generateSupportingFiles.default}</generateSupportingFiles>
+                            <generateModelTests>${generateModelTests.default}</generateModelTests>
+                            <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
+                            <inputSpec>${inputSpec.default}</inputSpec>
+                            <templateDirectory>${templateDirectory.default}</templateDirectory>
+                            <generatorName>${generatorName.default}</generatorName>
+                            <library>webclient</library>
+                            <configOptions>
+                                <sourceFolder>${sourceFolder.default}</sourceFolder>
+                                <serializableModel>true</serializableModel>
                             </configOptions>
                         </configuration>
                     </execution>
@@ -306,12 +400,30 @@
                             <generatorName>${generatorName.default}</generatorName>
                             <configOptions>
                                 <sourceFolder>${sourceFolder.default}</sourceFolder>
-                                <enumUnknownDefaultCase>${enumUnknownDefaultCase.default}</enumUnknownDefaultCase>
-                                <useEnumCaseInsensitive>${useEnumCaseInsensitive.default}</useEnumCaseInsensitive>
-                                <serializableModel>${serializableModel.default}</serializableModel>
                                 <generateBuilders>true</generateBuilders>
-                                <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
-                                <useBeanValidation>${useBeanValidation.default}</useBeanValidation>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>generate-${execution.webclient.generateBuilders}</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <output>${output.default}</output>
+                            <modelPackage>${modelPackage.default}.${execution.webclient.generateBuilders}</modelPackage>
+                            <generateModels>${generateModels.default}</generateModels>
+                            <generateApis>${generateApis.default}</generateApis>
+                            <generateSupportingFiles>${generateSupportingFiles.default}</generateSupportingFiles>
+                            <generateModelTests>${generateModelTests.default}</generateModelTests>
+                            <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
+                            <inputSpec>${inputSpec.default}</inputSpec>
+                            <templateDirectory>${templateDirectory.default}</templateDirectory>
+                            <generatorName>${generatorName.default}</generatorName>
+                            <library>webclient</library>
+                            <configOptions>
+                                <sourceFolder>${sourceFolder.default}</sourceFolder>
+                                <generateBuilders>true</generateBuilders>
                             </configOptions>
                         </configuration>
                     </execution>
@@ -333,12 +445,30 @@
                             <generatorName>${generatorName.default}</generatorName>
                             <configOptions>
                                 <sourceFolder>${sourceFolder.default}</sourceFolder>
-                                <enumUnknownDefaultCase>${enumUnknownDefaultCase.default}</enumUnknownDefaultCase>
-                                <useEnumCaseInsensitive>${useEnumCaseInsensitive.default}</useEnumCaseInsensitive>
-                                <serializableModel>${serializableModel.default}</serializableModel>
-                                <generateBuilders>${generateBuilders.default}</generateBuilders>
                                 <useJakartaEe>true</useJakartaEe>
-                                <useBeanValidation>${useBeanValidation.default}</useBeanValidation>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>generate-${execution.webclient.useJakartaEe}</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <output>${output.default}</output>
+                            <modelPackage>${modelPackage.default}.${execution.webclient.useJakartaEe}</modelPackage>
+                            <generateModels>${generateModels.default}</generateModels>
+                            <generateApis>${generateApis.default}</generateApis>
+                            <generateSupportingFiles>${generateSupportingFiles.default}</generateSupportingFiles>
+                            <generateModelTests>${generateModelTests.default}</generateModelTests>
+                            <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
+                            <inputSpec>${inputSpec.default}</inputSpec>
+                            <templateDirectory>${templateDirectory.default}</templateDirectory>
+                            <generatorName>${generatorName.default}</generatorName>
+                            <library>webclient</library>
+                            <configOptions>
+                                <sourceFolder>${sourceFolder.default}</sourceFolder>
+                                <useJakartaEe>true</useJakartaEe>
                             </configOptions>
                         </configuration>
                     </execution>
@@ -360,11 +490,29 @@
                             <generatorName>${generatorName.default}</generatorName>
                             <configOptions>
                                 <sourceFolder>${sourceFolder.default}</sourceFolder>
-                                <enumUnknownDefaultCase>${enumUnknownDefaultCase.default}</enumUnknownDefaultCase>
-                                <useEnumCaseInsensitive>${useEnumCaseInsensitive.default}</useEnumCaseInsensitive>
-                                <serializableModel>${serializableModel.default}</serializableModel>
-                                <generateBuilders>${generateBuilders.default}</generateBuilders>
-                                <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
+                                <useBeanValidation>true</useBeanValidation>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>generate-${execution.webclient.useBeanValidation}</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <output>${output.default}</output>
+                            <modelPackage>${modelPackage.default}.${execution.webclient.useBeanValidation}</modelPackage>
+                            <generateModels>${generateModels.default}</generateModels>
+                            <generateApis>${generateApis.default}</generateApis>
+                            <generateSupportingFiles>${generateSupportingFiles.default}</generateSupportingFiles>
+                            <generateModelTests>${generateModelTests.default}</generateModelTests>
+                            <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
+                            <inputSpec>${inputSpec.default}</inputSpec>
+                            <templateDirectory>${templateDirectory.default}</templateDirectory>
+                            <generatorName>${generatorName.default}</generatorName>
+                            <library>webclient</library>
+                            <configOptions>
+                                <sourceFolder>${sourceFolder.default}</sourceFolder>
                                 <useBeanValidation>true</useBeanValidation>
                             </configOptions>
                         </configuration>
@@ -388,11 +536,29 @@
                             <configOptions>
                                 <sourceFolder>${sourceFolder.default}</sourceFolder>
                                 <enumUnknownDefaultCase>true</enumUnknownDefaultCase>
-                                <useEnumCaseInsensitive>${useEnumCaseInsensitive.default}</useEnumCaseInsensitive>
-                                <serializableModel>${serializableModel.default}</serializableModel>
-                                <generateBuilders>${generateBuilders.default}</generateBuilders>
-                                <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
-                                <useBeanValidation>${useBeanValidation.default}</useBeanValidation>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>generate-${execution.webclient.enumUnknownDefaultCase}</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <output>${output.default}</output>
+                            <modelPackage>${modelPackage.default}.${execution.webclient.enumUnknownDefaultCase}</modelPackage>
+                            <generateModels>${generateModels.default}</generateModels>
+                            <generateApis>${generateApis.default}</generateApis>
+                            <generateSupportingFiles>${generateSupportingFiles.default}</generateSupportingFiles>
+                            <generateModelTests>${generateModelTests.default}</generateModelTests>
+                            <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
+                            <inputSpec>${inputSpec.default}</inputSpec>
+                            <templateDirectory>${templateDirectory.default}</templateDirectory>
+                            <generatorName>${generatorName.default}</generatorName>
+                            <library>webclient</library>
+                            <configOptions>
+                                <sourceFolder>${sourceFolder.default}</sourceFolder>
+                                <enumUnknownDefaultCase>true</enumUnknownDefaultCase>
                             </configOptions>
                         </configuration>
                     </execution>
@@ -416,10 +582,30 @@
                                 <sourceFolder>${sourceFolder.default}</sourceFolder>
                                 <enumUnknownDefaultCase>true</enumUnknownDefaultCase>
                                 <useEnumCaseInsensitive>true</useEnumCaseInsensitive>
-                                <serializableModel>${serializableModel.default}</serializableModel>
-                                <generateBuilders>${generateBuilders.default}</generateBuilders>
-                                <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
-                                <useBeanValidation>${useBeanValidation.default}</useBeanValidation>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>generate-${execution.webclient.enumDefaultCaseAndCaseInsensitive}</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <output>${output.default}</output>
+                            <modelPackage>${modelPackage.default}.${execution.webclient.enumDefaultCaseAndCaseInsensitive}</modelPackage>
+                            <generateModels>${generateModels.default}</generateModels>
+                            <generateApis>${generateApis.default}</generateApis>
+                            <generateSupportingFiles>${generateSupportingFiles.default}</generateSupportingFiles>
+                            <generateModelTests>${generateModelTests.default}</generateModelTests>
+                            <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
+                            <inputSpec>${inputSpec.default}</inputSpec>
+                            <templateDirectory>${templateDirectory.default}</templateDirectory>
+                            <generatorName>${generatorName.default}</generatorName>
+                            <library>webclient</library>
+                            <configOptions>
+                                <sourceFolder>${sourceFolder.default}</sourceFolder>
+                                <enumUnknownDefaultCase>true</enumUnknownDefaultCase>
+                                <useEnumCaseInsensitive>true</useEnumCaseInsensitive>
                             </configOptions>
                         </configuration>
                     </execution>

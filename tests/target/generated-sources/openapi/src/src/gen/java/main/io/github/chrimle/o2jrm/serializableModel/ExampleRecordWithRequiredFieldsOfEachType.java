@@ -12,7 +12,7 @@
  * openapi-to-java-records-mustache-templates. For further information,
  * questions, requesting features or reporting issues, please visit:
  * https://github.com/Chrimle/openapi-to-java-records-mustache-templates.
- * Generated with Version: 2.7.1
+ * Generated with Version: 2.8.0
  *
  */
 
@@ -34,6 +34,13 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import java.io.Serializable;
+
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * Example of a Record with fields of each type
@@ -60,6 +67,30 @@ public record ExampleRecordWithRequiredFieldsOfEachType(
 
   private static final long serialVersionUID = 1L;
 
+  /** A set containing the names of all instance fields defined in this class. */
+  public static final HashSet<String> openapiFields =
+      new HashSet<String>(
+          Set.of("field1",
+              "field2",
+              "field3",
+              "field4",
+              "field5",
+              "field6",
+              "field7",
+              "field8"));
+
+  /** A set containing the names of all required fields defined in this class. */
+  public static final HashSet<String> openapiRequiredFields =
+      new HashSet<String>(
+          Set.of("field1",
+              "field2",
+              "field3",
+              "field4",
+              "field5",
+              "field6",
+              "field7",
+              "field8"));
+
   public ExampleRecordWithRequiredFieldsOfEachType(
       @javax.annotation.Nonnull final Boolean field1,
       @javax.annotation.Nonnull final String field2,
@@ -77,5 +108,86 @@ public record ExampleRecordWithRequiredFieldsOfEachType(
     this.field6 = Objects.requireNonNullElse(field6, new LinkedHashSet<>());
     this.field7 = field7;
     this.field8 = field8;
+  }
+
+  /**
+   * Validates the JSON Element and throws an exception if issues are found.
+   *
+   * @param jsonElement to validate.
+   * @throws IOException if the JSON Element is not a valid ExampleRecordWithRequiredFieldsOfEachType object.
+   */
+  public static void validateJsonElement(final JsonElement jsonElement) throws IOException { 
+    if (jsonElement == null) {
+      throw new IllegalArgumentException(
+          String.format(
+              "The required field(s) %s in ExampleRecordWithRequiredFieldsOfEachType is not found in the empty JSON string",
+              ExampleRecordWithRequiredFieldsOfEachType.openapiRequiredFields.toString()));
+    }
+
+    for (final String key : jsonElement.getAsJsonObject().keySet()) {
+      if (!ExampleRecordWithRequiredFieldsOfEachType.openapiFields.contains(key)) {
+        throw new IllegalArgumentException(
+            String.format(
+                "The field `%s` in the JSON string is not defined in the `ExampleRecordWithRequiredFieldsOfEachType` properties. JSON: %s",
+                key, jsonElement));
+      }
+    }
+
+    for (final String requiredField : ExampleRecordWithRequiredFieldsOfEachType.openapiRequiredFields) {
+      if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+        throw new IllegalArgumentException(
+            String.format(
+                "The required field `%s` is not found in the JSON string: %s",
+                requiredField, jsonElement));
+      }
+    }
+
+    final JsonObject jsonObj = jsonElement.getAsJsonObject();
+
+    if (!jsonObj.get("field1").isJsonPrimitive()) {
+      throw new IllegalArgumentException(
+          String.format(
+              "Expected the field `field1` to be a primitive type in the JSON string but got `%s`",
+              jsonObj.get("field1")));
+    }
+
+    if (!jsonObj.get("field2").isJsonPrimitive()) {
+      throw new IllegalArgumentException(
+          String.format(
+              "Expected the field `field2` to be a primitive type in the JSON string but got `%s`",
+              jsonObj.get("field2")));
+    }
+
+    if (!jsonObj.get("field3").isJsonPrimitive()) {
+      throw new IllegalArgumentException(
+          String.format(
+              "Expected the field `field3` to be a primitive type in the JSON string but got `%s`",
+              jsonObj.get("field3")));
+    }
+
+    if (!jsonObj.get("field4").isJsonPrimitive()) {
+      throw new IllegalArgumentException(
+          String.format(
+              "Expected the field `field4` to be a primitive type in the JSON string but got `%s`",
+              jsonObj.get("field4")));
+    }
+
+    if (!jsonObj.get("field5").isJsonArray()) {
+      throw new IllegalArgumentException(
+          String.format(
+              "Expected the field `field5` to be an array in the JSON string but got `%s`",
+              jsonObj.get("field5")));
+    }
+
+    if (!jsonObj.get("field6").isJsonArray()) {
+      throw new IllegalArgumentException(
+          String.format(
+              "Expected the field `field6` to be an array in the JSON string but got `%s`",
+              jsonObj.get("field6")));
+    }
+
+    ExampleRecord.validateJsonElement(jsonObj.get("field7"));
+
+    ExampleEnum.validateJsonElement(jsonObj.get("field8"));
   }
 }

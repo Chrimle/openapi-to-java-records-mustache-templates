@@ -17,9 +17,10 @@
 package io.github.chrimle.o2jrm.models;
 
 import java.lang.annotation.Annotation;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.lang.reflect.InvocationTargetException;
+import java.math.BigDecimal;
+import java.util.*;
+import org.junit.platform.commons.util.ReflectionUtils;
 
 /**
  * Represents a generated field, along with additional properties which are expected to be true for
@@ -28,6 +29,7 @@ import java.util.Optional;
  * @param <T> type of the field. Used for type-safe casting.
  * @param name of the field
  * @param type of the field
+ * @param isRequired whether the field is listed as <i>required</i> in the OpenAPI spec.
  * @param isNullable whether the field should be annotated with {@link jakarta.annotation.Nullable}
  *     or {@link jakarta.annotation.Nonnull}
  * @param isBeanValidationNullable whether the field should be annotated with {@link
@@ -53,6 +55,8 @@ import java.util.Optional;
 public record GeneratedField<T>(
     String name,
     Class<T> type,
+    Optional<Class<?>> compositeType,
+    boolean isRequired,
     boolean isNullable,
     boolean isBeanValidationNullable,
     boolean isCustomClass,
@@ -70,17 +74,110 @@ public record GeneratedField<T>(
     Optional<String> decimalMax,
     List<Class<? extends Annotation>> extraFieldAnnotations) {
 
+  /**
+   * Whether this field is <i>expected</i> to be a {@link com.google.gson.JsonPrimitive}, based on
+   * the {@link #type} of this field.
+   *
+   * @return if this field is a JSON Primitive.
+   */
+  public boolean isJsonPrimitive() {
+    // Java Primitives
+    if (Integer.class == type) return true;
+    if (Long.class == type) return true;
+    if (BigDecimal.class == type) return true;
+    if (String.class == type) return true;
+    if (Boolean.class == type) return true;
+    if (UUID.class == type) return true;
+    // Java classes are JSON wrappers/objects
+    if (type.isEnum()) return true;
+    if (type.isRecord()) return true;
+
+    // Arrays are not JSON Primitives
+    if (List.class == type) return false;
+    if (Set.class == type) return false;
+
+    throw new UnsupportedOperationException(
+        "Cannot determine if the `type` should be a JSON Primitive or not!");
+  }
+
+  public String getKeyAndValueAsJson() {
+    if (type == String.class) {
+      return "'" + name + "': 'testString'";
+    }
+    if (type == Integer.class) {
+      return "'" + name + "': 42";
+    }
+    if (type == BigDecimal.class) {
+      return "'" + name + "': 42";
+    }
+    if (type == Long.class) {
+      return "'" + name + "': 42";
+    }
+    if (type == Boolean.class) {
+      return "'" + name + "': true";
+    }
+    if (type == UUID.class) {
+      return "'" + name + "': '00000000-0000-0000-0000-000000000001'";
+    }
+    if (type == List.class || type == Set.class) {
+      if (compositeType.isPresent()) {
+        if (compositeType.get().isEnum()) {
+          try {
+            return "'"
+                + name
+                + "': ['"
+                + ReflectionUtils.getRequiredMethod(type, "getValue")
+                    .invoke(type.getEnumConstants()[0])
+                + "']";
+          } catch (IllegalAccessException e) {
+            throw new RuntimeException(e);
+          } catch (InvocationTargetException e) {
+            throw new RuntimeException(e);
+          }
+        }
+        if (compositeType.get().isRecord()) {
+          return "'" + name + "': [{'field1': true}]";
+        }
+      }
+      return "'" + name + "': []";
+    }
+    if (type.isEnum()) {
+      try {
+        return "'"
+            + name
+            + "': '"
+            + ReflectionUtils.getRequiredMethod(type, "getValue").invoke(type.getEnumConstants()[0])
+            + "'";
+      } catch (IllegalAccessException e) {
+        throw new RuntimeException(e);
+      } catch (InvocationTargetException e) {
+        throw new RuntimeException(e);
+      }
+    }
+    if (type.isRecord()) {
+      return "'" + name + "': {'field1': true}";
+    }
+    throw new UnsupportedOperationException();
+  }
+
   public static <T> Builder<T> of(final String name, final Class<T> type) {
-    return new Builder<>(name, type, null);
+    return new Builder<>(name, type, null, null);
+  }
+
+  public static <T> Builder<T> of(
+      final String name, final Class<T> type, final Class<?> compositeType) {
+    return new Builder<>(name, type, null, compositeType);
   }
 
   public static <T> Builder<T> of(final String name, final Class<T> type, final T enumValue) {
-    return new Builder<>(name, type, enumValue);
+    return new Builder<>(name, type, enumValue, null);
   }
 
   public static class Builder<T> {
     private final String name;
     private final Class<T> type;
+    private final Optional<Class<?>> compositeType;
+    private boolean isRequired = false;
     private boolean isNullable = false;
     private boolean isBeanValidationNullable = true;
     private boolean isCustomClass = false;
@@ -98,10 +195,17 @@ public record GeneratedField<T>(
     private Optional<String> decimalMax = Optional.empty();
     private final List<Class<? extends Annotation>> extraFieldAnnotations = new ArrayList<>();
 
-    public Builder(final String name, final Class<T> type, final T enumValue) {
+    public Builder(
+        final String name, final Class<T> type, final T enumValue, final Class<?> compositeType) {
       this.name = name;
       this.type = type;
+      this.compositeType = Optional.ofNullable(compositeType);
       this.enumValue = enumValue;
+    }
+
+    public Builder<T> isRequired(final boolean isRequired) {
+      this.isRequired = isRequired;
+      return this;
     }
 
     public Builder<T> isNullable(final boolean isNullable) {
@@ -190,6 +294,8 @@ public record GeneratedField<T>(
       return new GeneratedField<>(
           name,
           type,
+          compositeType,
+          isRequired,
           isNullable,
           isBeanValidationNullable,
           isCustomClass,

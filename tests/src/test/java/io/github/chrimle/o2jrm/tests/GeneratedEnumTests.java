@@ -16,6 +16,8 @@
 */
 package io.github.chrimle.o2jrm.tests;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 import io.github.chrimle.o2jrm.GeneratedSource;
 import io.github.chrimle.o2jrm.annotations.TestAnnotationOne;
 import io.github.chrimle.o2jrm.annotations.TestAnnotationThree;
@@ -170,6 +172,99 @@ final class GeneratedEnumTests implements GeneratedClassTests {
   @Nested
   @DisplayName("Testing `openapi-generator` Configurations & ConfigOptions")
   class GeneratorConfigurationTests {
+
+    @Nested
+    @DisplayName("Testing `<library>`")
+    class LibraryTests {
+
+      @Nested
+      @DisplayName("Testing `<library>okhttp-gson</library>` (default)")
+      class OkHttpGsonTests {
+        @ParameterizedTest
+        @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+        @DisplayName("Generated `enum` HAS `validateJsonElement`-method")
+        void whenLibraryIsOkHttpGsonThenGeneratedEnumHasValidateJsonElementMethod(
+            final GeneratedSource generatedSource) {
+          Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+
+          CustomAssertions.assertClassHasMethod(
+              generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
+        }
+
+        @ParameterizedTest
+        @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+        @DisplayName("Generated `validateJsonElement`-method can be invoked with `String`")
+        void whenLibraryIsOkHttpGsonThenGeneratedValidateJsonElementMethodCanBeInvokedWithString(
+            final GeneratedSource generatedSource) {
+          Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+          Assumptions.assumeTrue(String.class.equals(generatedSource.generatedFields()[0].type()));
+
+          final Method validateJsonElementMethod =
+              CustomAssertions.assertClassHasMethod(
+                  generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
+          for (final GeneratedField<?> generatedField : generatedSource.generatedFields()) {
+            final JsonElement jsonObject =
+                JsonParser.parseString("{'testArg': '" + generatedField.enumValue() + "'}");
+            CustomAssertions.assertStaticMethodCanBeInvoked(
+                validateJsonElementMethod, jsonObject.getAsJsonObject().get("testArg"));
+          }
+        }
+
+        @ParameterizedTest
+        @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+        @DisplayName("Generated `validateJsonElement`-method can be invoked with `Integer`")
+        void whenLibraryIsOkHttpGsonThenGeneratedValidateJsonElementMethodCanBeInvokedWithInteger(
+            final GeneratedSource generatedSource) {
+          Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+          Assumptions.assumeTrue(Integer.class.equals(generatedSource.generatedFields()[0].type()));
+
+          final Method validateJsonElementMethod =
+              CustomAssertions.assertClassHasMethod(
+                  generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
+          for (final GeneratedField<?> generatedField : generatedSource.generatedFields()) {
+            final JsonElement jsonObject =
+                JsonParser.parseString("{'testArg': " + generatedField.enumValue() + "}");
+            CustomAssertions.assertStaticMethodCanBeInvoked(
+                validateJsonElementMethod, jsonObject.getAsJsonObject().get("testArg"));
+          }
+        }
+
+        @ParameterizedTest
+        @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+        @DisplayName("Generated `validateJsonElement`-method can be invoked with `URI`")
+        void whenLibraryIsOkHttpGsonThenGeneratedValidateJsonElementMethodCanBeInvokedWithUri(
+            final GeneratedSource generatedSource) {
+          Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+          Assumptions.assumeTrue(URI.class.equals(generatedSource.generatedFields()[0].type()));
+
+          final Method validateJsonElementMethod =
+              CustomAssertions.assertClassHasMethod(
+                  generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
+          for (final GeneratedField<?> generatedField : generatedSource.generatedFields()) {
+            final JsonElement jsonObject =
+                JsonParser.parseString("{'testArg': '" + generatedField.enumValue() + "'}");
+            CustomAssertions.assertStaticMethodCanBeInvoked(
+                validateJsonElementMethod, jsonObject.getAsJsonObject().get("testArg"));
+          }
+        }
+      }
+
+      @Nested
+      @DisplayName("Testing `<library>webclient</library>`")
+      class WebClientTests {
+
+        @ParameterizedTest
+        @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+        @DisplayName("Generated `enum` does NOT have `validateJsonElement`-method")
+        void whenLibraryIsWebClientThenGeneratedEnumDoesNotHaveValidateJsonElementMethod(
+            final GeneratedSource generatedSource) {
+          Assumptions.assumeTrue(generatedSource.isLibraryWebClient());
+
+          CustomAssertions.assertClassDoesNotHaveMethod(
+              generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
+        }
+      }
+    }
 
     @Nested
     @DisplayName("Testing `<configOptions>`")

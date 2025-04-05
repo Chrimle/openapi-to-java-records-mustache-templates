@@ -16,6 +16,8 @@
 */
 package io.github.chrimle.o2jrm.tests;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 import io.github.chrimle.o2jrm.GeneratedSource;
 import io.github.chrimle.o2jrm.annotations.*;
 import io.github.chrimle.o2jrm.models.GeneratedField;
@@ -39,7 +41,11 @@ import io.github.chrimle.o2jrm.utils.GeneratedRecordTestUtils;
 import java.io.Serializable;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
-import java.util.List;
+import java.lang.reflect.Method;
+import java.math.BigDecimal;
+import java.util.*;
+import java.util.stream.Collectors;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Assumptions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -86,6 +92,7 @@ import org.junit.jupiter.params.provider.MethodSource;
  *   <li>{@link UseJakartaEeTests useJakartaEe}
  * </ul>
  */
+@DisplayName("Testing Generated `record` classes")
 final class GeneratedRecordTests implements GeneratedClassTests {
 
   @Nested
@@ -199,10 +206,25 @@ final class GeneratedRecordTests implements GeneratedClassTests {
 
         @ParameterizedTest
         @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
-        @DisplayName("Generated `record` has same number of fields as OpenAPI properties")
-        public void whenObjectHasPropertiesThenGeneratedRecordHasSameNumberOfFields(
+        @DisplayName(
+            "[okhttp-gson] Generated `record` has same number of fields as OpenAPI properties")
+        public void whenObjectHasPropertiesThenGeneratedRecordHasSameNumberOfFields_okhttp_gson(
             final GeneratedSource generatedSource) {
           Assumptions.assumeFalse(generatedSource.serializableModel());
+          Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+
+          CustomAssertions.assertClassHasNumberOfFields(
+              generatedSource.getClassUnderTest(), generatedSource.generatedFields().length + 2);
+        }
+
+        @ParameterizedTest
+        @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+        @DisplayName(
+            "[webclient] Generated `record` has same number of fields as OpenAPI properties")
+        public void whenObjectHasPropertiesThenGeneratedRecordHasSameNumberOfFields_webclient(
+            final GeneratedSource generatedSource) {
+          Assumptions.assumeFalse(generatedSource.serializableModel());
+          Assumptions.assumeTrue(generatedSource.isLibraryWebClient());
 
           CustomAssertions.assertClassHasNumberOfFields(
               generatedSource.getClassUnderTest(), generatedSource.generatedFields().length);
@@ -350,6 +372,465 @@ final class GeneratedRecordTests implements GeneratedClassTests {
   class GeneratorConfigurationTests {
 
     @Nested
+    @DisplayName("Testing `<library>`")
+    class LibraryTests {
+
+      @Nested
+      @DisplayName("Testing `<library>okhttp-gson</library>` (default)")
+      class OkHttpGsonTests {
+
+        @ParameterizedTest
+        @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+        @DisplayName("Generated `record` HAS `openapiFields`-field")
+        void whenLibraryIsOkHttpGsonThenGeneratedRecordHasOpenApiFieldsField(
+            final GeneratedSource generatedSource) throws IllegalAccessException {
+          Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+
+          final Field openapiFields =
+              CustomAssertions.assertClassHasField(
+                  generatedSource.getClassUnderTest(), "openapiFields", HashSet.class);
+          final HashSet<String> actualValue = (HashSet<String>) openapiFields.get(null);
+          Assertions.assertEquals(generatedSource.generatedFields().length, actualValue.size());
+          Assertions.assertEquals(
+              Arrays.stream(generatedSource.generatedFields())
+                  .map(GeneratedField::name)
+                  .collect(Collectors.toSet()),
+              actualValue);
+        }
+
+        @ParameterizedTest
+        @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+        @DisplayName("Generated `record` HAS `openapiRequiredFields`-field")
+        void whenLibraryIsOkHttpGsonThenGeneratedRecordHasOpenApiRequiredFieldsField(
+            final GeneratedSource generatedSource) throws IllegalAccessException {
+          Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+
+          final Field openapiRequiredFields =
+              CustomAssertions.assertClassHasField(
+                  generatedSource.getClassUnderTest(), "openapiRequiredFields", HashSet.class);
+          final HashSet<String> actualValue = (HashSet<String>) openapiRequiredFields.get(null);
+          final Set<String> expectedValue =
+              Arrays.stream(generatedSource.generatedFields())
+                  .filter(GeneratedField::isRequired)
+                  .map(GeneratedField::name)
+                  .collect(Collectors.toSet());
+          Assertions.assertEquals(expectedValue, actualValue);
+        }
+
+        @ParameterizedTest
+        @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+        @DisplayName("Generated `record` HAS `validateJsonElement`-method")
+        void whenLibraryIsOkHttpGsonThenGeneratedRecordHasValidateJsonElementMethod(
+            final GeneratedSource generatedSource) {
+          Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+
+          CustomAssertions.assertClassHasMethod(
+              generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
+        }
+
+        @Nested
+        @DisplayName("Testing the `validateJsonElement`-method")
+        class ValidateJsonElementMethodTests {
+
+          @ParameterizedTest
+          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+          @DisplayName(
+              "When `jsonElement` is `null` and `record` has required fields Then `validateJsonElement`-method throws `IllegalArgumentException`")
+          void whenJsonElementIsNullAndRecordHasRequiredFieldsThenIllegalArgumentExceptionIsThrown(
+              final GeneratedSource generatedSource) {
+            Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+            Assumptions.assumeTrue(
+                Arrays.stream(generatedSource.generatedFields())
+                    .anyMatch(GeneratedField::isRequired));
+
+            final Method validateJsonElementMethod =
+                CustomAssertions.assertClassHasMethod(
+                    generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
+            CustomAssertions.assertStaticMethodThrowsWhenInvoked(
+                validateJsonElementMethod, IllegalArgumentException.class, (Object) null);
+          }
+
+          @ParameterizedTest
+          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+          @DisplayName(
+              "When `jsonElement` is empty JSON and `record` has required fields Then `validateJsonElement`-method throws `IllegalArgumentException`")
+          void
+              whenJsonElementIsEmptyJsonAndRecordHasRequiredFieldsThenIllegalArgumentExceptionIsThrown(
+                  final GeneratedSource generatedSource) {
+            Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+            Assumptions.assumeTrue(
+                Arrays.stream(generatedSource.generatedFields())
+                    .anyMatch(GeneratedField::isRequired));
+
+            final Method validateJsonElementMethod =
+                CustomAssertions.assertClassHasMethod(
+                    generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
+            final JsonElement jsonObject = JsonParser.parseString("{}");
+            CustomAssertions.assertStaticMethodThrowsWhenInvoked(
+                validateJsonElementMethod, IllegalArgumentException.class, jsonObject);
+          }
+
+          @ParameterizedTest
+          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+          @DisplayName(
+              "When `jsonElement` is `null` and `record` has no required fields Then `validateJsonElement`-method throws `NullPointerException`")
+          void whenJsonElementIsNullAndRecordHasNoRequiredFieldsThenNullPointerExceptionIsThrown(
+              final GeneratedSource generatedSource) {
+            Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+            Assumptions.assumeTrue(
+                Arrays.stream(generatedSource.generatedFields())
+                    .noneMatch(GeneratedField::isRequired));
+
+            final Method validateJsonElementMethod =
+                CustomAssertions.assertClassHasMethod(
+                    generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
+            CustomAssertions.assertStaticMethodThrowsWhenInvoked(
+                validateJsonElementMethod, NullPointerException.class, (Object) null);
+          }
+
+          @ParameterizedTest
+          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+          @DisplayName(
+              "When `jsonElement` is empty JSON and `record` has no required fields Then `validateJsonElement`-method throws nothing")
+          void whenJsonElementIsEmptyJsonAndRecordHasNoRequiredFieldsThenNothingIsThrown(
+              final GeneratedSource generatedSource) {
+            Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+            Assumptions.assumeTrue(
+                Arrays.stream(generatedSource.generatedFields())
+                    .noneMatch(GeneratedField::isRequired));
+
+            final Method validateJsonElementMethod =
+                CustomAssertions.assertClassHasMethod(
+                    generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
+            final JsonElement jsonObject = JsonParser.parseString("{}");
+            CustomAssertions.assertStaticMethodCanBeInvoked(validateJsonElementMethod, jsonObject);
+          }
+
+          @ParameterizedTest
+          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+          @DisplayName(
+              "When `jsonElement` has unexpected key Then `validateJsonElement`-method throws `IllegalArgumentException`")
+          void whenJsonElementHasUnexpectedKeyThenIllegalArgumentExceptionIsThrown(
+              final GeneratedSource generatedSource) {
+            Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+
+            final Method validateJsonElementMethod =
+                CustomAssertions.assertClassHasMethod(
+                    generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
+            final JsonElement jsonObject = JsonParser.parseString("{'unexpectedKey': 42}");
+            CustomAssertions.assertStaticMethodThrowsWhenInvoked(
+                validateJsonElementMethod, IllegalArgumentException.class, jsonObject);
+          }
+
+          @ParameterizedTest
+          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+          @DisplayName(
+              "When `jsonElement` does NOT have expected key Then `validateJsonElement`-method throws `IllegalArgumentException`")
+          void whenJsonElementDoesNotHaveExpectedKeyThenIllegalArgumentExceptionIsThrown(
+              final GeneratedSource generatedSource) {
+            Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+            Assumptions.assumeTrue(
+                Arrays.stream(generatedSource.generatedFields())
+                    .anyMatch(GeneratedField::isRequired));
+
+            final Method validateJsonElementMethod =
+                CustomAssertions.assertClassHasMethod(
+                    generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
+            String jsonString = "{";
+            boolean hasSkippedRequiredKey = false;
+            for (int i = 0; i < generatedSource.generatedFields().length - 1; i++) {
+              final GeneratedField<?> generatedField = generatedSource.generatedFields()[i];
+              if (generatedField.isRequired() && !hasSkippedRequiredKey) {
+                hasSkippedRequiredKey = true;
+                continue;
+              }
+              jsonString += "'" + generatedField.name() + "': 42,";
+            }
+            jsonString = jsonString.substring(0, jsonString.length() - 1);
+            jsonString += "}";
+            final JsonElement jsonObject = JsonParser.parseString(jsonString);
+            CustomAssertions.assertStaticMethodThrowsWhenInvoked(
+                validateJsonElementMethod, IllegalArgumentException.class, jsonObject);
+          }
+
+          @ParameterizedTest
+          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+          @DisplayName(
+              "When required `jsonElement` value is `null` Then `validateJsonElement`-method throws `IllegalArgumentException`")
+          void whenRequiredJsonElementValueIsNullThenIllegalArgumentExceptionIsThrown(
+              final GeneratedSource generatedSource) {
+            Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+            Assumptions.assumeTrue(
+                Arrays.stream(generatedSource.generatedFields())
+                    .anyMatch(GeneratedField::isRequired));
+
+            final Method validateJsonElementMethod =
+                CustomAssertions.assertClassHasMethod(
+                    generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
+            String jsonString = "{";
+            for (int i = 0; i < generatedSource.generatedFields().length; i++) {
+              final GeneratedField<?> generatedField = generatedSource.generatedFields()[i];
+              jsonString += "'" + generatedField.name() + "': null";
+              if (i + 1 < generatedSource.generatedFields().length) {
+                jsonString += ",";
+              }
+            }
+            jsonString += "}";
+            final JsonElement jsonObject = JsonParser.parseString(jsonString);
+            CustomAssertions.assertStaticMethodThrowsWhenInvoked(
+                validateJsonElementMethod, IllegalArgumentException.class, jsonObject);
+          }
+
+          @ParameterizedTest
+          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+          @DisplayName(
+              "When optional `jsonElement` values are `null` Then `validateJsonElement`-method throws nothing")
+          void whenOptionalJsonElementValuesAreNullThenNothingIsThrown(
+              final GeneratedSource generatedSource) {
+            Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+
+            final Method validateJsonElementMethod =
+                CustomAssertions.assertClassHasMethod(
+                    generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
+            for (int j = 0; j < generatedSource.generatedFields().length; j++) {
+              String jsonString = "{";
+              boolean hasInvalidKey = false;
+              boolean isRequired = false;
+              boolean isEnum = false;
+              boolean isCustomClass = false;
+              for (int i = 0; i < generatedSource.generatedFields().length; i++) {
+                final GeneratedField<?> generatedField = generatedSource.generatedFields()[i];
+                if (i == j) {
+                  jsonString += "'" + generatedField.name() + "': null";
+                  hasInvalidKey = true;
+                  isRequired = generatedField.isRequired();
+                  isEnum = generatedField.type().isEnum();
+                  isCustomClass = generatedField.isCustomClass();
+                } else {
+                  jsonString += generatedField.getKeyAndValueAsJson();
+                }
+                if (i + 1 < generatedSource.generatedFields().length) {
+                  jsonString += ",";
+                }
+              }
+              jsonString += "}";
+              final JsonElement jsonObject = JsonParser.parseString(jsonString);
+              if (hasInvalidKey && isRequired) {
+                final Class<? extends Exception> expectedException =
+                    isEnum
+                        ? UnsupportedOperationException.class
+                        : isCustomClass
+                            ? IllegalStateException.class
+                            : IllegalArgumentException.class;
+                CustomAssertions.assertStaticMethodThrowsWhenInvoked(
+                    validateJsonElementMethod, expectedException, jsonObject);
+              } else {
+                CustomAssertions.assertStaticMethodCanBeInvoked(
+                    validateJsonElementMethod, jsonObject);
+              }
+            }
+          }
+
+          @ParameterizedTest
+          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+          @DisplayName(
+              "When optional `jsonElement` values is not present Then `validateJsonElement`-method throws nothing")
+          void whenOptionalJsonElementValuesIsNotPresentThenNothingIsThrown(
+              final GeneratedSource generatedSource) {
+            Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+
+            final Method validateJsonElementMethod =
+                CustomAssertions.assertClassHasMethod(
+                    generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
+            for (int j = 0; j < generatedSource.generatedFields().length; j++) {
+              String jsonString = "{";
+              boolean skipNextSeparator = false;
+              for (int i = 0; i < generatedSource.generatedFields().length; i++) {
+                final GeneratedField<?> generatedField = generatedSource.generatedFields()[i];
+                if (i == j && !generatedField.isRequired()) {
+                  if (i == 0) skipNextSeparator = true;
+                } else {
+                  if (i != 0 && !skipNextSeparator) {
+                    jsonString += ",";
+                  }
+                  jsonString += generatedField.getKeyAndValueAsJson();
+                  skipNextSeparator = false;
+                }
+              }
+              jsonString += "}";
+              final JsonElement jsonObject = JsonParser.parseString(jsonString);
+              CustomAssertions.assertStaticMethodCanBeInvoked(
+                  validateJsonElementMethod, jsonObject);
+            }
+          }
+
+          @ParameterizedTest
+          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+          @DisplayName(
+              "When `jsonElement` value is valid Then `validateJsonElement`-method throws nothing")
+          void whenJsonElementIsValidThenNothingIsThrown(final GeneratedSource generatedSource) {
+            Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+
+            final Method validateJsonElementMethod =
+                CustomAssertions.assertClassHasMethod(
+                    generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
+            String jsonString = "{";
+            for (int i = 0; i < generatedSource.generatedFields().length; i++) {
+              final GeneratedField<?> generatedField = generatedSource.generatedFields()[i];
+              jsonString += generatedField.getKeyAndValueAsJson();
+              if (i + 1 < generatedSource.generatedFields().length) {
+                jsonString += ",";
+              }
+            }
+            jsonString += "}";
+            final JsonElement jsonObject = JsonParser.parseString(jsonString);
+            CustomAssertions.assertStaticMethodCanBeInvoked(validateJsonElementMethod, jsonObject);
+          }
+
+          @ParameterizedTest
+          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+          @DisplayName(
+              "When required `jsonElement` value is unexpected type Then `validateJsonElement`-method throws `IllegalArgumentException`")
+          void whenRequiredJsonElementValueIsUnexpectedTypeThenIllegalArgumentExceptionIsThrown(
+              final GeneratedSource generatedSource) {
+            Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+
+            final Method validateJsonElementMethod =
+                CustomAssertions.assertClassHasMethod(
+                    generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
+            for (int j = 0; j < generatedSource.generatedFields().length; j++) {
+              String jsonString = "{";
+              boolean hasInvalidKey = false;
+              boolean isSkippedFieldOfTypeEnum = false;
+              boolean isSkippedFieldCustomClass = false;
+              for (int i = 0; i < generatedSource.generatedFields().length; i++) {
+                final GeneratedField<?> generatedField = generatedSource.generatedFields()[i];
+                if (i == j
+                    && generatedField.type() != Integer.class
+                    && generatedField.type() != Long.class
+                    && generatedField.type() != BigDecimal.class
+                    && generatedField.type() != Boolean.class
+                    && generatedField.type() != UUID.class) {
+                  jsonString +=
+                      "'" + generatedField.name() + "': {'madeUpField': 'thisIsUnexpected'}";
+                  hasInvalidKey = true;
+                  isSkippedFieldOfTypeEnum = generatedField.type().isEnum();
+                  isSkippedFieldCustomClass = generatedField.isCustomClass();
+                } else {
+                  jsonString += generatedField.getKeyAndValueAsJson();
+                }
+                if (i + 1 < generatedSource.generatedFields().length) {
+                  jsonString += ",";
+                }
+              }
+              jsonString += "}";
+              final JsonElement jsonObject = JsonParser.parseString(jsonString);
+              if (hasInvalidKey) {
+                Class<? extends Exception> expectedException;
+                if (isSkippedFieldOfTypeEnum) {
+                  expectedException = UnsupportedOperationException.class;
+                } else if (isSkippedFieldCustomClass) {
+                  expectedException = IllegalArgumentException.class; // IOException.class;
+                } else {
+                  expectedException = IllegalArgumentException.class;
+                }
+                CustomAssertions.assertStaticMethodThrowsWhenInvoked(
+                    validateJsonElementMethod, expectedException, jsonObject);
+              } else {
+                CustomAssertions.assertStaticMethodCanBeInvoked(
+                    validateJsonElementMethod, jsonObject);
+              }
+            }
+          }
+
+          @ParameterizedTest
+          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+          @DisplayName(
+              "When required `jsonElement` value is unexpectedly not JSON primitive Then `validateJsonElement`-method throws `IllegalArgumentException`")
+          void
+              whenRequiredJsonElementValueIsUnexpectedlyNotJsonPrimitiveThenIllegalArgumentExceptionIsThrown(
+                  final GeneratedSource generatedSource) {
+            Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+
+            final Method validateJsonElementMethod =
+                CustomAssertions.assertClassHasMethod(
+                    generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
+            for (int j = 0; j < generatedSource.generatedFields().length; j++) {
+              String jsonString = "{";
+              boolean hasInvalidKey = false;
+              boolean hasReplacedFieldOwnValidateJsonElement = false;
+              for (int i = 0; i < generatedSource.generatedFields().length; i++) {
+                final GeneratedField<?> generatedField = generatedSource.generatedFields()[i];
+                if (i == j && generatedField.isJsonPrimitive()) {
+                  jsonString += "'" + generatedField.name() + "': []";
+                  hasInvalidKey = true;
+                  hasReplacedFieldOwnValidateJsonElement =
+                      generatedField.isCustomClass() || generatedField.type().isEnum();
+                } else {
+                  jsonString += generatedField.getKeyAndValueAsJson();
+                }
+                if (i + 1 < generatedSource.generatedFields().length) {
+                  jsonString += ",";
+                }
+              }
+              jsonString += "}";
+              final JsonElement jsonObject = JsonParser.parseString(jsonString);
+              if (hasInvalidKey) {
+                CustomAssertions.assertStaticMethodThrowsWhenInvoked(
+                    validateJsonElementMethod,
+                    hasReplacedFieldOwnValidateJsonElement
+                        ? IllegalStateException.class
+                        : IllegalArgumentException.class,
+                    jsonObject);
+              } else {
+                CustomAssertions.assertStaticMethodCanBeInvoked(
+                    validateJsonElementMethod, jsonObject);
+              }
+            }
+          }
+        }
+      }
+
+      @Nested
+      @DisplayName("Testing `<library>webclient</library>`")
+      class WebClientTests {
+
+        @ParameterizedTest
+        @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+        @DisplayName("Generated `record` does NOT have `openapiFields`-field")
+        void whenLibraryIsWebClientThenGeneratedRecordDoesNotHaveOpenApiFieldsField(
+            final GeneratedSource generatedSource) {
+          Assumptions.assumeTrue(generatedSource.isLibraryWebClient());
+
+          CustomAssertions.assertClassDoesNotHaveFieldWithName(
+              generatedSource.getClassUnderTest(), "openapiFields");
+        }
+
+        @ParameterizedTest
+        @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+        @DisplayName("Generated `record` does NOT have `openapiRequiredFields`-field")
+        void whenLibraryIsWebClientThenGeneratedRecordDoesNotHaveOpenApiRequiredFieldsField(
+            final GeneratedSource generatedSource) {
+          Assumptions.assumeTrue(generatedSource.isLibraryWebClient());
+
+          CustomAssertions.assertClassDoesNotHaveFieldWithName(
+              generatedSource.getClassUnderTest(), "openapiRequiredFields");
+        }
+
+        @ParameterizedTest
+        @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+        @DisplayName("Generated `record` does NOT have `validateJsonElement`-method")
+        void whenLibraryIsWebClientThenGeneratedRecordDoesNotHaveValidateJsonElementMethod(
+            final GeneratedSource generatedSource) {
+          Assumptions.assumeTrue(generatedSource.isLibraryWebClient());
+
+          CustomAssertions.assertClassDoesNotHaveMethod(
+              generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
+        }
+      }
+    }
+
+    @Nested
     @DisplayName("Testing `<configOptions>`")
     class ConfigOptionsTests {
 
@@ -453,11 +934,26 @@ final class GeneratedRecordTests implements GeneratedClassTests {
           @ParameterizedTest
           @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
           @DisplayName(
-              "Generated `record` has one additional number of fields than OpenAPI properties")
+              "[okhttp-gson] Generated `record` has one additional number of fields than OpenAPI properties")
           public void
-              whenConfigOptionSerializableModelIsTrueThenGeneratedRecordHasOneAdditionalField(
+              whenConfigOptionSerializableModelIsTrueThenGeneratedRecordHasOneAdditionalField_okhttp_gson(
                   final GeneratedSource generatedSource) {
             Assumptions.assumeTrue(generatedSource.serializableModel());
+            Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+
+            CustomAssertions.assertClassHasNumberOfFields(
+                generatedSource.getClassUnderTest(), generatedSource.generatedFields().length + 3);
+          }
+
+          @ParameterizedTest
+          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+          @DisplayName(
+              "[webclient] Generated `record` has one additional number of fields than OpenAPI properties")
+          public void
+              whenConfigOptionSerializableModelIsTrueThenGeneratedRecordHasOneAdditionalField_webclient(
+                  final GeneratedSource generatedSource) {
+            Assumptions.assumeTrue(generatedSource.serializableModel());
+            Assumptions.assumeTrue(generatedSource.isLibraryWebClient());
 
             CustomAssertions.assertClassHasNumberOfFields(
                 generatedSource.getClassUnderTest(), generatedSource.generatedFields().length + 1);
