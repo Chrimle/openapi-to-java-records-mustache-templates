@@ -12,7 +12,7 @@
  * openapi-to-java-records-mustache-templates. For further information,
  * questions, requesting features or reporting issues, please visit:
  * https://github.com/Chrimle/openapi-to-java-records-mustache-templates.
- * Generated with Version: 2.8.0
+ * Generated with Version: 2.8.1
  *
  */
 
@@ -28,6 +28,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import java.net.URI;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * Example of a Record with inner enum classes
@@ -94,6 +96,7 @@ public record RecordWithInnerEnums(
      * @return a {@link ExampleInnerEnum } with the matching value, or
      *     {@link #UNKNOWN_DEFAULT_OPEN_API } if no match is found.
      */
+    @JsonCreator
     public static ExampleInnerEnum fromValue(final String value) {
       for (final ExampleInnerEnum constant : ExampleInnerEnum.values()) {
         if (constant.getValue().equals(value)) {
@@ -139,6 +142,7 @@ public record RecordWithInnerEnums(
      * @return a {@link ExampleInnerTwoEnum } with the matching value, or
      *     {@link #NUMBER_unknown_default_open_api } if no match is found.
      */
+    @JsonCreator
     public static ExampleInnerTwoEnum fromValue(final Integer value) {
       for (final ExampleInnerTwoEnum constant : ExampleInnerTwoEnum.values()) {
         if (constant.getValue().equals(value)) {
@@ -183,6 +187,7 @@ public record RecordWithInnerEnums(
      * @return a {@link ExampleInnerThreeEnum } with the matching value, or
      *     {@link #UNKNOWN_DEFAULT_OPEN_API } if no match is found.
      */
+    @JsonCreator
     public static ExampleInnerThreeEnum fromValue(final URI value) {
       for (final ExampleInnerThreeEnum constant : ExampleInnerThreeEnum.values()) {
         if (constant.getValue().equals(value)) {

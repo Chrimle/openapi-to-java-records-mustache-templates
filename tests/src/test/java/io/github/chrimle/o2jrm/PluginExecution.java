@@ -108,6 +108,13 @@ public enum PluginExecution {
     return Library.isLibraryWebClient(library);
   }
 
+  public boolean isSerializationLibraryJackson() {
+    return switch (library) {
+      case OKHTTP_GSON -> false;
+      case WEBCLIENT -> true;
+    };
+  }
+
   public boolean hasConfigOption(final ConfigOption configOption) {
     return configOptions.contains(configOption);
   }

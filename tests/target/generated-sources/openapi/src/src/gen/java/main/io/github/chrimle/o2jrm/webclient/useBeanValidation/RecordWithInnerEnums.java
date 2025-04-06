@@ -12,7 +12,7 @@
  * openapi-to-java-records-mustache-templates. For further information,
  * questions, requesting features or reporting issues, please visit:
  * https://github.com/Chrimle/openapi-to-java-records-mustache-templates.
- * Generated with Version: 2.8.0
+ * Generated with Version: 2.8.1
  *
  */
 
@@ -30,6 +30,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import jakarta.validation.constraints.*;
 import jakarta.validation.Valid;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * Example of a Record with inner enum classes
@@ -95,6 +97,7 @@ public record RecordWithInnerEnums(
      * @return a {@link ExampleInnerEnum } with the matching value.
      * @throws IllegalArgumentException if no enum has a value matching the given value.
      */
+    @JsonCreator
     public static ExampleInnerEnum fromValue(final String value) {
       for (final ExampleInnerEnum constant : ExampleInnerEnum.values()) {
         if (constant.getValue().equals(value)) {
@@ -139,6 +142,7 @@ public record RecordWithInnerEnums(
      * @return a {@link ExampleInnerTwoEnum } with the matching value.
      * @throws IllegalArgumentException if no enum has a value matching the given value.
      */
+    @JsonCreator
     public static ExampleInnerTwoEnum fromValue(final Integer value) {
       for (final ExampleInnerTwoEnum constant : ExampleInnerTwoEnum.values()) {
         if (constant.getValue().equals(value)) {
@@ -182,6 +186,7 @@ public record RecordWithInnerEnums(
      * @return a {@link ExampleInnerThreeEnum } with the matching value.
      * @throws IllegalArgumentException if no enum has a value matching the given value.
      */
+    @JsonCreator
     public static ExampleInnerThreeEnum fromValue(final URI value) {
       for (final ExampleInnerThreeEnum constant : ExampleInnerThreeEnum.values()) {
         if (constant.getValue().equals(value)) {

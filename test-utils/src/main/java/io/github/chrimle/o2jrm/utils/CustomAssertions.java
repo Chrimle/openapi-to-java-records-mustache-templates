@@ -203,6 +203,36 @@ public final class CustomAssertions extends CustomUtilityAssertions {
   }
 
   /**
+   * Asserts that the {@code method} is annotated with the {@code expectedAnnotation}.
+   *
+   * @param method to assert.
+   * @param expectedAnnotation which the {@code method} is expected to be annotated with.
+   * @return the expected {@link Annotation} instance of the {@code method}.
+   * @since 2.8.1
+   */
+  public static Annotation assertMethodIsAnnotatedWith(
+      final Method method, final Class<? extends Annotation> expectedAnnotation) {
+    return assertNotNull(
+        () -> method.getAnnotation(expectedAnnotation),
+        () -> method.getName() + " is NOT annotated with " + expectedAnnotation.getCanonicalName());
+  }
+
+  /**
+   * Asserts that the {@code method} is <b>not</b> annotated with the {@code unexpectedAnnotation}.
+   *
+   * @param method to assert.
+   * @param unexpectedAnnotation which the {@code method} is expected <b>not</b> to be annotated
+   *     with.
+   * @since 2.8.1
+   */
+  public static void assertMethodIsNotAnnotatedWith(
+      final Method method, final Class<? extends Annotation> unexpectedAnnotation) {
+    assertNull(
+        () -> method.getAnnotation(unexpectedAnnotation),
+        () -> method.getName() + " IS annotated with " + unexpectedAnnotation.getCanonicalName());
+  }
+
+  /**
    * Asserts that the {@code method} throws {@code expectedException} when invoked with the {@code
    * methodArguments}.
    *

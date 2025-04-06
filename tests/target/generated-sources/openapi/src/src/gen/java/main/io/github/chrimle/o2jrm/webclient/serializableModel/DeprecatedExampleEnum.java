@@ -12,7 +12,7 @@
  * openapi-to-java-records-mustache-templates. For further information,
  * questions, requesting features or reporting issues, please visit:
  * https://github.com/Chrimle/openapi-to-java-records-mustache-templates.
- * Generated with Version: 2.8.0
+ * Generated with Version: 2.8.1
  *
  */
 
@@ -23,6 +23,8 @@ import java.util.Arrays;
 import java.io.Serializable;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * Example of a deprecated Enum
@@ -61,6 +63,7 @@ public enum DeprecatedExampleEnum {
    * @return a {@link DeprecatedExampleEnum } with the matching value.
    * @throws IllegalArgumentException if no enum has a value matching the given value.
    */
+  @JsonCreator
   public static DeprecatedExampleEnum fromValue(final String value) {
     for (final DeprecatedExampleEnum constant : DeprecatedExampleEnum.values()) {
       if (constant.getValue().equals(value)) {

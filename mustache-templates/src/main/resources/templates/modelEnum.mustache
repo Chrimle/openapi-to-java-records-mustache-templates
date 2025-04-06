@@ -27,6 +27,9 @@
     - Generates an `enum` class.
 
 }}{{!
+}}{{#jackson}}import com.fasterxml.jackson.annotation.JsonCreator;
+
+{{/jackson}}{{!
 }}{{#gson}}import java.io.IOException;
 import com.google.gson.JsonElement;
 
@@ -75,6 +78,8 @@ import com.google.gson.JsonElement;
    *     #{{#allowableValues}}{{#enumVars}}{{#-last}}{{{name}}} }{{/-last}}{{/enumVars}}{{/allowableValues}} if no match is found.{{/enumUnknownDefaultCase}}{{^enumUnknownDefaultCase}}.
    * @throws IllegalArgumentException if no enum has a value matching the given value.{{/enumUnknownDefaultCase}}
    */
+{{#jackson}}  @JsonCreator
+{{/jackson}}
   public static {{classname}} fromValue(final {{{dataType}}} value) {
     for (final {{classname}} constant : {{classname}}.values()) {
       if (constant.getValue().equals{{#useEnumCaseInsensitive}}{{#isString}}IgnoreCase{{/isString}}{{/useEnumCaseInsensitive}}(value)) {
