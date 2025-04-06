@@ -19,6 +19,7 @@
 package io.github.chrimle.o2jrm.enumDefaultCaseAndCaseInsensitive;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
