@@ -23,6 +23,8 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+
 import java.net.URI;
 
 /**
@@ -61,6 +63,7 @@ public enum ExampleUriEnum {
    * @return a {@link ExampleUriEnum } with the matching value.
    * @throws IllegalArgumentException if no enum has a value matching the given value.
    */
+  @JsonCreator
   public static ExampleUriEnum fromValue(final URI value) {
     for (final ExampleUriEnum constant : ExampleUriEnum.values()) {
       if (constant.getValue().equals(value)) {

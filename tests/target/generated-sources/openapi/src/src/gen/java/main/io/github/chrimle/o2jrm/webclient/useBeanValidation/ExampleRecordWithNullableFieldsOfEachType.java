@@ -42,6 +42,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import jakarta.validation.constraints.*;
 import jakarta.validation.Valid;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+
 /**
  * Example of a Record with fields of each type
  *

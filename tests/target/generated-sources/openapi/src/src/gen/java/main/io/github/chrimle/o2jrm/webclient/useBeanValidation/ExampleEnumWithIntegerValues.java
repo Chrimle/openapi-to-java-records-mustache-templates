@@ -25,6 +25,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import jakarta.validation.constraints.*;
 import jakarta.validation.Valid;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+
 /**
  * Example of an Enum with integer values
  */
@@ -61,6 +63,7 @@ public enum ExampleEnumWithIntegerValues {
    * @return a {@link ExampleEnumWithIntegerValues } with the matching value.
    * @throws IllegalArgumentException if no enum has a value matching the given value.
    */
+  @JsonCreator
   public static ExampleEnumWithIntegerValues fromValue(final Integer value) {
     for (final ExampleEnumWithIntegerValues constant : ExampleEnumWithIntegerValues.values()) {
       if (constant.getValue().equals(value)) {

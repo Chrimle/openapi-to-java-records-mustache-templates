@@ -25,6 +25,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import jakarta.validation.constraints.*;
 import jakarta.validation.Valid;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+
 /**
  * Example of an Enum
  */
@@ -68,6 +70,7 @@ public enum ExampleNullableEnum {
    * @return a {@link ExampleNullableEnum } with the matching value.
    * @throws IllegalArgumentException if no enum has a value matching the given value.
    */
+  @JsonCreator
   public static ExampleNullableEnum fromValue(final String value) {
     for (final ExampleNullableEnum constant : ExampleNullableEnum.values()) {
       if (constant.getValue().equals(value)) {

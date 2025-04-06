@@ -23,6 +23,8 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+
 /**
  * Example of an Enum
  */
@@ -67,6 +69,7 @@ public enum ExampleEnum {
    * @return a {@link ExampleEnum } with the matching value, or {@link
    *     #UNKNOWN_DEFAULT_OPEN_API } if no match is found.
    */
+  @JsonCreator
   public static ExampleEnum fromValue(final String value) {
     for (final ExampleEnum constant : ExampleEnum.values()) {
       if (constant.getValue().equalsIgnoreCase(value)) {

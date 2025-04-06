@@ -23,6 +23,8 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+
 /**
  * Example of an Enum with integer values
  */
@@ -60,6 +62,7 @@ public enum ExampleEnumWithIntegerValues {
    * @return a {@link ExampleEnumWithIntegerValues } with the matching value, or {@link
    *     #NUMBER_unknown_default_open_api } if no match is found.
    */
+  @JsonCreator
   public static ExampleEnumWithIntegerValues fromValue(final Integer value) {
     for (final ExampleEnumWithIntegerValues constant : ExampleEnumWithIntegerValues.values()) {
       if (constant.getValue().equals(value)) {
