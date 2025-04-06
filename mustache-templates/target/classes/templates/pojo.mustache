@@ -15,7 +15,7 @@
 
 }}{{!
   Source: openapi-to-java-records-mustache-templates
-  Version: 2.8.1
+  Version: 2.8.2
   Type: Override
   Dependencies:
     - `additionalModelTypeAnnotations.mustache` (Official)
@@ -30,7 +30,9 @@
 
 }}{{!
     Imports needed for 'okhttp-gson'
-}}{{#jackson}}import com.fasterxml.jackson.annotation.JsonCreator;
+}}{{#jackson}}import com.fasterxml.jackson.annotation.JsonCreator;{{!
+}}{{#vars}}{{#isEnum}}{{#-first}}
+import com.fasterxml.jackson.annotation.JsonValue;{{/-first}}{{/isEnum}}{{/vars}}
 
 {{/jackson}}{{!
 }}{{#gson}}{{!
@@ -106,6 +108,8 @@ import java.util.Set;
      *
      * @return the value of this enum.
      */
+{{#jackson}}    @JsonValue
+{{/jackson}}
     public {{{dataType}}} getValue() {
       return value;
     }

@@ -12,7 +12,7 @@
  * openapi-to-java-records-mustache-templates. For further information,
  * questions, requesting features or reporting issues, please visit:
  * https://github.com/Chrimle/openapi-to-java-records-mustache-templates.
- * Generated with Version: 2.8.1
+ * Generated with Version: 2.8.2
  *
  */
 
@@ -26,6 +26,7 @@ import jakarta.validation.constraints.*;
 import jakarta.validation.Valid;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
 
 import java.net.URI;
 
@@ -47,6 +48,7 @@ public enum ExampleUriEnum {
    *
    * @return the value of this enum.
    */
+  @JsonValue
   public URI getValue() {
     return value;
   }
