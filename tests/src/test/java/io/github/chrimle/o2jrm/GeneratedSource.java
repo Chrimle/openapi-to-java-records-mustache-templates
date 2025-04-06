@@ -118,6 +118,10 @@ public class GeneratedSource {
     return pluginExecution.isLibraryWebClient();
   }
 
+  public boolean isSerializationLibraryJackson() {
+    return pluginExecution.isSerializationLibraryJackson();
+  }
+
   @Override
   public String toString() {
     return "GeneratedSource{"

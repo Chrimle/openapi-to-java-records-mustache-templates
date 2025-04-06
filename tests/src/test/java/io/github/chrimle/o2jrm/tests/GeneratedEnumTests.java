@@ -16,6 +16,7 @@
 */
 package io.github.chrimle.o2jrm.tests;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import io.github.chrimle.o2jrm.GeneratedSource;
@@ -329,6 +330,38 @@ final class GeneratedEnumTests implements GeneratedClassTests {
             final GeneratedSource generatedSource) {
           CustomAssertions.assertClassHasMethod(
               generatedSource.getClassUnderTest(), "fromValue", generatedSource.fieldClasses()[0]);
+        }
+
+        @ParameterizedTest
+        @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+        @DisplayName(
+            "When `serializationLibrary` is `jackson` Then generated `fromValue(T)` method is annotated with `@JsonCreator`")
+        void whenSerializationLibraryIsJacksonThenFromValueMethodIsAnnotatedWithJsonCreator(
+            final GeneratedSource generatedSource) {
+          Assumptions.assumeTrue(generatedSource.isSerializationLibraryJackson());
+
+          CustomAssertions.assertMethodIsAnnotatedWith(
+              CustomAssertions.assertClassHasMethod(
+                  generatedSource.getClassUnderTest(),
+                  "fromValue",
+                  generatedSource.fieldClasses()[0]),
+              JsonCreator.class);
+        }
+
+        @ParameterizedTest
+        @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+        @DisplayName(
+            "When `serializationLibrary` is NOT `jackson` Then generated `fromValue(T)` method is NOT annotated with `@JsonCreator`")
+        void whenSerializationLibraryIsNotJacksonThenFromValueMethodIsNotAnnotatedWithJsonCreator(
+            final GeneratedSource generatedSource) {
+          Assumptions.assumeFalse(generatedSource.isSerializationLibraryJackson());
+
+          CustomAssertions.assertMethodIsNotAnnotatedWith(
+              CustomAssertions.assertClassHasMethod(
+                  generatedSource.getClassUnderTest(),
+                  "fromValue",
+                  generatedSource.fieldClasses()[0]),
+              JsonCreator.class);
         }
 
         @ParameterizedTest
