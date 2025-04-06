@@ -30,6 +30,9 @@
 
 }}{{!
     Imports needed for 'okhttp-gson'
+}}{{#jackson}}import com.fasterxml.jackson.annotation.JsonCreator;
+
+{{/jackson}}{{!
 }}{{#gson}}{{!
 }}import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -119,6 +122,8 @@ import java.util.Set;
      *     {@link #{{#allowableValues}}{{#enumVars}}{{#-last}}{{{name}}} }{{/-last}}{{/enumVars}}{{/allowableValues}} if no match is found.{{/enumUnknownDefaultCase}}{{^enumUnknownDefaultCase}}.
      * @throws IllegalArgumentException if no enum has a value matching the given value.{{/enumUnknownDefaultCase}}
      */
+{{#jackson}}    @JsonCreator
+{{/jackson}}
     public static {{datatypeWithEnum}} fromValue(final {{{dataType}}} value) {
       for (final {{datatypeWithEnum}} constant : {{datatypeWithEnum}}.values()) {
         if (constant.getValue().equals{{#useEnumCaseInsensitive}}{{#isString}}{{^isUri}}IgnoreCase{{/isUri}}{{/isString}}{{/useEnumCaseInsensitive}}(value)) {
