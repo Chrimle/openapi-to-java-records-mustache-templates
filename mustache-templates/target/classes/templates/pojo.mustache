@@ -30,8 +30,9 @@
 
 }}{{!
     Imports needed for 'okhttp-gson'
-}}{{#jackson}}import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
+}}{{#jackson}}import com.fasterxml.jackson.annotation.JsonCreator;{{!
+}}{{#vars}}{{#isEnum}}{{#-first}}
+import com.fasterxml.jackson.annotation.JsonValue;{{/-first}}{{/isEnum}}{{/vars}}
 
 {{/jackson}}{{!
 }}{{#gson}}{{!
