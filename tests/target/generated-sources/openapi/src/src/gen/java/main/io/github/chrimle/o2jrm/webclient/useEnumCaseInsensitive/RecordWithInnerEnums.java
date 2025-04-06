@@ -30,6 +30,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
  * Example of a Record with inner enum classes
@@ -80,6 +81,7 @@ public record RecordWithInnerEnums(
      *
      * @return the value of this enum.
      */
+    @JsonValue
     public String getValue() {
       return value;
     }
@@ -125,6 +127,7 @@ public record RecordWithInnerEnums(
      *
      * @return the value of this enum.
      */
+    @JsonValue
     public Integer getValue() {
       return value;
     }
@@ -169,6 +172,7 @@ public record RecordWithInnerEnums(
      *
      * @return the value of this enum.
      */
+    @JsonValue
     public URI getValue() {
       return value;
     }

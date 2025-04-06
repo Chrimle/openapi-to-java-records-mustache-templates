@@ -25,6 +25,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
  * Example of an Enum with integer values
@@ -47,6 +48,7 @@ public enum ExampleEnumWithIntegerValues {
    *
    * @return the value of this enum.
    */
+  @JsonValue
   public Integer getValue() {
     return value;
   }

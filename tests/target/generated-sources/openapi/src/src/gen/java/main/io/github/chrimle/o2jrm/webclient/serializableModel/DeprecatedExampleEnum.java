@@ -25,6 +25,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
  * Example of a deprecated Enum
@@ -48,6 +49,7 @@ public enum DeprecatedExampleEnum {
    *
    * @return the value of this enum.
    */
+  @JsonValue
   public String getValue() {
     return value;
   }
