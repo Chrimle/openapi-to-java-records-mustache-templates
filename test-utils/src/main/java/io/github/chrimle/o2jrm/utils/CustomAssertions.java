@@ -334,6 +334,34 @@ public final class CustomAssertions extends CustomUtilityAssertions {
   }
 
   /**
+   * Asserts that the <b>instance</b> {@code method} throws the {@code expectedException} when
+   * invoked with the {@code methodArguments}.
+   *
+   * @param method to assert.
+   * @param expectedException to be thrown.
+   * @param object to invoke the {@code method} on.
+   * @param methodArguments to invoke the {@code method} with.
+   * @since 2.9.0
+   */
+  public static void assertInstanceMethodThrowsWhenInvoked(
+      final Method method,
+      final Class<? extends Throwable> expectedException,
+      final Object object,
+      final Object... methodArguments) {
+    Assertions.assertInstanceOf(
+        expectedException,
+        Assertions.assertThrows(
+                InvocationTargetException.class, () -> method.invoke(object, methodArguments))
+            .getCause(),
+        () ->
+            method
+                + " did NOT throw "
+                + expectedException.getCanonicalName()
+                + " when invoked with arguments "
+                + Arrays.toString(methodArguments));
+  }
+
+  /**
    * Asserts that the <b>instance</b> {@code method} returns a non-{@code null} value when invoked
    * with the {@code methodArguments}.
    *
