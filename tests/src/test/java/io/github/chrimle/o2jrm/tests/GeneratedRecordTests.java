@@ -18,6 +18,7 @@ package io.github.chrimle.o2jrm.tests;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
+import com.google.gson.TypeAdapterFactory;
 import io.github.chrimle.o2jrm.GeneratedSource;
 import io.github.chrimle.o2jrm.annotations.*;
 import io.github.chrimle.o2jrm.models.GeneratedField;
@@ -813,6 +814,20 @@ final class GeneratedRecordTests implements GeneratedClassTests {
 
             CustomAssertions.assertClassHasInnerClass(
                 generatedSource.getClassUnderTest(), "CustomTypeAdapterFactory");
+          }
+
+          @ParameterizedTest
+          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+          @DisplayName(
+              "`CustomTypeAdapterFactory`-class `implements` the `TypeAdapterFactory`-interface")
+          void customTypeAdapterFactoryClassImplementsTheTypeAdapterFactoryInterface(
+              final GeneratedSource generatedSource) {
+            Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+
+            CustomAssertions.assertClassImplementsInterface(
+                CustomAssertions.assertClassHasInnerClass(
+                    generatedSource.getClassUnderTest(), "CustomTypeAdapterFactory"),
+                TypeAdapterFactory.class);
           }
         }
       }

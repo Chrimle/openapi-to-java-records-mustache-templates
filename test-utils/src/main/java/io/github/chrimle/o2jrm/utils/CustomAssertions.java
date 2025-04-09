@@ -126,14 +126,17 @@ public final class CustomAssertions extends CustomUtilityAssertions {
    *
    * @param aClass to be asserted.
    * @param innerClassName of the inner class which the {@code aClass} is expected to have.
-   * @since 2.5.3
+   * @return the inner {@link Class} named {@code innerClassName}.
+   * @since 2.9.0
    */
-  public static void assertClassHasInnerClass(final Class<?> aClass, final String innerClassName) {
-    Assertions.assertTrue(
+  public static Class<?> assertClassHasInnerClass(
+      final Class<?> aClass, final String innerClassName) {
+    return assertNotNull(
         () ->
             Arrays.stream(aClass.getClasses())
-                .map(Class::getSimpleName)
-                .anyMatch(innerClassName::equals),
+                .filter(innerClass -> innerClass.getSimpleName().equals(innerClassName))
+                .findFirst()
+                .orElse(null),
         () -> aClass.getCanonicalName() + " does NOT have inner class " + innerClassName);
   }
 
