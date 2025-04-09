@@ -45,10 +45,7 @@ import java.lang.reflect.Method;
 import java.math.BigDecimal;
 import java.util.*;
 import java.util.stream.Collectors;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Assumptions;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
@@ -787,6 +784,35 @@ final class GeneratedRecordTests implements GeneratedClassTests {
                     validateJsonElementMethod, jsonObject);
               }
             }
+          }
+        }
+
+        @Nested
+        @DisplayName("Testing Generating `CustomTypeAdapterFactory`-class")
+        class CustomTypeAdapterFactoryTests {
+
+          @ParameterizedTest
+          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+          @DisplayName(
+              "When `library` is NOT `okhttp-gson` Then inner-class `CustomTypeAdapterFactory` is NOT generated")
+          void whenLibraryIsNotOkHttpGsonThenInnerClassCustomTypeAdapterFactoryIsNotGenerated(
+              final GeneratedSource generatedSource) {
+            Assumptions.assumeFalse(generatedSource.isLibraryOkHttpGson());
+
+            CustomAssertions.assertClassDoesNotHaveInnerClass(
+                generatedSource.getClassUnderTest(), "CustomTypeAdapterFactory");
+          }
+
+          @ParameterizedTest
+          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+          @DisplayName(
+              "When `library` IS `okhttp-gson` Then inner-class `CustomTypeAdapterFactory` IS generated")
+          void whenLibraryIsOkHttpGsonThenInnerClassCustomTypeAdapterFactoryIsGenerated(
+              final GeneratedSource generatedSource) {
+            Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+
+            CustomAssertions.assertClassHasInnerClass(
+                generatedSource.getClassUnderTest(), "CustomTypeAdapterFactory");
           }
         }
       }
