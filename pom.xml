@@ -85,7 +85,7 @@
         <!-- /Publish to Maven Central Repository -->
 
         <!-- Jacoco -->
-        <jacoco-maven-plugin.version>0.8.12</jacoco-maven-plugin.version>
+        <jacoco-maven-plugin.version>0.8.13</jacoco-maven-plugin.version>
         <jacoco-maven-plugin.minimumPackageLineCoveredRatio>1</jacoco-maven-plugin.minimumPackageLineCoveredRatio>
         <jacoco-maven-plugin.expectedBundleClassMissedCount>0</jacoco-maven-plugin.expectedBundleClassMissedCount>
         <!-- /Jacoco -->
