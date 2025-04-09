@@ -379,6 +379,19 @@ public final class CustomAssertions extends CustomUtilityAssertions {
   }
 
   /**
+   * Asserts that the <b>instance</b> {@code method} returns {@code null} when invoked on the {@code
+   * object} with the {@code methodArguments}.
+   *
+   * @param method to be asserted.
+   * @param object to invoke the {@code method} on.
+   * @param methodArguments to invoke the {@code method} with.
+   */
+  public static void assertInstanceMethodReturnsNull(
+      final Method method, final Object object, final Object... methodArguments) {
+    assertInstanceMethodReturnsValue(method, null, object, methodArguments);
+  }
+
+  /**
    * Asserts that the <b>instance</b> {@code method} returns the {@code expectedValue} when invoked
    * with the {@code methodArguments}.
    *

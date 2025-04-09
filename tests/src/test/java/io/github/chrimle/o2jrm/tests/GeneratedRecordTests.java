@@ -895,6 +895,27 @@ final class GeneratedRecordTests implements GeneratedClassTests {
               CustomAssertions.assertInstanceMethodThrowsWhenInvoked(
                   method, NullPointerException.class, object, new Gson(), (TypeToken) null);
             }
+
+            @ParameterizedTest
+            @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+            @DisplayName(
+                "`create(Gson, TypeToken<T>)` returns `null` when `typeToken` is NOT the parent class")
+            void createMethodReturnsNullWhenTypeTokenIsTheParentClass(
+                final GeneratedSource generatedSource) {
+              Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+
+              final Class<?> customTypeAdapterFactory =
+                  CustomAssertions.assertClassHasInnerClass(
+                      generatedSource.getClassUnderTest(), "CustomTypeAdapterFactory");
+              final Method method =
+                  CustomAssertions.assertClassHasMethod(
+                      customTypeAdapterFactory, "create", Gson.class, TypeToken.class);
+              final Object object =
+                  CustomAssertions.assertConstructorCanInstantiateObject(
+                      CustomAssertions.assertClassHasConstructor(customTypeAdapterFactory));
+              CustomAssertions.assertInstanceMethodReturnsNull(
+                  method, object, new Gson(), TypeToken.get(Object.class));
+            }
           }
         }
       }
