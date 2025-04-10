@@ -16,10 +16,7 @@
 */
 package io.github.chrimle.o2jrm.tests;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
-import com.google.gson.TypeAdapterFactory;
+import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 import io.github.chrimle.o2jrm.GeneratedSource;
 import io.github.chrimle.o2jrm.annotations.*;
@@ -936,6 +933,39 @@ final class GeneratedRecordTests implements GeneratedClassTests {
                       CustomAssertions.assertClassHasConstructor(customTypeAdapterFactory));
               CustomAssertions.assertInstanceMethodReturnsNonNull(
                   method, object, new Gson(), TypeToken.get(generatedSource.getClassUnderTest()));
+            }
+
+            @Nested
+            @DisplayName("Testing the returned `TypeAdapter` object")
+            class TypeAdapterTests {
+
+              @ParameterizedTest
+              @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+              @DisplayName(
+                  "`create(Gson, TypeToken<T>)` returns `NullSafeTypeAdapter`")
+              void createMethodReturnsNullSafeTypeAdapter(
+                  final GeneratedSource generatedSource) {
+                Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+
+                final Class<?> customTypeAdapterFactory =
+                    CustomAssertions.assertClassHasInnerClass(
+                        generatedSource.getClassUnderTest(), "CustomTypeAdapterFactory");
+                final Method method =
+                    CustomAssertions.assertClassHasMethod(
+                        customTypeAdapterFactory, "create", Gson.class, TypeToken.class);
+                final Object object =
+                    CustomAssertions.assertConstructorCanInstantiateObject(
+                        CustomAssertions.assertClassHasConstructor(customTypeAdapterFactory));
+                final Object returnedObject =
+                    CustomAssertions.assertInstanceMethodReturnsNonNull(
+                        method,
+                        object,
+                        new Gson(),
+                        TypeToken.get(generatedSource.getClassUnderTest()));
+                Assertions.assertEquals(
+                    "com.google.gson.TypeAdapter$NullSafeTypeAdapter",
+                    returnedObject.getClass().getName());
+              }
             }
           }
         }
