@@ -900,7 +900,7 @@ final class GeneratedRecordTests implements GeneratedClassTests {
             @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
             @DisplayName(
                 "`create(Gson, TypeToken<T>)` returns `null` when `typeToken` is NOT the parent class")
-            void createMethodReturnsNullWhenTypeTokenIsTheParentClass(
+            void createMethodReturnsNullWhenTypeTokenIsNotTheParentClass(
                 final GeneratedSource generatedSource) {
               Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
 
@@ -915,6 +915,27 @@ final class GeneratedRecordTests implements GeneratedClassTests {
                       CustomAssertions.assertClassHasConstructor(customTypeAdapterFactory));
               CustomAssertions.assertInstanceMethodReturnsNull(
                   method, object, new Gson(), TypeToken.get(Object.class));
+            }
+
+            @ParameterizedTest
+            @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+            @DisplayName(
+                "`create(Gson, TypeToken<T>)` returns non-null `TypeAdapter` when `typeToken` IS the parent class")
+            void createMethodReturnsNonNullTypeAdapterWhenTypeTokenIsTheParentClass(
+                final GeneratedSource generatedSource) {
+              Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+
+              final Class<?> customTypeAdapterFactory =
+                  CustomAssertions.assertClassHasInnerClass(
+                      generatedSource.getClassUnderTest(), "CustomTypeAdapterFactory");
+              final Method method =
+                  CustomAssertions.assertClassHasMethod(
+                      customTypeAdapterFactory, "create", Gson.class, TypeToken.class);
+              final Object object =
+                  CustomAssertions.assertConstructorCanInstantiateObject(
+                      CustomAssertions.assertClassHasConstructor(customTypeAdapterFactory));
+              CustomAssertions.assertInstanceMethodReturnsNonNull(
+                  method, object, new Gson(), TypeToken.get(generatedSource.getClassUnderTest()));
             }
           }
         }
