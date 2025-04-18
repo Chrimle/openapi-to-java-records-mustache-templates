@@ -133,7 +133,6 @@ public class GeneratedSource {
       }
     }
     jsonString.append("\n}");
-    System.out.println(jsonString);
     return jsonString.toString();
   }
 
