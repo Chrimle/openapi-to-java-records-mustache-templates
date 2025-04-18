@@ -398,6 +398,36 @@ final class GeneratedEnumTests implements GeneratedClassTests {
 
             @ParameterizedTest
             @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+            @DisplayName("when `jsonString` is invalid Then `IllegalArgumentException` is thrown")
+            void whenJsonReaderIsInvalidThenIllegalArgumentExceptionIsThrown(
+                final GeneratedSource generatedSource) {
+              Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+
+              final Class<?> adapterClass =
+                  CustomAssertions.assertClassHasInnerClass(
+                      generatedSource.getClassUnderTest(), "Adapter");
+              final Object adapterObject =
+                  CustomAssertions.assertConstructorCanInstantiateObject(
+                      CustomAssertions.assertClassHasConstructor(adapterClass));
+              final Method readMethod =
+                  CustomAssertions.assertClassHasMethod(
+                      adapterObject.getClass(), "read", JsonReader.class);
+              readMethod.setAccessible(true);
+
+              if (generatedSource.enumUnknownDefaultCase()) {
+                CustomAssertions.assertInstanceMethodReturnsNonNull(
+                    readMethod, adapterObject, new JsonReader(new StringReader("\"42\"")));
+              } else {
+                CustomAssertions.assertInstanceMethodThrowsWhenInvoked(
+                    readMethod,
+                    IllegalArgumentException.class,
+                    adapterObject,
+                    new JsonReader(new StringReader("\"invalid\"")));
+              }
+            }
+
+            @ParameterizedTest
+            @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
             @DisplayName("when `JsonReader` is valid Then nothing is thrown")
             void whenJsonReaderIsValidThenNothingIsThrown(final GeneratedSource generatedSource) {
               Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
