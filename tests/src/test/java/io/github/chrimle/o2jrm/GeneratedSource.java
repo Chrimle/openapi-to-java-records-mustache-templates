@@ -122,6 +122,21 @@ public class GeneratedSource {
     return pluginExecution.isSerializationLibraryJackson();
   }
 
+  public String getClassAsJsonString() {
+    StringBuilder jsonString = new StringBuilder("{");
+    for (int i = 0; i < generatedFields.length; i++) {
+      final GeneratedField<?> generatedField = generatedFields[i];
+      jsonString.append("\n\t");
+      jsonString.append(generatedField.getKeyAndValueAsJson());
+      if (i + 1 < generatedFields.length) {
+        jsonString.append(",");
+      }
+    }
+    jsonString.append("\n}");
+    System.out.println(jsonString);
+    return jsonString.toString();
+  }
+
   @Override
   public String toString() {
     return "GeneratedSource{"

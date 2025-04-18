@@ -1083,7 +1083,7 @@ final class GeneratedRecordTests implements GeneratedClassTests {
                 @ParameterizedTest
                 @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
                 @DisplayName("when `jsonReader` is `nullInputStream` Then `EOFException` is thrown")
-                void whenJsonReaderIsNotNullThenNullPointerExceptionIsThrown(
+                void whenJsonReaderIsNullInputStreamThenEOFExceptionIsThrown(
                     final GeneratedSource generatedSource) {
                   Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
 
@@ -1113,6 +1113,38 @@ final class GeneratedRecordTests implements GeneratedClassTests {
                       new JsonReader(
                           new InputStreamReader(
                               InputStream.nullInputStream(), StandardCharsets.UTF_8)));
+                }
+
+                @ParameterizedTest
+                @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+                @DisplayName("when `jsonReader` is valid Then nothing is thrown")
+                void whenJsonReaderIsValidThenNothingIsThrown(
+                    final GeneratedSource generatedSource) {
+                  Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+
+                  final Class<?> customTypeAdapterFactory =
+                      CustomAssertions.assertClassHasInnerClass(
+                          generatedSource.getClassUnderTest(), "CustomTypeAdapterFactory");
+                  final Method method =
+                      CustomAssertions.assertClassHasMethod(
+                          customTypeAdapterFactory, "create", Gson.class, TypeToken.class);
+                  final Object object =
+                      CustomAssertions.assertConstructorCanInstantiateObject(
+                          CustomAssertions.assertClassHasConstructor(customTypeAdapterFactory));
+                  final Object typeAdapterObject =
+                      CustomAssertions.assertInstanceMethodReturnsNonNull(
+                          method,
+                          object,
+                          new Gson(),
+                          TypeToken.get(generatedSource.getClassUnderTest()));
+                  final Method readMethod =
+                      CustomAssertions.assertClassHasMethod(
+                          typeAdapterObject.getClass(), "read", JsonReader.class);
+                  readMethod.setAccessible(true);
+                  CustomAssertions.assertInstanceMethodCanBeInvoked(
+                      readMethod,
+                      typeAdapterObject,
+                      new JsonReader(new StringReader(generatedSource.getClassAsJsonString())));
                 }
               }
             }
