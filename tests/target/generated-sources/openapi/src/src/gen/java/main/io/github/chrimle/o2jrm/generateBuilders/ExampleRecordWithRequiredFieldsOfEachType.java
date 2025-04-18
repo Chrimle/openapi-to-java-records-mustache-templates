@@ -333,6 +333,10 @@ public record ExampleRecordWithRequiredFieldsOfEachType(
     ExampleEnum.validateJsonElement(jsonObj.get("field8"));
   }
 
+  /**
+   * Creates {@link TypeAdapter}s for {@link ExampleRecordWithRequiredFieldsOfEachType }s and other
+   * <i>assignable</i> types.
+   */
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
 
     /**

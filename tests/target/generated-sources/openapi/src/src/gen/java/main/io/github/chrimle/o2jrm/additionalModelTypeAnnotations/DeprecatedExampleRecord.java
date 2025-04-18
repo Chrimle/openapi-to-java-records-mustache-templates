@@ -94,6 +94,10 @@ public record DeprecatedExampleRecord(
     }
   }
 
+  /**
+   * Creates {@link TypeAdapter}s for {@link DeprecatedExampleRecord }s and other
+   * <i>assignable</i> types.
+   */
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
 
     /**

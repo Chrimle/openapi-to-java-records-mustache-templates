@@ -198,6 +198,10 @@ public record ExampleRecordWithNullableFieldsOfEachType(
     }
   }
 
+  /**
+   * Creates {@link TypeAdapter}s for {@link ExampleRecordWithNullableFieldsOfEachType }s and other
+   * <i>assignable</i> types.
+   */
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
 
     /**

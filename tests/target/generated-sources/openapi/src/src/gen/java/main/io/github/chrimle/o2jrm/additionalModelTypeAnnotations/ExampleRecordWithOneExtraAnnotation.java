@@ -111,6 +111,10 @@ public record ExampleRecordWithOneExtraAnnotation(
     }
   }
 
+  /**
+   * Creates {@link TypeAdapter}s for {@link ExampleRecordWithOneExtraAnnotation }s and other
+   * <i>assignable</i> types.
+   */
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
 
     /**

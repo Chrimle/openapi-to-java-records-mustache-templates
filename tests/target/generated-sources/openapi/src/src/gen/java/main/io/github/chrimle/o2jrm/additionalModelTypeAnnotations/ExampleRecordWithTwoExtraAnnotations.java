@@ -94,6 +94,10 @@ public record ExampleRecordWithTwoExtraAnnotations(
     }
   }
 
+  /**
+   * Creates {@link TypeAdapter}s for {@link ExampleRecordWithTwoExtraAnnotations }s and other
+   * <i>assignable</i> types.
+   */
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
 
     /**

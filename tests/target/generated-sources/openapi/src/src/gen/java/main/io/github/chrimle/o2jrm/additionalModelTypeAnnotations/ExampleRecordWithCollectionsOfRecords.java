@@ -165,6 +165,10 @@ public record ExampleRecordWithCollectionsOfRecords(
     }
   }
 
+  /**
+   * Creates {@link TypeAdapter}s for {@link ExampleRecordWithCollectionsOfRecords }s and other
+   * <i>assignable</i> types.
+   */
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
 
     /**

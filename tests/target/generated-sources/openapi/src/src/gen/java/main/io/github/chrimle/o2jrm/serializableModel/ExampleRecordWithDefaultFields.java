@@ -93,6 +93,10 @@ public record ExampleRecordWithDefaultFields(
     }
   }
 
+  /**
+   * Creates {@link TypeAdapter}s for {@link ExampleRecordWithDefaultFields }s and other
+   * <i>assignable</i> types.
+   */
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
 
     /**

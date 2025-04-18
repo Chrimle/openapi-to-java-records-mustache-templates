@@ -91,6 +91,10 @@ public record ExampleNullableRecord(
     }
   }
 
+  /**
+   * Creates {@link TypeAdapter}s for {@link ExampleNullableRecord }s and other
+   * <i>assignable</i> types.
+   */
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
 
     /**
