@@ -31,7 +31,14 @@ import org.junit.jupiter.api.Assertions;
 /** Generalized Test-class for testing Generated Record-classes */
 public class GeneratedRecordTestUtils {
 
-  public static void assertInstantiatingRecordWithValuesSetsFieldsToProvidedValue(
+  /**
+   * Asserts that the {@code record} can be instantiated with test values.
+   *
+   * @param generatedSource which contains the class to assert.
+   * @return the instantiated object.
+   * @since 2.9.0
+   */
+  public static Object assertInstantiatingRecordWithValuesSetsFieldsToProvidedValue(
       final GeneratedSource generatedSource) {
     final Class<?> classUnderTest = generatedSource.getClassUnderTest();
     final Class<?>[] fieldClasses = generatedSource.fieldClasses();
@@ -49,6 +56,7 @@ public class GeneratedRecordTestUtils {
     for (GeneratedField<?> generatedField : generatedSource.generatedFields()) {
       assertFieldHasTestingValueSet(generatedField, objectWithNonNullFields);
     }
+    return objectWithNonNullFields;
   }
 
   public static void assertInstantiatingRecordWithNullSetsFieldsToNullOrDefaultValue(

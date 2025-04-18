@@ -18,6 +18,7 @@ package io.github.chrimle.o2jrm.tests;
 
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonWriter;
 import io.github.chrimle.o2jrm.GeneratedSource;
 import io.github.chrimle.o2jrm.annotations.*;
 import io.github.chrimle.o2jrm.models.GeneratedField;
@@ -941,10 +942,8 @@ final class GeneratedRecordTests implements GeneratedClassTests {
 
               @ParameterizedTest
               @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
-              @DisplayName(
-                  "`create(Gson, TypeToken<T>)` returns `NullSafeTypeAdapter`")
-              void createMethodReturnsNullSafeTypeAdapter(
-                  final GeneratedSource generatedSource) {
+              @DisplayName("`create(Gson, TypeToken<T>)` returns `NullSafeTypeAdapter`")
+              void createMethodReturnsNullSafeTypeAdapter(final GeneratedSource generatedSource) {
                 Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
 
                 final Class<?> customTypeAdapterFactory =
@@ -965,6 +964,46 @@ final class GeneratedRecordTests implements GeneratedClassTests {
                 Assertions.assertEquals(
                     "com.google.gson.TypeAdapter$NullSafeTypeAdapter",
                     returnedObject.getClass().getName());
+              }
+
+              @Nested
+              @DisplayName("Testing the `write(JsonWriter, T)`-method")
+              class writeMethodTests {
+
+                @ParameterizedTest
+                @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+                @DisplayName("when `JsonWriter` is `null` Then `NullPointerException` is thrown")
+                void createMethodReturnsNullSafeTypeAdapter(final GeneratedSource generatedSource) {
+                  Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+
+                  final Class<?> customTypeAdapterFactory =
+                      CustomAssertions.assertClassHasInnerClass(
+                          generatedSource.getClassUnderTest(), "CustomTypeAdapterFactory");
+                  final Method method =
+                      CustomAssertions.assertClassHasMethod(
+                          customTypeAdapterFactory, "create", Gson.class, TypeToken.class);
+                  final Object object =
+                      CustomAssertions.assertConstructorCanInstantiateObject(
+                          CustomAssertions.assertClassHasConstructor(customTypeAdapterFactory));
+                  final Object typeAdapterObject =
+                      CustomAssertions.assertInstanceMethodReturnsNonNull(
+                          method,
+                          object,
+                          new Gson(),
+                          TypeToken.get(generatedSource.getClassUnderTest()));
+                  final Method writeMethod =
+                      CustomAssertions.assertClassHasMethod(
+                          typeAdapterObject.getClass(), "write", JsonWriter.class, Object.class);
+                  writeMethod.setAccessible(true);
+                  CustomAssertions.assertInstanceMethodThrowsWhenInvoked(
+                      writeMethod,
+                      NullPointerException.class,
+                      typeAdapterObject,
+                      generatedSource.getClassUnderTest().cast(null),
+                      GeneratedRecordTestUtils
+                          .assertInstantiatingRecordWithValuesSetsFieldsToProvidedValue(
+                              generatedSource));
+                }
               }
             }
           }
