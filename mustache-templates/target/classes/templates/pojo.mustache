@@ -232,25 +232,27 @@ import java.util.Set;
         return null;
       }
       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-      final TypeAdapter<{{classname}}> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get({{classname}}.class));
+      final TypeAdapter<{{classname}}> thisAdapter =
+          gson.getDelegateAdapter(this, TypeToken.get({{classname}}.class));
 
-      return (TypeAdapter<T>) new TypeAdapter<{{classname}}>() {
+      return (TypeAdapter<T>)
+          new TypeAdapter<{{classname}}>() {
 
-        @Override
-        public void write(JsonWriter out, {{classname}} value) throws IOException {
-          final JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-          elementAdapter.write(out, obj);
-        }
+            @Override
+            public void write(JsonWriter out, {{classname}} value) throws IOException {
+              final JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+              elementAdapter.write(out, obj);
+            }
 
-        @Override
-        public {{classname}} read(JsonReader in) throws IOException {
-          final JsonElement jsonElement = elementAdapter.read(in);
-          validateJsonElement(jsonElement);
+            @Override
+            public {{classname}} read(JsonReader in) throws IOException {
+              final JsonElement jsonElement = elementAdapter.read(in);
+              validateJsonElement(jsonElement);
 {{^isAdditionalPropertiesTrue}}
-          return thisAdapter.fromJsonTree(jsonElement);
+              return thisAdapter.fromJsonTree(jsonElement);
 {{/isAdditionalPropertiesTrue}}
-        }
-      }.nullSafe();
+            }
+          }.nullSafe();
     }
   }
 {{/hasChildren}}
