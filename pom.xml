@@ -214,6 +214,16 @@
                 <configuration>
                     <java>
                         <lineEndings>UNIX</lineEndings>
+                        <includes>
+                            <include>src/main/**/*.java</include>
+                            <include>src/test/**/*.java</include>
+                            <!--
+                            As the `phase` is `validate`, this directory will not yet exist during `mvn clean install`.
+                            However, running Spotless separately, using `mvn spotless:apply`, allows it to clean these files.
+                            This is to spot discrepancies of generated classes.
+                            -->
+                            <include>target/generated-sources/**/*.java</include>
+                        </includes>
                         <googleJavaFormat>
                             <version>${googleJavaFormat.version}</version>
                             <style>GOOGLE</style>
@@ -226,14 +236,6 @@
                             <goal>apply</goal>
                         </goals>
                         <phase>validate</phase>
-                        <configuration>
-                            <java>
-                                <includes>
-                                    <include>src/main/**/*.java</include>
-                                    <include>src/test/**/*.java</include>
-                                </includes>
-                            </java>
-                        </configuration>
                     </execution>
                 </executions>
             </plugin>
