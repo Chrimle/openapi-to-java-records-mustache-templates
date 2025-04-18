@@ -40,10 +40,7 @@ import io.github.chrimle.o2jrm.tests.GeneratedRecordTests.OpenAPITests.SchemaTes
 import io.github.chrimle.o2jrm.utils.AssertionUtils;
 import io.github.chrimle.o2jrm.utils.CustomAssertions;
 import io.github.chrimle.o2jrm.utils.GeneratedRecordTestUtils;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.Serializable;
-import java.io.UnsupportedEncodingException;
+import java.io.*;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -1015,7 +1012,7 @@ final class GeneratedRecordTests implements GeneratedClassTests {
                 @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
                 @DisplayName("when `JsonWriter` is NOT `null` Then nothing is thrown")
                 void whenJsonWriterIsNotNullThenNothingIsThrown(
-                    final GeneratedSource generatedSource) throws UnsupportedEncodingException {
+                    final GeneratedSource generatedSource) {
                   Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
 
                   final Class<?> customTypeAdapterFactory =
@@ -1080,7 +1077,42 @@ final class GeneratedRecordTests implements GeneratedClassTests {
                           typeAdapterObject.getClass(), "read", JsonReader.class);
                   readMethod.setAccessible(true);
                   CustomAssertions.assertInstanceMethodThrowsWhenInvoked(
-                      readMethod, NullPointerException.class, typeAdapterObject, (JsonWriter) null);
+                      readMethod, NullPointerException.class, typeAdapterObject, (JsonReader) null);
+                }
+
+                @ParameterizedTest
+                @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+                @DisplayName("when `jsonReader` is `nullInputStream` Then `EOFException` is thrown")
+                void whenJsonReaderIsNotNullThenNullPointerExceptionIsThrown(
+                    final GeneratedSource generatedSource) {
+                  Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+
+                  final Class<?> customTypeAdapterFactory =
+                      CustomAssertions.assertClassHasInnerClass(
+                          generatedSource.getClassUnderTest(), "CustomTypeAdapterFactory");
+                  final Method method =
+                      CustomAssertions.assertClassHasMethod(
+                          customTypeAdapterFactory, "create", Gson.class, TypeToken.class);
+                  final Object object =
+                      CustomAssertions.assertConstructorCanInstantiateObject(
+                          CustomAssertions.assertClassHasConstructor(customTypeAdapterFactory));
+                  final Object typeAdapterObject =
+                      CustomAssertions.assertInstanceMethodReturnsNonNull(
+                          method,
+                          object,
+                          new Gson(),
+                          TypeToken.get(generatedSource.getClassUnderTest()));
+                  final Method readMethod =
+                      CustomAssertions.assertClassHasMethod(
+                          typeAdapterObject.getClass(), "read", JsonReader.class);
+                  readMethod.setAccessible(true);
+                  CustomAssertions.assertInstanceMethodThrowsWhenInvoked(
+                      readMethod,
+                      EOFException.class,
+                      typeAdapterObject,
+                      new JsonReader(
+                          new InputStreamReader(
+                              InputStream.nullInputStream(), StandardCharsets.UTF_8)));
                 }
               }
             }
