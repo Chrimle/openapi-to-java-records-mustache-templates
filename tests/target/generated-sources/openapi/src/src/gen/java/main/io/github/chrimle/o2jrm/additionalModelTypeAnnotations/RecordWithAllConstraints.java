@@ -445,23 +445,25 @@ public record RecordWithAllConstraints(
         return null;
       }
       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-      final TypeAdapter<RecordWithAllConstraints> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(RecordWithAllConstraints.class));
+      final TypeAdapter<RecordWithAllConstraints> thisAdapter =
+          gson.getDelegateAdapter(this, TypeToken.get(RecordWithAllConstraints.class));
 
-      return (TypeAdapter<T>) new TypeAdapter<RecordWithAllConstraints>() {
+      return (TypeAdapter<T>)
+          new TypeAdapter<RecordWithAllConstraints>() {
 
-        @Override
-        public void write(JsonWriter out, RecordWithAllConstraints value) throws IOException {
-          final JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-          elementAdapter.write(out, obj);
-        }
+            @Override
+            public void write(JsonWriter out, RecordWithAllConstraints value) throws IOException {
+              final JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+              elementAdapter.write(out, obj);
+            }
 
-        @Override
-        public RecordWithAllConstraints read(JsonReader in) throws IOException {
-          final JsonElement jsonElement = elementAdapter.read(in);
-          validateJsonElement(jsonElement);
-          return thisAdapter.fromJsonTree(jsonElement);
-        }
-      }.nullSafe();
+            @Override
+            public RecordWithAllConstraints read(JsonReader in) throws IOException {
+              final JsonElement jsonElement = elementAdapter.read(in);
+              validateJsonElement(jsonElement);
+              return thisAdapter.fromJsonTree(jsonElement);
+            }
+          }.nullSafe();
     }
   }
 }

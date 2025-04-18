@@ -103,23 +103,25 @@ public record DeprecatedExampleRecord(
         return null;
       }
       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-      final TypeAdapter<DeprecatedExampleRecord> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(DeprecatedExampleRecord.class));
+      final TypeAdapter<DeprecatedExampleRecord> thisAdapter =
+          gson.getDelegateAdapter(this, TypeToken.get(DeprecatedExampleRecord.class));
 
-      return (TypeAdapter<T>) new TypeAdapter<DeprecatedExampleRecord>() {
+      return (TypeAdapter<T>)
+          new TypeAdapter<DeprecatedExampleRecord>() {
 
-        @Override
-        public void write(JsonWriter out, DeprecatedExampleRecord value) throws IOException {
-          final JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-          elementAdapter.write(out, obj);
-        }
+            @Override
+            public void write(JsonWriter out, DeprecatedExampleRecord value) throws IOException {
+              final JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+              elementAdapter.write(out, obj);
+            }
 
-        @Override
-        public DeprecatedExampleRecord read(JsonReader in) throws IOException {
-          final JsonElement jsonElement = elementAdapter.read(in);
-          validateJsonElement(jsonElement);
-          return thisAdapter.fromJsonTree(jsonElement);
-        }
-      }.nullSafe();
+            @Override
+            public DeprecatedExampleRecord read(JsonReader in) throws IOException {
+              final JsonElement jsonElement = elementAdapter.read(in);
+              validateJsonElement(jsonElement);
+              return thisAdapter.fromJsonTree(jsonElement);
+            }
+          }.nullSafe();
     }
   }
 }

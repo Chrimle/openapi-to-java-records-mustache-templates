@@ -121,23 +121,25 @@ public record ExampleRecordWithOneExtraAnnotation(
         return null;
       }
       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-      final TypeAdapter<ExampleRecordWithOneExtraAnnotation> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(ExampleRecordWithOneExtraAnnotation.class));
+      final TypeAdapter<ExampleRecordWithOneExtraAnnotation> thisAdapter =
+          gson.getDelegateAdapter(this, TypeToken.get(ExampleRecordWithOneExtraAnnotation.class));
 
-      return (TypeAdapter<T>) new TypeAdapter<ExampleRecordWithOneExtraAnnotation>() {
+      return (TypeAdapter<T>)
+          new TypeAdapter<ExampleRecordWithOneExtraAnnotation>() {
 
-        @Override
-        public void write(JsonWriter out, ExampleRecordWithOneExtraAnnotation value) throws IOException {
-          final JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-          elementAdapter.write(out, obj);
-        }
+            @Override
+            public void write(JsonWriter out, ExampleRecordWithOneExtraAnnotation value) throws IOException {
+              final JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+              elementAdapter.write(out, obj);
+            }
 
-        @Override
-        public ExampleRecordWithOneExtraAnnotation read(JsonReader in) throws IOException {
-          final JsonElement jsonElement = elementAdapter.read(in);
-          validateJsonElement(jsonElement);
-          return thisAdapter.fromJsonTree(jsonElement);
-        }
-      }.nullSafe();
+            @Override
+            public ExampleRecordWithOneExtraAnnotation read(JsonReader in) throws IOException {
+              final JsonElement jsonElement = elementAdapter.read(in);
+              validateJsonElement(jsonElement);
+              return thisAdapter.fromJsonTree(jsonElement);
+            }
+          }.nullSafe();
     }
   }
 }

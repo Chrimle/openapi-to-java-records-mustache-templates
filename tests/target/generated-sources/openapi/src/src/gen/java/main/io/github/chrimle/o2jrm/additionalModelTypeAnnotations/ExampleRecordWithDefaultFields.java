@@ -101,23 +101,25 @@ public record ExampleRecordWithDefaultFields(
         return null;
       }
       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-      final TypeAdapter<ExampleRecordWithDefaultFields> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(ExampleRecordWithDefaultFields.class));
+      final TypeAdapter<ExampleRecordWithDefaultFields> thisAdapter =
+          gson.getDelegateAdapter(this, TypeToken.get(ExampleRecordWithDefaultFields.class));
 
-      return (TypeAdapter<T>) new TypeAdapter<ExampleRecordWithDefaultFields>() {
+      return (TypeAdapter<T>)
+          new TypeAdapter<ExampleRecordWithDefaultFields>() {
 
-        @Override
-        public void write(JsonWriter out, ExampleRecordWithDefaultFields value) throws IOException {
-          final JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-          elementAdapter.write(out, obj);
-        }
+            @Override
+            public void write(JsonWriter out, ExampleRecordWithDefaultFields value) throws IOException {
+              final JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+              elementAdapter.write(out, obj);
+            }
 
-        @Override
-        public ExampleRecordWithDefaultFields read(JsonReader in) throws IOException {
-          final JsonElement jsonElement = elementAdapter.read(in);
-          validateJsonElement(jsonElement);
-          return thisAdapter.fromJsonTree(jsonElement);
-        }
-      }.nullSafe();
+            @Override
+            public ExampleRecordWithDefaultFields read(JsonReader in) throws IOException {
+              final JsonElement jsonElement = elementAdapter.read(in);
+              validateJsonElement(jsonElement);
+              return thisAdapter.fromJsonTree(jsonElement);
+            }
+          }.nullSafe();
     }
   }
 }

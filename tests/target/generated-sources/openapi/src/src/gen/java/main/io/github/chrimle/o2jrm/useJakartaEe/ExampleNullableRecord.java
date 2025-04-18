@@ -98,23 +98,25 @@ public record ExampleNullableRecord(
         return null;
       }
       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-      final TypeAdapter<ExampleNullableRecord> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(ExampleNullableRecord.class));
+      final TypeAdapter<ExampleNullableRecord> thisAdapter =
+          gson.getDelegateAdapter(this, TypeToken.get(ExampleNullableRecord.class));
 
-      return (TypeAdapter<T>) new TypeAdapter<ExampleNullableRecord>() {
+      return (TypeAdapter<T>)
+          new TypeAdapter<ExampleNullableRecord>() {
 
-        @Override
-        public void write(JsonWriter out, ExampleNullableRecord value) throws IOException {
-          final JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-          elementAdapter.write(out, obj);
-        }
+            @Override
+            public void write(JsonWriter out, ExampleNullableRecord value) throws IOException {
+              final JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+              elementAdapter.write(out, obj);
+            }
 
-        @Override
-        public ExampleNullableRecord read(JsonReader in) throws IOException {
-          final JsonElement jsonElement = elementAdapter.read(in);
-          validateJsonElement(jsonElement);
-          return thisAdapter.fromJsonTree(jsonElement);
-        }
-      }.nullSafe();
+            @Override
+            public ExampleNullableRecord read(JsonReader in) throws IOException {
+              final JsonElement jsonElement = elementAdapter.read(in);
+              validateJsonElement(jsonElement);
+              return thisAdapter.fromJsonTree(jsonElement);
+            }
+          }.nullSafe();
     }
   }
 }

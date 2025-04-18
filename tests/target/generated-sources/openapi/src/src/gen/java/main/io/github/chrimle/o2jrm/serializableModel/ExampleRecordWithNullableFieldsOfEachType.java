@@ -208,23 +208,25 @@ public record ExampleRecordWithNullableFieldsOfEachType(
         return null;
       }
       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-      final TypeAdapter<ExampleRecordWithNullableFieldsOfEachType> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(ExampleRecordWithNullableFieldsOfEachType.class));
+      final TypeAdapter<ExampleRecordWithNullableFieldsOfEachType> thisAdapter =
+          gson.getDelegateAdapter(this, TypeToken.get(ExampleRecordWithNullableFieldsOfEachType.class));
 
-      return (TypeAdapter<T>) new TypeAdapter<ExampleRecordWithNullableFieldsOfEachType>() {
+      return (TypeAdapter<T>)
+          new TypeAdapter<ExampleRecordWithNullableFieldsOfEachType>() {
 
-        @Override
-        public void write(JsonWriter out, ExampleRecordWithNullableFieldsOfEachType value) throws IOException {
-          final JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-          elementAdapter.write(out, obj);
-        }
+            @Override
+            public void write(JsonWriter out, ExampleRecordWithNullableFieldsOfEachType value) throws IOException {
+              final JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+              elementAdapter.write(out, obj);
+            }
 
-        @Override
-        public ExampleRecordWithNullableFieldsOfEachType read(JsonReader in) throws IOException {
-          final JsonElement jsonElement = elementAdapter.read(in);
-          validateJsonElement(jsonElement);
-          return thisAdapter.fromJsonTree(jsonElement);
-        }
-      }.nullSafe();
+            @Override
+            public ExampleRecordWithNullableFieldsOfEachType read(JsonReader in) throws IOException {
+              final JsonElement jsonElement = elementAdapter.read(in);
+              validateJsonElement(jsonElement);
+              return thisAdapter.fromJsonTree(jsonElement);
+            }
+          }.nullSafe();
     }
   }
 }

@@ -355,23 +355,25 @@ public record RecordWithInnerEnums(
         return null;
       }
       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-      final TypeAdapter<RecordWithInnerEnums> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(RecordWithInnerEnums.class));
+      final TypeAdapter<RecordWithInnerEnums> thisAdapter =
+          gson.getDelegateAdapter(this, TypeToken.get(RecordWithInnerEnums.class));
 
-      return (TypeAdapter<T>) new TypeAdapter<RecordWithInnerEnums>() {
+      return (TypeAdapter<T>)
+          new TypeAdapter<RecordWithInnerEnums>() {
 
-        @Override
-        public void write(JsonWriter out, RecordWithInnerEnums value) throws IOException {
-          final JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-          elementAdapter.write(out, obj);
-        }
+            @Override
+            public void write(JsonWriter out, RecordWithInnerEnums value) throws IOException {
+              final JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+              elementAdapter.write(out, obj);
+            }
 
-        @Override
-        public RecordWithInnerEnums read(JsonReader in) throws IOException {
-          final JsonElement jsonElement = elementAdapter.read(in);
-          validateJsonElement(jsonElement);
-          return thisAdapter.fromJsonTree(jsonElement);
-        }
-      }.nullSafe();
+            @Override
+            public RecordWithInnerEnums read(JsonReader in) throws IOException {
+              final JsonElement jsonElement = elementAdapter.read(in);
+              validateJsonElement(jsonElement);
+              return thisAdapter.fromJsonTree(jsonElement);
+            }
+          }.nullSafe();
     }
   }
 }

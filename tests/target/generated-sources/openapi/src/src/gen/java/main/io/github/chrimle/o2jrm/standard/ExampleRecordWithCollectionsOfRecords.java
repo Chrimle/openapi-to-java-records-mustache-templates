@@ -171,23 +171,25 @@ public record ExampleRecordWithCollectionsOfRecords(
         return null;
       }
       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-      final TypeAdapter<ExampleRecordWithCollectionsOfRecords> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(ExampleRecordWithCollectionsOfRecords.class));
+      final TypeAdapter<ExampleRecordWithCollectionsOfRecords> thisAdapter =
+          gson.getDelegateAdapter(this, TypeToken.get(ExampleRecordWithCollectionsOfRecords.class));
 
-      return (TypeAdapter<T>) new TypeAdapter<ExampleRecordWithCollectionsOfRecords>() {
+      return (TypeAdapter<T>)
+          new TypeAdapter<ExampleRecordWithCollectionsOfRecords>() {
 
-        @Override
-        public void write(JsonWriter out, ExampleRecordWithCollectionsOfRecords value) throws IOException {
-          final JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-          elementAdapter.write(out, obj);
-        }
+            @Override
+            public void write(JsonWriter out, ExampleRecordWithCollectionsOfRecords value) throws IOException {
+              final JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+              elementAdapter.write(out, obj);
+            }
 
-        @Override
-        public ExampleRecordWithCollectionsOfRecords read(JsonReader in) throws IOException {
-          final JsonElement jsonElement = elementAdapter.read(in);
-          validateJsonElement(jsonElement);
-          return thisAdapter.fromJsonTree(jsonElement);
-        }
-      }.nullSafe();
+            @Override
+            public ExampleRecordWithCollectionsOfRecords read(JsonReader in) throws IOException {
+              final JsonElement jsonElement = elementAdapter.read(in);
+              validateJsonElement(jsonElement);
+              return thisAdapter.fromJsonTree(jsonElement);
+            }
+          }.nullSafe();
     }
   }
 }
