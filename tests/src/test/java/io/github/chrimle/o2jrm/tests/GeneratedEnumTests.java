@@ -20,6 +20,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
+import com.google.gson.stream.JsonWriter;
 import io.github.chrimle.o2jrm.GeneratedSource;
 import io.github.chrimle.o2jrm.annotations.TestAnnotationOne;
 import io.github.chrimle.o2jrm.annotations.TestAnnotationThree;
@@ -289,14 +290,53 @@ final class GeneratedEnumTests implements GeneratedClassTests {
           }
         }
 
-        @ParameterizedTest
-        @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
-        @DisplayName("Generated `enum` has `Adapter` inner-class")
-        void whenLibraryIsOkHttpGsonThenGeneratedEnumHasAdapterInnerClass(
-            final GeneratedSource generatedSource) {
-          Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+        @Nested
+        @DisplayName("Testing the `Adapter` inner-class")
+        class AdapterInnerClassTests {
 
-          CustomAssertions.assertClassHasInnerClass(generatedSource.getClassUnderTest(), "Adapter");
+          @ParameterizedTest
+          @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+          @DisplayName("Generated `enum` has `Adapter` inner-class")
+          void whenLibraryIsOkHttpGsonThenGeneratedEnumHasAdapterInnerClass(
+              final GeneratedSource generatedSource) {
+            Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+
+            CustomAssertions.assertClassHasInnerClass(
+                generatedSource.getClassUnderTest(), "Adapter");
+          }
+
+          @Nested
+          @DisplayName("Testing the `write(JsonWriter, T)`-method")
+          class WriteMethodTests {
+
+            @ParameterizedTest
+            @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+            @DisplayName("when `JsonWriter` is `null` Then `NullPointerException` is thrown")
+            void whenJsonWriterIsNullThenNullPointerExceptionIsThrown(
+                final GeneratedSource generatedSource) {
+              Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+
+              final Class<?> adapterClass =
+                  CustomAssertions.assertClassHasInnerClass(
+                      generatedSource.getClassUnderTest(), "Adapter");
+              final Object adapterObject =
+                  CustomAssertions.assertConstructorCanInstantiateObject(
+                      CustomAssertions.assertClassHasConstructor(adapterClass));
+              final Method writeMethod =
+                  CustomAssertions.assertClassHasMethod(
+                      adapterObject.getClass(),
+                      "write",
+                      JsonWriter.class,
+                      generatedSource.getClassUnderTest());
+              writeMethod.setAccessible(true);
+              CustomAssertions.assertInstanceMethodThrowsWhenInvoked(
+                  writeMethod,
+                  NullPointerException.class,
+                  adapterObject,
+                  (JsonWriter) null,
+                  generatedSource.getClassUnderTest().getEnumConstants()[0]);
+            }
+          }
         }
       }
 
