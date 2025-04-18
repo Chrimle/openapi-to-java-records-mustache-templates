@@ -39,11 +39,15 @@ import io.github.chrimle.o2jrm.tests.GeneratedRecordTests.OpenAPITests.SchemaTes
 import io.github.chrimle.o2jrm.utils.AssertionUtils;
 import io.github.chrimle.o2jrm.utils.CustomAssertions;
 import io.github.chrimle.o2jrm.utils.GeneratedRecordTestUtils;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.math.BigDecimal;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.stream.Collectors;
 import org.junit.jupiter.api.*;
@@ -973,7 +977,8 @@ final class GeneratedRecordTests implements GeneratedClassTests {
                 @ParameterizedTest
                 @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
                 @DisplayName("when `JsonWriter` is `null` Then `NullPointerException` is thrown")
-                void createMethodReturnsNullSafeTypeAdapter(final GeneratedSource generatedSource) {
+                void whenJsonWriterIsNullThenNullPointerExceptionIsThrown(
+                    final GeneratedSource generatedSource) {
                   Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
 
                   final Class<?> customTypeAdapterFactory =
@@ -999,7 +1004,44 @@ final class GeneratedRecordTests implements GeneratedClassTests {
                       writeMethod,
                       NullPointerException.class,
                       typeAdapterObject,
-                      generatedSource.getClassUnderTest().cast(null),
+                      (TypeAdapter<?>) null,
+                      GeneratedRecordTestUtils
+                          .assertInstantiatingRecordWithValuesSetsFieldsToProvidedValue(
+                              generatedSource));
+                }
+
+                @ParameterizedTest
+                @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+                @DisplayName("when `JsonWriter` is NOT `null` Then nothing is thrown")
+                void whenJsonWriterIsNotNullThenNothingIsThrown(
+                    final GeneratedSource generatedSource) throws UnsupportedEncodingException {
+                  Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+
+                  final Class<?> customTypeAdapterFactory =
+                      CustomAssertions.assertClassHasInnerClass(
+                          generatedSource.getClassUnderTest(), "CustomTypeAdapterFactory");
+                  final Method method =
+                      CustomAssertions.assertClassHasMethod(
+                          customTypeAdapterFactory, "create", Gson.class, TypeToken.class);
+                  final Object object =
+                      CustomAssertions.assertConstructorCanInstantiateObject(
+                          CustomAssertions.assertClassHasConstructor(customTypeAdapterFactory));
+                  final Object typeAdapterObject =
+                      CustomAssertions.assertInstanceMethodReturnsNonNull(
+                          method,
+                          object,
+                          new Gson(),
+                          TypeToken.get(generatedSource.getClassUnderTest()));
+                  final Method writeMethod =
+                      CustomAssertions.assertClassHasMethod(
+                          typeAdapterObject.getClass(), "write", JsonWriter.class, Object.class);
+                  writeMethod.setAccessible(true);
+                  CustomAssertions.assertInstanceMethodCanBeInvoked(
+                      writeMethod,
+                      typeAdapterObject,
+                      new JsonWriter(
+                          new OutputStreamWriter(
+                              OutputStream.nullOutputStream(), StandardCharsets.UTF_8)),
                       GeneratedRecordTestUtils
                           .assertInstantiatingRecordWithValuesSetsFieldsToProvidedValue(
                               generatedSource));
