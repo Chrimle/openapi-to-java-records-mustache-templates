@@ -34,8 +34,11 @@ import io.github.chrimle.o2jrm.tests.GeneratedEnumTests.OpenAPITests.SchemaTests
 import io.github.chrimle.o2jrm.tests.GeneratedEnumTests.OpenAPITests.SchemaTests.EnumTests;
 import io.github.chrimle.o2jrm.tests.GeneratedEnumTests.OpenAPITests.SchemaTests.EnumTests.ConstantsTests;
 import io.github.chrimle.o2jrm.utils.CustomAssertions;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.lang.reflect.Method;
 import java.net.URI;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -334,6 +337,34 @@ final class GeneratedEnumTests implements GeneratedClassTests {
                   NullPointerException.class,
                   adapterObject,
                   (JsonWriter) null,
+                  generatedSource.getClassUnderTest().getEnumConstants()[0]);
+            }
+
+            @ParameterizedTest
+            @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+            @DisplayName("when `JsonWriter` is NOT `null` Then nothing is thrown")
+            void whenJsonWriterIsNotNullThenNothingIsThrown(final GeneratedSource generatedSource) {
+              Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+
+              final Class<?> adapterClass =
+                  CustomAssertions.assertClassHasInnerClass(
+                      generatedSource.getClassUnderTest(), "Adapter");
+              final Object adapterObject =
+                  CustomAssertions.assertConstructorCanInstantiateObject(
+                      CustomAssertions.assertClassHasConstructor(adapterClass));
+              final Method writeMethod =
+                  CustomAssertions.assertClassHasMethod(
+                      adapterObject.getClass(),
+                      "write",
+                      JsonWriter.class,
+                      generatedSource.getClassUnderTest());
+              writeMethod.setAccessible(true);
+              CustomAssertions.assertInstanceMethodCanBeInvoked(
+                  writeMethod,
+                  adapterObject,
+                  new JsonWriter(
+                      new OutputStreamWriter(
+                          OutputStream.nullOutputStream(), StandardCharsets.UTF_8)),
                   generatedSource.getClassUnderTest().getEnumConstants()[0]);
             }
           }
