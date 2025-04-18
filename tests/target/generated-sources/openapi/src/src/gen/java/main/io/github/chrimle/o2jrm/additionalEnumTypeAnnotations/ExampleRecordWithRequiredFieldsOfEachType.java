@@ -194,7 +194,7 @@ public record ExampleRecordWithRequiredFieldsOfEachType(
 
     @SuppressWarnings("unchecked")
     @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+    public <T> TypeAdapter<T> create(final Gson gson, final TypeToken<T> type) {
       if (!ExampleRecordWithRequiredFieldsOfEachType.class.isAssignableFrom(type.getRawType())) {
         return null;
       }
@@ -206,13 +206,13 @@ public record ExampleRecordWithRequiredFieldsOfEachType(
           new TypeAdapter<ExampleRecordWithRequiredFieldsOfEachType>() {
 
             @Override
-            public void write(JsonWriter out, ExampleRecordWithRequiredFieldsOfEachType value) throws IOException {
+            public void write(final JsonWriter out, final ExampleRecordWithRequiredFieldsOfEachType value) throws IOException {
               final JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
               elementAdapter.write(out, obj);
             }
 
             @Override
-            public ExampleRecordWithRequiredFieldsOfEachType read(JsonReader in) throws IOException {
+            public ExampleRecordWithRequiredFieldsOfEachType read(final JsonReader in) throws IOException {
               final JsonElement jsonElement = elementAdapter.read(in);
               validateJsonElement(jsonElement);
               return thisAdapter.fromJsonTree(jsonElement);

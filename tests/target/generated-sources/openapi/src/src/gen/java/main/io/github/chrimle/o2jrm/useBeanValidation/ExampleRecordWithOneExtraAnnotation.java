@@ -114,7 +114,7 @@ public record ExampleRecordWithOneExtraAnnotation(
 
     @SuppressWarnings("unchecked")
     @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+    public <T> TypeAdapter<T> create(final Gson gson, final TypeToken<T> type) {
       if (!ExampleRecordWithOneExtraAnnotation.class.isAssignableFrom(type.getRawType())) {
         return null;
       }
@@ -126,13 +126,13 @@ public record ExampleRecordWithOneExtraAnnotation(
           new TypeAdapter<ExampleRecordWithOneExtraAnnotation>() {
 
             @Override
-            public void write(JsonWriter out, ExampleRecordWithOneExtraAnnotation value) throws IOException {
+            public void write(final JsonWriter out, final ExampleRecordWithOneExtraAnnotation value) throws IOException {
               final JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
               elementAdapter.write(out, obj);
             }
 
             @Override
-            public ExampleRecordWithOneExtraAnnotation read(JsonReader in) throws IOException {
+            public ExampleRecordWithOneExtraAnnotation read(final JsonReader in) throws IOException {
               final JsonElement jsonElement = elementAdapter.read(in);
               validateJsonElement(jsonElement);
               return thisAdapter.fromJsonTree(jsonElement);

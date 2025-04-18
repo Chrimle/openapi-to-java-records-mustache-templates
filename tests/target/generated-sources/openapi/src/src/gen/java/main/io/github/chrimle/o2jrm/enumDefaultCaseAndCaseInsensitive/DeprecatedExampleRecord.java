@@ -95,7 +95,7 @@ public record DeprecatedExampleRecord(
 
     @SuppressWarnings("unchecked")
     @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+    public <T> TypeAdapter<T> create(final Gson gson, final TypeToken<T> type) {
       if (!DeprecatedExampleRecord.class.isAssignableFrom(type.getRawType())) {
         return null;
       }
@@ -107,13 +107,13 @@ public record DeprecatedExampleRecord(
           new TypeAdapter<DeprecatedExampleRecord>() {
 
             @Override
-            public void write(JsonWriter out, DeprecatedExampleRecord value) throws IOException {
+            public void write(final JsonWriter out, final DeprecatedExampleRecord value) throws IOException {
               final JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
               elementAdapter.write(out, obj);
             }
 
             @Override
-            public DeprecatedExampleRecord read(JsonReader in) throws IOException {
+            public DeprecatedExampleRecord read(final JsonReader in) throws IOException {
               final JsonElement jsonElement = elementAdapter.read(in);
               validateJsonElement(jsonElement);
               return thisAdapter.fromJsonTree(jsonElement);

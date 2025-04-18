@@ -440,7 +440,7 @@ public record RecordWithAllConstraints(
 
     @SuppressWarnings("unchecked")
     @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+    public <T> TypeAdapter<T> create(final Gson gson, final TypeToken<T> type) {
       if (!RecordWithAllConstraints.class.isAssignableFrom(type.getRawType())) {
         return null;
       }
@@ -452,13 +452,13 @@ public record RecordWithAllConstraints(
           new TypeAdapter<RecordWithAllConstraints>() {
 
             @Override
-            public void write(JsonWriter out, RecordWithAllConstraints value) throws IOException {
+            public void write(final JsonWriter out, final RecordWithAllConstraints value) throws IOException {
               final JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
               elementAdapter.write(out, obj);
             }
 
             @Override
-            public RecordWithAllConstraints read(JsonReader in) throws IOException {
+            public RecordWithAllConstraints read(final JsonReader in) throws IOException {
               final JsonElement jsonElement = elementAdapter.read(in);
               validateJsonElement(jsonElement);
               return thisAdapter.fromJsonTree(jsonElement);

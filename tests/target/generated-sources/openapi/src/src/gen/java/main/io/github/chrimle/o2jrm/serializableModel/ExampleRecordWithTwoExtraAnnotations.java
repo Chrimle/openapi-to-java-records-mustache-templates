@@ -99,7 +99,7 @@ public record ExampleRecordWithTwoExtraAnnotations(
 
     @SuppressWarnings("unchecked")
     @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+    public <T> TypeAdapter<T> create(final Gson gson, final TypeToken<T> type) {
       if (!ExampleRecordWithTwoExtraAnnotations.class.isAssignableFrom(type.getRawType())) {
         return null;
       }
@@ -111,13 +111,13 @@ public record ExampleRecordWithTwoExtraAnnotations(
           new TypeAdapter<ExampleRecordWithTwoExtraAnnotations>() {
 
             @Override
-            public void write(JsonWriter out, ExampleRecordWithTwoExtraAnnotations value) throws IOException {
+            public void write(final JsonWriter out, final ExampleRecordWithTwoExtraAnnotations value) throws IOException {
               final JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
               elementAdapter.write(out, obj);
             }
 
             @Override
-            public ExampleRecordWithTwoExtraAnnotations read(JsonReader in) throws IOException {
+            public ExampleRecordWithTwoExtraAnnotations read(final JsonReader in) throws IOException {
               final JsonElement jsonElement = elementAdapter.read(in);
               validateJsonElement(jsonElement);
               return thisAdapter.fromJsonTree(jsonElement);

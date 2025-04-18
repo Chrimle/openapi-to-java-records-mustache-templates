@@ -96,7 +96,7 @@ public record ExampleRecordWithDefaultFields(
 
     @SuppressWarnings("unchecked")
     @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+    public <T> TypeAdapter<T> create(final Gson gson, final TypeToken<T> type) {
       if (!ExampleRecordWithDefaultFields.class.isAssignableFrom(type.getRawType())) {
         return null;
       }
@@ -108,13 +108,13 @@ public record ExampleRecordWithDefaultFields(
           new TypeAdapter<ExampleRecordWithDefaultFields>() {
 
             @Override
-            public void write(JsonWriter out, ExampleRecordWithDefaultFields value) throws IOException {
+            public void write(final JsonWriter out, final ExampleRecordWithDefaultFields value) throws IOException {
               final JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
               elementAdapter.write(out, obj);
             }
 
             @Override
-            public ExampleRecordWithDefaultFields read(JsonReader in) throws IOException {
+            public ExampleRecordWithDefaultFields read(final JsonReader in) throws IOException {
               final JsonElement jsonElement = elementAdapter.read(in);
               validateJsonElement(jsonElement);
               return thisAdapter.fromJsonTree(jsonElement);

@@ -96,7 +96,7 @@ public record ExampleRecord(
 
     @SuppressWarnings("unchecked")
     @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+    public <T> TypeAdapter<T> create(final Gson gson, final TypeToken<T> type) {
       if (!ExampleRecord.class.isAssignableFrom(type.getRawType())) {
         return null;
       }
@@ -108,13 +108,13 @@ public record ExampleRecord(
           new TypeAdapter<ExampleRecord>() {
 
             @Override
-            public void write(JsonWriter out, ExampleRecord value) throws IOException {
+            public void write(final JsonWriter out, final ExampleRecord value) throws IOException {
               final JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
               elementAdapter.write(out, obj);
             }
 
             @Override
-            public ExampleRecord read(JsonReader in) throws IOException {
+            public ExampleRecord read(final JsonReader in) throws IOException {
               final JsonElement jsonElement = elementAdapter.read(in);
               validateJsonElement(jsonElement);
               return thisAdapter.fromJsonTree(jsonElement);
