@@ -25,6 +25,9 @@ import jakarta.validation.Valid;
 
 import java.io.IOException;
 import com.google.gson.JsonElement;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 
 /**
  * Example of an Enum with integer values
@@ -80,5 +83,20 @@ public enum ExampleEnumWithIntegerValues {
   public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
     final Integer value = jsonElement.getAsInt();
     ExampleEnumWithIntegerValues.fromValue(value);
+  }
+
+  public static class Adapter extends TypeAdapter<ExampleEnumWithIntegerValues> {
+
+    @Override
+    public void write(final JsonWriter jsonWriter, final ExampleEnumWithIntegerValues enumeration)
+        throws IOException {
+      jsonWriter.value(enumeration.getValue());
+    }
+
+    @Override
+    public ExampleEnumWithIntegerValues read(final JsonReader jsonReader) throws IOException {
+      final Integer value = jsonReader.nextInt();
+      return ExampleEnumWithIntegerValues.fromValue(value);
+    }
   }
 }

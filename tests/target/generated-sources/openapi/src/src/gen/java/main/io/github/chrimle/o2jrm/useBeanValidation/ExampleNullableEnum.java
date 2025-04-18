@@ -25,6 +25,9 @@ import jakarta.validation.Valid;
 
 import java.io.IOException;
 import com.google.gson.JsonElement;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 
 /**
  * Example of an Enum
@@ -87,5 +90,20 @@ public enum ExampleNullableEnum {
   public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
     final String value = jsonElement.getAsString();
     ExampleNullableEnum.fromValue(value);
+  }
+
+  public static class Adapter extends TypeAdapter<ExampleNullableEnum> {
+
+    @Override
+    public void write(final JsonWriter jsonWriter, final ExampleNullableEnum enumeration)
+        throws IOException {
+      jsonWriter.value(enumeration.getValue());
+    }
+
+    @Override
+    public ExampleNullableEnum read(final JsonReader jsonReader) throws IOException {
+      final String value = jsonReader.nextString();
+      return ExampleNullableEnum.fromValue(value);
+    }
   }
 }

@@ -23,6 +23,9 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.IOException;
 import com.google.gson.JsonElement;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 
 /**
  * Example of an Enum
@@ -86,5 +89,20 @@ public enum ExampleEnum {
   public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
     final String value = jsonElement.getAsString();
     ExampleEnum.fromValue(value);
+  }
+
+  public static class Adapter extends TypeAdapter<ExampleEnum> {
+
+    @Override
+    public void write(final JsonWriter jsonWriter, final ExampleEnum enumeration)
+        throws IOException {
+      jsonWriter.value(enumeration.getValue());
+    }
+
+    @Override
+    public ExampleEnum read(final JsonReader jsonReader) throws IOException {
+      final String value = jsonReader.nextString();
+      return ExampleEnum.fromValue(value);
+    }
   }
 }

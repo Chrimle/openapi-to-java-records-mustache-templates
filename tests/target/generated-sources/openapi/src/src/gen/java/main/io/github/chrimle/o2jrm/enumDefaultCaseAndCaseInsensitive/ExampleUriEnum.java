@@ -23,6 +23,9 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.IOException;
 import com.google.gson.JsonElement;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 
 import java.net.URI;
 
@@ -78,5 +81,20 @@ public enum ExampleUriEnum {
   public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
     final URI value = URI.create(jsonElement.getAsString());
     ExampleUriEnum.fromValue(value);
+  }
+
+  public static class Adapter extends TypeAdapter<ExampleUriEnum> {
+
+    @Override
+    public void write(final JsonWriter jsonWriter, final ExampleUriEnum enumeration)
+        throws IOException {
+      jsonWriter.value(enumeration.getValue().toASCIIString());
+    }
+
+    @Override
+    public ExampleUriEnum read(final JsonReader jsonReader) throws IOException {
+      final URI value = URI.create(jsonReader.nextString());
+      return ExampleUriEnum.fromValue(value);
+    }
   }
 }
