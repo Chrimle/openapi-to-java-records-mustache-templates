@@ -97,6 +97,15 @@ public enum ExampleEnum {
    */
   public static class Adapter extends TypeAdapter<ExampleEnum> {
 
+    /**
+     * Writes the {@link #value} of the {@code enumeration} as a JSON-string to the {@code
+     * jsonWriter}.
+     *
+     * @param jsonWriter to write the value to.
+     * @param enumeration to write as JSON.
+     * @throws IOException if the {@code jsonWriter} fails to write the value.
+     * @throws NullPointerException if {@code jsonWriter} or {@code enumeration} is {@code null}.
+     */
     @Override
     public void write(final JsonWriter jsonWriter, final ExampleEnum enumeration)
         throws IOException {

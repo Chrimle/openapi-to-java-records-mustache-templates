@@ -144,6 +144,15 @@ public record RecordWithInnerEnums(
      */
     public static class Adapter extends TypeAdapter<ExampleInnerEnum> {
 
+      /**
+       * Writes the {@link #value} of the {@code enumeration} as a JSON-string to the {@code
+       * jsonWriter}.
+       *
+       * @param jsonWriter to write the value to.
+       * @param enumeration to write as JSON.
+       * @throws IOException if the {@code jsonWriter} fails to write the value.
+       * @throws NullPointerException if {@code jsonWriter} or {@code enumeration} is {@code null}.
+       */
       @Override
       public void write(final JsonWriter jsonWriter, final ExampleInnerEnum enumeration)
           throws IOException {
@@ -152,7 +161,7 @@ public record RecordWithInnerEnums(
 
       @Override
       public ExampleInnerEnum read(final JsonReader jsonReader) throws IOException {
-        final String value =  jsonReader.nextString();
+        final String value = jsonReader.nextString();
         return ExampleInnerEnum.fromValue(value);
       }
     }
@@ -222,6 +231,15 @@ public record RecordWithInnerEnums(
      */
     public static class Adapter extends TypeAdapter<ExampleInnerTwoEnum> {
 
+      /**
+       * Writes the {@link #value} of the {@code enumeration} as a JSON-string to the {@code
+       * jsonWriter}.
+       *
+       * @param jsonWriter to write the value to.
+       * @param enumeration to write as JSON.
+       * @throws IOException if the {@code jsonWriter} fails to write the value.
+       * @throws NullPointerException if {@code jsonWriter} or {@code enumeration} is {@code null}.
+       */
       @Override
       public void write(final JsonWriter jsonWriter, final ExampleInnerTwoEnum enumeration)
           throws IOException {
@@ -230,7 +248,7 @@ public record RecordWithInnerEnums(
 
       @Override
       public ExampleInnerTwoEnum read(final JsonReader jsonReader) throws IOException {
-        final Integer value =  jsonReader.nextInt();
+        final Integer value = jsonReader.nextInt();
         return ExampleInnerTwoEnum.fromValue(value);
       }
     }
@@ -299,6 +317,15 @@ public record RecordWithInnerEnums(
      */
     public static class Adapter extends TypeAdapter<ExampleInnerThreeEnum> {
 
+      /**
+       * Writes the {@link #value} of the {@code enumeration} as a JSON-string to the {@code
+       * jsonWriter}.
+       *
+       * @param jsonWriter to write the value to.
+       * @param enumeration to write as JSON.
+       * @throws IOException if the {@code jsonWriter} fails to write the value.
+       * @throws NullPointerException if {@code jsonWriter} or {@code enumeration} is {@code null}.
+       */
       @Override
       public void write(final JsonWriter jsonWriter, final ExampleInnerThreeEnum enumeration)
           throws IOException {
@@ -307,7 +334,7 @@ public record RecordWithInnerEnums(
 
       @Override
       public ExampleInnerThreeEnum read(final JsonReader jsonReader) throws IOException {
-        final URI value =  URI.create(jsonReader.nextString());
+        final URI value = URI.create(jsonReader.nextString());
         return ExampleInnerThreeEnum.fromValue(value);
       }
     }
