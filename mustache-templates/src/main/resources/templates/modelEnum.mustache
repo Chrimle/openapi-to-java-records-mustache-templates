@@ -114,6 +114,15 @@ import com.google.gson.stream.JsonWriter;
    */
   public static class Adapter extends TypeAdapter<{{{datatypeWithEnum}}}{{^datatypeWithEnum}}{{{classname}}}{{/datatypeWithEnum}}> {
 
+    /**
+     * Writes the {@link #value} of the {@code enumeration} as a JSON-string to the {@code
+     * jsonWriter}.
+     *
+     * @param jsonWriter to write the value to.
+     * @param enumeration to write as JSON.
+     * @throws IOException if the {@code jsonWriter} fails to write the value.
+     * @throws NullPointerException if {@code jsonWriter} or {@code enumeration} is {@code null}.
+     */
     @Override
     public void write(final JsonWriter jsonWriter, final {{{datatypeWithEnum}}}{{^datatypeWithEnum}}{{{classname}}}{{/datatypeWithEnum}} enumeration)
         throws IOException {
@@ -122,7 +131,7 @@ import com.google.gson.stream.JsonWriter;
 
     @Override
     public {{{datatypeWithEnum}}}{{^datatypeWithEnum}}{{{classname}}}{{/datatypeWithEnum}} read(final JsonReader jsonReader) throws IOException {
-      final {{^isNumber}}{{{dataType}}}{{/isNumber}}{{#isNumber}}String{{/isNumber}} value = {{#isFloat}}(float){{/isFloat}}{{#isUri}}URI.create({{/isUri}}jsonReader.{{#isNumber}}nextString(){{/isNumber}}{{#isInteger}}nextInt(){{/isInteger}}{{#isUri}}nextString()){{/isUri}}{{^isNumber}}{{^isInteger}}{{^isUri}}{{#isFloat}}nextDouble{{/isFloat}}{{^isFloat}}next{{{dataType}}}{{/isFloat}}(){{/isUri}}{{/isInteger}}{{/isNumber}};
+      final {{^isNumber}}{{{dataType}}}{{/isNumber}}{{#isNumber}}String{{/isNumber}} value = {{#isFloat}}(float) {{/isFloat}}{{#isUri}}URI.create({{/isUri}}jsonReader.{{#isNumber}}nextString(){{/isNumber}}{{#isInteger}}nextInt(){{/isInteger}}{{#isUri}}nextString()){{/isUri}}{{^isNumber}}{{^isInteger}}{{^isUri}}{{#isFloat}}nextDouble{{/isFloat}}{{^isFloat}}next{{{dataType}}}{{/isFloat}}(){{/isUri}}{{/isInteger}}{{/isNumber}};
       return {{{datatypeWithEnum}}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}}.fromValue({{#isNumber}}new BigDecimal({{/isNumber}}value{{#isNumber}}){{/isNumber}});
     }
   }
