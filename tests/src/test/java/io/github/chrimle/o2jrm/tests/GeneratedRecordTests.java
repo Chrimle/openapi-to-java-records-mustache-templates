@@ -16,8 +16,10 @@
 */
 package io.github.chrimle.o2jrm.tests;
 
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
+import com.google.gson.*;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.github.chrimle.o2jrm.GeneratedSource;
 import io.github.chrimle.o2jrm.annotations.*;
 import io.github.chrimle.o2jrm.models.GeneratedField;
@@ -38,17 +40,15 @@ import io.github.chrimle.o2jrm.tests.GeneratedRecordTests.OpenAPITests.SchemaTes
 import io.github.chrimle.o2jrm.utils.AssertionUtils;
 import io.github.chrimle.o2jrm.utils.CustomAssertions;
 import io.github.chrimle.o2jrm.utils.GeneratedRecordTestUtils;
-import java.io.Serializable;
+import java.io.*;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.math.BigDecimal;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.stream.Collectors;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Assumptions;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
@@ -785,6 +785,367 @@ final class GeneratedRecordTests implements GeneratedClassTests {
               } else {
                 CustomAssertions.assertStaticMethodCanBeInvoked(
                     validateJsonElementMethod, jsonObject);
+              }
+            }
+          }
+        }
+
+        @Nested
+        @DisplayName("Testing Generating `CustomTypeAdapterFactory`-class")
+        class CustomTypeAdapterFactoryTests {
+
+          @ParameterizedTest
+          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+          @DisplayName(
+              "When `library` is NOT `okhttp-gson` Then inner-class `CustomTypeAdapterFactory` is NOT generated")
+          void whenLibraryIsNotOkHttpGsonThenInnerClassCustomTypeAdapterFactoryIsNotGenerated(
+              final GeneratedSource generatedSource) {
+            Assumptions.assumeFalse(generatedSource.isLibraryOkHttpGson());
+
+            CustomAssertions.assertClassDoesNotHaveInnerClass(
+                generatedSource.getClassUnderTest(), "CustomTypeAdapterFactory");
+          }
+
+          @ParameterizedTest
+          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+          @DisplayName(
+              "When `library` IS `okhttp-gson` Then inner-class `CustomTypeAdapterFactory` IS generated")
+          void whenLibraryIsOkHttpGsonThenInnerClassCustomTypeAdapterFactoryIsGenerated(
+              final GeneratedSource generatedSource) {
+            Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+
+            CustomAssertions.assertClassHasInnerClass(
+                generatedSource.getClassUnderTest(), "CustomTypeAdapterFactory");
+          }
+
+          @ParameterizedTest
+          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+          @DisplayName(
+              "`CustomTypeAdapterFactory`-class `implements` the `TypeAdapterFactory`-interface")
+          void customTypeAdapterFactoryClassImplementsTheTypeAdapterFactoryInterface(
+              final GeneratedSource generatedSource) {
+            Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+
+            CustomAssertions.assertClassImplementsInterface(
+                CustomAssertions.assertClassHasInnerClass(
+                    generatedSource.getClassUnderTest(), "CustomTypeAdapterFactory"),
+                TypeAdapterFactory.class);
+          }
+
+          @Nested
+          @DisplayName("Testing the `create(Gson, TypeToken<T>)` method")
+          class CreateMethodTests {
+
+            @ParameterizedTest
+            @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+            @DisplayName("`create(Gson, TypeToken<T>)` method is generated")
+            void createMethodIsGenerated(final GeneratedSource generatedSource) {
+              Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+
+              CustomAssertions.assertClassHasMethod(
+                  CustomAssertions.assertClassHasInnerClass(
+                      generatedSource.getClassUnderTest(), "CustomTypeAdapterFactory"),
+                  "create",
+                  Gson.class,
+                  TypeToken.class);
+            }
+
+            @ParameterizedTest
+            @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+            @DisplayName(
+                "`create(Gson, TypeToken<T>)` throws `NullPointerException` when `gson` is `null`")
+            void createMethodThrowsNullPointerExceptionWhenGsonIsNull(
+                final GeneratedSource generatedSource) {
+              Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+
+              final Class<?> customTypeAdapterFactory =
+                  CustomAssertions.assertClassHasInnerClass(
+                      generatedSource.getClassUnderTest(), "CustomTypeAdapterFactory");
+              final Method method =
+                  CustomAssertions.assertClassHasMethod(
+                      customTypeAdapterFactory, "create", Gson.class, TypeToken.class);
+              final Object object =
+                  CustomAssertions.assertConstructorCanInstantiateObject(
+                      CustomAssertions.assertClassHasConstructor(customTypeAdapterFactory));
+              CustomAssertions.assertInstanceMethodThrowsWhenInvoked(
+                  method,
+                  NullPointerException.class,
+                  object,
+                  (Gson) null,
+                  TypeToken.get(generatedSource.getClassUnderTest()));
+            }
+
+            @ParameterizedTest
+            @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+            @DisplayName(
+                "`create(Gson, TypeToken<T>)` throws `NullPointerException` when `typeToken` is `null`")
+            void createMethodThrowsNullPointerExceptionWhenTypeTokenIsNull(
+                final GeneratedSource generatedSource) {
+              Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+
+              final Class<?> customTypeAdapterFactory =
+                  CustomAssertions.assertClassHasInnerClass(
+                      generatedSource.getClassUnderTest(), "CustomTypeAdapterFactory");
+              final Method method =
+                  CustomAssertions.assertClassHasMethod(
+                      customTypeAdapterFactory, "create", Gson.class, TypeToken.class);
+              final Object object =
+                  CustomAssertions.assertConstructorCanInstantiateObject(
+                      CustomAssertions.assertClassHasConstructor(customTypeAdapterFactory));
+              CustomAssertions.assertInstanceMethodThrowsWhenInvoked(
+                  method, NullPointerException.class, object, new Gson(), (TypeToken) null);
+            }
+
+            @ParameterizedTest
+            @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+            @DisplayName(
+                "`create(Gson, TypeToken<T>)` returns `null` when `typeToken` is NOT the parent class")
+            void createMethodReturnsNullWhenTypeTokenIsNotTheParentClass(
+                final GeneratedSource generatedSource) {
+              Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+
+              final Class<?> customTypeAdapterFactory =
+                  CustomAssertions.assertClassHasInnerClass(
+                      generatedSource.getClassUnderTest(), "CustomTypeAdapterFactory");
+              final Method method =
+                  CustomAssertions.assertClassHasMethod(
+                      customTypeAdapterFactory, "create", Gson.class, TypeToken.class);
+              final Object object =
+                  CustomAssertions.assertConstructorCanInstantiateObject(
+                      CustomAssertions.assertClassHasConstructor(customTypeAdapterFactory));
+              CustomAssertions.assertInstanceMethodReturnsNull(
+                  method, object, new Gson(), TypeToken.get(Object.class));
+            }
+
+            @ParameterizedTest
+            @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+            @DisplayName(
+                "`create(Gson, TypeToken<T>)` returns non-null `TypeAdapter` when `typeToken` IS the parent class")
+            void createMethodReturnsNonNullTypeAdapterWhenTypeTokenIsTheParentClass(
+                final GeneratedSource generatedSource) {
+              Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+
+              final Class<?> customTypeAdapterFactory =
+                  CustomAssertions.assertClassHasInnerClass(
+                      generatedSource.getClassUnderTest(), "CustomTypeAdapterFactory");
+              final Method method =
+                  CustomAssertions.assertClassHasMethod(
+                      customTypeAdapterFactory, "create", Gson.class, TypeToken.class);
+              final Object object =
+                  CustomAssertions.assertConstructorCanInstantiateObject(
+                      CustomAssertions.assertClassHasConstructor(customTypeAdapterFactory));
+              CustomAssertions.assertInstanceMethodReturnsNonNull(
+                  method, object, new Gson(), TypeToken.get(generatedSource.getClassUnderTest()));
+            }
+
+            @Nested
+            @DisplayName("Testing the returned `TypeAdapter` object")
+            class TypeAdapterTests {
+
+              @ParameterizedTest
+              @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+              @DisplayName("`create(Gson, TypeToken<T>)` returns `NullSafeTypeAdapter`")
+              void createMethodReturnsNullSafeTypeAdapter(final GeneratedSource generatedSource) {
+                Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+
+                final Class<?> customTypeAdapterFactory =
+                    CustomAssertions.assertClassHasInnerClass(
+                        generatedSource.getClassUnderTest(), "CustomTypeAdapterFactory");
+                final Method method =
+                    CustomAssertions.assertClassHasMethod(
+                        customTypeAdapterFactory, "create", Gson.class, TypeToken.class);
+                final Object object =
+                    CustomAssertions.assertConstructorCanInstantiateObject(
+                        CustomAssertions.assertClassHasConstructor(customTypeAdapterFactory));
+                final Object returnedObject =
+                    CustomAssertions.assertInstanceMethodReturnsNonNull(
+                        method,
+                        object,
+                        new Gson(),
+                        TypeToken.get(generatedSource.getClassUnderTest()));
+                Assertions.assertEquals(
+                    "com.google.gson.TypeAdapter$NullSafeTypeAdapter",
+                    returnedObject.getClass().getName());
+              }
+
+              @Nested
+              @DisplayName("Testing the `write(JsonWriter, T)`-method")
+              class writeMethodTests {
+
+                @ParameterizedTest
+                @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+                @DisplayName("when `JsonWriter` is `null` Then `NullPointerException` is thrown")
+                void whenJsonWriterIsNullThenNullPointerExceptionIsThrown(
+                    final GeneratedSource generatedSource) {
+                  Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+
+                  final Class<?> customTypeAdapterFactory =
+                      CustomAssertions.assertClassHasInnerClass(
+                          generatedSource.getClassUnderTest(), "CustomTypeAdapterFactory");
+                  final Method method =
+                      CustomAssertions.assertClassHasMethod(
+                          customTypeAdapterFactory, "create", Gson.class, TypeToken.class);
+                  final Object object =
+                      CustomAssertions.assertConstructorCanInstantiateObject(
+                          CustomAssertions.assertClassHasConstructor(customTypeAdapterFactory));
+                  final Object typeAdapterObject =
+                      CustomAssertions.assertInstanceMethodReturnsNonNull(
+                          method,
+                          object,
+                          new Gson(),
+                          TypeToken.get(generatedSource.getClassUnderTest()));
+                  final Method writeMethod =
+                      CustomAssertions.assertClassHasMethod(
+                          typeAdapterObject.getClass(), "write", JsonWriter.class, Object.class);
+                  writeMethod.setAccessible(true);
+                  CustomAssertions.assertInstanceMethodThrowsWhenInvoked(
+                      writeMethod,
+                      NullPointerException.class,
+                      typeAdapterObject,
+                      (JsonWriter) null,
+                      GeneratedRecordTestUtils
+                          .assertInstantiatingRecordWithValuesSetsFieldsToProvidedValue(
+                              generatedSource));
+                }
+
+                @ParameterizedTest
+                @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+                @DisplayName("when `JsonWriter` is NOT `null` Then nothing is thrown")
+                void whenJsonWriterIsNotNullThenNothingIsThrown(
+                    final GeneratedSource generatedSource) {
+                  Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+
+                  final Class<?> customTypeAdapterFactory =
+                      CustomAssertions.assertClassHasInnerClass(
+                          generatedSource.getClassUnderTest(), "CustomTypeAdapterFactory");
+                  final Method method =
+                      CustomAssertions.assertClassHasMethod(
+                          customTypeAdapterFactory, "create", Gson.class, TypeToken.class);
+                  final Object object =
+                      CustomAssertions.assertConstructorCanInstantiateObject(
+                          CustomAssertions.assertClassHasConstructor(customTypeAdapterFactory));
+                  final Object typeAdapterObject =
+                      CustomAssertions.assertInstanceMethodReturnsNonNull(
+                          method,
+                          object,
+                          new Gson(),
+                          TypeToken.get(generatedSource.getClassUnderTest()));
+                  final Method writeMethod =
+                      CustomAssertions.assertClassHasMethod(
+                          typeAdapterObject.getClass(), "write", JsonWriter.class, Object.class);
+                  writeMethod.setAccessible(true);
+                  CustomAssertions.assertInstanceMethodCanBeInvoked(
+                      writeMethod,
+                      typeAdapterObject,
+                      new JsonWriter(
+                          new OutputStreamWriter(
+                              OutputStream.nullOutputStream(), StandardCharsets.UTF_8)),
+                      GeneratedRecordTestUtils
+                          .assertInstantiatingRecordWithValuesSetsFieldsToProvidedValue(
+                              generatedSource));
+                }
+              }
+
+              @Nested
+              @DisplayName("Testing the `read(JsonReader)`-method")
+              class ReadMethodTests {
+
+                @ParameterizedTest
+                @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+                @DisplayName("when `jsonReader` is `null` Then `NullPointerException` is thrown")
+                void whenJsonReaderIsNullThenNullPointerExceptionIsThrown(
+                    final GeneratedSource generatedSource) {
+                  Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+
+                  final Class<?> customTypeAdapterFactory =
+                      CustomAssertions.assertClassHasInnerClass(
+                          generatedSource.getClassUnderTest(), "CustomTypeAdapterFactory");
+                  final Method method =
+                      CustomAssertions.assertClassHasMethod(
+                          customTypeAdapterFactory, "create", Gson.class, TypeToken.class);
+                  final Object object =
+                      CustomAssertions.assertConstructorCanInstantiateObject(
+                          CustomAssertions.assertClassHasConstructor(customTypeAdapterFactory));
+                  final Object typeAdapterObject =
+                      CustomAssertions.assertInstanceMethodReturnsNonNull(
+                          method,
+                          object,
+                          new Gson(),
+                          TypeToken.get(generatedSource.getClassUnderTest()));
+                  final Method readMethod =
+                      CustomAssertions.assertClassHasMethod(
+                          typeAdapterObject.getClass(), "read", JsonReader.class);
+                  readMethod.setAccessible(true);
+                  CustomAssertions.assertInstanceMethodThrowsWhenInvoked(
+                      readMethod, NullPointerException.class, typeAdapterObject, (JsonReader) null);
+                }
+
+                @ParameterizedTest
+                @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+                @DisplayName("when `jsonReader` is `nullInputStream` Then `EOFException` is thrown")
+                void whenJsonReaderIsNullInputStreamThenEOFExceptionIsThrown(
+                    final GeneratedSource generatedSource) {
+                  Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+
+                  final Class<?> customTypeAdapterFactory =
+                      CustomAssertions.assertClassHasInnerClass(
+                          generatedSource.getClassUnderTest(), "CustomTypeAdapterFactory");
+                  final Method method =
+                      CustomAssertions.assertClassHasMethod(
+                          customTypeAdapterFactory, "create", Gson.class, TypeToken.class);
+                  final Object object =
+                      CustomAssertions.assertConstructorCanInstantiateObject(
+                          CustomAssertions.assertClassHasConstructor(customTypeAdapterFactory));
+                  final Object typeAdapterObject =
+                      CustomAssertions.assertInstanceMethodReturnsNonNull(
+                          method,
+                          object,
+                          new Gson(),
+                          TypeToken.get(generatedSource.getClassUnderTest()));
+                  final Method readMethod =
+                      CustomAssertions.assertClassHasMethod(
+                          typeAdapterObject.getClass(), "read", JsonReader.class);
+                  readMethod.setAccessible(true);
+                  CustomAssertions.assertInstanceMethodThrowsWhenInvoked(
+                      readMethod,
+                      EOFException.class,
+                      typeAdapterObject,
+                      new JsonReader(
+                          new InputStreamReader(
+                              InputStream.nullInputStream(), StandardCharsets.UTF_8)));
+                }
+
+                @ParameterizedTest
+                @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+                @DisplayName("when `jsonReader` is valid Then nothing is thrown")
+                void whenJsonReaderIsValidThenNothingIsThrown(
+                    final GeneratedSource generatedSource) {
+                  Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+
+                  final Class<?> customTypeAdapterFactory =
+                      CustomAssertions.assertClassHasInnerClass(
+                          generatedSource.getClassUnderTest(), "CustomTypeAdapterFactory");
+                  final Method method =
+                      CustomAssertions.assertClassHasMethod(
+                          customTypeAdapterFactory, "create", Gson.class, TypeToken.class);
+                  final Object object =
+                      CustomAssertions.assertConstructorCanInstantiateObject(
+                          CustomAssertions.assertClassHasConstructor(customTypeAdapterFactory));
+                  final Object typeAdapterObject =
+                      CustomAssertions.assertInstanceMethodReturnsNonNull(
+                          method,
+                          object,
+                          new Gson(),
+                          TypeToken.get(generatedSource.getClassUnderTest()));
+                  final Method readMethod =
+                      CustomAssertions.assertClassHasMethod(
+                          typeAdapterObject.getClass(), "read", JsonReader.class);
+                  readMethod.setAccessible(true);
+                  CustomAssertions.assertInstanceMethodCanBeInvoked(
+                      readMethod,
+                      typeAdapterObject,
+                      new JsonReader(new StringReader(generatedSource.getClassAsJsonString())));
+                }
               }
             }
           }

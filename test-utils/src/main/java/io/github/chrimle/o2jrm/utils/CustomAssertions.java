@@ -126,14 +126,17 @@ public final class CustomAssertions extends CustomUtilityAssertions {
    *
    * @param aClass to be asserted.
    * @param innerClassName of the inner class which the {@code aClass} is expected to have.
-   * @since 2.5.3
+   * @return the inner {@link Class} named {@code innerClassName}.
+   * @since 2.9.0
    */
-  public static void assertClassHasInnerClass(final Class<?> aClass, final String innerClassName) {
-    Assertions.assertTrue(
+  public static Class<?> assertClassHasInnerClass(
+      final Class<?> aClass, final String innerClassName) {
+    return assertNotNull(
         () ->
             Arrays.stream(aClass.getClasses())
-                .map(Class::getSimpleName)
-                .anyMatch(innerClassName::equals),
+                .filter(innerClass -> innerClass.getSimpleName().equals(innerClassName))
+                .findFirst()
+                .orElse(null),
         () -> aClass.getCanonicalName() + " does NOT have inner class " + innerClassName);
   }
 
@@ -331,6 +334,34 @@ public final class CustomAssertions extends CustomUtilityAssertions {
   }
 
   /**
+   * Asserts that the <b>instance</b> {@code method} throws the {@code expectedException} when
+   * invoked with the {@code methodArguments}.
+   *
+   * @param method to assert.
+   * @param expectedException to be thrown.
+   * @param object to invoke the {@code method} on.
+   * @param methodArguments to invoke the {@code method} with.
+   * @since 2.9.0
+   */
+  public static void assertInstanceMethodThrowsWhenInvoked(
+      final Method method,
+      final Class<? extends Throwable> expectedException,
+      final Object object,
+      final Object... methodArguments) {
+    Assertions.assertInstanceOf(
+        expectedException,
+        Assertions.assertThrows(
+                InvocationTargetException.class, () -> method.invoke(object, methodArguments))
+            .getCause(),
+        () ->
+            method
+                + " did NOT throw "
+                + expectedException.getCanonicalName()
+                + " when invoked with arguments "
+                + Arrays.toString(methodArguments));
+  }
+
+  /**
    * Asserts that the <b>instance</b> {@code method} returns a non-{@code null} value when invoked
    * with the {@code methodArguments}.
    *
@@ -345,6 +376,19 @@ public final class CustomAssertions extends CustomUtilityAssertions {
     return assertNotNull(
         () -> assertInstanceMethodCanBeInvoked(method, object, methodArguments),
         () -> method + " returned null when invoked with " + Arrays.toString(methodArguments));
+  }
+
+  /**
+   * Asserts that the <b>instance</b> {@code method} returns {@code null} when invoked on the {@code
+   * object} with the {@code methodArguments}.
+   *
+   * @param method to be asserted.
+   * @param object to invoke the {@code method} on.
+   * @param methodArguments to invoke the {@code method} with.
+   */
+  public static void assertInstanceMethodReturnsNull(
+      final Method method, final Object object, final Object... methodArguments) {
+    assertInstanceMethodReturnsValue(method, null, object, methodArguments);
   }
 
   /**

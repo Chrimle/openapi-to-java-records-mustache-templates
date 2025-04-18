@@ -12,7 +12,7 @@
  * openapi-to-java-records-mustache-templates. For further information,
  * questions, requesting features or reporting issues, please visit:
  * https://github.com/Chrimle/openapi-to-java-records-mustache-templates.
- * Generated with Version: 2.8.2
+ * Generated with Version: 2.9.0
  *
  */
 
@@ -23,6 +23,9 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.IOException;
 import com.google.gson.JsonElement;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 
 import java.net.URI;
 
@@ -80,5 +83,44 @@ public enum ExampleUriEnum {
   public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
     final URI value = URI.create(jsonElement.getAsString());
     ExampleUriEnum.fromValue(value);
+  }
+
+  /**
+   * Converts {@link ExampleUriEnum } objects to and from JSON.
+   *
+   * @see com.google.gson.TypeAdapter
+   */
+  public static class Adapter extends TypeAdapter<ExampleUriEnum> {
+
+    /**
+     * Writes the {@link #value} of the {@code enumeration} as a JSON-string to the {@code
+     * jsonWriter}.
+     *
+     * @param jsonWriter to write the value to.
+     * @param enumeration to write as JSON.
+     * @throws IOException if the {@code jsonWriter} fails to write the value.
+     * @throws NullPointerException if {@code jsonWriter} or {@code enumeration} is {@code null}.
+     */
+    @Override
+    public void write(final JsonWriter jsonWriter, final ExampleUriEnum enumeration)
+        throws IOException {
+      jsonWriter.value(enumeration.getValue().toASCIIString());
+    }
+
+    /**
+     * Reads the <i>next</i> JSON-value from the {@code jsonReader} and converts it to a
+     * {@link ExampleUriEnum }.
+     *
+     * @param jsonReader to read the JSON-string from.
+     * @return a {@link ExampleUriEnum }.
+     * @throws IOException if the {@code jsonReader} fails to read a value.
+     * @throws NullPointerException if {@code jsonReader} is {@code null}.
+     * @see #fromValue
+     */
+    @Override
+    public ExampleUriEnum read(final JsonReader jsonReader) throws IOException {
+      final URI value = URI.create(jsonReader.nextString());
+      return ExampleUriEnum.fromValue(value);
+    }
   }
 }

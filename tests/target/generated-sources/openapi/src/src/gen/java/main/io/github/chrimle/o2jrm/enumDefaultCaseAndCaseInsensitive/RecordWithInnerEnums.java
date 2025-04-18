@@ -12,7 +12,7 @@
  * openapi-to-java-records-mustache-templates. For further information,
  * questions, requesting features or reporting issues, please visit:
  * https://github.com/Chrimle/openapi-to-java-records-mustache-templates.
- * Generated with Version: 2.8.2
+ * Generated with Version: 2.9.0
  *
  */
 
@@ -28,9 +28,12 @@ import java.io.IOException;
 import java.net.URI;
 import java.util.Arrays;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -131,6 +134,45 @@ public record RecordWithInnerEnums(
       final String value = jsonElement.getAsString();
       ExampleInnerEnum.fromValue(value);
     }
+
+    /**
+     * Converts {@link ExampleInnerEnum } objects to and from JSON.
+     *
+     * @see com.google.gson.TypeAdapter
+     */
+    public static class Adapter extends TypeAdapter<ExampleInnerEnum> {
+
+      /**
+       * Writes the {@link #value} of the {@code enumeration} as a JSON-string to the {@code
+       * jsonWriter}.
+       *
+       * @param jsonWriter to write the value to.
+       * @param enumeration to write as JSON.
+       * @throws IOException if the {@code jsonWriter} fails to write the value.
+       * @throws NullPointerException if {@code jsonWriter} or {@code enumeration} is {@code null}.
+       */
+      @Override
+      public void write(final JsonWriter jsonWriter, final ExampleInnerEnum enumeration)
+          throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      /**
+       * Reads the <i>next</i> JSON-value from the {@code jsonReader} and converts it to a
+       * {@link ExampleInnerEnum }.
+       *
+       * @param jsonReader to read the JSON-string from.
+       * @return a {@link ExampleInnerEnum }.
+       * @throws IOException if the {@code jsonReader} fails to read a value.
+       * @throws NullPointerException if {@code jsonReader} is {@code null}.
+       * @see #fromValue
+       */
+      @Override
+      public ExampleInnerEnum read(final JsonReader jsonReader) throws IOException {
+        final String value = jsonReader.nextString();
+        return ExampleInnerEnum.fromValue(value);
+      }
+    }
   }
 
   /**
@@ -187,6 +229,45 @@ public record RecordWithInnerEnums(
       final Integer value = jsonElement.getAsInt();
       ExampleInnerTwoEnum.fromValue(value);
     }
+
+    /**
+     * Converts {@link ExampleInnerTwoEnum } objects to and from JSON.
+     *
+     * @see com.google.gson.TypeAdapter
+     */
+    public static class Adapter extends TypeAdapter<ExampleInnerTwoEnum> {
+
+      /**
+       * Writes the {@link #value} of the {@code enumeration} as a JSON-string to the {@code
+       * jsonWriter}.
+       *
+       * @param jsonWriter to write the value to.
+       * @param enumeration to write as JSON.
+       * @throws IOException if the {@code jsonWriter} fails to write the value.
+       * @throws NullPointerException if {@code jsonWriter} or {@code enumeration} is {@code null}.
+       */
+      @Override
+      public void write(final JsonWriter jsonWriter, final ExampleInnerTwoEnum enumeration)
+          throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      /**
+       * Reads the <i>next</i> JSON-value from the {@code jsonReader} and converts it to a
+       * {@link ExampleInnerTwoEnum }.
+       *
+       * @param jsonReader to read the JSON-string from.
+       * @return a {@link ExampleInnerTwoEnum }.
+       * @throws IOException if the {@code jsonReader} fails to read a value.
+       * @throws NullPointerException if {@code jsonReader} is {@code null}.
+       * @see #fromValue
+       */
+      @Override
+      public ExampleInnerTwoEnum read(final JsonReader jsonReader) throws IOException {
+        final Integer value = jsonReader.nextInt();
+        return ExampleInnerTwoEnum.fromValue(value);
+      }
+    }
   }
 
   /**
@@ -242,6 +323,45 @@ public record RecordWithInnerEnums(
       final URI value = URI.create(jsonElement.getAsString());
       ExampleInnerThreeEnum.fromValue(value);
     }
+
+    /**
+     * Converts {@link ExampleInnerThreeEnum } objects to and from JSON.
+     *
+     * @see com.google.gson.TypeAdapter
+     */
+    public static class Adapter extends TypeAdapter<ExampleInnerThreeEnum> {
+
+      /**
+       * Writes the {@link #value} of the {@code enumeration} as a JSON-string to the {@code
+       * jsonWriter}.
+       *
+       * @param jsonWriter to write the value to.
+       * @param enumeration to write as JSON.
+       * @throws IOException if the {@code jsonWriter} fails to write the value.
+       * @throws NullPointerException if {@code jsonWriter} or {@code enumeration} is {@code null}.
+       */
+      @Override
+      public void write(final JsonWriter jsonWriter, final ExampleInnerThreeEnum enumeration)
+          throws IOException {
+        jsonWriter.value(enumeration.getValue().toASCIIString());
+      }
+
+      /**
+       * Reads the <i>next</i> JSON-value from the {@code jsonReader} and converts it to a
+       * {@link ExampleInnerThreeEnum }.
+       *
+       * @param jsonReader to read the JSON-string from.
+       * @return a {@link ExampleInnerThreeEnum }.
+       * @throws IOException if the {@code jsonReader} fails to read a value.
+       * @throws NullPointerException if {@code jsonReader} is {@code null}.
+       * @see #fromValue
+       */
+      @Override
+      public ExampleInnerThreeEnum read(final JsonReader jsonReader) throws IOException {
+        final URI value = URI.create(jsonReader.nextString());
+        return ExampleInnerThreeEnum.fromValue(value);
+      }
+    }
   }
 
   /**
@@ -275,6 +395,51 @@ public record RecordWithInnerEnums(
     if (jsonObj.get("exampleInnerThree") != null
         && !jsonObj.get("exampleInnerThree").isJsonNull()) { 
       ExampleInnerThreeEnum.validateJsonElement(jsonObj.get("exampleInnerThree"));
+    }
+  }
+
+  /**
+   * Creates {@link TypeAdapter}s for {@link RecordWithInnerEnums }s and other
+   * <i>assignable</i> types.
+   */
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+
+    /**
+     * {@inheritDoc}
+     *
+     * @param gson to create the {@link TypeAdapter} from.
+     * @param type to <i>serialize</i>/<i>deserialize</i>.
+     * @return an (<i>anonymous</i>) instance of {@link TypeAdapter<RecordWithInnerEnums>}, or
+     *     {@code null} if {@code T} is not <i>assignable</i> to {@link RecordWithInnerEnums }.
+     * @param <T> class to <i>serialize</i>/<i>deserialize</i>.
+     */
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(final Gson gson, final TypeToken<T> type) {
+      if (!RecordWithInnerEnums.class.isAssignableFrom(type.getRawType())) {
+        return null;
+      }
+      final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+      final TypeAdapter<RecordWithInnerEnums> thisAdapter =
+          gson.getDelegateAdapter(this, TypeToken.get(RecordWithInnerEnums.class));
+
+      return (TypeAdapter<T>)
+          new TypeAdapter<RecordWithInnerEnums>() {
+
+            @Override
+            public void write(final JsonWriter out, final RecordWithInnerEnums value)
+                throws IOException {
+              final JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+              elementAdapter.write(out, obj);
+            }
+
+            @Override
+            public RecordWithInnerEnums read(final JsonReader in) throws IOException {
+              final JsonElement jsonElement = elementAdapter.read(in);
+              validateJsonElement(jsonElement);
+              return thisAdapter.fromJsonTree(jsonElement);
+            }
+          }.nullSafe();
     }
   }
 }

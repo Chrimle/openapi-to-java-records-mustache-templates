@@ -12,7 +12,7 @@
  * openapi-to-java-records-mustache-templates. For further information,
  * questions, requesting features or reporting issues, please visit:
  * https://github.com/Chrimle/openapi-to-java-records-mustache-templates.
- * Generated with Version: 2.8.2
+ * Generated with Version: 2.9.0
  *
  */
 
@@ -24,6 +24,9 @@ import java.io.Serializable;
 
 import java.io.IOException;
 import com.google.gson.JsonElement;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 
 /**
  * Example of an Enum
@@ -86,5 +89,44 @@ public enum ExampleNullableEnum {
   public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
     final String value = jsonElement.getAsString();
     ExampleNullableEnum.fromValue(value);
+  }
+
+  /**
+   * Converts {@link ExampleNullableEnum } objects to and from JSON.
+   *
+   * @see com.google.gson.TypeAdapter
+   */
+  public static class Adapter extends TypeAdapter<ExampleNullableEnum> {
+
+    /**
+     * Writes the {@link #value} of the {@code enumeration} as a JSON-string to the {@code
+     * jsonWriter}.
+     *
+     * @param jsonWriter to write the value to.
+     * @param enumeration to write as JSON.
+     * @throws IOException if the {@code jsonWriter} fails to write the value.
+     * @throws NullPointerException if {@code jsonWriter} or {@code enumeration} is {@code null}.
+     */
+    @Override
+    public void write(final JsonWriter jsonWriter, final ExampleNullableEnum enumeration)
+        throws IOException {
+      jsonWriter.value(enumeration.getValue());
+    }
+
+    /**
+     * Reads the <i>next</i> JSON-value from the {@code jsonReader} and converts it to a
+     * {@link ExampleNullableEnum }.
+     *
+     * @param jsonReader to read the JSON-string from.
+     * @return a {@link ExampleNullableEnum }.
+     * @throws IOException if the {@code jsonReader} fails to read a value.
+     * @throws NullPointerException if {@code jsonReader} is {@code null}.
+     * @see #fromValue
+     */
+    @Override
+    public ExampleNullableEnum read(final JsonReader jsonReader) throws IOException {
+      final String value = jsonReader.nextString();
+      return ExampleNullableEnum.fromValue(value);
+    }
   }
 }

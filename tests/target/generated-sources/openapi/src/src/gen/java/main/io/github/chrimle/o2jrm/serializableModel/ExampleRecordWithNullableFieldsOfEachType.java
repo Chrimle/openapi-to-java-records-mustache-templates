@@ -12,7 +12,7 @@
  * openapi-to-java-records-mustache-templates. For further information,
  * questions, requesting features or reporting issues, please visit:
  * https://github.com/Chrimle/openapi-to-java-records-mustache-templates.
- * Generated with Version: 2.8.2
+ * Generated with Version: 2.9.0
  *
  */
 
@@ -36,9 +36,12 @@ import java.util.Set;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.io.Serializable;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -193,6 +196,51 @@ public record ExampleRecordWithNullableFieldsOfEachType(
     if (jsonObj.get("field8") != null
         && !jsonObj.get("field8").isJsonNull()) { 
       ExampleNullableEnum.validateJsonElement(jsonObj.get("field8"));
+    }
+  }
+
+  /**
+   * Creates {@link TypeAdapter}s for {@link ExampleRecordWithNullableFieldsOfEachType }s and other
+   * <i>assignable</i> types.
+   */
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+
+    /**
+     * {@inheritDoc}
+     *
+     * @param gson to create the {@link TypeAdapter} from.
+     * @param type to <i>serialize</i>/<i>deserialize</i>.
+     * @return an (<i>anonymous</i>) instance of {@link TypeAdapter<ExampleRecordWithNullableFieldsOfEachType>}, or
+     *     {@code null} if {@code T} is not <i>assignable</i> to {@link ExampleRecordWithNullableFieldsOfEachType }.
+     * @param <T> class to <i>serialize</i>/<i>deserialize</i>.
+     */
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(final Gson gson, final TypeToken<T> type) {
+      if (!ExampleRecordWithNullableFieldsOfEachType.class.isAssignableFrom(type.getRawType())) {
+        return null;
+      }
+      final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+      final TypeAdapter<ExampleRecordWithNullableFieldsOfEachType> thisAdapter =
+          gson.getDelegateAdapter(this, TypeToken.get(ExampleRecordWithNullableFieldsOfEachType.class));
+
+      return (TypeAdapter<T>)
+          new TypeAdapter<ExampleRecordWithNullableFieldsOfEachType>() {
+
+            @Override
+            public void write(final JsonWriter out, final ExampleRecordWithNullableFieldsOfEachType value)
+                throws IOException {
+              final JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+              elementAdapter.write(out, obj);
+            }
+
+            @Override
+            public ExampleRecordWithNullableFieldsOfEachType read(final JsonReader in) throws IOException {
+              final JsonElement jsonElement = elementAdapter.read(in);
+              validateJsonElement(jsonElement);
+              return thisAdapter.fromJsonTree(jsonElement);
+            }
+          }.nullSafe();
     }
   }
 }

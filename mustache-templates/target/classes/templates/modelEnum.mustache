@@ -15,7 +15,7 @@
 
 }}{{!
   Source: openapi-to-java-records-mustache-templates
-  Version: 2.8.2
+  Version: 2.9.0
   Type: Override
   Dependencies:
     - `additionalEnumTypeAnnotations.mustache` (Official)
@@ -33,6 +33,9 @@ import com.fasterxml.jackson.annotation.JsonValue;
 {{/jackson}}{{!
 }}{{#gson}}import java.io.IOException;
 import com.google.gson.JsonElement;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 
 {{/gson}}{{!
 }}{{#isUri}}import java.net.URI;
@@ -102,6 +105,45 @@ import com.google.gson.JsonElement;
   public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
     final {{^isNumber}}{{{dataType}}}{{/isNumber}}{{#isNumber}}String{{/isNumber}} value = {{#isUri}}URI.create({{/isUri}}jsonElement.{{#isNumber}}getAsString(){{/isNumber}}{{#isInteger}}getAsInt(){{/isInteger}}{{#isUri}}getAsString()){{/isUri}}{{^isNumber}}{{^isInteger}}{{^isUri}}getAs{{{dataType}}}(){{/isUri}}{{/isInteger}}{{/isNumber}};
     {{{datatypeWithEnum}}}{{^datatypeWithEnum}}{{{classname}}}{{/datatypeWithEnum}}.fromValue({{#isNumber}}new BigDecimal({{/isNumber}}value{{#isNumber}}){{/isNumber}});
+  }
+
+  /**
+   * Converts {@link {{{datatypeWithEnum}}}{{^datatypeWithEnum}}{{{classname}}}{{/datatypeWithEnum}} } objects to and from JSON.
+   *
+   * @see com.google.gson.TypeAdapter
+   */
+  public static class Adapter extends TypeAdapter<{{{datatypeWithEnum}}}{{^datatypeWithEnum}}{{{classname}}}{{/datatypeWithEnum}}> {
+
+    /**
+     * Writes the {@link #value} of the {@code enumeration} as a JSON-string to the {@code
+     * jsonWriter}.
+     *
+     * @param jsonWriter to write the value to.
+     * @param enumeration to write as JSON.
+     * @throws IOException if the {@code jsonWriter} fails to write the value.
+     * @throws NullPointerException if {@code jsonWriter} or {@code enumeration} is {@code null}.
+     */
+    @Override
+    public void write(final JsonWriter jsonWriter, final {{{datatypeWithEnum}}}{{^datatypeWithEnum}}{{{classname}}}{{/datatypeWithEnum}} enumeration)
+        throws IOException {
+      jsonWriter.value(enumeration.getValue(){{#isUri}}.toASCIIString(){{/isUri}});
+    }
+
+    /**
+     * Reads the <i>next</i> JSON-value from the {@code jsonReader} and converts it to a
+     * {@link {{{datatypeWithEnum}}}{{^datatypeWithEnum}}{{{classname}}}{{/datatypeWithEnum}} }.
+     *
+     * @param jsonReader to read the JSON-string from.
+     * @return a {@link {{{datatypeWithEnum}}}{{^datatypeWithEnum}}{{{classname}}}{{/datatypeWithEnum}} }.
+     * @throws IOException if the {@code jsonReader} fails to read a value.
+     * @throws NullPointerException if {@code jsonReader} is {@code null}.
+     * @see #fromValue
+     */
+    @Override
+    public {{{datatypeWithEnum}}}{{^datatypeWithEnum}}{{{classname}}}{{/datatypeWithEnum}} read(final JsonReader jsonReader) throws IOException {
+      final {{^isNumber}}{{{dataType}}}{{/isNumber}}{{#isNumber}}String{{/isNumber}} value = {{#isFloat}}(float) {{/isFloat}}{{#isUri}}URI.create({{/isUri}}jsonReader.{{#isNumber}}nextString(){{/isNumber}}{{#isInteger}}nextInt(){{/isInteger}}{{#isUri}}nextString()){{/isUri}}{{^isNumber}}{{^isInteger}}{{^isUri}}{{#isFloat}}nextDouble{{/isFloat}}{{^isFloat}}next{{{dataType}}}{{/isFloat}}(){{/isUri}}{{/isInteger}}{{/isNumber}};
+      return {{{datatypeWithEnum}}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}}.fromValue({{#isNumber}}new BigDecimal({{/isNumber}}value{{#isNumber}}){{/isNumber}});
+    }
   }
 {{/gson}}
 }

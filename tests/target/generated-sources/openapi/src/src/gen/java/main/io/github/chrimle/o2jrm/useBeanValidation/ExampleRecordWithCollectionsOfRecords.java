@@ -12,7 +12,7 @@
  * openapi-to-java-records-mustache-templates. For further information,
  * questions, requesting features or reporting issues, please visit:
  * https://github.com/Chrimle/openapi-to-java-records-mustache-templates.
- * Generated with Version: 2.8.2
+ * Generated with Version: 2.9.0
  *
  */
 
@@ -34,9 +34,12 @@ import java.util.Set;
 import jakarta.validation.constraints.*;
 import jakarta.validation.Valid;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -158,6 +161,51 @@ public record ExampleRecordWithCollectionsOfRecords(
     }
     for (final JsonElement element : jsonObj.getAsJsonArray("requiredRecordSet").asList()) {
       ExampleRecord.validateJsonElement(element);
+    }
+  }
+
+  /**
+   * Creates {@link TypeAdapter}s for {@link ExampleRecordWithCollectionsOfRecords }s and other
+   * <i>assignable</i> types.
+   */
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+
+    /**
+     * {@inheritDoc}
+     *
+     * @param gson to create the {@link TypeAdapter} from.
+     * @param type to <i>serialize</i>/<i>deserialize</i>.
+     * @return an (<i>anonymous</i>) instance of {@link TypeAdapter<ExampleRecordWithCollectionsOfRecords>}, or
+     *     {@code null} if {@code T} is not <i>assignable</i> to {@link ExampleRecordWithCollectionsOfRecords }.
+     * @param <T> class to <i>serialize</i>/<i>deserialize</i>.
+     */
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(final Gson gson, final TypeToken<T> type) {
+      if (!ExampleRecordWithCollectionsOfRecords.class.isAssignableFrom(type.getRawType())) {
+        return null;
+      }
+      final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+      final TypeAdapter<ExampleRecordWithCollectionsOfRecords> thisAdapter =
+          gson.getDelegateAdapter(this, TypeToken.get(ExampleRecordWithCollectionsOfRecords.class));
+
+      return (TypeAdapter<T>)
+          new TypeAdapter<ExampleRecordWithCollectionsOfRecords>() {
+
+            @Override
+            public void write(final JsonWriter out, final ExampleRecordWithCollectionsOfRecords value)
+                throws IOException {
+              final JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+              elementAdapter.write(out, obj);
+            }
+
+            @Override
+            public ExampleRecordWithCollectionsOfRecords read(final JsonReader in) throws IOException {
+              final JsonElement jsonElement = elementAdapter.read(in);
+              validateJsonElement(jsonElement);
+              return thisAdapter.fromJsonTree(jsonElement);
+            }
+          }.nullSafe();
     }
   }
 }

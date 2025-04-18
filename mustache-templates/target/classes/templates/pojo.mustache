@@ -15,7 +15,7 @@
 
 }}{{!
   Source: openapi-to-java-records-mustache-templates
-  Version: 2.8.2
+  Version: 2.9.0
   Type: Override
   Dependencies:
     - `additionalModelTypeAnnotations.mustache` (Official)
@@ -36,9 +36,12 @@ import com.fasterxml.jackson.annotation.JsonValue;{{/-first}}{{/isEnum}}{{/vars}
 
 {{/jackson}}{{!
 }}{{#gson}}{{!
-}}import com.google.gson.JsonArray;
+}}import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -148,6 +151,45 @@ import java.util.Set;
       final {{^isNumber}}{{{dataType}}}{{/isNumber}}{{#isNumber}}String{{/isNumber}} value = {{#isUri}}URI.create({{/isUri}}jsonElement.{{#isNumber}}getAsString(){{/isNumber}}{{#isInteger}}getAsInt(){{/isInteger}}{{#isUri}}getAsString()){{/isUri}}{{^isNumber}}{{^isInteger}}{{^isUri}}getAs{{{dataType}}}(){{/isUri}}{{/isInteger}}{{/isNumber}};
       {{{datatypeWithEnum}}}{{^datatypeWithEnum}}{{{classname}}}{{/datatypeWithEnum}}.fromValue({{#isNumber}}new BigDecimal({{/isNumber}}value{{#isNumber}}){{/isNumber}});
     }
+
+    /**
+     * Converts {@link {{{datatypeWithEnum}}}{{^datatypeWithEnum}}{{{classname}}}{{/datatypeWithEnum}} } objects to and from JSON.
+     *
+     * @see com.google.gson.TypeAdapter
+     */
+    public static class Adapter extends TypeAdapter<{{{datatypeWithEnum}}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}}> {
+
+      /**
+       * Writes the {@link #value} of the {@code enumeration} as a JSON-string to the {@code
+       * jsonWriter}.
+       *
+       * @param jsonWriter to write the value to.
+       * @param enumeration to write as JSON.
+       * @throws IOException if the {@code jsonWriter} fails to write the value.
+       * @throws NullPointerException if {@code jsonWriter} or {@code enumeration} is {@code null}.
+       */
+      @Override
+      public void write(final JsonWriter jsonWriter, final {{{datatypeWithEnum}}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}} enumeration)
+          throws IOException {
+        jsonWriter.value(enumeration.getValue(){{#isUri}}.toASCIIString(){{/isUri}});
+      }
+
+      /**
+       * Reads the <i>next</i> JSON-value from the {@code jsonReader} and converts it to a
+       * {@link {{{datatypeWithEnum}}}{{^datatypeWithEnum}}{{{classname}}}{{/datatypeWithEnum}} }.
+       *
+       * @param jsonReader to read the JSON-string from.
+       * @return a {@link {{{datatypeWithEnum}}}{{^datatypeWithEnum}}{{{classname}}}{{/datatypeWithEnum}} }.
+       * @throws IOException if the {@code jsonReader} fails to read a value.
+       * @throws NullPointerException if {@code jsonReader} is {@code null}.
+       * @see #fromValue
+       */
+      @Override
+      public {{{datatypeWithEnum}}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}} read(final JsonReader jsonReader) throws IOException {
+        final {{^isNumber}}{{{dataType}}}{{/isNumber}}{{#isNumber}}String{{/isNumber}} value = {{#isFloat}}(float) {{/isFloat}}{{#isUri}}URI.create({{/isUri}}jsonReader.{{#isNumber}}nextString(){{/isNumber}}{{#isInteger}}nextInt(){{/isInteger}}{{#isUri}}nextString()){{/isUri}}{{^isNumber}}{{^isInteger}}{{^isUri}}{{#isFloat}}nextDouble{{/isFloat}}{{^isFloat}}next{{{dataType}}}{{/isFloat}}(){{/isUri}}{{/isInteger}}{{/isNumber}};
+        return {{{datatypeWithEnum}}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}}.fromValue({{#isNumber}}new BigDecimal({{/isNumber}}value{{#isNumber}}){{/isNumber}});
+      }
+    }
 {{/gson}}
   }{{/isEnum}}{{/vars}}
 {{#gson}}
@@ -218,5 +260,54 @@ import java.util.Set;
     }
 {{/required}}{{/vars}}{{/discriminator}}{{!
 }}  }
+{{^hasChildren}}
+
+  /**
+   * Creates {@link TypeAdapter}s for {@link {{classname}} }s and other
+   * <i>assignable</i> types.
+   */
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+
+    /**
+     * {@inheritDoc}
+     *
+     * @param gson to create the {@link TypeAdapter} from.
+     * @param type to <i>serialize</i>/<i>deserialize</i>.
+     * @return an (<i>anonymous</i>) instance of {@link TypeAdapter<{{classname}}>}, or
+     *     {@code null} if {@code T} is not <i>assignable</i> to {@link {{classname}} }.
+     * @param <T> class to <i>serialize</i>/<i>deserialize</i>.
+     */
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(final Gson gson, final TypeToken<T> type) {
+      if (!{{classname}}.class.isAssignableFrom(type.getRawType())) {
+        return null;
+      }
+      final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+      final TypeAdapter<{{classname}}> thisAdapter =
+          gson.getDelegateAdapter(this, TypeToken.get({{classname}}.class));
+
+      return (TypeAdapter<T>)
+          new TypeAdapter<{{classname}}>() {
+
+            @Override
+            public void write(final JsonWriter out, final {{classname}} value)
+                throws IOException {
+              final JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+              elementAdapter.write(out, obj);
+            }
+
+            @Override
+            public {{classname}} read(final JsonReader in) throws IOException {
+              final JsonElement jsonElement = elementAdapter.read(in);
+              validateJsonElement(jsonElement);
+{{^isAdditionalPropertiesTrue}}
+              return thisAdapter.fromJsonTree(jsonElement);
+{{/isAdditionalPropertiesTrue}}
+            }
+          }.nullSafe();
+    }
+  }
+{{/hasChildren}}
 {{/gson}}
 }
