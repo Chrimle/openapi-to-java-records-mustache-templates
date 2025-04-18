@@ -247,6 +247,15 @@ public record ExampleRecordWithCollectionsOfRecords(
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
 
+    /**
+     * {@inheritDoc}
+     *
+     * @param gson to create the {@link TypeAdapter} from.
+     * @param type to <i>serialize</i>/<i>deserialize</i>.
+     * @return an (<i>anonymous</i>) instance of {@link TypeAdapter<ExampleRecordWithCollectionsOfRecords>}, or
+     *     {@code null} if {@code T} is not <i>assignable</i> to {@link ExampleRecordWithCollectionsOfRecords }.
+     * @param <T> class to <i>serialize</i>/<i>deserialize</i>.
+     */
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(final Gson gson, final TypeToken<T> type) {
