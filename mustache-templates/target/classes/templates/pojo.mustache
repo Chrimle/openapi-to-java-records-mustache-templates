@@ -281,7 +281,8 @@ import java.util.Set;
           new TypeAdapter<{{classname}}>() {
 
             @Override
-            public void write(final JsonWriter out, final {{classname}} value) throws IOException {
+            public void write(final JsonWriter out, final {{classname}} value)
+                throws IOException {
               final JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
               elementAdapter.write(out, obj);
             }
