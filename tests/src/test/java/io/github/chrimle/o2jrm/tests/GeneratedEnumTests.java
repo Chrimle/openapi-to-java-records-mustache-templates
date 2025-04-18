@@ -288,6 +288,16 @@ final class GeneratedEnumTests implements GeneratedClassTests {
                 validateJsonElementMethod, jsonObject.getAsJsonObject().get("testArg"));
           }
         }
+
+        @ParameterizedTest
+        @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+        @DisplayName("Generated `enum` has `Adapter` inner-class")
+        void whenLibraryIsOkHttpGsonThenGeneratedEnumHasAdapterInnerClass(
+            final GeneratedSource generatedSource) {
+          Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+
+          CustomAssertions.assertClassHasInnerClass(generatedSource.getClassUnderTest(), "Adapter");
+        }
       }
 
       @Nested
