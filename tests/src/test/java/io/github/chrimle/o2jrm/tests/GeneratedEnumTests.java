@@ -20,6 +20,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
+import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.github.chrimle.o2jrm.GeneratedSource;
 import io.github.chrimle.o2jrm.annotations.TestAnnotationOne;
@@ -366,6 +367,32 @@ final class GeneratedEnumTests implements GeneratedClassTests {
                       new OutputStreamWriter(
                           OutputStream.nullOutputStream(), StandardCharsets.UTF_8)),
                   generatedSource.getClassUnderTest().getEnumConstants()[0]);
+            }
+          }
+
+          @Nested
+          @DisplayName("Testing the `read(JsonReader)`-method")
+          class ReadMethodTests {
+
+            @ParameterizedTest
+            @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+            @DisplayName("when `JsonReader` is `null` Then `NullPointerException` is thrown")
+            void whenJsonReaderIsNullThenNullPointerExceptionIsThrown(
+                final GeneratedSource generatedSource) {
+              Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+
+              final Class<?> adapterClass =
+                  CustomAssertions.assertClassHasInnerClass(
+                      generatedSource.getClassUnderTest(), "Adapter");
+              final Object adapterObject =
+                  CustomAssertions.assertConstructorCanInstantiateObject(
+                      CustomAssertions.assertClassHasConstructor(adapterClass));
+              final Method readMethod =
+                  CustomAssertions.assertClassHasMethod(
+                      adapterObject.getClass(), "read", JsonReader.class);
+              readMethod.setAccessible(true);
+              CustomAssertions.assertInstanceMethodThrowsWhenInvoked(
+                  readMethod, NullPointerException.class, adapterObject, (JsonReader) null);
             }
           }
         }
