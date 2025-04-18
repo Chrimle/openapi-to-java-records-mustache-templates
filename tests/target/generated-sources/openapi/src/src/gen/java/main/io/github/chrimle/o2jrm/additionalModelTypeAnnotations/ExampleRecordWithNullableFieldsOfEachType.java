@@ -35,9 +35,12 @@ import java.util.List;
 import java.util.Set;
 import org.openapitools.jackson.nullable.JsonNullable;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -192,6 +195,35 @@ public record ExampleRecordWithNullableFieldsOfEachType(
     if (jsonObj.get("field8") != null
         && !jsonObj.get("field8").isJsonNull()) { 
       ExampleNullableEnum.validateJsonElement(jsonObj.get("field8"));
+    }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+      if (!ExampleRecordWithNullableFieldsOfEachType.class.isAssignableFrom(type.getRawType())) {
+        return null;
+      }
+      final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+      final TypeAdapter<ExampleRecordWithNullableFieldsOfEachType> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(ExampleRecordWithNullableFieldsOfEachType.class));
+
+      return (TypeAdapter<T>) new TypeAdapter<ExampleRecordWithNullableFieldsOfEachType>() {
+
+        @Override
+        public void write(JsonWriter out, ExampleRecordWithNullableFieldsOfEachType value) throws IOException {
+          final JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+          elementAdapter.write(out, obj);
+        }
+
+        @Override
+        public ExampleRecordWithNullableFieldsOfEachType read(JsonReader in) throws IOException {
+          final JsonElement jsonElement = elementAdapter.read(in);
+          validateJsonElement(jsonElement);
+          return thisAdapter.fromJsonTree(jsonElement);
+        }
+      }.nullSafe();
     }
   }
 }

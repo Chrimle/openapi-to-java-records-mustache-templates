@@ -34,9 +34,12 @@ import java.util.Set;
 import jakarta.validation.constraints.*;
 import jakarta.validation.Valid;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -158,6 +161,35 @@ public record ExampleRecordWithCollectionsOfRecords(
     }
     for (final JsonElement element : jsonObj.getAsJsonArray("requiredRecordSet").asList()) {
       ExampleRecord.validateJsonElement(element);
+    }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+      if (!ExampleRecordWithCollectionsOfRecords.class.isAssignableFrom(type.getRawType())) {
+        return null;
+      }
+      final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+      final TypeAdapter<ExampleRecordWithCollectionsOfRecords> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(ExampleRecordWithCollectionsOfRecords.class));
+
+      return (TypeAdapter<T>) new TypeAdapter<ExampleRecordWithCollectionsOfRecords>() {
+
+        @Override
+        public void write(JsonWriter out, ExampleRecordWithCollectionsOfRecords value) throws IOException {
+          final JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+          elementAdapter.write(out, obj);
+        }
+
+        @Override
+        public ExampleRecordWithCollectionsOfRecords read(JsonReader in) throws IOException {
+          final JsonElement jsonElement = elementAdapter.read(in);
+          validateJsonElement(jsonElement);
+          return thisAdapter.fromJsonTree(jsonElement);
+        }
+      }.nullSafe();
     }
   }
 }

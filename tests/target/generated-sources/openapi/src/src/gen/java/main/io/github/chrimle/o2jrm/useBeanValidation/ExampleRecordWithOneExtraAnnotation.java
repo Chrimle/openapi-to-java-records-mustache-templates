@@ -29,9 +29,12 @@ import java.util.Arrays;
 import jakarta.validation.constraints.*;
 import jakarta.validation.Valid;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -104,6 +107,35 @@ public record ExampleRecordWithOneExtraAnnotation(
                 "Expected the field `field2` to be a primitive type in the JSON string but got `%s`",
                 jsonObj.get("field2")));
       }
+    }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+      if (!ExampleRecordWithOneExtraAnnotation.class.isAssignableFrom(type.getRawType())) {
+        return null;
+      }
+      final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+      final TypeAdapter<ExampleRecordWithOneExtraAnnotation> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(ExampleRecordWithOneExtraAnnotation.class));
+
+      return (TypeAdapter<T>) new TypeAdapter<ExampleRecordWithOneExtraAnnotation>() {
+
+        @Override
+        public void write(JsonWriter out, ExampleRecordWithOneExtraAnnotation value) throws IOException {
+          final JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+          elementAdapter.write(out, obj);
+        }
+
+        @Override
+        public ExampleRecordWithOneExtraAnnotation read(JsonReader in) throws IOException {
+          final JsonElement jsonElement = elementAdapter.read(in);
+          validateJsonElement(jsonElement);
+          return thisAdapter.fromJsonTree(jsonElement);
+        }
+      }.nullSafe();
     }
   }
 }
