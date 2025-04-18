@@ -152,6 +152,11 @@ import java.util.Set;
       {{{datatypeWithEnum}}}{{^datatypeWithEnum}}{{{classname}}}{{/datatypeWithEnum}}.fromValue({{#isNumber}}new BigDecimal({{/isNumber}}value{{#isNumber}}){{/isNumber}});
     }
 
+    /**
+     * Converts {@link {{{datatypeWithEnum}}}{{^datatypeWithEnum}}{{{classname}}}{{/datatypeWithEnum}} } objects to and from JSON.
+     *
+     * @see com.google.gson.TypeAdapter
+     */
     public static class Adapter extends TypeAdapter<{{{datatypeWithEnum}}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}}> {
 
       @Override
