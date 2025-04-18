@@ -113,6 +113,16 @@ public enum ExampleNullableEnum {
       jsonWriter.value(enumeration.getValue());
     }
 
+    /**
+     * Reads the <i>next</i> JSON-value from the {@code jsonReader} and converts it to a
+     * {@link ExampleNullableEnum }.
+     *
+     * @param jsonReader to read the JSON-string from.
+     * @return a {@link ExampleNullableEnum }.
+     * @throws IOException if the {@code jsonReader} fails to read a value.
+     * @throws NullPointerException if {@code jsonReader} is {@code null}.
+     * @see #fromValue
+     */
     @Override
     public ExampleNullableEnum read(final JsonReader jsonReader) throws IOException {
       final String value = jsonReader.nextString();

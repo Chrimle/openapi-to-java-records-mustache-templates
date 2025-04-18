@@ -156,6 +156,16 @@ public record RecordWithInnerEnums(
         jsonWriter.value(enumeration.getValue());
       }
 
+      /**
+       * Reads the <i>next</i> JSON-value from the {@code jsonReader} and converts it to a
+       * {@link ExampleInnerEnum }.
+       *
+       * @param jsonReader to read the JSON-string from.
+       * @return a {@link ExampleInnerEnum }.
+       * @throws IOException if the {@code jsonReader} fails to read a value.
+       * @throws NullPointerException if {@code jsonReader} is {@code null}.
+       * @see #fromValue
+       */
       @Override
       public ExampleInnerEnum read(final JsonReader jsonReader) throws IOException {
         final String value = jsonReader.nextString();
@@ -240,6 +250,16 @@ public record RecordWithInnerEnums(
         jsonWriter.value(enumeration.getValue());
       }
 
+      /**
+       * Reads the <i>next</i> JSON-value from the {@code jsonReader} and converts it to a
+       * {@link ExampleInnerTwoEnum }.
+       *
+       * @param jsonReader to read the JSON-string from.
+       * @return a {@link ExampleInnerTwoEnum }.
+       * @throws IOException if the {@code jsonReader} fails to read a value.
+       * @throws NullPointerException if {@code jsonReader} is {@code null}.
+       * @see #fromValue
+       */
       @Override
       public ExampleInnerTwoEnum read(final JsonReader jsonReader) throws IOException {
         final Integer value = jsonReader.nextInt();
@@ -323,6 +343,16 @@ public record RecordWithInnerEnums(
         jsonWriter.value(enumeration.getValue().toASCIIString());
       }
 
+      /**
+       * Reads the <i>next</i> JSON-value from the {@code jsonReader} and converts it to a
+       * {@link ExampleInnerThreeEnum }.
+       *
+       * @param jsonReader to read the JSON-string from.
+       * @return a {@link ExampleInnerThreeEnum }.
+       * @throws IOException if the {@code jsonReader} fails to read a value.
+       * @throws NullPointerException if {@code jsonReader} is {@code null}.
+       * @see #fromValue
+       */
       @Override
       public ExampleInnerThreeEnum read(final JsonReader jsonReader) throws IOException {
         final URI value = URI.create(jsonReader.nextString());

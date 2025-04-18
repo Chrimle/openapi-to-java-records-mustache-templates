@@ -105,6 +105,16 @@ public enum ExampleUriEnum {
       jsonWriter.value(enumeration.getValue().toASCIIString());
     }
 
+    /**
+     * Reads the <i>next</i> JSON-value from the {@code jsonReader} and converts it to a
+     * {@link ExampleUriEnum }.
+     *
+     * @param jsonReader to read the JSON-string from.
+     * @return a {@link ExampleUriEnum }.
+     * @throws IOException if the {@code jsonReader} fails to read a value.
+     * @throws NullPointerException if {@code jsonReader} is {@code null}.
+     * @see #fromValue
+     */
     @Override
     public ExampleUriEnum read(final JsonReader jsonReader) throws IOException {
       final URI value = URI.create(jsonReader.nextString());

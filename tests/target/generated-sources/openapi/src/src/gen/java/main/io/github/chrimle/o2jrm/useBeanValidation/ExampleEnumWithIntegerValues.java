@@ -107,6 +107,16 @@ public enum ExampleEnumWithIntegerValues {
       jsonWriter.value(enumeration.getValue());
     }
 
+    /**
+     * Reads the <i>next</i> JSON-value from the {@code jsonReader} and converts it to a
+     * {@link ExampleEnumWithIntegerValues }.
+     *
+     * @param jsonReader to read the JSON-string from.
+     * @return a {@link ExampleEnumWithIntegerValues }.
+     * @throws IOException if the {@code jsonReader} fails to read a value.
+     * @throws NullPointerException if {@code jsonReader} is {@code null}.
+     * @see #fromValue
+     */
     @Override
     public ExampleEnumWithIntegerValues read(final JsonReader jsonReader) throws IOException {
       final Integer value = jsonReader.nextInt();

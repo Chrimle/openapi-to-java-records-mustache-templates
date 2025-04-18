@@ -106,6 +106,16 @@ public enum DeprecatedExampleEnum {
       jsonWriter.value(enumeration.getValue());
     }
 
+    /**
+     * Reads the <i>next</i> JSON-value from the {@code jsonReader} and converts it to a
+     * {@link DeprecatedExampleEnum }.
+     *
+     * @param jsonReader to read the JSON-string from.
+     * @return a {@link DeprecatedExampleEnum }.
+     * @throws IOException if the {@code jsonReader} fails to read a value.
+     * @throws NullPointerException if {@code jsonReader} is {@code null}.
+     * @see #fromValue
+     */
     @Override
     public DeprecatedExampleEnum read(final JsonReader jsonReader) throws IOException {
       final String value = jsonReader.nextString();

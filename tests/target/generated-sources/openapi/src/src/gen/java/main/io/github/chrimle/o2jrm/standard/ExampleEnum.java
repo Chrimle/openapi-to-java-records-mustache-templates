@@ -112,6 +112,16 @@ public enum ExampleEnum {
       jsonWriter.value(enumeration.getValue());
     }
 
+    /**
+     * Reads the <i>next</i> JSON-value from the {@code jsonReader} and converts it to a
+     * {@link ExampleEnum }.
+     *
+     * @param jsonReader to read the JSON-string from.
+     * @return a {@link ExampleEnum }.
+     * @throws IOException if the {@code jsonReader} fails to read a value.
+     * @throws NullPointerException if {@code jsonReader} is {@code null}.
+     * @see #fromValue
+     */
     @Override
     public ExampleEnum read(final JsonReader jsonReader) throws IOException {
       final String value = jsonReader.nextString();
