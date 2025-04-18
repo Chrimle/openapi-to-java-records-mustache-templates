@@ -304,6 +304,17 @@ final class GeneratedEnumTests implements GeneratedClassTests {
           CustomAssertions.assertClassDoesNotHaveMethod(
               generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
         }
+
+        @ParameterizedTest
+        @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+        @DisplayName("Generated `enum` does NOT have `Adapter` inner-class")
+        void whenLibraryIsWebClientThenGeneratedEnumDoesNotHaveAdapterInnerClass(
+            final GeneratedSource generatedSource) {
+          Assumptions.assumeTrue(generatedSource.isLibraryWebClient());
+
+          CustomAssertions.assertClassDoesNotHaveInnerClass(
+              generatedSource.getClassUnderTest(), "Adapter");
+        }
       }
     }
 
