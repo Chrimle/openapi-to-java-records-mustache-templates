@@ -1004,7 +1004,7 @@ final class GeneratedRecordTests implements GeneratedClassTests {
                       writeMethod,
                       NullPointerException.class,
                       typeAdapterObject,
-                      (TypeAdapter<?>) null,
+                      (JsonWriter) null,
                       GeneratedRecordTestUtils
                           .assertInstantiatingRecordWithValuesSetsFieldsToProvidedValue(
                               generatedSource));
