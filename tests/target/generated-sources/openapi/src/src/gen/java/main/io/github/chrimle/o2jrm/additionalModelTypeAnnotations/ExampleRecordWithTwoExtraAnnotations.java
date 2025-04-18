@@ -123,7 +123,8 @@ public record ExampleRecordWithTwoExtraAnnotations(
           new TypeAdapter<ExampleRecordWithTwoExtraAnnotations>() {
 
             @Override
-            public void write(final JsonWriter out, final ExampleRecordWithTwoExtraAnnotations value) throws IOException {
+            public void write(final JsonWriter out, final ExampleRecordWithTwoExtraAnnotations value)
+                throws IOException {
               final JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
               elementAdapter.write(out, obj);
             }

@@ -137,7 +137,8 @@ public record ExampleRecordWithOneExtraAnnotation(
           new TypeAdapter<ExampleRecordWithOneExtraAnnotation>() {
 
             @Override
-            public void write(final JsonWriter out, final ExampleRecordWithOneExtraAnnotation value) throws IOException {
+            public void write(final JsonWriter out, final ExampleRecordWithOneExtraAnnotation value)
+                throws IOException {
               final JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
               elementAdapter.write(out, obj);
             }

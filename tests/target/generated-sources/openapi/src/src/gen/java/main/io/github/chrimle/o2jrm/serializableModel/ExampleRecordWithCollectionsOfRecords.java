@@ -195,7 +195,8 @@ public record ExampleRecordWithCollectionsOfRecords(
           new TypeAdapter<ExampleRecordWithCollectionsOfRecords>() {
 
             @Override
-            public void write(final JsonWriter out, final ExampleRecordWithCollectionsOfRecords value) throws IOException {
+            public void write(final JsonWriter out, final ExampleRecordWithCollectionsOfRecords value)
+                throws IOException {
               final JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
               elementAdapter.write(out, obj);
             }

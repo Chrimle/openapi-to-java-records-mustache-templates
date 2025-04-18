@@ -120,7 +120,8 @@ public record ExampleNullableRecord(
           new TypeAdapter<ExampleNullableRecord>() {
 
             @Override
-            public void write(final JsonWriter out, final ExampleNullableRecord value) throws IOException {
+            public void write(final JsonWriter out, final ExampleNullableRecord value)
+                throws IOException {
               final JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
               elementAdapter.write(out, obj);
             }

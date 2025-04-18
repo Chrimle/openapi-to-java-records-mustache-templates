@@ -122,7 +122,8 @@ public record DeprecatedExampleRecord(
           new TypeAdapter<DeprecatedExampleRecord>() {
 
             @Override
-            public void write(final JsonWriter out, final DeprecatedExampleRecord value) throws IOException {
+            public void write(final JsonWriter out, final DeprecatedExampleRecord value)
+                throws IOException {
               final JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
               elementAdapter.write(out, obj);
             }

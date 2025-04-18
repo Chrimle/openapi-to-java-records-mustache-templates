@@ -121,7 +121,8 @@ public record ExampleRecordWithDefaultFields(
           new TypeAdapter<ExampleRecordWithDefaultFields>() {
 
             @Override
-            public void write(final JsonWriter out, final ExampleRecordWithDefaultFields value) throws IOException {
+            public void write(final JsonWriter out, final ExampleRecordWithDefaultFields value)
+                throws IOException {
               final JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
               elementAdapter.write(out, obj);
             }

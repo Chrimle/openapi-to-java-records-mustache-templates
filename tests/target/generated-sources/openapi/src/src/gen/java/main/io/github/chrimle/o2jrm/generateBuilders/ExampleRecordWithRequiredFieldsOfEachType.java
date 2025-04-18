@@ -362,7 +362,8 @@ public record ExampleRecordWithRequiredFieldsOfEachType(
           new TypeAdapter<ExampleRecordWithRequiredFieldsOfEachType>() {
 
             @Override
-            public void write(final JsonWriter out, final ExampleRecordWithRequiredFieldsOfEachType value) throws IOException {
+            public void write(final JsonWriter out, final ExampleRecordWithRequiredFieldsOfEachType value)
+                throws IOException {
               final JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
               elementAdapter.write(out, obj);
             }

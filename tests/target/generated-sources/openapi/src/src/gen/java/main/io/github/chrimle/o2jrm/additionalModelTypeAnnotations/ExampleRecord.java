@@ -121,7 +121,8 @@ public record ExampleRecord(
           new TypeAdapter<ExampleRecord>() {
 
             @Override
-            public void write(final JsonWriter out, final ExampleRecord value) throws IOException {
+            public void write(final JsonWriter out, final ExampleRecord value)
+                throws IOException {
               final JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
               elementAdapter.write(out, obj);
             }
