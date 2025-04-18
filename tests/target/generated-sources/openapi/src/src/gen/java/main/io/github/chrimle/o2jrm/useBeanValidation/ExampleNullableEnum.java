@@ -92,6 +92,11 @@ public enum ExampleNullableEnum {
     ExampleNullableEnum.fromValue(value);
   }
 
+  /**
+   * Converts {@link ExampleNullableEnum } objects to and from JSON.
+   *
+   * @see com.google.gson.TypeAdapter
+   */
   public static class Adapter extends TypeAdapter<ExampleNullableEnum> {
 
     @Override

@@ -93,6 +93,11 @@ public enum ExampleEnum {
     ExampleEnum.fromValue(value);
   }
 
+  /**
+   * Converts {@link ExampleEnum } objects to and from JSON.
+   *
+   * @see com.google.gson.TypeAdapter
+   */
   public static class Adapter extends TypeAdapter<ExampleEnum> {
 
     @Override

@@ -85,6 +85,11 @@ public enum DeprecatedExampleEnum {
     DeprecatedExampleEnum.fromValue(value);
   }
 
+  /**
+   * Converts {@link DeprecatedExampleEnum } objects to and from JSON.
+   *
+   * @see com.google.gson.TypeAdapter
+   */
   public static class Adapter extends TypeAdapter<DeprecatedExampleEnum> {
 
     @Override

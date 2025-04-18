@@ -83,6 +83,11 @@ public enum ExampleUriEnum {
     ExampleUriEnum.fromValue(value);
   }
 
+  /**
+   * Converts {@link ExampleUriEnum } objects to and from JSON.
+   *
+   * @see com.google.gson.TypeAdapter
+   */
   public static class Adapter extends TypeAdapter<ExampleUriEnum> {
 
     @Override

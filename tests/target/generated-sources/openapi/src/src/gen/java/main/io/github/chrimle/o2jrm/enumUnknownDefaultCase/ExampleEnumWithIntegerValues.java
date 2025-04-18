@@ -84,6 +84,11 @@ public enum ExampleEnumWithIntegerValues {
     ExampleEnumWithIntegerValues.fromValue(value);
   }
 
+  /**
+   * Converts {@link ExampleEnumWithIntegerValues } objects to and from JSON.
+   *
+   * @see com.google.gson.TypeAdapter
+   */
   public static class Adapter extends TypeAdapter<ExampleEnumWithIntegerValues> {
 
     @Override

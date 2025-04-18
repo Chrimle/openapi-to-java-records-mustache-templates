@@ -134,6 +134,11 @@ public record RecordWithInnerEnums(
       ExampleInnerEnum.fromValue(value);
     }
 
+    /**
+     * Converts {@link ExampleInnerEnum } objects to and from JSON.
+     *
+     * @see com.google.gson.TypeAdapter
+     */
     public static class Adapter extends TypeAdapter<ExampleInnerEnum> {
 
       @Override
@@ -204,6 +209,11 @@ public record RecordWithInnerEnums(
       ExampleInnerTwoEnum.fromValue(value);
     }
 
+    /**
+     * Converts {@link ExampleInnerTwoEnum } objects to and from JSON.
+     *
+     * @see com.google.gson.TypeAdapter
+     */
     public static class Adapter extends TypeAdapter<ExampleInnerTwoEnum> {
 
       @Override
@@ -273,6 +283,11 @@ public record RecordWithInnerEnums(
       ExampleInnerThreeEnum.fromValue(value);
     }
 
+    /**
+     * Converts {@link ExampleInnerThreeEnum } objects to and from JSON.
+     *
+     * @see com.google.gson.TypeAdapter
+     */
     public static class Adapter extends TypeAdapter<ExampleInnerThreeEnum> {
 
       @Override
