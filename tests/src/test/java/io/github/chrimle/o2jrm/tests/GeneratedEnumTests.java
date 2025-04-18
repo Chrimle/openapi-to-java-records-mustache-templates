@@ -37,6 +37,7 @@ import io.github.chrimle.o2jrm.tests.GeneratedEnumTests.OpenAPITests.SchemaTests
 import io.github.chrimle.o2jrm.utils.CustomAssertions;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.io.StringReader;
 import java.lang.reflect.Method;
 import java.net.URI;
 import java.nio.charset.StandardCharsets;
@@ -393,6 +394,31 @@ final class GeneratedEnumTests implements GeneratedClassTests {
               readMethod.setAccessible(true);
               CustomAssertions.assertInstanceMethodThrowsWhenInvoked(
                   readMethod, NullPointerException.class, adapterObject, (JsonReader) null);
+            }
+
+            @ParameterizedTest
+            @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+            @DisplayName("when `JsonReader` is valid Then nothing is thrown")
+            void whenJsonReaderIsValidThenNothingIsThrown(final GeneratedSource generatedSource) {
+              Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+
+              final Class<?> adapterClass =
+                  CustomAssertions.assertClassHasInnerClass(
+                      generatedSource.getClassUnderTest(), "Adapter");
+              final Object adapterObject =
+                  CustomAssertions.assertConstructorCanInstantiateObject(
+                      CustomAssertions.assertClassHasConstructor(adapterClass));
+              final Method readMethod =
+                  CustomAssertions.assertClassHasMethod(
+                      adapterObject.getClass(), "read", JsonReader.class);
+              readMethod.setAccessible(true);
+              for (final GeneratedField<?> generatedField : generatedSource.generatedFields()) {
+                CustomAssertions.assertInstanceMethodReturnsNonNull(
+                    readMethod,
+                    adapterObject,
+                    new JsonReader(
+                        new StringReader("\"" + generatedField.enumValue().toString() + "\"")));
+              }
             }
           }
         }
