@@ -12,7 +12,7 @@
  * openapi-to-java-records-mustache-templates. For further information,
  * questions, requesting features or reporting issues, please visit:
  * https://github.com/Chrimle/openapi-to-java-records-mustache-templates.
- * Generated with Version: 2.9.0
+ * Generated with Version: 2.9.1
  *
  */
 
@@ -39,13 +39,13 @@ import com.fasterxml.jackson.annotation.JsonCreator;
  */
 @Deprecated
 public record DeprecatedExampleRecord(
-    @javax.annotation.Nonnull Boolean field1
-  ) implements Serializable {
+    @javax.annotation.Nonnull Boolean field1)
+    implements Serializable {
 
   private static final long serialVersionUID = 1L;
 
   public DeprecatedExampleRecord(
-      @javax.annotation.Nonnull final Boolean field1) { 
+      @javax.annotation.Nonnull final Boolean field1) {
     this.field1 = field1;
   }
 }

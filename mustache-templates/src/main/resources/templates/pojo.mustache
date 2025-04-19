@@ -60,8 +60,8 @@ import java.util.Set;
         }}{{vendorExtensions.x-field-extra-annotation}}
     {{/vendorExtensions.x-field-extra-annotation}}{{!
     }}@{{javaxPackage}}.annotation.{{#isNullable}}Nullable{{/isNullable}}{{^isNullable}}Nonnull{{/isNullable}}{{>useBeanValidation}} {{{datatypeWithEnum}}} {{name}}{{^-last}},
-    {{/-last}}{{/vars}}{{^serializableModel}}){{/serializableModel}}{{#serializableModel}}
-  ) implements Serializable{{/serializableModel}} {
+    {{/-last}}{{/vars}}){{#serializableModel}}
+    implements Serializable{{/serializableModel}} {
 {{>serializableModel}}
 {{#gson}}  /** A set containing the names of all instance fields defined in this class. */
   public static final HashSet<String> openapiFields =
@@ -70,17 +70,17 @@ import java.util.Set;
               {{/-last}}{{/allVars}}));
 
   /** A set containing the names of all required fields defined in this class. */
-  public static final HashSet<String> openapiRequiredFields =
-      new HashSet<String>(
-          Set.of({{#requiredVars}}"{{baseName}}"{{^-last}},
+  public static final HashSet<String> openapiRequiredFields ={{#requiredVars}}{{#-first}}
+     {{/-first}}{{/requiredVars}} new HashSet<String>({{#requiredVars}}{{#-first}}
+          {{/-first}}{{/requiredVars}}Set.of({{#requiredVars}}"{{baseName}}"{{^-last}},
               {{/-last}}{{/requiredVars}}));
 
 {{/gson}}
   public {{classname}}(
       {{#vars}}@{{javaxPackage}}.annotation.{{#isNullable}}Nullable{{/isNullable}}{{^isNullable}}{{#defaultValue}}Nullable{{/defaultValue}}{{^defaultValue}}Nonnull{{/defaultValue}}{{/isNullable}} final {{{datatypeWithEnum}}} {{name}}{{^-last}},
-      {{/-last}}{{/vars}}) { {{#vars}}
-    this.{{name}} = {{^defaultValue}}{{name}}{{/defaultValue}}{{#defaultValue}}Objects.requireNonNullElse({{name}}, {{{.}}}){{/defaultValue}};{{/vars}}
-  }{{#generateBuilders}}{{>generateBuilders}}{{/generateBuilders}}{{!
+      {{/-last}}{{/vars}}) {
+{{#vars}}    this.{{name}} = {{^defaultValue}}{{name}}{{/defaultValue}}{{#defaultValue}}Objects.requireNonNullElse({{name}}, {{{.}}}){{/defaultValue}};
+{{/vars}}  }{{#generateBuilders}}{{>generateBuilders}}{{/generateBuilders}}{{!
     Generate inner enum classes
   }}{{#vars}}{{#isEnum}}
 
@@ -175,8 +175,8 @@ import java.util.Set;
       }
 
       /**
-       * Reads the <i>next</i> JSON-value from the {@code jsonReader} and converts it to a
-       * {@link {{{datatypeWithEnum}}}{{^datatypeWithEnum}}{{{classname}}}{{/datatypeWithEnum}} }.
+       * Reads the <i>next</i> JSON-value from the {@code jsonReader} and converts it to a {@link
+       * {{{datatypeWithEnum}}}{{^datatypeWithEnum}}{{{classname}}}{{/datatypeWithEnum}} }.
        *
        * @param jsonReader to read the JSON-string from.
        * @return a {@link {{{datatypeWithEnum}}}{{^datatypeWithEnum}}{{{classname}}}{{/datatypeWithEnum}} }.
@@ -200,16 +200,18 @@ import java.util.Set;
    * @param jsonElement to validate.
    * @throws IOException if the JSON Element is not a valid {{classname}} object.
    */
-  public static void validateJsonElement(final JsonElement jsonElement) throws IOException { {{#requiredVars}}{{#-first}}
-    if (jsonElement == null) {
+  public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
+{{#requiredVars}}{{#-first}}{{!
+}}    if (jsonElement == null) {
       throw new IllegalArgumentException(
           String.format(
               "The required field(s) %s in {{{classname}}} is not found in the empty JSON string",
               {{classname}}.openapiRequiredFields.toString()));
     }
+
 {{/-first}}{{/requiredVars}}{{!
-}}{{^hasChildren}}{{^isAdditionalPropertiesTrue}}
-    for (final String key : jsonElement.getAsJsonObject().keySet()) {
+}}{{^hasChildren}}{{^isAdditionalPropertiesTrue}}{{!
+}}    for (final String key : jsonElement.getAsJsonObject().keySet()) {
       if (!{{classname}}.openapiFields.contains(key)) {
         throw new IllegalArgumentException(
             String.format(
@@ -232,8 +234,7 @@ import java.util.Set;
     final JsonObject jsonObj = jsonElement.getAsJsonObject();
 {{/hasVars}}{{!
 }}{{#vars}}{{^required}}
-    if (jsonObj.get("{{{baseName}}}") != null
-        && !jsonObj.get("{{{baseName}}}").isJsonNull()) { {{/required}}{{!
+    if (jsonObj.get("{{{baseName}}}") != null && !jsonObj.get("{{{baseName}}}").isJsonNull()) { {{/required}}{{!
 }}{{^isModel}}{{^isEnumRef}}{{^isEnum}}
 {{^required}}  {{/required}}    if (!jsonObj.get("{{{baseName}}}").{{#isArray}}isJsonArray(){{/isArray}}{{^isContainer}}{{^isModel}}isJsonPrimitive(){{/isModel}}{{/isContainer}}) {
 {{^required}}  {{/required}}      throw new IllegalArgumentException(

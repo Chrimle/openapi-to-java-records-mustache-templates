@@ -12,7 +12,7 @@
  * openapi-to-java-records-mustache-templates. For further information,
  * questions, requesting features or reporting issues, please visit:
  * https://github.com/Chrimle/openapi-to-java-records-mustache-templates.
- * Generated with Version: 2.9.0
+ * Generated with Version: 2.9.1
  *
  */
 
@@ -39,7 +39,7 @@ public record ExampleNullableRecord(
     @jakarta.annotation.Nonnull Boolean field1) {
 
   public ExampleNullableRecord(
-      @jakarta.annotation.Nonnull final Boolean field1) { 
+      @jakarta.annotation.Nonnull final Boolean field1) {
     this.field1 = field1;
   }
 }

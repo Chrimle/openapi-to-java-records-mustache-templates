@@ -12,7 +12,7 @@
  * openapi-to-java-records-mustache-templates. For further information,
  * questions, requesting features or reporting issues, please visit:
  * https://github.com/Chrimle/openapi-to-java-records-mustache-templates.
- * Generated with Version: 2.9.0
+ * Generated with Version: 2.9.1
  *
  */
 
@@ -66,8 +66,8 @@ public record ExampleRecordWithNullableFieldsOfEachType(
     @javax.annotation.Nullable List<Boolean> field5,
     @javax.annotation.Nullable Set<Boolean> field6,
     @javax.annotation.Nullable ExampleNullableRecord field7,
-    @javax.annotation.Nullable ExampleNullableEnum field8
-  ) implements Serializable {
+    @javax.annotation.Nullable ExampleNullableEnum field8)
+    implements Serializable {
 
   private static final long serialVersionUID = 1L;
 
@@ -101,7 +101,7 @@ public record ExampleRecordWithNullableFieldsOfEachType(
       @javax.annotation.Nullable final List<Boolean> field5,
       @javax.annotation.Nullable final Set<Boolean> field6,
       @javax.annotation.Nullable final ExampleNullableRecord field7,
-      @javax.annotation.Nullable final ExampleNullableEnum field8) { 
+      @javax.annotation.Nullable final ExampleNullableEnum field8) {
     this.field1 = field1;
     this.field2 = field2;
     this.field3 = field3;
@@ -118,7 +118,7 @@ public record ExampleRecordWithNullableFieldsOfEachType(
    * @param jsonElement to validate.
    * @throws IOException if the JSON Element is not a valid ExampleRecordWithNullableFieldsOfEachType object.
    */
-  public static void validateJsonElement(final JsonElement jsonElement) throws IOException { 
+  public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
     if (jsonElement == null) {
       throw new IllegalArgumentException(
           String.format(
@@ -188,13 +188,11 @@ public record ExampleRecordWithNullableFieldsOfEachType(
               jsonObj.get("field6")));
     }
 
-    if (jsonObj.get("field7") != null
-        && !jsonObj.get("field7").isJsonNull()) { 
+    if (jsonObj.get("field7") != null && !jsonObj.get("field7").isJsonNull()) { 
       ExampleNullableRecord.validateJsonElement(jsonObj.get("field7"));
     }
 
-    if (jsonObj.get("field8") != null
-        && !jsonObj.get("field8").isJsonNull()) { 
+    if (jsonObj.get("field8") != null && !jsonObj.get("field8").isJsonNull()) { 
       ExampleNullableEnum.validateJsonElement(jsonObj.get("field8"));
     }
   }

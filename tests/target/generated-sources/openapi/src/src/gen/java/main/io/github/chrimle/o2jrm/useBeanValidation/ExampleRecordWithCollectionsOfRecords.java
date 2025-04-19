@@ -12,7 +12,7 @@
  * openapi-to-java-records-mustache-templates. For further information,
  * questions, requesting features or reporting issues, please visit:
  * https://github.com/Chrimle/openapi-to-java-records-mustache-templates.
- * Generated with Version: 2.9.0
+ * Generated with Version: 2.9.1
  *
  */
 
@@ -76,7 +76,7 @@ public record ExampleRecordWithCollectionsOfRecords(
       @javax.annotation.Nullable final List<@Valid ExampleRecord> optionalRecordList,
       @javax.annotation.Nullable final List<@Valid ExampleRecord> requiredRecordList,
       @javax.annotation.Nullable final Set<@Valid ExampleRecord> optionalRecordSet,
-      @javax.annotation.Nullable final Set<@Valid ExampleRecord> requiredRecordSet) { 
+      @javax.annotation.Nullable final Set<@Valid ExampleRecord> requiredRecordSet) {
     this.optionalRecordList = Objects.requireNonNullElse(optionalRecordList, new ArrayList<>());
     this.requiredRecordList = Objects.requireNonNullElse(requiredRecordList, new ArrayList<>());
     this.optionalRecordSet = Objects.requireNonNullElse(optionalRecordSet, new LinkedHashSet<>());
@@ -89,7 +89,7 @@ public record ExampleRecordWithCollectionsOfRecords(
    * @param jsonElement to validate.
    * @throws IOException if the JSON Element is not a valid ExampleRecordWithCollectionsOfRecords object.
    */
-  public static void validateJsonElement(final JsonElement jsonElement) throws IOException { 
+  public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
     if (jsonElement == null) {
       throw new IllegalArgumentException(
           String.format(
@@ -117,8 +117,7 @@ public record ExampleRecordWithCollectionsOfRecords(
 
     final JsonObject jsonObj = jsonElement.getAsJsonObject();
 
-    if (jsonObj.get("optionalRecordList") != null
-        && !jsonObj.get("optionalRecordList").isJsonNull()) { 
+    if (jsonObj.get("optionalRecordList") != null && !jsonObj.get("optionalRecordList").isJsonNull()) { 
       if (!jsonObj.get("optionalRecordList").isJsonArray()) {
         throw new IllegalArgumentException(
             String.format(
@@ -140,8 +139,7 @@ public record ExampleRecordWithCollectionsOfRecords(
       ExampleRecord.validateJsonElement(element);
     }
 
-    if (jsonObj.get("optionalRecordSet") != null
-        && !jsonObj.get("optionalRecordSet").isJsonNull()) { 
+    if (jsonObj.get("optionalRecordSet") != null && !jsonObj.get("optionalRecordSet").isJsonNull()) { 
       if (!jsonObj.get("optionalRecordSet").isJsonArray()) {
         throw new IllegalArgumentException(
             String.format(

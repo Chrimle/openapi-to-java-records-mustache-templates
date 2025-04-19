@@ -12,7 +12,7 @@
  * openapi-to-java-records-mustache-templates. For further information,
  * questions, requesting features or reporting issues, please visit:
  * https://github.com/Chrimle/openapi-to-java-records-mustache-templates.
- * Generated with Version: 2.9.0
+ * Generated with Version: 2.9.1
  *
  */
 
@@ -21,11 +21,11 @@ package io.github.chrimle.o2jrm.additionalEnumTypeAnnotations;
 import java.util.Objects;
 import com.google.gson.annotations.SerializedName;
 
-import java.io.IOException;
 import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 /**
  * Example of an Enum
@@ -116,8 +116,8 @@ public enum ExampleEnum {
     }
 
     /**
-     * Reads the <i>next</i> JSON-value from the {@code jsonReader} and converts it to a
-     * {@link ExampleEnum }.
+     * Reads the <i>next</i> JSON-value from the {@code jsonReader} and converts it to a {@link
+     * ExampleEnum }.
      *
      * @param jsonReader to read the JSON-string from.
      * @return a {@link ExampleEnum }.

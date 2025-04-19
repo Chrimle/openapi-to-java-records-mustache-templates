@@ -12,7 +12,7 @@
  * openapi-to-java-records-mustache-templates. For further information,
  * questions, requesting features or reporting issues, please visit:
  * https://github.com/Chrimle/openapi-to-java-records-mustache-templates.
- * Generated with Version: 2.9.0
+ * Generated with Version: 2.9.1
  *
  */
 
@@ -60,8 +60,8 @@ public record ExampleRecordWithRequiredFieldsOfEachType(
     @javax.annotation.Nonnull List<Boolean> field5,
     @javax.annotation.Nonnull Set<Boolean> field6,
     @javax.annotation.Nonnull ExampleRecord field7,
-    @javax.annotation.Nonnull ExampleEnum field8
-  ) implements Serializable {
+    @javax.annotation.Nonnull ExampleEnum field8)
+    implements Serializable {
 
   private static final long serialVersionUID = 1L;
 
@@ -73,7 +73,7 @@ public record ExampleRecordWithRequiredFieldsOfEachType(
       @javax.annotation.Nullable final List<Boolean> field5,
       @javax.annotation.Nullable final Set<Boolean> field6,
       @javax.annotation.Nonnull final ExampleRecord field7,
-      @javax.annotation.Nonnull final ExampleEnum field8) { 
+      @javax.annotation.Nonnull final ExampleEnum field8) {
     this.field1 = field1;
     this.field2 = field2;
     this.field3 = field3;

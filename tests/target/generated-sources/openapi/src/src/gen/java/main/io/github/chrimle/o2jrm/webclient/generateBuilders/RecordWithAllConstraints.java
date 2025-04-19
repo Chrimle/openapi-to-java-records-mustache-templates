@@ -12,7 +12,7 @@
  * openapi-to-java-records-mustache-templates. For further information,
  * questions, requesting features or reporting issues, please visit:
  * https://github.com/Chrimle/openapi-to-java-records-mustache-templates.
- * Generated with Version: 2.9.0
+ * Generated with Version: 2.9.1
  *
  */
 
@@ -114,7 +114,7 @@ public record RecordWithAllConstraints(
       @javax.annotation.Nonnull final Long longMinimumAndMaximum,
       @javax.annotation.Nonnull final BigDecimal bigDecimalMinimum,
       @javax.annotation.Nonnull final BigDecimal bigDecimalMaximum,
-      @javax.annotation.Nonnull final BigDecimal bigDecimalMinimumAndMaximum) { 
+      @javax.annotation.Nonnull final BigDecimal bigDecimalMinimumAndMaximum) {
     this.stringStandard = stringStandard;
     this.stringDefault = Objects.requireNonNullElse(stringDefault, "someDefaultValue");
     this.stringNullable = stringNullable;
@@ -476,30 +476,29 @@ public record RecordWithAllConstraints(
      */
     public RecordWithAllConstraints build() {
       return new RecordWithAllConstraints(
-        stringStandard,
-        stringDefault,
-        stringNullable,
-        stringRequired,
-        stringRequiredNullable,
-        stringRequiredPattern,
-        stringEmailFormat,
-        stringUuidFormat,
-        stringMinLength,
-        stringMaxLength,
-        stringMinAndMaxLength,
-        arrayMinItems,
-        arrayMaxItems,
-        arrayMinAndMaxItems,
-        intMinimum,
-        intMaximum,
-        intMinimumAndMaximum,
-        longMinimum,
-        longMaximum,
-        longMinimumAndMaximum,
-        bigDecimalMinimum,
-        bigDecimalMaximum,
-        bigDecimalMinimumAndMaximum
-      );
+          stringStandard,
+          stringDefault,
+          stringNullable,
+          stringRequired,
+          stringRequiredNullable,
+          stringRequiredPattern,
+          stringEmailFormat,
+          stringUuidFormat,
+          stringMinLength,
+          stringMaxLength,
+          stringMinAndMaxLength,
+          arrayMinItems,
+          arrayMaxItems,
+          arrayMinAndMaxItems,
+          intMinimum,
+          intMaximum,
+          intMinimumAndMaximum,
+          longMinimum,
+          longMaximum,
+          longMinimumAndMaximum,
+          bigDecimalMinimum,
+          bigDecimalMaximum,
+          bigDecimalMinimumAndMaximum);
     }
   }
 

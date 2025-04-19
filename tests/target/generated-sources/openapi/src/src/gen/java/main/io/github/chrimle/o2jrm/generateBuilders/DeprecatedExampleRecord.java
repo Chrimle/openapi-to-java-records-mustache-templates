@@ -12,7 +12,7 @@
  * openapi-to-java-records-mustache-templates. For further information,
  * questions, requesting features or reporting issues, please visit:
  * https://github.com/Chrimle/openapi-to-java-records-mustache-templates.
- * Generated with Version: 2.9.0
+ * Generated with Version: 2.9.1
  *
  */
 
@@ -53,12 +53,10 @@ public record DeprecatedExampleRecord(
           Set.of("field1"));
 
   /** A set containing the names of all required fields defined in this class. */
-  public static final HashSet<String> openapiRequiredFields =
-      new HashSet<String>(
-          Set.of());
+  public static final HashSet<String> openapiRequiredFields = new HashSet<String>(Set.of());
 
   public DeprecatedExampleRecord(
-      @javax.annotation.Nonnull final Boolean field1) { 
+      @javax.annotation.Nonnull final Boolean field1) {
     this.field1 = field1;
   }
 
@@ -90,8 +88,7 @@ public record DeprecatedExampleRecord(
      */
     public DeprecatedExampleRecord build() {
       return new DeprecatedExampleRecord(
-        field1
-      );
+          field1);
     }
   }
 
@@ -106,7 +103,7 @@ public record DeprecatedExampleRecord(
    * @param jsonElement to validate.
    * @throws IOException if the JSON Element is not a valid DeprecatedExampleRecord object.
    */
-  public static void validateJsonElement(final JsonElement jsonElement) throws IOException { 
+  public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
     for (final String key : jsonElement.getAsJsonObject().keySet()) {
       if (!DeprecatedExampleRecord.openapiFields.contains(key)) {
         throw new IllegalArgumentException(
@@ -118,8 +115,7 @@ public record DeprecatedExampleRecord(
 
     final JsonObject jsonObj = jsonElement.getAsJsonObject();
 
-    if (jsonObj.get("field1") != null
-        && !jsonObj.get("field1").isJsonNull()) { 
+    if (jsonObj.get("field1") != null && !jsonObj.get("field1").isJsonNull()) { 
       if (!jsonObj.get("field1").isJsonPrimitive()) {
         throw new IllegalArgumentException(
             String.format(

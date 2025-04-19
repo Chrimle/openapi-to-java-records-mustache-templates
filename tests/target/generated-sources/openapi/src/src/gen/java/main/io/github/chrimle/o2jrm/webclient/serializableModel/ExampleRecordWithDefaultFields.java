@@ -12,7 +12,7 @@
  * openapi-to-java-records-mustache-templates. For further information,
  * questions, requesting features or reporting issues, please visit:
  * https://github.com/Chrimle/openapi-to-java-records-mustache-templates.
- * Generated with Version: 2.9.0
+ * Generated with Version: 2.9.1
  *
  */
 
@@ -37,13 +37,13 @@ import com.fasterxml.jackson.annotation.JsonCreator;
  * @param field1 a String field with a default value
  */
 public record ExampleRecordWithDefaultFields(
-    @javax.annotation.Nonnull String field1
-  ) implements Serializable {
+    @javax.annotation.Nonnull String field1)
+    implements Serializable {
 
   private static final long serialVersionUID = 1L;
 
   public ExampleRecordWithDefaultFields(
-      @javax.annotation.Nullable final String field1) { 
+      @javax.annotation.Nullable final String field1) {
     this.field1 = Objects.requireNonNullElse(field1, "someDefaultValue");
   }
 }

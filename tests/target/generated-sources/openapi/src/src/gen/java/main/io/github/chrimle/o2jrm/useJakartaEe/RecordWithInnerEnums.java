@@ -12,7 +12,7 @@
  * openapi-to-java-records-mustache-templates. For further information,
  * questions, requesting features or reporting issues, please visit:
  * https://github.com/Chrimle/openapi-to-java-records-mustache-templates.
- * Generated with Version: 2.9.0
+ * Generated with Version: 2.9.1
  *
  */
 
@@ -58,14 +58,12 @@ public record RecordWithInnerEnums(
               "exampleInnerThree"));
 
   /** A set containing the names of all required fields defined in this class. */
-  public static final HashSet<String> openapiRequiredFields =
-      new HashSet<String>(
-          Set.of());
+  public static final HashSet<String> openapiRequiredFields = new HashSet<String>(Set.of());
 
   public RecordWithInnerEnums(
       @jakarta.annotation.Nonnull final ExampleInnerEnum exampleInner,
       @jakarta.annotation.Nonnull final ExampleInnerTwoEnum exampleInnerTwo,
-      @jakarta.annotation.Nonnull final ExampleInnerThreeEnum exampleInnerThree) { 
+      @jakarta.annotation.Nonnull final ExampleInnerThreeEnum exampleInnerThree) {
     this.exampleInner = exampleInner;
     this.exampleInnerTwo = exampleInnerTwo;
     this.exampleInnerThree = exampleInnerThree;
@@ -157,8 +155,8 @@ public record RecordWithInnerEnums(
       }
 
       /**
-       * Reads the <i>next</i> JSON-value from the {@code jsonReader} and converts it to a
-       * {@link ExampleInnerEnum }.
+       * Reads the <i>next</i> JSON-value from the {@code jsonReader} and converts it to a {@link
+       * ExampleInnerEnum }.
        *
        * @param jsonReader to read the JSON-string from.
        * @return a {@link ExampleInnerEnum }.
@@ -251,8 +249,8 @@ public record RecordWithInnerEnums(
       }
 
       /**
-       * Reads the <i>next</i> JSON-value from the {@code jsonReader} and converts it to a
-       * {@link ExampleInnerTwoEnum }.
+       * Reads the <i>next</i> JSON-value from the {@code jsonReader} and converts it to a {@link
+       * ExampleInnerTwoEnum }.
        *
        * @param jsonReader to read the JSON-string from.
        * @return a {@link ExampleInnerTwoEnum }.
@@ -344,8 +342,8 @@ public record RecordWithInnerEnums(
       }
 
       /**
-       * Reads the <i>next</i> JSON-value from the {@code jsonReader} and converts it to a
-       * {@link ExampleInnerThreeEnum }.
+       * Reads the <i>next</i> JSON-value from the {@code jsonReader} and converts it to a {@link
+       * ExampleInnerThreeEnum }.
        *
        * @param jsonReader to read the JSON-string from.
        * @return a {@link ExampleInnerThreeEnum }.
@@ -367,7 +365,7 @@ public record RecordWithInnerEnums(
    * @param jsonElement to validate.
    * @throws IOException if the JSON Element is not a valid RecordWithInnerEnums object.
    */
-  public static void validateJsonElement(final JsonElement jsonElement) throws IOException { 
+  public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
     for (final String key : jsonElement.getAsJsonObject().keySet()) {
       if (!RecordWithInnerEnums.openapiFields.contains(key)) {
         throw new IllegalArgumentException(
@@ -379,18 +377,15 @@ public record RecordWithInnerEnums(
 
     final JsonObject jsonObj = jsonElement.getAsJsonObject();
 
-    if (jsonObj.get("exampleInner") != null
-        && !jsonObj.get("exampleInner").isJsonNull()) { 
+    if (jsonObj.get("exampleInner") != null && !jsonObj.get("exampleInner").isJsonNull()) { 
       ExampleInnerEnum.validateJsonElement(jsonObj.get("exampleInner"));
     }
 
-    if (jsonObj.get("exampleInnerTwo") != null
-        && !jsonObj.get("exampleInnerTwo").isJsonNull()) { 
+    if (jsonObj.get("exampleInnerTwo") != null && !jsonObj.get("exampleInnerTwo").isJsonNull()) { 
       ExampleInnerTwoEnum.validateJsonElement(jsonObj.get("exampleInnerTwo"));
     }
 
-    if (jsonObj.get("exampleInnerThree") != null
-        && !jsonObj.get("exampleInnerThree").isJsonNull()) { 
+    if (jsonObj.get("exampleInnerThree") != null && !jsonObj.get("exampleInnerThree").isJsonNull()) { 
       ExampleInnerThreeEnum.validateJsonElement(jsonObj.get("exampleInnerThree"));
     }
   }

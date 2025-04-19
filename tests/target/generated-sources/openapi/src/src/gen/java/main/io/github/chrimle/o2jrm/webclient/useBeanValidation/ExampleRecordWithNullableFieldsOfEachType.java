@@ -12,7 +12,7 @@
  * openapi-to-java-records-mustache-templates. For further information,
  * questions, requesting features or reporting issues, please visit:
  * https://github.com/Chrimle/openapi-to-java-records-mustache-templates.
- * Generated with Version: 2.9.0
+ * Generated with Version: 2.9.1
  *
  */
 
@@ -74,7 +74,7 @@ public record ExampleRecordWithNullableFieldsOfEachType(
       @javax.annotation.Nullable final List<Boolean> field5,
       @javax.annotation.Nullable final Set<Boolean> field6,
       @javax.annotation.Nullable final ExampleNullableRecord field7,
-      @javax.annotation.Nullable final ExampleNullableEnum field8) { 
+      @javax.annotation.Nullable final ExampleNullableEnum field8) {
     this.field1 = field1;
     this.field2 = field2;
     this.field3 = field3;

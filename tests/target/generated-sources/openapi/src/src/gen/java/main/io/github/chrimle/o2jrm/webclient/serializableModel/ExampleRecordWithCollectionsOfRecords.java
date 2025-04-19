@@ -12,7 +12,7 @@
  * openapi-to-java-records-mustache-templates. For further information,
  * questions, requesting features or reporting issues, please visit:
  * https://github.com/Chrimle/openapi-to-java-records-mustache-templates.
- * Generated with Version: 2.9.0
+ * Generated with Version: 2.9.1
  *
  */
 
@@ -50,8 +50,8 @@ public record ExampleRecordWithCollectionsOfRecords(
     @javax.annotation.Nonnull List<ExampleRecord> optionalRecordList,
     @javax.annotation.Nonnull List<ExampleRecord> requiredRecordList,
     @javax.annotation.Nonnull Set<ExampleRecord> optionalRecordSet,
-    @javax.annotation.Nonnull Set<ExampleRecord> requiredRecordSet
-  ) implements Serializable {
+    @javax.annotation.Nonnull Set<ExampleRecord> requiredRecordSet)
+    implements Serializable {
 
   private static final long serialVersionUID = 1L;
 
@@ -59,7 +59,7 @@ public record ExampleRecordWithCollectionsOfRecords(
       @javax.annotation.Nullable final List<ExampleRecord> optionalRecordList,
       @javax.annotation.Nullable final List<ExampleRecord> requiredRecordList,
       @javax.annotation.Nullable final Set<ExampleRecord> optionalRecordSet,
-      @javax.annotation.Nullable final Set<ExampleRecord> requiredRecordSet) { 
+      @javax.annotation.Nullable final Set<ExampleRecord> requiredRecordSet) {
     this.optionalRecordList = Objects.requireNonNullElse(optionalRecordList, new ArrayList<>());
     this.requiredRecordList = Objects.requireNonNullElse(requiredRecordList, new ArrayList<>());
     this.optionalRecordSet = Objects.requireNonNullElse(optionalRecordSet, new LinkedHashSet<>());

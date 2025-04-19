@@ -12,7 +12,7 @@
  * openapi-to-java-records-mustache-templates. For further information,
  * questions, requesting features or reporting issues, please visit:
  * https://github.com/Chrimle/openapi-to-java-records-mustache-templates.
- * Generated with Version: 2.9.0
+ * Generated with Version: 2.9.1
  *
  */
 
@@ -114,7 +114,7 @@ public record RecordWithAllConstraints(
       @jakarta.annotation.Nonnull final Long longMinimumAndMaximum,
       @jakarta.annotation.Nonnull final BigDecimal bigDecimalMinimum,
       @jakarta.annotation.Nonnull final BigDecimal bigDecimalMaximum,
-      @jakarta.annotation.Nonnull final BigDecimal bigDecimalMinimumAndMaximum) { 
+      @jakarta.annotation.Nonnull final BigDecimal bigDecimalMinimumAndMaximum) {
     this.stringStandard = stringStandard;
     this.stringDefault = Objects.requireNonNullElse(stringDefault, "someDefaultValue");
     this.stringNullable = stringNullable;
