@@ -1,4 +1,4 @@
-name: Github PR Audit
+name: Pull Request Auditor
 
 on:
   pull_request:
@@ -8,7 +8,8 @@ on:
       - unlabeled
 
 jobs:
-  Audit-Pull-Request:
+  Label-Auditor:
+    name: Label Auditor
     runs-on: ubuntu-latest
 
     steps:
