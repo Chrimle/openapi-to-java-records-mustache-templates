@@ -109,8 +109,8 @@ public enum ExampleEnumWithIntegerValues {
     }
 
     /**
-     * Reads the <i>next</i> JSON-value from the {@code jsonReader} and converts it to a
-     * {@link ExampleEnumWithIntegerValues }.
+     * Reads the <i>next</i> JSON-value from the {@code jsonReader} and converts it to a {@link
+     * ExampleEnumWithIntegerValues }.
      *
      * @param jsonReader to read the JSON-string from.
      * @return a {@link ExampleEnumWithIntegerValues }.

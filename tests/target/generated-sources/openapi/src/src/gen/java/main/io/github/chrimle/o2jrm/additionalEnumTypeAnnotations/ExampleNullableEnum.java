@@ -116,8 +116,8 @@ public enum ExampleNullableEnum {
     }
 
     /**
-     * Reads the <i>next</i> JSON-value from the {@code jsonReader} and converts it to a
-     * {@link ExampleNullableEnum }.
+     * Reads the <i>next</i> JSON-value from the {@code jsonReader} and converts it to a {@link
+     * ExampleNullableEnum }.
      *
      * @param jsonReader to read the JSON-string from.
      * @return a {@link ExampleNullableEnum }.

@@ -109,8 +109,8 @@ public enum DeprecatedExampleEnum {
     }
 
     /**
-     * Reads the <i>next</i> JSON-value from the {@code jsonReader} and converts it to a
-     * {@link DeprecatedExampleEnum }.
+     * Reads the <i>next</i> JSON-value from the {@code jsonReader} and converts it to a {@link
+     * DeprecatedExampleEnum }.
      *
      * @param jsonReader to read the JSON-string from.
      * @return a {@link DeprecatedExampleEnum }.

@@ -115,8 +115,8 @@ public enum ExampleEnum {
     }
 
     /**
-     * Reads the <i>next</i> JSON-value from the {@code jsonReader} and converts it to a
-     * {@link ExampleEnum }.
+     * Reads the <i>next</i> JSON-value from the {@code jsonReader} and converts it to a {@link
+     * ExampleEnum }.
      *
      * @param jsonReader to read the JSON-string from.
      * @return a {@link ExampleEnum }.

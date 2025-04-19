@@ -107,8 +107,8 @@ public enum ExampleUriEnum {
     }
 
     /**
-     * Reads the <i>next</i> JSON-value from the {@code jsonReader} and converts it to a
-     * {@link ExampleUriEnum }.
+     * Reads the <i>next</i> JSON-value from the {@code jsonReader} and converts it to a {@link
+     * ExampleUriEnum }.
      *
      * @param jsonReader to read the JSON-string from.
      * @return a {@link ExampleUriEnum }.
