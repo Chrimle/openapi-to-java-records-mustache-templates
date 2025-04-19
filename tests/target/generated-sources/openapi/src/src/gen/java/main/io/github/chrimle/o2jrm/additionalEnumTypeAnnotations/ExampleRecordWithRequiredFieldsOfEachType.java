@@ -115,7 +115,7 @@ public record ExampleRecordWithRequiredFieldsOfEachType(
    * @param jsonElement to validate.
    * @throws IOException if the JSON Element is not a valid ExampleRecordWithRequiredFieldsOfEachType object.
    */
-  public static void validateJsonElement(final JsonElement jsonElement) throws IOException { 
+  public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
     if (jsonElement == null) {
       throw new IllegalArgumentException(
           String.format(

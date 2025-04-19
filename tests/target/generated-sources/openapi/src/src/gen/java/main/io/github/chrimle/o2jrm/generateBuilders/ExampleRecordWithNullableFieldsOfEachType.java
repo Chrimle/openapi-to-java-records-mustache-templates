@@ -256,7 +256,7 @@ public record ExampleRecordWithNullableFieldsOfEachType(
    * @param jsonElement to validate.
    * @throws IOException if the JSON Element is not a valid ExampleRecordWithNullableFieldsOfEachType object.
    */
-  public static void validateJsonElement(final JsonElement jsonElement) throws IOException { 
+  public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
     if (jsonElement == null) {
       throw new IllegalArgumentException(
           String.format(

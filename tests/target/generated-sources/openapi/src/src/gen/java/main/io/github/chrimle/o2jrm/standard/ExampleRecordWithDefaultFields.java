@@ -64,7 +64,7 @@ public record ExampleRecordWithDefaultFields(
    * @param jsonElement to validate.
    * @throws IOException if the JSON Element is not a valid ExampleRecordWithDefaultFields object.
    */
-  public static void validateJsonElement(final JsonElement jsonElement) throws IOException { 
+  public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
     for (final String key : jsonElement.getAsJsonObject().keySet()) {
       if (!ExampleRecordWithDefaultFields.openapiFields.contains(key)) {
         throw new IllegalArgumentException(
