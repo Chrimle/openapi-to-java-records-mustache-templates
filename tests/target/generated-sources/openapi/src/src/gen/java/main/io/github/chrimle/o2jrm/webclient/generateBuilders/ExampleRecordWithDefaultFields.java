@@ -71,8 +71,7 @@ public record ExampleRecordWithDefaultFields(
      */
     public ExampleRecordWithDefaultFields build() {
       return new ExampleRecordWithDefaultFields(
-        field1
-      );
+          field1);
     }
   }
 

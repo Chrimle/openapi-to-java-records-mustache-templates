@@ -87,8 +87,7 @@ public record ExampleRecord(
      */
     public ExampleRecord build() {
       return new ExampleRecord(
-        field1
-      );
+          field1);
     }
   }
 

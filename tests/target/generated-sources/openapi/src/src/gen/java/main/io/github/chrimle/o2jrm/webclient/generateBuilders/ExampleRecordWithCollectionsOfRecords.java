@@ -132,11 +132,10 @@ public record ExampleRecordWithCollectionsOfRecords(
      */
     public ExampleRecordWithCollectionsOfRecords build() {
       return new ExampleRecordWithCollectionsOfRecords(
-        optionalRecordList,
-        requiredRecordList,
-        optionalRecordSet,
-        requiredRecordSet
-      );
+          optionalRecordList,
+          requiredRecordList,
+          optionalRecordSet,
+          requiredRecordSet);
     }
   }
 

@@ -89,8 +89,7 @@ public record ExampleRecordWithTwoExtraAnnotations(
      */
     public ExampleRecordWithTwoExtraAnnotations build() {
       return new ExampleRecordWithTwoExtraAnnotations(
-        field1
-      );
+          field1);
     }
   }
 

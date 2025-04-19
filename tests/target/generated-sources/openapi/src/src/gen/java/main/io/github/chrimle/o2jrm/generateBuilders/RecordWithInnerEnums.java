@@ -126,10 +126,9 @@ public record RecordWithInnerEnums(
      */
     public RecordWithInnerEnums build() {
       return new RecordWithInnerEnums(
-        exampleInner,
-        exampleInnerTwo,
-        exampleInnerThree
-      );
+          exampleInner,
+          exampleInnerTwo,
+          exampleInnerThree);
     }
   }
 

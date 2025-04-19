@@ -89,8 +89,7 @@ public record DeprecatedExampleRecord(
      */
     public DeprecatedExampleRecord build() {
       return new DeprecatedExampleRecord(
-        field1
-      );
+          field1);
     }
   }
 

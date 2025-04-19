@@ -476,30 +476,29 @@ public record RecordWithAllConstraints(
      */
     public RecordWithAllConstraints build() {
       return new RecordWithAllConstraints(
-        stringStandard,
-        stringDefault,
-        stringNullable,
-        stringRequired,
-        stringRequiredNullable,
-        stringRequiredPattern,
-        stringEmailFormat,
-        stringUuidFormat,
-        stringMinLength,
-        stringMaxLength,
-        stringMinAndMaxLength,
-        arrayMinItems,
-        arrayMaxItems,
-        arrayMinAndMaxItems,
-        intMinimum,
-        intMaximum,
-        intMinimumAndMaximum,
-        longMinimum,
-        longMaximum,
-        longMinimumAndMaximum,
-        bigDecimalMinimum,
-        bigDecimalMaximum,
-        bigDecimalMinimumAndMaximum
-      );
+          stringStandard,
+          stringDefault,
+          stringNullable,
+          stringRequired,
+          stringRequiredNullable,
+          stringRequiredPattern,
+          stringEmailFormat,
+          stringUuidFormat,
+          stringMinLength,
+          stringMaxLength,
+          stringMinAndMaxLength,
+          arrayMinItems,
+          arrayMaxItems,
+          arrayMinAndMaxItems,
+          intMinimum,
+          intMaximum,
+          intMinimumAndMaximum,
+          longMinimum,
+          longMaximum,
+          longMinimumAndMaximum,
+          bigDecimalMinimum,
+          bigDecimalMaximum,
+          bigDecimalMinimumAndMaximum);
     }
   }
 

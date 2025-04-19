@@ -110,9 +110,8 @@ public record ExampleRecordWithOneExtraAnnotation(
      */
     public ExampleRecordWithOneExtraAnnotation build() {
       return new ExampleRecordWithOneExtraAnnotation(
-        field1,
-        field2
-      );
+          field1,
+          field2);
     }
   }
 

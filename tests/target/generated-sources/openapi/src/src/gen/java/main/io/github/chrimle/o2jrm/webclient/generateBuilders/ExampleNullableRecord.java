@@ -71,8 +71,7 @@ public record ExampleNullableRecord(
      */
     public ExampleNullableRecord build() {
       return new ExampleNullableRecord(
-        field1
-      );
+          field1);
     }
   }
 

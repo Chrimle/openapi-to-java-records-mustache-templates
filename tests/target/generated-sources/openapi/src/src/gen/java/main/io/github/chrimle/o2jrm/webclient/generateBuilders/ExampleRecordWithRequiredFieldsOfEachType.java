@@ -206,15 +206,14 @@ public record ExampleRecordWithRequiredFieldsOfEachType(
      */
     public ExampleRecordWithRequiredFieldsOfEachType build() {
       return new ExampleRecordWithRequiredFieldsOfEachType(
-        field1,
-        field2,
-        field3,
-        field4,
-        field5,
-        field6,
-        field7,
-        field8
-      );
+          field1,
+          field2,
+          field3,
+          field4,
+          field5,
+          field6,
+          field7,
+          field8);
     }
   }
 
