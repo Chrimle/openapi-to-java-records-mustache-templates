@@ -21,11 +21,11 @@ package io.github.chrimle.o2jrm.additionalEnumTypeAnnotations;
 import java.util.Objects;
 import com.google.gson.annotations.SerializedName;
 
-import java.io.IOException;
 import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 /**
  * Example of an Enum with integer values
