@@ -59,9 +59,8 @@
      */
     public {{classname}} build() {
       return new {{classname}}(
-        {{#vars}}{{name}}{{^-last}},
-        {{/-last}}{{/vars}}
-      );
+          {{#vars}}{{name}}{{^-last}},
+          {{/-last}}{{/vars}});
     }
   }
 
