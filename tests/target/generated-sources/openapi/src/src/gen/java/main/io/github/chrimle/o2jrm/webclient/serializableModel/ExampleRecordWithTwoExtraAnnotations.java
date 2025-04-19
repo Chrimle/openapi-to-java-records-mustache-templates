@@ -39,8 +39,8 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 @io.github.chrimle.o2jrm.annotations.TestExtraAnnotation
 @io.github.chrimle.o2jrm.annotations.TestExtraAnnotationTwo
 public record ExampleRecordWithTwoExtraAnnotations(
-    @javax.annotation.Nonnull Boolean field1
-  ) implements Serializable {
+    @javax.annotation.Nonnull Boolean field1)
+    implements Serializable {
 
   private static final long serialVersionUID = 1L;
 

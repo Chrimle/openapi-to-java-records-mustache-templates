@@ -44,8 +44,8 @@ import java.util.Set;
  * @param field1 a String field with a default value
  */
 public record ExampleRecordWithDefaultFields(
-    @javax.annotation.Nonnull String field1
-  ) implements Serializable {
+    @javax.annotation.Nonnull String field1)
+    implements Serializable {
 
   private static final long serialVersionUID = 1L;
 

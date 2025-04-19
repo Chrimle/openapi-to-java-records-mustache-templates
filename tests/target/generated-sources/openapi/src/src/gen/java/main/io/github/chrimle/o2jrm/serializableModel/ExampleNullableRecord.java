@@ -44,8 +44,8 @@ import java.util.Set;
  * @param field1 a boolean field
  */
 public record ExampleNullableRecord(
-    @javax.annotation.Nonnull Boolean field1
-  ) implements Serializable {
+    @javax.annotation.Nonnull Boolean field1)
+    implements Serializable {
 
   private static final long serialVersionUID = 1L;
 

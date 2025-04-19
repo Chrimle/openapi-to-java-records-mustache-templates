@@ -93,8 +93,8 @@ public record RecordWithAllConstraints(
     @javax.annotation.Nonnull Long longMinimumAndMaximum,
     @javax.annotation.Nonnull BigDecimal bigDecimalMinimum,
     @javax.annotation.Nonnull BigDecimal bigDecimalMaximum,
-    @javax.annotation.Nonnull BigDecimal bigDecimalMinimumAndMaximum
-  ) implements Serializable {
+    @javax.annotation.Nonnull BigDecimal bigDecimalMinimumAndMaximum)
+    implements Serializable {
 
   private static final long serialVersionUID = 1L;
 

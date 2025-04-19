@@ -60,8 +60,8 @@ public record ExampleRecordWithRequiredFieldsOfEachType(
     @javax.annotation.Nonnull List<Boolean> field5,
     @javax.annotation.Nonnull Set<Boolean> field6,
     @javax.annotation.Nonnull ExampleRecord field7,
-    @javax.annotation.Nonnull ExampleEnum field8
-  ) implements Serializable {
+    @javax.annotation.Nonnull ExampleEnum field8)
+    implements Serializable {
 
   private static final long serialVersionUID = 1L;
 

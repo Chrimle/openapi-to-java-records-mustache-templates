@@ -50,8 +50,8 @@ public record ExampleRecordWithCollectionsOfRecords(
     @javax.annotation.Nonnull List<ExampleRecord> optionalRecordList,
     @javax.annotation.Nonnull List<ExampleRecord> requiredRecordList,
     @javax.annotation.Nonnull Set<ExampleRecord> optionalRecordSet,
-    @javax.annotation.Nonnull Set<ExampleRecord> requiredRecordSet
-  ) implements Serializable {
+    @javax.annotation.Nonnull Set<ExampleRecord> requiredRecordSet)
+    implements Serializable {
 
   private static final long serialVersionUID = 1L;
 

@@ -66,8 +66,8 @@ public record ExampleRecordWithNullableFieldsOfEachType(
     @javax.annotation.Nullable List<Boolean> field5,
     @javax.annotation.Nullable Set<Boolean> field6,
     @javax.annotation.Nullable ExampleNullableRecord field7,
-    @javax.annotation.Nullable ExampleNullableEnum field8
-  ) implements Serializable {
+    @javax.annotation.Nullable ExampleNullableEnum field8)
+    implements Serializable {
 
   private static final long serialVersionUID = 1L;
 

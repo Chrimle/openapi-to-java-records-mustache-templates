@@ -43,8 +43,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 public record RecordWithInnerEnums(
     @javax.annotation.Nonnull ExampleInnerEnum exampleInner,
     @javax.annotation.Nonnull ExampleInnerTwoEnum exampleInnerTwo,
-    @javax.annotation.Nonnull ExampleInnerThreeEnum exampleInnerThree
-  ) implements Serializable {
+    @javax.annotation.Nonnull ExampleInnerThreeEnum exampleInnerThree)
+    implements Serializable {
 
   private static final long serialVersionUID = 1L;
 

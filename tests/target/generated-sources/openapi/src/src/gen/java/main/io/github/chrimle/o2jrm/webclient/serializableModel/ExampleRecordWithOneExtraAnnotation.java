@@ -43,8 +43,8 @@ public record ExampleRecordWithOneExtraAnnotation(
     @javax.annotation.Nonnull Boolean field1,
     @io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationOne
 @io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationTwo
-    @javax.annotation.Nonnull Boolean field2
-  ) implements Serializable {
+    @javax.annotation.Nonnull Boolean field2)
+    implements Serializable {
 
   private static final long serialVersionUID = 1L;
 
