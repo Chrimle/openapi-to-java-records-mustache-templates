@@ -55,8 +55,7 @@ public record ExampleRecordWithDefaultFields(
 
   /** A set containing the names of all required fields defined in this class. */
   public static final HashSet<String> openapiRequiredFields =
-      new HashSet<String>(
-          Set.of());
+      new HashSet<String>(Set.of());
 
   public ExampleRecordWithDefaultFields(
       @javax.annotation.Nullable final String field1) { 
