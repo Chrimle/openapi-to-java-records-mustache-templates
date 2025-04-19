@@ -71,8 +71,8 @@ import java.util.Set;
 
   /** A set containing the names of all required fields defined in this class. */
   public static final HashSet<String> openapiRequiredFields =
-      new HashSet<String>(
-          Set.of({{#requiredVars}}"{{baseName}}"{{^-last}},
+      new HashSet<String>({{#requiredVars}}{{#-first}}
+          {{/-first}}{{/requiredVars}}Set.of({{#requiredVars}}"{{baseName}}"{{^-last}},
               {{/-last}}{{/requiredVars}}));
 
 {{/gson}}
