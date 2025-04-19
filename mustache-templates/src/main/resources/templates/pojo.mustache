@@ -60,8 +60,8 @@ import java.util.Set;
         }}{{vendorExtensions.x-field-extra-annotation}}
     {{/vendorExtensions.x-field-extra-annotation}}{{!
     }}@{{javaxPackage}}.annotation.{{#isNullable}}Nullable{{/isNullable}}{{^isNullable}}Nonnull{{/isNullable}}{{>useBeanValidation}} {{{datatypeWithEnum}}} {{name}}{{^-last}},
-    {{/-last}}{{/vars}}{{^serializableModel}}){{/serializableModel}}{{#serializableModel}}
-  ) implements Serializable{{/serializableModel}} {
+    {{/-last}}{{/vars}}){{#serializableModel}}
+    implements Serializable{{/serializableModel}} {
 {{>serializableModel}}
 {{#gson}}  /** A set containing the names of all instance fields defined in this class. */
   public static final HashSet<String> openapiFields =
