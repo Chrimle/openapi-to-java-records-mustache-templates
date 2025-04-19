@@ -89,8 +89,7 @@ public record ExampleRecordWithOneExtraAnnotation(
 
     final JsonObject jsonObj = jsonElement.getAsJsonObject();
 
-    if (jsonObj.get("field1") != null
-        && !jsonObj.get("field1").isJsonNull()) { 
+    if (jsonObj.get("field1") != null && !jsonObj.get("field1").isJsonNull()) { 
       if (!jsonObj.get("field1").isJsonPrimitive()) {
         throw new IllegalArgumentException(
             String.format(
@@ -99,8 +98,7 @@ public record ExampleRecordWithOneExtraAnnotation(
       }
     }
 
-    if (jsonObj.get("field2") != null
-        && !jsonObj.get("field2").isJsonNull()) { 
+    if (jsonObj.get("field2") != null && !jsonObj.get("field2").isJsonNull()) { 
       if (!jsonObj.get("field2").isJsonPrimitive()) {
         throw new IllegalArgumentException(
             String.format(

@@ -119,8 +119,7 @@ public record ExampleRecordWithCollectionsOfRecords(
 
     final JsonObject jsonObj = jsonElement.getAsJsonObject();
 
-    if (jsonObj.get("optionalRecordList") != null
-        && !jsonObj.get("optionalRecordList").isJsonNull()) { 
+    if (jsonObj.get("optionalRecordList") != null && !jsonObj.get("optionalRecordList").isJsonNull()) { 
       if (!jsonObj.get("optionalRecordList").isJsonArray()) {
         throw new IllegalArgumentException(
             String.format(
@@ -142,8 +141,7 @@ public record ExampleRecordWithCollectionsOfRecords(
       ExampleRecord.validateJsonElement(element);
     }
 
-    if (jsonObj.get("optionalRecordSet") != null
-        && !jsonObj.get("optionalRecordSet").isJsonNull()) { 
+    if (jsonObj.get("optionalRecordSet") != null && !jsonObj.get("optionalRecordSet").isJsonNull()) { 
       if (!jsonObj.get("optionalRecordSet").isJsonArray()) {
         throw new IllegalArgumentException(
             String.format(

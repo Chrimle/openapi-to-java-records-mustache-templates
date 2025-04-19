@@ -213,8 +213,7 @@ public record RecordWithAllConstraints(
 
     final JsonObject jsonObj = jsonElement.getAsJsonObject();
 
-    if (jsonObj.get("stringStandard") != null
-        && !jsonObj.get("stringStandard").isJsonNull()) { 
+    if (jsonObj.get("stringStandard") != null && !jsonObj.get("stringStandard").isJsonNull()) { 
       if (!jsonObj.get("stringStandard").isJsonPrimitive()) {
         throw new IllegalArgumentException(
             String.format(
@@ -223,8 +222,7 @@ public record RecordWithAllConstraints(
       }
     }
 
-    if (jsonObj.get("stringDefault") != null
-        && !jsonObj.get("stringDefault").isJsonNull()) { 
+    if (jsonObj.get("stringDefault") != null && !jsonObj.get("stringDefault").isJsonNull()) { 
       if (!jsonObj.get("stringDefault").isJsonPrimitive()) {
         throw new IllegalArgumentException(
             String.format(
@@ -233,8 +231,7 @@ public record RecordWithAllConstraints(
       }
     }
 
-    if (jsonObj.get("stringNullable") != null
-        && !jsonObj.get("stringNullable").isJsonNull()) { 
+    if (jsonObj.get("stringNullable") != null && !jsonObj.get("stringNullable").isJsonNull()) { 
       if (!jsonObj.get("stringNullable").isJsonPrimitive()) {
         throw new IllegalArgumentException(
             String.format(
@@ -264,8 +261,7 @@ public record RecordWithAllConstraints(
               jsonObj.get("stringRequiredPattern")));
     }
 
-    if (jsonObj.get("stringEmailFormat") != null
-        && !jsonObj.get("stringEmailFormat").isJsonNull()) { 
+    if (jsonObj.get("stringEmailFormat") != null && !jsonObj.get("stringEmailFormat").isJsonNull()) { 
       if (!jsonObj.get("stringEmailFormat").isJsonPrimitive()) {
         throw new IllegalArgumentException(
             String.format(
@@ -274,8 +270,7 @@ public record RecordWithAllConstraints(
       }
     }
 
-    if (jsonObj.get("stringUuidFormat") != null
-        && !jsonObj.get("stringUuidFormat").isJsonNull()) { 
+    if (jsonObj.get("stringUuidFormat") != null && !jsonObj.get("stringUuidFormat").isJsonNull()) { 
       if (!jsonObj.get("stringUuidFormat").isJsonPrimitive()) {
         throw new IllegalArgumentException(
             String.format(
@@ -284,8 +279,7 @@ public record RecordWithAllConstraints(
       }
     }
 
-    if (jsonObj.get("stringMinLength") != null
-        && !jsonObj.get("stringMinLength").isJsonNull()) { 
+    if (jsonObj.get("stringMinLength") != null && !jsonObj.get("stringMinLength").isJsonNull()) { 
       if (!jsonObj.get("stringMinLength").isJsonPrimitive()) {
         throw new IllegalArgumentException(
             String.format(
@@ -294,8 +288,7 @@ public record RecordWithAllConstraints(
       }
     }
 
-    if (jsonObj.get("stringMaxLength") != null
-        && !jsonObj.get("stringMaxLength").isJsonNull()) { 
+    if (jsonObj.get("stringMaxLength") != null && !jsonObj.get("stringMaxLength").isJsonNull()) { 
       if (!jsonObj.get("stringMaxLength").isJsonPrimitive()) {
         throw new IllegalArgumentException(
             String.format(
@@ -304,8 +297,7 @@ public record RecordWithAllConstraints(
       }
     }
 
-    if (jsonObj.get("stringMinAndMaxLength") != null
-        && !jsonObj.get("stringMinAndMaxLength").isJsonNull()) { 
+    if (jsonObj.get("stringMinAndMaxLength") != null && !jsonObj.get("stringMinAndMaxLength").isJsonNull()) { 
       if (!jsonObj.get("stringMinAndMaxLength").isJsonPrimitive()) {
         throw new IllegalArgumentException(
             String.format(
@@ -314,8 +306,7 @@ public record RecordWithAllConstraints(
       }
     }
 
-    if (jsonObj.get("arrayMinItems") != null
-        && !jsonObj.get("arrayMinItems").isJsonNull()) { 
+    if (jsonObj.get("arrayMinItems") != null && !jsonObj.get("arrayMinItems").isJsonNull()) { 
       if (!jsonObj.get("arrayMinItems").isJsonArray()) {
         throw new IllegalArgumentException(
             String.format(
@@ -324,8 +315,7 @@ public record RecordWithAllConstraints(
       }
     }
 
-    if (jsonObj.get("arrayMaxItems") != null
-        && !jsonObj.get("arrayMaxItems").isJsonNull()) { 
+    if (jsonObj.get("arrayMaxItems") != null && !jsonObj.get("arrayMaxItems").isJsonNull()) { 
       if (!jsonObj.get("arrayMaxItems").isJsonArray()) {
         throw new IllegalArgumentException(
             String.format(
@@ -334,8 +324,7 @@ public record RecordWithAllConstraints(
       }
     }
 
-    if (jsonObj.get("arrayMinAndMaxItems") != null
-        && !jsonObj.get("arrayMinAndMaxItems").isJsonNull()) { 
+    if (jsonObj.get("arrayMinAndMaxItems") != null && !jsonObj.get("arrayMinAndMaxItems").isJsonNull()) { 
       if (!jsonObj.get("arrayMinAndMaxItems").isJsonArray()) {
         throw new IllegalArgumentException(
             String.format(
@@ -344,8 +333,7 @@ public record RecordWithAllConstraints(
       }
     }
 
-    if (jsonObj.get("intMinimum") != null
-        && !jsonObj.get("intMinimum").isJsonNull()) { 
+    if (jsonObj.get("intMinimum") != null && !jsonObj.get("intMinimum").isJsonNull()) { 
       if (!jsonObj.get("intMinimum").isJsonPrimitive()) {
         throw new IllegalArgumentException(
             String.format(
@@ -354,8 +342,7 @@ public record RecordWithAllConstraints(
       }
     }
 
-    if (jsonObj.get("intMaximum") != null
-        && !jsonObj.get("intMaximum").isJsonNull()) { 
+    if (jsonObj.get("intMaximum") != null && !jsonObj.get("intMaximum").isJsonNull()) { 
       if (!jsonObj.get("intMaximum").isJsonPrimitive()) {
         throw new IllegalArgumentException(
             String.format(
@@ -364,8 +351,7 @@ public record RecordWithAllConstraints(
       }
     }
 
-    if (jsonObj.get("intMinimumAndMaximum") != null
-        && !jsonObj.get("intMinimumAndMaximum").isJsonNull()) { 
+    if (jsonObj.get("intMinimumAndMaximum") != null && !jsonObj.get("intMinimumAndMaximum").isJsonNull()) { 
       if (!jsonObj.get("intMinimumAndMaximum").isJsonPrimitive()) {
         throw new IllegalArgumentException(
             String.format(
@@ -374,8 +360,7 @@ public record RecordWithAllConstraints(
       }
     }
 
-    if (jsonObj.get("longMinimum") != null
-        && !jsonObj.get("longMinimum").isJsonNull()) { 
+    if (jsonObj.get("longMinimum") != null && !jsonObj.get("longMinimum").isJsonNull()) { 
       if (!jsonObj.get("longMinimum").isJsonPrimitive()) {
         throw new IllegalArgumentException(
             String.format(
@@ -384,8 +369,7 @@ public record RecordWithAllConstraints(
       }
     }
 
-    if (jsonObj.get("longMaximum") != null
-        && !jsonObj.get("longMaximum").isJsonNull()) { 
+    if (jsonObj.get("longMaximum") != null && !jsonObj.get("longMaximum").isJsonNull()) { 
       if (!jsonObj.get("longMaximum").isJsonPrimitive()) {
         throw new IllegalArgumentException(
             String.format(
@@ -394,8 +378,7 @@ public record RecordWithAllConstraints(
       }
     }
 
-    if (jsonObj.get("longMinimumAndMaximum") != null
-        && !jsonObj.get("longMinimumAndMaximum").isJsonNull()) { 
+    if (jsonObj.get("longMinimumAndMaximum") != null && !jsonObj.get("longMinimumAndMaximum").isJsonNull()) { 
       if (!jsonObj.get("longMinimumAndMaximum").isJsonPrimitive()) {
         throw new IllegalArgumentException(
             String.format(
@@ -404,8 +387,7 @@ public record RecordWithAllConstraints(
       }
     }
 
-    if (jsonObj.get("bigDecimalMinimum") != null
-        && !jsonObj.get("bigDecimalMinimum").isJsonNull()) { 
+    if (jsonObj.get("bigDecimalMinimum") != null && !jsonObj.get("bigDecimalMinimum").isJsonNull()) { 
       if (!jsonObj.get("bigDecimalMinimum").isJsonPrimitive()) {
         throw new IllegalArgumentException(
             String.format(
@@ -414,8 +396,7 @@ public record RecordWithAllConstraints(
       }
     }
 
-    if (jsonObj.get("bigDecimalMaximum") != null
-        && !jsonObj.get("bigDecimalMaximum").isJsonNull()) { 
+    if (jsonObj.get("bigDecimalMaximum") != null && !jsonObj.get("bigDecimalMaximum").isJsonNull()) { 
       if (!jsonObj.get("bigDecimalMaximum").isJsonPrimitive()) {
         throw new IllegalArgumentException(
             String.format(
@@ -424,8 +405,7 @@ public record RecordWithAllConstraints(
       }
     }
 
-    if (jsonObj.get("bigDecimalMinimumAndMaximum") != null
-        && !jsonObj.get("bigDecimalMinimumAndMaximum").isJsonNull()) { 
+    if (jsonObj.get("bigDecimalMinimumAndMaximum") != null && !jsonObj.get("bigDecimalMinimumAndMaximum").isJsonNull()) { 
       if (!jsonObj.get("bigDecimalMinimumAndMaximum").isJsonPrimitive()) {
         throw new IllegalArgumentException(
             String.format(

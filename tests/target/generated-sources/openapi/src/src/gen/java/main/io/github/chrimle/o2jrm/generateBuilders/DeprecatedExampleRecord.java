@@ -115,8 +115,7 @@ public record DeprecatedExampleRecord(
 
     final JsonObject jsonObj = jsonElement.getAsJsonObject();
 
-    if (jsonObj.get("field1") != null
-        && !jsonObj.get("field1").isJsonNull()) { 
+    if (jsonObj.get("field1") != null && !jsonObj.get("field1").isJsonNull()) { 
       if (!jsonObj.get("field1").isJsonPrimitive()) {
         throw new IllegalArgumentException(
             String.format(
