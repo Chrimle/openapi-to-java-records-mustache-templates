@@ -66,7 +66,7 @@ public record ExampleRecordWithOneExtraAnnotation(
 
   public ExampleRecordWithOneExtraAnnotation(
       @javax.annotation.Nonnull final Boolean field1,
-      @javax.annotation.Nonnull final Boolean field2) { 
+      @javax.annotation.Nonnull final Boolean field2) {
     this.field1 = field1;
     this.field2 = field2;
   }

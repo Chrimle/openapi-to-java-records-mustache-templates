@@ -98,7 +98,7 @@ public record ExampleRecordWithRequiredFieldsOfEachType(
       @jakarta.annotation.Nullable final List<Boolean> field5,
       @jakarta.annotation.Nullable final Set<Boolean> field6,
       @jakarta.annotation.Nonnull final ExampleRecord field7,
-      @jakarta.annotation.Nonnull final ExampleEnum field8) { 
+      @jakarta.annotation.Nonnull final ExampleEnum field8) {
     this.field1 = field1;
     this.field2 = field2;
     this.field3 = field3;

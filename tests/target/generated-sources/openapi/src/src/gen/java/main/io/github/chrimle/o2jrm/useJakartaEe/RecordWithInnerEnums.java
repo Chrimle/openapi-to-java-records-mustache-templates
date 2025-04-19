@@ -63,7 +63,7 @@ public record RecordWithInnerEnums(
   public RecordWithInnerEnums(
       @jakarta.annotation.Nonnull final ExampleInnerEnum exampleInner,
       @jakarta.annotation.Nonnull final ExampleInnerTwoEnum exampleInnerTwo,
-      @jakarta.annotation.Nonnull final ExampleInnerThreeEnum exampleInnerThree) { 
+      @jakarta.annotation.Nonnull final ExampleInnerThreeEnum exampleInnerThree) {
     this.exampleInner = exampleInner;
     this.exampleInnerTwo = exampleInnerTwo;
     this.exampleInnerThree = exampleInnerThree;

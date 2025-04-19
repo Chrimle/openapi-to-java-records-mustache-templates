@@ -116,7 +116,7 @@ public record RecordWithAllConstraints(
       @javax.annotation.Nonnull final Long longMinimumAndMaximum,
       @javax.annotation.Nonnull final BigDecimal bigDecimalMinimum,
       @javax.annotation.Nonnull final BigDecimal bigDecimalMaximum,
-      @javax.annotation.Nonnull final BigDecimal bigDecimalMinimumAndMaximum) { 
+      @javax.annotation.Nonnull final BigDecimal bigDecimalMinimumAndMaximum) {
     this.stringStandard = stringStandard;
     this.stringDefault = Objects.requireNonNullElse(stringDefault, "someDefaultValue");
     this.stringNullable = stringNullable;

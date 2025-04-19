@@ -41,7 +41,7 @@ public record ExampleRecord(
     @javax.annotation.Nonnull Boolean field1) {
 
   public ExampleRecord(
-      @javax.annotation.Nonnull final Boolean field1) { 
+      @javax.annotation.Nonnull final Boolean field1) {
     this.field1 = field1;
   }
 }

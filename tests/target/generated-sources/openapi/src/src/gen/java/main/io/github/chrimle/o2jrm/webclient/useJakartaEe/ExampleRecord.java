@@ -39,7 +39,7 @@ public record ExampleRecord(
     @jakarta.annotation.Nonnull Boolean field1) {
 
   public ExampleRecord(
-      @jakarta.annotation.Nonnull final Boolean field1) { 
+      @jakarta.annotation.Nonnull final Boolean field1) {
     this.field1 = field1;
   }
 }

@@ -75,7 +75,7 @@ public record ExampleRecordWithNullableFieldsOfEachType(
       @javax.annotation.Nullable final List<Boolean> field5,
       @javax.annotation.Nullable final Set<Boolean> field6,
       @javax.annotation.Nullable final ExampleNullableRecord field7,
-      @javax.annotation.Nullable final ExampleNullableEnum field8) { 
+      @javax.annotation.Nullable final ExampleNullableEnum field8) {
     this.field1 = field1;
     this.field2 = field2;
     this.field3 = field3;

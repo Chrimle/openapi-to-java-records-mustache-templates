@@ -54,7 +54,7 @@ public record ExampleRecord(
   public static final HashSet<String> openapiRequiredFields = new HashSet<String>(Set.of());
 
   public ExampleRecord(
-      @javax.annotation.Nonnull final Boolean field1) { 
+      @javax.annotation.Nonnull final Boolean field1) {
     this.field1 = field1;
   }
 

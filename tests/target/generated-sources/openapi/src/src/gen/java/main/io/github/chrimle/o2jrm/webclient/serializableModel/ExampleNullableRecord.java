@@ -43,7 +43,7 @@ public record ExampleNullableRecord(
   private static final long serialVersionUID = 1L;
 
   public ExampleNullableRecord(
-      @javax.annotation.Nonnull final Boolean field1) { 
+      @javax.annotation.Nonnull final Boolean field1) {
     this.field1 = field1;
   }
 }

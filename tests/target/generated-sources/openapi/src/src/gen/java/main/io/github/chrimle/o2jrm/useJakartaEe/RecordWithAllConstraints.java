@@ -151,7 +151,7 @@ public record RecordWithAllConstraints(
       @jakarta.annotation.Nonnull final Long longMinimumAndMaximum,
       @jakarta.annotation.Nonnull final BigDecimal bigDecimalMinimum,
       @jakarta.annotation.Nonnull final BigDecimal bigDecimalMaximum,
-      @jakarta.annotation.Nonnull final BigDecimal bigDecimalMinimumAndMaximum) { 
+      @jakarta.annotation.Nonnull final BigDecimal bigDecimalMinimumAndMaximum) {
     this.stringStandard = stringStandard;
     this.stringDefault = Objects.requireNonNullElse(stringDefault, "someDefaultValue");
     this.stringNullable = stringNullable;

@@ -62,7 +62,7 @@ public record ExampleRecordWithOneExtraAnnotation(
 
   public ExampleRecordWithOneExtraAnnotation(
       @jakarta.annotation.Nonnull final Boolean field1,
-      @jakarta.annotation.Nonnull final Boolean field2) { 
+      @jakarta.annotation.Nonnull final Boolean field2) {
     this.field1 = field1;
     this.field2 = field2;
   }

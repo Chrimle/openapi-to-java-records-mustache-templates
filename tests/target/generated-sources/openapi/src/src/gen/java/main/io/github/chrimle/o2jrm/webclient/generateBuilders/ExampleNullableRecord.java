@@ -39,7 +39,7 @@ public record ExampleNullableRecord(
     @javax.annotation.Nonnull Boolean field1) {
 
   public ExampleNullableRecord(
-      @javax.annotation.Nonnull final Boolean field1) { 
+      @javax.annotation.Nonnull final Boolean field1) {
     this.field1 = field1;
   }
 

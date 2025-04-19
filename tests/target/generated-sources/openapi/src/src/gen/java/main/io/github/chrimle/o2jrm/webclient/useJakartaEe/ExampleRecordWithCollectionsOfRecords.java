@@ -55,7 +55,7 @@ public record ExampleRecordWithCollectionsOfRecords(
       @jakarta.annotation.Nullable final List<ExampleRecord> optionalRecordList,
       @jakarta.annotation.Nullable final List<ExampleRecord> requiredRecordList,
       @jakarta.annotation.Nullable final Set<ExampleRecord> optionalRecordSet,
-      @jakarta.annotation.Nullable final Set<ExampleRecord> requiredRecordSet) { 
+      @jakarta.annotation.Nullable final Set<ExampleRecord> requiredRecordSet) {
     this.optionalRecordList = Objects.requireNonNullElse(optionalRecordList, new ArrayList<>());
     this.requiredRecordList = Objects.requireNonNullElse(requiredRecordList, new ArrayList<>());
     this.optionalRecordSet = Objects.requireNonNullElse(optionalRecordSet, new LinkedHashSet<>());

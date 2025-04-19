@@ -98,7 +98,7 @@ public record ExampleRecordWithRequiredFieldsOfEachType(
       @javax.annotation.Nullable final List<Boolean> field5,
       @javax.annotation.Nullable final Set<Boolean> field6,
       @javax.annotation.Nonnull final ExampleRecord field7,
-      @javax.annotation.Nonnull final ExampleEnum field8) { 
+      @javax.annotation.Nonnull final ExampleEnum field8) {
     this.field1 = field1;
     this.field2 = field2;
     this.field3 = field3;

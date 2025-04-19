@@ -67,7 +67,7 @@ public record RecordWithInnerEnums(
   public RecordWithInnerEnums(
       @javax.annotation.Nonnull final ExampleInnerEnum exampleInner,
       @javax.annotation.Nonnull final ExampleInnerTwoEnum exampleInnerTwo,
-      @javax.annotation.Nonnull final ExampleInnerThreeEnum exampleInnerThree) { 
+      @javax.annotation.Nonnull final ExampleInnerThreeEnum exampleInnerThree) {
     this.exampleInner = exampleInner;
     this.exampleInnerTwo = exampleInnerTwo;
     this.exampleInnerThree = exampleInnerThree;

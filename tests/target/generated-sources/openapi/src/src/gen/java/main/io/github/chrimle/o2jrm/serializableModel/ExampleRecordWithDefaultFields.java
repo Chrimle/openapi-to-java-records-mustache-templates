@@ -58,7 +58,7 @@ public record ExampleRecordWithDefaultFields(
   public static final HashSet<String> openapiRequiredFields = new HashSet<String>(Set.of());
 
   public ExampleRecordWithDefaultFields(
-      @javax.annotation.Nullable final String field1) { 
+      @javax.annotation.Nullable final String field1) {
     this.field1 = Objects.requireNonNullElse(field1, "someDefaultValue");
   }
 

@@ -56,7 +56,7 @@ public record ExampleRecordWithTwoExtraAnnotations(
   public static final HashSet<String> openapiRequiredFields = new HashSet<String>(Set.of());
 
   public ExampleRecordWithTwoExtraAnnotations(
-      @jakarta.annotation.Nonnull final Boolean field1) { 
+      @jakarta.annotation.Nonnull final Boolean field1) {
     this.field1 = field1;
   }
 

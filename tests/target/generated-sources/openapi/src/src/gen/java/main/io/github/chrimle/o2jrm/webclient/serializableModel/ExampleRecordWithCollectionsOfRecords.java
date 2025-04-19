@@ -59,7 +59,7 @@ public record ExampleRecordWithCollectionsOfRecords(
       @javax.annotation.Nullable final List<ExampleRecord> optionalRecordList,
       @javax.annotation.Nullable final List<ExampleRecord> requiredRecordList,
       @javax.annotation.Nullable final Set<ExampleRecord> optionalRecordSet,
-      @javax.annotation.Nullable final Set<ExampleRecord> requiredRecordSet) { 
+      @javax.annotation.Nullable final Set<ExampleRecord> requiredRecordSet) {
     this.optionalRecordList = Objects.requireNonNullElse(optionalRecordList, new ArrayList<>());
     this.requiredRecordList = Objects.requireNonNullElse(requiredRecordList, new ArrayList<>());
     this.optionalRecordSet = Objects.requireNonNullElse(optionalRecordSet, new LinkedHashSet<>());

@@ -39,7 +39,7 @@ public record ExampleRecordWithDefaultFields(
     @jakarta.annotation.Nonnull String field1) {
 
   public ExampleRecordWithDefaultFields(
-      @jakarta.annotation.Nullable final String field1) { 
+      @jakarta.annotation.Nullable final String field1) {
     this.field1 = Objects.requireNonNullElse(field1, "someDefaultValue");
   }
 }
