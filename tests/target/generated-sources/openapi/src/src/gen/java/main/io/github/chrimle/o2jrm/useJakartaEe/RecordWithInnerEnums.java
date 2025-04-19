@@ -157,8 +157,8 @@ public record RecordWithInnerEnums(
       }
 
       /**
-       * Reads the <i>next</i> JSON-value from the {@code jsonReader} and converts it to a
-       * {@link ExampleInnerEnum }.
+       * Reads the <i>next</i> JSON-value from the {@code jsonReader} and converts it to a {@link
+       * ExampleInnerEnum }.
        *
        * @param jsonReader to read the JSON-string from.
        * @return a {@link ExampleInnerEnum }.
@@ -251,8 +251,8 @@ public record RecordWithInnerEnums(
       }
 
       /**
-       * Reads the <i>next</i> JSON-value from the {@code jsonReader} and converts it to a
-       * {@link ExampleInnerTwoEnum }.
+       * Reads the <i>next</i> JSON-value from the {@code jsonReader} and converts it to a {@link
+       * ExampleInnerTwoEnum }.
        *
        * @param jsonReader to read the JSON-string from.
        * @return a {@link ExampleInnerTwoEnum }.
@@ -344,8 +344,8 @@ public record RecordWithInnerEnums(
       }
 
       /**
-       * Reads the <i>next</i> JSON-value from the {@code jsonReader} and converts it to a
-       * {@link ExampleInnerThreeEnum }.
+       * Reads the <i>next</i> JSON-value from the {@code jsonReader} and converts it to a {@link
+       * ExampleInnerThreeEnum }.
        *
        * @param jsonReader to read the JSON-string from.
        * @return a {@link ExampleInnerThreeEnum }.
