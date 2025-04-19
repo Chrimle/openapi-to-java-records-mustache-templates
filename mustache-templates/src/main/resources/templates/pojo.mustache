@@ -200,16 +200,18 @@ import java.util.Set;
    * @param jsonElement to validate.
    * @throws IOException if the JSON Element is not a valid {{classname}} object.
    */
-  public static void validateJsonElement(final JsonElement jsonElement) throws IOException { {{#requiredVars}}{{#-first}}
-    if (jsonElement == null) {
+  public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
+{{#requiredVars}}{{#-first}}{{!
+}}    if (jsonElement == null) {
       throw new IllegalArgumentException(
           String.format(
               "The required field(s) %s in {{{classname}}} is not found in the empty JSON string",
               {{classname}}.openapiRequiredFields.toString()));
     }
+
 {{/-first}}{{/requiredVars}}{{!
-}}{{^hasChildren}}{{^isAdditionalPropertiesTrue}}
-    for (final String key : jsonElement.getAsJsonObject().keySet()) {
+}}{{^hasChildren}}{{^isAdditionalPropertiesTrue}}{{!
+}}    for (final String key : jsonElement.getAsJsonObject().keySet()) {
       if (!{{classname}}.openapiFields.contains(key)) {
         throw new IllegalArgumentException(
             String.format(
