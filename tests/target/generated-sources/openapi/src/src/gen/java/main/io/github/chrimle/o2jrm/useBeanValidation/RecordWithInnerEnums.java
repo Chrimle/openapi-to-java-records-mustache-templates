@@ -36,7 +36,6 @@ import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
 /**
