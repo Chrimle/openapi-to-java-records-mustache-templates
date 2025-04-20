@@ -38,7 +38,6 @@ import jakarta.validation.constraints.*;
 import jakarta.validation.Valid;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapterFactory;
