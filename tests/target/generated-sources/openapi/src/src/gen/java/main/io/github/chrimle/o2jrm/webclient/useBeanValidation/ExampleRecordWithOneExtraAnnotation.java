@@ -12,7 +12,7 @@
  * openapi-to-java-records-mustache-templates. For further information,
  * questions, requesting features or reporting issues, please visit:
  * https://github.com/Chrimle/openapi-to-java-records-mustache-templates.
- * Generated with Version: 2.9.2
+ * Generated with Version: 2.9.3
  *
  */
 
@@ -29,8 +29,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import jakarta.validation.constraints.*;
 import jakarta.validation.Valid;
-
-import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
  * Example of a Record with an extra annotation
