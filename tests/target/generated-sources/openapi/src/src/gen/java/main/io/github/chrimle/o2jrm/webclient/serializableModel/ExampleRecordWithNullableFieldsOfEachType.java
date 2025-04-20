@@ -41,8 +41,6 @@ import java.io.Serializable;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-
 /**
  * Example of a Record with fields of each type
  *
