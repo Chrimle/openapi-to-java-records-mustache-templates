@@ -20,6 +20,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.github.chrimle.o2jrm.GeneratedSource;
@@ -310,6 +311,22 @@ final class GeneratedEnumTests implements GeneratedClassTests {
                 generatedSource.getClassUnderTest(), "Adapter");
           }
 
+          @ParameterizedTest
+          @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+          @DisplayName("Generated `enum` is annotated `@JsonAdapter`")
+          void whenLibraryisOkHttpGsonThenGeneratedEnumIsAnnotatedWithJsonAdapter(
+              final GeneratedSource generatedSource) {
+            Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+
+            final JsonAdapter jsonAdapter =
+                CustomAssertions.assertClassIsAnnotatedWith(
+                    generatedSource.getClassUnderTest(), JsonAdapter.class);
+            Assertions.assertEquals(
+                CustomAssertions.assertClassHasInnerClass(
+                    generatedSource.getClassUnderTest(), "Adapter"),
+                jsonAdapter.value());
+          }
+
           @Nested
           @DisplayName("Testing the `write(JsonWriter, T)`-method")
           class WriteMethodTests {
@@ -478,6 +495,17 @@ final class GeneratedEnumTests implements GeneratedClassTests {
 
           CustomAssertions.assertClassDoesNotHaveInnerClass(
               generatedSource.getClassUnderTest(), "Adapter");
+        }
+
+        @ParameterizedTest
+        @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+        @DisplayName("Generated `enum` is NOT annotated `@JsonAdapter`")
+        void whenLibraryIsWebClientThenGeneratedEnumIsNotAnnotatedWithJsonAdapter(
+            final GeneratedSource generatedSource) {
+          Assumptions.assumeTrue(generatedSource.isLibraryWebClient());
+
+          CustomAssertions.assertClassIsNotAnnotatedWith(
+              generatedSource.getClassUnderTest(), JsonAdapter.class);
         }
       }
     }
