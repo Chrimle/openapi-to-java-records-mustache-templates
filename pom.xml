@@ -261,6 +261,8 @@
                 <artifactId>spotless-maven-plugin</artifactId>
                 <version>${spotless-maven-plugin.version}</version>
                 <configuration>
+                    <!-- Skips the spotless:apply when running in GitHub Actions -->
+                    <skip>${env.CI}</skip>
                     <java>
                         <lineEndings>UNIX</lineEndings>
                         <includes>
