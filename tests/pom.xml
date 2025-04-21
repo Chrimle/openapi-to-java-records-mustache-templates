@@ -25,7 +25,6 @@
         <modelPackage.default>${project.groupId}.o2jrm</modelPackage.default>
         <generateModels.default>true</generateModels.default>
         <generateApis.default>false</generateApis.default>
-        <generateSupportingFiles.default>true</generateSupportingFiles.default>
         <generateModelTests.default>false</generateModelTests.default>
         <generateModelDocumentation.default>false</generateModelDocumentation.default>
         <generatorName.default>java</generatorName.default>
@@ -195,7 +194,6 @@
                             <modelPackage>${modelPackage.default}.${execution.standard}</modelPackage>
                             <generateModels>${generateModels.default}</generateModels>
                             <generateApis>${generateApis.default}</generateApis>
-                            <generateSupportingFiles>${generateSupportingFiles.default}</generateSupportingFiles>
                             <generateModelTests>${generateModelTests.default}</generateModelTests>
                             <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
                             <inputSpec>${inputSpec.default}</inputSpec>
@@ -216,7 +214,6 @@
                             <modelPackage>${modelPackage.default}.${execution.webclient.standard}</modelPackage>
                             <generateModels>${generateModels.default}</generateModels>
                             <generateApis>${generateApis.default}</generateApis>
-                            <generateSupportingFiles>${generateSupportingFiles.default}</generateSupportingFiles>
                             <generateModelTests>${generateModelTests.default}</generateModelTests>
                             <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
                             <inputSpec>${inputSpec.default}</inputSpec>
@@ -238,7 +235,6 @@
                             <modelPackage>${modelPackage.default}.${execution.useEnumCaseInsensitive}</modelPackage>
                             <generateModels>${generateModels.default}</generateModels>
                             <generateApis>${generateApis.default}</generateApis>
-                            <generateSupportingFiles>${generateSupportingFiles.default}</generateSupportingFiles>
                             <generateModelTests>${generateModelTests.default}</generateModelTests>
                             <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
                             <inputSpec>${inputSpec.default}</inputSpec>
@@ -260,7 +256,6 @@
                             <modelPackage>${modelPackage.default}.${execution.webclient.useEnumCaseInsensitive}</modelPackage>
                             <generateModels>${generateModels.default}</generateModels>
                             <generateApis>${generateApis.default}</generateApis>
-                            <generateSupportingFiles>${generateSupportingFiles.default}</generateSupportingFiles>
                             <generateModelTests>${generateModelTests.default}</generateModelTests>
                             <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
                             <inputSpec>${inputSpec.default}</inputSpec>
@@ -283,7 +278,6 @@
                             <modelPackage>${modelPackage.default}.${execution.additionalModelTypeAnnotations}</modelPackage>
                             <generateModels>${generateModels.default}</generateModels>
                             <generateApis>${generateApis.default}</generateApis>
-                            <generateSupportingFiles>${generateSupportingFiles.default}</generateSupportingFiles>
                             <generateModelTests>${generateModelTests.default}</generateModelTests>
                             <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
                             <inputSpec>${inputSpec.default}</inputSpec>
@@ -309,7 +303,6 @@
                             <modelPackage>${modelPackage.default}.${execution.webclient.additionalModelTypeAnnotations}</modelPackage>
                             <generateModels>${generateModels.default}</generateModels>
                             <generateApis>${generateApis.default}</generateApis>
-                            <generateSupportingFiles>${generateSupportingFiles.default}</generateSupportingFiles>
                             <generateModelTests>${generateModelTests.default}</generateModelTests>
                             <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
                             <inputSpec>${inputSpec.default}</inputSpec>
@@ -336,7 +329,6 @@
                             <modelPackage>${modelPackage.default}.${execution.additionalEnumTypeAnnotations}</modelPackage>
                             <generateModels>${generateModels.default}</generateModels>
                             <generateApis>${generateApis.default}</generateApis>
-                            <generateSupportingFiles>${generateSupportingFiles.default}</generateSupportingFiles>
                             <generateModelTests>${generateModelTests.default}</generateModelTests>
                             <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
                             <inputSpec>${inputSpec.default}</inputSpec>
@@ -358,7 +350,6 @@
                             <modelPackage>${modelPackage.default}.${execution.webclient.additionalEnumTypeAnnotations}</modelPackage>
                             <generateModels>${generateModels.default}</generateModels>
                             <generateApis>${generateApis.default}</generateApis>
-                            <generateSupportingFiles>${generateSupportingFiles.default}</generateSupportingFiles>
                             <generateModelTests>${generateModelTests.default}</generateModelTests>
                             <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
                             <inputSpec>${inputSpec.default}</inputSpec>
@@ -381,7 +372,6 @@
                             <modelPackage>${modelPackage.default}.${execution.serializableModel}</modelPackage>
                             <generateModels>${generateModels.default}</generateModels>
                             <generateApis>${generateApis.default}</generateApis>
-                            <generateSupportingFiles>${generateSupportingFiles.default}</generateSupportingFiles>
                             <generateModelTests>${generateModelTests.default}</generateModelTests>
                             <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
                             <inputSpec>${inputSpec.default}</inputSpec>
@@ -403,7 +393,6 @@
                             <modelPackage>${modelPackage.default}.${execution.webclient.serializableModel}</modelPackage>
                             <generateModels>${generateModels.default}</generateModels>
                             <generateApis>${generateApis.default}</generateApis>
-                            <generateSupportingFiles>${generateSupportingFiles.default}</generateSupportingFiles>
                             <generateModelTests>${generateModelTests.default}</generateModelTests>
                             <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
                             <inputSpec>${inputSpec.default}</inputSpec>
@@ -426,7 +415,6 @@
                             <modelPackage>${modelPackage.default}.${execution.generateBuilders}</modelPackage>
                             <generateModels>${generateModels.default}</generateModels>
                             <generateApis>${generateApis.default}</generateApis>
-                            <generateSupportingFiles>${generateSupportingFiles.default}</generateSupportingFiles>
                             <generateModelTests>${generateModelTests.default}</generateModelTests>
                             <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
                             <inputSpec>${inputSpec.default}</inputSpec>
@@ -448,7 +436,6 @@
                             <modelPackage>${modelPackage.default}.${execution.webclient.generateBuilders}</modelPackage>
                             <generateModels>${generateModels.default}</generateModels>
                             <generateApis>${generateApis.default}</generateApis>
-                            <generateSupportingFiles>${generateSupportingFiles.default}</generateSupportingFiles>
                             <generateModelTests>${generateModelTests.default}</generateModelTests>
                             <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
                             <inputSpec>${inputSpec.default}</inputSpec>
@@ -471,7 +458,6 @@
                             <modelPackage>${modelPackage.default}.${execution.useJakartaEe}</modelPackage>
                             <generateModels>${generateModels.default}</generateModels>
                             <generateApis>${generateApis.default}</generateApis>
-                            <generateSupportingFiles>${generateSupportingFiles.default}</generateSupportingFiles>
                             <generateModelTests>${generateModelTests.default}</generateModelTests>
                             <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
                             <inputSpec>${inputSpec.default}</inputSpec>
@@ -493,7 +479,6 @@
                             <modelPackage>${modelPackage.default}.${execution.webclient.useJakartaEe}</modelPackage>
                             <generateModels>${generateModels.default}</generateModels>
                             <generateApis>${generateApis.default}</generateApis>
-                            <generateSupportingFiles>${generateSupportingFiles.default}</generateSupportingFiles>
                             <generateModelTests>${generateModelTests.default}</generateModelTests>
                             <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
                             <inputSpec>${inputSpec.default}</inputSpec>
@@ -516,7 +501,6 @@
                             <modelPackage>${modelPackage.default}.${execution.useBeanValidation}</modelPackage>
                             <generateModels>${generateModels.default}</generateModels>
                             <generateApis>${generateApis.default}</generateApis>
-                            <generateSupportingFiles>${generateSupportingFiles.default}</generateSupportingFiles>
                             <generateModelTests>${generateModelTests.default}</generateModelTests>
                             <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
                             <inputSpec>${inputSpec.default}</inputSpec>
@@ -538,7 +522,6 @@
                             <modelPackage>${modelPackage.default}.${execution.webclient.useBeanValidation}</modelPackage>
                             <generateModels>${generateModels.default}</generateModels>
                             <generateApis>${generateApis.default}</generateApis>
-                            <generateSupportingFiles>${generateSupportingFiles.default}</generateSupportingFiles>
                             <generateModelTests>${generateModelTests.default}</generateModelTests>
                             <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
                             <inputSpec>${inputSpec.default}</inputSpec>
@@ -561,7 +544,6 @@
                             <modelPackage>${modelPackage.default}.${execution.enumUnknownDefaultCase}</modelPackage>
                             <generateModels>${generateModels.default}</generateModels>
                             <generateApis>${generateApis.default}</generateApis>
-                            <generateSupportingFiles>${generateSupportingFiles.default}</generateSupportingFiles>
                             <generateModelTests>${generateModelTests.default}</generateModelTests>
                             <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
                             <inputSpec>${inputSpec.default}</inputSpec>
@@ -583,7 +565,6 @@
                             <modelPackage>${modelPackage.default}.${execution.webclient.enumUnknownDefaultCase}</modelPackage>
                             <generateModels>${generateModels.default}</generateModels>
                             <generateApis>${generateApis.default}</generateApis>
-                            <generateSupportingFiles>${generateSupportingFiles.default}</generateSupportingFiles>
                             <generateModelTests>${generateModelTests.default}</generateModelTests>
                             <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
                             <inputSpec>${inputSpec.default}</inputSpec>
@@ -606,7 +587,6 @@
                             <modelPackage>${modelPackage.default}.${execution.enumDefaultCaseAndCaseInsensitive}</modelPackage>
                             <generateModels>${generateModels.default}</generateModels>
                             <generateApis>${generateApis.default}</generateApis>
-                            <generateSupportingFiles>${generateSupportingFiles.default}</generateSupportingFiles>
                             <generateModelTests>${generateModelTests.default}</generateModelTests>
                             <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
                             <inputSpec>${inputSpec.default}</inputSpec>
@@ -629,7 +609,6 @@
                             <modelPackage>${modelPackage.default}.${execution.webclient.enumDefaultCaseAndCaseInsensitive}</modelPackage>
                             <generateModels>${generateModels.default}</generateModels>
                             <generateApis>${generateApis.default}</generateApis>
-                            <generateSupportingFiles>${generateSupportingFiles.default}</generateSupportingFiles>
                             <generateModelTests>${generateModelTests.default}</generateModelTests>
                             <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
                             <inputSpec>${inputSpec.default}</inputSpec>
