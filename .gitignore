@@ -48,7 +48,39 @@ test-utils/target/maven-status
 
 tests/target/dependency-maven-plugin-markers
 tests/target/surefire-reports
-tests/target/generated-sources/openapi/.openapi-generator/api.yaml-default.sha256
+
+tests/target/generated-sources/openapi/src/*
+!tests/target/generated-sources/openapi/src/**/
+
+tests/target/generated-sources/openapi/src/.github
+tests/target/generated-sources/openapi/src/.openapi-generator
+tests/target/generated-sources/openapi/src/api
+tests/target/generated-sources/openapi/src/gradle
+tests/target/generated-sources/openapi/src/src/main
+# Exclude Supporting Files
+**/auth/**
+AbstractOpenApiSchema.java
+ApiCallback.java
+ApiClient.java
+ApiClient$*.java
+ApiException.java
+ApiResponse.java
+Configuration.java
+GzipRequestInterceptor.java
+GzipRequestInterceptor$*.java
+JavaTimeFormatter.java
+JSON.java
+JSON$*.java
+Pair.java
+ProgressRequestBody.java
+ProgressRequestBody$*.java
+ProgressResponseBody.java
+ProgressResponseBody$*.java
+RFC3339DateFormat.java
+ServerConfiguration.java
+ServerVariable.java
+StringUtil.java
+
 tests/target/site/jacoco
 tests/target/jacoco.exec
 
