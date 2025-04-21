@@ -25,7 +25,7 @@
         <modelPackage.default>${project.groupId}.o2jrm</modelPackage.default>
         <generateModels.default>true</generateModels.default>
         <generateApis.default>false</generateApis.default>
-        <generateSupportingFiles.default>false</generateSupportingFiles.default>
+        <generateSupportingFiles.default>true</generateSupportingFiles.default>
         <generateModelTests.default>false</generateModelTests.default>
         <generateModelDocumentation.default>false</generateModelDocumentation.default>
         <generatorName.default>java</generatorName.default>
