@@ -12,7 +12,7 @@
  * openapi-to-java-records-mustache-templates. For further information,
  * questions, requesting features or reporting issues, please visit:
  * https://github.com/Chrimle/openapi-to-java-records-mustache-templates.
- * Generated with Version: 2.9.3
+ * Generated with Version: 2.9.4
  *
  */
 
@@ -23,6 +23,7 @@ import com.google.gson.annotations.SerializedName;
 
 import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -33,6 +34,7 @@ import java.io.IOException;
 @io.github.chrimle.o2jrm.annotations.TestAnnotationOne
 @io.github.chrimle.o2jrm.annotations.TestAnnotationTwo
 @io.github.chrimle.o2jrm.annotations.TestAnnotationThree
+@JsonAdapter(ExampleEnumWithIntegerValues.Adapter.class)
 public enum ExampleEnumWithIntegerValues {
   NUMBER_100(100),
   NUMBER_200(200),

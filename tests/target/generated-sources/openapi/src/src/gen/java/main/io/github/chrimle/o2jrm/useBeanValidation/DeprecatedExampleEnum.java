@@ -12,7 +12,7 @@
  * openapi-to-java-records-mustache-templates. For further information,
  * questions, requesting features or reporting issues, please visit:
  * https://github.com/Chrimle/openapi-to-java-records-mustache-templates.
- * Generated with Version: 2.9.3
+ * Generated with Version: 2.9.4
  *
  */
 
@@ -25,6 +25,7 @@ import jakarta.validation.Valid;
 
 import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -35,6 +36,7 @@ import java.io.IOException;
  * @deprecated
  */
 @Deprecated
+@JsonAdapter(DeprecatedExampleEnum.Adapter.class)
 public enum DeprecatedExampleEnum {
   ENUM1("ENUM1"),
   ENUM2("ENUM2"),
