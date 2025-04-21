@@ -48,7 +48,10 @@ test-utils/target/maven-status
 
 tests/target/dependency-maven-plugin-markers
 tests/target/surefire-reports
-tests/target/generated-sources/openapi/.openapi-generator/api.yaml-default.sha256
+tests/target/generated-sources/openapi/src/.github
+tests/target/generated-sources/openapi/src/.openapi-generator
+tests/target/generated-sources/openapi/src/api
+tests/target/generated-sources/openapi/src/gradle
 tests/target/site/jacoco
 tests/target/jacoco.exec
 
