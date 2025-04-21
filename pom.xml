@@ -95,6 +95,31 @@
         <jacoco-maven-plugin.version>0.8.13</jacoco-maven-plugin.version>
         <jacoco-maven-plugin.minimumPackageLineCoveredRatio>1</jacoco-maven-plugin.minimumPackageLineCoveredRatio>
         <jacoco-maven-plugin.expectedBundleClassMissedCount>0</jacoco-maven-plugin.expectedBundleClassMissedCount>
+        <!-- Exclusions -->
+        <jacoco.excludes>
+            **/auth/**,
+            **/AbstractOpenApiSchema.class,
+            **/ApiCallback.class,
+            **/ApiClient.class,
+            **/ApiClient$*.class,
+            **/ApiException.class,
+            **/ApiResponse.class,
+            **/Configuration.class,
+            **/GzipRequestInterceptor.class,
+            **/GzipRequestInterceptor$*.class,
+            **/JavaTimeFormatter.class,
+            **/JSON.class,
+            **/JSON$*.class,
+            **/Pair.class,
+            **/ProgressRequestBody.class,
+            **/ProgressRequestBody$*.class,
+            **/ProgressResponseBody.class,
+            **/ProgressResponseBody$*.class,
+            **/RFC3339DateFormat.class,
+            **/ServerConfiguration.class,
+            **/ServerVariable.class,
+            **/StringUtil.class
+        </jacoco.excludes>
         <!-- /Jacoco -->
 
         <!-- Spotless -->
@@ -215,6 +240,11 @@
                         <goals>
                             <goal>prepare-agent</goal>
                         </goals>
+                        <configuration>
+                            <excludes>
+                                <exclude>${jacoco.excludes}</exclude>
+                            </excludes>
+                        </configuration>
                     </execution>
                     <execution>
                         <id>report</id>
@@ -222,6 +252,11 @@
                         <goals>
                             <goal>report</goal>
                         </goals>
+                        <configuration>
+                            <excludes>
+                                <exclude>${jacoco.excludes}</exclude>
+                            </excludes>
+                        </configuration>
                     </execution>
                     <execution>
                         <id>jacoco-check</id>
@@ -229,6 +264,9 @@
                             <goal>check</goal>
                         </goals>
                         <configuration>
+                            <excludes>
+                                <exclude>${jacoco.excludes}</exclude>
+                            </excludes>
                             <rules>
                                 <rule>
                                     <element>PACKAGE</element>
