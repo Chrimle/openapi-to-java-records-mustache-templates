@@ -48,6 +48,10 @@ test-utils/target/maven-status
 
 tests/target/dependency-maven-plugin-markers
 tests/target/surefire-reports
+
+tests/target/generated-sources/openapi/src/*
+!tests/target/generated-sources/openapi/src/**/
+
 tests/target/generated-sources/openapi/src/.github
 tests/target/generated-sources/openapi/src/.openapi-generator
 tests/target/generated-sources/openapi/src/api
