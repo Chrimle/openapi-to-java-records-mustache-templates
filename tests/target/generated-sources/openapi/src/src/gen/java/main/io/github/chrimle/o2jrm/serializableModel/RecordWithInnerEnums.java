@@ -33,6 +33,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapterFactory;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.reflect.TypeToken;
 import java.util.HashSet;
 import java.util.Set;
@@ -74,6 +75,7 @@ public record RecordWithInnerEnums(
   /**
    * Example of an inner enum class
    */
+  @JsonAdapter(ExampleInnerEnum.Adapter.class)
   public enum ExampleInnerEnum {
     /**
      * Some description of ENUM1
@@ -177,6 +179,7 @@ public record RecordWithInnerEnums(
   /**
    * Example of another inner enum class with integer values
    */
+  @JsonAdapter(ExampleInnerTwoEnum.Adapter.class)
   public enum ExampleInnerTwoEnum {
     NUMBER_404(404),
     NUMBER_501(501),
@@ -271,6 +274,7 @@ public record RecordWithInnerEnums(
   /**
    * Example of another inner enum class with URI values
    */
+  @JsonAdapter(ExampleInnerThreeEnum.Adapter.class)
   public enum ExampleInnerThreeEnum {
     GITHUB_COM_CHRIMLE_OPENAPI_TO_JAVA_RECORDS_MUSTACHE_TEMPLATES(URI.create("https://github.com/Chrimle/openapi-to-java-records-mustache-templates")),
     CHRIMLE_GITHUB_IO_OPENAPI_TO_JAVA_RECORDS_MUSTACHE_TEMPLATES_(URI.create("https://chrimle.github.io/openapi-to-java-records-mustache-templates/"));

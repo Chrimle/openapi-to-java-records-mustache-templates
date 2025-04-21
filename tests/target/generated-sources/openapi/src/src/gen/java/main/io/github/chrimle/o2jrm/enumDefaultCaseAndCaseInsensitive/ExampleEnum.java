@@ -23,6 +23,7 @@ import com.google.gson.annotations.SerializedName;
 
 import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -30,6 +31,7 @@ import java.io.IOException;
 /**
  * Example of an Enum
  */
+@JsonAdapter(ExampleEnum.Adapter.class)
 public enum ExampleEnum {
   /**
    * Some description of ENUM1

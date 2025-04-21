@@ -23,6 +23,7 @@ import com.google.gson.annotations.SerializedName;
 
 import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -33,6 +34,7 @@ import java.io.IOException;
 @io.github.chrimle.o2jrm.annotations.TestAnnotationOne
 @io.github.chrimle.o2jrm.annotations.TestAnnotationTwo
 @io.github.chrimle.o2jrm.annotations.TestAnnotationThree
+@JsonAdapter(ExampleNullableEnum.Adapter.class)
 public enum ExampleNullableEnum {
   /**
    * Some description of ENUM1

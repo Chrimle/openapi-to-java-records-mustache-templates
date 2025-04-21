@@ -23,6 +23,7 @@ import com.google.gson.annotations.SerializedName;
 
 import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -30,6 +31,7 @@ import java.io.IOException;
 /**
  * Example of an Enum with integer values
  */
+@JsonAdapter(ExampleEnumWithIntegerValues.Adapter.class)
 public enum ExampleEnumWithIntegerValues {
   NUMBER_100(100),
   NUMBER_200(200),

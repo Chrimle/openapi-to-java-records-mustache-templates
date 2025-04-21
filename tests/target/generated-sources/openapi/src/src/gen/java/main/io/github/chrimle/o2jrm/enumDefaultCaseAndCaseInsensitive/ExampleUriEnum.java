@@ -23,6 +23,7 @@ import com.google.gson.annotations.SerializedName;
 
 import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -32,6 +33,7 @@ import java.net.URI;
 /**
  * Example of an Enum with URI values
  */
+@JsonAdapter(ExampleUriEnum.Adapter.class)
 public enum ExampleUriEnum {
   GITHUB_COM_CHRIMLE_OPENAPI_TO_JAVA_RECORDS_MUSTACHE_TEMPLATES(URI.create("https://github.com/Chrimle/openapi-to-java-records-mustache-templates")),
   CHRIMLE_GITHUB_IO_OPENAPI_TO_JAVA_RECORDS_MUSTACHE_TEMPLATES_(URI.create("https://chrimle.github.io/openapi-to-java-records-mustache-templates/")),
