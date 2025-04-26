@@ -50,24 +50,24 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  * @param field8 ExampleEnum.
  */
 public record RecordWithRequiredFieldsOfEachType(
-    @javax.annotation.Nonnull Boolean field1,
-    @javax.annotation.Nonnull String field2,
-    @javax.annotation.Nonnull Integer field3,
-    @javax.annotation.Nonnull BigDecimal field4,
-    @javax.annotation.Nonnull List<Boolean> field5,
-    @javax.annotation.Nonnull Set<Boolean> field6,
-    @javax.annotation.Nonnull ExampleRecord field7,
-    @javax.annotation.Nonnull ExampleEnum field8) {
+    @jakarta.annotation.Nonnull Boolean field1,
+    @jakarta.annotation.Nonnull String field2,
+    @jakarta.annotation.Nonnull Integer field3,
+    @jakarta.annotation.Nonnull BigDecimal field4,
+    @jakarta.annotation.Nonnull List<Boolean> field5,
+    @jakarta.annotation.Nonnull Set<Boolean> field6,
+    @jakarta.annotation.Nonnull ExampleRecord field7,
+    @jakarta.annotation.Nonnull ExampleEnum field8) {
 
   public RecordWithRequiredFieldsOfEachType(
-      @javax.annotation.Nonnull final Boolean field1,
-      @javax.annotation.Nonnull final String field2,
-      @javax.annotation.Nonnull final Integer field3,
-      @javax.annotation.Nonnull final BigDecimal field4,
-      @javax.annotation.Nullable final List<Boolean> field5,
-      @javax.annotation.Nullable final Set<Boolean> field6,
-      @javax.annotation.Nonnull final ExampleRecord field7,
-      @javax.annotation.Nonnull final ExampleEnum field8) {
+      @jakarta.annotation.Nonnull final Boolean field1,
+      @jakarta.annotation.Nonnull final String field2,
+      @jakarta.annotation.Nonnull final Integer field3,
+      @jakarta.annotation.Nonnull final BigDecimal field4,
+      @jakarta.annotation.Nullable final List<Boolean> field5,
+      @jakarta.annotation.Nullable final Set<Boolean> field6,
+      @jakarta.annotation.Nonnull final ExampleRecord field7,
+      @jakarta.annotation.Nonnull final ExampleEnum field8) {
     this.field1 = field1;
     this.field2 = field2;
     this.field3 = field3;

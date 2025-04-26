@@ -44,10 +44,10 @@ import java.util.Set;
 @io.github.chrimle.o2jrm.annotations.TestExtraAnnotation
 public record ExampleRecordWithOneExtraAnnotation(
     @io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationOne
-    @javax.annotation.Nonnull Boolean field1,
+    @jakarta.annotation.Nonnull Boolean field1,
     @io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationOne
 @io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationTwo
-    @javax.annotation.Nonnull Boolean field2) {
+    @jakarta.annotation.Nonnull Boolean field2) {
 
   /** A set containing the names of all instance fields defined in this class. */
   public static final HashSet<String> openapiFields =
@@ -59,8 +59,8 @@ public record ExampleRecordWithOneExtraAnnotation(
   public static final HashSet<String> openapiRequiredFields = new HashSet<String>(Set.of());
 
   public ExampleRecordWithOneExtraAnnotation(
-      @javax.annotation.Nonnull final Boolean field1,
-      @javax.annotation.Nonnull final Boolean field2) {
+      @jakarta.annotation.Nonnull final Boolean field1,
+      @jakarta.annotation.Nonnull final Boolean field2) {
     this.field1 = field1;
     this.field2 = field2;
   }

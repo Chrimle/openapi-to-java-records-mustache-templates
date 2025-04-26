@@ -44,7 +44,7 @@ import java.util.Set;
  */
 @Deprecated
 public record DeprecatedExampleRecord(
-    @javax.annotation.Nonnull Boolean field1)
+    @jakarta.annotation.Nonnull Boolean field1)
     implements Serializable {
 
   private static final long serialVersionUID = 1L;
@@ -58,7 +58,7 @@ public record DeprecatedExampleRecord(
   public static final HashSet<String> openapiRequiredFields = new HashSet<String>(Set.of());
 
   public DeprecatedExampleRecord(
-      @javax.annotation.Nonnull final Boolean field1) {
+      @jakarta.annotation.Nonnull final Boolean field1) {
     this.field1 = field1;
   }
 

@@ -53,24 +53,24 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  * @param field8 ExampleNullableEnum.
  */
 public record RecordWithNullableFieldsOfEachType(
-    @javax.annotation.Nullable Boolean field1,
-    @javax.annotation.Nullable String field2,
-    @javax.annotation.Nullable Integer field3,
-    @javax.annotation.Nullable BigDecimal field4,
-    @javax.annotation.Nullable List<Boolean> field5,
-    @javax.annotation.Nullable Set<Boolean> field6,
-    @javax.annotation.Nullable ExampleNullableRecord field7,
-    @javax.annotation.Nullable ExampleNullableEnum field8) {
+    @jakarta.annotation.Nullable Boolean field1,
+    @jakarta.annotation.Nullable String field2,
+    @jakarta.annotation.Nullable Integer field3,
+    @jakarta.annotation.Nullable BigDecimal field4,
+    @jakarta.annotation.Nullable List<Boolean> field5,
+    @jakarta.annotation.Nullable Set<Boolean> field6,
+    @jakarta.annotation.Nullable ExampleNullableRecord field7,
+    @jakarta.annotation.Nullable ExampleNullableEnum field8) {
 
   public RecordWithNullableFieldsOfEachType(
-      @javax.annotation.Nullable final Boolean field1,
-      @javax.annotation.Nullable final String field2,
-      @javax.annotation.Nullable final Integer field3,
-      @javax.annotation.Nullable final BigDecimal field4,
-      @javax.annotation.Nullable final List<Boolean> field5,
-      @javax.annotation.Nullable final Set<Boolean> field6,
-      @javax.annotation.Nullable final ExampleNullableRecord field7,
-      @javax.annotation.Nullable final ExampleNullableEnum field8) {
+      @jakarta.annotation.Nullable final Boolean field1,
+      @jakarta.annotation.Nullable final String field2,
+      @jakarta.annotation.Nullable final Integer field3,
+      @jakarta.annotation.Nullable final BigDecimal field4,
+      @jakarta.annotation.Nullable final List<Boolean> field5,
+      @jakarta.annotation.Nullable final Set<Boolean> field6,
+      @jakarta.annotation.Nullable final ExampleNullableRecord field7,
+      @jakarta.annotation.Nullable final ExampleNullableEnum field8) {
     this.field1 = field1;
     this.field2 = field2;
     this.field3 = field3;

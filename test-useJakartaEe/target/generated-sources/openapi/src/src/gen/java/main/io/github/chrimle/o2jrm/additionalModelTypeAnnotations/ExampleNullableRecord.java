@@ -44,7 +44,7 @@ import java.util.Set;
 @io.github.chrimle.o2jrm.annotations.TestAnnotationTwo
 @io.github.chrimle.o2jrm.annotations.TestAnnotationThree
 public record ExampleNullableRecord(
-    @javax.annotation.Nonnull Boolean field1) {
+    @jakarta.annotation.Nonnull Boolean field1) {
 
   /** A set containing the names of all instance fields defined in this class. */
   public static final HashSet<String> openapiFields =
@@ -55,7 +55,7 @@ public record ExampleNullableRecord(
   public static final HashSet<String> openapiRequiredFields = new HashSet<String>(Set.of());
 
   public ExampleNullableRecord(
-      @javax.annotation.Nonnull final Boolean field1) {
+      @jakarta.annotation.Nonnull final Boolean field1) {
     this.field1 = field1;
   }
 

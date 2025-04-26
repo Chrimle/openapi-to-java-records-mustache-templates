@@ -37,10 +37,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @io.github.chrimle.o2jrm.annotations.TestAnnotationTwo
 @io.github.chrimle.o2jrm.annotations.TestAnnotationThree
 public record ExampleRecordWithDefaultFields(
-    @javax.annotation.Nonnull String field1) {
+    @jakarta.annotation.Nonnull String field1) {
 
   public ExampleRecordWithDefaultFields(
-      @javax.annotation.Nullable final String field1) {
+      @jakarta.annotation.Nullable final String field1) {
     this.field1 = Objects.requireNonNullElse(field1, "someDefaultValue");
   }
 }

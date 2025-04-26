@@ -52,10 +52,10 @@ import java.util.Set;
 @io.github.chrimle.o2jrm.annotations.TestAnnotationTwo
 @io.github.chrimle.o2jrm.annotations.TestAnnotationThree
 public record ExampleRecordWithCollectionsOfRecords(
-    @javax.annotation.Nonnull List<ExampleRecord> optionalRecordList,
-    @javax.annotation.Nonnull List<ExampleRecord> requiredRecordList,
-    @javax.annotation.Nonnull Set<ExampleRecord> optionalRecordSet,
-    @javax.annotation.Nonnull Set<ExampleRecord> requiredRecordSet) {
+    @jakarta.annotation.Nonnull List<ExampleRecord> optionalRecordList,
+    @jakarta.annotation.Nonnull List<ExampleRecord> requiredRecordList,
+    @jakarta.annotation.Nonnull Set<ExampleRecord> optionalRecordSet,
+    @jakarta.annotation.Nonnull Set<ExampleRecord> requiredRecordSet) {
 
   /** A set containing the names of all instance fields defined in this class. */
   public static final HashSet<String> openapiFields =
@@ -72,10 +72,10 @@ public record ExampleRecordWithCollectionsOfRecords(
               "requiredRecordSet"));
 
   public ExampleRecordWithCollectionsOfRecords(
-      @javax.annotation.Nullable final List<ExampleRecord> optionalRecordList,
-      @javax.annotation.Nullable final List<ExampleRecord> requiredRecordList,
-      @javax.annotation.Nullable final Set<ExampleRecord> optionalRecordSet,
-      @javax.annotation.Nullable final Set<ExampleRecord> requiredRecordSet) {
+      @jakarta.annotation.Nullable final List<ExampleRecord> optionalRecordList,
+      @jakarta.annotation.Nullable final List<ExampleRecord> requiredRecordList,
+      @jakarta.annotation.Nullable final Set<ExampleRecord> optionalRecordSet,
+      @jakarta.annotation.Nullable final Set<ExampleRecord> requiredRecordSet) {
     this.optionalRecordList = Objects.requireNonNullElse(optionalRecordList, new ArrayList<>());
     this.requiredRecordList = Objects.requireNonNullElse(requiredRecordList, new ArrayList<>());
     this.optionalRecordSet = Objects.requireNonNullElse(optionalRecordSet, new LinkedHashSet<>());

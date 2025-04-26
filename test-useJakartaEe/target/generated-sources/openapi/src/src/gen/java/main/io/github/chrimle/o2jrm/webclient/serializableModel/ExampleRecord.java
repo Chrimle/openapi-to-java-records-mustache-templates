@@ -35,13 +35,13 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  * @param field1 a boolean field
  */
 public record ExampleRecord(
-    @javax.annotation.Nonnull Boolean field1)
+    @jakarta.annotation.Nonnull Boolean field1)
     implements Serializable {
 
   private static final long serialVersionUID = 1L;
 
   public ExampleRecord(
-      @javax.annotation.Nonnull final Boolean field1) {
+      @jakarta.annotation.Nonnull final Boolean field1) {
     this.field1 = field1;
   }
 }

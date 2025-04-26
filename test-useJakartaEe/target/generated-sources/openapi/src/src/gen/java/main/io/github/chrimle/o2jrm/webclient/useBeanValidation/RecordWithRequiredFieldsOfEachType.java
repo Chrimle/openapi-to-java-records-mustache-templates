@@ -52,24 +52,24 @@ import jakarta.validation.Valid;
  * @param field8 ExampleEnum.
  */
 public record RecordWithRequiredFieldsOfEachType(
-    @javax.annotation.Nonnull @NotNull Boolean field1,
-    @javax.annotation.Nonnull @NotNull String field2,
-    @javax.annotation.Nonnull @NotNull Integer field3,
-    @javax.annotation.Nonnull @NotNull BigDecimal field4,
-    @javax.annotation.Nonnull @NotNull List<Boolean> field5,
-    @javax.annotation.Nonnull @NotNull Set<Boolean> field6,
-    @javax.annotation.Nonnull @Valid @NotNull ExampleRecord field7,
-    @javax.annotation.Nonnull @NotNull ExampleEnum field8) {
+    @jakarta.annotation.Nonnull @NotNull Boolean field1,
+    @jakarta.annotation.Nonnull @NotNull String field2,
+    @jakarta.annotation.Nonnull @NotNull Integer field3,
+    @jakarta.annotation.Nonnull @NotNull BigDecimal field4,
+    @jakarta.annotation.Nonnull @NotNull List<Boolean> field5,
+    @jakarta.annotation.Nonnull @NotNull Set<Boolean> field6,
+    @jakarta.annotation.Nonnull @Valid @NotNull ExampleRecord field7,
+    @jakarta.annotation.Nonnull @NotNull ExampleEnum field8) {
 
   public RecordWithRequiredFieldsOfEachType(
-      @javax.annotation.Nonnull final Boolean field1,
-      @javax.annotation.Nonnull final String field2,
-      @javax.annotation.Nonnull final Integer field3,
-      @javax.annotation.Nonnull final BigDecimal field4,
-      @javax.annotation.Nullable final List<Boolean> field5,
-      @javax.annotation.Nullable final Set<Boolean> field6,
-      @javax.annotation.Nonnull final ExampleRecord field7,
-      @javax.annotation.Nonnull final ExampleEnum field8) {
+      @jakarta.annotation.Nonnull final Boolean field1,
+      @jakarta.annotation.Nonnull final String field2,
+      @jakarta.annotation.Nonnull final Integer field3,
+      @jakarta.annotation.Nonnull final BigDecimal field4,
+      @jakarta.annotation.Nullable final List<Boolean> field5,
+      @jakarta.annotation.Nullable final Set<Boolean> field6,
+      @jakarta.annotation.Nonnull final ExampleRecord field7,
+      @jakarta.annotation.Nonnull final ExampleEnum field8) {
     this.field1 = field1;
     this.field2 = field2;
     this.field3 = field3;

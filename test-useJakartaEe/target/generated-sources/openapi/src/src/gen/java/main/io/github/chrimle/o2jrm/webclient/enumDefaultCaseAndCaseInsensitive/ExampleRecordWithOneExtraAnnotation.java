@@ -37,14 +37,14 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @io.github.chrimle.o2jrm.annotations.TestExtraAnnotation
 public record ExampleRecordWithOneExtraAnnotation(
     @io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationOne
-    @javax.annotation.Nonnull Boolean field1,
+    @jakarta.annotation.Nonnull Boolean field1,
     @io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationOne
 @io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationTwo
-    @javax.annotation.Nonnull Boolean field2) {
+    @jakarta.annotation.Nonnull Boolean field2) {
 
   public ExampleRecordWithOneExtraAnnotation(
-      @javax.annotation.Nonnull final Boolean field1,
-      @javax.annotation.Nonnull final Boolean field2) {
+      @jakarta.annotation.Nonnull final Boolean field1,
+      @jakarta.annotation.Nonnull final Boolean field2) {
     this.field1 = field1;
     this.field2 = field2;
   }

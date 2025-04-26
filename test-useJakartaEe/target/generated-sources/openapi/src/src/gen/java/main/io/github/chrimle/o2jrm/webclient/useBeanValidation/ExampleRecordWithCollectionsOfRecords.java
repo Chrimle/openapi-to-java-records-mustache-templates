@@ -46,16 +46,16 @@ import jakarta.validation.Valid;
  * @param requiredRecordSet Another required field
  */
 public record ExampleRecordWithCollectionsOfRecords(
-    @javax.annotation.Nonnull List<@Valid ExampleRecord> optionalRecordList,
-    @javax.annotation.Nonnull @NotNull List<@Valid ExampleRecord> requiredRecordList,
-    @javax.annotation.Nonnull Set<@Valid ExampleRecord> optionalRecordSet,
-    @javax.annotation.Nonnull @NotNull Set<@Valid ExampleRecord> requiredRecordSet) {
+    @jakarta.annotation.Nonnull List<@Valid ExampleRecord> optionalRecordList,
+    @jakarta.annotation.Nonnull @NotNull List<@Valid ExampleRecord> requiredRecordList,
+    @jakarta.annotation.Nonnull Set<@Valid ExampleRecord> optionalRecordSet,
+    @jakarta.annotation.Nonnull @NotNull Set<@Valid ExampleRecord> requiredRecordSet) {
 
   public ExampleRecordWithCollectionsOfRecords(
-      @javax.annotation.Nullable final List<@Valid ExampleRecord> optionalRecordList,
-      @javax.annotation.Nullable final List<@Valid ExampleRecord> requiredRecordList,
-      @javax.annotation.Nullable final Set<@Valid ExampleRecord> optionalRecordSet,
-      @javax.annotation.Nullable final Set<@Valid ExampleRecord> requiredRecordSet) {
+      @jakarta.annotation.Nullable final List<@Valid ExampleRecord> optionalRecordList,
+      @jakarta.annotation.Nullable final List<@Valid ExampleRecord> requiredRecordList,
+      @jakarta.annotation.Nullable final Set<@Valid ExampleRecord> optionalRecordSet,
+      @jakarta.annotation.Nullable final Set<@Valid ExampleRecord> requiredRecordSet) {
     this.optionalRecordList = Objects.requireNonNullElse(optionalRecordList, new ArrayList<>());
     this.requiredRecordList = Objects.requireNonNullElse(requiredRecordList, new ArrayList<>());
     this.optionalRecordSet = Objects.requireNonNullElse(optionalRecordSet, new LinkedHashSet<>());
