@@ -10,7 +10,7 @@
     <modules>
         <module>mustache-templates</module>
         <module>tests</module>
-        <module>tests-useJakartaEe</module>
+        <module>test-useJakartaEe</module>
         <module>test-utils</module>
     </modules>
 
@@ -346,7 +346,7 @@
                             <publishingServerId>central</publishingServerId>
                             <tokenAuth>true</tokenAuth>
                             <autoPublish>true</autoPublish>
-                            <excludeArtifacts>openapi-to-java-records-mustache-templates-tests,openapi-to-java-records-mustache-templates-tests-usejakartaee,openapi-to-java-records-mustache-templates-test-utils</excludeArtifacts>
+                            <excludeArtifacts>openapi-to-java-records-mustache-templates-tests,openapi-to-java-records-mustache-templates-test-usejakartaee,openapi-to-java-records-mustache-templates-test-utils</excludeArtifacts>
                         </configuration>
                     </plugin>
                     <plugin>
