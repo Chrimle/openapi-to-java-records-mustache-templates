@@ -67,15 +67,13 @@ public enum GeneratedRecord implements GeneratedClass {
    * does not list all expected fields to be generated. This is done in {@link
    * #getGeneratedFields(GeneratedClass, PluginExecution)}.
    */
-  EXAMPLE_RECORD_WITH_NULLABLE_FIELDS_OF_EACH_TYPE(
-      "ExampleRecordWithNullableFieldsOfEachType", false, List.of()),
+  RECORD_WITH_NULLABLE_FIELDS_OF_EACH_TYPE("RecordWithNullableFieldsOfEachType", false, List.of()),
   /**
    * This class reference another class, which requires Reflection at runtime. Hence, this class
    * does not list all expected fields to be generated. This is done in {@link
    * #getGeneratedFields(GeneratedClass, PluginExecution)}.
    */
-  EXAMPLE_RECORD_WITH_REQUIRED_FIELDS_OF_EACH_TYPE(
-      "ExampleRecordWithRequiredFieldsOfEachType", false, List.of()),
+  RECORD_WITH_REQUIRED_FIELDS_OF_EACH_TYPE("RecordWithRequiredFieldsOfEachType", false, List.of()),
   RECORD_WITH_ALL_CONSTRAINTS(
       "RecordWithAllConstraints",
       false,
@@ -228,7 +226,7 @@ public enum GeneratedRecord implements GeneratedClass {
                           GeneratedEnum.EXAMPLE_INNER_THREE_ENUM.getClass(pluginExecution))
                       .build())
               .toArray(new GeneratedField[] {});
-      case EXAMPLE_RECORD_WITH_REQUIRED_FIELDS_OF_EACH_TYPE ->
+      case RECORD_WITH_REQUIRED_FIELDS_OF_EACH_TYPE ->
           List.of(
                   GeneratedField.of("field1", Boolean.class)
                       .isRequired(true)
@@ -265,7 +263,7 @@ public enum GeneratedRecord implements GeneratedClass {
                       .isBeanValidationNullable(false)
                       .build())
               .toArray(new GeneratedField[] {});
-      case EXAMPLE_RECORD_WITH_NULLABLE_FIELDS_OF_EACH_TYPE ->
+      case RECORD_WITH_NULLABLE_FIELDS_OF_EACH_TYPE ->
           List.of(
                   GeneratedField.of("field1", Boolean.class)
                       .isNullable(true)
