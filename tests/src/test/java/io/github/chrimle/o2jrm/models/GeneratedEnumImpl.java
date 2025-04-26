@@ -42,12 +42,12 @@ public enum GeneratedEnumImpl implements GeneratedEnum, GeneratedClassImpl {
       "ExampleUriEnum",
       false,
       GeneratedField.of(
-              "GITHUB_COM_CHRIMLE_OPENAPI_TO_JAVA_RECORDS_MUSTACHE_TEMPLATES",
+              "HTTPS_GITHUB_COM_CHRIMLE_OPENAPI_TO_JAVA_RECORDS_MUSTACHE_TEMPLATES",
               URI.class,
               URI.create("https://github.com/Chrimle/openapi-to-java-records-mustache-templates"))
           .build(),
       GeneratedField.of(
-              "CHRIMLE_GITHUB_IO_OPENAPI_TO_JAVA_RECORDS_MUSTACHE_TEMPLATES_",
+              "HTTPS_CHRIMLE_GITHUB_IO_OPENAPI_TO_JAVA_RECORDS_MUSTACHE_TEMPLATES_",
               URI.class,
               URI.create("https://chrimle.github.io/openapi-to-java-records-mustache-templates/"))
           .build()),
@@ -75,12 +75,12 @@ public enum GeneratedEnumImpl implements GeneratedEnum, GeneratedClassImpl {
       "RecordWithInnerEnums$ExampleInnerThreeEnum",
       false,
       GeneratedField.of(
-              "GITHUB_COM_CHRIMLE_OPENAPI_TO_JAVA_RECORDS_MUSTACHE_TEMPLATES",
+              "HTTPS_GITHUB_COM_CHRIMLE_OPENAPI_TO_JAVA_RECORDS_MUSTACHE_TEMPLATES",
               URI.class,
               URI.create("https://github.com/Chrimle/openapi-to-java-records-mustache-templates"))
           .build(),
       GeneratedField.of(
-              "CHRIMLE_GITHUB_IO_OPENAPI_TO_JAVA_RECORDS_MUSTACHE_TEMPLATES_",
+              "HTTPS_CHRIMLE_GITHUB_IO_OPENAPI_TO_JAVA_RECORDS_MUSTACHE_TEMPLATES_",
               URI.class,
               URI.create("https://chrimle.github.io/openapi-to-java-records-mustache-templates/"))
           .build());
