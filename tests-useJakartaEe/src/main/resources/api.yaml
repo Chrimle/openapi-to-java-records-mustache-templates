@@ -1,0 +1,360 @@
+openapi: 3.0.0
+info:
+  title: Example OpenAPI Spec.
+  description: An example OpenAPI-spec to generate example Java records.
+  version: 0.0.1
+
+servers:
+  - url: http://localhost/
+    description: Irrelevant
+
+paths:
+  /ignore:
+    get:
+      summary: Ignore
+      description: Irrelevant
+      responses:
+        '200':
+          description: OK
+
+components:
+  schemas:
+    ExampleRecordWithRequiredFieldsOfEachType:
+      type: object
+      description: Example of a Record with fields of each type
+      required:
+        - field1
+        - field2
+        - field3
+        - field4
+        - field5
+        - field6
+        - field7
+        - field8
+      properties:
+        field1:
+          type: boolean
+          description: a Boolean field
+        field2:
+          type: string
+          description: a String field
+        field3:
+          type: integer
+          description: an Integer field
+        field4:
+          type: number
+          description: a Number field
+        field5:
+          type: array
+          description: an Array of Boolean field
+          items:
+            type: boolean
+        field6:
+          type: array
+          description: a Set field
+          uniqueItems: true
+          items:
+            type: boolean
+        field7:
+          description: an ExampleRecord field
+          $ref: '#/components/schemas/ExampleRecord'
+        field8:
+          description: an ExampleEnum field
+          $ref: '#/components/schemas/ExampleEnum'
+    ExampleRecordWithNullableFieldsOfEachType:
+      type: object
+      description: Example of a Record with fields of each type
+      required:
+        - field1
+        - field2
+        - field3
+        - field4
+        - field5
+        - field6
+      properties:
+        field1:
+          type: boolean
+          description: a Boolean field
+          nullable: true
+        field2:
+          type: string
+          description: a String field
+          nullable: true
+        field3:
+          type: integer
+          description: an Integer field
+          nullable: true
+        field4:
+          type: number
+          description: a Number field
+          nullable: true
+        field5:
+          type: array
+          description: an Array of Boolean field
+          nullable: true
+          items:
+            type: boolean
+        field6:
+          type: array
+          description: a Set field
+          uniqueItems: true
+          nullable: true
+          items:
+            type: boolean
+        field7:
+          description: an ExampleNullableRecord field
+          $ref: '#/components/schemas/ExampleNullableRecord'
+        field8:
+          description: an ExampleNullableEnum field
+          nullable: true
+          $ref: '#/components/schemas/ExampleNullableEnum'
+    ExampleRecordWithCollectionsOfRecords:
+      type: object
+      description: Example of a Record with collections of records.
+      required:
+        - requiredRecordList
+        - requiredRecordSet
+      properties:
+        optionalRecordList:
+          type: array
+          description: Optional field
+          items:
+            $ref: '#/components/schemas/ExampleRecord'
+        requiredRecordList:
+          type: array
+          description: Required field
+          items:
+            $ref: '#/components/schemas/ExampleRecord'
+        optionalRecordSet:
+          type: array
+          description: Another Optional field
+          uniqueItems: true
+          items:
+            $ref: '#/components/schemas/ExampleRecord'
+        requiredRecordSet:
+          type: array
+          description: Another required field
+          uniqueItems: true
+          items:
+            $ref: '#/components/schemas/ExampleRecord'
+    ExampleRecord:
+      type: object
+      description: Example of a Record
+      properties:
+        field1:
+          type: boolean
+          description: a boolean field
+    ExampleNullableRecord:
+      type: object
+      description: Example of a Record
+      nullable: true
+      properties:
+        field1:
+          type: boolean
+          description: a boolean field
+    DeprecatedExampleRecord:
+      type: object
+      deprecated: true
+      description: Example of a deprecated Record
+      properties:
+        field1:
+          type: boolean
+          description: a boolean field
+    ExampleRecordWithOneExtraAnnotation:
+      type: object
+      description: Example of a Record with an extra annotation
+      x-class-extra-annotation: '@io.github.chrimle.o2jrm.annotations.TestExtraAnnotation'
+      properties:
+        field1:
+          type: boolean
+          description: a boolean field with an extra field annotation
+          x-field-extra-annotation: '@io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationOne'
+        field2:
+          type: boolean
+          description: a boolean field with two extra field annotations
+          x-field-extra-annotation: |-
+            @io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationOne
+            @io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationTwo
+    ExampleRecordWithTwoExtraAnnotations:
+      type: object
+      description: Example of a Record with two extra annotations
+      x-class-extra-annotation: |-
+        @io.github.chrimle.o2jrm.annotations.TestExtraAnnotation
+        @io.github.chrimle.o2jrm.annotations.TestExtraAnnotationTwo
+      properties:
+        field1:
+          type: boolean
+          description: a boolean field
+    ExampleRecordWithDefaultFields:
+      type: object
+      description: Example of a Record with default fields
+      properties:
+        field1:
+          type: string
+          description: a String field with a default value
+          default: someDefaultValue
+    ExampleEnum:
+      type: string
+      description: Example of an Enum
+      enum:
+        - ENUM1
+        - ENUM2
+        - ENUM3
+      x-enum-descriptions:
+        - Some description of ENUM1
+        - Some description of ENUM2
+        - Some description of ENUM3
+    ExampleNullableEnum:
+      type: string
+      description: Example of an Enum
+      nullable: true
+      enum:
+        - ENUM1
+        - ENUM2
+        - ENUM3
+      x-enum-descriptions:
+        - Some description of ENUM1
+        - Some description of ENUM2
+        - Some description of ENUM3
+    ExampleUriEnum:
+      type: string
+      format: uri
+      description: Example of an Enum with URI values
+      enum:
+        - "https://github.com/Chrimle/openapi-to-java-records-mustache-templates"
+        - "https://chrimle.github.io/openapi-to-java-records-mustache-templates/"
+    ExampleEnumWithIntegerValues:
+      type: integer
+      description: Example of an Enum with integer values
+      enum:
+        - 100
+        - 200
+        - 300
+        - 400
+        - 500
+    DeprecatedExampleEnum:
+      type: string
+      deprecated: true
+      description: Example of a deprecated Enum
+      enum:
+        - ENUM1
+        - ENUM2
+        - ENUM3
+    RecordWithInnerEnums:
+      type: object
+      description: Example of a Record with inner enum classes
+      properties:
+        exampleInner:
+          type: string
+          description: Example of an inner enum class
+          enum:
+            - ENUM1
+            - ENUM2
+            - ENUM3
+          x-enum-descriptions:
+            - Some description of ENUM1
+            - Some description of ENUM2
+            - Some description of ENUM3
+        exampleInnerTwo:
+          type: integer
+          description: Example of another inner enum class with integer values
+          enum:
+            - 404
+            - 501
+            - 503
+        exampleInnerThree:
+          type: string
+          format: uri
+          description: Example of another inner enum class with URI values
+          enum:
+            - "https://github.com/Chrimle/openapi-to-java-records-mustache-templates"
+            - "https://chrimle.github.io/openapi-to-java-records-mustache-templates/"
+    RecordWithAllConstraints:
+      type: object
+      description: Example of a Record which has fields with constraints
+      required:
+        - stringRequired
+        - stringRequiredNullable
+        - stringRequiredPattern
+      properties:
+        stringStandard:
+          type: string
+        stringDefault:
+          type: string
+          default: 'someDefaultValue'
+        stringNullable:
+          type: string
+          nullable: true
+        stringRequired:
+          type: string
+        stringRequiredNullable:
+          type: string
+          nullable: true
+        stringRequiredPattern:
+          type: string
+          pattern: '^\d{3}-\d{2}-\d{4}$'
+        stringEmailFormat:
+          type: string
+          format: email
+        stringUuidFormat:
+          type: string
+          format: uuid
+        stringMinLength:
+          type: string
+          minLength: 3
+        stringMaxLength:
+          type: string
+          maxLength: 7
+        stringMinAndMaxLength:
+          type: string
+          minLength: 3
+          maxLength: 7
+        arrayMinItems:
+          type: array
+          minItems: 1
+          items:
+            type: string
+        arrayMaxItems:
+          type: array
+          maxItems: 10
+          items:
+            type: string
+        arrayMinAndMaxItems:
+          type: array
+          minItems: 1
+          maxItems: 10
+          items:
+            type: string
+        intMinimum:
+          type: integer
+          minimum: 18
+        intMaximum:
+          type: integer
+          maximum: 100
+        intMinimumAndMaximum:
+          type: integer
+          minimum: 0
+          maximum: 100
+        longMinimum:
+          type: integer
+          format: int64
+          minimum: 18
+        longMaximum:
+          type: integer
+          format: int64
+          maximum: 100
+        longMinimumAndMaximum:
+          type: integer
+          format: int64
+          minimum: 0
+          maximum: 100
+        bigDecimalMinimum:
+          type: number
+          minimum: 0
+        bigDecimalMaximum:
+          type: number
+          maximum: 100
+        bigDecimalMinimumAndMaximum:
+          type: number
+          minimum: 0
+          maximum: 100
