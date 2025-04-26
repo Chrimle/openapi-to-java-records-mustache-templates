@@ -26,50 +26,77 @@ import java.util.List;
  * generated classes.
  */
 public enum PluginExecutionImpl implements PluginExecution {
-  OKHTTP_GSON_STANDARD("standard", Library.OKHTTP_GSON),
-  WEBCLIENT_STANDARD("webclient.standard", Library.WEBCLIENT),
+  OKHTTP_GSON_STANDARD("standard", Library.OKHTTP_GSON, ConfigOption.USE_JAKARTA_EE),
+  WEBCLIENT_STANDARD("webclient.standard", Library.WEBCLIENT, ConfigOption.USE_JAKARTA_EE),
   OKHTTP_GSON_USE_ENUM_CASE_INSENSITIVE(
-      "useEnumCaseInsensitive", Library.OKHTTP_GSON, ConfigOption.USE_ENUM_CASE_INSENSITIVE),
+      "useEnumCaseInsensitive",
+      Library.OKHTTP_GSON,
+      ConfigOption.USE_JAKARTA_EE,
+      ConfigOption.USE_ENUM_CASE_INSENSITIVE),
   WEBCLIENT_USE_ENUM_CASE_INSENSITIVE(
       "webclient.useEnumCaseInsensitive",
       Library.WEBCLIENT,
+      ConfigOption.USE_JAKARTA_EE,
       ConfigOption.USE_ENUM_CASE_INSENSITIVE),
   OKHTTP_GSON_ADDITIONAL_MODEL_TYPE_ANNOTATIONS(
       "additionalModelTypeAnnotations",
       Library.OKHTTP_GSON,
+      ConfigOption.USE_JAKARTA_EE,
       ConfigOption.ADDITIONAL_MODEL_TYPE_ANNOTATIONS),
   WEBCLIENT_ADDITIONAL_MODEL_TYPE_ANNOTATIONS(
       "webclient.additionalModelTypeAnnotations",
       Library.WEBCLIENT,
+      ConfigOption.USE_JAKARTA_EE,
       ConfigOption.ADDITIONAL_MODEL_TYPE_ANNOTATIONS),
   OKHTTP_GSON_ADDITIONAL_ENUM_TYPE_ANNOTATIONS(
       "additionalEnumTypeAnnotations",
       Library.OKHTTP_GSON,
+      ConfigOption.USE_JAKARTA_EE,
       ConfigOption.ADDITIONAL_ENUM_TYPE_ANNOTATIONS),
   WEBCLIENT_ADDITIONAL_ENUM_TYPE_ANNOTATIONS(
       "webclient.additionalEnumTypeAnnotations",
       Library.WEBCLIENT,
+      ConfigOption.USE_JAKARTA_EE,
       ConfigOption.ADDITIONAL_ENUM_TYPE_ANNOTATIONS),
   OKHTTP_GSON_SERIALIZABLE_MODEL(
-      "serializableModel", Library.OKHTTP_GSON, ConfigOption.SERIALIZABLE_MODEL),
+      "serializableModel",
+      Library.OKHTTP_GSON,
+      ConfigOption.USE_JAKARTA_EE,
+      ConfigOption.SERIALIZABLE_MODEL),
   WEBCLIENT_SERIALIZABLE_MODEL(
-      "webclient.serializableModel", Library.WEBCLIENT, ConfigOption.SERIALIZABLE_MODEL),
+      "webclient.serializableModel",
+      Library.WEBCLIENT,
+      ConfigOption.USE_JAKARTA_EE,
+      ConfigOption.SERIALIZABLE_MODEL),
   OKHTTP_GSON_GENERATE_BUILDERS(
-      "generateBuilders", Library.OKHTTP_GSON, ConfigOption.GENERATE_BUILDERS),
+      "generateBuilders",
+      Library.OKHTTP_GSON,
+      ConfigOption.USE_JAKARTA_EE,
+      ConfigOption.GENERATE_BUILDERS),
   WEBCLIENT_GENERATE_BUILDERS(
-      "webclient.generateBuilders", Library.WEBCLIENT, ConfigOption.GENERATE_BUILDERS),
-  OKHTTP_GSON_USE_JAKARTA_EE("useJakartaEe", Library.OKHTTP_GSON, ConfigOption.USE_JAKARTA_EE),
-  WEBCLIENT_USE_JAKARTA_EE(
-      "webclient.useJakartaEe", Library.WEBCLIENT, ConfigOption.USE_JAKARTA_EE),
+      "webclient.generateBuilders",
+      Library.WEBCLIENT,
+      ConfigOption.USE_JAKARTA_EE,
+      ConfigOption.GENERATE_BUILDERS),
   OKHTTP_GSON_USE_BEAN_VALIDATION(
-      "useBeanValidation", Library.OKHTTP_GSON, ConfigOption.USE_BEAN_VALIDATION),
+      "useBeanValidation",
+      Library.OKHTTP_GSON,
+      ConfigOption.USE_JAKARTA_EE,
+      ConfigOption.USE_BEAN_VALIDATION),
   WEBCLIENT_USE_BEAN_VALIDATION(
-      "webclient.useBeanValidation", Library.WEBCLIENT, ConfigOption.USE_BEAN_VALIDATION),
+      "webclient.useBeanValidation",
+      Library.WEBCLIENT,
+      ConfigOption.USE_JAKARTA_EE,
+      ConfigOption.USE_BEAN_VALIDATION),
   OKHTTP_GSON_ENUM_UNKNOWN_DEFAULT_CASE(
-      "enumUnknownDefaultCase", Library.OKHTTP_GSON, ConfigOption.ENUM_UNKNOWN_DEFAULT_CASE),
+      "enumUnknownDefaultCase",
+      Library.OKHTTP_GSON,
+      ConfigOption.USE_JAKARTA_EE,
+      ConfigOption.ENUM_UNKNOWN_DEFAULT_CASE),
   WEBCLIENT_ENUM_UNKNOWN_DEFAULT_CASE(
       "webclient.enumUnknownDefaultCase",
       Library.WEBCLIENT,
+      ConfigOption.USE_JAKARTA_EE,
       ConfigOption.ENUM_UNKNOWN_DEFAULT_CASE),
   /**
    * This PluginExecution tests the compatibility of {@link ConfigOption#ENUM_UNKNOWN_DEFAULT_CASE}
@@ -78,6 +105,7 @@ public enum PluginExecutionImpl implements PluginExecution {
   OKHTTP_GSON_ENUM_DEFAULT_CASE_AND_CASE_INSENSITIVE(
       "enumDefaultCaseAndCaseInsensitive",
       Library.OKHTTP_GSON,
+      ConfigOption.USE_JAKARTA_EE,
       ConfigOption.ENUM_UNKNOWN_DEFAULT_CASE,
       ConfigOption.USE_ENUM_CASE_INSENSITIVE),
   /**
@@ -87,6 +115,7 @@ public enum PluginExecutionImpl implements PluginExecution {
   WEBCLIENT_ENUM_DEFAULT_CASE_AND_CASE_INSENSITIVE(
       "webclient.enumDefaultCaseAndCaseInsensitive",
       Library.WEBCLIENT,
+      ConfigOption.USE_JAKARTA_EE,
       ConfigOption.ENUM_UNKNOWN_DEFAULT_CASE,
       ConfigOption.USE_ENUM_CASE_INSENSITIVE);
 
