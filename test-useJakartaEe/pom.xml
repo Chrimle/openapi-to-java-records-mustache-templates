@@ -31,6 +31,8 @@
         <sourceFolder.default>src/gen/java/main</sourceFolder.default>
         <inputSpec.default>${project.basedir}/src/main/resources/api.yaml</inputSpec.default>
         <templateDirectory.default>${project.build.outputDirectory}/templates</templateDirectory.default>
+        <!-- Always set useJakartaEe=true -->
+        <useJakartaEe.default>true</useJakartaEe.default>
         <!-- Default `configuration.configOptions`-option values -->
         <output.default>target/generated-sources/openapi/src</output.default>
 
@@ -56,9 +58,6 @@
         <!-- The Plugin Execution with generateBuilders=true -->
         <execution.generateBuilders>generateBuilders</execution.generateBuilders>
         <execution.webclient.generateBuilders>webclient.generateBuilders</execution.webclient.generateBuilders>
-        <!-- The Plugin Execution with useJakartaEe=true -->
-        <execution.useJakartaEe>useJakartaEe</execution.useJakartaEe>
-        <execution.webclient.useJakartaEe>webclient.useJakartaEe</execution.webclient.useJakartaEe>
         <!-- The Plugin Execution with useBeanValidation=true -->
         <execution.useBeanValidation>useBeanValidation</execution.useBeanValidation>
         <execution.webclient.useBeanValidation>webclient.useBeanValidation</execution.webclient.useBeanValidation>
@@ -201,6 +200,7 @@
                             <generatorName>${generatorName.default}</generatorName>
                             <configOptions>
                                 <sourceFolder>${sourceFolder.default}</sourceFolder>
+                                <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
                             </configOptions>
                         </configuration>
                     </execution>
@@ -222,6 +222,7 @@
                             <library>webclient</library>
                             <configOptions>
                                 <sourceFolder>${sourceFolder.default}</sourceFolder>
+                                <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
                             </configOptions>
                         </configuration>
                     </execution>
@@ -242,6 +243,7 @@
                             <generatorName>${generatorName.default}</generatorName>
                             <configOptions>
                                 <sourceFolder>${sourceFolder.default}</sourceFolder>
+                                <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
                                 <useEnumCaseInsensitive>true</useEnumCaseInsensitive>
                             </configOptions>
                         </configuration>
@@ -264,6 +266,7 @@
                             <library>webclient</library>
                             <configOptions>
                                 <sourceFolder>${sourceFolder.default}</sourceFolder>
+                                <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
                                 <useEnumCaseInsensitive>true</useEnumCaseInsensitive>
                             </configOptions>
                         </configuration>
@@ -285,6 +288,7 @@
                             <generatorName>${generatorName.default}</generatorName>
                             <configOptions>
                                 <sourceFolder>${sourceFolder.default}</sourceFolder>
+                                <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
                                 <additionalModelTypeAnnotations>
                                     @io.github.chrimle.o2jrm.annotations.TestAnnotationOne
                                     @io.github.chrimle.o2jrm.annotations.TestAnnotationTwo
@@ -311,6 +315,7 @@
                             <library>webclient</library>
                             <configOptions>
                                 <sourceFolder>${sourceFolder.default}</sourceFolder>
+                                <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
                                 <additionalModelTypeAnnotations>
                                     @io.github.chrimle.o2jrm.annotations.TestAnnotationOne
                                     @io.github.chrimle.o2jrm.annotations.TestAnnotationTwo
@@ -336,6 +341,7 @@
                             <generatorName>${generatorName.default}</generatorName>
                             <configOptions>
                                 <sourceFolder>${sourceFolder.default}</sourceFolder>
+                                <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
                                 <additionalEnumTypeAnnotations>@io.github.chrimle.o2jrm.annotations.TestAnnotationOne;@io.github.chrimle.o2jrm.annotations.TestAnnotationTwo;@io.github.chrimle.o2jrm.annotations.TestAnnotationThree;</additionalEnumTypeAnnotations>
                             </configOptions>
                         </configuration>
@@ -358,6 +364,7 @@
                             <library>webclient</library>
                             <configOptions>
                                 <sourceFolder>${sourceFolder.default}</sourceFolder>
+                                <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
                                 <additionalEnumTypeAnnotations>@io.github.chrimle.o2jrm.annotations.TestAnnotationOne;@io.github.chrimle.o2jrm.annotations.TestAnnotationTwo;@io.github.chrimle.o2jrm.annotations.TestAnnotationThree;</additionalEnumTypeAnnotations>
                             </configOptions>
                         </configuration>
@@ -379,6 +386,7 @@
                             <generatorName>${generatorName.default}</generatorName>
                             <configOptions>
                                 <sourceFolder>${sourceFolder.default}</sourceFolder>
+                                <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
                                 <serializableModel>true</serializableModel>
                             </configOptions>
                         </configuration>
@@ -401,6 +409,7 @@
                             <library>webclient</library>
                             <configOptions>
                                 <sourceFolder>${sourceFolder.default}</sourceFolder>
+                                <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
                                 <serializableModel>true</serializableModel>
                             </configOptions>
                         </configuration>
@@ -422,6 +431,7 @@
                             <generatorName>${generatorName.default}</generatorName>
                             <configOptions>
                                 <sourceFolder>${sourceFolder.default}</sourceFolder>
+                                <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
                                 <generateBuilders>true</generateBuilders>
                             </configOptions>
                         </configuration>
@@ -444,50 +454,8 @@
                             <library>webclient</library>
                             <configOptions>
                                 <sourceFolder>${sourceFolder.default}</sourceFolder>
+                                <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
                                 <generateBuilders>true</generateBuilders>
-                            </configOptions>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>generate-${execution.useJakartaEe}</id>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                        <configuration>
-                            <output>${output.default}</output>
-                            <modelPackage>${modelPackage.default}.${execution.useJakartaEe}</modelPackage>
-                            <generateModels>${generateModels.default}</generateModels>
-                            <generateApis>${generateApis.default}</generateApis>
-                            <generateModelTests>${generateModelTests.default}</generateModelTests>
-                            <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
-                            <inputSpec>${inputSpec.default}</inputSpec>
-                            <templateDirectory>${templateDirectory.default}</templateDirectory>
-                            <generatorName>${generatorName.default}</generatorName>
-                            <configOptions>
-                                <sourceFolder>${sourceFolder.default}</sourceFolder>
-                                <useJakartaEe>true</useJakartaEe>
-                            </configOptions>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>generate-${execution.webclient.useJakartaEe}</id>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                        <configuration>
-                            <output>${output.default}</output>
-                            <modelPackage>${modelPackage.default}.${execution.webclient.useJakartaEe}</modelPackage>
-                            <generateModels>${generateModels.default}</generateModels>
-                            <generateApis>${generateApis.default}</generateApis>
-                            <generateModelTests>${generateModelTests.default}</generateModelTests>
-                            <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
-                            <inputSpec>${inputSpec.default}</inputSpec>
-                            <templateDirectory>${templateDirectory.default}</templateDirectory>
-                            <generatorName>${generatorName.default}</generatorName>
-                            <library>webclient</library>
-                            <configOptions>
-                                <sourceFolder>${sourceFolder.default}</sourceFolder>
-                                <useJakartaEe>true</useJakartaEe>
                             </configOptions>
                         </configuration>
                     </execution>
@@ -508,6 +476,7 @@
                             <generatorName>${generatorName.default}</generatorName>
                             <configOptions>
                                 <sourceFolder>${sourceFolder.default}</sourceFolder>
+                                <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
                                 <useBeanValidation>true</useBeanValidation>
                             </configOptions>
                         </configuration>
@@ -530,6 +499,7 @@
                             <library>webclient</library>
                             <configOptions>
                                 <sourceFolder>${sourceFolder.default}</sourceFolder>
+                                <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
                                 <useBeanValidation>true</useBeanValidation>
                             </configOptions>
                         </configuration>
@@ -551,6 +521,7 @@
                             <generatorName>${generatorName.default}</generatorName>
                             <configOptions>
                                 <sourceFolder>${sourceFolder.default}</sourceFolder>
+                                <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
                                 <enumUnknownDefaultCase>true</enumUnknownDefaultCase>
                             </configOptions>
                         </configuration>
@@ -573,6 +544,7 @@
                             <library>webclient</library>
                             <configOptions>
                                 <sourceFolder>${sourceFolder.default}</sourceFolder>
+                                <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
                                 <enumUnknownDefaultCase>true</enumUnknownDefaultCase>
                             </configOptions>
                         </configuration>
@@ -594,6 +566,7 @@
                             <generatorName>${generatorName.default}</generatorName>
                             <configOptions>
                                 <sourceFolder>${sourceFolder.default}</sourceFolder>
+                                <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
                                 <enumUnknownDefaultCase>true</enumUnknownDefaultCase>
                                 <useEnumCaseInsensitive>true</useEnumCaseInsensitive>
                             </configOptions>
@@ -617,6 +590,7 @@
                             <library>webclient</library>
                             <configOptions>
                                 <sourceFolder>${sourceFolder.default}</sourceFolder>
+                                <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
                                 <enumUnknownDefaultCase>true</enumUnknownDefaultCase>
                                 <useEnumCaseInsensitive>true</useEnumCaseInsensitive>
                             </configOptions>

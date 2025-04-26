@@ -46,9 +46,9 @@ import java.util.Set;
  * @param exampleInnerThree Example of another inner enum class with URI values
  */
 public record RecordWithInnerEnums(
-    @javax.annotation.Nonnull ExampleInnerEnum exampleInner,
-    @javax.annotation.Nonnull ExampleInnerTwoEnum exampleInnerTwo,
-    @javax.annotation.Nonnull ExampleInnerThreeEnum exampleInnerThree)
+    @jakarta.annotation.Nonnull ExampleInnerEnum exampleInner,
+    @jakarta.annotation.Nonnull ExampleInnerTwoEnum exampleInnerTwo,
+    @jakarta.annotation.Nonnull ExampleInnerThreeEnum exampleInnerThree)
     implements Serializable {
 
   private static final long serialVersionUID = 1L;
@@ -64,9 +64,9 @@ public record RecordWithInnerEnums(
   public static final HashSet<String> openapiRequiredFields = new HashSet<String>(Set.of());
 
   public RecordWithInnerEnums(
-      @javax.annotation.Nonnull final ExampleInnerEnum exampleInner,
-      @javax.annotation.Nonnull final ExampleInnerTwoEnum exampleInnerTwo,
-      @javax.annotation.Nonnull final ExampleInnerThreeEnum exampleInnerThree) {
+      @jakarta.annotation.Nonnull final ExampleInnerEnum exampleInner,
+      @jakarta.annotation.Nonnull final ExampleInnerTwoEnum exampleInnerTwo,
+      @jakarta.annotation.Nonnull final ExampleInnerThreeEnum exampleInnerThree) {
     this.exampleInner = exampleInner;
     this.exampleInnerTwo = exampleInnerTwo;
     this.exampleInnerThree = exampleInnerThree;

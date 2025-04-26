@@ -37,10 +37,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @io.github.chrimle.o2jrm.annotations.TestAnnotationTwo
 @io.github.chrimle.o2jrm.annotations.TestAnnotationThree
 public record ExampleNullableRecord(
-    @javax.annotation.Nonnull Boolean field1) {
+    @jakarta.annotation.Nonnull Boolean field1) {
 
   public ExampleNullableRecord(
-      @javax.annotation.Nonnull final Boolean field1) {
+      @jakarta.annotation.Nonnull final Boolean field1) {
     this.field1 = field1;
   }
 }

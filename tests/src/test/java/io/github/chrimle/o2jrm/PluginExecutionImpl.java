@@ -58,9 +58,6 @@ public enum PluginExecutionImpl implements PluginExecution {
       "generateBuilders", Library.OKHTTP_GSON, ConfigOption.GENERATE_BUILDERS),
   WEBCLIENT_GENERATE_BUILDERS(
       "webclient.generateBuilders", Library.WEBCLIENT, ConfigOption.GENERATE_BUILDERS),
-  OKHTTP_GSON_USE_JAKARTA_EE("useJakartaEe", Library.OKHTTP_GSON, ConfigOption.USE_JAKARTA_EE),
-  WEBCLIENT_USE_JAKARTA_EE(
-      "webclient.useJakartaEe", Library.WEBCLIENT, ConfigOption.USE_JAKARTA_EE),
   OKHTTP_GSON_USE_BEAN_VALIDATION(
       "useBeanValidation", Library.OKHTTP_GSON, ConfigOption.USE_BEAN_VALIDATION),
   WEBCLIENT_USE_BEAN_VALIDATION(

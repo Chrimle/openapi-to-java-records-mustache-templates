@@ -56,9 +56,6 @@
         <!-- The Plugin Execution with generateBuilders=true -->
         <execution.generateBuilders>generateBuilders</execution.generateBuilders>
         <execution.webclient.generateBuilders>webclient.generateBuilders</execution.webclient.generateBuilders>
-        <!-- The Plugin Execution with useJakartaEe=true -->
-        <execution.useJakartaEe>useJakartaEe</execution.useJakartaEe>
-        <execution.webclient.useJakartaEe>webclient.useJakartaEe</execution.webclient.useJakartaEe>
         <!-- The Plugin Execution with useBeanValidation=true -->
         <execution.useBeanValidation>useBeanValidation</execution.useBeanValidation>
         <execution.webclient.useBeanValidation>webclient.useBeanValidation</execution.webclient.useBeanValidation>
@@ -445,49 +442,6 @@
                             <configOptions>
                                 <sourceFolder>${sourceFolder.default}</sourceFolder>
                                 <generateBuilders>true</generateBuilders>
-                            </configOptions>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>generate-${execution.useJakartaEe}</id>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                        <configuration>
-                            <output>${output.default}</output>
-                            <modelPackage>${modelPackage.default}.${execution.useJakartaEe}</modelPackage>
-                            <generateModels>${generateModels.default}</generateModels>
-                            <generateApis>${generateApis.default}</generateApis>
-                            <generateModelTests>${generateModelTests.default}</generateModelTests>
-                            <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
-                            <inputSpec>${inputSpec.default}</inputSpec>
-                            <templateDirectory>${templateDirectory.default}</templateDirectory>
-                            <generatorName>${generatorName.default}</generatorName>
-                            <configOptions>
-                                <sourceFolder>${sourceFolder.default}</sourceFolder>
-                                <useJakartaEe>true</useJakartaEe>
-                            </configOptions>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>generate-${execution.webclient.useJakartaEe}</id>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                        <configuration>
-                            <output>${output.default}</output>
-                            <modelPackage>${modelPackage.default}.${execution.webclient.useJakartaEe}</modelPackage>
-                            <generateModels>${generateModels.default}</generateModels>
-                            <generateApis>${generateApis.default}</generateApis>
-                            <generateModelTests>${generateModelTests.default}</generateModelTests>
-                            <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
-                            <inputSpec>${inputSpec.default}</inputSpec>
-                            <templateDirectory>${templateDirectory.default}</templateDirectory>
-                            <generatorName>${generatorName.default}</generatorName>
-                            <library>webclient</library>
-                            <configOptions>
-                                <sourceFolder>${sourceFolder.default}</sourceFolder>
-                                <useJakartaEe>true</useJakartaEe>
                             </configOptions>
                         </configuration>
                     </execution>

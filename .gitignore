@@ -36,7 +36,7 @@ replay_pid*
 target/spotless-index
 mustache-templates/target/spotless-index
 tests/target/spotless-index
-tests-useJakartaEe/target/spotless-index
+test-useJakartaEe/target/spotless-index
 test-utils/target/spotless-index
 
 # Maven Archiver & Status
@@ -44,21 +44,21 @@ mustache-templates/target/maven-archiver
 mustache-templates/target/maven-status
 tests/target/maven-archiver
 tests/target/maven-status
-tests-useJakartaEe/target/maven-archiver
-tests-useJakartaEe/target/maven-status
+test-useJakartaEe/target/maven-archiver
+test-useJakartaEe/target/maven-status
 test-utils/target/maven-archiver
 test-utils/target/maven-status
 
 tests/target/dependency-maven-plugin-markers
 tests/target/surefire-reports
-tests-useJakartaEe/target/dependency-maven-plugin-markers
-tests-useJakartaEe/target/surefire-reports
+test-useJakartaEe/target/dependency-maven-plugin-markers
+test-useJakartaEe/target/surefire-reports
 
 tests/target/generated-sources/openapi/src/*
 !tests/target/generated-sources/openapi/src/**/
 
-tests-useJakartaEe/target/generated-sources/openapi/src/*
-!tests-useJakartaEe/target/generated-sources/openapi/src/**/
+test-useJakartaEe/target/generated-sources/openapi/src/*
+!test-useJakartaEe/target/generated-sources/openapi/src/**/
 
 tests/target/generated-sources/openapi/src/.github
 tests/target/generated-sources/openapi/src/.openapi-generator
@@ -66,11 +66,11 @@ tests/target/generated-sources/openapi/src/api
 tests/target/generated-sources/openapi/src/gradle
 tests/target/generated-sources/openapi/src/src/main
 
-tests-useJakartaEe/target/generated-sources/openapi/src/.github
-tests-useJakartaEe/target/generated-sources/openapi/src/.openapi-generator
-tests-useJakartaEe/target/generated-sources/openapi/src/api
-tests-useJakartaEe/target/generated-sources/openapi/src/gradle
-tests-useJakartaEe/target/generated-sources/openapi/src/src/main
+test-useJakartaEe/target/generated-sources/openapi/src/.github
+test-useJakartaEe/target/generated-sources/openapi/src/.openapi-generator
+test-useJakartaEe/target/generated-sources/openapi/src/api
+test-useJakartaEe/target/generated-sources/openapi/src/gradle
+test-useJakartaEe/target/generated-sources/openapi/src/src/main
 # Exclude Supporting Files
 **/auth/**
 AbstractOpenApiSchema.java
@@ -98,12 +98,12 @@ StringUtil.java
 tests/target/site/jacoco
 tests/target/jacoco.exec
 
-tests-useJakartaEe/target/site/jacoco
-tests-useJakartaEe/target/jacoco.exec
+test-useJakartaEe/target/site/jacoco
+test-useJakartaEe/target/jacoco.exec
 
 # Ignore Imported Files
 tests/target/classes/templates
 tests/target/classes/api.yaml
 
-tests-useJakartaEe/target/classes/templates
-tests-useJakartaEe/target/classes/api.yaml
+test-useJakartaEe/target/classes/templates
+test-useJakartaEe/target/classes/api.yaml

@@ -36,10 +36,10 @@ import jakarta.validation.Valid;
  * @param field1 a boolean field
  */
 public record ExampleRecord(
-    @javax.annotation.Nonnull Boolean field1) {
+    @jakarta.annotation.Nonnull Boolean field1) {
 
   public ExampleRecord(
-      @javax.annotation.Nonnull final Boolean field1) {
+      @jakarta.annotation.Nonnull final Boolean field1) {
     this.field1 = field1;
   }
 }

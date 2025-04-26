@@ -36,10 +36,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  */
 @Deprecated
 public record DeprecatedExampleRecord(
-    @javax.annotation.Nonnull Boolean field1) {
+    @jakarta.annotation.Nonnull Boolean field1) {
 
   public DeprecatedExampleRecord(
-      @javax.annotation.Nonnull final Boolean field1) {
+      @jakarta.annotation.Nonnull final Boolean field1) {
     this.field1 = field1;
   }
 }

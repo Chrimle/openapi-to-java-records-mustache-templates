@@ -42,7 +42,7 @@ import java.util.Set;
  * @param field1 a String field with a default value
  */
 public record ExampleRecordWithDefaultFields(
-    @javax.annotation.Nonnull String field1)
+    @jakarta.annotation.Nonnull String field1)
     implements Serializable {
 
   private static final long serialVersionUID = 1L;
@@ -56,7 +56,7 @@ public record ExampleRecordWithDefaultFields(
   public static final HashSet<String> openapiRequiredFields = new HashSet<String>(Set.of());
 
   public ExampleRecordWithDefaultFields(
-      @javax.annotation.Nullable final String field1) {
+      @jakarta.annotation.Nullable final String field1) {
     this.field1 = Objects.requireNonNullElse(field1, "someDefaultValue");
   }
 
