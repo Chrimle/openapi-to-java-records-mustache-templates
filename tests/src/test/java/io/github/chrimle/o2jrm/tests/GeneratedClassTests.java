@@ -17,9 +17,11 @@
 package io.github.chrimle.o2jrm.tests;
 
 import io.github.chrimle.o2jrm.GeneratedSource;
-import io.github.chrimle.o2jrm.PluginExecution;
-import io.github.chrimle.o2jrm.models.GeneratedEnum;
-import io.github.chrimle.o2jrm.models.GeneratedRecord;
+import io.github.chrimle.o2jrm.PluginExecutionImpl;
+import io.github.chrimle.o2jrm.models.GeneratedClass;
+import io.github.chrimle.o2jrm.models.GeneratedClassImpl;
+import io.github.chrimle.o2jrm.models.GeneratedEnumImpl;
+import io.github.chrimle.o2jrm.models.GeneratedRecordImpl;
 import java.util.stream.Stream;
 import org.junit.jupiter.params.provider.Arguments;
 
@@ -34,34 +36,48 @@ public sealed interface GeneratedClassTests permits GeneratedEnumTests, Generate
       "io.github.chrimle.o2jrm.tests.GeneratedClassTests#allPluginExecutionsAndGeneratedEnumCombinations";
 
   /**
-   * Generates a {@link GeneratedSource} for every possible combination of {@link PluginExecution}
-   * and {@link GeneratedEnum}.
+   * Generates a {@link GeneratedSource} for every possible combination of {@link
+   * PluginExecutionImpl} and {@link GeneratedEnumImpl}.
    *
    * @return a stream of {@code GeneratedSource}s.
    */
   @SuppressWarnings("unused")
   static Stream<Arguments> allPluginExecutionsAndGeneratedEnumCombinations() {
-    return Stream.of(PluginExecution.values())
+    return Stream.of(PluginExecutionImpl.values())
         .flatMap(
             pluginExecution ->
-                Stream.of(GeneratedEnum.values())
-                    .map(generatedEnum -> new GeneratedSource(pluginExecution, generatedEnum)))
+                Stream.of(GeneratedEnumImpl.values())
+                    .map(
+                        generatedEnum ->
+                            new GeneratedSource(
+                                pluginExecution,
+                                generatedEnum,
+                                GeneratedClassImpl.getGeneratedFields(
+                                    generatedEnum, pluginExecution),
+                                GeneratedClass.getClass(generatedEnum, pluginExecution))))
         .map(Arguments::of);
   }
 
   /**
-   * Generates a {@link GeneratedSource} for every possible combination of {@link PluginExecution}
-   * and {@link GeneratedRecord}.
+   * Generates a {@link GeneratedSource} for every possible combination of {@link
+   * PluginExecutionImpl} and {@link GeneratedRecordImpl}.
    *
    * @return a stream of {@code GeneratedSource}s.
    */
   @SuppressWarnings("unused")
   static Stream<Arguments> allPluginExecutionsAndGeneratedRecordCombinations() {
-    return Stream.of(PluginExecution.values())
+    return Stream.of(PluginExecutionImpl.values())
         .flatMap(
             pluginExecution ->
-                Stream.of(GeneratedRecord.values())
-                    .map(generatedRecord -> new GeneratedSource(pluginExecution, generatedRecord)))
+                Stream.of(GeneratedRecordImpl.values())
+                    .map(
+                        generatedRecord ->
+                            new GeneratedSource(
+                                pluginExecution,
+                                generatedRecord,
+                                GeneratedClassImpl.getGeneratedFields(
+                                    generatedRecord, pluginExecution),
+                                GeneratedClass.getClass(generatedRecord, pluginExecution))))
         .map(Arguments::of);
   }
 }

@@ -47,11 +47,14 @@ public class GeneratedSource {
   private final GeneratedClass generatedClass;
 
   public GeneratedSource(
-      final PluginExecution pluginExecution, final GeneratedClass generatedClass) {
+      final PluginExecution pluginExecution,
+      final GeneratedClass generatedClass,
+      final GeneratedField<?>[] generatedFields,
+      final Class<?> classUnderTest) {
     this.pluginExecution = pluginExecution;
     this.generatedClass = generatedClass;
-    this.generatedFields = GeneratedClass.getGeneratedFields(generatedClass, pluginExecution);
-    this.classUnderTest = GeneratedClass.getClass(generatedClass, pluginExecution);
+    this.generatedFields = generatedFields;
+    this.classUnderTest = classUnderTest;
   }
 
   public boolean generateBuilders() {

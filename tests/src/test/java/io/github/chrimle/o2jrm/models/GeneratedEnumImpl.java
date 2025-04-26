@@ -16,12 +16,10 @@
 */
 package io.github.chrimle.o2jrm.models;
 
-import java.lang.annotation.Annotation;
 import java.net.URI;
-import java.util.List;
 
 /** Enum class listing all expected {@code enum} classes to be generated from the OpenAPI spec. */
-public enum GeneratedEnum implements GeneratedClass {
+public enum GeneratedEnumImpl implements GeneratedEnum, GeneratedClassImpl {
   DEPRECATED_EXAMPLE_ENUM(
       "DeprecatedExampleEnum",
       true,
@@ -91,7 +89,7 @@ public enum GeneratedEnum implements GeneratedClass {
   private final boolean isDeprecated;
   private final GeneratedField<?>[] generatedFields;
 
-  GeneratedEnum(
+  GeneratedEnumImpl(
       final String simpleClassName,
       final boolean isDeprecated,
       final GeneratedField<?>... generatedFields) {
@@ -118,36 +116,6 @@ public enum GeneratedEnum implements GeneratedClass {
   @Override
   public boolean isDeprecated() {
     return isDeprecated;
-  }
-
-  /**
-   * {@inheritDoc}
-   *
-   * @return whether the class is an {@code enum} class.
-   */
-  @Override
-  public boolean isEnum() {
-    return true;
-  }
-
-  /**
-   * {@inheritDoc}
-   *
-   * @return whether the class has extra annotations.
-   */
-  @Override
-  public boolean hasExtraAnnotations() {
-    return false;
-  }
-
-  /**
-   * {@inheritDoc}
-   *
-   * @return the collection of annotations.
-   */
-  @Override
-  public List<Class<? extends Annotation>> getExtraAnnotations() {
-    return List.of();
   }
 
   /**

@@ -25,7 +25,7 @@ import java.util.List;
  * to assert {@code <configuration>} or {@code <configOption>}-specific properties or behaviours of
  * generated classes.
  */
-public enum PluginExecution {
+public enum PluginExecutionImpl implements PluginExecution {
   OKHTTP_GSON_STANDARD("standard", Library.OKHTTP_GSON),
   WEBCLIENT_STANDARD("webclient.standard", Library.WEBCLIENT),
   OKHTTP_GSON_USE_ENUM_CASE_INSENSITIVE(
@@ -94,64 +94,25 @@ public enum PluginExecution {
   private final Library library;
   private final List<ConfigOption> configOptions;
 
-  PluginExecution(final String packageName, Library library, final ConfigOption... configOptions) {
+  PluginExecutionImpl(
+      final String packageName, final Library library, final ConfigOption... configOptions) {
     this.packageName = packageName;
     this.library = library;
     this.configOptions = List.of(configOptions);
   }
 
-  public boolean isLibraryOkHttpGson() {
-    return Library.isLibraryOkHttpGson(library);
-  }
-
-  public boolean isLibraryWebClient() {
-    return Library.isLibraryWebClient(library);
-  }
-
-  public boolean isSerializationLibraryJackson() {
-    return switch (library) {
-      case OKHTTP_GSON -> false;
-      case WEBCLIENT -> true;
-    };
-  }
-
-  public boolean hasConfigOption(final ConfigOption configOption) {
-    return configOptions.contains(configOption);
-  }
-
-  public boolean useJakartaEe() {
-    return hasConfigOption(ConfigOption.USE_JAKARTA_EE);
-  }
-
-  public boolean useEnumCaseInsensitive() {
-    return hasConfigOption(ConfigOption.USE_ENUM_CASE_INSENSITIVE);
-  }
-
-  public boolean enumUnknownDefaultCase() {
-    return hasConfigOption(ConfigOption.ENUM_UNKNOWN_DEFAULT_CASE);
-  }
-
-  public boolean useBeanValidation() {
-    return hasConfigOption(ConfigOption.USE_BEAN_VALIDATION);
-  }
-
-  public boolean serializableModel() {
-    return hasConfigOption(ConfigOption.SERIALIZABLE_MODEL);
-  }
-
-  public boolean hasAdditionalModelTypeAnnotations() {
-    return hasConfigOption(ConfigOption.ADDITIONAL_MODEL_TYPE_ANNOTATIONS);
-  }
-
-  public boolean hasAdditionalEnumTypeAnnotations() {
-    return hasConfigOption(ConfigOption.ADDITIONAL_ENUM_TYPE_ANNOTATIONS);
-  }
-
-  public boolean generateBuilders() {
-    return hasConfigOption(ConfigOption.GENERATE_BUILDERS);
-  }
-
+  @Override
   public String getPackageName() {
     return packageName;
+  }
+
+  @Override
+  public Library getLibrary() {
+    return library;
+  }
+
+  @Override
+  public List<ConfigOption> getConfigOptions() {
+    return configOptions;
   }
 }

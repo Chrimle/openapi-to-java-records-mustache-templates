@@ -20,11 +20,8 @@ import io.github.chrimle.o2jrm.PluginExecution;
 import java.lang.annotation.Annotation;
 import java.util.List;
 
-/**
- * Enum class listing all expected classes ({@code record}s and {@code enum}s) to be generated from
- * the OpenAPI spec.
- */
-public sealed interface GeneratedClass permits GeneratedEnum, GeneratedRecord {
+/** Expected class ({@code record} or {@code enum}) to be generated from the OpenAPI spec. */
+public interface GeneratedClass {
 
   /** The default package name of all generated classes. */
   String PACKAGE_NAME = "io.github.chrimle.o2jrm";
@@ -129,22 +126,5 @@ public sealed interface GeneratedClass permits GeneratedEnum, GeneratedRecord {
     } catch (ClassNotFoundException e) {
       throw new IllegalArgumentException(e);
     }
-  }
-
-  /**
-   * Returns the collection of {@link GeneratedField}s which are expected to be generated within the
-   * {@link GeneratedClass}. Corresponds to each {@code properties}-item.
-   *
-   * @return the collection of generatedFields.
-   */
-  static GeneratedField<?>[] getGeneratedFields(
-      final GeneratedClass generatedClass, final PluginExecution pluginExecution) {
-    if (generatedClass instanceof final GeneratedRecord generatedRecord) {
-      return GeneratedRecord.getGeneratedFields(generatedRecord, pluginExecution);
-    }
-    if (generatedClass instanceof final GeneratedEnum generatedEnum) {
-      return generatedEnum.getGeneratedFields();
-    }
-    throw new IllegalArgumentException("Unsupported `GeneratedClass`:" + generatedClass);
   }
 }
