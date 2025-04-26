@@ -5,6 +5,6 @@ authors:
   given-names: "Christopher"
   orcid: "https://orcid.org/0009-0002-1005-3942"
 title: "OpenAPI to Java Records Mustache Templates"
-version: 2.9.4
-date-released: 2025-04-21
+version: 2.9.5
+date-released: 2025-04-27
 url: "https://github.com/Chrimle/openapi-to-java-records-mustache-templates"
