@@ -1486,15 +1486,15 @@ final class GeneratedRecordTests implements GeneratedClassTests {
 
               for (final Class<? extends Annotation> annotation :
                   List.of(
-                      jakarta.validation.Valid.class,
-                      jakarta.validation.constraints.NotNull.class,
-                      jakarta.validation.constraints.Pattern.class,
-                      jakarta.validation.constraints.Size.class,
-                      jakarta.validation.constraints.Min.class,
-                      jakarta.validation.constraints.Max.class,
-                      jakarta.validation.constraints.DecimalMin.class,
-                      jakarta.validation.constraints.DecimalMax.class,
-                      jakarta.validation.constraints.Email.class)) {
+                      javax.validation.Valid.class,
+                      javax.validation.constraints.NotNull.class,
+                      javax.validation.constraints.Pattern.class,
+                      javax.validation.constraints.Size.class,
+                      javax.validation.constraints.Min.class,
+                      javax.validation.constraints.Max.class,
+                      javax.validation.constraints.DecimalMin.class,
+                      javax.validation.constraints.DecimalMax.class,
+                      javax.validation.constraints.Email.class)) {
                 CustomAssertions.assertFieldIsNotAnnotatedWith(field, annotation);
               }
             }
