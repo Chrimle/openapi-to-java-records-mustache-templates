@@ -1415,19 +1415,36 @@ public abstract class GeneratedRecordTests {
 
         @Nested
         @DisplayName("Testing `<useBeanValidation>false</useBeanValidation>`")
-        abstract class UseBeanValidationFalseTests {
+        class UseBeanValidationFalseTests {
+
           @ParameterizedTest
           @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
           @DisplayName(
               "Generated `record` does NOT use Jakarta Bean Validation annotations on fields")
-          abstract void
+          void
               whenUseBeanValidationIsFalseThenFieldsAreNotAnnotatedWithJakartaBeanValidationAnnotations(
-                  final GeneratedSource generatedSource);
+                  final GeneratedSource generatedSource) {
+            Assumptions.assumeFalse(generatedSource.useBeanValidation());
+
+            for (final GeneratedField<?> generatedField : generatedSource.generatedFields()) {
+              final Field field =
+                  CustomAssertions.assertClassHasField(
+                      generatedSource.getClassUnderTest(),
+                      generatedField.name(),
+                      generatedField.type());
+
+              for (final Class<? extends Annotation> annotation :
+                  generatedSource.getBeanValidationAnnotations()) {
+                CustomAssertions.assertFieldIsNotAnnotatedWith(field, annotation);
+              }
+            }
+          }
         }
 
         @Nested
         @DisplayName("Testing `<useBeanValidation>true</useBeanValidation>`")
         abstract class UseBeanValidationTrueTests {
+
           @ParameterizedTest
           @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
           @DisplayName("Generated `record` use Jakarta Bean Validation annotations on fields")

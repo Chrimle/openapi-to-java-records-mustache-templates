@@ -56,45 +56,10 @@ public class GeneratedSource {
   private final Class<? extends Annotation> decimalMinAnnotation;
   private final Class<? extends Annotation> decimalMaxAnnotation;
   private final Class<? extends Annotation> emailAnnotation;
+  private final List<Class<? extends Annotation>> beanValidationAnnotations;
 
   public Class<? extends Annotation> getNonnullAnnotation() {
     return nonnullAnnotation;
-  }
-
-  public Class<? extends Annotation> getValidAnnotation() {
-    return validAnnotation;
-  }
-
-  public Class<? extends Annotation> getNotNullAnnotation() {
-    return notNullAnnotation;
-  }
-
-  public Class<? extends Annotation> getPatternAnnotation() {
-    return patternAnnotation;
-  }
-
-  public Class<? extends Annotation> getSizeAnnotation() {
-    return sizeAnnotation;
-  }
-
-  public Class<? extends Annotation> getMinAnnotation() {
-    return minAnnotation;
-  }
-
-  public Class<? extends Annotation> getMaxAnnotation() {
-    return maxAnnotation;
-  }
-
-  public Class<? extends Annotation> getDecimalMinAnnotation() {
-    return decimalMinAnnotation;
-  }
-
-  public Class<? extends Annotation> getDecimalMaxAnnotation() {
-    return decimalMaxAnnotation;
-  }
-
-  public Class<? extends Annotation> getEmailAnnotation() {
-    return emailAnnotation;
   }
 
   public GeneratedSource(
@@ -128,6 +93,17 @@ public class GeneratedSource {
     this.decimalMinAnnotation = decimalMinAnnotation;
     this.decimalMaxAnnotation = decimalMaxAnnotation;
     this.emailAnnotation = emailAnnotation;
+    beanValidationAnnotations =
+        List.of(
+            validAnnotation,
+            notNullAnnotation,
+            patternAnnotation,
+            sizeAnnotation,
+            minAnnotation,
+            maxAnnotation,
+            decimalMinAnnotation,
+            decimalMaxAnnotation,
+            emailAnnotation);
   }
 
   public boolean generateBuilders() {
@@ -228,5 +204,9 @@ public class GeneratedSource {
 
   public Class<? extends Annotation> getNullableAnnotation() {
     return nullableAnnotation;
+  }
+
+  public List<Class<? extends Annotation>> getBeanValidationAnnotations() {
+    return beanValidationAnnotations;
   }
 }

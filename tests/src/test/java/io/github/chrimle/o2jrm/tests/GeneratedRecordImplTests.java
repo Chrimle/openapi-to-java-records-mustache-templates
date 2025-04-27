@@ -183,46 +183,6 @@ final class GeneratedRecordImplTests extends GeneratedRecordTests {
               .UseBeanValidationTests {
 
         @Nested
-        @DisplayName("Testing `<useBeanValidation>false</useBeanValidation>`")
-        class UseBeanValidationFalseTests
-            extends GeneratedRecordTests.GeneratorConfigurationTests.ConfigOptionsTests
-                .UseBeanValidationTests.UseBeanValidationFalseTests {
-
-          @Override
-          @ParameterizedTest
-          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
-          @DisplayName(
-              "Generated `record` does NOT use Jakarta Bean Validation annotations on fields")
-          void
-              whenUseBeanValidationIsFalseThenFieldsAreNotAnnotatedWithJakartaBeanValidationAnnotations(
-                  final GeneratedSource generatedSource) {
-            Assumptions.assumeFalse(generatedSource.useBeanValidation());
-
-            for (final GeneratedField<?> generatedField : generatedSource.generatedFields()) {
-              final Field field =
-                  CustomAssertions.assertClassHasField(
-                      generatedSource.getClassUnderTest(),
-                      generatedField.name(),
-                      generatedField.type());
-
-              for (final Class<? extends Annotation> annotation :
-                  List.of(
-                      javax.validation.Valid.class,
-                      javax.validation.constraints.NotNull.class,
-                      javax.validation.constraints.Pattern.class,
-                      javax.validation.constraints.Size.class,
-                      javax.validation.constraints.Min.class,
-                      javax.validation.constraints.Max.class,
-                      javax.validation.constraints.DecimalMin.class,
-                      javax.validation.constraints.DecimalMax.class,
-                      javax.validation.constraints.Email.class)) {
-                CustomAssertions.assertFieldIsNotAnnotatedWith(field, annotation);
-              }
-            }
-          }
-        }
-
-        @Nested
         @DisplayName("Testing `<useBeanValidation>true</useBeanValidation>`")
         class UseBeanValidationTrueTests
             extends GeneratedRecordTests.GeneratorConfigurationTests.ConfigOptionsTests

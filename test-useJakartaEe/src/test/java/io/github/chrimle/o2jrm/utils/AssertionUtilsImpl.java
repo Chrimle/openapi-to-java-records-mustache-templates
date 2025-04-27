@@ -114,25 +114,4 @@ public class AssertionUtilsImpl {
       }
     }
   }
-
-  public static void assertInnerBuilderClassExistsAndCanBuildRecord(
-      final GeneratedSource generatedSource) {
-    // Assert Builder can be instantiated from builder()-method
-    final Object builderObject =
-        CustomAssertions.assertStaticMethodReturnsNonNull(
-            CustomAssertions.assertClassHasMethod(generatedSource.getClassUnderTest(), "builder"));
-    for (GeneratedField<?> generatedField : generatedSource.generatedFields()) {
-      CustomAssertions.assertInstanceMethodReturnsValue(
-          CustomAssertions.assertClassHasMethod(
-              builderObject.getClass(), generatedField.name(), generatedField.type()),
-          builderObject,
-          builderObject,
-          (Object) null);
-    }
-    Assertions.assertInstanceOf(
-        generatedSource.getClassUnderTest(),
-        CustomAssertions.assertInstanceMethodReturnsNonNull(
-            CustomAssertions.assertClassHasMethod(builderObject.getClass(), "build"),
-            builderObject));
-  }
 }
