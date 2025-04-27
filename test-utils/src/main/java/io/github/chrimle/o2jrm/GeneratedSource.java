@@ -47,15 +47,6 @@ public class GeneratedSource {
   private final GeneratedClass generatedClass;
   private final Class<? extends Annotation> nullableAnnotation;
   private final Class<? extends Annotation> nonnullAnnotation;
-  private final Class<? extends Annotation> validAnnotation;
-  private final Class<? extends Annotation> notNullAnnotation;
-  private final Class<? extends Annotation> patternAnnotation;
-  private final Class<? extends Annotation> sizeAnnotation;
-  private final Class<? extends Annotation> minAnnotation;
-  private final Class<? extends Annotation> maxAnnotation;
-  private final Class<? extends Annotation> decimalMinAnnotation;
-  private final Class<? extends Annotation> decimalMaxAnnotation;
-  private final Class<? extends Annotation> emailAnnotation;
   private final List<Class<? extends Annotation>> beanValidationAnnotations;
 
   public Class<? extends Annotation> getNonnullAnnotation() {
@@ -67,43 +58,16 @@ public class GeneratedSource {
       final GeneratedClass generatedClass,
       final GeneratedField<?>[] generatedFields,
       final Class<?> classUnderTest,
-      Class<? extends Annotation> nullableAnnotation,
-      Class<? extends Annotation> nonnullAnnotation,
-      Class<? extends Annotation> validAnnotation,
-      Class<? extends Annotation> notNullAnnotation,
-      Class<? extends Annotation> patternAnnotation,
-      Class<? extends Annotation> sizeAnnotation,
-      Class<? extends Annotation> minAnnotation,
-      Class<? extends Annotation> maxAnnotation,
-      Class<? extends Annotation> decimalMinAnnotation,
-      Class<? extends Annotation> decimalMaxAnnotation,
-      Class<? extends Annotation> emailAnnotation) {
+      final Class<? extends Annotation> nullableAnnotation,
+      final Class<? extends Annotation> nonnullAnnotation,
+      final Class<? extends Annotation>... beanValidationAnnotations) {
     this.pluginExecution = pluginExecution;
     this.generatedClass = generatedClass;
     this.generatedFields = generatedFields;
     this.classUnderTest = classUnderTest;
     this.nullableAnnotation = nullableAnnotation;
     this.nonnullAnnotation = nonnullAnnotation;
-    this.validAnnotation = validAnnotation;
-    this.notNullAnnotation = notNullAnnotation;
-    this.patternAnnotation = patternAnnotation;
-    this.sizeAnnotation = sizeAnnotation;
-    this.minAnnotation = minAnnotation;
-    this.maxAnnotation = maxAnnotation;
-    this.decimalMinAnnotation = decimalMinAnnotation;
-    this.decimalMaxAnnotation = decimalMaxAnnotation;
-    this.emailAnnotation = emailAnnotation;
-    beanValidationAnnotations =
-        List.of(
-            validAnnotation,
-            notNullAnnotation,
-            patternAnnotation,
-            sizeAnnotation,
-            minAnnotation,
-            maxAnnotation,
-            decimalMinAnnotation,
-            decimalMaxAnnotation,
-            emailAnnotation);
+    this.beanValidationAnnotations = Arrays.asList(beanValidationAnnotations);
   }
 
   public boolean generateBuilders() {

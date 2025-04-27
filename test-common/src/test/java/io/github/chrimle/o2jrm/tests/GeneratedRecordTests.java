@@ -27,7 +27,6 @@ import io.github.chrimle.o2jrm.tests.GeneratedRecordTests.GeneratorConfiguration
 import io.github.chrimle.o2jrm.tests.GeneratedRecordTests.GeneratorConfigurationTests.ConfigOptionsTests.AdditionalModelTypeAnnotationsTests;
 import io.github.chrimle.o2jrm.tests.GeneratedRecordTests.GeneratorConfigurationTests.ConfigOptionsTests.GenerateBuildersTests;
 import io.github.chrimle.o2jrm.tests.GeneratedRecordTests.GeneratorConfigurationTests.ConfigOptionsTests.SerializableModelTests;
-import io.github.chrimle.o2jrm.tests.GeneratedRecordTests.GeneratorConfigurationTests.ConfigOptionsTests.UseJakartaEeTests;
 import io.github.chrimle.o2jrm.tests.GeneratedRecordTests.OpenAPITests.SchemaTests;
 import io.github.chrimle.o2jrm.tests.GeneratedRecordTests.OpenAPITests.SchemaTests.DeprecatedTests;
 import io.github.chrimle.o2jrm.tests.GeneratedRecordTests.OpenAPITests.SchemaTests.PropertiesTests;
@@ -89,7 +88,6 @@ import org.junit.jupiter.params.provider.MethodSource;
  *   <li>{@link AdditionalModelTypeAnnotationsTests additionalModelTypeAnnotations}
  *   <li>{@link SerializableModelTests serializableModel}
  *   <li>{@link GenerateBuildersTests generateBuilders}
- *   <li>{@link UseJakartaEeTests useJakartaEe}
  * </ul>
  */
 @DisplayName("Testing Generated `record` classes")
@@ -1371,41 +1369,6 @@ public abstract class GeneratedRecordTests {
                 generatedSource.getClassUnderTest(), "Builder");
             AssertionUtils.assertInnerBuilderClassExistsAndCanBuildRecord(generatedSource);
           }
-        }
-      }
-
-      @Nested
-      @DisplayName("Testing `<useJakartaEe>`")
-      class UseJakartaEeTests {
-
-        @Nested
-        @DisplayName("Testing `<useJakartaEe>false</useJakartaEe>`")
-        abstract class UseJakartaEeFalseTests {
-          @ParameterizedTest
-          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
-          @DisplayName(
-              "Fields of generated `record` are NOT annotated with Jakarta `@Nullable` or `@Nonnull`")
-          abstract void
-              whenUseJakartaEeIsFalseThenJakartaAnnotationsAreNotUsedForNullableAndNonnull(
-                  final GeneratedSource generatedSource);
-        }
-
-        @Nested
-        @DisplayName("Testing `<useJakartaEe>true</useJakartaEe>`")
-        abstract class UseJakartaEeTrueTests {
-          @ParameterizedTest
-          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
-          @DisplayName(
-              "Fields of generated `record` are annotated with Jakarta `@Nullable` or `@Nonnull`")
-          abstract void whenUseJakartaEeIsTrueThenJakartaAnnotationsAreUsedForNullableAndNonnull(
-              final GeneratedSource generatedSource);
-
-          @ParameterizedTest
-          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
-          @DisplayName(
-              "Fields of generated `record` are NOT annotated with JavaX `@Nullable` or `@Nonnull`")
-          abstract void whenUseJakartaEeIsTrueThenJavaXAnnotationsAreNotUsedForNullableAndNonnull(
-              final GeneratedSource generatedSource);
         }
       }
 
