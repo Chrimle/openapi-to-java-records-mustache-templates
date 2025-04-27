@@ -30,7 +30,7 @@ import jakarta.validation.constraints.Size;
 import java.lang.reflect.*;
 import org.junit.jupiter.api.Assertions;
 
-public class AssertionUtils {
+public class AssertionUtilsImpl {
 
   public static void assertRecordHasFieldsOfTypeWithNullableAnnotations(
       final GeneratedSource generatedSource) {
