@@ -20,43 +20,15 @@ import io.github.chrimle.o2jrm.GeneratedSource;
 import io.github.chrimle.o2jrm.PluginExecutionImpl;
 import io.github.chrimle.o2jrm.models.GeneratedClass;
 import io.github.chrimle.o2jrm.models.GeneratedClassImpl;
-import io.github.chrimle.o2jrm.models.GeneratedEnumImpl;
 import io.github.chrimle.o2jrm.models.GeneratedRecordImpl;
 import java.util.stream.Stream;
 import org.junit.jupiter.params.provider.Arguments;
 
-public sealed interface GeneratedClassTests permits GeneratedEnumTests, GeneratedRecordTests {
+public sealed interface GeneratedClassTests permits GeneratedRecordTests {
 
   /** Refers to {@link #allPluginExecutionsAndGeneratedRecordCombinations()} */
   String GENERATED_RECORD_TESTS_METHOD_SOURCE =
       "io.github.chrimle.o2jrm.tests.GeneratedClassTests#allPluginExecutionsAndGeneratedRecordCombinations";
-
-  /** Refers to {@link #allPluginExecutionsAndGeneratedEnumCombinations()} */
-  String GENERATED_ENUM_TESTS_METHOD_SOURCE =
-      "io.github.chrimle.o2jrm.tests.GeneratedClassTests#allPluginExecutionsAndGeneratedEnumCombinations";
-
-  /**
-   * Generates a {@link GeneratedSource} for every possible combination of {@link
-   * PluginExecutionImpl} and {@link GeneratedEnumImpl}.
-   *
-   * @return a stream of {@code GeneratedSource}s.
-   */
-  @SuppressWarnings("unused")
-  static Stream<Arguments> allPluginExecutionsAndGeneratedEnumCombinations() {
-    return Stream.of(PluginExecutionImpl.values())
-        .flatMap(
-            pluginExecution ->
-                Stream.of(GeneratedEnumImpl.values())
-                    .map(
-                        generatedEnum ->
-                            new GeneratedSource(
-                                pluginExecution,
-                                generatedEnum,
-                                GeneratedClassImpl.getGeneratedFields(
-                                    generatedEnum, pluginExecution),
-                                GeneratedClass.getClass(generatedEnum, pluginExecution))))
-        .map(Arguments::of);
-  }
 
   /**
    * Generates a {@link GeneratedSource} for every possible combination of {@link
