@@ -12,13 +12,13 @@ import io.github.chrimle.o2jrm.annotations.TestAnnotationOne;
 import io.github.chrimle.o2jrm.annotations.TestAnnotationThree;
 import io.github.chrimle.o2jrm.annotations.TestAnnotationTwo;
 import io.github.chrimle.o2jrm.models.GeneratedField;
-import io.github.chrimle.o2jrm.tests.IGeneratedEnumTests.GeneratorConfigurationTests.ConfigOptionsTests;
-import io.github.chrimle.o2jrm.tests.IGeneratedEnumTests.GeneratorConfigurationTests.ConfigOptionsTests.AdditionalEnumTypeAnnotationsTests;
-import io.github.chrimle.o2jrm.tests.IGeneratedEnumTests.GeneratorConfigurationTests.ConfigOptionsTests.UseEnumCaseInsensitiveTests;
-import io.github.chrimle.o2jrm.tests.IGeneratedEnumTests.OpenAPITests.SchemaTests;
-import io.github.chrimle.o2jrm.tests.IGeneratedEnumTests.OpenAPITests.SchemaTests.DeprecatedTests;
-import io.github.chrimle.o2jrm.tests.IGeneratedEnumTests.OpenAPITests.SchemaTests.EnumTests;
-import io.github.chrimle.o2jrm.tests.IGeneratedEnumTests.OpenAPITests.SchemaTests.EnumTests.ConstantsTests;
+import io.github.chrimle.o2jrm.tests.GeneratedEnumTests.GeneratorConfigurationTests.ConfigOptionsTests;
+import io.github.chrimle.o2jrm.tests.GeneratedEnumTests.GeneratorConfigurationTests.ConfigOptionsTests.AdditionalEnumTypeAnnotationsTests;
+import io.github.chrimle.o2jrm.tests.GeneratedEnumTests.GeneratorConfigurationTests.ConfigOptionsTests.UseEnumCaseInsensitiveTests;
+import io.github.chrimle.o2jrm.tests.GeneratedEnumTests.OpenAPITests.SchemaTests;
+import io.github.chrimle.o2jrm.tests.GeneratedEnumTests.OpenAPITests.SchemaTests.DeprecatedTests;
+import io.github.chrimle.o2jrm.tests.GeneratedEnumTests.OpenAPITests.SchemaTests.EnumTests;
+import io.github.chrimle.o2jrm.tests.GeneratedEnumTests.OpenAPITests.SchemaTests.EnumTests.ConstantsTests;
 import io.github.chrimle.o2jrm.utils.CustomAssertions;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
@@ -67,10 +67,10 @@ import org.junit.jupiter.params.provider.MethodSource;
  * </ul>
  */
 @DisplayName("Test Generated `enum` classes")
-public abstract class IGeneratedEnumTests {
+public abstract class GeneratedEnumTests {
 
   public static final String GENERATED_ENUM_TESTS_METHOD_SOURCE =
-      "io.github.chrimle.o2jrm.tests.GeneratedEnumTests#allPluginExecutionsAndGeneratedEnumCombinations";
+      "io.github.chrimle.o2jrm.tests.GeneratedEnumImplTests#allPluginExecutionsAndGeneratedEnumCombinations";
 
   @Nested
   @DisplayName("Testing OpenAPI Schemas & Properties")

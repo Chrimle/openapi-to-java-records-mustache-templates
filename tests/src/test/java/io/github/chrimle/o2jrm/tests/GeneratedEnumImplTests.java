@@ -26,7 +26,7 @@ import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.provider.Arguments;
 
 @DisplayName("Test Generated `enum` classes")
-final class GeneratedEnumTests extends IGeneratedEnumTests {
+final class GeneratedEnumImplTests extends GeneratedEnumTests {
 
   @SuppressWarnings("unused")
   static Stream<Arguments> allPluginExecutionsAndGeneratedEnumCombinations() {
