@@ -24,7 +24,7 @@ import io.github.chrimle.o2jrm.models.GeneratedRecordImpl;
 import java.util.stream.Stream;
 import org.junit.jupiter.params.provider.Arguments;
 
-public sealed interface GeneratedClassTests permits GeneratedEnumTests, GeneratedRecordTests {
+public sealed interface GeneratedClassTests permits GeneratedRecordTests {
 
   /** Refers to {@link #allPluginExecutionsAndGeneratedRecordCombinations()} */
   String GENERATED_RECORD_TESTS_METHOD_SOURCE =
