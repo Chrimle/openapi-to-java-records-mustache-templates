@@ -31,13 +31,6 @@ import io.github.chrimle.o2jrm.models.GeneratedClass;
 import io.github.chrimle.o2jrm.models.GeneratedClassImpl;
 import io.github.chrimle.o2jrm.models.GeneratedEnumImpl;
 import io.github.chrimle.o2jrm.models.GeneratedField;
-import io.github.chrimle.o2jrm.tests.GeneratedEnumTests.GeneratorConfigurationTests.ConfigOptionsTests;
-import io.github.chrimle.o2jrm.tests.GeneratedEnumTests.GeneratorConfigurationTests.ConfigOptionsTests.AdditionalEnumTypeAnnotationsTests;
-import io.github.chrimle.o2jrm.tests.GeneratedEnumTests.GeneratorConfigurationTests.ConfigOptionsTests.UseEnumCaseInsensitiveTests;
-import io.github.chrimle.o2jrm.tests.GeneratedEnumTests.OpenAPITests.SchemaTests;
-import io.github.chrimle.o2jrm.tests.GeneratedEnumTests.OpenAPITests.SchemaTests.DeprecatedTests;
-import io.github.chrimle.o2jrm.tests.GeneratedEnumTests.OpenAPITests.SchemaTests.EnumTests;
-import io.github.chrimle.o2jrm.tests.GeneratedEnumTests.OpenAPITests.SchemaTests.EnumTests.ConstantsTests;
 import io.github.chrimle.o2jrm.utils.CustomAssertions;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
@@ -45,45 +38,12 @@ import java.io.StringReader;
 import java.lang.reflect.Method;
 import java.net.URI;
 import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-/**
- * Tests for <b>all</b> generated {@code enum} classes. Tests are grouped by the <i>method of
- * configuring</i> the resulting {@code enum}.
- *
- * <p>
- *
- * <h2>Table of Contents</h2>
- *
- * <i>All tests are categorized and grouped accordingly, using {@link Nested} classes. This is the
- * complete list of tested <i>properties</i> and <i>configurations</i>.<br>
- *
- * <p><b>OpenAPI Specification</b>
- *
- * <p>{@link OpenAPITests}
- *
- * <ul>
- *   <li>{@link SchemaTests `components.schemas.{schema}`}
- *   <li>{@link DeprecatedTests `components.schemas.{schema}.deprecated`}
- *   <li>{@link EnumTests `components.schemas.{schema}.enum`}
- *   <li>{@link ConstantsTests `components.schemas.{schema}.enum.{constants}`}
- * </ul>
- *
- * <p><b>`openapi-generator` Configurations</b>
- *
- * <p>{@link GeneratorConfigurationTests}
- *
- * <ul>
- *   <li>{@link ConfigOptionsTests configOptions}
- *   <li>{@link AdditionalEnumTypeAnnotationsTests additionalEnumTypeAnnotations}
- *   <li>{@link UseEnumCaseInsensitiveTests useEnumCaseInsensitive}
- * </ul>
- */
 @DisplayName("Test Generated `enum` classes")
 final class GeneratedEnumTests extends IGeneratedEnumTests implements GeneratedClassTests {
 
@@ -102,96 +62,6 @@ final class GeneratedEnumTests extends IGeneratedEnumTests implements GeneratedC
                                     generatedEnum, pluginExecution),
                                 GeneratedClass.getClass(generatedEnum, pluginExecution))))
         .map(Arguments::of);
-  }
-
-  @Nested
-  @DisplayName("Testing OpenAPI Schemas & Properties")
-  class OpenAPITests {
-
-    @Nested
-    @DisplayName("Testing `components.schemas.{schema}`")
-    class SchemaTests {
-
-      @Nested
-      @DisplayName("Testing `components.schemas.{schema}.enum`")
-      class EnumTests {
-
-        @Nested
-        @DisplayName("Testing `components.schemas.{schema}.enum.{constants}`")
-        class ConstantsTests {
-
-          @ParameterizedTest
-          @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
-          @DisplayName("Generates an `enum` with expected number of constants")
-          void whenEnumHasConstantsThenGeneratedEnumClassHasExpectedNumberOfConstants(
-              final GeneratedSource generatedSource) {
-            Assumptions.assumeFalse(generatedSource.enumUnknownDefaultCase());
-            CustomAssertions.assertClassHasEnumConstants(
-                generatedSource.getClassUnderTest(), generatedSource.generatedFields().length);
-          }
-
-          @ParameterizedTest
-          @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
-          @DisplayName("Generates `enum` constants with expected names")
-          void whenEnumHasConstantsThenGeneratedEnumClassHasConstantsWithExpectedNames(
-              final GeneratedSource generatedSource) {
-            Assumptions.assumeFalse(generatedSource.enumUnknownDefaultCase());
-            CustomAssertions.assertClassHasEnumConstantsWithNames(
-                generatedSource.getClassUnderTest(),
-                Arrays.stream(generatedSource.generatedFields())
-                    .map(GeneratedField::name)
-                    .toArray(String[]::new));
-          }
-
-          @ParameterizedTest
-          @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
-          @DisplayName(
-              "OpenAPI `{schema}.enum.{constants}` -> Generates `enum` constants with expected values")
-          void whenEnumHasConstantsThenGeneratedEnumClassHasConstantsWithExpectedValues(
-              final GeneratedSource generatedSource) {
-            Assumptions.assumeFalse(generatedSource.enumUnknownDefaultCase());
-            CustomAssertions.assertClassHasEnumConstantsWithValues(
-                generatedSource.getClassUnderTest(),
-                Arrays.stream(generatedSource.generatedFields())
-                    .map(GeneratedField::enumValue)
-                    .toArray());
-          }
-        }
-      }
-
-      @Nested
-      @DisplayName("Testing `components.schemas.{schema}.deprecated`")
-      class DeprecatedTests {
-
-        @Nested
-        @DisplayName("Testing `components.schemas.{schema}.deprecated: false`")
-        class DeprecatedFalseTests {
-          @ParameterizedTest
-          @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
-          @DisplayName("Generated `enum` class is NOT annotated with `@Deprecated`")
-          void whenEnumIsNotDeprecatedThenGeneratedEnumClassNotIsAnnotatedDeprecated(
-              final GeneratedSource generatedSource) {
-            Assumptions.assumeFalse(generatedSource.isDeprecated());
-            CustomAssertions.assertClassIsNotAnnotatedWith(
-                generatedSource.getClassUnderTest(), Deprecated.class);
-          }
-        }
-
-        @Nested
-        @DisplayName("Testing `components.schemas.{schema}.deprecated: true`")
-        class DeprecatedTrueTests {
-          @ParameterizedTest
-          @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
-          @DisplayName("Generated `enum` class is annotated with `@Deprecated`")
-          void whenEnumIsDeprecatedThenGeneratedEnumClassIsAnnotatedDeprecated(
-              final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.isDeprecated());
-            CustomAssertions.assertClassIsAnnotatedWith(
-                generatedSource.getClassUnderTest(), Deprecated.class);
-          }
-        }
-      }
-    }
   }
 
   @Nested
