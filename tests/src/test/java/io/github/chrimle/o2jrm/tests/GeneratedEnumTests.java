@@ -24,9 +24,13 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.github.chrimle.o2jrm.GeneratedSource;
+import io.github.chrimle.o2jrm.PluginExecutionImpl;
 import io.github.chrimle.o2jrm.annotations.TestAnnotationOne;
 import io.github.chrimle.o2jrm.annotations.TestAnnotationThree;
 import io.github.chrimle.o2jrm.annotations.TestAnnotationTwo;
+import io.github.chrimle.o2jrm.models.GeneratedClass;
+import io.github.chrimle.o2jrm.models.GeneratedClassImpl;
+import io.github.chrimle.o2jrm.models.GeneratedEnumImpl;
 import io.github.chrimle.o2jrm.models.GeneratedField;
 import io.github.chrimle.o2jrm.tests.GeneratedEnumTests.GeneratorConfigurationTests.ConfigOptionsTests;
 import io.github.chrimle.o2jrm.tests.GeneratedEnumTests.GeneratorConfigurationTests.ConfigOptionsTests.AdditionalEnumTypeAnnotationsTests;
@@ -43,8 +47,10 @@ import java.lang.reflect.Method;
 import java.net.URI;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 /**
@@ -80,7 +86,24 @@ import org.junit.jupiter.params.provider.MethodSource;
  * </ul>
  */
 @DisplayName("Test Generated `enum` classes")
-final class GeneratedEnumTests implements GeneratedClassTests {
+final class GeneratedEnumTests extends IGeneratedEnumTests implements GeneratedClassTests {
+
+  @SuppressWarnings("unused")
+  static Stream<Arguments> allPluginExecutionsAndGeneratedEnumCombinations() {
+    return Stream.of(PluginExecutionImpl.values())
+        .flatMap(
+            pluginExecution ->
+                Stream.of(GeneratedEnumImpl.values())
+                    .map(
+                        generatedEnum ->
+                            new GeneratedSource(
+                                pluginExecution,
+                                generatedEnum,
+                                GeneratedClassImpl.getGeneratedFields(
+                                    generatedEnum, pluginExecution),
+                                GeneratedClass.getClass(generatedEnum, pluginExecution))))
+        .map(Arguments::of);
+  }
 
   @Nested
   @DisplayName("Testing OpenAPI Schemas & Properties")
@@ -93,12 +116,6 @@ final class GeneratedEnumTests implements GeneratedClassTests {
       @Nested
       @DisplayName("Testing `components.schemas.{schema}.enum`")
       class EnumTests {
-        @ParameterizedTest
-        @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
-        @DisplayName("Generates an `enum` class")
-        void whenIsEnumThenGeneratedClassIsEnumClass(final GeneratedSource generatedSource) {
-          CustomAssertions.assertClassIsEnumClass(generatedSource.getClassUnderTest());
-        }
 
         @Nested
         @DisplayName("Testing `getValue()` method")
