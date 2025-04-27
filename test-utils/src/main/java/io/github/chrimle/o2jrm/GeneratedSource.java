@@ -45,16 +45,89 @@ public class GeneratedSource {
   private final GeneratedField<?>[] generatedFields;
   private final PluginExecution pluginExecution;
   private final GeneratedClass generatedClass;
+  private final Class<? extends Annotation> nullableAnnotation;
+  private final Class<? extends Annotation> nonnullAnnotation;
+  private final Class<? extends Annotation> validAnnotation;
+  private final Class<? extends Annotation> notNullAnnotation;
+  private final Class<? extends Annotation> patternAnnotation;
+  private final Class<? extends Annotation> sizeAnnotation;
+  private final Class<? extends Annotation> minAnnotation;
+  private final Class<? extends Annotation> maxAnnotation;
+  private final Class<? extends Annotation> decimalMinAnnotation;
+  private final Class<? extends Annotation> decimalMaxAnnotation;
+  private final Class<? extends Annotation> emailAnnotation;
+
+  public Class<? extends Annotation> getNonnullAnnotation() {
+    return nonnullAnnotation;
+  }
+
+  public Class<? extends Annotation> getValidAnnotation() {
+    return validAnnotation;
+  }
+
+  public Class<? extends Annotation> getNotNullAnnotation() {
+    return notNullAnnotation;
+  }
+
+  public Class<? extends Annotation> getPatternAnnotation() {
+    return patternAnnotation;
+  }
+
+  public Class<? extends Annotation> getSizeAnnotation() {
+    return sizeAnnotation;
+  }
+
+  public Class<? extends Annotation> getMinAnnotation() {
+    return minAnnotation;
+  }
+
+  public Class<? extends Annotation> getMaxAnnotation() {
+    return maxAnnotation;
+  }
+
+  public Class<? extends Annotation> getDecimalMinAnnotation() {
+    return decimalMinAnnotation;
+  }
+
+  public Class<? extends Annotation> getDecimalMaxAnnotation() {
+    return decimalMaxAnnotation;
+  }
+
+  public Class<? extends Annotation> getEmailAnnotation() {
+    return emailAnnotation;
+  }
 
   public GeneratedSource(
       final PluginExecution pluginExecution,
       final GeneratedClass generatedClass,
       final GeneratedField<?>[] generatedFields,
-      final Class<?> classUnderTest) {
+      final Class<?> classUnderTest,
+      Class<? extends Annotation> nullableAnnotation,
+      Class<? extends Annotation> nonnullAnnotation,
+      Class<? extends Annotation> validAnnotation,
+      Class<? extends Annotation> notNullAnnotation,
+      Class<? extends Annotation> patternAnnotation,
+      Class<? extends Annotation> sizeAnnotation,
+      Class<? extends Annotation> minAnnotation,
+      Class<? extends Annotation> maxAnnotation,
+      Class<? extends Annotation> decimalMinAnnotation,
+      Class<? extends Annotation> decimalMaxAnnotation,
+      Class<? extends Annotation> emailAnnotation) {
     this.pluginExecution = pluginExecution;
     this.generatedClass = generatedClass;
     this.generatedFields = generatedFields;
     this.classUnderTest = classUnderTest;
+    this.nullableAnnotation = nullableAnnotation;
+    this.nonnullAnnotation = nonnullAnnotation;
+    this.validAnnotation = validAnnotation;
+    this.notNullAnnotation = notNullAnnotation;
+    this.patternAnnotation = patternAnnotation;
+    this.sizeAnnotation = sizeAnnotation;
+    this.minAnnotation = minAnnotation;
+    this.maxAnnotation = maxAnnotation;
+    this.decimalMinAnnotation = decimalMinAnnotation;
+    this.decimalMaxAnnotation = decimalMaxAnnotation;
+    this.emailAnnotation = emailAnnotation;
   }
 
   public boolean generateBuilders() {
@@ -151,5 +224,9 @@ public class GeneratedSource {
         + ", generatedFields="
         + Arrays.toString(generatedFields)
         + '}';
+  }
+
+  public Class<? extends Annotation> getNullableAnnotation() {
+    return nullableAnnotation;
   }
 }

@@ -272,11 +272,7 @@ public abstract class GeneratedRecordTests {
 
           @Nested
           @DisplayName("Testing `{schema}.properties.{property}.nullable`")
-          abstract class NullableTests {
-
-            abstract Class<? extends Annotation> getNullableAnnotation();
-
-            abstract Class<? extends Annotation> getNonnullAnnotation();
+          class NullableTests {
 
             @ParameterizedTest
             @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
@@ -294,10 +290,14 @@ public abstract class GeneratedRecordTests {
                         generatedField.type());
 
                 final Class<? extends Annotation> expectedAnnotation =
-                    generatedField.isNullable() ? getNullableAnnotation() : getNonnullAnnotation();
+                    generatedField.isNullable()
+                        ? generatedSource.getNullableAnnotation()
+                        : generatedSource.getNonnullAnnotation();
 
                 final Class<? extends Annotation> unexpectedAnnotation =
-                    generatedField.isNullable() ? getNonnullAnnotation() : getNullableAnnotation();
+                    generatedField.isNullable()
+                        ? generatedSource.getNonnullAnnotation()
+                        : generatedSource.getNullableAnnotation();
 
                 CustomAssertions.assertFieldIsAnnotatedWith(field, expectedAnnotation);
                 CustomAssertions.assertFieldIsNotAnnotatedWith(field, unexpectedAnnotation);

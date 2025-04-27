@@ -41,7 +41,18 @@ final class GeneratedEnumImplTests extends GeneratedEnumTests {
                                 generatedEnum,
                                 GeneratedClassImpl.getGeneratedFields(
                                     generatedEnum, pluginExecution),
-                                GeneratedClass.getClass(generatedEnum, pluginExecution))))
+                                GeneratedClass.getClass(generatedEnum, pluginExecution),
+                                jakarta.annotation.Nullable.class,
+                                jakarta.annotation.Nonnull.class,
+                                jakarta.validation.Valid.class,
+                                jakarta.validation.constraints.NotNull.class,
+                                jakarta.validation.constraints.Pattern.class,
+                                jakarta.validation.constraints.Size.class,
+                                jakarta.validation.constraints.Min.class,
+                                jakarta.validation.constraints.Max.class,
+                                jakarta.validation.constraints.DecimalMin.class,
+                                jakarta.validation.constraints.DecimalMax.class,
+                                jakarta.validation.constraints.Email.class)))
         .map(Arguments::of);
   }
 }

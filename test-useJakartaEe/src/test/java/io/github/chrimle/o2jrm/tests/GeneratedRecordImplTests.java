@@ -55,46 +55,19 @@ final class GeneratedRecordImplTests extends GeneratedRecordTests {
                                 generatedRecord,
                                 GeneratedClassImpl.getGeneratedFields(
                                     generatedRecord, pluginExecution),
-                                GeneratedClass.getClass(generatedRecord, pluginExecution))))
+                                GeneratedClass.getClass(generatedRecord, pluginExecution),
+                                jakarta.annotation.Nullable.class,
+                                jakarta.annotation.Nonnull.class,
+                                jakarta.validation.Valid.class,
+                                jakarta.validation.constraints.NotNull.class,
+                                jakarta.validation.constraints.Pattern.class,
+                                jakarta.validation.constraints.Size.class,
+                                jakarta.validation.constraints.Min.class,
+                                jakarta.validation.constraints.Max.class,
+                                jakarta.validation.constraints.DecimalMin.class,
+                                jakarta.validation.constraints.DecimalMax.class,
+                                jakarta.validation.constraints.Email.class)))
         .map(Arguments::of);
-  }
-
-  @Nested
-  @DisplayName("Testing OpenAPI Schemas & Properties")
-  class OpenAPITests extends GeneratedRecordTests.OpenAPITests {
-
-    @Nested
-    @DisplayName("Testing `components.schemas.{schema}`")
-    class SchemaTests extends GeneratedRecordTests.OpenAPITests.SchemaTests {
-
-      @Nested
-      @DisplayName("Testing `components.schemas.{schema}.properties`")
-      class PropertiesTests extends GeneratedRecordTests.OpenAPITests.SchemaTests.PropertiesTests {
-
-        @Nested
-        @DisplayName("Testing `components.schemas.{schema}.properties.{property}`")
-        class PropertyTests
-            extends GeneratedRecordTests.OpenAPITests.SchemaTests.PropertiesTests.PropertyTests {
-
-          @Nested
-          @DisplayName("Testing `{schema}.properties.{property}.nullable`")
-          class NullableTests
-              extends GeneratedRecordTests.OpenAPITests.SchemaTests.PropertiesTests.PropertyTests
-                  .NullableTests {
-
-            @Override
-            Class<? extends Annotation> getNullableAnnotation() {
-              return jakarta.annotation.Nullable.class;
-            }
-
-            @Override
-            Class<? extends Annotation> getNonnullAnnotation() {
-              return jakarta.annotation.Nonnull.class;
-            }
-          }
-        }
-      }
-    }
   }
 
   @Nested
