@@ -12,7 +12,7 @@
  * openapi-to-java-records-mustache-templates. For further information,
  * questions, requesting features or reporting issues, please visit:
  * https://github.com/Chrimle/openapi-to-java-records-mustache-templates.
- * Generated with Version: 2.9.4
+ * Generated with Version: 2.9.5
  *
  */
 
@@ -201,8 +201,7 @@ public record RecordWithInnerEnums(
     }
 
     /**
-     * Matches the given {@code value} to an enum constant using {@link
-     * #getValue()}.
+     * Matches the given {@code value} to an enum constant using {@link #getValue()}.
      *
      * <p><b>NOTE:</b> if multiple enum constants have a matching value, the first enum constant is
      * returned, by the order they are declared.

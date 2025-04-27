@@ -15,7 +15,7 @@
 
 }}{{!
   Source: openapi-to-java-records-mustache-templates
-  Version: 2.9.4
+  Version: 2.9.5
   Type: Override
   Dependencies:
     - `additionalEnumTypeAnnotations.mustache` (Official)
@@ -76,8 +76,8 @@ import java.io.IOException;
   }
 
   /**
-   * {{#isString}}Case-{{#useEnumCaseInsensitive}}in{{/useEnumCaseInsensitive}}sensitively m{{/isString}}{{^isString}}M{{/isString}}atches the given {@code value} to an enum constant using {@link
-   * #getValue()}.
+   * {{#isString}}Case-{{#useEnumCaseInsensitive}}in{{/useEnumCaseInsensitive}}sensitively m{{/isString}}{{^isString}}M{{/isString}}atches the given {@code value} to an enum constant using {@link{{#useEnumCaseInsensitive}}{{#isString}}
+   *{{/isString}}{{/useEnumCaseInsensitive}} #getValue()}.
    *
    * <p><b>NOTE:</b> if multiple enum constants have a matching value, the first enum constant is
    * returned, by the order they are declared.
