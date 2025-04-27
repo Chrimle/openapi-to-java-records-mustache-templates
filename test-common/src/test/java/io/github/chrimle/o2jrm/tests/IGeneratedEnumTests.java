@@ -1,6 +1,11 @@
 package io.github.chrimle.o2jrm.tests;
 
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.github.chrimle.o2jrm.GeneratedSource;
 import io.github.chrimle.o2jrm.models.GeneratedField;
 import io.github.chrimle.o2jrm.tests.IGeneratedEnumTests.IOpenAPITests.ISchemaTests;
@@ -8,7 +13,14 @@ import io.github.chrimle.o2jrm.tests.IGeneratedEnumTests.IOpenAPITests.ISchemaTe
 import io.github.chrimle.o2jrm.tests.IGeneratedEnumTests.IOpenAPITests.ISchemaTests.IEnumTests;
 import io.github.chrimle.o2jrm.tests.IGeneratedEnumTests.IOpenAPITests.ISchemaTests.IEnumTests.IConstantsTests;
 import io.github.chrimle.o2jrm.utils.CustomAssertions;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.StringReader;
+import java.lang.reflect.Method;
+import java.net.URI;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Assumptions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -39,7 +51,7 @@ import org.junit.jupiter.params.provider.MethodSource;
  *
  * <p><b>`openapi-generator` Configurations</b>
  *
- * <p>{@link GeneratorConfigurationTests}
+ * <p>{@link IGeneratorConfigurationTests}
  *
  * <ul>
  *   <li>{@link ConfigOptionsTests configOptions}
@@ -185,6 +197,301 @@ public abstract class IGeneratedEnumTests {
             CustomAssertions.assertClassIsAnnotatedWith(
                 generatedSource.getClassUnderTest(), Deprecated.class);
           }
+        }
+      }
+    }
+  }
+
+  @Nested
+  @DisplayName("Testing `openapi-generator` Configurations & ConfigOptions")
+  class IGeneratorConfigurationTests {
+
+    @Nested
+    @DisplayName("Testing `<library>`")
+    class ILibraryTests {
+
+      @Nested
+      @DisplayName("Testing `<library>okhttp-gson</library>` (default)")
+      class IOkHttpGsonTests {
+
+        @ParameterizedTest
+        @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+        @DisplayName("Generated `enum` HAS `validateJsonElement`-method")
+        void whenLibraryIsOkHttpGsonThenGeneratedEnumHasValidateJsonElementMethod(
+            final GeneratedSource generatedSource) {
+          Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+
+          CustomAssertions.assertClassHasMethod(
+              generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
+        }
+
+        @ParameterizedTest
+        @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+        @DisplayName("Generated `validateJsonElement`-method can be invoked with `String`")
+        void whenLibraryIsOkHttpGsonThenGeneratedValidateJsonElementMethodCanBeInvokedWithString(
+            final GeneratedSource generatedSource) {
+          Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+          Assumptions.assumeTrue(String.class.equals(generatedSource.generatedFields()[0].type()));
+
+          final Method validateJsonElementMethod =
+              CustomAssertions.assertClassHasMethod(
+                  generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
+          for (final GeneratedField<?> generatedField : generatedSource.generatedFields()) {
+            final JsonElement jsonObject =
+                JsonParser.parseString("{'testArg': '" + generatedField.enumValue() + "'}");
+            CustomAssertions.assertStaticMethodCanBeInvoked(
+                validateJsonElementMethod, jsonObject.getAsJsonObject().get("testArg"));
+          }
+        }
+
+        @ParameterizedTest
+        @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+        @DisplayName("Generated `validateJsonElement`-method can be invoked with `Integer`")
+        void whenLibraryIsOkHttpGsonThenGeneratedValidateJsonElementMethodCanBeInvokedWithInteger(
+            final GeneratedSource generatedSource) {
+          Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+          Assumptions.assumeTrue(Integer.class.equals(generatedSource.generatedFields()[0].type()));
+
+          final Method validateJsonElementMethod =
+              CustomAssertions.assertClassHasMethod(
+                  generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
+          for (final GeneratedField<?> generatedField : generatedSource.generatedFields()) {
+            final JsonElement jsonObject =
+                JsonParser.parseString("{'testArg': " + generatedField.enumValue() + "}");
+            CustomAssertions.assertStaticMethodCanBeInvoked(
+                validateJsonElementMethod, jsonObject.getAsJsonObject().get("testArg"));
+          }
+        }
+
+        @ParameterizedTest
+        @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+        @DisplayName("Generated `validateJsonElement`-method can be invoked with `URI`")
+        void whenLibraryIsOkHttpGsonThenGeneratedValidateJsonElementMethodCanBeInvokedWithUri(
+            final GeneratedSource generatedSource) {
+          Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+          Assumptions.assumeTrue(URI.class.equals(generatedSource.generatedFields()[0].type()));
+
+          final Method validateJsonElementMethod =
+              CustomAssertions.assertClassHasMethod(
+                  generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
+          for (final GeneratedField<?> generatedField : generatedSource.generatedFields()) {
+            final JsonElement jsonObject =
+                JsonParser.parseString("{'testArg': '" + generatedField.enumValue() + "'}");
+            CustomAssertions.assertStaticMethodCanBeInvoked(
+                validateJsonElementMethod, jsonObject.getAsJsonObject().get("testArg"));
+          }
+        }
+
+        @Nested
+        @DisplayName("Testing the `Adapter` inner-class")
+        class IAdapterInnerClassTests {
+
+          @ParameterizedTest
+          @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+          @DisplayName("Generated `enum` has `Adapter` inner-class")
+          void whenLibraryIsOkHttpGsonThenGeneratedEnumHasAdapterInnerClass(
+              final GeneratedSource generatedSource) {
+            Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+
+            CustomAssertions.assertClassHasInnerClass(
+                generatedSource.getClassUnderTest(), "Adapter");
+          }
+
+          @ParameterizedTest
+          @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+          @DisplayName("Generated `enum` is annotated `@JsonAdapter`")
+          void whenLibraryisOkHttpGsonThenGeneratedEnumIsAnnotatedWithJsonAdapter(
+              final GeneratedSource generatedSource) {
+            Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+
+            final JsonAdapter jsonAdapter =
+                CustomAssertions.assertClassIsAnnotatedWith(
+                    generatedSource.getClassUnderTest(), JsonAdapter.class);
+            Assertions.assertEquals(
+                CustomAssertions.assertClassHasInnerClass(
+                    generatedSource.getClassUnderTest(), "Adapter"),
+                jsonAdapter.value());
+          }
+
+          @Nested
+          @DisplayName("Testing the `write(JsonWriter, T)`-method")
+          class IWriteMethodTests {
+
+            @ParameterizedTest
+            @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+            @DisplayName("when `JsonWriter` is `null` Then `NullPointerException` is thrown")
+            void whenJsonWriterIsNullThenNullPointerExceptionIsThrown(
+                final GeneratedSource generatedSource) {
+              Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+
+              final Class<?> adapterClass =
+                  CustomAssertions.assertClassHasInnerClass(
+                      generatedSource.getClassUnderTest(), "Adapter");
+              final Object adapterObject =
+                  CustomAssertions.assertConstructorCanInstantiateObject(
+                      CustomAssertions.assertClassHasConstructor(adapterClass));
+              final Method writeMethod =
+                  CustomAssertions.assertClassHasMethod(
+                      adapterObject.getClass(),
+                      "write",
+                      JsonWriter.class,
+                      generatedSource.getClassUnderTest());
+              writeMethod.setAccessible(true);
+              CustomAssertions.assertInstanceMethodThrowsWhenInvoked(
+                  writeMethod,
+                  NullPointerException.class,
+                  adapterObject,
+                  (JsonWriter) null,
+                  generatedSource.getClassUnderTest().getEnumConstants()[0]);
+            }
+
+            @ParameterizedTest
+            @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+            @DisplayName("when `JsonWriter` is NOT `null` Then nothing is thrown")
+            void whenJsonWriterIsNotNullThenNothingIsThrown(final GeneratedSource generatedSource) {
+              Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+
+              final Class<?> adapterClass =
+                  CustomAssertions.assertClassHasInnerClass(
+                      generatedSource.getClassUnderTest(), "Adapter");
+              final Object adapterObject =
+                  CustomAssertions.assertConstructorCanInstantiateObject(
+                      CustomAssertions.assertClassHasConstructor(adapterClass));
+              final Method writeMethod =
+                  CustomAssertions.assertClassHasMethod(
+                      adapterObject.getClass(),
+                      "write",
+                      JsonWriter.class,
+                      generatedSource.getClassUnderTest());
+              writeMethod.setAccessible(true);
+              CustomAssertions.assertInstanceMethodCanBeInvoked(
+                  writeMethod,
+                  adapterObject,
+                  new JsonWriter(
+                      new OutputStreamWriter(
+                          OutputStream.nullOutputStream(), StandardCharsets.UTF_8)),
+                  generatedSource.getClassUnderTest().getEnumConstants()[0]);
+            }
+          }
+
+          @Nested
+          @DisplayName("Testing the `read(JsonReader)`-method")
+          class IReadMethodTests {
+
+            @ParameterizedTest
+            @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+            @DisplayName("when `JsonReader` is `null` Then `NullPointerException` is thrown")
+            void whenJsonReaderIsNullThenNullPointerExceptionIsThrown(
+                final GeneratedSource generatedSource) {
+              Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+
+              final Class<?> adapterClass =
+                  CustomAssertions.assertClassHasInnerClass(
+                      generatedSource.getClassUnderTest(), "Adapter");
+              final Object adapterObject =
+                  CustomAssertions.assertConstructorCanInstantiateObject(
+                      CustomAssertions.assertClassHasConstructor(adapterClass));
+              final Method readMethod =
+                  CustomAssertions.assertClassHasMethod(
+                      adapterObject.getClass(), "read", JsonReader.class);
+              readMethod.setAccessible(true);
+              CustomAssertions.assertInstanceMethodThrowsWhenInvoked(
+                  readMethod, NullPointerException.class, adapterObject, (JsonReader) null);
+            }
+
+            @ParameterizedTest
+            @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+            @DisplayName("when `jsonString` is invalid Then `IllegalArgumentException` is thrown")
+            void whenJsonReaderIsInvalidThenIllegalArgumentExceptionIsThrown(
+                final GeneratedSource generatedSource) {
+              Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+
+              final Class<?> adapterClass =
+                  CustomAssertions.assertClassHasInnerClass(
+                      generatedSource.getClassUnderTest(), "Adapter");
+              final Object adapterObject =
+                  CustomAssertions.assertConstructorCanInstantiateObject(
+                      CustomAssertions.assertClassHasConstructor(adapterClass));
+              final Method readMethod =
+                  CustomAssertions.assertClassHasMethod(
+                      adapterObject.getClass(), "read", JsonReader.class);
+              readMethod.setAccessible(true);
+
+              if (generatedSource.enumUnknownDefaultCase()) {
+                CustomAssertions.assertInstanceMethodReturnsNonNull(
+                    readMethod, adapterObject, new JsonReader(new StringReader("\"42\"")));
+              } else {
+                CustomAssertions.assertInstanceMethodThrowsWhenInvoked(
+                    readMethod,
+                    IllegalArgumentException.class,
+                    adapterObject,
+                    new JsonReader(new StringReader("\"invalid\"")));
+              }
+            }
+
+            @ParameterizedTest
+            @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+            @DisplayName("when `JsonReader` is valid Then nothing is thrown")
+            void whenJsonReaderIsValidThenNothingIsThrown(final GeneratedSource generatedSource) {
+              Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
+
+              final Class<?> adapterClass =
+                  CustomAssertions.assertClassHasInnerClass(
+                      generatedSource.getClassUnderTest(), "Adapter");
+              final Object adapterObject =
+                  CustomAssertions.assertConstructorCanInstantiateObject(
+                      CustomAssertions.assertClassHasConstructor(adapterClass));
+              final Method readMethod =
+                  CustomAssertions.assertClassHasMethod(
+                      adapterObject.getClass(), "read", JsonReader.class);
+              readMethod.setAccessible(true);
+              for (final GeneratedField<?> generatedField : generatedSource.generatedFields()) {
+                CustomAssertions.assertInstanceMethodReturnsNonNull(
+                    readMethod,
+                    adapterObject,
+                    new JsonReader(
+                        new StringReader("\"" + generatedField.enumValue().toString() + "\"")));
+              }
+            }
+          }
+        }
+      }
+
+      @Nested
+      @DisplayName("Testing `<library>webclient</library>`")
+      class IWebClientTests {
+
+        @ParameterizedTest
+        @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+        @DisplayName("Generated `enum` does NOT have `validateJsonElement`-method")
+        void whenLibraryIsWebClientThenGeneratedEnumDoesNotHaveValidateJsonElementMethod(
+            final GeneratedSource generatedSource) {
+          Assumptions.assumeTrue(generatedSource.isLibraryWebClient());
+
+          CustomAssertions.assertClassDoesNotHaveMethod(
+              generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
+        }
+
+        @ParameterizedTest
+        @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+        @DisplayName("Generated `enum` does NOT have `Adapter` inner-class")
+        void whenLibraryIsWebClientThenGeneratedEnumDoesNotHaveAdapterInnerClass(
+            final GeneratedSource generatedSource) {
+          Assumptions.assumeTrue(generatedSource.isLibraryWebClient());
+
+          CustomAssertions.assertClassDoesNotHaveInnerClass(
+              generatedSource.getClassUnderTest(), "Adapter");
+        }
+
+        @ParameterizedTest
+        @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+        @DisplayName("Generated `enum` is NOT annotated `@JsonAdapter`")
+        void whenLibraryIsWebClientThenGeneratedEnumIsNotAnnotatedWithJsonAdapter(
+            final GeneratedSource generatedSource) {
+          Assumptions.assumeTrue(generatedSource.isLibraryWebClient());
+
+          CustomAssertions.assertClassIsNotAnnotatedWith(
+              generatedSource.getClassUnderTest(), JsonAdapter.class);
         }
       }
     }
