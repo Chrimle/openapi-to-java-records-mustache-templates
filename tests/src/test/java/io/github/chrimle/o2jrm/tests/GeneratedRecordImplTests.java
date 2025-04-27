@@ -82,11 +82,12 @@ final class GeneratedRecordImplTests extends GeneratedRecordTests {
               extends GeneratedRecordTests.OpenAPITests.SchemaTests.PropertiesTests.PropertyTests
                   .NullableTests {
 
+            @Override
             @ParameterizedTest
             @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
             @DisplayName(
                 "Fields of generated `record` are annotated with `@Nullable` or `@Nonnull`")
-            public void whenPropertyHasNullableSetThenFieldIsAnnotatedWithNullableOrNonnull(
+            void whenPropertyHasNullableSetThenFieldIsAnnotatedWithNullableOrNonnull(
                 final GeneratedSource generatedSource) {
               Assumptions.assumeFalse(generatedSource.useJakartaEe());
 
@@ -143,7 +144,7 @@ final class GeneratedRecordImplTests extends GeneratedRecordTests {
           @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
           @DisplayName(
               "Fields of generated `record` are NOT annotated with Jakarta `@Nullable` or `@Nonnull`")
-          public void whenUseJakartaEeIsFalseThenJakartaAnnotationsAreNotUsedForNullableAndNonnull(
+          void whenUseJakartaEeIsFalseThenJakartaAnnotationsAreNotUsedForNullableAndNonnull(
               final GeneratedSource generatedSource) {
             Assumptions.assumeFalse(generatedSource.useJakartaEe());
 
@@ -173,7 +174,7 @@ final class GeneratedRecordImplTests extends GeneratedRecordTests {
           @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
           @DisplayName(
               "Fields of generated `record` are annotated with Jakarta `@Nullable` or `@Nonnull`")
-          public void whenUseJakartaEeIsTrueThenJakartaAnnotationsAreUsedForNullableAndNonnull(
+          void whenUseJakartaEeIsTrueThenJakartaAnnotationsAreUsedForNullableAndNonnull(
               final GeneratedSource generatedSource) {
             Assumptions.assumeTrue(generatedSource.useJakartaEe());
 
@@ -204,7 +205,7 @@ final class GeneratedRecordImplTests extends GeneratedRecordTests {
           @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
           @DisplayName(
               "Fields of generated `record` are NOT annotated with JavaX `@Nullable` or `@Nonnull`")
-          public void whenUseJakartaEeIsTrueThenJavaXAnnotationsAreNotUsedForNullableAndNonnull(
+          void whenUseJakartaEeIsTrueThenJavaXAnnotationsAreNotUsedForNullableAndNonnull(
               final GeneratedSource generatedSource) {
             Assumptions.assumeTrue(generatedSource.useJakartaEe());
 
@@ -240,7 +241,7 @@ final class GeneratedRecordImplTests extends GeneratedRecordTests {
           @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
           @DisplayName(
               "Generated `record` does NOT use Jakarta Bean Validation annotations on fields")
-          public void
+          void
               whenUseBeanValidationIsFalseThenFieldsAreNotAnnotatedWithJakartaBeanValidationAnnotations(
                   final GeneratedSource generatedSource) {
             Assumptions.assumeFalse(generatedSource.useBeanValidation());
@@ -279,7 +280,7 @@ final class GeneratedRecordImplTests extends GeneratedRecordTests {
           @ParameterizedTest
           @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
           @DisplayName("Generated `record` use Jakarta Bean Validation annotations on fields")
-          public void
+          void
               whenUseBeanValidationIsTrueThenFieldsAreAnnotatedWithJakartaBeanValidationAnnotations(
                   final GeneratedSource generatedSource) {
             Assumptions.assumeTrue(generatedSource.useBeanValidation());
