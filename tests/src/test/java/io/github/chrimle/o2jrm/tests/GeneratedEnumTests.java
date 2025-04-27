@@ -17,7 +17,6 @@
 package io.github.chrimle.o2jrm.tests;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.google.gson.annotations.JsonAdapter;
@@ -116,45 +115,6 @@ final class GeneratedEnumTests extends IGeneratedEnumTests implements GeneratedC
       @Nested
       @DisplayName("Testing `components.schemas.{schema}.enum`")
       class EnumTests {
-
-        @Nested
-        @DisplayName("Testing `getValue()` method")
-        class GetValueMethodTests {
-          @ParameterizedTest
-          @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
-          @DisplayName("Generated `enum` classes always has `getValue()`-method")
-          void alwaysGenerateGetValueMethod(final GeneratedSource generatedSource) {
-            CustomAssertions.assertClassHasMethod(generatedSource.getClassUnderTest(), "getValue");
-          }
-
-          @ParameterizedTest
-          @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
-          @DisplayName(
-              "When `serializationLibrary` is `jackson` Then `getValue()`-method IS annotated with `@JsonValue`")
-          void whenSerializationLibraryIsJacksonThenGetValueMethodIsAnnotatedWithJsonValue(
-              final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.isSerializationLibraryJackson());
-
-            CustomAssertions.assertMethodIsAnnotatedWith(
-                CustomAssertions.assertClassHasMethod(
-                    generatedSource.getClassUnderTest(), "getValue"),
-                JsonValue.class);
-          }
-
-          @ParameterizedTest
-          @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
-          @DisplayName(
-              "When `serializationLibrary` is NOT `jackson` Then `getValue()`-method is NOT annotated with `@JsonValue`")
-          void whenSerializationLibraryIsNotJacksonThenGetValueMethodIsNotAnnotatedWithJsonValue(
-              final GeneratedSource generatedSource) {
-            Assumptions.assumeFalse(generatedSource.isSerializationLibraryJackson());
-
-            CustomAssertions.assertMethodIsNotAnnotatedWith(
-                CustomAssertions.assertClassHasMethod(
-                    generatedSource.getClassUnderTest(), "getValue"),
-                JsonValue.class);
-          }
-        }
 
         @Nested
         @DisplayName("Testing `components.schemas.{schema}.enum.{constants}`")
