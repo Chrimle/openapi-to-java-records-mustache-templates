@@ -83,34 +83,13 @@ final class GeneratedRecordImplTests extends GeneratedRecordTests {
                   .NullableTests {
 
             @Override
-            @ParameterizedTest
-            @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
-            @DisplayName(
-                "Fields of generated `record` are annotated with `@Nullable` or `@Nonnull`")
-            void whenPropertyHasNullableSetThenFieldIsAnnotatedWithNullableOrNonnull(
-                final GeneratedSource generatedSource) {
-              Assumptions.assumeFalse(generatedSource.useJakartaEe());
+            Class<? extends Annotation> getNullableAnnotation() {
+              return jakarta.annotation.Nullable.class;
+            }
 
-              for (final GeneratedField<?> generatedField : generatedSource.generatedFields()) {
-                final Field field =
-                    CustomAssertions.assertClassHasField(
-                        generatedSource.getClassUnderTest(),
-                        generatedField.name(),
-                        generatedField.type());
-
-                final Class<? extends Annotation> expectedAnnotation =
-                    generatedField.isNullable()
-                        ? javax.annotation.Nullable.class
-                        : javax.annotation.Nonnull.class;
-
-                final Class<? extends Annotation> unexpectedAnnotation =
-                    generatedField.isNullable()
-                        ? javax.annotation.Nonnull.class
-                        : javax.annotation.Nullable.class;
-
-                CustomAssertions.assertFieldIsAnnotatedWith(field, expectedAnnotation);
-                CustomAssertions.assertFieldIsNotAnnotatedWith(field, unexpectedAnnotation);
-              }
+            @Override
+            Class<? extends Annotation> getNonnullAnnotation() {
+              return jakarta.annotation.Nonnull.class;
             }
           }
         }

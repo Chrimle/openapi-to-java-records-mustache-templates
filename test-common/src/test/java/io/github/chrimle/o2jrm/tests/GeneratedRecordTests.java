@@ -274,12 +274,35 @@ public abstract class GeneratedRecordTests {
           @DisplayName("Testing `{schema}.properties.{property}.nullable`")
           abstract class NullableTests {
 
+            abstract Class<? extends Annotation> getNullableAnnotation();
+
+            abstract Class<? extends Annotation> getNonnullAnnotation();
+
             @ParameterizedTest
             @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
             @DisplayName(
                 "Fields of generated `record` are annotated with `@Nullable` or `@Nonnull`")
-            abstract void whenPropertyHasNullableSetThenFieldIsAnnotatedWithNullableOrNonnull(
-                final GeneratedSource generatedSource);
+            void whenPropertyHasNullableSetThenFieldIsAnnotatedWithNullableOrNonnull(
+                final GeneratedSource generatedSource) {
+              Assumptions.assumeFalse(generatedSource.useJakartaEe());
+
+              for (final GeneratedField<?> generatedField : generatedSource.generatedFields()) {
+                final Field field =
+                    CustomAssertions.assertClassHasField(
+                        generatedSource.getClassUnderTest(),
+                        generatedField.name(),
+                        generatedField.type());
+
+                final Class<? extends Annotation> expectedAnnotation =
+                    generatedField.isNullable() ? getNullableAnnotation() : getNonnullAnnotation();
+
+                final Class<? extends Annotation> unexpectedAnnotation =
+                    generatedField.isNullable() ? getNonnullAnnotation() : getNullableAnnotation();
+
+                CustomAssertions.assertFieldIsAnnotatedWith(field, expectedAnnotation);
+                CustomAssertions.assertFieldIsNotAnnotatedWith(field, unexpectedAnnotation);
+              }
+            }
           }
 
           @Nested
