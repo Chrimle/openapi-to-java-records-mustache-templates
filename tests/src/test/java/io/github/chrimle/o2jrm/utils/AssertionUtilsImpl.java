@@ -30,7 +30,7 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import org.junit.jupiter.api.Assertions;
 
-public class AssertionUtils {
+public class AssertionUtilsImpl {
 
   public static void assertRecordHasFieldsOfTypeWithNullableAnnotations(
       final GeneratedSource generatedSource) {
@@ -113,26 +113,5 @@ public class AssertionUtils {
         CustomAssertions.assertFieldIsNotAnnotatedWith(field, emailAnnotation);
       }
     }
-  }
-
-  public static void assertInnerBuilderClassExistsAndCanBuildRecord(
-      final GeneratedSource generatedSource) {
-    // Assert Builder can be instantiated from builder()-method
-    final Object builderObject =
-        CustomAssertions.assertStaticMethodReturnsNonNull(
-            CustomAssertions.assertClassHasMethod(generatedSource.getClassUnderTest(), "builder"));
-    for (GeneratedField<?> generatedField : generatedSource.generatedFields()) {
-      CustomAssertions.assertInstanceMethodReturnsValue(
-          CustomAssertions.assertClassHasMethod(
-              builderObject.getClass(), generatedField.name(), generatedField.type()),
-          builderObject,
-          builderObject,
-          (Object) null);
-    }
-    Assertions.assertInstanceOf(
-        generatedSource.getClassUnderTest(),
-        CustomAssertions.assertInstanceMethodReturnsNonNull(
-            CustomAssertions.assertClassHasMethod(builderObject.getClass(), "build"),
-            builderObject));
   }
 }

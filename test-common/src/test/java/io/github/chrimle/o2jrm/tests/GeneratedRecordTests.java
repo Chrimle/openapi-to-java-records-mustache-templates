@@ -27,7 +27,6 @@ import io.github.chrimle.o2jrm.tests.GeneratedRecordTests.GeneratorConfiguration
 import io.github.chrimle.o2jrm.tests.GeneratedRecordTests.GeneratorConfigurationTests.ConfigOptionsTests.AdditionalModelTypeAnnotationsTests;
 import io.github.chrimle.o2jrm.tests.GeneratedRecordTests.GeneratorConfigurationTests.ConfigOptionsTests.GenerateBuildersTests;
 import io.github.chrimle.o2jrm.tests.GeneratedRecordTests.GeneratorConfigurationTests.ConfigOptionsTests.SerializableModelTests;
-import io.github.chrimle.o2jrm.tests.GeneratedRecordTests.GeneratorConfigurationTests.ConfigOptionsTests.UseJakartaEeTests;
 import io.github.chrimle.o2jrm.tests.GeneratedRecordTests.OpenAPITests.SchemaTests;
 import io.github.chrimle.o2jrm.tests.GeneratedRecordTests.OpenAPITests.SchemaTests.DeprecatedTests;
 import io.github.chrimle.o2jrm.tests.GeneratedRecordTests.OpenAPITests.SchemaTests.PropertiesTests;
@@ -89,11 +88,13 @@ import org.junit.jupiter.params.provider.MethodSource;
  *   <li>{@link AdditionalModelTypeAnnotationsTests additionalModelTypeAnnotations}
  *   <li>{@link SerializableModelTests serializableModel}
  *   <li>{@link GenerateBuildersTests generateBuilders}
- *   <li>{@link UseJakartaEeTests useJakartaEe}
  * </ul>
  */
 @DisplayName("Testing Generated `record` classes")
-final class GeneratedRecordTests implements GeneratedClassTests {
+public abstract class GeneratedRecordTests {
+
+  public static final String GENERATED_RECORD_TESTS_METHOD_SOURCE =
+      "io.github.chrimle.o2jrm.tests.GeneratedRecordImplTests#allPluginExecutionsAndGeneratedRecordCombinations";
 
   @Nested
   @DisplayName("Testing OpenAPI Schemas & Properties")
@@ -110,8 +111,7 @@ final class GeneratedRecordTests implements GeneratedClassTests {
         @ParameterizedTest
         @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
         @DisplayName("OpenAPI `{schema}.type: object` -> Generates a `record` class")
-        public void whenIsObjectThenGeneratedClassIsRecordClass(
-            final GeneratedSource generatedSource) {
+        void whenIsObjectThenGeneratedClassIsRecordClass(final GeneratedSource generatedSource) {
           CustomAssertions.assertClassIsRecordClass(generatedSource.getClassUnderTest());
         }
       }
@@ -126,7 +126,7 @@ final class GeneratedRecordTests implements GeneratedClassTests {
           @ParameterizedTest
           @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
           @DisplayName("Generated `record` is NOT annotated with `@Deprecated`")
-          public void whenRecordIsNotDeprecatedThenGeneratedRecordClassIsNotAnnotatedDeprecated(
+          void whenRecordIsNotDeprecatedThenGeneratedRecordClassIsNotAnnotatedDeprecated(
               final GeneratedSource generatedSource) {
             Assumptions.assumeFalse(generatedSource.isDeprecated());
 
@@ -141,7 +141,7 @@ final class GeneratedRecordTests implements GeneratedClassTests {
           @ParameterizedTest
           @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
           @DisplayName("Generated `record` is annotated with `@Deprecated`")
-          public void whenRecordIsDeprecatedThenGeneratedRecordClassIsAnnotatedDeprecated(
+          void whenRecordIsDeprecatedThenGeneratedRecordClassIsAnnotatedDeprecated(
               final GeneratedSource generatedSource) {
             Assumptions.assumeTrue(generatedSource.isDeprecated());
 
@@ -161,7 +161,7 @@ final class GeneratedRecordTests implements GeneratedClassTests {
           @ParameterizedTest
           @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
           @DisplayName("Generated `record` has no extra annotations")
-          public void whenExtraClassAnnotationsIsNotSetThenGeneratedRecordHasNoExtraAnnotations(
+          void whenExtraClassAnnotationsIsNotSetThenGeneratedRecordHasNoExtraAnnotations(
               final GeneratedSource generatedSource) {
             Assumptions.assumeFalse(generatedSource.hasExtraAnnotations());
 
@@ -178,7 +178,7 @@ final class GeneratedRecordTests implements GeneratedClassTests {
           @ParameterizedTest
           @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
           @DisplayName("Generated `record` has extra annotations")
-          public void whenExtraClassAnnotationsIsNotSetThenGeneratedRecordHasNoExtraAnnotations(
+          void whenExtraClassAnnotationsIsNotSetThenGeneratedRecordHasNoExtraAnnotations(
               final GeneratedSource generatedSource) {
             Assumptions.assumeTrue(generatedSource.hasExtraAnnotations());
 
@@ -198,7 +198,7 @@ final class GeneratedRecordTests implements GeneratedClassTests {
         @ParameterizedTest
         @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
         @DisplayName("Generates a constructor with properties as method arguments")
-        public void whenObjectHasPropertiesThenGeneratedConstructorHasMethodArguments(
+        void whenObjectHasPropertiesThenGeneratedConstructorHasMethodArguments(
             final GeneratedSource generatedSource) {
           CustomAssertions.assertClassHasConstructor(
               generatedSource.getClassUnderTest(), generatedSource.fieldClasses());
@@ -208,7 +208,7 @@ final class GeneratedRecordTests implements GeneratedClassTests {
         @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
         @DisplayName(
             "[okhttp-gson] Generated `record` has same number of fields as OpenAPI properties")
-        public void whenObjectHasPropertiesThenGeneratedRecordHasSameNumberOfFields_okhttp_gson(
+        void whenObjectHasPropertiesThenGeneratedRecordHasSameNumberOfFields_okhttp_gson(
             final GeneratedSource generatedSource) {
           Assumptions.assumeFalse(generatedSource.serializableModel());
           Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
@@ -221,7 +221,7 @@ final class GeneratedRecordTests implements GeneratedClassTests {
         @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
         @DisplayName(
             "[webclient] Generated `record` has same number of fields as OpenAPI properties")
-        public void whenObjectHasPropertiesThenGeneratedRecordHasSameNumberOfFields_webclient(
+        void whenObjectHasPropertiesThenGeneratedRecordHasSameNumberOfFields_webclient(
             final GeneratedSource generatedSource) {
           Assumptions.assumeFalse(generatedSource.serializableModel());
           Assumptions.assumeTrue(generatedSource.isLibraryWebClient());
@@ -233,7 +233,7 @@ final class GeneratedRecordTests implements GeneratedClassTests {
         @ParameterizedTest
         @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
         @DisplayName("Generated `record` has fields with same name and type as OpenAPI properties")
-        public void whenObjectHasPropertiesThenGeneratedRecordHasFieldsWithSameNameAndType(
+        void whenObjectHasPropertiesThenGeneratedRecordHasFieldsWithSameNameAndType(
             final GeneratedSource generatedSource) {
           for (final GeneratedField<?> generatedField : generatedSource.generatedFields()) {
             CustomAssertions.assertClassHasField(
@@ -244,7 +244,7 @@ final class GeneratedRecordTests implements GeneratedClassTests {
         @ParameterizedTest
         @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
         @DisplayName("Instantiating the `record` will set fields to provided values")
-        public void whenObjectHasPropertiesThenFieldIsSetToProvidedValueWhenInstantiatingRecord(
+        void whenObjectHasPropertiesThenFieldIsSetToProvidedValueWhenInstantiatingRecord(
             final GeneratedSource generatedSource) {
           GeneratedRecordTestUtils.assertInstantiatingRecordWithValuesSetsFieldsToProvidedValue(
               generatedSource);
@@ -261,9 +261,8 @@ final class GeneratedRecordTests implements GeneratedClassTests {
             @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
             @DisplayName(
                 "Instantiating the `record` with `null` will set fields to `null` or `default`")
-            public void
-                whenPropertyHasDefaultSetThenFieldIsSetToDefaultValueWhenInstantiatingWithNull(
-                    final GeneratedSource generatedSource) {
+            void whenPropertyHasDefaultSetThenFieldIsSetToDefaultValueWhenInstantiatingWithNull(
+                final GeneratedSource generatedSource) {
               GeneratedRecordTestUtils
                   .assertInstantiatingRecordWithNullSetsFieldsToNullOrDefaultValue(generatedSource);
             }
@@ -277,7 +276,7 @@ final class GeneratedRecordTests implements GeneratedClassTests {
             @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
             @DisplayName(
                 "Fields of generated `record` are annotated with `@Nullable` or `@Nonnull`")
-            public void whenPropertyHasNullableSetThenFieldIsAnnotatedWithNullableOrNonnull(
+            void whenPropertyHasNullableSetThenFieldIsAnnotatedWithNullableOrNonnull(
                 final GeneratedSource generatedSource) {
               Assumptions.assumeFalse(generatedSource.useJakartaEe());
 
@@ -290,13 +289,13 @@ final class GeneratedRecordTests implements GeneratedClassTests {
 
                 final Class<? extends Annotation> expectedAnnotation =
                     generatedField.isNullable()
-                        ? javax.annotation.Nullable.class
-                        : javax.annotation.Nonnull.class;
+                        ? generatedSource.getNullableAnnotation()
+                        : generatedSource.getNonnullAnnotation();
 
                 final Class<? extends Annotation> unexpectedAnnotation =
                     generatedField.isNullable()
-                        ? javax.annotation.Nonnull.class
-                        : javax.annotation.Nullable.class;
+                        ? generatedSource.getNonnullAnnotation()
+                        : generatedSource.getNullableAnnotation();
 
                 CustomAssertions.assertFieldIsAnnotatedWith(field, expectedAnnotation);
                 CustomAssertions.assertFieldIsNotAnnotatedWith(field, unexpectedAnnotation);
@@ -316,9 +315,8 @@ final class GeneratedRecordTests implements GeneratedClassTests {
               @ParameterizedTest
               @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
               @DisplayName("Generated `field` is NOT annotated with extra field annotations`")
-              public void
-                  whenXFieldExtraAnnotationIsUnsetThenFieldIsNotAnnotatedWithExtraFieldAnnotation(
-                      final GeneratedSource generatedSource) {
+              void whenXFieldExtraAnnotationIsUnsetThenFieldIsNotAnnotatedWithExtraFieldAnnotation(
+                  final GeneratedSource generatedSource) {
                 for (final GeneratedField<?> generatedField : generatedSource.generatedFields()) {
                   final Field field =
                       CustomAssertions.assertClassHasField(
@@ -343,9 +341,8 @@ final class GeneratedRecordTests implements GeneratedClassTests {
               @ParameterizedTest
               @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
               @DisplayName("Generated `field` is annotated with extra field annotations`")
-              public void
-                  whenXFieldExtraAnnotationIsSetThenFieldIsAnnotatedWithExtraFieldAnnotation(
-                      final GeneratedSource generatedSource) {
+              void whenXFieldExtraAnnotationIsSetThenFieldIsAnnotatedWithExtraFieldAnnotation(
+                  final GeneratedSource generatedSource) {
                 for (final GeneratedField<?> generatedField : generatedSource.generatedFields()) {
                   final Field field =
                       CustomAssertions.assertClassHasField(
@@ -1296,7 +1293,7 @@ final class GeneratedRecordTests implements GeneratedClassTests {
           @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
           @DisplayName(
               "[okhttp-gson] Generated `record` has one additional number of fields than OpenAPI properties")
-          public void
+          void
               whenConfigOptionSerializableModelIsTrueThenGeneratedRecordHasOneAdditionalField_okhttp_gson(
                   final GeneratedSource generatedSource) {
             Assumptions.assumeTrue(generatedSource.serializableModel());
@@ -1310,7 +1307,7 @@ final class GeneratedRecordTests implements GeneratedClassTests {
           @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
           @DisplayName(
               "[webclient] Generated `record` has one additional number of fields than OpenAPI properties")
-          public void
+          void
               whenConfigOptionSerializableModelIsTrueThenGeneratedRecordHasOneAdditionalField_webclient(
                   final GeneratedSource generatedSource) {
             Assumptions.assumeTrue(generatedSource.serializableModel());
@@ -1376,103 +1373,18 @@ final class GeneratedRecordTests implements GeneratedClassTests {
       }
 
       @Nested
-      @DisplayName("Testing `<useJakartaEe>`")
-      class UseJakartaEeTests {
-
-        @Nested
-        @DisplayName("Testing `<useJakartaEe>false</useJakartaEe>`")
-        class UseJakartaEeFalseTests {
-          @ParameterizedTest
-          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
-          @DisplayName(
-              "Fields of generated `record` are NOT annotated with Jakarta `@Nullable` or `@Nonnull`")
-          public void whenUseJakartaEeIsFalseThenJakartaAnnotationsAreNotUsedForNullableAndNonnull(
-              final GeneratedSource generatedSource) {
-            Assumptions.assumeFalse(generatedSource.useJakartaEe());
-
-            for (final GeneratedField<?> generatedField : generatedSource.generatedFields()) {
-              final Field field =
-                  CustomAssertions.assertClassHasField(
-                      generatedSource.getClassUnderTest(),
-                      generatedField.name(),
-                      generatedField.type());
-
-              CustomAssertions.assertFieldIsNotAnnotatedWith(
-                  field, jakarta.annotation.Nullable.class);
-              CustomAssertions.assertFieldIsNotAnnotatedWith(
-                  field, jakarta.annotation.Nonnull.class);
-            }
-          }
-        }
-
-        @Nested
-        @DisplayName("Testing `<useJakartaEe>true</useJakartaEe>`")
-        class UseJakartaEeTrueTests {
-          @ParameterizedTest
-          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
-          @DisplayName(
-              "Fields of generated `record` are annotated with Jakarta `@Nullable` or `@Nonnull`")
-          public void whenUseJakartaEeIsTrueThenJakartaAnnotationsAreUsedForNullableAndNonnull(
-              final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.useJakartaEe());
-
-            for (final GeneratedField<?> generatedField : generatedSource.generatedFields()) {
-              final Field field =
-                  CustomAssertions.assertClassHasField(
-                      generatedSource.getClassUnderTest(),
-                      generatedField.name(),
-                      generatedField.type());
-
-              final Class<? extends Annotation> expectedAnnotation =
-                  generatedField.isNullable()
-                      ? jakarta.annotation.Nullable.class
-                      : jakarta.annotation.Nonnull.class;
-
-              final Class<? extends Annotation> unexpectedAnnotation =
-                  generatedField.isNullable()
-                      ? jakarta.annotation.Nonnull.class
-                      : jakarta.annotation.Nullable.class;
-
-              CustomAssertions.assertFieldIsAnnotatedWith(field, expectedAnnotation);
-              CustomAssertions.assertFieldIsNotAnnotatedWith(field, unexpectedAnnotation);
-            }
-          }
-
-          @ParameterizedTest
-          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
-          @DisplayName(
-              "Fields of generated `record` are NOT annotated with JavaX `@Nullable` or `@Nonnull`")
-          public void whenUseJakartaEeIsTrueThenJavaXAnnotationsAreNotUsedForNullableAndNonnull(
-              final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.useJakartaEe());
-
-            for (final GeneratedField<?> generatedField : generatedSource.generatedFields()) {
-              final Field field =
-                  CustomAssertions.assertClassHasField(
-                      generatedSource.getClassUnderTest(),
-                      generatedField.name(),
-                      generatedField.type());
-
-              CustomAssertions.assertFieldIsNotAnnotatedWith(
-                  field, javax.annotation.Nullable.class);
-              CustomAssertions.assertFieldIsNotAnnotatedWith(field, javax.annotation.Nonnull.class);
-            }
-          }
-        }
-      }
-
-      @Nested
       @DisplayName("Testing `<useBeanValidation>`")
       class UseBeanValidationTests {
 
         @Nested
         @DisplayName("Testing `<useBeanValidation>false</useBeanValidation>`")
         class UseBeanValidationFalseTests {
+
           @ParameterizedTest
           @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
           @DisplayName(
               "Generated `record` does NOT use Jakarta Bean Validation annotations on fields")
-          public void
+          void
               whenUseBeanValidationIsFalseThenFieldsAreNotAnnotatedWithJakartaBeanValidationAnnotations(
                   final GeneratedSource generatedSource) {
             Assumptions.assumeFalse(generatedSource.useBeanValidation());
@@ -1485,16 +1397,7 @@ final class GeneratedRecordTests implements GeneratedClassTests {
                       generatedField.type());
 
               for (final Class<? extends Annotation> annotation :
-                  List.of(
-                      javax.validation.Valid.class,
-                      javax.validation.constraints.NotNull.class,
-                      javax.validation.constraints.Pattern.class,
-                      javax.validation.constraints.Size.class,
-                      javax.validation.constraints.Min.class,
-                      javax.validation.constraints.Max.class,
-                      javax.validation.constraints.DecimalMin.class,
-                      javax.validation.constraints.DecimalMax.class,
-                      javax.validation.constraints.Email.class)) {
+                  generatedSource.getBeanValidationAnnotations()) {
                 CustomAssertions.assertFieldIsNotAnnotatedWith(field, annotation);
               }
             }
@@ -1503,16 +1406,14 @@ final class GeneratedRecordTests implements GeneratedClassTests {
 
         @Nested
         @DisplayName("Testing `<useBeanValidation>true</useBeanValidation>`")
-        class UseBeanValidationTrueTests {
+        abstract class UseBeanValidationTrueTests {
+
           @ParameterizedTest
           @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
           @DisplayName("Generated `record` use Jakarta Bean Validation annotations on fields")
-          public void
+          abstract void
               whenUseBeanValidationIsTrueThenFieldsAreAnnotatedWithJakartaBeanValidationAnnotations(
-                  final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.useBeanValidation());
-            AssertionUtils.assertRecordHasFieldsOfTypeWithNullableAnnotations(generatedSource);
-          }
+                  final GeneratedSource generatedSource);
         }
       }
     }

@@ -43,7 +43,10 @@ import java.lang.reflect.Method;
 import java.net.URI;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Assumptions;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
@@ -80,7 +83,10 @@ import org.junit.jupiter.params.provider.MethodSource;
  * </ul>
  */
 @DisplayName("Test Generated `enum` classes")
-final class GeneratedEnumTests implements GeneratedClassTests {
+public abstract class GeneratedEnumTests {
+
+  public static final String GENERATED_ENUM_TESTS_METHOD_SOURCE =
+      "io.github.chrimle.o2jrm.tests.GeneratedEnumImplTests#allPluginExecutionsAndGeneratedEnumCombinations";
 
   @Nested
   @DisplayName("Testing OpenAPI Schemas & Properties")
@@ -93,6 +99,7 @@ final class GeneratedEnumTests implements GeneratedClassTests {
       @Nested
       @DisplayName("Testing `components.schemas.{schema}.enum`")
       class EnumTests {
+
         @ParameterizedTest
         @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
         @DisplayName("Generates an `enum` class")
@@ -103,6 +110,7 @@ final class GeneratedEnumTests implements GeneratedClassTests {
         @Nested
         @DisplayName("Testing `getValue()` method")
         class GetValueMethodTests {
+
           @ParameterizedTest
           @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
           @DisplayName("Generated `enum` classes always has `getValue()`-method")
@@ -228,6 +236,7 @@ final class GeneratedEnumTests implements GeneratedClassTests {
       @Nested
       @DisplayName("Testing `<library>okhttp-gson</library>` (default)")
       class OkHttpGsonTests {
+
         @ParameterizedTest
         @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
         @DisplayName("Generated `enum` HAS `validateJsonElement`-method")
