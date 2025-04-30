@@ -117,6 +117,8 @@
             **/ProgressResponseBody.class,
             **/ProgressResponseBody$*.class,
             **/RFC3339DateFormat.class,
+            **/RFC3339InstantDeserializer.class,
+            **/RFC3339JavaTimeModule.class,
             **/ServerConfiguration.class,
             **/ServerVariable.class,
             **/StringUtil.class

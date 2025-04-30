@@ -94,6 +94,8 @@ ProgressRequestBody$*.java
 ProgressResponseBody.java
 ProgressResponseBody$*.java
 RFC3339DateFormat.java
+RFC3339InstantDeserializer.java
+RFC3339JavaTimeModule.java
 ServerConfiguration.java
 ServerVariable.java
 StringUtil.java
