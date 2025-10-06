@@ -41,7 +41,7 @@ import java.util.Set;
  * @param field1 a String field with a default value
  */
 public record ExampleRecordWithDefaultFields(
-    @jakarta.annotation.Nonnull String field1) {
+     String field1) {
 
   /** A set containing the names of all instance fields defined in this class. */
   public static final HashSet<String> openapiFields =
@@ -52,7 +52,7 @@ public record ExampleRecordWithDefaultFields(
   public static final HashSet<String> openapiRequiredFields = new HashSet<String>(Set.of());
 
   public ExampleRecordWithDefaultFields(
-      @jakarta.annotation.Nullable final String field1) {
+      final String field1) {
     this.field1 = Objects.requireNonNullElse(field1, "someDefaultValue");
   }
 

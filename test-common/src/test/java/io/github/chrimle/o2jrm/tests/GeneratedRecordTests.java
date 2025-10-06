@@ -32,7 +32,6 @@ import io.github.chrimle.o2jrm.tests.GeneratedRecordTests.OpenAPITests.SchemaTes
 import io.github.chrimle.o2jrm.tests.GeneratedRecordTests.OpenAPITests.SchemaTests.PropertiesTests;
 import io.github.chrimle.o2jrm.tests.GeneratedRecordTests.OpenAPITests.SchemaTests.PropertiesTests.PropertyTests;
 import io.github.chrimle.o2jrm.tests.GeneratedRecordTests.OpenAPITests.SchemaTests.PropertiesTests.PropertyTests.DefaultTests;
-import io.github.chrimle.o2jrm.tests.GeneratedRecordTests.OpenAPITests.SchemaTests.PropertiesTests.PropertyTests.NullableTests;
 import io.github.chrimle.o2jrm.tests.GeneratedRecordTests.OpenAPITests.SchemaTests.PropertiesTests.PropertyTests.XFieldExtraAnnotationTests;
 import io.github.chrimle.o2jrm.tests.GeneratedRecordTests.OpenAPITests.SchemaTests.TypeTests;
 import io.github.chrimle.o2jrm.tests.GeneratedRecordTests.OpenAPITests.SchemaTests.XClassExtraAnnotationTests;
@@ -73,7 +72,6 @@ import org.junit.jupiter.params.provider.MethodSource;
  *   <li>{@link XClassExtraAnnotationTests `components.schemas.{schema}.x-class-extra-annotation`}
  *   <li>{@link PropertiesTests `components.schemas.{schema}.properties`}
  *   <li>{@link PropertyTests `components.schemas.{schema}.properties.{property}`}
- *   <li>{@link NullableTests `components.schemas.{schema}.properties.{property}.nullable`}
  *   <li>{@link DefaultTests `components.schemas.{schema}.properties.{property}.default`}
  *   <li>{@link XFieldExtraAnnotationTests
  *       `components.schemas.{schema}.properties.{property}.x-field-extra-annotation`}
@@ -265,41 +263,6 @@ public abstract class GeneratedRecordTests {
                 final GeneratedSource generatedSource) {
               GeneratedRecordTestUtils
                   .assertInstantiatingRecordWithNullSetsFieldsToNullOrDefaultValue(generatedSource);
-            }
-          }
-
-          @Nested
-          @DisplayName("Testing `{schema}.properties.{property}.nullable`")
-          class NullableTests {
-
-            @ParameterizedTest
-            @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
-            @DisplayName(
-                "Fields of generated `record` are annotated with `@Nullable` or `@Nonnull`")
-            void whenPropertyHasNullableSetThenFieldIsAnnotatedWithNullableOrNonnull(
-                final GeneratedSource generatedSource) {
-              Assumptions.assumeFalse(generatedSource.useJakartaEe());
-
-              for (final GeneratedField<?> generatedField : generatedSource.generatedFields()) {
-                final Field field =
-                    CustomAssertions.assertClassHasField(
-                        generatedSource.getClassUnderTest(),
-                        generatedField.name(),
-                        generatedField.type());
-
-                final Class<? extends Annotation> expectedAnnotation =
-                    generatedField.isNullable()
-                        ? generatedSource.getNullableAnnotation()
-                        : generatedSource.getNonnullAnnotation();
-
-                final Class<? extends Annotation> unexpectedAnnotation =
-                    generatedField.isNullable()
-                        ? generatedSource.getNonnullAnnotation()
-                        : generatedSource.getNullableAnnotation();
-
-                CustomAssertions.assertFieldIsAnnotatedWith(field, expectedAnnotation);
-                CustomAssertions.assertFieldIsNotAnnotatedWith(field, unexpectedAnnotation);
-              }
             }
           }
 

@@ -55,14 +55,14 @@ import java.util.Set;
  * @param field8 ExampleEnum.
  */
 public record RecordWithRequiredFieldsOfEachType(
-    @jakarta.annotation.Nonnull Boolean field1,
-    @jakarta.annotation.Nonnull String field2,
-    @jakarta.annotation.Nonnull Integer field3,
-    @jakarta.annotation.Nonnull BigDecimal field4,
-    @jakarta.annotation.Nonnull List<Boolean> field5,
-    @jakarta.annotation.Nonnull Set<Boolean> field6,
-    @jakarta.annotation.Nonnull ExampleRecord field7,
-    @jakarta.annotation.Nonnull ExampleEnum field8) {
+     Boolean field1,
+     String field2,
+     Integer field3,
+     BigDecimal field4,
+     List<Boolean> field5,
+     Set<Boolean> field6,
+     ExampleRecord field7,
+     ExampleEnum field8) {
 
   /** A set containing the names of all instance fields defined in this class. */
   public static final HashSet<String> openapiFields =
@@ -89,14 +89,14 @@ public record RecordWithRequiredFieldsOfEachType(
               "field8"));
 
   public RecordWithRequiredFieldsOfEachType(
-      @jakarta.annotation.Nonnull final Boolean field1,
-      @jakarta.annotation.Nonnull final String field2,
-      @jakarta.annotation.Nonnull final Integer field3,
-      @jakarta.annotation.Nonnull final BigDecimal field4,
-      @jakarta.annotation.Nullable final List<Boolean> field5,
-      @jakarta.annotation.Nullable final Set<Boolean> field6,
-      @jakarta.annotation.Nonnull final ExampleRecord field7,
-      @jakarta.annotation.Nonnull final ExampleEnum field8) {
+      final Boolean field1,
+      final String field2,
+      final Integer field3,
+      final BigDecimal field4,
+      final List<Boolean> field5,
+      final Set<Boolean> field6,
+      final ExampleRecord field7,
+      final ExampleEnum field8) {
     this.field1 = field1;
     this.field2 = field2;
     this.field3 = field3;

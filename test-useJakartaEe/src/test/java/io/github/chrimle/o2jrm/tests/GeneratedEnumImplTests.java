@@ -42,8 +42,6 @@ final class GeneratedEnumImplTests extends GeneratedEnumTests {
                                 GeneratedClassImpl.getGeneratedFields(
                                     generatedEnum, pluginExecution),
                                 GeneratedClass.getClass(generatedEnum, pluginExecution),
-                                jakarta.annotation.Nullable.class,
-                                jakarta.annotation.Nonnull.class,
                                 jakarta.validation.Valid.class,
                                 jakarta.validation.constraints.NotNull.class,
                                 jakarta.validation.constraints.Pattern.class,

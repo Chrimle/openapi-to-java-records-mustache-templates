@@ -41,7 +41,7 @@ import java.util.Set;
  * @param field1 a boolean field
  */
 public record ExampleRecord(
-    @jakarta.annotation.Nonnull Boolean field1) {
+     Boolean field1) {
 
   /** A set containing the names of all instance fields defined in this class. */
   public static final HashSet<String> openapiFields =
@@ -52,7 +52,7 @@ public record ExampleRecord(
   public static final HashSet<String> openapiRequiredFields = new HashSet<String>(Set.of());
 
   public ExampleRecord(
-      @jakarta.annotation.Nonnull final Boolean field1) {
+      final Boolean field1) {
     this.field1 = field1;
   }
 

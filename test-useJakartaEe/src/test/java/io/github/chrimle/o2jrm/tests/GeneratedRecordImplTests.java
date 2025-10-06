@@ -22,7 +22,6 @@ import io.github.chrimle.o2jrm.models.GeneratedClass;
 import io.github.chrimle.o2jrm.models.GeneratedClassImpl;
 import io.github.chrimle.o2jrm.models.GeneratedRecordImpl;
 import io.github.chrimle.o2jrm.utils.AssertionUtilsImpl;
-import java.util.*;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -52,8 +51,6 @@ final class GeneratedRecordImplTests extends GeneratedRecordTests {
                                 GeneratedClassImpl.getGeneratedFields(
                                     generatedRecord, pluginExecution),
                                 GeneratedClass.getClass(generatedRecord, pluginExecution),
-                                jakarta.annotation.Nullable.class,
-                                jakarta.annotation.Nonnull.class,
                                 jakarta.validation.Valid.class,
                                 jakarta.validation.constraints.NotNull.class,
                                 jakarta.validation.constraints.Pattern.class,

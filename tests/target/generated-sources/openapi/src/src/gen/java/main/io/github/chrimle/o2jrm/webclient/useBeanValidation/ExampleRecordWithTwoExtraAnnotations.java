@@ -38,10 +38,10 @@ import javax.validation.Valid;
 @io.github.chrimle.o2jrm.annotations.TestExtraAnnotation
 @io.github.chrimle.o2jrm.annotations.TestExtraAnnotationTwo
 public record ExampleRecordWithTwoExtraAnnotations(
-    @javax.annotation.Nonnull Boolean field1) {
+     Boolean field1) {
 
   public ExampleRecordWithTwoExtraAnnotations(
-      @javax.annotation.Nonnull final Boolean field1) {
+      final Boolean field1) {
     this.field1 = field1;
   }
 }

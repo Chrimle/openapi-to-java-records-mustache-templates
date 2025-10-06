@@ -58,14 +58,14 @@ import java.util.Set;
  * @param field8 ExampleNullableEnum.
  */
 public record RecordWithNullableFieldsOfEachType(
-    @javax.annotation.Nullable Boolean field1,
-    @javax.annotation.Nullable String field2,
-    @javax.annotation.Nullable Integer field3,
-    @javax.annotation.Nullable BigDecimal field4,
-    @javax.annotation.Nullable List<Boolean> field5,
-    @javax.annotation.Nullable Set<Boolean> field6,
-    @javax.annotation.Nullable @Valid ExampleNullableRecord field7,
-    @javax.annotation.Nullable ExampleNullableEnum field8) {
+     Boolean field1,
+     String field2,
+     Integer field3,
+     BigDecimal field4,
+     List<Boolean> field5,
+     Set<Boolean> field6,
+     @Valid ExampleNullableRecord field7,
+     ExampleNullableEnum field8) {
 
   /** A set containing the names of all instance fields defined in this class. */
   public static final HashSet<String> openapiFields =
@@ -90,14 +90,14 @@ public record RecordWithNullableFieldsOfEachType(
               "field6"));
 
   public RecordWithNullableFieldsOfEachType(
-      @javax.annotation.Nullable final Boolean field1,
-      @javax.annotation.Nullable final String field2,
-      @javax.annotation.Nullable final Integer field3,
-      @javax.annotation.Nullable final BigDecimal field4,
-      @javax.annotation.Nullable final List<Boolean> field5,
-      @javax.annotation.Nullable final Set<Boolean> field6,
-      @javax.annotation.Nullable final ExampleNullableRecord field7,
-      @javax.annotation.Nullable final ExampleNullableEnum field8) {
+      final Boolean field1,
+      final String field2,
+      final Integer field3,
+      final BigDecimal field4,
+      final List<Boolean> field5,
+      final Set<Boolean> field6,
+      final ExampleNullableRecord field7,
+      final ExampleNullableEnum field8) {
     this.field1 = field1;
     this.field2 = field2;
     this.field3 = field3;

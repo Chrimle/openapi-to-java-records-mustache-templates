@@ -37,13 +37,13 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  */
 @Deprecated
 public record DeprecatedExampleRecord(
-    @javax.annotation.Nonnull Boolean field1)
+     Boolean field1)
     implements Serializable {
 
   private static final long serialVersionUID = 1L;
 
   public DeprecatedExampleRecord(
-      @javax.annotation.Nonnull final Boolean field1) {
+      final Boolean field1) {
     this.field1 = field1;
   }
 }

@@ -36,10 +36,10 @@ import javax.validation.Valid;
  * @param field1 a boolean field
  */
 public record ExampleNullableRecord(
-    @javax.annotation.Nonnull Boolean field1) {
+     Boolean field1) {
 
   public ExampleNullableRecord(
-      @javax.annotation.Nonnull final Boolean field1) {
+      final Boolean field1) {
     this.field1 = field1;
   }
 }

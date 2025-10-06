@@ -45,7 +45,7 @@ import java.util.Set;
  */
 @Deprecated
 public record DeprecatedExampleRecord(
-    @javax.annotation.Nonnull Boolean field1) {
+     Boolean field1) {
 
   /** A set containing the names of all instance fields defined in this class. */
   public static final HashSet<String> openapiFields =
@@ -56,7 +56,7 @@ public record DeprecatedExampleRecord(
   public static final HashSet<String> openapiRequiredFields = new HashSet<String>(Set.of());
 
   public DeprecatedExampleRecord(
-      @javax.annotation.Nonnull final Boolean field1) {
+      final Boolean field1) {
     this.field1 = field1;
   }
 

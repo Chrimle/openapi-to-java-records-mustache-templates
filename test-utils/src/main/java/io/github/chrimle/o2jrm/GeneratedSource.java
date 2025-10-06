@@ -45,28 +45,18 @@ public class GeneratedSource {
   private final GeneratedField<?>[] generatedFields;
   private final PluginExecution pluginExecution;
   private final GeneratedClass generatedClass;
-  private final Class<? extends Annotation> nullableAnnotation;
-  private final Class<? extends Annotation> nonnullAnnotation;
   private final List<Class<? extends Annotation>> beanValidationAnnotations;
-
-  public Class<? extends Annotation> getNonnullAnnotation() {
-    return nonnullAnnotation;
-  }
 
   public GeneratedSource(
       final PluginExecution pluginExecution,
       final GeneratedClass generatedClass,
       final GeneratedField<?>[] generatedFields,
       final Class<?> classUnderTest,
-      final Class<? extends Annotation> nullableAnnotation,
-      final Class<? extends Annotation> nonnullAnnotation,
       final Class<? extends Annotation>... beanValidationAnnotations) {
     this.pluginExecution = pluginExecution;
     this.generatedClass = generatedClass;
     this.generatedFields = generatedFields;
     this.classUnderTest = classUnderTest;
-    this.nullableAnnotation = nullableAnnotation;
-    this.nonnullAnnotation = nonnullAnnotation;
     this.beanValidationAnnotations = Arrays.asList(beanValidationAnnotations);
   }
 
@@ -164,10 +154,6 @@ public class GeneratedSource {
         + ", generatedFields="
         + Arrays.toString(generatedFields)
         + '}';
-  }
-
-  public Class<? extends Annotation> getNullableAnnotation() {
-    return nullableAnnotation;
   }
 
   public List<Class<? extends Annotation>> getBeanValidationAnnotations() {
