@@ -61,8 +61,6 @@ public record RecordWithRequiredFieldsOfEachType(
      ExampleEnum field8)
     implements Serializable {
 
-  private static final long serialVersionUID = 1L;
-
   public RecordWithRequiredFieldsOfEachType(
       final Boolean field1,
       final String field2,

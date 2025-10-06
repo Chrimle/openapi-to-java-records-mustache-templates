@@ -38,8 +38,6 @@ public record ExampleNullableRecord(
      Boolean field1)
     implements Serializable {
 
-  private static final long serialVersionUID = 1L;
-
   public ExampleNullableRecord(
       final Boolean field1) {
     this.field1 = field1;

@@ -44,8 +44,6 @@ public record ExampleRecordWithOneExtraAnnotation(
      Boolean field2)
     implements Serializable {
 
-  private static final long serialVersionUID = 1L;
-
   public ExampleRecordWithOneExtraAnnotation(
       final Boolean field1,
       final Boolean field2) {

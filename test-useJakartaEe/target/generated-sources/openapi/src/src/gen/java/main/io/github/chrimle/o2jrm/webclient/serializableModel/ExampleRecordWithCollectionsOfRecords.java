@@ -51,8 +51,6 @@ public record ExampleRecordWithCollectionsOfRecords(
      Set<ExampleRecord> requiredRecordSet)
     implements Serializable {
 
-  private static final long serialVersionUID = 1L;
-
   public ExampleRecordWithCollectionsOfRecords(
       final List<ExampleRecord> optionalRecordList,
       final List<ExampleRecord> requiredRecordList,

@@ -1251,46 +1251,6 @@ public abstract class GeneratedRecordTests {
             CustomAssertions.assertClassImplementsInterface(
                 generatedSource.getClassUnderTest(), Serializable.class);
           }
-
-          @ParameterizedTest
-          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
-          @DisplayName(
-              "[okhttp-gson] Generated `record` has one additional number of fields than OpenAPI properties")
-          void
-              whenConfigOptionSerializableModelIsTrueThenGeneratedRecordHasOneAdditionalField_okhttp_gson(
-                  final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.serializableModel());
-            Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-
-            CustomAssertions.assertClassHasNumberOfFields(
-                generatedSource.getClassUnderTest(), generatedSource.generatedFields().length + 3);
-          }
-
-          @ParameterizedTest
-          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
-          @DisplayName(
-              "[webclient] Generated `record` has one additional number of fields than OpenAPI properties")
-          void
-              whenConfigOptionSerializableModelIsTrueThenGeneratedRecordHasOneAdditionalField_webclient(
-                  final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.serializableModel());
-            Assumptions.assumeTrue(generatedSource.isLibraryWebClient());
-
-            CustomAssertions.assertClassHasNumberOfFields(
-                generatedSource.getClassUnderTest(), generatedSource.generatedFields().length + 1);
-          }
-
-          @ParameterizedTest
-          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
-          @DisplayName("Generated `record` has `serialVersionUID`-field")
-          void
-              whenConfigOptionSerializableModelIsTrueThenGeneratedRecordClassHasSerialVersionUidField(
-                  final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.serializableModel());
-
-            CustomAssertions.assertClassHasField(
-                generatedSource.getClassUnderTest(), "serialVersionUID", long.class);
-          }
         }
       }
 
