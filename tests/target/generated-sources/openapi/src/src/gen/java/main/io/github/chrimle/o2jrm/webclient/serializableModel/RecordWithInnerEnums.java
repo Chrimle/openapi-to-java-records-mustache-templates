@@ -43,8 +43,6 @@ public record RecordWithInnerEnums(
      ExampleInnerThreeEnum exampleInnerThree)
     implements Serializable {
 
-  private static final long serialVersionUID = 1L;
-
   public RecordWithInnerEnums(
       final ExampleInnerEnum exampleInner,
       final ExampleInnerTwoEnum exampleInnerTwo,

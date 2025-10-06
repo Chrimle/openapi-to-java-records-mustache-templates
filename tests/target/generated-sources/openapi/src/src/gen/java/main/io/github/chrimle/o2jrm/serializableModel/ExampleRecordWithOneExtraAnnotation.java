@@ -51,8 +51,6 @@ public record ExampleRecordWithOneExtraAnnotation(
      Boolean field2)
     implements Serializable {
 
-  private static final long serialVersionUID = 1L;
-
   /** A set containing the names of all instance fields defined in this class. */
   public static final HashSet<String> openapiFields =
       new HashSet<String>(

@@ -40,8 +40,6 @@ public record ExampleRecordWithTwoExtraAnnotations(
      Boolean field1)
     implements Serializable {
 
-  private static final long serialVersionUID = 1L;
-
   public ExampleRecordWithTwoExtraAnnotations(
       final Boolean field1) {
     this.field1 = field1;

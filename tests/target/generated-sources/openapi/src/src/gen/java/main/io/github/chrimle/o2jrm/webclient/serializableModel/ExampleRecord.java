@@ -38,8 +38,6 @@ public record ExampleRecord(
      Boolean field1)
     implements Serializable {
 
-  private static final long serialVersionUID = 1L;
-
   public ExampleRecord(
       final Boolean field1) {
     this.field1 = field1;

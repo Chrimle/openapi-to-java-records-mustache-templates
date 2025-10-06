@@ -64,8 +64,6 @@ public record RecordWithNullableFieldsOfEachType(
      ExampleNullableEnum field8)
     implements Serializable {
 
-  private static final long serialVersionUID = 1L;
-
   public RecordWithNullableFieldsOfEachType(
       final Boolean field1,
       final String field2,

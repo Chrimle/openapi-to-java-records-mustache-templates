@@ -91,8 +91,6 @@ public record RecordWithAllConstraints(
      BigDecimal bigDecimalMinimumAndMaximum)
     implements Serializable {
 
-  private static final long serialVersionUID = 1L;
-
   public RecordWithAllConstraints(
       final String stringStandard,
       final String stringDefault,
