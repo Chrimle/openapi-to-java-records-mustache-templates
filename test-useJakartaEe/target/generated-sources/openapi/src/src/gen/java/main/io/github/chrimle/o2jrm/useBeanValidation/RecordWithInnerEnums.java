@@ -47,9 +47,9 @@ import java.util.Set;
  * @param exampleInnerThree Example of another inner enum class with URI values
  */
 public record RecordWithInnerEnums(
-    @jakarta.annotation.Nonnull ExampleInnerEnum exampleInner,
-    @jakarta.annotation.Nonnull ExampleInnerTwoEnum exampleInnerTwo,
-    @jakarta.annotation.Nonnull ExampleInnerThreeEnum exampleInnerThree) {
+     ExampleInnerEnum exampleInner,
+     ExampleInnerTwoEnum exampleInnerTwo,
+     ExampleInnerThreeEnum exampleInnerThree) {
 
   /** A set containing the names of all instance fields defined in this class. */
   public static final HashSet<String> openapiFields =
@@ -62,9 +62,9 @@ public record RecordWithInnerEnums(
   public static final HashSet<String> openapiRequiredFields = new HashSet<String>(Set.of());
 
   public RecordWithInnerEnums(
-      @jakarta.annotation.Nonnull final ExampleInnerEnum exampleInner,
-      @jakarta.annotation.Nonnull final ExampleInnerTwoEnum exampleInnerTwo,
-      @jakarta.annotation.Nonnull final ExampleInnerThreeEnum exampleInnerThree) {
+      final ExampleInnerEnum exampleInner,
+      final ExampleInnerTwoEnum exampleInnerTwo,
+      final ExampleInnerThreeEnum exampleInnerThree) {
     this.exampleInner = exampleInner;
     this.exampleInnerTwo = exampleInnerTwo;
     this.exampleInnerThree = exampleInnerThree;

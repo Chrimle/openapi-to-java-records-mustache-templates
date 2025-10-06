@@ -40,14 +40,14 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @io.github.chrimle.o2jrm.annotations.TestAnnotationTwo
 @io.github.chrimle.o2jrm.annotations.TestAnnotationThree
 public record RecordWithInnerEnums(
-    @javax.annotation.Nonnull ExampleInnerEnum exampleInner,
-    @javax.annotation.Nonnull ExampleInnerTwoEnum exampleInnerTwo,
-    @javax.annotation.Nonnull ExampleInnerThreeEnum exampleInnerThree) {
+     ExampleInnerEnum exampleInner,
+     ExampleInnerTwoEnum exampleInnerTwo,
+     ExampleInnerThreeEnum exampleInnerThree) {
 
   public RecordWithInnerEnums(
-      @javax.annotation.Nonnull final ExampleInnerEnum exampleInner,
-      @javax.annotation.Nonnull final ExampleInnerTwoEnum exampleInnerTwo,
-      @javax.annotation.Nonnull final ExampleInnerThreeEnum exampleInnerThree) {
+      final ExampleInnerEnum exampleInner,
+      final ExampleInnerTwoEnum exampleInnerTwo,
+      final ExampleInnerThreeEnum exampleInnerThree) {
     this.exampleInner = exampleInner;
     this.exampleInnerTwo = exampleInnerTwo;
     this.exampleInnerThree = exampleInnerThree;

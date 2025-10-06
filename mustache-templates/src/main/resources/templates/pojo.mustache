@@ -53,7 +53,7 @@ import java.util.Set;
     }}{{#vendorExtensions.x-field-extra-annotation}}{{!
         }}{{vendorExtensions.x-field-extra-annotation}}
     {{/vendorExtensions.x-field-extra-annotation}}{{!
-    }}@{{javaxPackage}}.annotation.{{#isNullable}}Nullable{{/isNullable}}{{^isNullable}}Nonnull{{/isNullable}}{{>useBeanValidation}} {{{datatypeWithEnum}}} {{name}}{{^-last}},
+    }}{{>useBeanValidation}} {{{datatypeWithEnum}}} {{name}}{{^-last}},
     {{/-last}}{{/vars}}){{#serializableModel}}
     implements Serializable{{/serializableModel}} {
 {{>serializableModel}}
@@ -71,7 +71,7 @@ import java.util.Set;
 
 {{/gson}}
   public {{classname}}(
-      {{#vars}}@{{javaxPackage}}.annotation.{{#isNullable}}Nullable{{/isNullable}}{{^isNullable}}{{#defaultValue}}Nullable{{/defaultValue}}{{^defaultValue}}Nonnull{{/defaultValue}}{{/isNullable}} final {{{datatypeWithEnum}}} {{name}}{{^-last}},
+      {{#vars}}final {{{datatypeWithEnum}}} {{name}}{{^-last}},
       {{/-last}}{{/vars}}) {
 {{#vars}}    this.{{name}} = {{^defaultValue}}{{name}}{{/defaultValue}}{{#defaultValue}}Objects.requireNonNullElse({{name}}, {{{.}}}){{/defaultValue}};
 {{/vars}}  }{{#generateBuilders}}{{>generateBuilders}}{{/generateBuilders}}{{!

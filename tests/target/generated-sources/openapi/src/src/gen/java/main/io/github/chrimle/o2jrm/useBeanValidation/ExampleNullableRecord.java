@@ -43,7 +43,7 @@ import java.util.Set;
  * @param field1 a boolean field
  */
 public record ExampleNullableRecord(
-    @javax.annotation.Nonnull Boolean field1) {
+     Boolean field1) {
 
   /** A set containing the names of all instance fields defined in this class. */
   public static final HashSet<String> openapiFields =
@@ -54,7 +54,7 @@ public record ExampleNullableRecord(
   public static final HashSet<String> openapiRequiredFields = new HashSet<String>(Set.of());
 
   public ExampleNullableRecord(
-      @javax.annotation.Nonnull final Boolean field1) {
+      final Boolean field1) {
     this.field1 = field1;
   }
 

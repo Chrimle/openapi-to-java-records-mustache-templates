@@ -45,19 +45,19 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  * @param requiredRecordSet Another required field
  */
 public record ExampleRecordWithCollectionsOfRecords(
-    @javax.annotation.Nonnull List<ExampleRecord> optionalRecordList,
-    @javax.annotation.Nonnull List<ExampleRecord> requiredRecordList,
-    @javax.annotation.Nonnull Set<ExampleRecord> optionalRecordSet,
-    @javax.annotation.Nonnull Set<ExampleRecord> requiredRecordSet)
+     List<ExampleRecord> optionalRecordList,
+     List<ExampleRecord> requiredRecordList,
+     Set<ExampleRecord> optionalRecordSet,
+     Set<ExampleRecord> requiredRecordSet)
     implements Serializable {
 
   private static final long serialVersionUID = 1L;
 
   public ExampleRecordWithCollectionsOfRecords(
-      @javax.annotation.Nullable final List<ExampleRecord> optionalRecordList,
-      @javax.annotation.Nullable final List<ExampleRecord> requiredRecordList,
-      @javax.annotation.Nullable final Set<ExampleRecord> optionalRecordSet,
-      @javax.annotation.Nullable final Set<ExampleRecord> requiredRecordSet) {
+      final List<ExampleRecord> optionalRecordList,
+      final List<ExampleRecord> requiredRecordList,
+      final Set<ExampleRecord> optionalRecordSet,
+      final Set<ExampleRecord> requiredRecordSet) {
     this.optionalRecordList = Objects.requireNonNullElse(optionalRecordList, new ArrayList<>());
     this.requiredRecordList = Objects.requireNonNullElse(requiredRecordList, new ArrayList<>());
     this.optionalRecordSet = Objects.requireNonNullElse(optionalRecordSet, new LinkedHashSet<>());

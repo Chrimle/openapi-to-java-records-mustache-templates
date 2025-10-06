@@ -52,24 +52,24 @@ import javax.validation.Valid;
  * @param field8 ExampleEnum.
  */
 public record RecordWithRequiredFieldsOfEachType(
-    @javax.annotation.Nonnull @NotNull Boolean field1,
-    @javax.annotation.Nonnull @NotNull String field2,
-    @javax.annotation.Nonnull @NotNull Integer field3,
-    @javax.annotation.Nonnull @NotNull BigDecimal field4,
-    @javax.annotation.Nonnull @NotNull List<Boolean> field5,
-    @javax.annotation.Nonnull @NotNull Set<Boolean> field6,
-    @javax.annotation.Nonnull @Valid @NotNull ExampleRecord field7,
-    @javax.annotation.Nonnull @NotNull ExampleEnum field8) {
+     @NotNull Boolean field1,
+     @NotNull String field2,
+     @NotNull Integer field3,
+     @NotNull BigDecimal field4,
+     @NotNull List<Boolean> field5,
+     @NotNull Set<Boolean> field6,
+     @Valid @NotNull ExampleRecord field7,
+     @NotNull ExampleEnum field8) {
 
   public RecordWithRequiredFieldsOfEachType(
-      @javax.annotation.Nonnull final Boolean field1,
-      @javax.annotation.Nonnull final String field2,
-      @javax.annotation.Nonnull final Integer field3,
-      @javax.annotation.Nonnull final BigDecimal field4,
-      @javax.annotation.Nullable final List<Boolean> field5,
-      @javax.annotation.Nullable final Set<Boolean> field6,
-      @javax.annotation.Nonnull final ExampleRecord field7,
-      @javax.annotation.Nonnull final ExampleEnum field8) {
+      final Boolean field1,
+      final String field2,
+      final Integer field3,
+      final BigDecimal field4,
+      final List<Boolean> field5,
+      final Set<Boolean> field6,
+      final ExampleRecord field7,
+      final ExampleEnum field8) {
     this.field1 = field1;
     this.field2 = field2;
     this.field3 = field3;

@@ -45,10 +45,10 @@ import java.util.Set;
 @io.github.chrimle.o2jrm.annotations.TestExtraAnnotation
 public record ExampleRecordWithOneExtraAnnotation(
     @io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationOne
-    @jakarta.annotation.Nonnull Boolean field1,
+     Boolean field1,
     @io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationOne
 @io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationTwo
-    @jakarta.annotation.Nonnull Boolean field2)
+     Boolean field2)
     implements Serializable {
 
   private static final long serialVersionUID = 1L;
@@ -63,8 +63,8 @@ public record ExampleRecordWithOneExtraAnnotation(
   public static final HashSet<String> openapiRequiredFields = new HashSet<String>(Set.of());
 
   public ExampleRecordWithOneExtraAnnotation(
-      @jakarta.annotation.Nonnull final Boolean field1,
-      @jakarta.annotation.Nonnull final Boolean field2) {
+      final Boolean field1,
+      final Boolean field2) {
     this.field1 = field1;
     this.field2 = field2;
   }

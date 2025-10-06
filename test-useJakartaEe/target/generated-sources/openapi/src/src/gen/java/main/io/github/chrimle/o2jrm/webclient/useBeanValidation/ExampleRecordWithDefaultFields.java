@@ -36,10 +36,10 @@ import jakarta.validation.Valid;
  * @param field1 a String field with a default value
  */
 public record ExampleRecordWithDefaultFields(
-    @jakarta.annotation.Nonnull String field1) {
+     String field1) {
 
   public ExampleRecordWithDefaultFields(
-      @jakarta.annotation.Nullable final String field1) {
+      final String field1) {
     this.field1 = Objects.requireNonNullElse(field1, "someDefaultValue");
   }
 }

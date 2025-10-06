@@ -47,16 +47,16 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @io.github.chrimle.o2jrm.annotations.TestAnnotationTwo
 @io.github.chrimle.o2jrm.annotations.TestAnnotationThree
 public record ExampleRecordWithCollectionsOfRecords(
-    @jakarta.annotation.Nonnull List<ExampleRecord> optionalRecordList,
-    @jakarta.annotation.Nonnull List<ExampleRecord> requiredRecordList,
-    @jakarta.annotation.Nonnull Set<ExampleRecord> optionalRecordSet,
-    @jakarta.annotation.Nonnull Set<ExampleRecord> requiredRecordSet) {
+     List<ExampleRecord> optionalRecordList,
+     List<ExampleRecord> requiredRecordList,
+     Set<ExampleRecord> optionalRecordSet,
+     Set<ExampleRecord> requiredRecordSet) {
 
   public ExampleRecordWithCollectionsOfRecords(
-      @jakarta.annotation.Nullable final List<ExampleRecord> optionalRecordList,
-      @jakarta.annotation.Nullable final List<ExampleRecord> requiredRecordList,
-      @jakarta.annotation.Nullable final Set<ExampleRecord> optionalRecordSet,
-      @jakarta.annotation.Nullable final Set<ExampleRecord> requiredRecordSet) {
+      final List<ExampleRecord> optionalRecordList,
+      final List<ExampleRecord> requiredRecordList,
+      final Set<ExampleRecord> optionalRecordSet,
+      final Set<ExampleRecord> requiredRecordSet) {
     this.optionalRecordList = Objects.requireNonNullElse(optionalRecordList, new ArrayList<>());
     this.requiredRecordList = Objects.requireNonNullElse(requiredRecordList, new ArrayList<>());
     this.optionalRecordSet = Objects.requireNonNullElse(optionalRecordSet, new LinkedHashSet<>());

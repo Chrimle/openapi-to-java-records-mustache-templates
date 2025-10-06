@@ -51,10 +51,10 @@ import java.util.Set;
  * @param requiredRecordSet Another required field
  */
 public record ExampleRecordWithCollectionsOfRecords(
-    @jakarta.annotation.Nonnull List<@Valid ExampleRecord> optionalRecordList,
-    @jakarta.annotation.Nonnull @NotNull List<@Valid ExampleRecord> requiredRecordList,
-    @jakarta.annotation.Nonnull Set<@Valid ExampleRecord> optionalRecordSet,
-    @jakarta.annotation.Nonnull @NotNull Set<@Valid ExampleRecord> requiredRecordSet) {
+     List<@Valid ExampleRecord> optionalRecordList,
+     @NotNull List<@Valid ExampleRecord> requiredRecordList,
+     Set<@Valid ExampleRecord> optionalRecordSet,
+     @NotNull Set<@Valid ExampleRecord> requiredRecordSet) {
 
   /** A set containing the names of all instance fields defined in this class. */
   public static final HashSet<String> openapiFields =
@@ -71,10 +71,10 @@ public record ExampleRecordWithCollectionsOfRecords(
               "requiredRecordSet"));
 
   public ExampleRecordWithCollectionsOfRecords(
-      @jakarta.annotation.Nullable final List<@Valid ExampleRecord> optionalRecordList,
-      @jakarta.annotation.Nullable final List<@Valid ExampleRecord> requiredRecordList,
-      @jakarta.annotation.Nullable final Set<@Valid ExampleRecord> optionalRecordSet,
-      @jakarta.annotation.Nullable final Set<@Valid ExampleRecord> requiredRecordSet) {
+      final List<@Valid ExampleRecord> optionalRecordList,
+      final List<@Valid ExampleRecord> requiredRecordList,
+      final Set<@Valid ExampleRecord> optionalRecordSet,
+      final Set<@Valid ExampleRecord> requiredRecordSet) {
     this.optionalRecordList = Objects.requireNonNullElse(optionalRecordList, new ArrayList<>());
     this.requiredRecordList = Objects.requireNonNullElse(requiredRecordList, new ArrayList<>());
     this.optionalRecordSet = Objects.requireNonNullElse(optionalRecordSet, new LinkedHashSet<>());

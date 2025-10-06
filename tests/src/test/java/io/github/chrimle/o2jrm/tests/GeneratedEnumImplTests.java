@@ -42,8 +42,6 @@ final class GeneratedEnumImplTests extends GeneratedEnumTests {
                                 GeneratedClassImpl.getGeneratedFields(
                                     generatedEnum, pluginExecution),
                                 GeneratedClass.getClass(generatedEnum, pluginExecution),
-                                javax.annotation.Nullable.class,
-                                javax.annotation.Nonnull.class,
                                 javax.validation.Valid.class,
                                 javax.validation.constraints.NotNull.class,
                                 javax.validation.constraints.Pattern.class,

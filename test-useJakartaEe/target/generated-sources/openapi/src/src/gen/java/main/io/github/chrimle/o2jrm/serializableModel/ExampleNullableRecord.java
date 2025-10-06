@@ -42,7 +42,7 @@ import java.util.Set;
  * @param field1 a boolean field
  */
 public record ExampleNullableRecord(
-    @jakarta.annotation.Nonnull Boolean field1)
+     Boolean field1)
     implements Serializable {
 
   private static final long serialVersionUID = 1L;
@@ -56,7 +56,7 @@ public record ExampleNullableRecord(
   public static final HashSet<String> openapiRequiredFields = new HashSet<String>(Set.of());
 
   public ExampleNullableRecord(
-      @jakarta.annotation.Nonnull final Boolean field1) {
+      final Boolean field1) {
     this.field1 = field1;
   }
 

@@ -213,30 +213,30 @@ package io.github.chrimle.o2jrm;
  */
 @Deprecated
 public record Person(
-    @javax.annotation.Nonnull @Valid @NotNull Name name,
-    @javax.annotation.Nonnull @NotNull @Min(0) @Max(100) Integer age,
-    @javax.annotation.Nonnull @NotNull GenderEnum gender,
-    @javax.annotation.Nonnull @NotNull @DecimalMin("0") BigDecimal height,
-    @javax.annotation.Nonnull @Valid Person legalGuardian,
-    @javax.annotation.Nonnull @NotNull @Pattern(regexp = "^\\d{3}-\\d{2}-\\d{4}$") String ssn,
-    @javax.annotation.Nonnull @NotNull @Size(min = 1, max = 3) Set<String> aliases,
-    @javax.annotation.Nullable String telephoneNumber,
-    @javax.annotation.Nonnull @NotNull @Email String email,
-    @javax.annotation.Nonnull @NotNull @Size(min = 5, max = 50) String trackingCode,
-    @javax.annotation.Nonnull @NotNull UUID uuid) {
+    @Valid @NotNull Name name,
+    @NotNull @Min(0) @Max(100) Integer age,
+    @NotNull GenderEnum gender,
+    @NotNull @DecimalMin("0") BigDecimal height,
+    @Valid Person legalGuardian,
+    @NotNull @Pattern(regexp = "^\\d{3}-\\d{2}-\\d{4}$") String ssn,
+    @NotNull @Size(min = 1, max = 3) Set<String> aliases,
+    String telephoneNumber,
+    @NotNull @Email String email,
+    @NotNull @Size(min = 5, max = 50) String trackingCode,
+    @NotNull UUID uuid) {
 
   public Person(
-      @javax.annotation.Nonnull final Name name,
-      @javax.annotation.Nonnull final Integer age,
-      @javax.annotation.Nonnull final GenderEnum gender,
-      @javax.annotation.Nonnull final BigDecimal height,
-      @javax.annotation.Nonnull final Person legalGuardian,
-      @javax.annotation.Nonnull final String ssn,
-      @javax.annotation.Nullable final Set<String> aliases,
-      @javax.annotation.Nullable final String telephoneNumber,
-      @javax.annotation.Nonnull final String email,
-      @javax.annotation.Nullable final String trackingCode,
-      @javax.annotation.Nonnull final UUID uuid) {
+      final Name name,
+      final Integer age,
+      final GenderEnum gender,
+      final BigDecimal height,
+      final Person legalGuardian,
+      final String ssn,
+      final Set<String> aliases,
+      final String telephoneNumber,
+      final String email,
+      final String trackingCode,
+      final UUID uuid) {
     this.name = name;
     this.age = age;
     this.gender = gender;
