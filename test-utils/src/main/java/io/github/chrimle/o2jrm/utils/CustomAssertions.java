@@ -236,6 +236,43 @@ public final class CustomAssertions extends CustomUtilityAssertions {
   }
 
   /**
+   * Asserts that the {@code constructor} is annotated with the {@code expectedAnnotation}.
+   *
+   * @param constructor to assert.
+   * @param expectedAnnotation which the {@code constructor} is expected to be annotated with.
+   * @return the expected {@link Annotation} instance of the {@code constructor}.
+   * @since 3.0.0
+   */
+  public static Annotation assertConstructorIsAnnotatedWith(
+      final Constructor<?> constructor, final Class<? extends Annotation> expectedAnnotation) {
+    return assertNotNull(
+        () -> constructor.getAnnotation(expectedAnnotation),
+        () ->
+            constructor.getName()
+                + " is NOT annotated with "
+                + expectedAnnotation.getCanonicalName());
+  }
+
+  /**
+   * Asserts that the {@code constructor} is <b>not</b> annotated with the {@code
+   * unexpectedAnnotation}.
+   *
+   * @param constructor to assert.
+   * @param unexpectedAnnotation which the {@code constructor} is expected <b>not</b> to be
+   *     annotated with.
+   * @since 3.0.0
+   */
+  public static void assertConstructorIsNotAnnotatedWith(
+      final Constructor<?> constructor, final Class<? extends Annotation> unexpectedAnnotation) {
+    assertNull(
+        () -> constructor.getAnnotation(unexpectedAnnotation),
+        () ->
+            constructor.getName()
+                + " IS annotated with "
+                + unexpectedAnnotation.getCanonicalName());
+  }
+
+  /**
    * Asserts that the {@code method} throws {@code expectedException} when invoked with the {@code
    * methodArguments}.
    *

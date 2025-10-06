@@ -44,6 +44,7 @@ public record RecordWithInnerEnums(
      ExampleInnerTwoEnum exampleInnerTwo,
      ExampleInnerThreeEnum exampleInnerThree) {
 
+  @JsonCreator
   public RecordWithInnerEnums(
       final ExampleInnerEnum exampleInner,
       final ExampleInnerTwoEnum exampleInnerTwo,

@@ -43,6 +43,7 @@ public record RecordWithInnerEnums(
      ExampleInnerThreeEnum exampleInnerThree)
     implements Serializable {
 
+  @JsonCreator
   public RecordWithInnerEnums(
       final ExampleInnerEnum exampleInner,
       final ExampleInnerTwoEnum exampleInnerTwo,

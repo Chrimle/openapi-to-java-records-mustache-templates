@@ -38,6 +38,7 @@ public record ExampleNullableRecord(
      Boolean field1)
     implements Serializable {
 
+  @JsonCreator
   public ExampleNullableRecord(
       final Boolean field1) {
     this.field1 = field1;

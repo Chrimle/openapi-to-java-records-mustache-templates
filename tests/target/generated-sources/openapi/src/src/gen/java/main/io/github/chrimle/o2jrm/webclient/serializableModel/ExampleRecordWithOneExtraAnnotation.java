@@ -44,6 +44,7 @@ public record ExampleRecordWithOneExtraAnnotation(
      Boolean field2)
     implements Serializable {
 
+  @JsonCreator
   public ExampleRecordWithOneExtraAnnotation(
       final Boolean field1,
       final Boolean field2) {

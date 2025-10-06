@@ -39,6 +39,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 public record ExampleRecord(
      Boolean field1) {
 
+  @JsonCreator
   public ExampleRecord(
       final Boolean field1) {
     this.field1 = field1;

@@ -59,6 +59,7 @@ public record RecordWithRequiredFieldsOfEachType(
      ExampleRecord field7,
      ExampleEnum field8) {
 
+  @JsonCreator
   public RecordWithRequiredFieldsOfEachType(
       final Boolean field1,
       final String field2,

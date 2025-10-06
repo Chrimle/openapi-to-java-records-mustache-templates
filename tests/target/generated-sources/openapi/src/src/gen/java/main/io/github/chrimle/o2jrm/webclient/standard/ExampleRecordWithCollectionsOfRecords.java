@@ -49,6 +49,7 @@ public record ExampleRecordWithCollectionsOfRecords(
      Set<ExampleRecord> optionalRecordSet,
      Set<ExampleRecord> requiredRecordSet) {
 
+  @JsonCreator
   public ExampleRecordWithCollectionsOfRecords(
       final List<ExampleRecord> optionalRecordList,
       final List<ExampleRecord> requiredRecordList,

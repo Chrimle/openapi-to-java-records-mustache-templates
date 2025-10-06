@@ -40,6 +40,7 @@ import jakarta.validation.Valid;
 public record ExampleRecordWithTwoExtraAnnotations(
      Boolean field1) {
 
+  @JsonCreator
   public ExampleRecordWithTwoExtraAnnotations(
       final Boolean field1) {
     this.field1 = field1;
