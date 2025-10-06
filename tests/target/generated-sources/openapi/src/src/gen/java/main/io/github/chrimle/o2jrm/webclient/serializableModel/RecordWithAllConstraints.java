@@ -91,6 +91,7 @@ public record RecordWithAllConstraints(
      BigDecimal bigDecimalMinimumAndMaximum)
     implements Serializable {
 
+  @JsonCreator
   public RecordWithAllConstraints(
       final String stringStandard,
       final String stringDefault,

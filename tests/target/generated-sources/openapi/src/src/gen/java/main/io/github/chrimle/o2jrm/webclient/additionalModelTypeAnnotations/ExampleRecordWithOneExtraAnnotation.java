@@ -45,6 +45,7 @@ public record ExampleRecordWithOneExtraAnnotation(
 @io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationTwo
      Boolean field2) {
 
+  @JsonCreator
   public ExampleRecordWithOneExtraAnnotation(
       final Boolean field1,
       final Boolean field2) {

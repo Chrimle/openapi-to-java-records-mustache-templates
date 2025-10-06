@@ -40,6 +40,7 @@ public record DeprecatedExampleRecord(
      Boolean field1)
     implements Serializable {
 
+  @JsonCreator
   public DeprecatedExampleRecord(
       final Boolean field1) {
     this.field1 = field1;

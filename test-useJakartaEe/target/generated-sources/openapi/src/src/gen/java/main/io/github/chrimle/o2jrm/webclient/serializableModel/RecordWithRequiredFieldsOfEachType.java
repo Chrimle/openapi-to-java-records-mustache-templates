@@ -61,6 +61,7 @@ public record RecordWithRequiredFieldsOfEachType(
      ExampleEnum field8)
     implements Serializable {
 
+  @JsonCreator
   public RecordWithRequiredFieldsOfEachType(
       final Boolean field1,
       final String field2,

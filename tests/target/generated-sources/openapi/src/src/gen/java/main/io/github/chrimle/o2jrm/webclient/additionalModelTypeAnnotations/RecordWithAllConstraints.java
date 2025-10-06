@@ -92,6 +92,7 @@ public record RecordWithAllConstraints(
      BigDecimal bigDecimalMaximum,
      BigDecimal bigDecimalMinimumAndMaximum) {
 
+  @JsonCreator
   public RecordWithAllConstraints(
       final String stringStandard,
       final String stringDefault,

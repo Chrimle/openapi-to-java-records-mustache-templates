@@ -51,6 +51,7 @@ public record ExampleRecordWithCollectionsOfRecords(
      Set<ExampleRecord> requiredRecordSet)
     implements Serializable {
 
+  @JsonCreator
   public ExampleRecordWithCollectionsOfRecords(
       final List<ExampleRecord> optionalRecordList,
       final List<ExampleRecord> requiredRecordList,

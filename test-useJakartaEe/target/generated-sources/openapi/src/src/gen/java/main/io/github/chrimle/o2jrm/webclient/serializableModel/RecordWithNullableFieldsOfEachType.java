@@ -64,6 +64,7 @@ public record RecordWithNullableFieldsOfEachType(
      ExampleNullableEnum field8)
     implements Serializable {
 
+  @JsonCreator
   public RecordWithNullableFieldsOfEachType(
       final Boolean field1,
       final String field2,

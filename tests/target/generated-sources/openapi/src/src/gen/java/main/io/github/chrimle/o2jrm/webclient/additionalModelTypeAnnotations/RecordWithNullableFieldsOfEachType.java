@@ -65,6 +65,7 @@ public record RecordWithNullableFieldsOfEachType(
      ExampleNullableRecord field7,
      ExampleNullableEnum field8) {
 
+  @JsonCreator
   public RecordWithNullableFieldsOfEachType(
       final Boolean field1,
       final String field2,

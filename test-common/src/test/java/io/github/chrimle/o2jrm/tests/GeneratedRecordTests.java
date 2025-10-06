@@ -16,6 +16,7 @@
 */
 package io.github.chrimle.o2jrm.tests;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
@@ -40,6 +41,7 @@ import io.github.chrimle.o2jrm.utils.CustomAssertions;
 import io.github.chrimle.o2jrm.utils.GeneratedRecordTestUtils;
 import java.io.*;
 import java.lang.annotation.Annotation;
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.math.BigDecimal;
@@ -200,6 +202,30 @@ public abstract class GeneratedRecordTests {
             final GeneratedSource generatedSource) {
           CustomAssertions.assertClassHasConstructor(
               generatedSource.getClassUnderTest(), generatedSource.fieldClasses());
+        }
+
+        @ParameterizedTest
+        @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+        @DisplayName("[okhttp-gson] Generated constructor is NOT annotated `@JsonCreator`")
+        void whenNotJacksonThenGeneratedConstructorIsNotAnnotatedJsonCreator(
+            final GeneratedSource generatedSource) {
+          Assumptions.assumeFalse(generatedSource.isSerializationLibraryJackson());
+          final Constructor<?> constructor =
+              CustomAssertions.assertClassHasConstructor(
+                  generatedSource.getClassUnderTest(), generatedSource.fieldClasses());
+          CustomAssertions.assertConstructorIsNotAnnotatedWith(constructor, JsonCreator.class);
+        }
+
+        @ParameterizedTest
+        @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+        @DisplayName("[webclient] Generated constructor IS annotated `@JsonCreator`")
+        void whenJacksonThenGeneratedConstructorIsAnnotatedJsonCreator(
+            final GeneratedSource generatedSource) {
+          Assumptions.assumeTrue(generatedSource.isSerializationLibraryJackson());
+          final Constructor<?> constructor =
+              CustomAssertions.assertClassHasConstructor(
+                  generatedSource.getClassUnderTest(), generatedSource.fieldClasses());
+          CustomAssertions.assertConstructorIsAnnotatedWith(constructor, JsonCreator.class);
         }
 
         @ParameterizedTest

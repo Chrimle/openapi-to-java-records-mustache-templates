@@ -38,6 +38,7 @@ public record ExampleRecord(
      Boolean field1)
     implements Serializable {
 
+  @JsonCreator
   public ExampleRecord(
       final Boolean field1) {
     this.field1 = field1;

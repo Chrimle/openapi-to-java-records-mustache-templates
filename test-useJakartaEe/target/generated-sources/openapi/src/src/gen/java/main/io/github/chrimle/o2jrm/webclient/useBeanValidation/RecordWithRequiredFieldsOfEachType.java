@@ -61,6 +61,7 @@ public record RecordWithRequiredFieldsOfEachType(
      @Valid @NotNull ExampleRecord field7,
      @NotNull ExampleEnum field8) {
 
+  @JsonCreator
   public RecordWithRequiredFieldsOfEachType(
       final Boolean field1,
       final String field2,
