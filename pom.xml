@@ -82,7 +82,7 @@
         <!-- / Dependency Versions -->
 
         <!-- Build Plugin Versions -->
-        <maven-dependency-plugin.version>3.8.1</maven-dependency-plugin.version>
+        <maven-dependency-plugin.version>3.9.0</maven-dependency-plugin.version>
         <maven-deploy-plugin.version>3.1.4</maven-deploy-plugin.version>
         <!-- / Build Plugin Versions -->
 
