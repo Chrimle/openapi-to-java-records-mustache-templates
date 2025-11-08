@@ -47,10 +47,10 @@ import jakarta.validation.Valid;
  * @param requiredRecordSet Another required field
  */
 public record ExampleRecordWithCollectionsOfRecords(
-     List<@Valid ExampleRecord> optionalRecordList,
-     @NotNull List<@Valid ExampleRecord> requiredRecordList,
-     Set<@Valid ExampleRecord> optionalRecordSet,
-     @NotNull Set<@Valid ExampleRecord> requiredRecordSet) {
+    List<@Valid ExampleRecord> optionalRecordList,
+    @NotNull List<@Valid ExampleRecord> requiredRecordList,
+    Set<@Valid ExampleRecord> optionalRecordSet,
+    @NotNull Set<@Valid ExampleRecord> requiredRecordSet) {
 
   @JsonCreator
   public ExampleRecordWithCollectionsOfRecords(

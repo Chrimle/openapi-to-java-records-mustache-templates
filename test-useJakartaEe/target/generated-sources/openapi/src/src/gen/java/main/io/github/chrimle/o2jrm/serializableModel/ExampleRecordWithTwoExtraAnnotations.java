@@ -45,7 +45,7 @@ import java.util.Set;
 @io.github.chrimle.o2jrm.annotations.TestExtraAnnotation
 @io.github.chrimle.o2jrm.annotations.TestExtraAnnotationTwo
 public record ExampleRecordWithTwoExtraAnnotations(
-     Boolean field1)
+    Boolean field1)
     implements Serializable {
 
   /** A set containing the names of all instance fields defined in this class. */

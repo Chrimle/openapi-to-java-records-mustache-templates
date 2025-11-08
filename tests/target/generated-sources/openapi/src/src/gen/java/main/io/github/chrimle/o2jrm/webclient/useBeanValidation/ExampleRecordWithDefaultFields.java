@@ -37,7 +37,7 @@ import javax.validation.Valid;
  * @param field1 a String field with a default value
  */
 public record ExampleRecordWithDefaultFields(
-     String field1) {
+    String field1) {
 
   @JsonCreator
   public ExampleRecordWithDefaultFields(

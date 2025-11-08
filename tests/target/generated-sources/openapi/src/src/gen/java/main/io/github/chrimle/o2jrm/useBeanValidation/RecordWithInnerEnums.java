@@ -48,9 +48,9 @@ import java.util.Set;
  * @param exampleInnerThree Example of another inner enum class with URI values
  */
 public record RecordWithInnerEnums(
-     ExampleInnerEnum exampleInner,
-     ExampleInnerTwoEnum exampleInnerTwo,
-     ExampleInnerThreeEnum exampleInnerThree) {
+    ExampleInnerEnum exampleInner,
+    ExampleInnerTwoEnum exampleInnerTwo,
+    ExampleInnerThreeEnum exampleInnerThree) {
 
   /** A set containing the names of all instance fields defined in this class. */
   public static final HashSet<String> openapiFields =

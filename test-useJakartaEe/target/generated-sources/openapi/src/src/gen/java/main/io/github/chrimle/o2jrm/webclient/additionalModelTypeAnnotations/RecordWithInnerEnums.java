@@ -41,9 +41,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @io.github.chrimle.o2jrm.annotations.TestAnnotationTwo
 @io.github.chrimle.o2jrm.annotations.TestAnnotationThree
 public record RecordWithInnerEnums(
-     ExampleInnerEnum exampleInner,
-     ExampleInnerTwoEnum exampleInnerTwo,
-     ExampleInnerThreeEnum exampleInnerThree) {
+    ExampleInnerEnum exampleInner,
+    ExampleInnerTwoEnum exampleInnerTwo,
+    ExampleInnerThreeEnum exampleInnerThree) {
 
   @JsonCreator
   public RecordWithInnerEnums(

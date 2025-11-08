@@ -38,7 +38,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @io.github.chrimle.o2jrm.annotations.TestAnnotationTwo
 @io.github.chrimle.o2jrm.annotations.TestAnnotationThree
 public record ExampleRecordWithDefaultFields(
-     String field1) {
+    String field1) {
 
   @JsonCreator
   public ExampleRecordWithDefaultFields(

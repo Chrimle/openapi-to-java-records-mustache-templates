@@ -51,10 +51,10 @@ import java.util.Set;
  * @param requiredRecordSet Another required field
  */
 public record ExampleRecordWithCollectionsOfRecords(
-     List<ExampleRecord> optionalRecordList,
-     List<ExampleRecord> requiredRecordList,
-     Set<ExampleRecord> optionalRecordSet,
-     Set<ExampleRecord> requiredRecordSet)
+    List<ExampleRecord> optionalRecordList,
+    List<ExampleRecord> requiredRecordList,
+    Set<ExampleRecord> optionalRecordSet,
+    Set<ExampleRecord> requiredRecordSet)
     implements Serializable {
 
   /** A set containing the names of all instance fields defined in this class. */

@@ -59,14 +59,14 @@ import java.util.Set;
 @io.github.chrimle.o2jrm.annotations.TestAnnotationTwo
 @io.github.chrimle.o2jrm.annotations.TestAnnotationThree
 public record RecordWithRequiredFieldsOfEachType(
-     Boolean field1,
-     String field2,
-     Integer field3,
-     BigDecimal field4,
-     List<Boolean> field5,
-     Set<Boolean> field6,
-     ExampleRecord field7,
-     ExampleEnum field8) {
+    Boolean field1,
+    String field2,
+    Integer field3,
+    BigDecimal field4,
+    List<Boolean> field5,
+    Set<Boolean> field6,
+    ExampleRecord field7,
+    ExampleEnum field8) {
 
   /** A set containing the names of all instance fields defined in this class. */
   public static final HashSet<String> openapiFields =

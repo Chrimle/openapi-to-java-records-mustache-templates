@@ -36,7 +36,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  * @param field1 a boolean field
  */
 public record ExampleNullableRecord(
-     Boolean field1)
+    Boolean field1)
     implements Serializable {
 
   @JsonCreator

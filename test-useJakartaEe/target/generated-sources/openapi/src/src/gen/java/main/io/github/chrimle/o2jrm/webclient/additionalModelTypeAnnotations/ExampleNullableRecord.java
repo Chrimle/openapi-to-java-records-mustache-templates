@@ -38,7 +38,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @io.github.chrimle.o2jrm.annotations.TestAnnotationTwo
 @io.github.chrimle.o2jrm.annotations.TestAnnotationThree
 public record ExampleNullableRecord(
-     Boolean field1) {
+    Boolean field1) {
 
   @JsonCreator
   public ExampleNullableRecord(

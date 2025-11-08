@@ -52,10 +52,10 @@ import java.util.Set;
  * @param requiredRecordSet Another required field
  */
 public record ExampleRecordWithCollectionsOfRecords(
-     List<@Valid ExampleRecord> optionalRecordList,
-     @NotNull List<@Valid ExampleRecord> requiredRecordList,
-     Set<@Valid ExampleRecord> optionalRecordSet,
-     @NotNull Set<@Valid ExampleRecord> requiredRecordSet) {
+    List<@Valid ExampleRecord> optionalRecordList,
+    @NotNull List<@Valid ExampleRecord> requiredRecordList,
+    Set<@Valid ExampleRecord> optionalRecordSet,
+    @NotNull Set<@Valid ExampleRecord> requiredRecordSet) {
 
   /** A set containing the names of all instance fields defined in this class. */
   public static final HashSet<String> openapiFields =
