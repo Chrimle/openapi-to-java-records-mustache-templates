@@ -48,10 +48,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @io.github.chrimle.o2jrm.annotations.TestAnnotationTwo
 @io.github.chrimle.o2jrm.annotations.TestAnnotationThree
 public record ExampleRecordWithCollectionsOfRecords(
-     List<ExampleRecord> optionalRecordList,
-     List<ExampleRecord> requiredRecordList,
-     Set<ExampleRecord> optionalRecordSet,
-     Set<ExampleRecord> requiredRecordSet) {
+    List<ExampleRecord> optionalRecordList,
+    List<ExampleRecord> requiredRecordList,
+    Set<ExampleRecord> optionalRecordSet,
+    Set<ExampleRecord> requiredRecordSet) {
 
   @JsonCreator
   public ExampleRecordWithCollectionsOfRecords(

@@ -54,14 +54,14 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @io.github.chrimle.o2jrm.annotations.TestAnnotationTwo
 @io.github.chrimle.o2jrm.annotations.TestAnnotationThree
 public record RecordWithRequiredFieldsOfEachType(
-     Boolean field1,
-     String field2,
-     Integer field3,
-     BigDecimal field4,
-     List<Boolean> field5,
-     Set<Boolean> field6,
-     ExampleRecord field7,
-     ExampleEnum field8) {
+    Boolean field1,
+    String field2,
+    Integer field3,
+    BigDecimal field4,
+    List<Boolean> field5,
+    Set<Boolean> field6,
+    ExampleRecord field7,
+    ExampleEnum field8) {
 
   @JsonCreator
   public RecordWithRequiredFieldsOfEachType(

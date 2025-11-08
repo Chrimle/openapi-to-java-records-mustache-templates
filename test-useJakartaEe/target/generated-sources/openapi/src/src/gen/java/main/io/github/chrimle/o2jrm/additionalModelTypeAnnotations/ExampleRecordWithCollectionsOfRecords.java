@@ -53,10 +53,10 @@ import java.util.Set;
 @io.github.chrimle.o2jrm.annotations.TestAnnotationTwo
 @io.github.chrimle.o2jrm.annotations.TestAnnotationThree
 public record ExampleRecordWithCollectionsOfRecords(
-     List<ExampleRecord> optionalRecordList,
-     List<ExampleRecord> requiredRecordList,
-     Set<ExampleRecord> optionalRecordSet,
-     Set<ExampleRecord> requiredRecordSet) {
+    List<ExampleRecord> optionalRecordList,
+    List<ExampleRecord> requiredRecordList,
+    Set<ExampleRecord> optionalRecordSet,
+    Set<ExampleRecord> requiredRecordSet) {
 
   /** A set containing the names of all instance fields defined in this class. */
   public static final HashSet<String> openapiFields =

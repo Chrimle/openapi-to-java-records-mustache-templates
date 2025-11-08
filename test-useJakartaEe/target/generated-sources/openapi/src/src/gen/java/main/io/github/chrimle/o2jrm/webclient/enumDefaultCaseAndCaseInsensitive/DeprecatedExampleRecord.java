@@ -37,7 +37,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  */
 @Deprecated
 public record DeprecatedExampleRecord(
-     Boolean field1) {
+    Boolean field1) {
 
   @JsonCreator
   public DeprecatedExampleRecord(

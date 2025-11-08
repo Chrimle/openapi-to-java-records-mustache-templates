@@ -39,7 +39,7 @@ import javax.validation.Valid;
  */
 @Deprecated
 public record DeprecatedExampleRecord(
-     Boolean field1) {
+    Boolean field1) {
 
   @JsonCreator
   public DeprecatedExampleRecord(

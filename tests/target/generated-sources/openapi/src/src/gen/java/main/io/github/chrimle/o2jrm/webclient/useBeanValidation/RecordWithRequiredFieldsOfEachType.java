@@ -53,14 +53,14 @@ import javax.validation.Valid;
  * @param field8 ExampleEnum.
  */
 public record RecordWithRequiredFieldsOfEachType(
-     @NotNull Boolean field1,
-     @NotNull String field2,
-     @NotNull Integer field3,
-     @NotNull BigDecimal field4,
-     @NotNull List<Boolean> field5,
-     @NotNull Set<Boolean> field6,
-     @Valid @NotNull ExampleRecord field7,
-     @NotNull ExampleEnum field8) {
+    @NotNull Boolean field1,
+    @NotNull String field2,
+    @NotNull Integer field3,
+    @NotNull BigDecimal field4,
+    @NotNull List<Boolean> field5,
+    @NotNull Set<Boolean> field6,
+    @Valid @NotNull ExampleRecord field7,
+    @NotNull ExampleEnum field8) {
 
   @JsonCreator
   public RecordWithRequiredFieldsOfEachType(

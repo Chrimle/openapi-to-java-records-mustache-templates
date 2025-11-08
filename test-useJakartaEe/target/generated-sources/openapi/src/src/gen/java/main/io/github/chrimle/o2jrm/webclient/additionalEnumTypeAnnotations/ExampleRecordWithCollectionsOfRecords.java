@@ -45,10 +45,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  * @param requiredRecordSet Another required field
  */
 public record ExampleRecordWithCollectionsOfRecords(
-     List<ExampleRecord> optionalRecordList,
-     List<ExampleRecord> requiredRecordList,
-     Set<ExampleRecord> optionalRecordSet,
-     Set<ExampleRecord> requiredRecordSet) {
+    List<ExampleRecord> optionalRecordList,
+    List<ExampleRecord> requiredRecordList,
+    Set<ExampleRecord> optionalRecordSet,
+    Set<ExampleRecord> requiredRecordSet) {
 
   @JsonCreator
   public ExampleRecordWithCollectionsOfRecords(

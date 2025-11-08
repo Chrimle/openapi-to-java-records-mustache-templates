@@ -51,14 +51,14 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  * @param field8 ExampleEnum.
  */
 public record RecordWithRequiredFieldsOfEachType(
-     Boolean field1,
-     String field2,
-     Integer field3,
-     BigDecimal field4,
-     List<Boolean> field5,
-     Set<Boolean> field6,
-     ExampleRecord field7,
-     ExampleEnum field8) {
+    Boolean field1,
+    String field2,
+    Integer field3,
+    BigDecimal field4,
+    List<Boolean> field5,
+    Set<Boolean> field6,
+    ExampleRecord field7,
+    ExampleEnum field8) {
 
   @JsonCreator
   public RecordWithRequiredFieldsOfEachType(

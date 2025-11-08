@@ -39,9 +39,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  * @param exampleInnerThree Example of another inner enum class with URI values
  */
 public record RecordWithInnerEnums(
-     ExampleInnerEnum exampleInner,
-     ExampleInnerTwoEnum exampleInnerTwo,
-     ExampleInnerThreeEnum exampleInnerThree)
+    ExampleInnerEnum exampleInner,
+    ExampleInnerTwoEnum exampleInnerTwo,
+    ExampleInnerThreeEnum exampleInnerThree)
     implements Serializable {
 
   @JsonCreator
