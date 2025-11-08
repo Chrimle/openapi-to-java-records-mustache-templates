@@ -4,7 +4,6 @@ changelog:
   exclude:
     labels:
       - meta
-      - doc
       - test
   categories:
     - title: New Features
@@ -16,3 +15,6 @@ changelog:
     - title: Dependency Updates
       labels:
         - dependencies
+    - title: Documentation Changes
+      labels:
+        - doc
