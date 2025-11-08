@@ -30,10 +30,10 @@
   or not, and being nullable or not.
   For unknown reasons, some classes are considered models, but others as freeFormObjects...
   }}{{#isModel}}{{^isFreeFormObject}}{{!
-    }} @Valid{{!
+    }}@Valid {{!
   }}{{/isFreeFormObject}}{{/isModel}}{{!
   }}{{^isModel}}{{#isFreeFormObject}}{{!
-    }} @Valid{{!
+    }}@Valid {{!
   }}{{/isFreeFormObject}}{{/isModel}}{{!
   }}{{^required}}{{!
     When not required, the field *may* be nullable according to openapi-generator-maven-plugin.
@@ -44,69 +44,69 @@
        as values are nullable by default.
     }}{{/isNullable}}{{!
     }}{{^isNullable}}{{!
-      }} @NotNull{{!
+      }}@NotNull {{!
     }}{{/isNullable}}{{!
   }}{{/required}}{{!
   }}{{#pattern}}{{!
-    }} @Pattern(regexp = "{{{.}}}"){{!
+    }}@Pattern(regexp = "{{{.}}}") {{!
   }}{{/pattern}}{{!
   }}{{#minLength}}{{!
     }}{{#maxLength}}{{!
-      }} @Size(min = {{minLength}}, max = {{maxLength}}){{!
+      }}@Size(min = {{minLength}}, max = {{maxLength}}) {{!
     }}{{/maxLength}}{{!
   }}{{/minLength}}{{!
   }}{{#minLength}}{{!
     }}{{^maxLength}}{{!
-      }} @Size(min = {{minLength}}){{!
+      }}@Size(min = {{minLength}}) {{!
     }}{{/maxLength}}{{!
   }}{{/minLength}}{{!
   }}{{^minLength}}{{!
     }}{{#maxLength}}{{!
-      }} @Size(max = {{maxLength}}){{!
+      }}@Size(max = {{maxLength}}) {{!
     }}{{/maxLength}}{{!
   }}{{/minLength}}{{!
   }}{{#minItems}}{{!
     }}{{#maxItems}}{{!
-      }} @Size(min = {{minItems}}, max = {{maxItems}}){{!
+      }}@Size(min = {{minItems}}, max = {{maxItems}}) {{!
     }}{{/maxItems}}{{!
   }}{{/minItems}}{{!
   }}{{#minItems}}{{!
     }}{{^maxItems}}{{!
-      }} @Size(min = {{minItems}}){{!
+      }}@Size(min = {{minItems}}) {{!
     }}{{/maxItems}}{{!
   }}{{/minItems}}{{!
   }}{{^minItems}}{{!
     }}{{#maxItems}}{{!
-      }} @Size(max = {{maxItems}}){{!
+      }}@Size(max = {{maxItems}}) {{!
     }}{{/maxItems}}{{!
   }}{{/minItems}}{{!
   }}{{#isInteger}}{{!
     }}{{#minimum}}{{!
-      }} @Min({{.}}){{!
+      }}@Min({{.}}) {{!
     }}{{/minimum}}{{!
     }}{{#maximum}}{{!
-      }} @Max({{.}}){{!
+      }}@Max({{.}}) {{!
     }}{{/maximum}}{{!
   }}{{/isInteger}}{{!
   }}{{#isLong}}{{!
     }}{{#minimum}}{{!
-      }} @Min({{.}}L){{!
+      }}@Min({{.}}L) {{!
     }}{{/minimum}}{{!
     }}{{#maximum}}{{!
-      }} @Max({{.}}L){{!
+      }}@Max({{.}}L) {{!
     }}{{/maximum}}{{!
   }}{{/isLong}}{{!
   }}{{^isInteger}}{{!
     }}{{^isLong}}{{!
       }}{{#minimum}}{{!
-        }} @DecimalMin({{#exclusiveMinimum}}value={{/exclusiveMinimum}}"{{minimum}}"{{#exclusiveMinimum}},inclusive=false{{/exclusiveMinimum}}){{!
+        }}@DecimalMin({{#exclusiveMinimum}}value={{/exclusiveMinimum}}"{{minimum}}"{{#exclusiveMinimum}},inclusive=false{{/exclusiveMinimum}}) {{!
       }}{{/minimum}}{{!
       }}{{#maximum}}{{!
-        }} @DecimalMax({{#exclusiveMaximum}}value={{/exclusiveMaximum}}"{{maximum}}"{{#exclusiveMaximum}},inclusive=false{{/exclusiveMaximum}}){{!
+        }}@DecimalMax({{#exclusiveMaximum}}value={{/exclusiveMaximum}}"{{maximum}}"{{#exclusiveMaximum}},inclusive=false{{/exclusiveMaximum}}) {{!
       }}{{/maximum}}{{!
     }}{{/isLong}}{{!
   }}{{/isInteger}}{{!
   }}{{#isEmail}}{{!
-    }} @Email{{!
+    }}@Email {{!
   }}{{/isEmail}}{{!
 }}{{/useBeanValidation}}
