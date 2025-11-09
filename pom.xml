@@ -5,7 +5,7 @@
 
     <groupId>io.github.chrimle</groupId>
     <artifactId>openapi-to-java-records-mustache-templates-parent</artifactId>
-    <version>3.0.1</version>
+    <version>3.1.0</version>
     <packaging>pom</packaging>
     <modules>
         <module>mustache-templates</module>
