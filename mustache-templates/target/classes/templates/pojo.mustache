@@ -50,7 +50,7 @@ import java.util.Set;
 }}public record {{classname}}(
     {{#vars}}{{!
     }}{{#vendorExtensions.x-field-extra-annotation}}{{!
-        }}{{vendorExtensions.x-field-extra-annotation}}
+        }}{{{.}}}
     {{/vendorExtensions.x-field-extra-annotation}}{{!
     }}{{>useBeanValidation}}{{{datatypeWithEnum}}} {{name}}{{^-last}},
     {{/-last}}{{/vars}}){{#serializableModel}}
