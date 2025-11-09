@@ -260,7 +260,7 @@ public record Person(
     this.height = height;
     this.legalGuardian = legalGuardian;
     this.ssn = ssn;
-    this.aliases = Objects.requireNonNullElse(aliases, new LinkedHashSet<>());
+    this.aliases = Objects.requireNonNullElseGet(aliases, () -> new LinkedHashSet<>());
     this.telephoneNumber = telephoneNumber;
     this.email = email;
     this.trackingCode = Objects.requireNonNullElse(trackingCode, "utm_source=default");
