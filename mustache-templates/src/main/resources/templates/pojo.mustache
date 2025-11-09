@@ -74,7 +74,11 @@ import java.util.Set;
   public {{classname}}(
       {{#vars}}final {{{datatypeWithEnum}}} {{name}}{{^-last}},
       {{/-last}}{{/vars}}) {
-{{#vars}}    this.{{name}} = {{^defaultValue}}{{name}}{{/defaultValue}}{{#defaultValue}}Objects.requireNonNullElse({{name}}, {{{.}}}){{/defaultValue}};
+{{#vars}}    this.{{name}} = {{^defaultValue}}{{name}};{{/defaultValue}}{{!
+                            }}{{#defaultValue}}{{!
+                                }}{{#isArray}}Objects.requireNonNullElseGet({{name}}, () -> {{{.}}});{{/isArray}}{{!
+                                }}{{^isArray}}Objects.requireNonNullElse({{name}}, {{{.}}});{{/isArray}}{{!
+                            }}{{/defaultValue}}
 {{/vars}}  }{{#generateBuilders}}{{>generateBuilders}}{{/generateBuilders}}{{!
     Generate inner enum classes
   }}{{#vars}}{{#isEnum}}
