@@ -74,10 +74,10 @@ public record ExampleRecordWithCollectionsOfRecords(
       final List<ExampleRecord> requiredRecordList,
       final Set<ExampleRecord> optionalRecordSet,
       final Set<ExampleRecord> requiredRecordSet) {
-    this.optionalRecordList = Objects.requireNonNullElse(optionalRecordList, new ArrayList<>());
-    this.requiredRecordList = Objects.requireNonNullElse(requiredRecordList, new ArrayList<>());
-    this.optionalRecordSet = Objects.requireNonNullElse(optionalRecordSet, new LinkedHashSet<>());
-    this.requiredRecordSet = Objects.requireNonNullElse(requiredRecordSet, new LinkedHashSet<>());
+    this.optionalRecordList = Objects.requireNonNullElseGet(optionalRecordList, () -> new ArrayList<>());
+    this.requiredRecordList = Objects.requireNonNullElseGet(requiredRecordList, () -> new ArrayList<>());
+    this.optionalRecordSet = Objects.requireNonNullElseGet(optionalRecordSet, () -> new LinkedHashSet<>());
+    this.requiredRecordSet = Objects.requireNonNullElseGet(requiredRecordSet, () -> new LinkedHashSet<>());
   }
 
   /**

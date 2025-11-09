@@ -77,8 +77,8 @@ public record RecordWithRequiredFieldsOfEachType(
     this.field2 = field2;
     this.field3 = field3;
     this.field4 = field4;
-    this.field5 = Objects.requireNonNullElse(field5, new ArrayList<>());
-    this.field6 = Objects.requireNonNullElse(field6, new LinkedHashSet<>());
+    this.field5 = Objects.requireNonNullElseGet(field5, () -> new ArrayList<>());
+    this.field6 = Objects.requireNonNullElseGet(field6, () -> new LinkedHashSet<>());
     this.field7 = field7;
     this.field8 = field8;
   }

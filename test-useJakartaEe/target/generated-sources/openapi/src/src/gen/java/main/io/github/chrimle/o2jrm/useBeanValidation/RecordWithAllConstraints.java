@@ -164,9 +164,9 @@ public record RecordWithAllConstraints(
     this.stringMinLength = stringMinLength;
     this.stringMaxLength = stringMaxLength;
     this.stringMinAndMaxLength = stringMinAndMaxLength;
-    this.arrayMinItems = Objects.requireNonNullElse(arrayMinItems, new ArrayList<>());
-    this.arrayMaxItems = Objects.requireNonNullElse(arrayMaxItems, new ArrayList<>());
-    this.arrayMinAndMaxItems = Objects.requireNonNullElse(arrayMinAndMaxItems, new ArrayList<>());
+    this.arrayMinItems = Objects.requireNonNullElseGet(arrayMinItems, () -> new ArrayList<>());
+    this.arrayMaxItems = Objects.requireNonNullElseGet(arrayMaxItems, () -> new ArrayList<>());
+    this.arrayMinAndMaxItems = Objects.requireNonNullElseGet(arrayMinAndMaxItems, () -> new ArrayList<>());
     this.intMinimum = intMinimum;
     this.intMaximum = intMaximum;
     this.intMinimumAndMaximum = intMinimumAndMaximum;
