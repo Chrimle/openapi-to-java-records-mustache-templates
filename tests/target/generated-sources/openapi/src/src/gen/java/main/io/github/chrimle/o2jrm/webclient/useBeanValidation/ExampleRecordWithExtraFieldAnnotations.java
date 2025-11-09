@@ -47,18 +47,18 @@ public record ExampleRecordWithExtraFieldAnnotations(
     Boolean oneAnnotationAsInline,
     @io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationOne
     Boolean oneAnnotationAsNewLine,
-    [@io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationOne]
+    @io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationOne
     Boolean oneAnnotationAsList,
-    [@io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationOne]
+    @io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationOne
     Boolean oneAnnotationAsArray,
     @io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationOne
 @io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationTwo
     Boolean twoAnnotationsAsNewLine,
-    [@io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationOne, @io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationTwo]
-    [@io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationOne, @io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationTwo]
+    @io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationOne
+    @io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationTwo
     Boolean twoAnnotationsAsList,
-    [@io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationOne, @io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationTwo]
-    [@io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationOne, @io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationTwo]
+    @io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationOne
+    @io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationTwo
     Boolean twoAnnotationsAsArray) {
 
   @JsonCreator
