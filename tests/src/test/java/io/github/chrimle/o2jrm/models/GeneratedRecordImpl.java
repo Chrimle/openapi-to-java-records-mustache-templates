@@ -46,6 +46,34 @@ public enum GeneratedRecordImpl implements GeneratedRecord, GeneratedClassImpl {
       false,
       List.of(),
       GeneratedField.of("field1", String.class).defaultValue("someDefaultValue").build()),
+  EXAMPLE_RECORD_WITH_EXTRA_FIELD_ANNOTATIONS(
+      "ExampleRecordWithExtraFieldAnnotations",
+      false,
+      List.of(),
+      GeneratedField.of("oneAnnotationAsInline", Boolean.class)
+          .withExtraFieldAnnotations(TestFieldExtraAnnotationOne.class)
+          .build(),
+      GeneratedField.of("oneAnnotationAsNewLine", Boolean.class)
+          .withExtraFieldAnnotations(TestFieldExtraAnnotationOne.class)
+          .build(),
+      GeneratedField.of("oneAnnotationAsList", Boolean.class)
+          .withExtraFieldAnnotations(TestFieldExtraAnnotationOne.class)
+          .build(),
+      GeneratedField.of("oneAnnotationAsArray", Boolean.class)
+          .withExtraFieldAnnotations(TestFieldExtraAnnotationOne.class)
+          .build(),
+      GeneratedField.of("twoAnnotationsAsNewLine", Boolean.class)
+          .withExtraFieldAnnotations(
+              TestFieldExtraAnnotationOne.class, TestFieldExtraAnnotationTwo.class)
+          .build(),
+      GeneratedField.of("twoAnnotationsAsList", Boolean.class)
+          .withExtraFieldAnnotations(
+              TestFieldExtraAnnotationOne.class, TestFieldExtraAnnotationTwo.class)
+          .build(),
+      GeneratedField.of("twoAnnotationsAsArray", Boolean.class)
+          .withExtraFieldAnnotations(
+              TestFieldExtraAnnotationOne.class, TestFieldExtraAnnotationTwo.class)
+          .build()),
   EXAMPLE_RECORD_WITH_ONE_EXTRA_ANNOTATION(
       "ExampleRecordWithOneExtraAnnotation",
       false,

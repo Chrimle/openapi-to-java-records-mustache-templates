@@ -160,6 +160,49 @@ components:
         field1:
           type: boolean
           description: a boolean field
+    ExampleRecordWithExtraFieldAnnotations:
+      type: object
+      description: Example of a Record with fields with `x-field-extra-annotations`.
+      properties:
+        oneAnnotationAsInline:
+          type: boolean
+          description: Setting ONE annotation, using inlined.
+          x-field-extra-annotation: '@io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationOne'
+        oneAnnotationAsNewLine:
+          type: boolean
+          description: Setting ONE annotation, using newlines.
+          x-field-extra-annotation: |-
+            @io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationOne
+        oneAnnotationAsList:
+          type: boolean
+          description: Setting ONE annotation, using list.
+          x-field-extra-annotation:
+            - '@io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationOne'
+        oneAnnotationAsArray:
+          type: boolean
+          description: Setting ONE annotation, using array.
+          x-field-extra-annotation: [
+            '@io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationOne'
+          ]
+        twoAnnotationsAsNewLine:
+          type: boolean
+          description: Setting TWO annotations, using newlines.
+          x-field-extra-annotation: |-
+            @io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationOne
+            @io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationTwo
+        twoAnnotationsAsList:
+          type: boolean
+          description: Setting TWO annotations, using list.
+          x-field-extra-annotation:
+            - '@io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationOne'
+            - '@io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationTwo'
+        twoAnnotationsAsArray:
+          type: boolean
+          description: Setting TWO annotations, using array.
+          x-field-extra-annotation: [
+            '@io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationOne',
+            '@io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationTwo'
+          ]
     ExampleRecordWithOneExtraAnnotation:
       type: object
       description: Example of a Record with an extra annotation
