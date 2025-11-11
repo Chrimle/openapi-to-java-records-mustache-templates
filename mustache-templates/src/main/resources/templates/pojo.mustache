@@ -114,7 +114,8 @@ import java.util.Set;
      *
      * @return the value of this enum.
      */
-{{#jackson}}    @JsonValue
+{{#jackson}}
+    @JsonValue
 {{/jackson}}
     public {{{dataType}}} getValue() {
       return value;
@@ -132,7 +133,8 @@ import java.util.Set;
      *     {@link #{{#allowableValues}}{{#enumVars}}{{#-last}}{{{name}}} }{{/-last}}{{/enumVars}}{{/allowableValues}} if no match is found.{{/enumUnknownDefaultCase}}{{^enumUnknownDefaultCase}}.
      * @throws IllegalArgumentException if no enum has a value matching the given value.{{/enumUnknownDefaultCase}}
      */
-{{#jackson}}    @JsonCreator
+{{#jackson}}
+    @JsonCreator
 {{/jackson}}
     public static {{datatypeWithEnum}} fromValue(final {{{dataType}}} value) {
       for (final {{datatypeWithEnum}} constant : {{datatypeWithEnum}}.values()) {
