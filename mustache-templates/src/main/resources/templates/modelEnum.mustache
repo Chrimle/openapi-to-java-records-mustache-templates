@@ -43,9 +43,10 @@ import java.io.IOException;
 
 {{/isUri}}{{>javadoc}}{{!
 }}{{#isDeprecated}}@Deprecated
-{{/isDeprecated}}{{!
-}}{{>additionalEnumTypeAnnotations}}{{!
-}}{{#gson}}@JsonAdapter({{{datatypeWithEnum}}}{{^datatypeWithEnum}}{{{classname}}}{{/datatypeWithEnum}}.Adapter.class)
+{{/isDeprecated}}
+{{>additionalEnumTypeAnnotations}}
+{{#gson}}
+@JsonAdapter({{{datatypeWithEnum}}}{{^datatypeWithEnum}}{{{classname}}}{{/datatypeWithEnum}}.Adapter.class)
 {{/gson}}{{!
 }}public enum {{classname}} {
   {{#allowableValues}}{{#enumVars}}{{!
