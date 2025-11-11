@@ -89,7 +89,8 @@ import java.io.IOException;
    *     #{{#allowableValues}}{{#enumVars}}{{#-last}}{{{name}}} }{{/-last}}{{/enumVars}}{{/allowableValues}} if no match is found.{{/enumUnknownDefaultCase}}{{^enumUnknownDefaultCase}}.
    * @throws IllegalArgumentException if no enum has a value matching the given value.{{/enumUnknownDefaultCase}}
    */
-{{#jackson}}  @JsonCreator
+{{#jackson}}
+  @JsonCreator
 {{/jackson}}
   public static {{classname}} fromValue(final {{{dataType}}} value) {
     for (final {{classname}} constant : {{classname}}.values()) {
