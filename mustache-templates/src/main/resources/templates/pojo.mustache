@@ -69,7 +69,8 @@ import java.util.Set;
               {{/-last}}{{/requiredVars}}));
 
 {{/gson}}
-{{#jackson}}  @JsonCreator
+{{#jackson}}
+  @JsonCreator
 {{/jackson}}
   public {{classname}}(
       {{#vars}}final {{{datatypeWithEnum}}} {{name}}{{^-last}},
