@@ -84,6 +84,7 @@
         <!-- Build Plugin Versions -->
         <maven-dependency-plugin.version>3.9.0</maven-dependency-plugin.version>
         <maven-deploy-plugin.version>3.1.4</maven-deploy-plugin.version>
+        <maven-jar-plugin.version>3.4.2</maven-jar-plugin.version>
         <!-- / Build Plugin Versions -->
 
         <!-- Publish to Maven Central Repository -->
@@ -270,6 +271,12 @@
                             </configuration>
                         </execution>
                     </executions>
+                </plugin>
+                <!-- Common maven-jar-plugin Version -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>${maven-jar-plugin.version}</version>
                 </plugin>
             </plugins>
         </pluginManagement>
