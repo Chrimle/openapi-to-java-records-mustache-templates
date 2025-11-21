@@ -234,6 +234,7 @@
     <build>
         <pluginManagement>
             <plugins>
+                <!-- Skips Deploying an Artifact -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-deploy-plugin</artifactId>
@@ -241,6 +242,34 @@
                     <configuration>
                         <skip>true</skip>
                     </configuration>
+                </plugin>
+                <!-- Retrieves and unpacks the Custom Mustache Templates (for tests) -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-dependency-plugin</artifactId>
+                    <version>${maven-dependency-plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>unpack-mustache-files</id>
+                            <phase>validate</phase>
+                            <goals>
+                                <goal>unpack</goal>
+                            </goals>
+                            <configuration>
+                                <artifactItems>
+                                    <artifactItem>
+                                        <groupId>io.github.chrimle</groupId>
+                                        <artifactId>openapi-to-java-records-mustache-templates</artifactId>
+                                        <version>${project.version}</version>
+                                        <type>jar</type>
+                                        <overWrite>true</overWrite>
+                                        <outputDirectory>${project.build.outputDirectory}</outputDirectory>
+                                        <includes>**/*.mustache</includes>
+                                    </artifactItem>
+                                </artifactItems>
+                            </configuration>
+                        </execution>
+                    </executions>
                 </plugin>
             </plugins>
         </pluginManagement>
