@@ -15,12 +15,6 @@
     <!-- / Project Information -->
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
-        <maven.compiler.release>17</maven.compiler.release>
-        <maven.plugin.validation>VERBOSE</maven.plugin.validation>
-
         <!-- Overridden Dependencies -->
         <hibernate-validator.version>8.0.2.Final</hibernate-validator.version>
 
