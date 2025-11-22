@@ -164,7 +164,6 @@
             <plugin>
                 <groupId>org.openapitools</groupId>
                 <artifactId>openapi-generator-maven-plugin</artifactId>
-                <version>${openapi-generator-maven-plugin.version}</version>
                 <executions>
                     <execution>
                         <id>generate-${execution.standard}</id>
