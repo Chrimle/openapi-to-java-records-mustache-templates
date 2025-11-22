@@ -141,6 +141,20 @@
 
     <dependencyManagement>
         <dependencies>
+            <!-- Sub-Modules -->
+            <dependency>
+                <groupId>io.github.chrimle</groupId>
+                <artifactId>openapi-to-java-records-mustache-templates-test-utils</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.github.chrimle</groupId>
+                <artifactId>openapi-to-java-records-mustache-templates-test-common</artifactId>
+                <version>${project.version}</version>
+                <classifier>tests</classifier>
+                <scope>test</scope>
+            </dependency>
+            <!-- / Sub-Modules -->
             <dependency>
                 <groupId>org.junit</groupId>
                 <artifactId>junit-bom</artifactId>
