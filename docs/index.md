@@ -301,7 +301,7 @@ Refer to the test-cases for generated classes, as these list supported plugin `<
 Specification-properties. The unit-tests could clarify expected behaviors, and the OpenAPI Specification could also
 provide concrete examples and use-cases. For reference:
 
-- [OpenAPI Specification](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/blob/main/tests/src/main/resources/api.yaml)<br/>
+- [OpenAPI Specification](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/blob/main/test-common/src/main/resources/api.yaml)<br/>
   Used as the input schema to generate **all** classes used in testing.
 - [Maven plugin executions](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/blob/main/tests/pom.xml#L139)<br/>
   Generates classes from the OpenAPI spec, with different `openapi-generator-maven-plugin` configuration options. The
