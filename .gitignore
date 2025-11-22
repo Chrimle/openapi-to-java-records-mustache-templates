@@ -108,6 +108,7 @@ test-useJakartaEe/target/jacoco.exec
 
 test-common/target/site/jacoco
 test-common/target/jacoco.exec
+test-common/target/classes/api.yaml
 
 # Ignore Imported Files
 tests/target/classes/templates

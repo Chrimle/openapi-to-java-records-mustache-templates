@@ -26,7 +26,7 @@
         <generateModelDocumentation.default>false</generateModelDocumentation.default>
         <generatorName.default>java</generatorName.default>
         <sourceFolder.default>src/gen/java/main</sourceFolder.default>
-        <inputSpec.default>${project.basedir}/src/main/resources/api.yaml</inputSpec.default>
+        <inputSpec.default>${project.build.outputDirectory}/api.yaml</inputSpec.default>
         <templateDirectory.default>${project.build.outputDirectory}/templates</templateDirectory.default>
         <!-- Default `configuration.configOptions`-option values -->
         <output.default>target/generated-sources/openapi/src</output.default>
