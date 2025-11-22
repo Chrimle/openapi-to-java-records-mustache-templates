@@ -60,10 +60,6 @@
         <maven.compiler.release>17</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <!-- Build Plugin Versions -->
-        <maven-resources-plugin.version>3.3.1</maven-resources-plugin.version>
-        <!-- / Build Plugin Versions -->
-
         <!-- Location of updated `.mustache` template files -->
         <original-mustache-templates-directory>src/main/resources/templates</original-mustache-templates-directory>
         <updated-mustache-templates-directory>${project.build.outputDirectory}/templates</updated-mustache-templates-directory>
@@ -73,9 +69,7 @@
         <plugins>
             <!-- Propagate Maven Project properties to any variables, such as '${project.version}' -->
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
-                <version>${maven-resources-plugin.version}</version>
                 <executions>
                     <execution>
                         <id>propagate-maven-project-properties</id>
