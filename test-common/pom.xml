@@ -14,15 +14,6 @@
     <artifactId>openapi-to-java-records-mustache-templates-test-common</artifactId>
     <!-- / Project Information -->
 
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
-        <maven.compiler.release>17</maven.compiler.release>
-        <maven.plugin.validation>VERBOSE</maven.plugin.validation>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.junit.jupiter</groupId>

@@ -55,11 +55,6 @@
     </distributionManagement>
 
     <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
-        <maven.compiler.release>17</maven.compiler.release>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
         <!-- Location of updated `.mustache` template files -->
         <original-mustache-templates-directory>src/main/resources/templates</original-mustache-templates-directory>
         <updated-mustache-templates-directory>${project.build.outputDirectory}/templates</updated-mustache-templates-directory>
