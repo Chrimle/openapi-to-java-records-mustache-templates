@@ -20,7 +20,6 @@ package io.github.chrimle.o2jrm.webclient.generateBuilders;
 
 import java.util.Objects;
 import java.util.Arrays;
-import java.util.Locale;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
