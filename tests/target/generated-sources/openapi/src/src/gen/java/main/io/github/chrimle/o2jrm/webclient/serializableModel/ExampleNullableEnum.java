@@ -20,7 +20,6 @@ package io.github.chrimle.o2jrm.webclient.serializableModel;
 
 import java.util.Objects;
 import java.util.Arrays;
-import java.util.Locale;
 import java.io.Serializable;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;

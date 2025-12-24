@@ -19,7 +19,6 @@
 package io.github.chrimle.o2jrm.enumUnknownDefaultCase;
 
 import java.util.Objects;
-import java.util.Locale;
 import com.google.gson.annotations.SerializedName;
 
 import com.google.gson.JsonElement;
