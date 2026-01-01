@@ -37,7 +37,7 @@ The mustache templates are best acquired by importing the project as a dependenc
 <dependency>
     <groupId>io.github.chrimle</groupId>
     <artifactId>openapi-to-java-records-mustache-templates</artifactId>
-    <version>3.2.0</version>
+    <version>3.2.1</version>
 </dependency>
 ```
 It is **strongly recommended** to import the project as a dependency. It has officially been published to:
@@ -551,7 +551,7 @@ If the problem you are facing has not already been reported, please [open an iss
       same "printed page" as the copyright notice for easier
       identification within third-party archives.
 
-   Copyright 2024-2025 Chrimle
+   Copyright 2024-2026 Chrimle
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
