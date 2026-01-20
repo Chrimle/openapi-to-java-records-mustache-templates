@@ -13,7 +13,7 @@
 
     <!-- === Project Coordinates === -->
     <artifactId>openapi-to-java-records-mustache-templates-parent</artifactId>
-    <version>3.2.1</version>
+    <version>3.3.0</version>
     <packaging>pom</packaging>
 
     <!-- === Sub Modules === -->
@@ -71,7 +71,7 @@
         <maven.plugin.validation>VERBOSE</maven.plugin.validation>
 
         <!-- Dependency Versions -->
-        <openapi-generator-maven-plugin.version>7.18.0</openapi-generator-maven-plugin.version>
+        <openapi-generator-maven-plugin.version>7.19.0</openapi-generator-maven-plugin.version>
         <gson.version>2.13.2</gson.version>
         <jackson-databind-nullable.version>0.2.8</jackson-databind-nullable.version>
         <spotbugs-annotations.version>4.9.8</spotbugs-annotations.version>
