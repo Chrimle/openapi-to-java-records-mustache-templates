@@ -24,6 +24,7 @@ jobs:
     strategy:
       matrix:
         openapi-generator-maven-plugin-version: [
+          7.20.0,
           7.19.0,
           7.18.0,
           7.17.0,
