@@ -311,6 +311,18 @@
                             </configOptions>
                         </configuration>
                     </execution>
+                    <execution>
+                        <id>generate-spring-useSealedOneOfInterfaces</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <modelPackage>${modelPackage.default}.useSealedOneOfInterfaces</modelPackage>
+                            <configOptions>
+                                <useSealedOneOfInterfaces>true</useSealedOneOfInterfaces>
+                            </configOptions>
+                        </configuration>
+                    </execution>
                 </executions>
             </plugin>
             <plugin>

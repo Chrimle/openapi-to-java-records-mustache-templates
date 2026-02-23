@@ -214,6 +214,8 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
+                            <generateApis>false</generateApis>
+                            <apiPackage>${modelPackage.default}.${execution.webclient.standard}</apiPackage>
                             <modelPackage>${modelPackage.default}.${execution.webclient.standard}</modelPackage>
                             <library>webclient</library>
                         </configuration>
@@ -425,6 +427,31 @@
                             <configOptions>
                                 <enumUnknownDefaultCase>true</enumUnknownDefaultCase>
                                 <useEnumCaseInsensitive>true</useEnumCaseInsensitive>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>generate-useSealedOneOfInterfaces</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <modelPackage>${modelPackage.default}.useSealedOneOfInterfaces</modelPackage>
+                            <configOptions>
+                                <useSealedOneOfInterfaces>true</useSealedOneOfInterfaces>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>generate-webclient.useSealedOneOfInterfaces</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <modelPackage>${modelPackage.default}.webclient.useSealedOneOfInterfaces</modelPackage>
+                            <library>webclient</library>
+                            <configOptions>
+                                <useSealedOneOfInterfaces>true</useSealedOneOfInterfaces>
                             </configOptions>
                         </configuration>
                     </execution>

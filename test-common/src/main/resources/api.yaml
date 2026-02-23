@@ -16,6 +16,12 @@ paths:
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ParentOneOfRecord"
+
+
 
 components:
   schemas:
@@ -137,6 +143,21 @@ components:
           uniqueItems: true
           items:
             $ref: '#/components/schemas/ExampleRecord'
+    # The oneOf implementation
+    ParentOneOfRecord:
+      title: ParentOneOfRecord
+      description: A schema that must be either a FirstOneOfRecord-record or a SecondOneOfRecord-record.
+      oneOf:
+        - type: object
+          title: FirstOneOfRecord
+          properties:
+            field1:
+              type: boolean
+        - type: object
+          title: SecondOneOfRecord
+          properties:
+            field1:
+              type: boolean
     ExampleRecordOneImplements:
       type: object
       description: Example of an Record which implements an interface.
