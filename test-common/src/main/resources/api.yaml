@@ -137,6 +137,12 @@ components:
           uniqueItems: true
           items:
             $ref: '#/components/schemas/ExampleRecord'
+    # The oneOf implementation
+    FlexibleRecord:
+      description: A schema that must be either a standard record or a null record.
+      oneOf:
+        - $ref: '#/components/schemas/ExampleRecord'
+        - $ref: '#/components/schemas/ExampleNullableRecord'
     ExampleRecord:
       type: object
       description: Example of a Record
