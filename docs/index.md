@@ -1,6 +1,6 @@
-[![Java CI with Maven](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/actions/workflows/maven.yml/badge.svg)](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/actions/workflows/maven.yml)
-[![Maven Package](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/actions/workflows/maven-publish.yml/badge.svg)](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/actions/workflows/maven-publish.yml)
-[![pages-build-deployment](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/actions/workflows/pages/pages-build-deployment)
+![Maven Central Version](https://img.shields.io/maven-central/v/io.github.chrimle/openapi-to-java-records-mustache-templates?style=flat&link=https%3A%2F%2Fcentral.sonatype.com%2Fartifact%2Fio.github.chrimle%2Fopenapi-to-java-records-mustache-templates)
+[![MvnRepository](https://badges.mvnrepository.com/badge/io.github.chrimle/openapi-to-java-records-mustache-templates/badge.svg?type=rank&label=MvnRepository)](https://mvnrepository.com/artifact/io.github.chrimle/openapi-to-java-records-mustache-templates)
+
 
 Project containing [Mustache-templates](https://mustache.github.io/) used by [openapi-generator-maven-plugin](https://github.com/OpenAPITools/openapi-generator/blob/master/modules/openapi-generator-maven-plugin/README.md) to generate [Java Records](https://docs.oracle.com/en/java/javase/17/language/records.html) from [OpenAPI Specifications](https://swagger.io/specification/).
 
