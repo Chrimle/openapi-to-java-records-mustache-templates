@@ -9,8 +9,7 @@ Project containing [Mustache-templates](https://mustache.github.io/) used by [op
 This project contains the **mustache templates**.
 
 ## Apache License 2.0
-Starting with project version **2.0.0**, the project is licensed under the **Apache License 2.0**.
-> Prior to version **2.0.0**, the project was licensed under the **MIT License**. See [License](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/blob/main/LICENSE).
+This project is licensed under the **[Apache License 2.0](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/blob/main/LICENSE)**.
 
 ## Support the Project
 If you find this project useful, please ⭐ **Star** ⭐ it and share it with others!
