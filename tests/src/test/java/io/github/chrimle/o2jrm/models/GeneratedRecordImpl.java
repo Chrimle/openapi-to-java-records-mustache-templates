@@ -199,6 +199,17 @@ public enum GeneratedRecordImpl implements GeneratedRecord, GeneratedClassImpl {
   /**
    * {@inheritDoc}
    *
+   * @return the collection of {@code interface}-classes to implement, or an empty collection if
+   *     none.
+   */
+  @Override
+  public List<Class<?>> getImplementsInterfaces() {
+    throw new UnsupportedOperationException("x-implements does not support records yet!");
+  }
+
+  /**
+   * {@inheritDoc}
+   *
    * @return the collection of generatedFields.
    */
   @Override
