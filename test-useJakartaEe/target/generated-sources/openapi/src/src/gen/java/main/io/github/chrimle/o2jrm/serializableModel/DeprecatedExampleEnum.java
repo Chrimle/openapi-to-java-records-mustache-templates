@@ -36,7 +36,7 @@ import java.io.IOException;
  */
 @Deprecated
 @JsonAdapter(DeprecatedExampleEnum.Adapter.class)
-public enum DeprecatedExampleEnum {
+public enum DeprecatedExampleEnum implements Serializable {
   ENUM1("ENUM1"),
   ENUM2("ENUM2"),
   ENUM3("ENUM3");

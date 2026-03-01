@@ -42,6 +42,15 @@ public interface GeneratedClass {
   boolean isDeprecated();
 
   /**
+   * Returns the collection of {@code interface}-classes which are expected to be implemented by
+   * this class, set by the {@code x-implements} property.
+   *
+   * @return the collection of {@code interface}-classes to implement, or an empty collection if
+   *     none.
+   */
+  List<Class<?>> getImplementsInterfaces();
+
+  /**
    * Whether the class is an {@code enum} class. If {@code false}, the class is a {@code record}
    * class.
    *

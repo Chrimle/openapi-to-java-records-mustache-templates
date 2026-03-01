@@ -47,7 +47,7 @@ import java.io.IOException;
 }}{{>additionalEnumTypeAnnotations}}{{!
 }}{{#gson}}@JsonAdapter({{{datatypeWithEnum}}}{{^datatypeWithEnum}}{{{classname}}}{{/datatypeWithEnum}}.Adapter.class)
 {{/gson}}{{!
-}}public enum {{classname}} {
+}}public enum {{classname}}{{#vendorExtensions.x-implements}}{{#-first}} implements {{{.}}}{{/-first}}{{^-first}}, {{{.}}}{{/-first}}{{/vendorExtensions.x-implements}} {
   {{#allowableValues}}{{#enumVars}}{{!
 }}{{#enumDescription}}{{!
 }}/**

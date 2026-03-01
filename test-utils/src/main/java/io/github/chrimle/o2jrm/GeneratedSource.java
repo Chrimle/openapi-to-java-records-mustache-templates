@@ -96,6 +96,14 @@ public class GeneratedSource {
     return generatedClass.isDeprecated();
   }
 
+  public List<Class<?>> getXImplementsInterfaces() {
+    return generatedClass.getImplementsInterfaces();
+  }
+
+  public boolean hasXImplements() {
+    return !getXImplementsInterfaces().isEmpty();
+  }
+
   public boolean hasExtraAnnotations() {
     return generatedClass.hasExtraAnnotations();
   }

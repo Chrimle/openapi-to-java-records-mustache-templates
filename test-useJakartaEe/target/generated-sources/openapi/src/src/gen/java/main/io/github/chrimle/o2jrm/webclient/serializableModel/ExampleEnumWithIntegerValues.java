@@ -30,7 +30,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 /**
  * Example of an Enum with integer values
  */
-public enum ExampleEnumWithIntegerValues {
+public enum ExampleEnumWithIntegerValues implements Serializable {
   NUMBER_100(100),
   NUMBER_200(200),
   NUMBER_300(300),
