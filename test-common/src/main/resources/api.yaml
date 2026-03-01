@@ -236,6 +236,15 @@ components:
           type: string
           description: a String field with a default value
           default: someDefaultValue
+    ExampleImplementsEnum:
+      type: string
+      description: Example of an Enum which implements an interface.
+      enum:
+        - ENUM1
+        - ENUM2
+        - ENUM3
+      x-implements:
+        ExampleInterface
     ExampleEnum:
       type: string
       description: Example of an Enum
