@@ -33,7 +33,7 @@ import java.io.IOException;
  * Example of an Enum
  */
 @JsonAdapter(ExampleEnum.Adapter.class)
-public enum ExampleEnum {
+public enum ExampleEnum implements Serializable {
   /**
    * Some description of ENUM1
    */

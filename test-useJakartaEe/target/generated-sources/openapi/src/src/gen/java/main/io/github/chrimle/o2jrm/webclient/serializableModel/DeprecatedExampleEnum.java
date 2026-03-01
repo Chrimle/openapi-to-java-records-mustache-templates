@@ -33,7 +33,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * @deprecated
  */
 @Deprecated
-public enum DeprecatedExampleEnum {
+public enum DeprecatedExampleEnum implements Serializable {
   ENUM1("ENUM1"),
   ENUM2("ENUM2"),
   ENUM3("ENUM3");

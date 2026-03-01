@@ -16,28 +16,29 @@
  *
  */
 
-package io.github.chrimle.o2jrm.webclient.serializableModel;
+package io.github.chrimle.o2jrm.webclient.useBeanValidation;
 
 import java.util.Objects;
 import java.util.Arrays;
-import java.io.Serializable;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * Example of an Enum which implements an interface.
+ * Example of an Enum which implements two interfaces.
  */
-public enum ExampleImplementsEnum implements io.github.chrimle.o2jrm.interfaces.TestInterfaceOne, Serializable {
+public enum ExampleTwoImplementsEnum implements io.github.chrimle.o2jrm.interfaces.TestInterfaceOne, io.github.chrimle.o2jrm.interfaces.TestInterfaceTwo {
   ENUM1("ENUM1"),
   ENUM2("ENUM2"),
   ENUM3("ENUM3");
 
   private final String value;
 
-  ExampleImplementsEnum(final String value) {
+  ExampleTwoImplementsEnum(final String value) {
     this.value = value;
   }
 
@@ -58,12 +59,12 @@ public enum ExampleImplementsEnum implements io.github.chrimle.o2jrm.interfaces.
    * returned, by the order they are declared.
    *
    * @param value of the enum.
-   * @return a {@link ExampleImplementsEnum } with the matching value.
+   * @return a {@link ExampleTwoImplementsEnum } with the matching value.
    * @throws IllegalArgumentException if no enum has a value matching the given value.
    */
   @JsonCreator
-  public static ExampleImplementsEnum fromValue(final String value) {
-    for (final ExampleImplementsEnum constant : ExampleImplementsEnum.values()) {
+  public static ExampleTwoImplementsEnum fromValue(final String value) {
+    for (final ExampleTwoImplementsEnum constant : ExampleTwoImplementsEnum.values()) {
       if (constant.getValue().equals(value)) {
         return constant;
       }

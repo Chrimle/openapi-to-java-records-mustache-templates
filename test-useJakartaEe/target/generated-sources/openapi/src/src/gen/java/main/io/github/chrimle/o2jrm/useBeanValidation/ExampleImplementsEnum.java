@@ -16,11 +16,12 @@
  *
  */
 
-package io.github.chrimle.o2jrm.serializableModel;
+package io.github.chrimle.o2jrm.useBeanValidation;
 
 import java.util.Objects;
 import com.google.gson.annotations.SerializedName;
-import java.io.Serializable;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
@@ -33,7 +34,7 @@ import java.io.IOException;
  * Example of an Enum which implements an interface.
  */
 @JsonAdapter(ExampleImplementsEnum.Adapter.class)
-public enum ExampleImplementsEnum implements io.github.chrimle.o2jrm.interfaces.TestInterfaceOne, Serializable {
+public enum ExampleImplementsEnum implements io.github.chrimle.o2jrm.interfaces.TestInterfaceOne {
   ENUM1("ENUM1"),
   ENUM2("ENUM2"),
   ENUM3("ENUM3");

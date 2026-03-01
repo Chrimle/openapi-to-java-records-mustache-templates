@@ -30,7 +30,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 /**
  * Example of an Enum
  */
-public enum ExampleNullableEnum {
+public enum ExampleNullableEnum implements Serializable {
   /**
    * Some description of ENUM1
    */

@@ -34,7 +34,7 @@ import java.io.IOException;
  * Example of an Enum which implements two interfaces.
  */
 @JsonAdapter(ExampleTwoImplementsEnum.Adapter.class)
-public enum ExampleTwoImplementsEnum {
+public enum ExampleTwoImplementsEnum implements io.github.chrimle.o2jrm.interfaces.TestInterfaceOne, io.github.chrimle.o2jrm.interfaces.TestInterfaceTwo {
   ENUM1("ENUM1"),
   ENUM2("ENUM2"),
   ENUM3("ENUM3");
