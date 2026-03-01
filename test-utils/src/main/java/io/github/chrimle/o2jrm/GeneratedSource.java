@@ -108,6 +108,10 @@ public class GeneratedSource {
     return generatedClass.hasExtraAnnotations();
   }
 
+  public boolean isInnerEnum() {
+    return generatedClass.isInnerEnum();
+  }
+
   public List<Class<? extends Annotation>> getExtraAnnotations() {
     return generatedClass.getExtraAnnotations();
   }

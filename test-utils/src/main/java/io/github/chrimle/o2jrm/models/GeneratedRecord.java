@@ -28,4 +28,14 @@ public interface GeneratedRecord extends GeneratedClass {
   default boolean isEnum() {
     return false;
   }
+
+  /**
+   * {@inheritDoc}
+   *
+   * @return whether the class is an <strong>inner</strong> {@code enum} class.
+   */
+  @Override
+  default boolean isInnerEnum() {
+    return false;
+  }
 }

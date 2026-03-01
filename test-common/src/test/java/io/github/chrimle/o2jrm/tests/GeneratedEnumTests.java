@@ -40,6 +40,7 @@ import io.github.chrimle.o2jrm.tests.GeneratedEnumTests.OpenAPITests.SchemaTests
 import io.github.chrimle.o2jrm.utils.CustomAssertions;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.io.Serializable;
 import java.io.StringReader;
 import java.lang.reflect.Method;
 import java.net.URI;
@@ -597,6 +598,59 @@ public abstract class GeneratedEnumTests {
                 generatedSource.getClassUnderTest(), TestAnnotationTwo.class);
             CustomAssertions.assertClassIsAnnotatedWith(
                 generatedSource.getClassUnderTest(), TestAnnotationThree.class);
+          }
+        }
+      }
+
+      @Nested
+      @DisplayName("Testing `<serializableModel>`")
+      class SerializableModelTests {
+
+        @Nested
+        @DisplayName("Testing `<serializableModel>false</serializableModel>`")
+        class SerializableModelFalseTests {
+
+          @ParameterizedTest
+          @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+          @DisplayName("Generated `enum` does NOT implement `Serializable`")
+          void
+              whenConfigOptionSerializableModelIsFalseThenGeneratedEnumClassDoesNotImplementSerializable(
+                  final GeneratedSource generatedSource) {
+            Assumptions.assumeFalse(generatedSource.serializableModel());
+
+            CustomAssertions.assertClassDoesNotImplementInterface(
+                generatedSource.getClassUnderTest(), Serializable.class);
+          }
+        }
+
+        @Nested
+        @DisplayName("Testing `<serializableModel>true</serializableModel>`")
+        class SerializableModelTrueTests {
+
+          @ParameterizedTest
+          @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+          @DisplayName("Generated OUTER `enum` implement `Serializable`")
+          void
+              whenConfigOptionSerializableModelIsTrueThenOuterGeneratedEnumClassImplementsSerializable(
+                  final GeneratedSource generatedSource) {
+            Assumptions.assumeTrue(generatedSource.serializableModel());
+            Assumptions.assumeFalse(generatedSource.isInnerEnum());
+
+            CustomAssertions.assertClassImplementsInterface(
+                generatedSource.getClassUnderTest(), Serializable.class);
+          }
+
+          @ParameterizedTest
+          @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+          @DisplayName("Generated INNER `enum` does NOT implement `Serializable`")
+          void
+              whenConfigOptionSerializableModelIsTrueThenInnerGeneratedEnumClassDoesNotImplementsSerializable(
+                  final GeneratedSource generatedSource) {
+            Assumptions.assumeTrue(generatedSource.serializableModel());
+            Assumptions.assumeTrue(generatedSource.isInnerEnum());
+
+            CustomAssertions.assertClassDoesNotImplementInterface(
+                generatedSource.getClassUnderTest(), Serializable.class);
           }
         }
       }
