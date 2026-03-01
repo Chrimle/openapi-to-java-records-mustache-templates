@@ -244,7 +244,17 @@ components:
         - ENUM2
         - ENUM3
       x-implements:
-        ExampleInterface
+        - io.github.chrimle.o2jrm.interfaces.TestInterfaceOne
+    ExampleTwoImplementsEnum:
+      type: string
+      description: Example of an Enum which implements two interfaces.
+      enum:
+        - ENUM1
+        - ENUM2
+        - ENUM3
+      x-implements:
+        - io.github.chrimle.o2jrm.interfaces.TestInterfaceOne
+        - io.github.chrimle.o2jrm.interfaces.TestInterfaceTwo
     ExampleEnum:
       type: string
       description: Example of an Enum
