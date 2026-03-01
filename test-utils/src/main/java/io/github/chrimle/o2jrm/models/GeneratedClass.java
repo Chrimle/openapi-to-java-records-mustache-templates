@@ -59,6 +59,14 @@ public interface GeneratedClass {
   boolean isEnum();
 
   /**
+   * Whether the class is an <strong>inner</strong> {@code enum} (defined within another class,
+   * rather than a standalone class).
+   *
+   * @return whether the class is an <strong>inner</strong> {@code enum} class.
+   */
+  boolean isInnerEnum();
+
+  /**
    * Whether the class has extra {@link Annotation}s, set by the {@code x-class-extra-annotation}
    * property.
    *

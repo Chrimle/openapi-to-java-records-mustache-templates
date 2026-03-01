@@ -35,6 +35,16 @@ public interface GeneratedEnum extends GeneratedClass {
   /**
    * {@inheritDoc}
    *
+   * @return whether the class is an <strong>inner</strong> {@code enum} class.
+   */
+  @Override
+  default boolean isInnerEnum() {
+    return getSimpleClassName().contains("$");
+  }
+
+  /**
+   * {@inheritDoc}
+   *
    * @return whether the class has extra annotations.
    */
   @Override
