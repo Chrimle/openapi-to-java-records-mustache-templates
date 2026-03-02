@@ -23,15 +23,13 @@ If you have feedback or suggestions, please share it in either [Discussions](htt
 > While _direct_ code contributions are disallowed, your feedback is the most valuable contribution - please share it!
 
 # Getting Started
-The mustache templates are best acquired by importing the project as a dependency.
-
 > [!TIP]
-> If you want a more detailed guide with simple examples to get started, check out the Wiki-page 
+If you want a more detailed guide with simple examples to get started, check out the Wiki-page
 > [Beginner Guide (Step-by-Step)](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/wiki/Beginner-Guide-%28Step‐by‐Step%29).
 
-## Import Dependency
-> [!NOTE]
-> The Maven artifact **only** contains the `.mustache` template files and a `LICENSE.txt`. No other files are included in the imported artifact.
+It is **strongly recommended** to import the mustache templates as a dependency. It has officially been published to:
+- [Maven Central Repository](https://central.sonatype.com/artifact/io.github.chrimle/openapi-to-java-records-mustache-templates)
+- [GitHub Packages](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/packages/)
 
 ```xml
 <dependency>
@@ -40,9 +38,12 @@ The mustache templates are best acquired by importing the project as a dependenc
     <version>3.4.0</version>
 </dependency>
 ```
-It is **strongly recommended** to import the project as a dependency. It has officially been published to:
-- [Maven Central Repository](https://central.sonatype.com/artifact/io.github.chrimle/openapi-to-java-records-mustache-templates)
-- [GitHub Packages](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/packages/)
+
+> [!NOTE]
+> The Maven artifact **only** contains the `.mustache` template files and a `LICENSE.txt`. No other files are included in the imported artifact.
+
+> [!TIP]
+> Use a plugin such as `maven-dependency-plugin` to easily unpack the `.mustache` files.
 
 > [!WARNING]
 > While it is _possible_ to download the Mustache templates directly
