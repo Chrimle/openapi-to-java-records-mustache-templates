@@ -2,7 +2,7 @@
 [![Maven Central Version](https://img.shields.io/maven-central/v/io.github.chrimle/openapi-to-java-records-mustache-templates?style=flat)](https://central.sonatype.com/artifact/io.github.chrimle/openapi-to-java-records-mustache-templates)
 [![MvnRepository](https://badges.mvnrepository.com/badge/io.github.chrimle/openapi-to-java-records-mustache-templates/badge.svg?type=rank&label=MvnRepository)](https://mvnrepository.com/artifact/io.github.chrimle/openapi-to-java-records-mustache-templates)
 ![JUnit Test Suite](https://img.shields.io/badge/JUnit_Test_Suite-21816_Tests-blue?style=flat)
-
+[![OpenSSF Best Practices](https://www.bestpractices.dev/projects/12077/badge)](https://www.bestpractices.dev/projects/12077)
 
 Project containing [Mustache-templates](https://mustache.github.io/) used by [openapi-generator-maven-plugin](https://github.com/OpenAPITools/openapi-generator/blob/master/modules/openapi-generator-maven-plugin/README.md) to generate [Java Records](https://docs.oracle.com/en/java/javase/17/language/records.html) from [OpenAPI Specifications](https://swagger.io/specification/).
 
