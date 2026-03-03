@@ -61,6 +61,14 @@
     </properties>
 
     <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <excludes>
+                    <exclude>templates/**/*.mustache</exclude>
+                </excludes>
+            </resource>
+        </resources>
         <plugins>
             <!-- Propagate Maven Project properties to any variables, such as '${project.version}' -->
             <plugin>
