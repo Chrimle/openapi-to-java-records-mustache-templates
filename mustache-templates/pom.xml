@@ -87,15 +87,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <artifactId>maven-jar-plugin</artifactId>
-                <configuration>
-                    <includes>
-                        <include>**/*.mustache</include>
-                        <include>**/LICENSE.txt</include>
-                    </includes>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
 </project>
