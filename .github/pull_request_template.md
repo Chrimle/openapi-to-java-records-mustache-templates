@@ -3,6 +3,7 @@
 ## Checklist
 *Each item in the list MUST either be checked ([x]) or crossed off (`~`).*
 - [ ] Closes #
+- [ ] Add Failing Tests & Show Solution works
 - [ ] New Release?
   - [ ] Update `<version>` in `pom.xml`
         <p>To update the project version, run the following command locally: `mvn versions:set -DnewVersion=`
