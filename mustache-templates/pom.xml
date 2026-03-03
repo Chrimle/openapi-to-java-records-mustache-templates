@@ -68,7 +68,7 @@
                 <executions>
                     <execution>
                         <id>propagate-maven-project-properties</id>
-                        <phase>initialize</phase>
+                        <phase>compile</phase>
                         <goals>
                             <goal>copy-resources</goal>
                         </goals>
@@ -86,15 +86,6 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
-            <plugin>
-                <artifactId>maven-jar-plugin</artifactId>
-                <configuration>
-                    <includes>
-                        <include>**/*.mustache</include>
-                        <include>**/LICENSE.txt</include>
-                    </includes>
-                </configuration>
             </plugin>
         </plugins>
     </build>
