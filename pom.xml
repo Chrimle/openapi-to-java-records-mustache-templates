@@ -86,7 +86,6 @@
         <!-- / Dependency Versions -->
 
         <!-- Build Plugin Versions -->
-
         <openapi-generator-maven-plugin.version>7.20.0</openapi-generator-maven-plugin.version>
         <!-- / Build Plugin Versions -->
 
