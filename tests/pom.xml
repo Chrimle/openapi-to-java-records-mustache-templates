@@ -21,7 +21,7 @@
         <!-- Default `configuration`-option values -->
         <modelPackage.default>${project.groupId}.o2jrm</modelPackage.default>
         <generateModels.default>true</generateModels.default>
-        <generateApis.default>false</generateApis.default>
+        <generateApis.default>true</generateApis.default>
         <generateModelTests.default>false</generateModelTests.default>
         <generateModelDocumentation.default>false</generateModelDocumentation.default>
         <generatorName.default>java</generatorName.default>
@@ -164,6 +164,7 @@
                         <configuration>
                             <output>${output.default}</output>
                             <modelPackage>${modelPackage.default}.${execution.standard}</modelPackage>
+                            <apiPackage>${modelPackage.default}.${execution.standard}</apiPackage>
                             <generateModels>${generateModels.default}</generateModels>
                             <generateApis>${generateApis.default}</generateApis>
                             <generateModelTests>${generateModelTests.default}</generateModelTests>

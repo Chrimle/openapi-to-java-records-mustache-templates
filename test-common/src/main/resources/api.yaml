@@ -16,6 +16,25 @@ paths:
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                title: FlexibleRecord
+                oneOf:
+                  - type: object
+                    title: FlexibleNonNullRecord
+                    properties:
+                      field1:
+                        type: boolean
+                  - type: object
+                    title: FlexibleNullableRecord
+                    nullable: true
+                    properties:
+                      field1:
+                        type: boolean
+
+
+
 
 components:
   schemas:
