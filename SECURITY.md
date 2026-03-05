@@ -35,5 +35,7 @@ Once a fix is ready and a new version is published, a public security advisory w
 > - Only retrieve these `.mustache` templates from **Official Sources**!
 >   - GitHub Packages
 >   - Maven Central
-> - **Review Generated Code**
+> - **Review Files Used When Generating**
 >   - **ALWAYS** secure that _input_-files (such as `.mustache` files) are authentic, that no _unexpected_ files are downloaded and/or retrieved, and only trusted files are used for code generation.
+> - **Review Generated Code**
+>   - **ALWAYS** secure that resulting files - _whether new, modified or removed_ - are as expected.
