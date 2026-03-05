@@ -157,6 +157,20 @@
             <plugin>
                 <groupId>org.openapitools</groupId>
                 <artifactId>openapi-generator-maven-plugin</artifactId>
+                <configuration>
+                    <output>${output.default}</output>
+                    <generateModels>${generateModels.default}</generateModels>
+                    <generateApis>${generateApis.default}</generateApis>
+                    <generateModelTests>${generateModelTests.default}</generateModelTests>
+                    <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
+                    <inputSpec>${inputSpec.default}</inputSpec>
+                    <templateDirectory>${templateDirectory.default}</templateDirectory>
+                    <generatorName>${generatorName.default}</generatorName>
+                    <configOptions>
+                        <sourceFolder>${sourceFolder.default}</sourceFolder>
+                        <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
+                    </configOptions>
+                </configuration>
                 <executions>
                     <execution>
                         <id>generate-${execution.standard}</id>
@@ -164,19 +178,7 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <output>${output.default}</output>
                             <modelPackage>${modelPackage.default}.${execution.standard}</modelPackage>
-                            <generateModels>${generateModels.default}</generateModels>
-                            <generateApis>${generateApis.default}</generateApis>
-                            <generateModelTests>${generateModelTests.default}</generateModelTests>
-                            <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
-                            <inputSpec>${inputSpec.default}</inputSpec>
-                            <templateDirectory>${templateDirectory.default}</templateDirectory>
-                            <generatorName>${generatorName.default}</generatorName>
-                            <configOptions>
-                                <sourceFolder>${sourceFolder.default}</sourceFolder>
-                                <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
-                            </configOptions>
                         </configuration>
                     </execution>
                     <execution>
@@ -185,20 +187,8 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <output>${output.default}</output>
                             <modelPackage>${modelPackage.default}.${execution.webclient.standard}</modelPackage>
-                            <generateModels>${generateModels.default}</generateModels>
-                            <generateApis>${generateApis.default}</generateApis>
-                            <generateModelTests>${generateModelTests.default}</generateModelTests>
-                            <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
-                            <inputSpec>${inputSpec.default}</inputSpec>
-                            <templateDirectory>${templateDirectory.default}</templateDirectory>
-                            <generatorName>${generatorName.default}</generatorName>
                             <library>webclient</library>
-                            <configOptions>
-                                <sourceFolder>${sourceFolder.default}</sourceFolder>
-                                <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
-                            </configOptions>
                         </configuration>
                     </execution>
                     <execution>
@@ -207,18 +197,8 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <output>${output.default}</output>
                             <modelPackage>${modelPackage.default}.${execution.useEnumCaseInsensitive}</modelPackage>
-                            <generateModels>${generateModels.default}</generateModels>
-                            <generateApis>${generateApis.default}</generateApis>
-                            <generateModelTests>${generateModelTests.default}</generateModelTests>
-                            <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
-                            <inputSpec>${inputSpec.default}</inputSpec>
-                            <templateDirectory>${templateDirectory.default}</templateDirectory>
-                            <generatorName>${generatorName.default}</generatorName>
                             <configOptions>
-                                <sourceFolder>${sourceFolder.default}</sourceFolder>
-                                <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
                                 <useEnumCaseInsensitive>true</useEnumCaseInsensitive>
                             </configOptions>
                         </configuration>
@@ -229,19 +209,9 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <output>${output.default}</output>
                             <modelPackage>${modelPackage.default}.${execution.webclient.useEnumCaseInsensitive}</modelPackage>
-                            <generateModels>${generateModels.default}</generateModels>
-                            <generateApis>${generateApis.default}</generateApis>
-                            <generateModelTests>${generateModelTests.default}</generateModelTests>
-                            <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
-                            <inputSpec>${inputSpec.default}</inputSpec>
-                            <templateDirectory>${templateDirectory.default}</templateDirectory>
-                            <generatorName>${generatorName.default}</generatorName>
                             <library>webclient</library>
                             <configOptions>
-                                <sourceFolder>${sourceFolder.default}</sourceFolder>
-                                <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
                                 <useEnumCaseInsensitive>true</useEnumCaseInsensitive>
                             </configOptions>
                         </configuration>
@@ -252,18 +222,8 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <output>${output.default}</output>
                             <modelPackage>${modelPackage.default}.${execution.additionalModelTypeAnnotations}</modelPackage>
-                            <generateModels>${generateModels.default}</generateModels>
-                            <generateApis>${generateApis.default}</generateApis>
-                            <generateModelTests>${generateModelTests.default}</generateModelTests>
-                            <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
-                            <inputSpec>${inputSpec.default}</inputSpec>
-                            <templateDirectory>${templateDirectory.default}</templateDirectory>
-                            <generatorName>${generatorName.default}</generatorName>
                             <configOptions>
-                                <sourceFolder>${sourceFolder.default}</sourceFolder>
-                                <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
                                 <additionalModelTypeAnnotations>
                                     @io.github.chrimle.o2jrm.annotations.TestAnnotationOne
                                     @io.github.chrimle.o2jrm.annotations.TestAnnotationTwo
@@ -278,19 +238,9 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <output>${output.default}</output>
                             <modelPackage>${modelPackage.default}.${execution.webclient.additionalModelTypeAnnotations}</modelPackage>
-                            <generateModels>${generateModels.default}</generateModels>
-                            <generateApis>${generateApis.default}</generateApis>
-                            <generateModelTests>${generateModelTests.default}</generateModelTests>
-                            <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
-                            <inputSpec>${inputSpec.default}</inputSpec>
-                            <templateDirectory>${templateDirectory.default}</templateDirectory>
-                            <generatorName>${generatorName.default}</generatorName>
                             <library>webclient</library>
                             <configOptions>
-                                <sourceFolder>${sourceFolder.default}</sourceFolder>
-                                <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
                                 <additionalModelTypeAnnotations>
                                     @io.github.chrimle.o2jrm.annotations.TestAnnotationOne
                                     @io.github.chrimle.o2jrm.annotations.TestAnnotationTwo
@@ -305,18 +255,8 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <output>${output.default}</output>
                             <modelPackage>${modelPackage.default}.${execution.additionalEnumTypeAnnotations}</modelPackage>
-                            <generateModels>${generateModels.default}</generateModels>
-                            <generateApis>${generateApis.default}</generateApis>
-                            <generateModelTests>${generateModelTests.default}</generateModelTests>
-                            <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
-                            <inputSpec>${inputSpec.default}</inputSpec>
-                            <templateDirectory>${templateDirectory.default}</templateDirectory>
-                            <generatorName>${generatorName.default}</generatorName>
                             <configOptions>
-                                <sourceFolder>${sourceFolder.default}</sourceFolder>
-                                <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
                                 <additionalEnumTypeAnnotations>@io.github.chrimle.o2jrm.annotations.TestAnnotationOne;@io.github.chrimle.o2jrm.annotations.TestAnnotationTwo;@io.github.chrimle.o2jrm.annotations.TestAnnotationThree;</additionalEnumTypeAnnotations>
                             </configOptions>
                         </configuration>
@@ -327,19 +267,9 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <output>${output.default}</output>
                             <modelPackage>${modelPackage.default}.${execution.webclient.additionalEnumTypeAnnotations}</modelPackage>
-                            <generateModels>${generateModels.default}</generateModels>
-                            <generateApis>${generateApis.default}</generateApis>
-                            <generateModelTests>${generateModelTests.default}</generateModelTests>
-                            <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
-                            <inputSpec>${inputSpec.default}</inputSpec>
-                            <templateDirectory>${templateDirectory.default}</templateDirectory>
-                            <generatorName>${generatorName.default}</generatorName>
                             <library>webclient</library>
                             <configOptions>
-                                <sourceFolder>${sourceFolder.default}</sourceFolder>
-                                <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
                                 <additionalEnumTypeAnnotations>@io.github.chrimle.o2jrm.annotations.TestAnnotationOne;@io.github.chrimle.o2jrm.annotations.TestAnnotationTwo;@io.github.chrimle.o2jrm.annotations.TestAnnotationThree;</additionalEnumTypeAnnotations>
                             </configOptions>
                         </configuration>
@@ -350,18 +280,8 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <output>${output.default}</output>
                             <modelPackage>${modelPackage.default}.${execution.serializableModel}</modelPackage>
-                            <generateModels>${generateModels.default}</generateModels>
-                            <generateApis>${generateApis.default}</generateApis>
-                            <generateModelTests>${generateModelTests.default}</generateModelTests>
-                            <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
-                            <inputSpec>${inputSpec.default}</inputSpec>
-                            <templateDirectory>${templateDirectory.default}</templateDirectory>
-                            <generatorName>${generatorName.default}</generatorName>
                             <configOptions>
-                                <sourceFolder>${sourceFolder.default}</sourceFolder>
-                                <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
                                 <serializableModel>true</serializableModel>
                             </configOptions>
                         </configuration>
@@ -372,19 +292,9 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <output>${output.default}</output>
                             <modelPackage>${modelPackage.default}.${execution.webclient.serializableModel}</modelPackage>
-                            <generateModels>${generateModels.default}</generateModels>
-                            <generateApis>${generateApis.default}</generateApis>
-                            <generateModelTests>${generateModelTests.default}</generateModelTests>
-                            <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
-                            <inputSpec>${inputSpec.default}</inputSpec>
-                            <templateDirectory>${templateDirectory.default}</templateDirectory>
-                            <generatorName>${generatorName.default}</generatorName>
                             <library>webclient</library>
                             <configOptions>
-                                <sourceFolder>${sourceFolder.default}</sourceFolder>
-                                <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
                                 <serializableModel>true</serializableModel>
                             </configOptions>
                         </configuration>
@@ -395,18 +305,8 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <output>${output.default}</output>
                             <modelPackage>${modelPackage.default}.${execution.generateBuilders}</modelPackage>
-                            <generateModels>${generateModels.default}</generateModels>
-                            <generateApis>${generateApis.default}</generateApis>
-                            <generateModelTests>${generateModelTests.default}</generateModelTests>
-                            <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
-                            <inputSpec>${inputSpec.default}</inputSpec>
-                            <templateDirectory>${templateDirectory.default}</templateDirectory>
-                            <generatorName>${generatorName.default}</generatorName>
                             <configOptions>
-                                <sourceFolder>${sourceFolder.default}</sourceFolder>
-                                <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
                                 <generateBuilders>true</generateBuilders>
                             </configOptions>
                         </configuration>
@@ -417,19 +317,9 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <output>${output.default}</output>
                             <modelPackage>${modelPackage.default}.${execution.webclient.generateBuilders}</modelPackage>
-                            <generateModels>${generateModels.default}</generateModels>
-                            <generateApis>${generateApis.default}</generateApis>
-                            <generateModelTests>${generateModelTests.default}</generateModelTests>
-                            <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
-                            <inputSpec>${inputSpec.default}</inputSpec>
-                            <templateDirectory>${templateDirectory.default}</templateDirectory>
-                            <generatorName>${generatorName.default}</generatorName>
                             <library>webclient</library>
                             <configOptions>
-                                <sourceFolder>${sourceFolder.default}</sourceFolder>
-                                <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
                                 <generateBuilders>true</generateBuilders>
                             </configOptions>
                         </configuration>
@@ -440,18 +330,8 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <output>${output.default}</output>
                             <modelPackage>${modelPackage.default}.${execution.useBeanValidation}</modelPackage>
-                            <generateModels>${generateModels.default}</generateModels>
-                            <generateApis>${generateApis.default}</generateApis>
-                            <generateModelTests>${generateModelTests.default}</generateModelTests>
-                            <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
-                            <inputSpec>${inputSpec.default}</inputSpec>
-                            <templateDirectory>${templateDirectory.default}</templateDirectory>
-                            <generatorName>${generatorName.default}</generatorName>
                             <configOptions>
-                                <sourceFolder>${sourceFolder.default}</sourceFolder>
-                                <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
                                 <useBeanValidation>true</useBeanValidation>
                             </configOptions>
                         </configuration>
@@ -462,19 +342,9 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <output>${output.default}</output>
                             <modelPackage>${modelPackage.default}.${execution.webclient.useBeanValidation}</modelPackage>
-                            <generateModels>${generateModels.default}</generateModels>
-                            <generateApis>${generateApis.default}</generateApis>
-                            <generateModelTests>${generateModelTests.default}</generateModelTests>
-                            <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
-                            <inputSpec>${inputSpec.default}</inputSpec>
-                            <templateDirectory>${templateDirectory.default}</templateDirectory>
-                            <generatorName>${generatorName.default}</generatorName>
                             <library>webclient</library>
                             <configOptions>
-                                <sourceFolder>${sourceFolder.default}</sourceFolder>
-                                <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
                                 <useBeanValidation>true</useBeanValidation>
                             </configOptions>
                         </configuration>
@@ -485,18 +355,8 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <output>${output.default}</output>
                             <modelPackage>${modelPackage.default}.${execution.enumUnknownDefaultCase}</modelPackage>
-                            <generateModels>${generateModels.default}</generateModels>
-                            <generateApis>${generateApis.default}</generateApis>
-                            <generateModelTests>${generateModelTests.default}</generateModelTests>
-                            <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
-                            <inputSpec>${inputSpec.default}</inputSpec>
-                            <templateDirectory>${templateDirectory.default}</templateDirectory>
-                            <generatorName>${generatorName.default}</generatorName>
                             <configOptions>
-                                <sourceFolder>${sourceFolder.default}</sourceFolder>
-                                <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
                                 <enumUnknownDefaultCase>true</enumUnknownDefaultCase>
                             </configOptions>
                         </configuration>
@@ -507,19 +367,9 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <output>${output.default}</output>
                             <modelPackage>${modelPackage.default}.${execution.webclient.enumUnknownDefaultCase}</modelPackage>
-                            <generateModels>${generateModels.default}</generateModels>
-                            <generateApis>${generateApis.default}</generateApis>
-                            <generateModelTests>${generateModelTests.default}</generateModelTests>
-                            <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
-                            <inputSpec>${inputSpec.default}</inputSpec>
-                            <templateDirectory>${templateDirectory.default}</templateDirectory>
-                            <generatorName>${generatorName.default}</generatorName>
                             <library>webclient</library>
                             <configOptions>
-                                <sourceFolder>${sourceFolder.default}</sourceFolder>
-                                <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
                                 <enumUnknownDefaultCase>true</enumUnknownDefaultCase>
                             </configOptions>
                         </configuration>
@@ -530,18 +380,8 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <output>${output.default}</output>
                             <modelPackage>${modelPackage.default}.${execution.enumDefaultCaseAndCaseInsensitive}</modelPackage>
-                            <generateModels>${generateModels.default}</generateModels>
-                            <generateApis>${generateApis.default}</generateApis>
-                            <generateModelTests>${generateModelTests.default}</generateModelTests>
-                            <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
-                            <inputSpec>${inputSpec.default}</inputSpec>
-                            <templateDirectory>${templateDirectory.default}</templateDirectory>
-                            <generatorName>${generatorName.default}</generatorName>
                             <configOptions>
-                                <sourceFolder>${sourceFolder.default}</sourceFolder>
-                                <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
                                 <enumUnknownDefaultCase>true</enumUnknownDefaultCase>
                                 <useEnumCaseInsensitive>true</useEnumCaseInsensitive>
                             </configOptions>
@@ -553,19 +393,9 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <output>${output.default}</output>
                             <modelPackage>${modelPackage.default}.${execution.webclient.enumDefaultCaseAndCaseInsensitive}</modelPackage>
-                            <generateModels>${generateModels.default}</generateModels>
-                            <generateApis>${generateApis.default}</generateApis>
-                            <generateModelTests>${generateModelTests.default}</generateModelTests>
-                            <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
-                            <inputSpec>${inputSpec.default}</inputSpec>
-                            <templateDirectory>${templateDirectory.default}</templateDirectory>
-                            <generatorName>${generatorName.default}</generatorName>
                             <library>webclient</library>
                             <configOptions>
-                                <sourceFolder>${sourceFolder.default}</sourceFolder>
-                                <useJakartaEe>${useJakartaEe.default}</useJakartaEe>
                                 <enumUnknownDefaultCase>true</enumUnknownDefaultCase>
                                 <useEnumCaseInsensitive>true</useEnumCaseInsensitive>
                             </configOptions>
