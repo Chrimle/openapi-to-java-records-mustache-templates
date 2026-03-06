@@ -688,7 +688,6 @@ public abstract class GeneratedRecordTests {
               String jsonString = "{";
               boolean hasInvalidKey = false;
               boolean isSkippedFieldOfTypeEnum = false;
-              boolean isSkippedFieldCustomClass = false;
               for (int i = 0; i < generatedSource.generatedFields().length; i++) {
                 final GeneratedField<?> generatedField = generatedSource.generatedFields()[i];
                 if (i == j
@@ -701,7 +700,6 @@ public abstract class GeneratedRecordTests {
                       "'" + generatedField.name() + "': {'madeUpField': 'thisIsUnexpected'}";
                   hasInvalidKey = true;
                   isSkippedFieldOfTypeEnum = generatedField.type().isEnum();
-                  isSkippedFieldCustomClass = generatedField.isCustomClass();
                 } else {
                   jsonString += generatedField.getKeyAndValueAsJson();
                 }
@@ -715,8 +713,6 @@ public abstract class GeneratedRecordTests {
                 Class<? extends Exception> expectedException;
                 if (isSkippedFieldOfTypeEnum) {
                   expectedException = UnsupportedOperationException.class;
-                } else if (isSkippedFieldCustomClass) {
-                  expectedException = IllegalArgumentException.class; // IOException.class;
                 } else {
                   expectedException = IllegalArgumentException.class;
                 }
