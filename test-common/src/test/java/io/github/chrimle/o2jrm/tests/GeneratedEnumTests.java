@@ -46,6 +46,7 @@ import java.lang.reflect.Method;
 import java.net.URI;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
+import java.util.Locale;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Assumptions;
 import org.junit.jupiter.api.DisplayName;
@@ -794,7 +795,8 @@ public abstract class GeneratedEnumTests {
                     "fromValue",
                     generatedSource.fieldClasses()[0]);
             for (final GeneratedField<?> generatedField : generatedSource.generatedFields()) {
-              final Object enumValue = ((String) generatedField.enumValue()).toLowerCase();
+              final Object enumValue =
+                  ((String) generatedField.enumValue()).toLowerCase(Locale.ROOT);
               CustomAssertions.assertStaticMethodThrowsWhenInvoked(
                   fromValueMethod, IllegalArgumentException.class, enumValue);
             }
@@ -822,7 +824,8 @@ public abstract class GeneratedEnumTests {
                     "fromValue",
                     generatedSource.fieldClasses()[0]);
             for (final GeneratedField<?> generatedField : generatedSource.generatedFields()) {
-              final Object enumValue = ((String) generatedField.enumValue()).toLowerCase();
+              final Object enumValue =
+                  ((String) generatedField.enumValue()).toLowerCase(Locale.ROOT);
               CustomAssertions.assertStaticMethodReturnsNonNull(fromValueMethod, enumValue);
             }
           }
