@@ -207,6 +207,7 @@ import java.util.Set;
 }}    if (jsonElement == null) {
       throw new IllegalArgumentException(
           String.format(
+              java.util.Locale.ROOT,
               "The required field(s) %s in {{{classname}}} is not found in the empty JSON string",
               {{classname}}.openapiRequiredFields.toString()));
     }
@@ -217,6 +218,7 @@ import java.util.Set;
       if (!{{classname}}.openapiFields.contains(key)) {
         throw new IllegalArgumentException(
             String.format(
+                java.util.Locale.ROOT,
                 "The field `%s` in the JSON string is not defined in the `{{classname}}` properties. JSON: %s",
                 key, jsonElement));
       }
@@ -227,6 +229,7 @@ import java.util.Set;
       if (jsonElement.getAsJsonObject().get(requiredField) == null) {
         throw new IllegalArgumentException(
             String.format(
+                java.util.Locale.ROOT,
                 "The required field `%s` is not found in the JSON string: %s",
                 requiredField, jsonElement));
       }
@@ -241,6 +244,7 @@ import java.util.Set;
 {{^required}}  {{/required}}    if (!jsonObj.get("{{{baseName}}}").{{#isArray}}isJsonArray(){{/isArray}}{{^isContainer}}{{^isModel}}isJsonPrimitive(){{/isModel}}{{/isContainer}}) {
 {{^required}}  {{/required}}      throw new IllegalArgumentException(
 {{^required}}  {{/required}}          String.format(
+{{^required}}  {{/required}}              java.util.Locale.ROOT,
 {{^required}}  {{/required}}              "Expected the field `{{{baseName}}}` to be {{#isArray}}an array{{/isArray}}{{^isArray}}a primitive type{{/isArray}} in the JSON string but got `%s`",
 {{^required}}  {{/required}}              jsonObj.get("{{{baseName}}}")));
 {{^required}}  {{/required}}    }{{!

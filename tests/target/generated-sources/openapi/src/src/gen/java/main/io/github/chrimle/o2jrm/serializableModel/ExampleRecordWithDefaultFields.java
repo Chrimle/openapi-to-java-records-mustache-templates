@@ -69,6 +69,7 @@ public record ExampleRecordWithDefaultFields(
       if (!ExampleRecordWithDefaultFields.openapiFields.contains(key)) {
         throw new IllegalArgumentException(
             String.format(
+                java.util.Locale.ROOT,
                 "The field `%s` in the JSON string is not defined in the `ExampleRecordWithDefaultFields` properties. JSON: %s",
                 key, jsonElement));
       }
@@ -80,6 +81,7 @@ public record ExampleRecordWithDefaultFields(
       if (!jsonObj.get("field1").isJsonPrimitive()) {
         throw new IllegalArgumentException(
             String.format(
+                java.util.Locale.ROOT,
                 "Expected the field `field1` to be a primitive type in the JSON string but got `%s`",
                 jsonObj.get("field1")));
       }

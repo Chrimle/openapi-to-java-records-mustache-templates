@@ -371,6 +371,7 @@ public record RecordWithInnerEnums(
       if (!RecordWithInnerEnums.openapiFields.contains(key)) {
         throw new IllegalArgumentException(
             String.format(
+                java.util.Locale.ROOT,
                 "The field `%s` in the JSON string is not defined in the `RecordWithInnerEnums` properties. JSON: %s",
                 key, jsonElement));
       }

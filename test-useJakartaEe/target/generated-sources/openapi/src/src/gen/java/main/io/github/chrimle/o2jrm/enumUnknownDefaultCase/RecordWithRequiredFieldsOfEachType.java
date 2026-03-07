@@ -117,6 +117,7 @@ public record RecordWithRequiredFieldsOfEachType(
     if (jsonElement == null) {
       throw new IllegalArgumentException(
           String.format(
+              java.util.Locale.ROOT,
               "The required field(s) %s in RecordWithRequiredFieldsOfEachType is not found in the empty JSON string",
               RecordWithRequiredFieldsOfEachType.openapiRequiredFields.toString()));
     }
@@ -125,6 +126,7 @@ public record RecordWithRequiredFieldsOfEachType(
       if (!RecordWithRequiredFieldsOfEachType.openapiFields.contains(key)) {
         throw new IllegalArgumentException(
             String.format(
+                java.util.Locale.ROOT,
                 "The field `%s` in the JSON string is not defined in the `RecordWithRequiredFieldsOfEachType` properties. JSON: %s",
                 key, jsonElement));
       }
@@ -134,6 +136,7 @@ public record RecordWithRequiredFieldsOfEachType(
       if (jsonElement.getAsJsonObject().get(requiredField) == null) {
         throw new IllegalArgumentException(
             String.format(
+                java.util.Locale.ROOT,
                 "The required field `%s` is not found in the JSON string: %s",
                 requiredField, jsonElement));
       }
@@ -144,6 +147,7 @@ public record RecordWithRequiredFieldsOfEachType(
     if (!jsonObj.get("field1").isJsonPrimitive()) {
       throw new IllegalArgumentException(
           String.format(
+              java.util.Locale.ROOT,
               "Expected the field `field1` to be a primitive type in the JSON string but got `%s`",
               jsonObj.get("field1")));
     }
@@ -151,6 +155,7 @@ public record RecordWithRequiredFieldsOfEachType(
     if (!jsonObj.get("field2").isJsonPrimitive()) {
       throw new IllegalArgumentException(
           String.format(
+              java.util.Locale.ROOT,
               "Expected the field `field2` to be a primitive type in the JSON string but got `%s`",
               jsonObj.get("field2")));
     }
@@ -158,6 +163,7 @@ public record RecordWithRequiredFieldsOfEachType(
     if (!jsonObj.get("field3").isJsonPrimitive()) {
       throw new IllegalArgumentException(
           String.format(
+              java.util.Locale.ROOT,
               "Expected the field `field3` to be a primitive type in the JSON string but got `%s`",
               jsonObj.get("field3")));
     }
@@ -165,6 +171,7 @@ public record RecordWithRequiredFieldsOfEachType(
     if (!jsonObj.get("field4").isJsonPrimitive()) {
       throw new IllegalArgumentException(
           String.format(
+              java.util.Locale.ROOT,
               "Expected the field `field4` to be a primitive type in the JSON string but got `%s`",
               jsonObj.get("field4")));
     }
@@ -172,6 +179,7 @@ public record RecordWithRequiredFieldsOfEachType(
     if (!jsonObj.get("field5").isJsonArray()) {
       throw new IllegalArgumentException(
           String.format(
+              java.util.Locale.ROOT,
               "Expected the field `field5` to be an array in the JSON string but got `%s`",
               jsonObj.get("field5")));
     }
@@ -179,6 +187,7 @@ public record RecordWithRequiredFieldsOfEachType(
     if (!jsonObj.get("field6").isJsonArray()) {
       throw new IllegalArgumentException(
           String.format(
+              java.util.Locale.ROOT,
               "Expected the field `field6` to be an array in the JSON string but got `%s`",
               jsonObj.get("field6")));
     }

@@ -119,6 +119,7 @@ public record RecordWithNullableFieldsOfEachType(
     if (jsonElement == null) {
       throw new IllegalArgumentException(
           String.format(
+              java.util.Locale.ROOT,
               "The required field(s) %s in RecordWithNullableFieldsOfEachType is not found in the empty JSON string",
               RecordWithNullableFieldsOfEachType.openapiRequiredFields.toString()));
     }
@@ -127,6 +128,7 @@ public record RecordWithNullableFieldsOfEachType(
       if (!RecordWithNullableFieldsOfEachType.openapiFields.contains(key)) {
         throw new IllegalArgumentException(
             String.format(
+                java.util.Locale.ROOT,
                 "The field `%s` in the JSON string is not defined in the `RecordWithNullableFieldsOfEachType` properties. JSON: %s",
                 key, jsonElement));
       }
@@ -136,6 +138,7 @@ public record RecordWithNullableFieldsOfEachType(
       if (jsonElement.getAsJsonObject().get(requiredField) == null) {
         throw new IllegalArgumentException(
             String.format(
+                java.util.Locale.ROOT,
                 "The required field `%s` is not found in the JSON string: %s",
                 requiredField, jsonElement));
       }
@@ -146,6 +149,7 @@ public record RecordWithNullableFieldsOfEachType(
     if (!jsonObj.get("field1").isJsonPrimitive()) {
       throw new IllegalArgumentException(
           String.format(
+              java.util.Locale.ROOT,
               "Expected the field `field1` to be a primitive type in the JSON string but got `%s`",
               jsonObj.get("field1")));
     }
@@ -153,6 +157,7 @@ public record RecordWithNullableFieldsOfEachType(
     if (!jsonObj.get("field2").isJsonPrimitive()) {
       throw new IllegalArgumentException(
           String.format(
+              java.util.Locale.ROOT,
               "Expected the field `field2` to be a primitive type in the JSON string but got `%s`",
               jsonObj.get("field2")));
     }
@@ -160,6 +165,7 @@ public record RecordWithNullableFieldsOfEachType(
     if (!jsonObj.get("field3").isJsonPrimitive()) {
       throw new IllegalArgumentException(
           String.format(
+              java.util.Locale.ROOT,
               "Expected the field `field3` to be a primitive type in the JSON string but got `%s`",
               jsonObj.get("field3")));
     }
@@ -167,6 +173,7 @@ public record RecordWithNullableFieldsOfEachType(
     if (!jsonObj.get("field4").isJsonPrimitive()) {
       throw new IllegalArgumentException(
           String.format(
+              java.util.Locale.ROOT,
               "Expected the field `field4` to be a primitive type in the JSON string but got `%s`",
               jsonObj.get("field4")));
     }
@@ -174,6 +181,7 @@ public record RecordWithNullableFieldsOfEachType(
     if (!jsonObj.get("field5").isJsonArray()) {
       throw new IllegalArgumentException(
           String.format(
+              java.util.Locale.ROOT,
               "Expected the field `field5` to be an array in the JSON string but got `%s`",
               jsonObj.get("field5")));
     }
@@ -181,6 +189,7 @@ public record RecordWithNullableFieldsOfEachType(
     if (!jsonObj.get("field6").isJsonArray()) {
       throw new IllegalArgumentException(
           String.format(
+              java.util.Locale.ROOT,
               "Expected the field `field6` to be an array in the JSON string but got `%s`",
               jsonObj.get("field6")));
     }

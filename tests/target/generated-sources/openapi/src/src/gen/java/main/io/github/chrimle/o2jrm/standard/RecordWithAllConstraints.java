@@ -185,6 +185,7 @@ public record RecordWithAllConstraints(
     if (jsonElement == null) {
       throw new IllegalArgumentException(
           String.format(
+              java.util.Locale.ROOT,
               "The required field(s) %s in RecordWithAllConstraints is not found in the empty JSON string",
               RecordWithAllConstraints.openapiRequiredFields.toString()));
     }
@@ -193,6 +194,7 @@ public record RecordWithAllConstraints(
       if (!RecordWithAllConstraints.openapiFields.contains(key)) {
         throw new IllegalArgumentException(
             String.format(
+                java.util.Locale.ROOT,
                 "The field `%s` in the JSON string is not defined in the `RecordWithAllConstraints` properties. JSON: %s",
                 key, jsonElement));
       }
@@ -202,6 +204,7 @@ public record RecordWithAllConstraints(
       if (jsonElement.getAsJsonObject().get(requiredField) == null) {
         throw new IllegalArgumentException(
             String.format(
+                java.util.Locale.ROOT,
                 "The required field `%s` is not found in the JSON string: %s",
                 requiredField, jsonElement));
       }
@@ -213,6 +216,7 @@ public record RecordWithAllConstraints(
       if (!jsonObj.get("stringStandard").isJsonPrimitive()) {
         throw new IllegalArgumentException(
             String.format(
+                java.util.Locale.ROOT,
                 "Expected the field `stringStandard` to be a primitive type in the JSON string but got `%s`",
                 jsonObj.get("stringStandard")));
       }
@@ -222,6 +226,7 @@ public record RecordWithAllConstraints(
       if (!jsonObj.get("stringDefault").isJsonPrimitive()) {
         throw new IllegalArgumentException(
             String.format(
+                java.util.Locale.ROOT,
                 "Expected the field `stringDefault` to be a primitive type in the JSON string but got `%s`",
                 jsonObj.get("stringDefault")));
       }
@@ -231,6 +236,7 @@ public record RecordWithAllConstraints(
       if (!jsonObj.get("stringNullable").isJsonPrimitive()) {
         throw new IllegalArgumentException(
             String.format(
+                java.util.Locale.ROOT,
                 "Expected the field `stringNullable` to be a primitive type in the JSON string but got `%s`",
                 jsonObj.get("stringNullable")));
       }
@@ -239,6 +245,7 @@ public record RecordWithAllConstraints(
     if (!jsonObj.get("stringRequired").isJsonPrimitive()) {
       throw new IllegalArgumentException(
           String.format(
+              java.util.Locale.ROOT,
               "Expected the field `stringRequired` to be a primitive type in the JSON string but got `%s`",
               jsonObj.get("stringRequired")));
     }
@@ -246,6 +253,7 @@ public record RecordWithAllConstraints(
     if (!jsonObj.get("stringRequiredNullable").isJsonPrimitive()) {
       throw new IllegalArgumentException(
           String.format(
+              java.util.Locale.ROOT,
               "Expected the field `stringRequiredNullable` to be a primitive type in the JSON string but got `%s`",
               jsonObj.get("stringRequiredNullable")));
     }
@@ -253,6 +261,7 @@ public record RecordWithAllConstraints(
     if (!jsonObj.get("stringRequiredPattern").isJsonPrimitive()) {
       throw new IllegalArgumentException(
           String.format(
+              java.util.Locale.ROOT,
               "Expected the field `stringRequiredPattern` to be a primitive type in the JSON string but got `%s`",
               jsonObj.get("stringRequiredPattern")));
     }
@@ -261,6 +270,7 @@ public record RecordWithAllConstraints(
       if (!jsonObj.get("stringEmailFormat").isJsonPrimitive()) {
         throw new IllegalArgumentException(
             String.format(
+                java.util.Locale.ROOT,
                 "Expected the field `stringEmailFormat` to be a primitive type in the JSON string but got `%s`",
                 jsonObj.get("stringEmailFormat")));
       }
@@ -270,6 +280,7 @@ public record RecordWithAllConstraints(
       if (!jsonObj.get("stringUuidFormat").isJsonPrimitive()) {
         throw new IllegalArgumentException(
             String.format(
+                java.util.Locale.ROOT,
                 "Expected the field `stringUuidFormat` to be a primitive type in the JSON string but got `%s`",
                 jsonObj.get("stringUuidFormat")));
       }
@@ -279,6 +290,7 @@ public record RecordWithAllConstraints(
       if (!jsonObj.get("stringMinLength").isJsonPrimitive()) {
         throw new IllegalArgumentException(
             String.format(
+                java.util.Locale.ROOT,
                 "Expected the field `stringMinLength` to be a primitive type in the JSON string but got `%s`",
                 jsonObj.get("stringMinLength")));
       }
@@ -288,6 +300,7 @@ public record RecordWithAllConstraints(
       if (!jsonObj.get("stringMaxLength").isJsonPrimitive()) {
         throw new IllegalArgumentException(
             String.format(
+                java.util.Locale.ROOT,
                 "Expected the field `stringMaxLength` to be a primitive type in the JSON string but got `%s`",
                 jsonObj.get("stringMaxLength")));
       }
@@ -297,6 +310,7 @@ public record RecordWithAllConstraints(
       if (!jsonObj.get("stringMinAndMaxLength").isJsonPrimitive()) {
         throw new IllegalArgumentException(
             String.format(
+                java.util.Locale.ROOT,
                 "Expected the field `stringMinAndMaxLength` to be a primitive type in the JSON string but got `%s`",
                 jsonObj.get("stringMinAndMaxLength")));
       }
@@ -306,6 +320,7 @@ public record RecordWithAllConstraints(
       if (!jsonObj.get("arrayMinItems").isJsonArray()) {
         throw new IllegalArgumentException(
             String.format(
+                java.util.Locale.ROOT,
                 "Expected the field `arrayMinItems` to be an array in the JSON string but got `%s`",
                 jsonObj.get("arrayMinItems")));
       }
@@ -315,6 +330,7 @@ public record RecordWithAllConstraints(
       if (!jsonObj.get("arrayMaxItems").isJsonArray()) {
         throw new IllegalArgumentException(
             String.format(
+                java.util.Locale.ROOT,
                 "Expected the field `arrayMaxItems` to be an array in the JSON string but got `%s`",
                 jsonObj.get("arrayMaxItems")));
       }
@@ -324,6 +340,7 @@ public record RecordWithAllConstraints(
       if (!jsonObj.get("arrayMinAndMaxItems").isJsonArray()) {
         throw new IllegalArgumentException(
             String.format(
+                java.util.Locale.ROOT,
                 "Expected the field `arrayMinAndMaxItems` to be an array in the JSON string but got `%s`",
                 jsonObj.get("arrayMinAndMaxItems")));
       }
@@ -333,6 +350,7 @@ public record RecordWithAllConstraints(
       if (!jsonObj.get("intMinimum").isJsonPrimitive()) {
         throw new IllegalArgumentException(
             String.format(
+                java.util.Locale.ROOT,
                 "Expected the field `intMinimum` to be a primitive type in the JSON string but got `%s`",
                 jsonObj.get("intMinimum")));
       }
@@ -342,6 +360,7 @@ public record RecordWithAllConstraints(
       if (!jsonObj.get("intMaximum").isJsonPrimitive()) {
         throw new IllegalArgumentException(
             String.format(
+                java.util.Locale.ROOT,
                 "Expected the field `intMaximum` to be a primitive type in the JSON string but got `%s`",
                 jsonObj.get("intMaximum")));
       }
@@ -351,6 +370,7 @@ public record RecordWithAllConstraints(
       if (!jsonObj.get("intMinimumAndMaximum").isJsonPrimitive()) {
         throw new IllegalArgumentException(
             String.format(
+                java.util.Locale.ROOT,
                 "Expected the field `intMinimumAndMaximum` to be a primitive type in the JSON string but got `%s`",
                 jsonObj.get("intMinimumAndMaximum")));
       }
@@ -360,6 +380,7 @@ public record RecordWithAllConstraints(
       if (!jsonObj.get("longMinimum").isJsonPrimitive()) {
         throw new IllegalArgumentException(
             String.format(
+                java.util.Locale.ROOT,
                 "Expected the field `longMinimum` to be a primitive type in the JSON string but got `%s`",
                 jsonObj.get("longMinimum")));
       }
@@ -369,6 +390,7 @@ public record RecordWithAllConstraints(
       if (!jsonObj.get("longMaximum").isJsonPrimitive()) {
         throw new IllegalArgumentException(
             String.format(
+                java.util.Locale.ROOT,
                 "Expected the field `longMaximum` to be a primitive type in the JSON string but got `%s`",
                 jsonObj.get("longMaximum")));
       }
@@ -378,6 +400,7 @@ public record RecordWithAllConstraints(
       if (!jsonObj.get("longMinimumAndMaximum").isJsonPrimitive()) {
         throw new IllegalArgumentException(
             String.format(
+                java.util.Locale.ROOT,
                 "Expected the field `longMinimumAndMaximum` to be a primitive type in the JSON string but got `%s`",
                 jsonObj.get("longMinimumAndMaximum")));
       }
@@ -387,6 +410,7 @@ public record RecordWithAllConstraints(
       if (!jsonObj.get("bigDecimalMinimum").isJsonPrimitive()) {
         throw new IllegalArgumentException(
             String.format(
+                java.util.Locale.ROOT,
                 "Expected the field `bigDecimalMinimum` to be a primitive type in the JSON string but got `%s`",
                 jsonObj.get("bigDecimalMinimum")));
       }
@@ -396,6 +420,7 @@ public record RecordWithAllConstraints(
       if (!jsonObj.get("bigDecimalMaximum").isJsonPrimitive()) {
         throw new IllegalArgumentException(
             String.format(
+                java.util.Locale.ROOT,
                 "Expected the field `bigDecimalMaximum` to be a primitive type in the JSON string but got `%s`",
                 jsonObj.get("bigDecimalMaximum")));
       }
@@ -405,6 +430,7 @@ public record RecordWithAllConstraints(
       if (!jsonObj.get("bigDecimalMinimumAndMaximum").isJsonPrimitive()) {
         throw new IllegalArgumentException(
             String.format(
+                java.util.Locale.ROOT,
                 "Expected the field `bigDecimalMinimumAndMaximum` to be a primitive type in the JSON string but got `%s`",
                 jsonObj.get("bigDecimalMinimumAndMaximum")));
       }

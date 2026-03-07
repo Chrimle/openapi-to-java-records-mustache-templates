@@ -91,6 +91,7 @@ public record ExampleRecordWithCollectionsOfRecords(
     if (jsonElement == null) {
       throw new IllegalArgumentException(
           String.format(
+              java.util.Locale.ROOT,
               "The required field(s) %s in ExampleRecordWithCollectionsOfRecords is not found in the empty JSON string",
               ExampleRecordWithCollectionsOfRecords.openapiRequiredFields.toString()));
     }
@@ -99,6 +100,7 @@ public record ExampleRecordWithCollectionsOfRecords(
       if (!ExampleRecordWithCollectionsOfRecords.openapiFields.contains(key)) {
         throw new IllegalArgumentException(
             String.format(
+                java.util.Locale.ROOT,
                 "The field `%s` in the JSON string is not defined in the `ExampleRecordWithCollectionsOfRecords` properties. JSON: %s",
                 key, jsonElement));
       }
@@ -108,6 +110,7 @@ public record ExampleRecordWithCollectionsOfRecords(
       if (jsonElement.getAsJsonObject().get(requiredField) == null) {
         throw new IllegalArgumentException(
             String.format(
+                java.util.Locale.ROOT,
                 "The required field `%s` is not found in the JSON string: %s",
                 requiredField, jsonElement));
       }
@@ -119,6 +122,7 @@ public record ExampleRecordWithCollectionsOfRecords(
       if (!jsonObj.get("optionalRecordList").isJsonArray()) {
         throw new IllegalArgumentException(
             String.format(
+                java.util.Locale.ROOT,
                 "Expected the field `optionalRecordList` to be an array in the JSON string but got `%s`",
                 jsonObj.get("optionalRecordList")));
       }
@@ -130,6 +134,7 @@ public record ExampleRecordWithCollectionsOfRecords(
     if (!jsonObj.get("requiredRecordList").isJsonArray()) {
       throw new IllegalArgumentException(
           String.format(
+              java.util.Locale.ROOT,
               "Expected the field `requiredRecordList` to be an array in the JSON string but got `%s`",
               jsonObj.get("requiredRecordList")));
     }
@@ -141,6 +146,7 @@ public record ExampleRecordWithCollectionsOfRecords(
       if (!jsonObj.get("optionalRecordSet").isJsonArray()) {
         throw new IllegalArgumentException(
             String.format(
+                java.util.Locale.ROOT,
                 "Expected the field `optionalRecordSet` to be an array in the JSON string but got `%s`",
                 jsonObj.get("optionalRecordSet")));
       }
@@ -152,6 +158,7 @@ public record ExampleRecordWithCollectionsOfRecords(
     if (!jsonObj.get("requiredRecordSet").isJsonArray()) {
       throw new IllegalArgumentException(
           String.format(
+              java.util.Locale.ROOT,
               "Expected the field `requiredRecordSet` to be an array in the JSON string but got `%s`",
               jsonObj.get("requiredRecordSet")));
     }
