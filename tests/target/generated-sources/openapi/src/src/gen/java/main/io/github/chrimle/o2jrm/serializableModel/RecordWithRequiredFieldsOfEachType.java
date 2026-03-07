@@ -130,7 +130,8 @@ public record RecordWithRequiredFieldsOfEachType(
             String.format(
                 java.util.Locale.ROOT,
                 "The field `%s` in the JSON string is not defined in the `RecordWithRequiredFieldsOfEachType` properties. JSON: %s",
-                key, jsonElement));
+                key,
+                jsonElement));
       }
     }
 
@@ -140,7 +141,8 @@ public record RecordWithRequiredFieldsOfEachType(
             String.format(
                 java.util.Locale.ROOT,
                 "The required field `%s` is not found in the JSON string: %s",
-                requiredField, jsonElement));
+                requiredField,
+                jsonElement));
       }
     }
 

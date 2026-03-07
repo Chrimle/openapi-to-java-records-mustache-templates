@@ -71,7 +71,8 @@ public record DeprecatedExampleRecord(
             String.format(
                 java.util.Locale.ROOT,
                 "The field `%s` in the JSON string is not defined in the `DeprecatedExampleRecord` properties. JSON: %s",
-                key, jsonElement));
+                key,
+                jsonElement));
       }
     }
 

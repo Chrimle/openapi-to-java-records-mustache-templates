@@ -80,7 +80,8 @@ public record ExampleRecordWithOneExtraAnnotation(
             String.format(
                 java.util.Locale.ROOT,
                 "The field `%s` in the JSON string is not defined in the `ExampleRecordWithOneExtraAnnotation` properties. JSON: %s",
-                key, jsonElement));
+                key,
+                jsonElement));
       }
     }
 
