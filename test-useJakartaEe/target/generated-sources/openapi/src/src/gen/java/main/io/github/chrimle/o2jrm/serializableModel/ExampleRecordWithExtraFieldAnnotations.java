@@ -109,8 +109,10 @@ public record ExampleRecordWithExtraFieldAnnotations(
       if (!ExampleRecordWithExtraFieldAnnotations.openapiFields.contains(key)) {
         throw new IllegalArgumentException(
             String.format(
+                java.util.Locale.ROOT,
                 "The field `%s` in the JSON string is not defined in the `ExampleRecordWithExtraFieldAnnotations` properties. JSON: %s",
-                key, jsonElement));
+                key,
+                jsonElement));
       }
     }
 
@@ -120,6 +122,7 @@ public record ExampleRecordWithExtraFieldAnnotations(
       if (!jsonObj.get("oneAnnotationAsInline").isJsonPrimitive()) {
         throw new IllegalArgumentException(
             String.format(
+                java.util.Locale.ROOT,
                 "Expected the field `oneAnnotationAsInline` to be a primitive type in the JSON string but got `%s`",
                 jsonObj.get("oneAnnotationAsInline")));
       }
@@ -129,6 +132,7 @@ public record ExampleRecordWithExtraFieldAnnotations(
       if (!jsonObj.get("oneAnnotationAsNewLine").isJsonPrimitive()) {
         throw new IllegalArgumentException(
             String.format(
+                java.util.Locale.ROOT,
                 "Expected the field `oneAnnotationAsNewLine` to be a primitive type in the JSON string but got `%s`",
                 jsonObj.get("oneAnnotationAsNewLine")));
       }
@@ -138,6 +142,7 @@ public record ExampleRecordWithExtraFieldAnnotations(
       if (!jsonObj.get("oneAnnotationAsList").isJsonPrimitive()) {
         throw new IllegalArgumentException(
             String.format(
+                java.util.Locale.ROOT,
                 "Expected the field `oneAnnotationAsList` to be a primitive type in the JSON string but got `%s`",
                 jsonObj.get("oneAnnotationAsList")));
       }
@@ -147,6 +152,7 @@ public record ExampleRecordWithExtraFieldAnnotations(
       if (!jsonObj.get("oneAnnotationAsArray").isJsonPrimitive()) {
         throw new IllegalArgumentException(
             String.format(
+                java.util.Locale.ROOT,
                 "Expected the field `oneAnnotationAsArray` to be a primitive type in the JSON string but got `%s`",
                 jsonObj.get("oneAnnotationAsArray")));
       }
@@ -156,6 +162,7 @@ public record ExampleRecordWithExtraFieldAnnotations(
       if (!jsonObj.get("twoAnnotationsAsNewLine").isJsonPrimitive()) {
         throw new IllegalArgumentException(
             String.format(
+                java.util.Locale.ROOT,
                 "Expected the field `twoAnnotationsAsNewLine` to be a primitive type in the JSON string but got `%s`",
                 jsonObj.get("twoAnnotationsAsNewLine")));
       }
@@ -165,6 +172,7 @@ public record ExampleRecordWithExtraFieldAnnotations(
       if (!jsonObj.get("twoAnnotationsAsList").isJsonPrimitive()) {
         throw new IllegalArgumentException(
             String.format(
+                java.util.Locale.ROOT,
                 "Expected the field `twoAnnotationsAsList` to be a primitive type in the JSON string but got `%s`",
                 jsonObj.get("twoAnnotationsAsList")));
       }
@@ -174,6 +182,7 @@ public record ExampleRecordWithExtraFieldAnnotations(
       if (!jsonObj.get("twoAnnotationsAsArray").isJsonPrimitive()) {
         throw new IllegalArgumentException(
             String.format(
+                java.util.Locale.ROOT,
                 "Expected the field `twoAnnotationsAsArray` to be a primitive type in the JSON string but got `%s`",
                 jsonObj.get("twoAnnotationsAsArray")));
       }

@@ -76,8 +76,10 @@ public record ExampleRecordWithOneExtraAnnotation(
       if (!ExampleRecordWithOneExtraAnnotation.openapiFields.contains(key)) {
         throw new IllegalArgumentException(
             String.format(
+                java.util.Locale.ROOT,
                 "The field `%s` in the JSON string is not defined in the `ExampleRecordWithOneExtraAnnotation` properties. JSON: %s",
-                key, jsonElement));
+                key,
+                jsonElement));
       }
     }
 
@@ -87,6 +89,7 @@ public record ExampleRecordWithOneExtraAnnotation(
       if (!jsonObj.get("field1").isJsonPrimitive()) {
         throw new IllegalArgumentException(
             String.format(
+                java.util.Locale.ROOT,
                 "Expected the field `field1` to be a primitive type in the JSON string but got `%s`",
                 jsonObj.get("field1")));
       }
@@ -96,6 +99,7 @@ public record ExampleRecordWithOneExtraAnnotation(
       if (!jsonObj.get("field2").isJsonPrimitive()) {
         throw new IllegalArgumentException(
             String.format(
+                java.util.Locale.ROOT,
                 "Expected the field `field2` to be a primitive type in the JSON string but got `%s`",
                 jsonObj.get("field2")));
       }
