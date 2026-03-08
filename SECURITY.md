@@ -1,5 +1,8 @@
 # Security Policy
 
+> [!TIP]
+> To discuss issues privately, reach out via [openapi2javarecords@protonmail.com](mailto:openapi2javarecords@protonmail.com).
+
 ## Supported Versions
 
 | Version |     Supported      |
@@ -14,6 +17,7 @@
 
 ### 1. **Private Disclosure**
 Please report vulnerabilities by [opening a Draft Security Advisory](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/security/advisories/new) on GitHub.
+Or, provide details via [openapi2javarecords@protonmail.com](mailto:openapi2javarecords@protonmail.com).
 
 ### 2. **Response Time**
 You can expect an initial acknowledgement of your report within 48–72 hours.
