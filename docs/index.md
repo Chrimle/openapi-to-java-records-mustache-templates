@@ -33,7 +33,7 @@ It is **strongly recommended** to import the mustache templates as a dependency.
 <dependency>
     <groupId>io.github.chrimle</groupId>
     <artifactId>openapi-to-java-records-mustache-templates</artifactId>
-    <version>3.4.0</version>
+    <version>3.5.0</version>
 </dependency>
 ```
 
