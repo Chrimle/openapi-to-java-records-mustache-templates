@@ -137,6 +137,25 @@ components:
           uniqueItems: true
           items:
             $ref: '#/components/schemas/ExampleRecord'
+    ExampleRecordOneImplements:
+      type: object
+      description: Example of an Record which implements an interface.
+      properties:
+        field1:
+          type: boolean
+          description: a boolean field
+      x-implements:
+        - io.github.chrimle.o2jrm.interfaces.TestInterfaceOne
+    ExampleRecordTwoImplements:
+      type: object
+      description: Example of an Record which implements two interfaces.
+      properties:
+        field1:
+          type: boolean
+          description: a boolean field
+      x-implements:
+        - io.github.chrimle.o2jrm.interfaces.TestInterfaceOne
+        - io.github.chrimle.o2jrm.interfaces.TestInterfaceTwo
     ExampleRecord:
       type: object
       description: Example of a Record
