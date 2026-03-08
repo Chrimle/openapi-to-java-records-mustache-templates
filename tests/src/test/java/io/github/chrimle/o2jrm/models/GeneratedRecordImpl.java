@@ -21,6 +21,8 @@ import io.github.chrimle.o2jrm.annotations.TestExtraAnnotation;
 import io.github.chrimle.o2jrm.annotations.TestExtraAnnotationTwo;
 import io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationOne;
 import io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationTwo;
+import io.github.chrimle.o2jrm.interfaces.TestInterfaceOne;
+import io.github.chrimle.o2jrm.interfaces.TestInterfaceTwo;
 import java.lang.annotation.Annotation;
 import java.math.BigDecimal;
 import java.util.List;
@@ -33,22 +35,30 @@ public enum GeneratedRecordImpl implements GeneratedRecord, GeneratedClassImpl {
       "DeprecatedExampleRecord",
       true,
       List.of(),
+      List.of(),
       GeneratedField.of("field1", Boolean.class).build()),
   EXAMPLE_RECORD(
-      "ExampleRecord", false, List.of(), GeneratedField.of("field1", Boolean.class).build()),
+      "ExampleRecord",
+      false,
+      List.of(),
+      List.of(),
+      GeneratedField.of("field1", Boolean.class).build()),
   EXAMPLE_NULLABLE_RECORD(
       "ExampleNullableRecord",
       false,
+      List.of(),
       List.of(),
       GeneratedField.of("field1", Boolean.class).build()),
   EXAMPLE_RECORD_WITH_DEFAULT_FIELDS(
       "ExampleRecordWithDefaultFields",
       false,
       List.of(),
+      List.of(),
       GeneratedField.of("field1", String.class).defaultValue("someDefaultValue").build()),
   EXAMPLE_RECORD_WITH_EXTRA_FIELD_ANNOTATIONS(
       "ExampleRecordWithExtraFieldAnnotations",
       false,
+      List.of(),
       List.of(),
       GeneratedField.of("oneAnnotationAsInline", Boolean.class)
           .withExtraFieldAnnotations(TestFieldExtraAnnotationOne.class)
@@ -78,6 +88,7 @@ public enum GeneratedRecordImpl implements GeneratedRecord, GeneratedClassImpl {
       "ExampleRecordWithOneExtraAnnotation",
       false,
       List.of(TestExtraAnnotation.class),
+      List.of(),
       GeneratedField.of("field1", Boolean.class)
           .withExtraFieldAnnotations(TestFieldExtraAnnotationOne.class)
           .build(),
@@ -89,22 +100,26 @@ public enum GeneratedRecordImpl implements GeneratedRecord, GeneratedClassImpl {
       "ExampleRecordWithTwoExtraAnnotations",
       false,
       List.of(TestExtraAnnotation.class, TestExtraAnnotationTwo.class),
+      List.of(),
       GeneratedField.of("field1", Boolean.class).build()),
   /**
    * This class reference another class, which requires Reflection at runtime. Hence, this class
    * does not list all expected fields to be generated. This is done in {@link
    * #getGeneratedFields(GeneratedClass, PluginExecution)}.
    */
-  RECORD_WITH_NULLABLE_FIELDS_OF_EACH_TYPE("RecordWithNullableFieldsOfEachType", false, List.of()),
+  RECORD_WITH_NULLABLE_FIELDS_OF_EACH_TYPE(
+      "RecordWithNullableFieldsOfEachType", false, List.of(), List.of()),
   /**
    * This class reference another class, which requires Reflection at runtime. Hence, this class
    * does not list all expected fields to be generated. This is done in {@link
    * #getGeneratedFields(GeneratedClass, PluginExecution)}.
    */
-  RECORD_WITH_REQUIRED_FIELDS_OF_EACH_TYPE("RecordWithRequiredFieldsOfEachType", false, List.of()),
+  RECORD_WITH_REQUIRED_FIELDS_OF_EACH_TYPE(
+      "RecordWithRequiredFieldsOfEachType", false, List.of(), List.of()),
   RECORD_WITH_ALL_CONSTRAINTS(
       "RecordWithAllConstraints",
       false,
+      List.of(),
       List.of(),
       GeneratedField.of("stringStandard", String.class).build(),
       GeneratedField.of("stringDefault", String.class).defaultValue("someDefaultValue").build(),
@@ -145,34 +160,50 @@ public enum GeneratedRecordImpl implements GeneratedRecord, GeneratedClassImpl {
           .decimalMin("0")
           .decimalMax("100")
           .build()),
+  EXAMPLE_RECORD_ONE_IMPLEMENTS(
+      "ExampleRecordOneImplements",
+      false,
+      List.of(),
+      List.of(TestInterfaceOne.class),
+      GeneratedField.of("field1", Boolean.class).build()),
+  EXAMPLE_RECORD_TWO_IMPLEMENTS(
+      "ExampleRecordTwoImplements",
+      false,
+      List.of(),
+      List.of(TestInterfaceOne.class, TestInterfaceTwo.class),
+      GeneratedField.of("field1", Boolean.class).build()),
   /**
    * This class reference another class, which requires Reflection at runtime. Hence, this class
    * does not list all expected fields to be generated. This is done in {@link
    * #getGeneratedFields(GeneratedClass, PluginExecution)}.
    */
-  RECORD_WITH_INNER_ENUMS("RecordWithInnerEnums", false, List.of()),
+  RECORD_WITH_INNER_ENUMS("RecordWithInnerEnums", false, List.of(), List.of()),
   /**
    * This class reference another class, which requires Reflection at runtime. Hence, this class
    * does not list all expected fields to be generated. This is done in {@link
    * #getGeneratedFields(GeneratedClass, PluginExecution)}.
    */
-  RECORD_WITH_COLLECTIONS_OF_RECORDS("ExampleRecordWithCollectionsOfRecords", false, List.of());
+  RECORD_WITH_COLLECTIONS_OF_RECORDS(
+      "ExampleRecordWithCollectionsOfRecords", false, List.of(), List.of());
 
   private final String simpleClassName;
   private final boolean isDeprecated;
   private final boolean hasExtraAnnotations;
   private final List<Class<? extends Annotation>> extraAnnotations;
+  private final List<Class<?>> implementsInterfaces;
   private final GeneratedField<?>[] generatedFields;
 
   GeneratedRecordImpl(
       final String simpleClassName,
       final boolean isDeprecated,
       final List<Class<? extends Annotation>> extraAnnotations,
+      List<Class<?>> implementsInterfaces,
       final GeneratedField<?>... generatedFields) {
     this.simpleClassName = simpleClassName;
     this.isDeprecated = isDeprecated;
     this.hasExtraAnnotations = !extraAnnotations.isEmpty();
     this.extraAnnotations = extraAnnotations;
+    this.implementsInterfaces = implementsInterfaces;
     this.generatedFields = generatedFields;
   }
 
@@ -204,7 +235,7 @@ public enum GeneratedRecordImpl implements GeneratedRecord, GeneratedClassImpl {
    */
   @Override
   public List<Class<?>> getImplementsInterfaces() {
-    throw new UnsupportedOperationException("x-implements does not support records yet!");
+    return implementsInterfaces;
   }
 
   /**
