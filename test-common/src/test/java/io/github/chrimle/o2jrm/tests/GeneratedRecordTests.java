@@ -23,6 +23,8 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.github.chrimle.o2jrm.GeneratedSource;
 import io.github.chrimle.o2jrm.annotations.*;
+import io.github.chrimle.o2jrm.interfaces.TestInterfaceOne;
+import io.github.chrimle.o2jrm.interfaces.TestInterfaceTwo;
 import io.github.chrimle.o2jrm.models.GeneratedField;
 import io.github.chrimle.o2jrm.tests.GeneratedRecordTests.GeneratorConfigurationTests.ConfigOptionsTests;
 import io.github.chrimle.o2jrm.tests.GeneratedRecordTests.GeneratorConfigurationTests.ConfigOptionsTests.AdditionalModelTypeAnnotationsTests;
@@ -147,6 +149,35 @@ public abstract class GeneratedRecordTests {
 
             CustomAssertions.assertClassIsAnnotatedWith(
                 generatedSource.getClassUnderTest(), Deprecated.class);
+          }
+        }
+      }
+
+      @Nested
+      @DisplayName("Testing `components.schemas.{schema}.x-implements`")
+      class XImplementsTests {
+
+        @ParameterizedTest
+        @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+        @DisplayName("Generated `record` class does NOT `implements` any interfaces")
+        void whenRecordHasNoXImplementsThenGeneratedRecordClassDoesNotImplementInterfaces(
+            final GeneratedSource generatedSource) {
+          Assumptions.assumeFalse(generatedSource.hasXImplements());
+          CustomAssertions.assertClassDoesNotImplementInterface(
+              generatedSource.getClassUnderTest(), TestInterfaceOne.class);
+          CustomAssertions.assertClassDoesNotImplementInterface(
+              generatedSource.getClassUnderTest(), TestInterfaceTwo.class);
+        }
+
+        @ParameterizedTest
+        @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+        @DisplayName("Generated `record` class DOES `implements` expected interfaces")
+        void whenRecordHasXImplementsThenGeneratedRecordClassImplementInterfaces(
+            final GeneratedSource generatedSource) {
+          Assumptions.assumeTrue(generatedSource.hasXImplements());
+          for (final var expectedInterface : generatedSource.getXImplementsInterfaces()) {
+            CustomAssertions.assertClassImplementsInterface(
+                generatedSource.getClassUnderTest(), expectedInterface);
           }
         }
       }
