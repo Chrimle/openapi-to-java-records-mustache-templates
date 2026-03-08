@@ -53,8 +53,8 @@ import java.util.Set;
         }}{{{.}}}
     {{/vendorExtensions.x-field-extra-annotation}}{{!
     }}{{>useBeanValidation}}{{{datatypeWithEnum}}} {{name}}{{^-last}},
-    {{/-last}}{{/vars}}){{#serializableModel}}
-    implements Serializable{{/serializableModel}} {
+    {{/-last}}{{/vars}}){{#vendorExtensions.x-implements}}{{#-first}}
+    implements {{{.}}}{{/-first}}{{^-first}}, {{{.}}}{{/-first}}{{/vendorExtensions.x-implements}} {
 
 {{#gson}}  /** A set containing the names of all instance fields defined in this class. */
   public static final HashSet<String> openapiFields =
