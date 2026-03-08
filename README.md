@@ -362,3 +362,6 @@ If the problem you are facing has not already been reported, please [open an iss
 - [OpenAPI Basic Structure](https://swagger.io/docs/specification/basic-structure/)
 - [openapi-generator-maven-plugin](https://github.com/OpenAPITools/openapi-generator/blob/master/modules/openapi-generator-maven-plugin/README.md)
 - [Mustache](https://mustache.github.io/)
+
+<!-- Scarf Pixel Tracker -->
+<img referrerpolicy="no-referrer-when-downgrade" src="https://static.scarf.sh/a.png?x-pxid=d9ff30fa-ffcc-4963-a18d-9977bb84c3ad" />
