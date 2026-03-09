@@ -41,5 +41,6 @@ Once a fix is ready and a new version is published, a public security advisory w
 >   - Maven Central
 > - **Review Files Used When Generating**
 >   - **ALWAYS** secure that _input_-files (such as `.mustache` files) are authentic, that no _unexpected_ files are downloaded and/or retrieved, and only trusted files are used for code generation.
+>   - It is recommended to explicitly state what files you expect to retrieve from this project, i.e., do not retrieve any arbitrary files like: `*/*` or `*.mustache`.
 > - **Review Generated Code**
 >   - **ALWAYS** secure that resulting files - _whether new, modified or removed_ - are as expected.

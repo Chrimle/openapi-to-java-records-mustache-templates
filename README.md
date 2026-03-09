@@ -27,29 +27,39 @@ If you have feedback or suggestions, please share it in either [Discussions](htt
 If you want a more detailed guide with simple examples to get started, check out the Wiki-page
 > [Beginner Guide (Step-by-Step)](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/wiki/Beginner-Guide-%28Step‐by‐Step%29).
 
-It is **strongly recommended** to import the mustache templates as a dependency. It has officially been published to:
-- [Maven Central Repository](https://central.sonatype.com/artifact/io.github.chrimle/openapi-to-java-records-mustache-templates)
-- [GitHub Packages](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/packages/)
-
-```xml
-<dependency>
-    <groupId>io.github.chrimle</groupId>
-    <artifactId>openapi-to-java-records-mustache-templates</artifactId>
-    <version>3.5.0</version>
-</dependency>
-```
+## Obtain Mustache Templates
 
 > [!NOTE]
 > The Maven artifact **only** contains the `.mustache` template files and a `LICENSE.txt`. No other files are included in the imported artifact.
+> ```xml
+> <dependency>
+>    <groupId>io.github.chrimle</groupId>
+>    <artifactId>openapi-to-java-records-mustache-templates</artifactId>
+>    <version><!-- Check for latest version --></version>
+> </dependency>
+> ```
 
-> [!TIP]
-> Use a plugin such as `maven-dependency-plugin` to easily unpack the `.mustache` files.
+These mustache templates may be obtained in several (4) ways (_ordered by convenience_):
 
-> [!WARNING]
-> While it is _possible_ to download the Mustache templates directly
-> from [GitHub](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/tree/main/mustache-templates/target/classes/templates),
-> this approach is **not recommended**. Templates obtained this way are not guaranteed to be versioned correctly and
-> is explicitly **exempt** from the [Semantic Versioning](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/wiki/Semantic-Versioning) considerations.
+### 1. Use `maven-dependency-plugin` (Recommended)
+Use a plugin such as `maven-dependency-plugin` to unpack the `.mustache` files from `io.github.chrimle:openapi-to-java-records-mustache-templates`.
+> [!CAUTION]
+> **SECURITY BEST PRACTICES**
+> 
+> Do not unpack arbitrary files from the downloaded artifact. Always explicitly list individual files to unpack. (_Semantic Versioning is already considering this_).
+> [Further information in Security Policy](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/security/policy).
+
+### 2. Download from Maven Central
+Download the GPG-Signed artifact `io.github.chrimle:openapi-to-java-records-mustache-templates` from [Maven Central Repository](https://central.sonatype.com/artifact/io.github.chrimle/openapi-to-java-records-mustache-templates)
+and copy the `.mustache`-files from the `/templates` directory.
+
+### 3. Download from GitHub Packages
+Download the `io.github.chrimle:openapi-to-java-records-mustache-templates` Package from [GitHub Packages](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/packages/)
+and copy the `.mustache`-files from the `/templates` directory.
+
+### 4. Download the Source Code from GitHub Releases
+Download the GPG-Signed source code from [Releases](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/releases)
+and copy the `.mustache`-files from the `mustache-templates/target/classes/templates` directory.
 
 ## Use the `.mustache` templates when generating
 Place the file(s) in desired directory. Then, in the Maven build configuration, set the property `<templateDirectory>` to the directory path. Example:
