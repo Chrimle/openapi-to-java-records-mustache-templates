@@ -29,7 +29,17 @@ If you have feedback or suggestions, please share it in either [Discussions](htt
 
 > **NOTE**
 >
-> The Maven artifact **only** contains the `.mustache` template files and a `LICENSE.txt`. No other files are included in the imported artifact.
+> The Maven artifact **only** contains the `.mustache` template files and a `LICENSE.txt`.
+> - `templates/`
+>   - `generateBuilders.mustache`
+>   - `javadoc.mustache`
+>   - `licenseInfo.mustache`
+>   - `modelEnum.mustache`
+>   - `pojo.mustache`
+>   - `useBeanValidation.mustache`
+> - `LICENSE.txt`
+>
+> No other files are included in the imported artifact.
 > ```xml
 > <dependency>
 >    <groupId>io.github.chrimle</groupId>
