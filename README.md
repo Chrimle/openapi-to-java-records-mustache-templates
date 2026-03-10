@@ -30,7 +30,17 @@ If you want a more detailed guide with simple examples to get started, check out
 ## Obtain Mustache Templates
 
 > [!NOTE]
-> The Maven artifact **only** contains the `.mustache` template files and a `LICENSE.txt`. No other files are included in the imported artifact.
+> The Maven artifact **only** contains the `.mustache` template files and a `LICENSE.txt`.
+> - `templates/`
+>   - `generateBuilders.mustache`
+>   - `javadoc.mustache`
+>   - `licenseInfo.mustache`
+>   - `modelEnum.mustache`
+>   - `pojo.mustache`
+>   - `useBeanValidation.mustache`
+> - `LICENSE.txt`
+>
+> No other files are included in the imported artifact.
 > ```xml
 > <dependency>
 >    <groupId>io.github.chrimle</groupId>
