@@ -422,6 +422,14 @@
                     </execution>
                 </executions>
             </plugin>
+            <!-- Enable Deployment to GitHub Packages -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <configuration>
+                    <skip>false</skip>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
