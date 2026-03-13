@@ -259,7 +259,14 @@
                                         <type>jar</type>
                                         <overWrite>true</overWrite>
                                         <outputDirectory>${project.build.outputDirectory}</outputDirectory>
-                                        <includes>**/*.mustache</includes>
+                                        <includes>
+                                            templates/generateBuilders.mustache,
+                                            templates/javadoc.mustache,
+                                            templates/licenseInfo.mustache,
+                                            templates/modelEnum.mustache,
+                                            templates/pojo.mustache,
+                                            templates/useBeanValidation.mustache
+                                        </includes>
                                     </artifactItem>
                                 </artifactItems>
                             </configuration>
