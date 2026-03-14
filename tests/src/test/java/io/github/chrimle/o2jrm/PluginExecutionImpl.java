@@ -25,6 +25,7 @@ import java.util.List;
  * to assert {@code <configuration>} or {@code <configOption>}-specific properties or behaviours of
  * generated classes.
  */
+@SuppressWarnings("ImmutableEnumChecker")
 public enum PluginExecutionImpl implements PluginExecution {
   OKHTTP_GSON_STANDARD("standard", Library.OKHTTP_GSON),
   WEBCLIENT_STANDARD("webclient.standard", Library.WEBCLIENT),

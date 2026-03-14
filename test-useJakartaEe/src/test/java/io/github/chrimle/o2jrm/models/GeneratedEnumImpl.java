@@ -22,6 +22,7 @@ import java.net.URI;
 import java.util.List;
 
 /** Enum class listing all expected {@code enum} classes to be generated from the OpenAPI spec. */
+@SuppressWarnings("ImmutableEnumChecker")
 public enum GeneratedEnumImpl implements GeneratedEnum, GeneratedClassImpl {
   DEPRECATED_EXAMPLE_ENUM(
       "DeprecatedExampleEnum",
