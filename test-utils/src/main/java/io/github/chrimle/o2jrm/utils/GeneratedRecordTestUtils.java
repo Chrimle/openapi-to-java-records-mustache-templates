@@ -125,6 +125,7 @@ public class GeneratedRecordTestUtils {
    * @return the testing value
    * @param <T> type of the class
    */
+  @SuppressWarnings("BooleanLiteral")
   private static <T> T getClassSpecificTestingValue(final Class<? extends T> fieldClass) {
     if (Boolean.class.equals(fieldClass)) {
       return fieldClass.cast(Boolean.TRUE);

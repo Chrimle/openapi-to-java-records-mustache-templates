@@ -111,6 +111,7 @@ public interface GeneratedClass {
    * @param pluginExecution containing the package name.
    * @return the loaded {@code Class}.
    */
+  @SuppressWarnings("AmbiguousMethodReference")
   default Class<?> getClass(final PluginExecution pluginExecution) {
     return getClass(this, pluginExecution);
   }
