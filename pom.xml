@@ -235,9 +235,6 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-deploy-plugin</artifactId>
-                    <configuration>
-                        <skip>true</skip>
-                    </configuration>
                 </plugin>
                 <!-- Retrieves and unpacks the Custom Mustache Templates & OpenAPI Spec (for tests) -->
                 <plugin>
@@ -424,11 +421,7 @@
             </plugin>
             <!-- Enable Deployment to GitHub Packages -->
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-deploy-plugin</artifactId>
-                <configuration>
-                    <skip>false</skip>
-                </configuration>
             </plugin>
         </plugins>
     </build>
