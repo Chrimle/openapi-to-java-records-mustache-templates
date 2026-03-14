@@ -231,11 +231,6 @@
     <build>
         <pluginManagement>
             <plugins>
-                <!-- Skips Deploying an Artifact -->
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-deploy-plugin</artifactId>
-                </plugin>
                 <!-- Retrieves and unpacks the Custom Mustache Templates & OpenAPI Spec (for tests) -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
