@@ -116,3 +116,5 @@ tests/target/classes/api.yaml
 
 test-useJakartaEe/target/classes/templates
 test-useJakartaEe/target/classes/api.yaml
+/test-useJakartaEe/target/test-classes/junit-platform.properties
+/tests/target/test-classes/junit-platform.properties
