@@ -137,6 +137,7 @@ public interface GeneratedClass {
    * @param pluginExecution containing the package name.
    * @return the loaded {@code Class}.
    */
+  @SuppressWarnings("AmbiguousMethodReference")
   static Class<?> getClass(
       final GeneratedClass generatedClass, final PluginExecution pluginExecution) {
     try {
