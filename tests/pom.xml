@@ -18,8 +18,6 @@
         <jackson-core.version>2.19.0</jackson-core.version>
         <jackson-databind.version>2.20.0</jackson-databind.version>
         <jakarta.validation-api.version>2.0.2</jakarta.validation-api.version>
-        <okio-jvm.version>3.12.0</okio-jvm.version>
-        <spring-core.version>6.2.12</spring-core.version>
         <!-- Overridden Dependencies -->
         <hibernate-validator.version>6.2.5.Final</hibernate-validator.version>
 
@@ -129,7 +127,6 @@
         <dependency>
             <groupId>com.squareup.okio</groupId>
             <artifactId>okio-jvm</artifactId>
-            <version>${okio-jvm.version}</version>
         </dependency>
         <dependency>
             <groupId>com.squareup.okhttp3</groupId>
@@ -154,7 +151,6 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
-            <version>${spring-core.version}</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.datatype</groupId>
