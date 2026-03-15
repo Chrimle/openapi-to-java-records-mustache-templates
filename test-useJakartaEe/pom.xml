@@ -16,7 +16,6 @@
 
     <properties>
         <!-- Overridden Dependencies -->
-        <hibernate-validator.version>8.0.2.Final</hibernate-validator.version>
         <jackson-core.version>2.20.0</jackson-core.version>
         <jakarta.validation-api.version>3.0.2</jakarta.validation-api.version>
 
@@ -117,12 +116,6 @@
             <!-- Needed when library=webclient -->
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>
-        </dependency>
-        <dependency>
-            <!-- Needed when useBeanValidation=true -->
-            <groupId>org.hibernate.validator</groupId>
-            <artifactId>hibernate-validator</artifactId>
-            <version>${hibernate-validator.version}</version>
         </dependency>
         <!-- Needed when generateSupportingFiles=true -->
         <dependency>
