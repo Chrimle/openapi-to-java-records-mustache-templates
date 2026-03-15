@@ -94,11 +94,6 @@
             <version>${jakarta.validation-api.version}</version>
         </dependency>
         <dependency>
-            <!-- Needed when configOptions.useJakartaEe=false -->
-            <groupId>com.github.spotbugs</groupId>
-            <artifactId>spotbugs-annotations</artifactId>
-        </dependency>
-        <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
             <version>${jackson-core.version}</version>
