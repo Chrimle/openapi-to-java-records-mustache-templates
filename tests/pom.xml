@@ -125,12 +125,6 @@
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>
         </dependency>
-        <dependency>
-            <!-- Needed when useBeanValidation=true -->
-            <groupId>org.hibernate.validator</groupId>
-            <artifactId>hibernate-validator</artifactId>
-            <version>${hibernate-validator.version}</version>
-        </dependency>
         <!-- Needed for @Generated annotation -->
         <dependency>
             <groupId>javax.annotation</groupId>
