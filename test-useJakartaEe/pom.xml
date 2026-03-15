@@ -16,7 +16,6 @@
 
     <properties>
         <!-- Overridden Dependencies -->
-        <jackson-core.version>2.20.0</jackson-core.version>
         <jakarta.validation-api.version>3.0.2</jakarta.validation-api.version>
 
         <!-- Default `configuration`-option values -->
@@ -101,11 +100,6 @@
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-core</artifactId>
-            <version>${jackson-core.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
         </dependency>
         <dependency>
@@ -116,6 +110,10 @@
             <!-- Needed when library=webclient -->
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
         </dependency>
         <!-- Needed when generateSupportingFiles=true -->
         <dependency>

@@ -17,7 +17,6 @@
     <properties>
         <!-- Overridden Dependencies -->
         <hibernate-validator.version>6.2.5.Final</hibernate-validator.version>
-        <jackson-core.version>2.19.0</jackson-core.version>
         <jakarta.validation-api.version>2.0.2</jakarta.validation-api.version>
 
         <!-- Default `configuration`-option values -->
@@ -95,11 +94,6 @@
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-core</artifactId>
-            <version>${jackson-core.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
         </dependency>
         <dependency>
@@ -110,6 +104,10 @@
             <!-- Needed when library=webclient -->
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
         </dependency>
         <!-- Needed for @Generated annotation -->
         <dependency>
