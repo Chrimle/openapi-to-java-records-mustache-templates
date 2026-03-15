@@ -15,10 +15,10 @@
     <!-- / Project Information -->
 
     <properties>
-        <jackson-core.version>2.19.0</jackson-core.version>
-        <jakarta.validation-api.version>2.0.2</jakarta.validation-api.version>
         <!-- Overridden Dependencies -->
         <hibernate-validator.version>6.2.5.Final</hibernate-validator.version>
+        <jackson-core.version>2.19.0</jackson-core.version>
+        <jakarta.validation-api.version>2.0.2</jakarta.validation-api.version>
 
         <!-- Default `configuration`-option values -->
         <modelPackage.default>${project.groupId}.o2jrm</modelPackage.default>

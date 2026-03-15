@@ -17,6 +17,8 @@
     <properties>
         <!-- Overridden Dependencies -->
         <hibernate-validator.version>8.0.2.Final</hibernate-validator.version>
+        <jackson-core.version>2.20.0</jackson-core.version>
+        <jakarta.validation-api.version>3.0.2</jakarta.validation-api.version>
 
         <!-- Default `configuration`-option values -->
         <modelPackage.default>${project.groupId}.o2jrm</modelPackage.default>
@@ -94,9 +96,19 @@
             <artifactId>jakarta.annotation-api</artifactId>
         </dependency>
         <dependency>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
+            <version>${jakarta.validation-api.version}</version>
+        </dependency>
+        <dependency>
             <!-- Needed when configOptions.useJakartaEe=false -->
             <groupId>com.github.spotbugs</groupId>
             <artifactId>spotbugs-annotations</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson-core.version}</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
@@ -146,6 +158,10 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webflux</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.datatype</groupId>
