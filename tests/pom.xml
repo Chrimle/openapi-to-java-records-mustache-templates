@@ -92,11 +92,6 @@
             <artifactId>gson</artifactId>
         </dependency>
         <dependency>
-            <!-- Needed when configOptions.useJakartaEe=true -->
-            <groupId>jakarta.annotation</groupId>
-            <artifactId>jakarta.annotation-api</artifactId>
-        </dependency>
-        <dependency>
             <groupId>jakarta.validation</groupId>
             <artifactId>jakarta.validation-api</artifactId>
             <version>${jakarta.validation-api.version}</version>
