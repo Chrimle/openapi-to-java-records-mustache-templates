@@ -129,11 +129,6 @@
             <artifactId>hibernate-validator</artifactId>
             <version>${hibernate-validator.version}</version>
         </dependency>
-        <!-- Needed for @Generated annotation -->
-        <dependency>
-            <groupId>javax.annotation</groupId>
-            <artifactId>javax.annotation-api</artifactId>
-        </dependency>
         <!-- Needed when generateSupportingFiles=true -->
         <dependency>
             <groupId>com.squareup.okio</groupId>
