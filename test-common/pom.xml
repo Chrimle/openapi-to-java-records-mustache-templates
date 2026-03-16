@@ -15,21 +15,13 @@
     <!-- / Project Information -->
 
     <dependencies>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-params</artifactId>
-            <scope>test</scope>
-        </dependency>
+        <!-- Sub Modules -->
         <dependency>
             <groupId>io.github.chrimle</groupId>
             <artifactId>openapi-to-java-records-mustache-templates-test-utils</artifactId>
             <scope>test</scope>
         </dependency>
+        <!-- / Sub Modules -->
         <dependency>
             <!-- Needed when library=webclient -->
             <groupId>com.fasterxml.jackson.core</groupId>
@@ -40,6 +32,16 @@
             <!-- Needed when library=okhttp-gson -->
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>
