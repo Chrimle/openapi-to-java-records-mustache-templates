@@ -82,6 +82,10 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>jsr305</artifactId>
+        </dependency>
+        <dependency>
             <!-- Needed when library=okhttp-gson -->
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
