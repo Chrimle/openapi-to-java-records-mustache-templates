@@ -112,6 +112,10 @@
             <artifactId>okio-jvm</artifactId>
         </dependency>
         <dependency>
+            <groupId>io.gsonfire</groupId>
+            <artifactId>gson-fire</artifactId>
+        </dependency>
+        <dependency>
             <!-- Needed when configOptions.useJakartaEe=true -->
             <groupId>jakarta.annotation</groupId>
             <artifactId>jakarta.annotation-api</artifactId>
@@ -124,10 +128,6 @@
             <!-- Needed for @Generated annotation -->
             <groupId>javax.annotation</groupId>
             <artifactId>javax.annotation-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.gsonfire</groupId>
-            <artifactId>gson-fire</artifactId>
         </dependency>
         <dependency>
             <!-- Needed when useBeanValidation=true -->
