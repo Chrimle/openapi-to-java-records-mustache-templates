@@ -17,6 +17,7 @@
     <properties>
         <!-- Overridden Dependencies -->
         <hibernate-validator.version>6.2.5.Final</hibernate-validator.version>
+        <jakarta.validation-api.version>2.0.2</jakarta.validation-api.version>
 
         <!-- Default `configuration`-option values -->
         <modelPackage.default>${project.groupId}.o2jrm</modelPackage.default>
@@ -144,6 +145,10 @@
         <dependency>
             <groupId>io.gsonfire</groupId>
             <artifactId>gson-fire</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
