@@ -229,10 +229,10 @@ public abstract class GeneratedEnumTests {
       class XImplementsTests {
         @ParameterizedTest
         @ArgumentsSource(GeneratedEnumProvider.class)
+        @AssumptionFilter(hasXImplements = Condition.FALSE)
         @DisplayName("Generated `enum` class does NOT `implements` any interfaces")
         void whenEnumHasNoXImplementsThenGeneratedEnumClassDoesNotImplementInterfaces(
             final GeneratedSource generatedSource) {
-          Assumptions.assumeFalse(generatedSource.hasXImplements());
           CustomAssertions.assertClassDoesNotImplementInterface(
               generatedSource.getClassUnderTest(), TestInterfaceOne.class);
           CustomAssertions.assertClassDoesNotImplementInterface(
@@ -241,10 +241,10 @@ public abstract class GeneratedEnumTests {
 
         @ParameterizedTest
         @ArgumentsSource(GeneratedEnumProvider.class)
+        @AssumptionFilter(hasXImplements = Condition.TRUE)
         @DisplayName("Generated `enum` class DOES `implements` expected interfaces")
         void whenEnumHasXImplementsThenGeneratedEnumClassImplementInterfaces(
             final GeneratedSource generatedSource) {
-          Assumptions.assumeTrue(generatedSource.hasXImplements());
           for (final var expectedInterface : generatedSource.getXImplementsInterfaces()) {
             CustomAssertions.assertClassImplementsInterface(
                 generatedSource.getClassUnderTest(), expectedInterface);

@@ -22,6 +22,8 @@ public abstract class GeneratedSourceProvider implements ArgumentsProvider {
               final GeneratedSource generatedSource = (GeneratedSource) arguments.get()[0];
               if (!(assumptionFilter.isDeprecated().test(generatedSource.isDeprecated())))
                 return false;
+              if (!(assumptionFilter.hasXImplements().test(generatedSource.hasXImplements())))
+                return false;
               return true;
             });
   }

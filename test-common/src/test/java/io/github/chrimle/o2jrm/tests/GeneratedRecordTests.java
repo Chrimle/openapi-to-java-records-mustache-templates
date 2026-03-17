@@ -154,10 +154,10 @@ public abstract class GeneratedRecordTests {
 
         @ParameterizedTest
         @ArgumentsSource(GeneratedRecordProvider.class)
+        @AssumptionFilter(hasXImplements = Condition.FALSE)
         @DisplayName("Generated `record` class does NOT `implements` any interfaces")
         void whenRecordHasNoXImplementsThenGeneratedRecordClassDoesNotImplementInterfaces(
             final GeneratedSource generatedSource) {
-          Assumptions.assumeFalse(generatedSource.hasXImplements());
           CustomAssertions.assertClassDoesNotImplementInterface(
               generatedSource.getClassUnderTest(), TestInterfaceOne.class);
           CustomAssertions.assertClassDoesNotImplementInterface(
@@ -166,10 +166,10 @@ public abstract class GeneratedRecordTests {
 
         @ParameterizedTest
         @ArgumentsSource(GeneratedRecordProvider.class)
+        @AssumptionFilter(hasXImplements = Condition.TRUE)
         @DisplayName("Generated `record` class DOES `implements` expected interfaces")
         void whenRecordHasXImplementsThenGeneratedRecordClassImplementInterfaces(
             final GeneratedSource generatedSource) {
-          Assumptions.assumeTrue(generatedSource.hasXImplements());
           for (final var expectedInterface : generatedSource.getXImplementsInterfaces()) {
             CustomAssertions.assertClassImplementsInterface(
                 generatedSource.getClassUnderTest(), expectedInterface);

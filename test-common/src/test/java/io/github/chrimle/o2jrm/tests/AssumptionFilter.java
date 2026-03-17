@@ -11,5 +11,7 @@ import org.junit.jupiter.params.provider.ArgumentsSource;
 @ArgumentsSource(GeneratedEnumProvider.class)
 public @interface AssumptionFilter {
 
+  Condition hasXImplements() default Condition.ANY;
+
   Condition isDeprecated() default Condition.ANY;
 }
