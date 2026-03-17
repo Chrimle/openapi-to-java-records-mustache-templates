@@ -9,7 +9,7 @@ import org.junit.jupiter.params.provider.ArgumentsProvider;
 
 public abstract class GeneratedSourceProvider implements ArgumentsProvider {
 
-  static Stream<Arguments> applyFilters(
+  Stream<Arguments> applyFilters(
       final String fullyQualifiedMethodName, final ExtensionContext context) {
 
     final var assumptionFilter =
@@ -32,7 +32,7 @@ public abstract class GeneratedSourceProvider implements ArgumentsProvider {
   }
 
   @SuppressWarnings("unchecked")
-  static Stream<Arguments> invokeMethodSource(final String fullyQualifiedMethodName) {
+  Stream<Arguments> invokeMethodSource(final String fullyQualifiedMethodName) {
     try {
       String[] parts = fullyQualifiedMethodName.split("#");
       String className = parts[0];
