@@ -26,7 +26,7 @@ import java.util.stream.Stream;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ArgumentsSource;
 
 @DisplayName("Testing Generated `record` classes")
 final class GeneratedRecordImplTests extends GeneratedRecordTests {
@@ -86,7 +86,7 @@ final class GeneratedRecordImplTests extends GeneratedRecordTests {
 
           @Override
           @ParameterizedTest
-          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+          @ArgumentsSource(GeneratedRecordProvider.class)
           @DisplayName("Generated `record` use Jakarta Bean Validation annotations on fields")
           void
               whenUseBeanValidationIsTrueThenFieldsAreAnnotatedWithJakartaBeanValidationAnnotations(
