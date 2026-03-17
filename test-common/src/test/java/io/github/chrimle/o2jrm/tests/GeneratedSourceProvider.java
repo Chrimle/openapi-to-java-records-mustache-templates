@@ -20,10 +20,13 @@ public abstract class GeneratedSourceProvider implements ArgumentsProvider {
             arguments -> {
               if (assumptionFilter == null) return true;
               final GeneratedSource generatedSource = (GeneratedSource) arguments.get()[0];
-              if (!(assumptionFilter.isDeprecated().test(generatedSource.isDeprecated())))
-                return false;
               if (!(assumptionFilter.hasXImplements().test(generatedSource.hasXImplements())))
                 return false;
+              if (!(assumptionFilter.isDeprecated().test(generatedSource.isDeprecated())))
+                return false;
+              if (!(assumptionFilter
+                  .isLibraryOkHttpGson()
+                  .test(generatedSource.isLibraryOkHttpGson()))) return false;
               return true;
             });
   }

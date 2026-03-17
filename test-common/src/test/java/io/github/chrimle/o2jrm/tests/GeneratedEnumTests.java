@@ -268,21 +268,20 @@ public abstract class GeneratedEnumTests {
 
         @ParameterizedTest
         @ArgumentsSource(GeneratedEnumProvider.class)
+        @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
         @DisplayName("Generated `enum` HAS `validateJsonElement`-method")
         void whenLibraryIsOkHttpGsonThenGeneratedEnumHasValidateJsonElementMethod(
             final GeneratedSource generatedSource) {
-          Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-
           CustomAssertions.assertClassHasMethod(
               generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
         }
 
         @ParameterizedTest
         @ArgumentsSource(GeneratedEnumProvider.class)
+        @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
         @DisplayName("Generated `validateJsonElement`-method can be invoked with `String`")
         void whenLibraryIsOkHttpGsonThenGeneratedValidateJsonElementMethodCanBeInvokedWithString(
             final GeneratedSource generatedSource) {
-          Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
           Assumptions.assumeTrue(String.class.equals(generatedSource.generatedFields()[0].type()));
 
           final Method validateJsonElementMethod =
@@ -298,10 +297,10 @@ public abstract class GeneratedEnumTests {
 
         @ParameterizedTest
         @ArgumentsSource(GeneratedEnumProvider.class)
+        @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
         @DisplayName("Generated `validateJsonElement`-method can be invoked with `Integer`")
         void whenLibraryIsOkHttpGsonThenGeneratedValidateJsonElementMethodCanBeInvokedWithInteger(
             final GeneratedSource generatedSource) {
-          Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
           Assumptions.assumeTrue(Integer.class.equals(generatedSource.generatedFields()[0].type()));
 
           final Method validateJsonElementMethod =
@@ -317,10 +316,10 @@ public abstract class GeneratedEnumTests {
 
         @ParameterizedTest
         @ArgumentsSource(GeneratedEnumProvider.class)
+        @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
         @DisplayName("Generated `validateJsonElement`-method can be invoked with `URI`")
         void whenLibraryIsOkHttpGsonThenGeneratedValidateJsonElementMethodCanBeInvokedWithUri(
             final GeneratedSource generatedSource) {
-          Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
           Assumptions.assumeTrue(URI.class.equals(generatedSource.generatedFields()[0].type()));
 
           final Method validateJsonElementMethod =
@@ -340,22 +339,20 @@ public abstract class GeneratedEnumTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedEnumProvider.class)
+          @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
           @DisplayName("Generated `enum` has `Adapter` inner-class")
           void whenLibraryIsOkHttpGsonThenGeneratedEnumHasAdapterInnerClass(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-
             CustomAssertions.assertClassHasInnerClass(
                 generatedSource.getClassUnderTest(), "Adapter");
           }
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedEnumProvider.class)
+          @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
           @DisplayName("Generated `enum` is annotated `@JsonAdapter`")
-          void whenLibraryisOkHttpGsonThenGeneratedEnumIsAnnotatedWithJsonAdapter(
+          void whenLibraryIsOkHttpGsonThenGeneratedEnumIsAnnotatedWithJsonAdapter(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-
             final JsonAdapter jsonAdapter =
                 CustomAssertions.assertClassIsAnnotatedWith(
                     generatedSource.getClassUnderTest(), JsonAdapter.class);
@@ -371,11 +368,10 @@ public abstract class GeneratedEnumTests {
 
             @ParameterizedTest
             @ArgumentsSource(GeneratedEnumProvider.class)
+            @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
             @DisplayName("when `JsonWriter` is `null` Then `NullPointerException` is thrown")
             void whenJsonWriterIsNullThenNullPointerExceptionIsThrown(
                 final GeneratedSource generatedSource) {
-              Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-
               final Class<?> adapterClass =
                   CustomAssertions.assertClassHasInnerClass(
                       generatedSource.getClassUnderTest(), "Adapter");
@@ -399,10 +395,9 @@ public abstract class GeneratedEnumTests {
 
             @ParameterizedTest
             @ArgumentsSource(GeneratedEnumProvider.class)
+            @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
             @DisplayName("when `JsonWriter` is NOT `null` Then nothing is thrown")
             void whenJsonWriterIsNotNullThenNothingIsThrown(final GeneratedSource generatedSource) {
-              Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-
               final Class<?> adapterClass =
                   CustomAssertions.assertClassHasInnerClass(
                       generatedSource.getClassUnderTest(), "Adapter");
@@ -432,11 +427,10 @@ public abstract class GeneratedEnumTests {
 
             @ParameterizedTest
             @ArgumentsSource(GeneratedEnumProvider.class)
+            @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
             @DisplayName("when `JsonReader` is `null` Then `NullPointerException` is thrown")
             void whenJsonReaderIsNullThenNullPointerExceptionIsThrown(
                 final GeneratedSource generatedSource) {
-              Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-
               final Class<?> adapterClass =
                   CustomAssertions.assertClassHasInnerClass(
                       generatedSource.getClassUnderTest(), "Adapter");
@@ -453,11 +447,10 @@ public abstract class GeneratedEnumTests {
 
             @ParameterizedTest
             @ArgumentsSource(GeneratedEnumProvider.class)
+            @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
             @DisplayName("when `jsonString` is invalid Then `IllegalArgumentException` is thrown")
             void whenJsonReaderIsInvalidThenIllegalArgumentExceptionIsThrown(
                 final GeneratedSource generatedSource) {
-              Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-
               final Class<?> adapterClass =
                   CustomAssertions.assertClassHasInnerClass(
                       generatedSource.getClassUnderTest(), "Adapter");
@@ -483,10 +476,9 @@ public abstract class GeneratedEnumTests {
 
             @ParameterizedTest
             @ArgumentsSource(GeneratedEnumProvider.class)
+            @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
             @DisplayName("when `JsonReader` is valid Then nothing is thrown")
             void whenJsonReaderIsValidThenNothingIsThrown(final GeneratedSource generatedSource) {
-              Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-
               final Class<?> adapterClass =
                   CustomAssertions.assertClassHasInnerClass(
                       generatedSource.getClassUnderTest(), "Adapter");
