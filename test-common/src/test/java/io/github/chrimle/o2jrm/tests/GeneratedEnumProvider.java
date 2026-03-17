@@ -14,6 +14,6 @@ public class GeneratedEnumProvider extends GeneratedSourceProvider implements Ar
   @Override
   public Stream<? extends Arguments> provideArguments(
       ParameterDeclarations parameters, ExtensionContext context) throws Exception {
-    return invokeMethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE);
+    return applyFilters(GENERATED_ENUM_TESTS_METHOD_SOURCE, context);
   }
 }

@@ -124,11 +124,10 @@ public abstract class GeneratedRecordTests {
         class DeprecatedFalseTests {
           @ParameterizedTest
           @ArgumentsSource(GeneratedRecordProvider.class)
+          @AssumptionFilter(isDeprecated = Condition.FALSE)
           @DisplayName("Generated `record` is NOT annotated with `@Deprecated`")
           void whenRecordIsNotDeprecatedThenGeneratedRecordClassIsNotAnnotatedDeprecated(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeFalse(generatedSource.isDeprecated());
-
             CustomAssertions.assertClassIsNotAnnotatedWith(
                 generatedSource.getClassUnderTest(), Deprecated.class);
           }
@@ -139,11 +138,10 @@ public abstract class GeneratedRecordTests {
         class DeprecatedTrueTests {
           @ParameterizedTest
           @ArgumentsSource(GeneratedRecordProvider.class)
+          @AssumptionFilter(isDeprecated = Condition.TRUE)
           @DisplayName("Generated `record` is annotated with `@Deprecated`")
           void whenRecordIsDeprecatedThenGeneratedRecordClassIsAnnotatedDeprecated(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.isDeprecated());
-
             CustomAssertions.assertClassIsAnnotatedWith(
                 generatedSource.getClassUnderTest(), Deprecated.class);
           }

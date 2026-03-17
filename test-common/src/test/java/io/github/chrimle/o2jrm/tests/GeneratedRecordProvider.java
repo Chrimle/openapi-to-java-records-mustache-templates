@@ -14,6 +14,6 @@ public class GeneratedRecordProvider extends GeneratedSourceProvider implements 
   @Override
   public Stream<? extends Arguments> provideArguments(
       ParameterDeclarations parameters, ExtensionContext context) throws Exception {
-    return invokeMethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE);
+    return applyFilters(GENERATED_RECORD_TESTS_METHOD_SOURCE, context);
   }
 }

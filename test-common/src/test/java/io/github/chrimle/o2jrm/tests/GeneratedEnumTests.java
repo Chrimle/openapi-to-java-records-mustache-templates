@@ -200,10 +200,10 @@ public abstract class GeneratedEnumTests {
         class DeprecatedFalseTests {
           @ParameterizedTest
           @ArgumentsSource(GeneratedEnumProvider.class)
+          @AssumptionFilter(isDeprecated = Condition.FALSE)
           @DisplayName("Generated `enum` class is NOT annotated with `@Deprecated`")
           void whenEnumIsNotDeprecatedThenGeneratedEnumClassNotIsAnnotatedDeprecated(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeFalse(generatedSource.isDeprecated());
             CustomAssertions.assertClassIsNotAnnotatedWith(
                 generatedSource.getClassUnderTest(), Deprecated.class);
           }
@@ -214,10 +214,10 @@ public abstract class GeneratedEnumTests {
         class DeprecatedTrueTests {
           @ParameterizedTest
           @ArgumentsSource(GeneratedEnumProvider.class)
+          @AssumptionFilter(isDeprecated = Condition.TRUE)
           @DisplayName("Generated `enum` class is annotated with `@Deprecated`")
           void whenEnumIsDeprecatedThenGeneratedEnumClassIsAnnotatedDeprecated(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.isDeprecated());
             CustomAssertions.assertClassIsAnnotatedWith(
                 generatedSource.getClassUnderTest(), Deprecated.class);
           }
