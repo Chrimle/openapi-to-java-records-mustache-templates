@@ -121,12 +121,11 @@ public abstract class GeneratedEnumTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedEnumProvider.class)
+          @AssumptionFilter(isSerializationLibraryJackson = Condition.TRUE)
           @DisplayName(
               "When `serializationLibrary` is `jackson` Then `getValue()`-method IS annotated with `@JsonValue`")
           void whenSerializationLibraryIsJacksonThenGetValueMethodIsAnnotatedWithJsonValue(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.isSerializationLibraryJackson());
-
             CustomAssertions.assertMethodIsAnnotatedWith(
                 CustomAssertions.assertClassHasMethod(
                     generatedSource.getClassUnderTest(), "getValue"),
@@ -135,12 +134,11 @@ public abstract class GeneratedEnumTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedEnumProvider.class)
+          @AssumptionFilter(isSerializationLibraryJackson = Condition.FALSE)
           @DisplayName(
               "When `serializationLibrary` is NOT `jackson` Then `getValue()`-method is NOT annotated with `@JsonValue`")
           void whenSerializationLibraryIsNotJacksonThenGetValueMethodIsNotAnnotatedWithJsonValue(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeFalse(generatedSource.isSerializationLibraryJackson());
-
             CustomAssertions.assertMethodIsNotAnnotatedWith(
                 CustomAssertions.assertClassHasMethod(
                     generatedSource.getClassUnderTest(), "getValue"),
@@ -660,12 +658,11 @@ public abstract class GeneratedEnumTests {
 
         @ParameterizedTest
         @ArgumentsSource(GeneratedEnumProvider.class)
+        @AssumptionFilter(isSerializationLibraryJackson = Condition.TRUE)
         @DisplayName(
             "When `serializationLibrary` is `jackson` Then generated `fromValue(T)` method is annotated with `@JsonCreator`")
         void whenSerializationLibraryIsJacksonThenFromValueMethodIsAnnotatedWithJsonCreator(
             final GeneratedSource generatedSource) {
-          Assumptions.assumeTrue(generatedSource.isSerializationLibraryJackson());
-
           CustomAssertions.assertMethodIsAnnotatedWith(
               CustomAssertions.assertClassHasMethod(
                   generatedSource.getClassUnderTest(),
@@ -676,12 +673,11 @@ public abstract class GeneratedEnumTests {
 
         @ParameterizedTest
         @ArgumentsSource(GeneratedEnumProvider.class)
+        @AssumptionFilter(isSerializationLibraryJackson = Condition.FALSE)
         @DisplayName(
             "When `serializationLibrary` is NOT `jackson` Then generated `fromValue(T)` method is NOT annotated with `@JsonCreator`")
         void whenSerializationLibraryIsNotJacksonThenFromValueMethodIsNotAnnotatedWithJsonCreator(
             final GeneratedSource generatedSource) {
-          Assumptions.assumeFalse(generatedSource.isSerializationLibraryJackson());
-
           CustomAssertions.assertMethodIsNotAnnotatedWith(
               CustomAssertions.assertClassHasMethod(
                   generatedSource.getClassUnderTest(),

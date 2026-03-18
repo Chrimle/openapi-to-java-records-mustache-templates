@@ -27,6 +27,9 @@ public abstract class GeneratedSourceProvider implements ArgumentsProvider {
               if (!(assumptionFilter
                   .isLibraryOkHttpGson()
                   .test(generatedSource.isLibraryOkHttpGson()))) return false;
+              if (!(assumptionFilter
+                  .isSerializationLibraryJackson()
+                  .test(generatedSource.isSerializationLibraryJackson()))) return false;
               return true;
             });
   }

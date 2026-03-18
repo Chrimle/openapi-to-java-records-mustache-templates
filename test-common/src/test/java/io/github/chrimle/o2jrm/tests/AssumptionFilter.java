@@ -14,4 +14,6 @@ public @interface AssumptionFilter {
   Condition isDeprecated() default Condition.ANY;
 
   Condition isLibraryOkHttpGson() default Condition.ANY;
+
+  Condition isSerializationLibraryJackson() default Condition.ANY;
 }
