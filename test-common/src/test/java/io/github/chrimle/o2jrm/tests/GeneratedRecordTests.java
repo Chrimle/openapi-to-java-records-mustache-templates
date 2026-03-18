@@ -257,13 +257,12 @@ public abstract class GeneratedRecordTests {
 
         @ParameterizedTest
         @ArgumentsSource(GeneratedRecordProvider.class)
+        @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
         @DisplayName(
             "[okhttp-gson] Generated `record` has same number of fields as OpenAPI properties")
         void whenObjectHasPropertiesThenGeneratedRecordHasSameNumberOfFields_okhttp_gson(
             final GeneratedSource generatedSource) {
           Assumptions.assumeFalse(generatedSource.serializableModel());
-          Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-
           CustomAssertions.assertClassHasNumberOfFields(
               generatedSource.getClassUnderTest(), generatedSource.generatedFields().length + 2);
         }
@@ -394,11 +393,10 @@ public abstract class GeneratedRecordTests {
 
         @ParameterizedTest
         @ArgumentsSource(GeneratedRecordProvider.class)
+        @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
         @DisplayName("Generated `record` HAS `openapiFields`-field")
         void whenLibraryIsOkHttpGsonThenGeneratedRecordHasOpenApiFieldsField(
             final GeneratedSource generatedSource) throws IllegalAccessException {
-          Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-
           final Field openapiFields =
               CustomAssertions.assertClassHasField(
                   generatedSource.getClassUnderTest(), "openapiFields", HashSet.class);
@@ -413,11 +411,10 @@ public abstract class GeneratedRecordTests {
 
         @ParameterizedTest
         @ArgumentsSource(GeneratedRecordProvider.class)
+        @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
         @DisplayName("Generated `record` HAS `openapiRequiredFields`-field")
         void whenLibraryIsOkHttpGsonThenGeneratedRecordHasOpenApiRequiredFieldsField(
             final GeneratedSource generatedSource) throws IllegalAccessException {
-          Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-
           final Field openapiRequiredFields =
               CustomAssertions.assertClassHasField(
                   generatedSource.getClassUnderTest(), "openapiRequiredFields", HashSet.class);
@@ -432,11 +429,10 @@ public abstract class GeneratedRecordTests {
 
         @ParameterizedTest
         @ArgumentsSource(GeneratedRecordProvider.class)
+        @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
         @DisplayName("Generated `record` HAS `validateJsonElement`-method")
         void whenLibraryIsOkHttpGsonThenGeneratedRecordHasValidateJsonElementMethod(
             final GeneratedSource generatedSource) {
-          Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-
           CustomAssertions.assertClassHasMethod(
               generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
         }
@@ -447,11 +443,11 @@ public abstract class GeneratedRecordTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedRecordProvider.class)
+          @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
           @DisplayName(
               "When `jsonElement` is `null` and `record` has required fields Then `validateJsonElement`-method throws `IllegalArgumentException`")
           void whenJsonElementIsNullAndRecordHasRequiredFieldsThenIllegalArgumentExceptionIsThrown(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
             Assumptions.assumeTrue(
                 Arrays.stream(generatedSource.generatedFields())
                     .anyMatch(GeneratedField::isRequired));
@@ -465,12 +461,12 @@ public abstract class GeneratedRecordTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedRecordProvider.class)
+          @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
           @DisplayName(
               "When `jsonElement` is empty JSON and `record` has required fields Then `validateJsonElement`-method throws `IllegalArgumentException`")
           void
               whenJsonElementIsEmptyJsonAndRecordHasRequiredFieldsThenIllegalArgumentExceptionIsThrown(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
             Assumptions.assumeTrue(
                 Arrays.stream(generatedSource.generatedFields())
                     .anyMatch(GeneratedField::isRequired));
@@ -485,11 +481,11 @@ public abstract class GeneratedRecordTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedRecordProvider.class)
+          @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
           @DisplayName(
               "When `jsonElement` is `null` and `record` has no required fields Then `validateJsonElement`-method throws `NullPointerException`")
           void whenJsonElementIsNullAndRecordHasNoRequiredFieldsThenNullPointerExceptionIsThrown(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
             Assumptions.assumeTrue(
                 Arrays.stream(generatedSource.generatedFields())
                     .noneMatch(GeneratedField::isRequired));
@@ -503,11 +499,11 @@ public abstract class GeneratedRecordTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedRecordProvider.class)
+          @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
           @DisplayName(
               "When `jsonElement` is empty JSON and `record` has no required fields Then `validateJsonElement`-method throws nothing")
           void whenJsonElementIsEmptyJsonAndRecordHasNoRequiredFieldsThenNothingIsThrown(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
             Assumptions.assumeTrue(
                 Arrays.stream(generatedSource.generatedFields())
                     .noneMatch(GeneratedField::isRequired));
@@ -521,12 +517,11 @@ public abstract class GeneratedRecordTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedRecordProvider.class)
+          @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
           @DisplayName(
               "When `jsonElement` has unexpected key Then `validateJsonElement`-method throws `IllegalArgumentException`")
           void whenJsonElementHasUnexpectedKeyThenIllegalArgumentExceptionIsThrown(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-
             final Method validateJsonElementMethod =
                 CustomAssertions.assertClassHasMethod(
                     generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
@@ -537,11 +532,11 @@ public abstract class GeneratedRecordTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedRecordProvider.class)
+          @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
           @DisplayName(
               "When `jsonElement` does NOT have expected key Then `validateJsonElement`-method throws `IllegalArgumentException`")
           void whenJsonElementDoesNotHaveExpectedKeyThenIllegalArgumentExceptionIsThrown(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
             Assumptions.assumeTrue(
                 Arrays.stream(generatedSource.generatedFields())
                     .anyMatch(GeneratedField::isRequired));
@@ -568,11 +563,11 @@ public abstract class GeneratedRecordTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedRecordProvider.class)
+          @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
           @DisplayName(
               "When required `jsonElement` value is `null` Then `validateJsonElement`-method throws `IllegalArgumentException`")
           void whenRequiredJsonElementValueIsNullThenIllegalArgumentExceptionIsThrown(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
             Assumptions.assumeTrue(
                 Arrays.stream(generatedSource.generatedFields())
                     .anyMatch(GeneratedField::isRequired));
@@ -596,12 +591,11 @@ public abstract class GeneratedRecordTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedRecordProvider.class)
+          @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
           @DisplayName(
               "When optional `jsonElement` values are `null` Then `validateJsonElement`-method throws nothing")
           void whenOptionalJsonElementValuesAreNullThenNothingIsThrown(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-
             final Method validateJsonElementMethod =
                 CustomAssertions.assertClassHasMethod(
                     generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
@@ -646,12 +640,11 @@ public abstract class GeneratedRecordTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedRecordProvider.class)
+          @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
           @DisplayName(
               "When optional `jsonElement` values is not present Then `validateJsonElement`-method throws nothing")
           void whenOptionalJsonElementValuesIsNotPresentThenNothingIsThrown(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-
             final Method validateJsonElementMethod =
                 CustomAssertions.assertClassHasMethod(
                     generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
@@ -679,11 +672,10 @@ public abstract class GeneratedRecordTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedRecordProvider.class)
+          @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
           @DisplayName(
               "When `jsonElement` value is valid Then `validateJsonElement`-method throws nothing")
           void whenJsonElementIsValidThenNothingIsThrown(final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-
             final Method validateJsonElementMethod =
                 CustomAssertions.assertClassHasMethod(
                     generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
@@ -702,12 +694,11 @@ public abstract class GeneratedRecordTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedRecordProvider.class)
+          @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
           @DisplayName(
               "When required `jsonElement` value is unexpected type Then `validateJsonElement`-method throws `IllegalArgumentException`")
           void whenRequiredJsonElementValueIsUnexpectedTypeThenIllegalArgumentExceptionIsThrown(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-
             final Method validateJsonElementMethod =
                 CustomAssertions.assertClassHasMethod(
                     generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
@@ -754,13 +745,12 @@ public abstract class GeneratedRecordTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedRecordProvider.class)
+          @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
           @DisplayName(
               "When required `jsonElement` value is unexpectedly not JSON primitive Then `validateJsonElement`-method throws `IllegalArgumentException`")
           void
               whenRequiredJsonElementValueIsUnexpectedlyNotJsonPrimitiveThenIllegalArgumentExceptionIsThrown(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-
             final Method validateJsonElementMethod =
                 CustomAssertions.assertClassHasMethod(
                     generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
@@ -805,36 +795,33 @@ public abstract class GeneratedRecordTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedRecordProvider.class)
+          @AssumptionFilter(isLibraryOkHttpGson = Condition.FALSE)
           @DisplayName(
               "When `library` is NOT `okhttp-gson` Then inner-class `CustomTypeAdapterFactory` is NOT generated")
           void whenLibraryIsNotOkHttpGsonThenInnerClassCustomTypeAdapterFactoryIsNotGenerated(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeFalse(generatedSource.isLibraryOkHttpGson());
-
             CustomAssertions.assertClassDoesNotHaveInnerClass(
                 generatedSource.getClassUnderTest(), "CustomTypeAdapterFactory");
           }
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedRecordProvider.class)
+          @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
           @DisplayName(
               "When `library` IS `okhttp-gson` Then inner-class `CustomTypeAdapterFactory` IS generated")
           void whenLibraryIsOkHttpGsonThenInnerClassCustomTypeAdapterFactoryIsGenerated(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-
             CustomAssertions.assertClassHasInnerClass(
                 generatedSource.getClassUnderTest(), "CustomTypeAdapterFactory");
           }
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedRecordProvider.class)
+          @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
           @DisplayName(
               "`CustomTypeAdapterFactory`-class `implements` the `TypeAdapterFactory`-interface")
           void customTypeAdapterFactoryClassImplementsTheTypeAdapterFactoryInterface(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-
             CustomAssertions.assertClassImplementsInterface(
                 CustomAssertions.assertClassHasInnerClass(
                     generatedSource.getClassUnderTest(), "CustomTypeAdapterFactory"),
@@ -847,10 +834,9 @@ public abstract class GeneratedRecordTests {
 
             @ParameterizedTest
             @ArgumentsSource(GeneratedRecordProvider.class)
+            @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
             @DisplayName("`create(Gson, TypeToken<T>)` method is generated")
             void createMethodIsGenerated(final GeneratedSource generatedSource) {
-              Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-
               CustomAssertions.assertClassHasMethod(
                   CustomAssertions.assertClassHasInnerClass(
                       generatedSource.getClassUnderTest(), "CustomTypeAdapterFactory"),
@@ -861,12 +847,11 @@ public abstract class GeneratedRecordTests {
 
             @ParameterizedTest
             @ArgumentsSource(GeneratedRecordProvider.class)
+            @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
             @DisplayName(
                 "`create(Gson, TypeToken<T>)` throws `NullPointerException` when `gson` is `null`")
             void createMethodThrowsNullPointerExceptionWhenGsonIsNull(
                 final GeneratedSource generatedSource) {
-              Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-
               final Class<?> customTypeAdapterFactory =
                   CustomAssertions.assertClassHasInnerClass(
                       generatedSource.getClassUnderTest(), "CustomTypeAdapterFactory");
@@ -886,12 +871,11 @@ public abstract class GeneratedRecordTests {
 
             @ParameterizedTest
             @ArgumentsSource(GeneratedRecordProvider.class)
+            @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
             @DisplayName(
                 "`create(Gson, TypeToken<T>)` throws `NullPointerException` when `typeToken` is `null`")
             void createMethodThrowsNullPointerExceptionWhenTypeTokenIsNull(
                 final GeneratedSource generatedSource) {
-              Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-
               final Class<?> customTypeAdapterFactory =
                   CustomAssertions.assertClassHasInnerClass(
                       generatedSource.getClassUnderTest(), "CustomTypeAdapterFactory");
@@ -907,12 +891,11 @@ public abstract class GeneratedRecordTests {
 
             @ParameterizedTest
             @ArgumentsSource(GeneratedRecordProvider.class)
+            @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
             @DisplayName(
                 "`create(Gson, TypeToken<T>)` returns `null` when `typeToken` is NOT the parent class")
             void createMethodReturnsNullWhenTypeTokenIsNotTheParentClass(
                 final GeneratedSource generatedSource) {
-              Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-
               final Class<?> customTypeAdapterFactory =
                   CustomAssertions.assertClassHasInnerClass(
                       generatedSource.getClassUnderTest(), "CustomTypeAdapterFactory");
@@ -928,12 +911,11 @@ public abstract class GeneratedRecordTests {
 
             @ParameterizedTest
             @ArgumentsSource(GeneratedRecordProvider.class)
+            @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
             @DisplayName(
                 "`create(Gson, TypeToken<T>)` returns non-null `TypeAdapter` when `typeToken` IS the parent class")
             void createMethodReturnsNonNullTypeAdapterWhenTypeTokenIsTheParentClass(
                 final GeneratedSource generatedSource) {
-              Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-
               final Class<?> customTypeAdapterFactory =
                   CustomAssertions.assertClassHasInnerClass(
                       generatedSource.getClassUnderTest(), "CustomTypeAdapterFactory");
@@ -953,10 +935,9 @@ public abstract class GeneratedRecordTests {
 
               @ParameterizedTest
               @ArgumentsSource(GeneratedRecordProvider.class)
+              @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
               @DisplayName("`create(Gson, TypeToken<T>)` returns `NullSafeTypeAdapter`")
               void createMethodReturnsNullSafeTypeAdapter(final GeneratedSource generatedSource) {
-                Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-
                 final Class<?> customTypeAdapterFactory =
                     CustomAssertions.assertClassHasInnerClass(
                         generatedSource.getClassUnderTest(), "CustomTypeAdapterFactory");
@@ -983,11 +964,10 @@ public abstract class GeneratedRecordTests {
 
                 @ParameterizedTest
                 @ArgumentsSource(GeneratedRecordProvider.class)
+                @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
                 @DisplayName("when `JsonWriter` is `null` Then `NullPointerException` is thrown")
                 void whenJsonWriterIsNullThenNullPointerExceptionIsThrown(
                     final GeneratedSource generatedSource) {
-                  Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-
                   final Class<?> customTypeAdapterFactory =
                       CustomAssertions.assertClassHasInnerClass(
                           generatedSource.getClassUnderTest(), "CustomTypeAdapterFactory");
@@ -1019,11 +999,10 @@ public abstract class GeneratedRecordTests {
 
                 @ParameterizedTest
                 @ArgumentsSource(GeneratedRecordProvider.class)
+                @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
                 @DisplayName("when `JsonWriter` is NOT `null` Then nothing is thrown")
                 void whenJsonWriterIsNotNullThenNothingIsThrown(
                     final GeneratedSource generatedSource) {
-                  Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-
                   final Class<?> customTypeAdapterFactory =
                       CustomAssertions.assertClassHasInnerClass(
                           generatedSource.getClassUnderTest(), "CustomTypeAdapterFactory");
@@ -1061,11 +1040,10 @@ public abstract class GeneratedRecordTests {
 
                 @ParameterizedTest
                 @ArgumentsSource(GeneratedRecordProvider.class)
+                @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
                 @DisplayName("when `jsonReader` is `null` Then `NullPointerException` is thrown")
                 void whenJsonReaderIsNullThenNullPointerExceptionIsThrown(
                     final GeneratedSource generatedSource) {
-                  Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-
                   final Class<?> customTypeAdapterFactory =
                       CustomAssertions.assertClassHasInnerClass(
                           generatedSource.getClassUnderTest(), "CustomTypeAdapterFactory");
@@ -1091,11 +1069,10 @@ public abstract class GeneratedRecordTests {
 
                 @ParameterizedTest
                 @ArgumentsSource(GeneratedRecordProvider.class)
+                @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
                 @DisplayName("when `jsonReader` is `nullInputStream` Then `EOFException` is thrown")
                 void whenJsonReaderIsNullInputStreamThenEOFExceptionIsThrown(
                     final GeneratedSource generatedSource) {
-                  Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-
                   final Class<?> customTypeAdapterFactory =
                       CustomAssertions.assertClassHasInnerClass(
                           generatedSource.getClassUnderTest(), "CustomTypeAdapterFactory");
@@ -1126,11 +1103,10 @@ public abstract class GeneratedRecordTests {
 
                 @ParameterizedTest
                 @ArgumentsSource(GeneratedRecordProvider.class)
+                @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
                 @DisplayName("when `jsonReader` is valid Then nothing is thrown")
                 void whenJsonReaderIsValidThenNothingIsThrown(
                     final GeneratedSource generatedSource) {
-                  Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-
                   final Class<?> customTypeAdapterFactory =
                       CustomAssertions.assertClassHasInnerClass(
                           generatedSource.getClassUnderTest(), "CustomTypeAdapterFactory");
