@@ -257,23 +257,22 @@ public abstract class GeneratedRecordTests {
 
         @ParameterizedTest
         @ArgumentsSource(GeneratedRecordProvider.class)
-        @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
+        @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE, serializableModel = Condition.FALSE)
         @DisplayName(
             "[okhttp-gson] Generated `record` has same number of fields as OpenAPI properties")
         void whenObjectHasPropertiesThenGeneratedRecordHasSameNumberOfFields_okhttp_gson(
             final GeneratedSource generatedSource) {
-          Assumptions.assumeFalse(generatedSource.serializableModel());
           CustomAssertions.assertClassHasNumberOfFields(
               generatedSource.getClassUnderTest(), generatedSource.generatedFields().length + 2);
         }
 
         @ParameterizedTest
         @ArgumentsSource(GeneratedRecordProvider.class)
+        @AssumptionFilter(serializableModel = Condition.FALSE)
         @DisplayName(
             "[webclient] Generated `record` has same number of fields as OpenAPI properties")
         void whenObjectHasPropertiesThenGeneratedRecordHasSameNumberOfFields_webclient(
             final GeneratedSource generatedSource) {
-          Assumptions.assumeFalse(generatedSource.serializableModel());
           Assumptions.assumeTrue(generatedSource.isLibraryWebClient());
 
           CustomAssertions.assertClassHasNumberOfFields(
@@ -1238,24 +1237,22 @@ public abstract class GeneratedRecordTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedRecordProvider.class)
+          @AssumptionFilter(serializableModel = Condition.FALSE)
           @DisplayName("Generated `record` does NOT implement `Serializable`")
           void
               whenConfigOptionSerializableModelIsFalseThenGeneratedRecordClassDoesNotImplementSerializable(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeFalse(generatedSource.serializableModel());
-
             CustomAssertions.assertClassDoesNotImplementInterface(
                 generatedSource.getClassUnderTest(), Serializable.class);
           }
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedRecordProvider.class)
+          @AssumptionFilter(serializableModel = Condition.FALSE)
           @DisplayName("Generated `record` does NOT have `serialVersionUID`-field")
           void
               whenConfigOptionSerializableModelIsFalseThenGeneratedRecordClassDoesNotHaveSerialVersionUidField(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeFalse(generatedSource.serializableModel());
-
             CustomAssertions.assertClassDoesNotHaveFieldWithName(
                 generatedSource.getClassUnderTest(), "serialVersionUID");
           }
@@ -1267,12 +1264,11 @@ public abstract class GeneratedRecordTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedRecordProvider.class)
+          @AssumptionFilter(serializableModel = Condition.TRUE)
           @DisplayName("Generated `record` implement `Serializable`")
           void
               whenConfigOptionSerializableModelIsTrueThenGeneratedRecordClassImplementsSerializable(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.serializableModel());
-
             CustomAssertions.assertClassImplementsInterface(
                 generatedSource.getClassUnderTest(), Serializable.class);
           }
