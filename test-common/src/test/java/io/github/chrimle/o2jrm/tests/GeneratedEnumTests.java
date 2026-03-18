@@ -505,33 +505,30 @@ public abstract class GeneratedEnumTests {
 
         @ParameterizedTest
         @ArgumentsSource(GeneratedEnumProvider.class)
+        @AssumptionFilter(isLibraryWebClient = Condition.TRUE)
         @DisplayName("Generated `enum` does NOT have `validateJsonElement`-method")
         void whenLibraryIsWebClientThenGeneratedEnumDoesNotHaveValidateJsonElementMethod(
             final GeneratedSource generatedSource) {
-          Assumptions.assumeTrue(generatedSource.isLibraryWebClient());
-
           CustomAssertions.assertClassDoesNotHaveMethod(
               generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
         }
 
         @ParameterizedTest
         @ArgumentsSource(GeneratedEnumProvider.class)
+        @AssumptionFilter(isLibraryWebClient = Condition.TRUE)
         @DisplayName("Generated `enum` does NOT have `Adapter` inner-class")
         void whenLibraryIsWebClientThenGeneratedEnumDoesNotHaveAdapterInnerClass(
             final GeneratedSource generatedSource) {
-          Assumptions.assumeTrue(generatedSource.isLibraryWebClient());
-
           CustomAssertions.assertClassDoesNotHaveInnerClass(
               generatedSource.getClassUnderTest(), "Adapter");
         }
 
         @ParameterizedTest
         @ArgumentsSource(GeneratedEnumProvider.class)
+        @AssumptionFilter(isLibraryWebClient = Condition.TRUE)
         @DisplayName("Generated `enum` is NOT annotated `@JsonAdapter`")
         void whenLibraryIsWebClientThenGeneratedEnumIsNotAnnotatedWithJsonAdapter(
             final GeneratedSource generatedSource) {
-          Assumptions.assumeTrue(generatedSource.isLibraryWebClient());
-
           CustomAssertions.assertClassIsNotAnnotatedWith(
               generatedSource.getClassUnderTest(), JsonAdapter.class);
         }
