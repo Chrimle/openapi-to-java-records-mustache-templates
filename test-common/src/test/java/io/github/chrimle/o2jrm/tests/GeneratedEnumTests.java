@@ -611,26 +611,22 @@ public abstract class GeneratedEnumTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedEnumProvider.class)
-          @AssumptionFilter(serializableModel = Condition.TRUE)
+          @AssumptionFilter(isInnerEnum = Condition.FALSE, serializableModel = Condition.TRUE)
           @DisplayName("Generated OUTER `enum` implement `Serializable`")
           void
               whenConfigOptionSerializableModelIsTrueThenOuterGeneratedEnumClassImplementsSerializable(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeFalse(generatedSource.isInnerEnum());
-
             CustomAssertions.assertClassImplementsInterface(
                 generatedSource.getClassUnderTest(), Serializable.class);
           }
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedEnumProvider.class)
-          @AssumptionFilter(serializableModel = Condition.TRUE)
+          @AssumptionFilter(isInnerEnum = Condition.TRUE, serializableModel = Condition.TRUE)
           @DisplayName("Generated INNER `enum` does NOT implement `Serializable`")
           void
               whenConfigOptionSerializableModelIsTrueThenInnerGeneratedEnumClassDoesNotImplementsSerializable(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.isInnerEnum());
-
             CustomAssertions.assertClassDoesNotImplementInterface(
                 generatedSource.getClassUnderTest(), Serializable.class);
           }

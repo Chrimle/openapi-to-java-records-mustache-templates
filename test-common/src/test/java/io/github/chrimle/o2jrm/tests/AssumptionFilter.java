@@ -17,6 +17,8 @@ public @interface AssumptionFilter {
 
   Condition isDeprecated() default Condition.ANY;
 
+  Condition isInnerEnum() default Condition.ANY;
+
   Condition isLibraryOkHttpGson() default Condition.ANY;
 
   Condition isLibraryWebClient() default Condition.ANY;

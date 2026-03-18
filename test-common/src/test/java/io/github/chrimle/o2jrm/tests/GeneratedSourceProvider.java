@@ -30,6 +30,8 @@ public abstract class GeneratedSourceProvider implements ArgumentsProvider {
                 return false;
               if (!(assumptionFilter.isDeprecated().test(generatedSource.isDeprecated())))
                 return false;
+              if (!(assumptionFilter.isInnerEnum().test(generatedSource.isInnerEnum())))
+                return false;
               if (!(assumptionFilter
                   .isLibraryOkHttpGson()
                   .test(generatedSource.isLibraryOkHttpGson()))) return false;
