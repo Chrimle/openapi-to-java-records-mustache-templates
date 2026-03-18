@@ -39,6 +39,7 @@ import io.github.chrimle.o2jrm.tests.GeneratedRecordTests.OpenAPITests.SchemaTes
 import io.github.chrimle.o2jrm.tests.GeneratedRecordTests.OpenAPITests.SchemaTests.TypeTests;
 import io.github.chrimle.o2jrm.tests.GeneratedRecordTests.OpenAPITests.SchemaTests.XClassExtraAnnotationTests;
 import io.github.chrimle.o2jrm.utils.AssertionUtils;
+import io.github.chrimle.o2jrm.utils.AssertionUtilsImpl;
 import io.github.chrimle.o2jrm.utils.CustomAssertions;
 import io.github.chrimle.o2jrm.utils.GeneratedRecordTestUtils;
 import java.io.*;
@@ -1373,7 +1374,7 @@ public abstract class GeneratedRecordTests {
                       generatedField.type());
 
               for (final Class<? extends Annotation> annotation :
-                  generatedSource.getBeanValidationAnnotations()) {
+                  generatedSource.getBeanValidationAnnotations().values()) {
                 CustomAssertions.assertFieldIsNotAnnotatedWith(field, annotation);
               }
             }
@@ -1382,14 +1383,17 @@ public abstract class GeneratedRecordTests {
 
         @Nested
         @DisplayName("Testing `<useBeanValidation>true</useBeanValidation>`")
-        abstract class UseBeanValidationTrueTests {
+        class UseBeanValidationTrueTests {
 
           @ParameterizedTest
           @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
           @DisplayName("Generated `record` use Jakarta Bean Validation annotations on fields")
-          abstract void
+          void
               whenUseBeanValidationIsTrueThenFieldsAreAnnotatedWithJakartaBeanValidationAnnotations(
-                  final GeneratedSource generatedSource);
+                  final GeneratedSource generatedSource) {
+            Assumptions.assumeTrue(generatedSource.useBeanValidation());
+            AssertionUtilsImpl.assertRecordHasFieldsOfTypeWithNullableAnnotations(generatedSource);
+          }
         }
       }
     }

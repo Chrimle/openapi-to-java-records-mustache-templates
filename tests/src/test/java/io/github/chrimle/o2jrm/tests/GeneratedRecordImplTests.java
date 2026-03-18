@@ -18,15 +18,14 @@ package io.github.chrimle.o2jrm.tests;
 
 import io.github.chrimle.o2jrm.GeneratedSource;
 import io.github.chrimle.o2jrm.PluginExecutionImpl;
+import io.github.chrimle.o2jrm.models.BeanValidationAnnotation;
 import io.github.chrimle.o2jrm.models.GeneratedClass;
 import io.github.chrimle.o2jrm.models.GeneratedClassImpl;
 import io.github.chrimle.o2jrm.models.GeneratedRecordImpl;
-import io.github.chrimle.o2jrm.utils.AssertionUtilsImpl;
+import java.util.Map;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.*;
-import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.MethodSource;
 
 @DisplayName("Testing Generated `record` classes")
 final class GeneratedRecordImplTests extends GeneratedRecordTests {
@@ -51,51 +50,25 @@ final class GeneratedRecordImplTests extends GeneratedRecordTests {
                                 GeneratedClassImpl.getGeneratedFields(
                                     generatedRecord, pluginExecution),
                                 GeneratedClass.getClass(generatedRecord, pluginExecution),
-                                javax.validation.Valid.class,
-                                javax.validation.constraints.NotNull.class,
-                                javax.validation.constraints.Pattern.class,
-                                javax.validation.constraints.Size.class,
-                                javax.validation.constraints.Min.class,
-                                javax.validation.constraints.Max.class,
-                                javax.validation.constraints.DecimalMin.class,
-                                javax.validation.constraints.DecimalMax.class,
-                                javax.validation.constraints.Email.class)))
+                                Map.of(
+                                    BeanValidationAnnotation.VALID,
+                                    javax.validation.Valid.class,
+                                    BeanValidationAnnotation.NOT_NULL,
+                                    javax.validation.constraints.NotNull.class,
+                                    BeanValidationAnnotation.PATTERN,
+                                    javax.validation.constraints.Pattern.class,
+                                    BeanValidationAnnotation.SIZE,
+                                    javax.validation.constraints.Size.class,
+                                    BeanValidationAnnotation.MIN,
+                                    javax.validation.constraints.Min.class,
+                                    BeanValidationAnnotation.MAX,
+                                    javax.validation.constraints.Max.class,
+                                    BeanValidationAnnotation.DECIMAL_MIN,
+                                    javax.validation.constraints.DecimalMin.class,
+                                    BeanValidationAnnotation.DECIMAL_MAX,
+                                    javax.validation.constraints.DecimalMax.class,
+                                    BeanValidationAnnotation.EMAIL,
+                                    javax.validation.constraints.Email.class))))
         .map(Arguments::of);
-  }
-
-  @Nested
-  @DisplayName("Testing `openapi-generator` Configurations & ConfigOptions")
-  class GeneratorConfigurationTests extends GeneratedRecordTests.GeneratorConfigurationTests {
-
-    @Nested
-    @DisplayName("Testing `<configOptions>`")
-    class ConfigOptionsTests
-        extends GeneratedRecordTests.GeneratorConfigurationTests.ConfigOptionsTests {
-
-      @Nested
-      @DisplayName("Testing `<useBeanValidation>`")
-      class UseBeanValidationTests
-          extends GeneratedRecordTests.GeneratorConfigurationTests.ConfigOptionsTests
-              .UseBeanValidationTests {
-
-        @Nested
-        @DisplayName("Testing `<useBeanValidation>true</useBeanValidation>`")
-        class UseBeanValidationTrueTests
-            extends GeneratedRecordTests.GeneratorConfigurationTests.ConfigOptionsTests
-                .UseBeanValidationTests.UseBeanValidationTrueTests {
-
-          @Override
-          @ParameterizedTest
-          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
-          @DisplayName("Generated `record` use Jakarta Bean Validation annotations on fields")
-          void
-              whenUseBeanValidationIsTrueThenFieldsAreAnnotatedWithJakartaBeanValidationAnnotations(
-                  final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.useBeanValidation());
-            AssertionUtilsImpl.assertRecordHasFieldsOfTypeWithNullableAnnotations(generatedSource);
-          }
-        }
-      }
-    }
   }
 }

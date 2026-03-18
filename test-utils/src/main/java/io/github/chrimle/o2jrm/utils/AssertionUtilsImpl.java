@@ -17,18 +17,10 @@
 package io.github.chrimle.o2jrm.utils;
 
 import io.github.chrimle.o2jrm.GeneratedSource;
+import io.github.chrimle.o2jrm.models.BeanValidationAnnotation;
 import io.github.chrimle.o2jrm.models.GeneratedField;
+import java.lang.annotation.Annotation;
 import java.lang.reflect.*;
-import javax.validation.Valid;
-import javax.validation.constraints.DecimalMax;
-import javax.validation.constraints.DecimalMin;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
-import org.junit.jupiter.api.Assertions;
 
 public class AssertionUtilsImpl {
 
@@ -40,73 +32,91 @@ public class AssertionUtilsImpl {
           CustomAssertions.assertClassHasField(
               generatedSource.getClassUnderTest(), generatedField.name(), generatedField.type());
 
-      final Class<Valid> validAnnotation = Valid.class;
+      final Class<? extends Annotation> validAnnotation =
+          generatedSource.getBeanValidationAnnotations().get(BeanValidationAnnotation.VALID);
       if (generatedField.isCustomClass()) {
         CustomAssertions.assertFieldIsAnnotatedWith(field, validAnnotation);
       } else {
         CustomAssertions.assertFieldIsNotAnnotatedWith(field, validAnnotation);
       }
-      final Class<NotNull> notNullAnnotation = NotNull.class;
+      final Class<? extends Annotation> notNullAnnotation =
+          generatedSource.getBeanValidationAnnotations().get(BeanValidationAnnotation.NOT_NULL);
       if (generatedField.isBeanValidationNullable()) {
         CustomAssertions.assertFieldIsNotAnnotatedWith(field, notNullAnnotation);
       } else {
         CustomAssertions.assertFieldIsAnnotatedWith(field, notNullAnnotation);
       }
-      final Class<Pattern> patternAnnotation = Pattern.class;
+      final Class<? extends Annotation> patternAnnotation =
+          generatedSource.getBeanValidationAnnotations().get(BeanValidationAnnotation.PATTERN);
       if (generatedField.pattern().isPresent()) {
-        final Pattern actualPatternAnnotation =
+        final var actualPatternAnnotation =
             CustomAssertions.assertFieldIsAnnotatedWith(field, patternAnnotation);
-        Assertions.assertEquals(generatedField.pattern().get(), actualPatternAnnotation.regexp());
+        BeanValidationAssertions.assertPatternAnnotation(
+            patternAnnotation, generatedField.pattern().get(), actualPatternAnnotation);
       } else {
         CustomAssertions.assertFieldIsNotAnnotatedWith(field, patternAnnotation);
       }
-      final Class<Size> sizeAnnotation = Size.class;
+      final Class<? extends Annotation> sizeAnnotation =
+          generatedSource.getBeanValidationAnnotations().get(BeanValidationAnnotation.SIZE);
       if (generatedField.minLength().isPresent() || generatedField.maxLength().isPresent()) {
-        final Size actualSizeAnnotation =
+        final var actualSizeAnnotation =
             CustomAssertions.assertFieldIsAnnotatedWith(field, sizeAnnotation);
-        Assertions.assertEquals(generatedField.minLength().orElse(0), actualSizeAnnotation.min());
-        Assertions.assertEquals(
-            generatedField.maxLength().orElse(Integer.MAX_VALUE), actualSizeAnnotation.max());
+        BeanValidationAssertions.assertSizeAnnotation(
+            sizeAnnotation,
+            generatedField.minLength().orElse(0),
+            generatedField.maxLength().orElse(Integer.MAX_VALUE),
+            actualSizeAnnotation);
       } else if (generatedField.minItems().isPresent() || generatedField.maxItems().isPresent()) {
-        final Size actualSizeAnnotation =
+        final var actualSizeAnnotation =
             CustomAssertions.assertFieldIsAnnotatedWith(field, sizeAnnotation);
-        Assertions.assertEquals(generatedField.minItems().orElse(0), actualSizeAnnotation.min());
-        Assertions.assertEquals(
-            generatedField.maxItems().orElse(Integer.MAX_VALUE), actualSizeAnnotation.max());
+        BeanValidationAssertions.assertSizeAnnotation(
+            sizeAnnotation,
+            generatedField.minItems().orElse(0),
+            generatedField.maxItems().orElse(Integer.MAX_VALUE),
+            actualSizeAnnotation);
       } else {
         CustomAssertions.assertFieldIsNotAnnotatedWith(field, sizeAnnotation);
       }
-      final Class<Min> minAnnotation = Min.class;
+      final Class<? extends Annotation> minAnnotation =
+          generatedSource.getBeanValidationAnnotations().get(BeanValidationAnnotation.MIN);
       if (generatedField.minimum().isPresent()) {
-        final Min min = CustomAssertions.assertFieldIsAnnotatedWith(field, minAnnotation);
-        Assertions.assertEquals(generatedField.minimum().get(), min.value());
+        final var min = CustomAssertions.assertFieldIsAnnotatedWith(field, minAnnotation);
+        BeanValidationAssertions.assertMinAnnotation(
+            minAnnotation, generatedField.minimum().get(), min);
       } else {
         CustomAssertions.assertFieldIsNotAnnotatedWith(field, minAnnotation);
       }
-      final Class<Max> maxAnnotation = Max.class;
+      final Class<? extends Annotation> maxAnnotation =
+          generatedSource.getBeanValidationAnnotations().get(BeanValidationAnnotation.MAX);
       if (generatedField.maximum().isPresent()) {
-        final Max max = CustomAssertions.assertFieldIsAnnotatedWith(field, maxAnnotation);
-        Assertions.assertEquals(generatedField.maximum().get(), max.value());
+        final var max = CustomAssertions.assertFieldIsAnnotatedWith(field, maxAnnotation);
+        BeanValidationAssertions.assertMaxAnnotation(
+            maxAnnotation, generatedField.maximum().get(), max);
       } else {
         CustomAssertions.assertFieldIsNotAnnotatedWith(field, maxAnnotation);
       }
-      final Class<DecimalMin> decimalMinAnnotation = DecimalMin.class;
+      final Class<? extends Annotation> decimalMinAnnotation =
+          generatedSource.getBeanValidationAnnotations().get(BeanValidationAnnotation.DECIMAL_MIN);
       if (generatedField.decimalMin().isPresent()) {
-        final DecimalMin decimalMin =
+        final var decimalMin =
             CustomAssertions.assertFieldIsAnnotatedWith(field, decimalMinAnnotation);
-        Assertions.assertEquals(generatedField.decimalMin().get(), decimalMin.value());
+        BeanValidationAssertions.assertDecimalMinAnnotation(
+            decimalMinAnnotation, generatedField.decimalMin().get(), decimalMin);
       } else {
         CustomAssertions.assertFieldIsNotAnnotatedWith(field, decimalMinAnnotation);
       }
-      final Class<DecimalMax> decimalMaxAnnotation = DecimalMax.class;
+      final Class<? extends Annotation> decimalMaxAnnotation =
+          generatedSource.getBeanValidationAnnotations().get(BeanValidationAnnotation.DECIMAL_MAX);
       if (generatedField.decimalMax().isPresent()) {
-        final DecimalMax decimalMax =
+        final var decimalMax =
             CustomAssertions.assertFieldIsAnnotatedWith(field, decimalMaxAnnotation);
-        Assertions.assertEquals(generatedField.decimalMax().get(), decimalMax.value());
+        BeanValidationAssertions.assertDecimalMaxAnnotation(
+            decimalMaxAnnotation, generatedField.decimalMax().get(), decimalMax);
       } else {
         CustomAssertions.assertFieldIsNotAnnotatedWith(field, decimalMaxAnnotation);
       }
-      final Class<Email> emailAnnotation = Email.class;
+      final Class<? extends Annotation> emailAnnotation =
+          generatedSource.getBeanValidationAnnotations().get(BeanValidationAnnotation.EMAIL);
       if (generatedField.isEmail()) {
         CustomAssertions.assertFieldIsAnnotatedWith(field, emailAnnotation);
       } else {
