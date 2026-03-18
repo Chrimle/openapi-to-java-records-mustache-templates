@@ -26,7 +26,6 @@ import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.Size;
 import org.junit.jupiter.api.Assertions;
 
 public class AssertionUtilsImpl {
@@ -63,19 +62,24 @@ public class AssertionUtilsImpl {
       } else {
         CustomAssertions.assertFieldIsNotAnnotatedWith(field, patternAnnotation);
       }
-      final Class<Size> sizeAnnotation = Size.class;
+      final Class<? extends Annotation> sizeAnnotation =
+          generatedSource.getBeanValidationAnnotations().get(BeanValidationAnnotation.SIZE);
       if (generatedField.minLength().isPresent() || generatedField.maxLength().isPresent()) {
-        final Size actualSizeAnnotation =
+        final var actualSizeAnnotation =
             CustomAssertions.assertFieldIsAnnotatedWith(field, sizeAnnotation);
-        Assertions.assertEquals(generatedField.minLength().orElse(0), actualSizeAnnotation.min());
-        Assertions.assertEquals(
-            generatedField.maxLength().orElse(Integer.MAX_VALUE), actualSizeAnnotation.max());
+        BeanValidationAssertions.assertSizeAnnotation(
+            sizeAnnotation,
+            generatedField.minLength().orElse(0),
+            generatedField.maxLength().orElse(Integer.MAX_VALUE),
+            actualSizeAnnotation);
       } else if (generatedField.minItems().isPresent() || generatedField.maxItems().isPresent()) {
-        final Size actualSizeAnnotation =
+        final var actualSizeAnnotation =
             CustomAssertions.assertFieldIsAnnotatedWith(field, sizeAnnotation);
-        Assertions.assertEquals(generatedField.minItems().orElse(0), actualSizeAnnotation.min());
-        Assertions.assertEquals(
-            generatedField.maxItems().orElse(Integer.MAX_VALUE), actualSizeAnnotation.max());
+        BeanValidationAssertions.assertSizeAnnotation(
+            sizeAnnotation,
+            generatedField.minItems().orElse(0),
+            generatedField.maxItems().orElse(Integer.MAX_VALUE),
+            actualSizeAnnotation);
       } else {
         CustomAssertions.assertFieldIsNotAnnotatedWith(field, sizeAnnotation);
       }
