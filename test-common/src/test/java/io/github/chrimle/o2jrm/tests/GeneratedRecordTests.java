@@ -1183,13 +1183,11 @@ public abstract class GeneratedRecordTests {
         class AdditionalModelTypeAnnotationsUnsetTests {
           @ParameterizedTest
           @ArgumentsSource(GeneratedRecordProvider.class)
+          @AssumptionFilter(hasAdditionalModelTypeAnnotations = Condition.FALSE)
           @DisplayName("Generated `record` does NOT have additional annotations")
           void
               whenAdditionalModelTypeAnnotationsIsNotSetThenGeneratedRecordClassDoesNotHaveAdditionalAnnotations(
                   final GeneratedSource generatedSource) {
-
-            Assumptions.assumeFalse(generatedSource.hasAdditionalModelTypeAnnotations());
-
             CustomAssertions.assertClassIsNotAnnotatedWith(
                 generatedSource.getClassUnderTest(), TestAnnotationOne.class);
             CustomAssertions.assertClassIsNotAnnotatedWith(
@@ -1205,13 +1203,11 @@ public abstract class GeneratedRecordTests {
         class AdditionalModelTypeAnnotationsSetTests {
           @ParameterizedTest
           @ArgumentsSource(GeneratedRecordProvider.class)
+          @AssumptionFilter(hasAdditionalModelTypeAnnotations = Condition.TRUE)
           @DisplayName("Generated `record` has additional annotations")
           void
               whenConfigOptionAdditionalModelTypeAnnotationsIsSetThenGeneratedRecordClassHasAdditionalAnnotations(
                   final GeneratedSource generatedSource) {
-
-            Assumptions.assumeTrue(generatedSource.hasAdditionalModelTypeAnnotations());
-
             CustomAssertions.assertClassIsAnnotatedWith(
                 generatedSource.getClassUnderTest(), TestAnnotationOne.class);
             CustomAssertions.assertClassIsAnnotatedWith(

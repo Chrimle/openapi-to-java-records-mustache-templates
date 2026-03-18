@@ -13,6 +13,8 @@ public @interface AssumptionFilter {
 
   Condition hasAdditionalEnumTypeAnnotations() default Condition.ANY;
 
+  Condition hasAdditionalModelTypeAnnotations() default Condition.ANY;
+
   Condition hasXImplements() default Condition.ANY;
 
   Condition isDeprecated() default Condition.ANY;
