@@ -39,6 +39,9 @@ public abstract class GeneratedSourceProvider implements ArgumentsProvider {
               if (!(assumptionFilter
                   .isSerializationLibraryJackson()
                   .test(generatedSource.isSerializationLibraryJackson()))) return false;
+              if (!(assumptionFilter
+                  .useEnumCaseInsensitive()
+                  .test(generatedSource.useEnumCaseInsensitive()))) return false;
               return true;
             });
   }

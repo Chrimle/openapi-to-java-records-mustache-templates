@@ -759,13 +759,14 @@ public abstract class GeneratedEnumTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedEnumProvider.class)
-          @AssumptionFilter(enumUnknownDefaultCase = Condition.FALSE)
+          @AssumptionFilter(
+              enumUnknownDefaultCase = Condition.FALSE,
+              useEnumCaseInsensitive = Condition.FALSE)
           @DisplayName(
               "Generated `static fromValue(T)` method throws `IllegalArgumentException` when string `value` has wrong case")
           void
               whenConfigOptionUseEnumCaseInsensitiveIsFalseThenFromValueMethodThrowsIllegalArgumentExceptionWhenGivenValueHasWrongCase(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeFalse(generatedSource.useEnumCaseInsensitive());
             Assumptions.assumeTrue(
                 String.class.equals(generatedSource.generatedFields()[0].type()));
 
@@ -789,12 +790,12 @@ public abstract class GeneratedEnumTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedEnumProvider.class)
+          @AssumptionFilter(useEnumCaseInsensitive = Condition.TRUE)
           @DisplayName(
               "Generated `static fromValue(T)` method returns `enum`-constant when string `value` has different case")
           void
               whenConfigOptionUseEnumCaseInsensitiveIsTrueThenFromValueMethodReturnsEnumConstantWithDifferentCase(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.useEnumCaseInsensitive());
             Assumptions.assumeTrue(
                 String.class.equals(generatedSource.generatedFields()[0].type()));
 

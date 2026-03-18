@@ -22,4 +22,6 @@ public @interface AssumptionFilter {
   Condition isLibraryWebClient() default Condition.ANY;
 
   Condition isSerializationLibraryJackson() default Condition.ANY;
+
+  Condition useEnumCaseInsensitive() default Condition.ANY;
 }
