@@ -33,31 +33,31 @@ public class BeanValidationAssertions {
       final Class<? extends Annotation> expectedAnnotationClass,
       final long expectedMin,
       final Annotation actualAnnotation) {
-    final var minMethod = CustomAssertions.assertClassHasMethod(expectedAnnotationClass, "value");
-    CustomAssertions.assertInstanceMethodReturnsValue(minMethod, expectedMin, actualAnnotation);
+    final var valueMethod = CustomAssertions.assertClassHasMethod(expectedAnnotationClass, "value");
+    CustomAssertions.assertInstanceMethodReturnsValue(valueMethod, expectedMin, actualAnnotation);
   }
 
   public static void assertMaxAnnotation(
       final Class<? extends Annotation> expectedAnnotationClass,
       final long expectedMax,
       final Annotation actualAnnotation) {
-    final var maxMethod = CustomAssertions.assertClassHasMethod(expectedAnnotationClass, "value");
-    CustomAssertions.assertInstanceMethodReturnsValue(maxMethod, expectedMax, actualAnnotation);
+    final var valueMethod = CustomAssertions.assertClassHasMethod(expectedAnnotationClass, "value");
+    CustomAssertions.assertInstanceMethodReturnsValue(valueMethod, expectedMax, actualAnnotation);
   }
 
   public static void assertDecimalMinAnnotation(
       final Class<? extends Annotation> expectedAnnotationClass,
       final String expectedMin,
       final Annotation actualAnnotation) {
-    final var minMethod = CustomAssertions.assertClassHasMethod(expectedAnnotationClass, "value");
-    CustomAssertions.assertInstanceMethodReturnsValue(minMethod, expectedMin, actualAnnotation);
+    final var valueMethod = CustomAssertions.assertClassHasMethod(expectedAnnotationClass, "value");
+    CustomAssertions.assertInstanceMethodReturnsValue(valueMethod, expectedMin, actualAnnotation);
   }
 
   public static void assertDecimalMaxAnnotation(
       final Class<? extends Annotation> expectedAnnotationClass,
       final String expectedMax,
       final Annotation actualAnnotation) {
-    final var minMethod = CustomAssertions.assertClassHasMethod(expectedAnnotationClass, "value");
-    CustomAssertions.assertInstanceMethodReturnsValue(minMethod, expectedMax, actualAnnotation);
+    final var valueMethod = CustomAssertions.assertClassHasMethod(expectedAnnotationClass, "value");
+    CustomAssertions.assertInstanceMethodReturnsValue(valueMethod, expectedMax, actualAnnotation);
   }
 }
