@@ -21,8 +21,6 @@ import io.github.chrimle.o2jrm.models.BeanValidationAnnotation;
 import io.github.chrimle.o2jrm.models.GeneratedField;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.*;
-import javax.validation.constraints.DecimalMax;
-import org.junit.jupiter.api.Assertions;
 
 public class AssertionUtilsImpl {
 
@@ -107,11 +105,13 @@ public class AssertionUtilsImpl {
       } else {
         CustomAssertions.assertFieldIsNotAnnotatedWith(field, decimalMinAnnotation);
       }
-      final Class<DecimalMax> decimalMaxAnnotation = DecimalMax.class;
+      final Class<? extends Annotation> decimalMaxAnnotation =
+          generatedSource.getBeanValidationAnnotations().get(BeanValidationAnnotation.DECIMAL_MAX);
       if (generatedField.decimalMax().isPresent()) {
-        final DecimalMax decimalMax =
+        final var decimalMax =
             CustomAssertions.assertFieldIsAnnotatedWith(field, decimalMaxAnnotation);
-        Assertions.assertEquals(generatedField.decimalMax().get(), decimalMax.value());
+        BeanValidationAssertions.assertDecimalMaxAnnotation(
+            decimalMaxAnnotation, generatedField.decimalMax().get(), decimalMax);
       } else {
         CustomAssertions.assertFieldIsNotAnnotatedWith(field, decimalMaxAnnotation);
       }
