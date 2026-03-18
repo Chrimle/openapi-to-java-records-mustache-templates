@@ -16,11 +16,13 @@
 */
 package io.github.chrimle.o2jrm;
 
+import io.github.chrimle.o2jrm.models.BeanValidationAnnotation;
 import io.github.chrimle.o2jrm.models.GeneratedClass;
 import io.github.chrimle.o2jrm.models.GeneratedField;
 import java.lang.annotation.Annotation;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Represents a generated <i>source</i>, which contains:
@@ -45,19 +47,20 @@ public class GeneratedSource {
   private final GeneratedField<?>[] generatedFields;
   private final PluginExecution pluginExecution;
   private final GeneratedClass generatedClass;
-  private final List<Class<? extends Annotation>> beanValidationAnnotations;
+  private final Map<BeanValidationAnnotation, Class<? extends Annotation>>
+      beanValidationAnnotations;
 
   public GeneratedSource(
       final PluginExecution pluginExecution,
       final GeneratedClass generatedClass,
       final GeneratedField<?>[] generatedFields,
       final Class<?> classUnderTest,
-      final Class<? extends Annotation>... beanValidationAnnotations) {
+      final Map<BeanValidationAnnotation, Class<? extends Annotation>> beanValidationAnnotations) {
     this.pluginExecution = pluginExecution;
     this.generatedClass = generatedClass;
     this.generatedFields = generatedFields;
     this.classUnderTest = classUnderTest;
-    this.beanValidationAnnotations = Arrays.asList(beanValidationAnnotations);
+    this.beanValidationAnnotations = beanValidationAnnotations;
   }
 
   public boolean generateBuilders() {
@@ -168,7 +171,7 @@ public class GeneratedSource {
         + '}';
   }
 
-  public List<Class<? extends Annotation>> getBeanValidationAnnotations() {
+  public Map<BeanValidationAnnotation, Class<? extends Annotation>> getBeanValidationAnnotations() {
     return beanValidationAnnotations;
   }
 }

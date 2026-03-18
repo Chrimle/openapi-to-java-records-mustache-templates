@@ -18,9 +18,11 @@ package io.github.chrimle.o2jrm.tests;
 
 import io.github.chrimle.o2jrm.GeneratedSource;
 import io.github.chrimle.o2jrm.PluginExecutionImpl;
+import io.github.chrimle.o2jrm.models.BeanValidationAnnotation;
 import io.github.chrimle.o2jrm.models.GeneratedClass;
 import io.github.chrimle.o2jrm.models.GeneratedClassImpl;
 import io.github.chrimle.o2jrm.models.GeneratedEnumImpl;
+import java.util.Map;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.provider.Arguments;
@@ -42,15 +44,25 @@ final class GeneratedEnumImplTests extends GeneratedEnumTests {
                                 GeneratedClassImpl.getGeneratedFields(
                                     generatedEnum, pluginExecution),
                                 GeneratedClass.getClass(generatedEnum, pluginExecution),
-                                javax.validation.Valid.class,
-                                javax.validation.constraints.NotNull.class,
-                                javax.validation.constraints.Pattern.class,
-                                javax.validation.constraints.Size.class,
-                                javax.validation.constraints.Min.class,
-                                javax.validation.constraints.Max.class,
-                                javax.validation.constraints.DecimalMin.class,
-                                javax.validation.constraints.DecimalMax.class,
-                                javax.validation.constraints.Email.class)))
+                                Map.of(
+                                    BeanValidationAnnotation.VALID,
+                                    javax.validation.Valid.class,
+                                    BeanValidationAnnotation.NOT_NULL,
+                                    javax.validation.constraints.NotNull.class,
+                                    BeanValidationAnnotation.PATTERN,
+                                    javax.validation.constraints.Pattern.class,
+                                    BeanValidationAnnotation.SIZE,
+                                    javax.validation.constraints.Size.class,
+                                    BeanValidationAnnotation.MIN,
+                                    javax.validation.constraints.Min.class,
+                                    BeanValidationAnnotation.MAX,
+                                    javax.validation.constraints.Max.class,
+                                    BeanValidationAnnotation.DECIMAL_MIN,
+                                    javax.validation.constraints.DecimalMin.class,
+                                    BeanValidationAnnotation.DECIMAL_MAX,
+                                    javax.validation.constraints.DecimalMax.class,
+                                    BeanValidationAnnotation.EMAIL,
+                                    javax.validation.constraints.Email.class))))
         .map(Arguments::of);
   }
 }

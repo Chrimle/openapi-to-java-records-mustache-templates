@@ -1373,7 +1373,7 @@ public abstract class GeneratedRecordTests {
                       generatedField.type());
 
               for (final Class<? extends Annotation> annotation :
-                  generatedSource.getBeanValidationAnnotations()) {
+                  generatedSource.getBeanValidationAnnotations().values()) {
                 CustomAssertions.assertFieldIsNotAnnotatedWith(field, annotation);
               }
             }
