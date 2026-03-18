@@ -595,12 +595,11 @@ public abstract class GeneratedEnumTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedEnumProvider.class)
+          @AssumptionFilter(serializableModel = Condition.FALSE)
           @DisplayName("Generated `enum` does NOT implement `Serializable`")
           void
               whenConfigOptionSerializableModelIsFalseThenGeneratedEnumClassDoesNotImplementSerializable(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeFalse(generatedSource.serializableModel());
-
             CustomAssertions.assertClassDoesNotImplementInterface(
                 generatedSource.getClassUnderTest(), Serializable.class);
           }
@@ -612,11 +611,11 @@ public abstract class GeneratedEnumTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedEnumProvider.class)
+          @AssumptionFilter(serializableModel = Condition.TRUE)
           @DisplayName("Generated OUTER `enum` implement `Serializable`")
           void
               whenConfigOptionSerializableModelIsTrueThenOuterGeneratedEnumClassImplementsSerializable(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.serializableModel());
             Assumptions.assumeFalse(generatedSource.isInnerEnum());
 
             CustomAssertions.assertClassImplementsInterface(
@@ -625,11 +624,11 @@ public abstract class GeneratedEnumTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedEnumProvider.class)
+          @AssumptionFilter(serializableModel = Condition.TRUE)
           @DisplayName("Generated INNER `enum` does NOT implement `Serializable`")
           void
               whenConfigOptionSerializableModelIsTrueThenInnerGeneratedEnumClassDoesNotImplementsSerializable(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.serializableModel());
             Assumptions.assumeTrue(generatedSource.isInnerEnum());
 
             CustomAssertions.assertClassDoesNotImplementInterface(
