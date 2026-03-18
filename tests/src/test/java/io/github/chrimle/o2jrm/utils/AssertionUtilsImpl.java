@@ -23,7 +23,6 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.*;
 import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
-import javax.validation.constraints.Max;
 import org.junit.jupiter.api.Assertions;
 
 public class AssertionUtilsImpl {
@@ -90,10 +89,12 @@ public class AssertionUtilsImpl {
       } else {
         CustomAssertions.assertFieldIsNotAnnotatedWith(field, minAnnotation);
       }
-      final Class<Max> maxAnnotation = Max.class;
+      final Class<? extends Annotation> maxAnnotation =
+          generatedSource.getBeanValidationAnnotations().get(BeanValidationAnnotation.MAX);
       if (generatedField.maximum().isPresent()) {
-        final Max max = CustomAssertions.assertFieldIsAnnotatedWith(field, maxAnnotation);
-        Assertions.assertEquals(generatedField.maximum().get(), max.value());
+        final var max = CustomAssertions.assertFieldIsAnnotatedWith(field, maxAnnotation);
+        BeanValidationAssertions.assertMaxAnnotation(
+            maxAnnotation, generatedField.maximum().get(), max);
       } else {
         CustomAssertions.assertFieldIsNotAnnotatedWith(field, maxAnnotation);
       }
