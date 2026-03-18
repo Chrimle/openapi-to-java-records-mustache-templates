@@ -187,11 +187,10 @@ public abstract class GeneratedRecordTests {
         class XClassExtraAnnotationUnsetTests {
           @ParameterizedTest
           @ArgumentsSource(GeneratedRecordProvider.class)
+          @AssumptionFilter(hasExtraAnnotations = Condition.FALSE)
           @DisplayName("Generated `record` has no extra annotations")
           void whenExtraClassAnnotationsIsNotSetThenGeneratedRecordHasNoExtraAnnotations(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeFalse(generatedSource.hasExtraAnnotations());
-
             CustomAssertions.assertClassIsNotAnnotatedWith(
                 generatedSource.getClassUnderTest(), TestExtraAnnotation.class);
             CustomAssertions.assertClassIsNotAnnotatedWith(
@@ -204,11 +203,10 @@ public abstract class GeneratedRecordTests {
         class XClassExtraAnnotationSetTests {
           @ParameterizedTest
           @ArgumentsSource(GeneratedRecordProvider.class)
+          @AssumptionFilter(hasExtraAnnotations = Condition.TRUE)
           @DisplayName("Generated `record` has extra annotations")
           void whenExtraClassAnnotationsIsNotSetThenGeneratedRecordHasNoExtraAnnotations(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.hasExtraAnnotations());
-
             for (final Class<? extends Annotation> annotation :
                 generatedSource.getExtraAnnotations()) {
               CustomAssertions.assertClassIsAnnotatedWith(

@@ -17,6 +17,8 @@ public @interface AssumptionFilter {
 
   Condition hasAdditionalModelTypeAnnotations() default Condition.ANY;
 
+  Condition hasExtraAnnotations() default Condition.ANY;
+
   Condition hasXImplements() default Condition.ANY;
 
   Condition isDeprecated() default Condition.ANY;
