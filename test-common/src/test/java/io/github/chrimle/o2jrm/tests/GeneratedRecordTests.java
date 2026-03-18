@@ -233,10 +233,10 @@ public abstract class GeneratedRecordTests {
 
         @ParameterizedTest
         @ArgumentsSource(GeneratedRecordProvider.class)
+        @AssumptionFilter(isSerializationLibraryJackson = Condition.FALSE)
         @DisplayName("[okhttp-gson] Generated constructor is NOT annotated `@JsonCreator`")
         void whenNotJacksonThenGeneratedConstructorIsNotAnnotatedJsonCreator(
             final GeneratedSource generatedSource) {
-          Assumptions.assumeFalse(generatedSource.isSerializationLibraryJackson());
           final Constructor<?> constructor =
               CustomAssertions.assertClassHasConstructor(
                   generatedSource.getClassUnderTest(), generatedSource.fieldClasses());
@@ -245,10 +245,10 @@ public abstract class GeneratedRecordTests {
 
         @ParameterizedTest
         @ArgumentsSource(GeneratedRecordProvider.class)
+        @AssumptionFilter(isSerializationLibraryJackson = Condition.TRUE)
         @DisplayName("[webclient] Generated constructor IS annotated `@JsonCreator`")
         void whenJacksonThenGeneratedConstructorIsAnnotatedJsonCreator(
             final GeneratedSource generatedSource) {
-          Assumptions.assumeTrue(generatedSource.isSerializationLibraryJackson());
           final Constructor<?> constructor =
               CustomAssertions.assertClassHasConstructor(
                   generatedSource.getClassUnderTest(), generatedSource.fieldClasses());
