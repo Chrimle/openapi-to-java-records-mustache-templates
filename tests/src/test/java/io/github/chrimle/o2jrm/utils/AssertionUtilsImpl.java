@@ -17,16 +17,15 @@
 package io.github.chrimle.o2jrm.utils;
 
 import io.github.chrimle.o2jrm.GeneratedSource;
+import io.github.chrimle.o2jrm.models.BeanValidationAnnotation;
 import io.github.chrimle.o2jrm.models.GeneratedField;
+import java.lang.annotation.Annotation;
 import java.lang.reflect.*;
-import javax.validation.Valid;
 import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import org.junit.jupiter.api.Assertions;
 
@@ -40,23 +39,27 @@ public class AssertionUtilsImpl {
           CustomAssertions.assertClassHasField(
               generatedSource.getClassUnderTest(), generatedField.name(), generatedField.type());
 
-      final Class<Valid> validAnnotation = Valid.class;
+      final Class<? extends Annotation> validAnnotation =
+          generatedSource.getBeanValidationAnnotations().get(BeanValidationAnnotation.VALID);
       if (generatedField.isCustomClass()) {
         CustomAssertions.assertFieldIsAnnotatedWith(field, validAnnotation);
       } else {
         CustomAssertions.assertFieldIsNotAnnotatedWith(field, validAnnotation);
       }
-      final Class<NotNull> notNullAnnotation = NotNull.class;
+      final Class<? extends Annotation> notNullAnnotation =
+          generatedSource.getBeanValidationAnnotations().get(BeanValidationAnnotation.NOT_NULL);
       if (generatedField.isBeanValidationNullable()) {
         CustomAssertions.assertFieldIsNotAnnotatedWith(field, notNullAnnotation);
       } else {
         CustomAssertions.assertFieldIsAnnotatedWith(field, notNullAnnotation);
       }
-      final Class<Pattern> patternAnnotation = Pattern.class;
+      final Class<? extends Annotation> patternAnnotation =
+          generatedSource.getBeanValidationAnnotations().get(BeanValidationAnnotation.PATTERN);
       if (generatedField.pattern().isPresent()) {
-        final Pattern actualPatternAnnotation =
+        final var actualPatternAnnotation =
             CustomAssertions.assertFieldIsAnnotatedWith(field, patternAnnotation);
-        Assertions.assertEquals(generatedField.pattern().get(), actualPatternAnnotation.regexp());
+        BeanValidationAssertions.assertPatternAnnotation(
+            patternAnnotation, generatedField.pattern().get(), actualPatternAnnotation);
       } else {
         CustomAssertions.assertFieldIsNotAnnotatedWith(field, patternAnnotation);
       }
