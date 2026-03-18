@@ -1276,12 +1276,11 @@ public abstract class GeneratedRecordTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedRecordProvider.class)
+          @AssumptionFilter(generateBuilders = Condition.FALSE)
           @DisplayName("Generated `record` does NOT have inner `Builder`-class")
           void
               whenConfigOptionGenerateBuildersIsFalseThenGeneratedRecordDoesNotHaveInnerBuilderClass(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeFalse(generatedSource.generateBuilders());
-
             CustomAssertions.assertClassDoesNotHaveMethod(
                 generatedSource.getClassUnderTest(), "builder");
             CustomAssertions.assertClassDoesNotHaveInnerClass(
@@ -1294,11 +1293,10 @@ public abstract class GeneratedRecordTests {
         class GenerateBuildersTrueTests {
           @ParameterizedTest
           @ArgumentsSource(GeneratedRecordProvider.class)
+          @AssumptionFilter(generateBuilders = Condition.TRUE)
           @DisplayName("Generated `record` has inner `Builder`-class")
           void whenConfigOptionGenerateBuildersIsSetThenGeneratedRecordHasInnerBuilderClass(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.generateBuilders());
-
             CustomAssertions.assertClassHasMethod(generatedSource.getClassUnderTest(), "builder");
             CustomAssertions.assertClassHasInnerClass(
                 generatedSource.getClassUnderTest(), "Builder");

@@ -11,6 +11,8 @@ public @interface AssumptionFilter {
 
   Condition enumUnknownDefaultCase() default Condition.ANY;
 
+  Condition generateBuilders() default Condition.ANY;
+
   Condition hasAdditionalEnumTypeAnnotations() default Condition.ANY;
 
   Condition hasAdditionalModelTypeAnnotations() default Condition.ANY;
