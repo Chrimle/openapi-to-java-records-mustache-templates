@@ -152,20 +152,20 @@ public abstract class GeneratedEnumTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedEnumProvider.class)
+          @AssumptionFilter(enumUnknownDefaultCase = Condition.FALSE)
           @DisplayName("Generates an `enum` with expected number of constants")
           void whenEnumHasConstantsThenGeneratedEnumClassHasExpectedNumberOfConstants(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeFalse(generatedSource.enumUnknownDefaultCase());
             CustomAssertions.assertClassHasEnumConstants(
                 generatedSource.getClassUnderTest(), generatedSource.generatedFields().length);
           }
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedEnumProvider.class)
+          @AssumptionFilter(enumUnknownDefaultCase = Condition.FALSE)
           @DisplayName("Generates `enum` constants with expected names")
           void whenEnumHasConstantsThenGeneratedEnumClassHasConstantsWithExpectedNames(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeFalse(generatedSource.enumUnknownDefaultCase());
             CustomAssertions.assertClassHasEnumConstantsWithNames(
                 generatedSource.getClassUnderTest(),
                 Arrays.stream(generatedSource.generatedFields())
@@ -175,11 +175,11 @@ public abstract class GeneratedEnumTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedEnumProvider.class)
+          @AssumptionFilter(enumUnknownDefaultCase = Condition.FALSE)
           @DisplayName(
               "OpenAPI `{schema}.enum.{constants}` -> Generates `enum` constants with expected values")
           void whenEnumHasConstantsThenGeneratedEnumClassHasConstantsWithExpectedValues(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeFalse(generatedSource.enumUnknownDefaultCase());
             CustomAssertions.assertClassHasEnumConstantsWithValues(
                 generatedSource.getClassUnderTest(),
                 Arrays.stream(generatedSource.generatedFields())
@@ -688,11 +688,11 @@ public abstract class GeneratedEnumTests {
 
         @ParameterizedTest
         @ArgumentsSource(GeneratedEnumProvider.class)
+        @AssumptionFilter(enumUnknownDefaultCase = Condition.FALSE)
         @DisplayName(
             "Generated `static fromValue(T)` method ALWAYS `throw IllegalArgumentException` when `null` is given")
         void alwaysThrowIllegalArgumentExceptionWhenProvidingNullAsArgumentToStaticFromValueMethod(
             final GeneratedSource generatedSource) {
-          Assumptions.assumeFalse(generatedSource.enumUnknownDefaultCase());
           CustomAssertions.assertStaticMethodThrowsWhenInvoked(
               CustomAssertions.assertClassHasMethod(
                   generatedSource.getClassUnderTest(),
@@ -704,12 +704,12 @@ public abstract class GeneratedEnumTests {
 
         @ParameterizedTest
         @ArgumentsSource(GeneratedEnumProvider.class)
+        @AssumptionFilter(enumUnknownDefaultCase = Condition.FALSE)
         @DisplayName(
             "Generated `static fromValue(T)` method ALWAYS `throw IllegalArgumentException` when non-matching string `value` is given")
         void
             alwaysThrowIllegalArgumentExceptionWhenProvidingNonMatchingStringValueAsArgumentToStaticFromValueMethod(
                 final GeneratedSource generatedSource) {
-          Assumptions.assumeFalse(generatedSource.enumUnknownDefaultCase());
           Assumptions.assumeTrue(String.class.equals(generatedSource.generatedFields()[0].type()));
 
           CustomAssertions.assertStaticMethodThrowsWhenInvoked(
@@ -723,12 +723,12 @@ public abstract class GeneratedEnumTests {
 
         @ParameterizedTest
         @ArgumentsSource(GeneratedEnumProvider.class)
+        @AssumptionFilter(enumUnknownDefaultCase = Condition.FALSE)
         @DisplayName(
             "Generated `static fromValue(T)` method ALWAYS `throw IllegalArgumentException` when non-matching integer `value` is given")
         void
             alwaysThrowIllegalArgumentExceptionWhenProvidingNonMatchingIntegerValueAsArgumentToStaticFromValueMethod(
                 final GeneratedSource generatedSource) {
-          Assumptions.assumeFalse(generatedSource.enumUnknownDefaultCase());
           Assumptions.assumeTrue(Integer.class.equals(generatedSource.generatedFields()[0].type()));
 
           CustomAssertions.assertStaticMethodThrowsWhenInvoked(
@@ -764,12 +764,12 @@ public abstract class GeneratedEnumTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedEnumProvider.class)
+          @AssumptionFilter(enumUnknownDefaultCase = Condition.FALSE)
           @DisplayName(
               "Generated `static fromValue(T)` method throws `IllegalArgumentException` when string `value` has wrong case")
           void
               whenConfigOptionUseEnumCaseInsensitiveIsFalseThenFromValueMethodThrowsIllegalArgumentExceptionWhenGivenValueHasWrongCase(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeFalse(generatedSource.enumUnknownDefaultCase());
             Assumptions.assumeFalse(generatedSource.useEnumCaseInsensitive());
             Assumptions.assumeTrue(
                 String.class.equals(generatedSource.generatedFields()[0].type()));
@@ -827,23 +827,23 @@ public abstract class GeneratedEnumTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedEnumProvider.class)
+          @AssumptionFilter(enumUnknownDefaultCase = Condition.FALSE)
           @DisplayName("Generates an `enum` with expected number of constants")
           void
               whenConfigOptionEnumUnknownDefaultCaseIsFalseThenGeneratedEnumClassHasExpectedNumberOfConstants(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeFalse(generatedSource.enumUnknownDefaultCase());
             CustomAssertions.assertClassHasEnumConstants(
                 generatedSource.getClassUnderTest(), generatedSource.generatedFields().length);
           }
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedEnumProvider.class)
+          @AssumptionFilter(enumUnknownDefaultCase = Condition.FALSE)
           @DisplayName(
               "Generated `enum`-class with `String` values does NOT have `\"UNKNOWN_DEFAULT_OPEN_API\"` as a constant")
           void
               whenConfigOptionEnumUnknownDefaultCaseIsFalseThenGeneratedEnumClassDoesNotHaveUnknownDefaultOpenApiEnumConstant(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeFalse(generatedSource.enumUnknownDefaultCase());
             Assumptions.assumeTrue(
                 String.class.equals(generatedSource.generatedFields()[0].type()));
 
@@ -853,12 +853,12 @@ public abstract class GeneratedEnumTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedEnumProvider.class)
+          @AssumptionFilter(enumUnknownDefaultCase = Condition.FALSE)
           @DisplayName(
               "Generated `enum`-class with `Integer` values does NOT have `\"NUMBER_unknown_default_open_api\"` as a constant")
           void
               whenConfigOptionEnumUnknownDefaultCaseIsFalseThenGeneratedEnumClassDoesNotHaveNumberUnknownDefaultOpenApiEnumConstant(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeFalse(generatedSource.enumUnknownDefaultCase());
             Assumptions.assumeTrue(
                 Integer.class.equals(generatedSource.generatedFields()[0].type()));
 
@@ -868,12 +868,12 @@ public abstract class GeneratedEnumTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedEnumProvider.class)
+          @AssumptionFilter(enumUnknownDefaultCase = Condition.FALSE)
           @DisplayName(
               "Generated `enum`-class with `URI` values does NOT have `\"UNKNOWN_DEFAULT_OPEN_API\"` as a constant")
           void
               whenConfigOptionEnumUnknownDefaultCaseIsFalseThenGeneratedEnumClassDoesNotHaveUriUnknownDefaultOpenApiEnumConstant(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeFalse(generatedSource.enumUnknownDefaultCase());
             Assumptions.assumeTrue(URI.class.equals(generatedSource.generatedFields()[0].type()));
 
             CustomAssertions.assertClassDoesNotHaveEnumConstantWithName(
@@ -882,13 +882,12 @@ public abstract class GeneratedEnumTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedEnumProvider.class)
+          @AssumptionFilter(enumUnknownDefaultCase = Condition.FALSE)
           @DisplayName(
               "Generated `static fromValue(T)` method ALWAYS `throw IllegalArgumentException` when `null` is given")
           void
               alwaysThrowIllegalArgumentExceptionWhenProvidingNullAsArgumentToStaticFromValueMethod(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeFalse(generatedSource.enumUnknownDefaultCase());
-
             CustomAssertions.assertStaticMethodThrowsWhenInvoked(
                 CustomAssertions.assertClassHasMethod(
                     generatedSource.getClassUnderTest(),
@@ -905,24 +904,24 @@ public abstract class GeneratedEnumTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedEnumProvider.class)
+          @AssumptionFilter(enumUnknownDefaultCase = Condition.TRUE)
           @DisplayName(
               "Generates an `enum` with expected number of constants PLUS an additional one constant")
           void
               whenConfigOptionEnumUnknownDefaultCaseIsTrueThenGeneratedEnumClassHasExpectedNumberOfConstantsPlusOne(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.enumUnknownDefaultCase());
             CustomAssertions.assertClassHasEnumConstants(
                 generatedSource.getClassUnderTest(), generatedSource.generatedFields().length + 1);
           }
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedEnumProvider.class)
+          @AssumptionFilter(enumUnknownDefaultCase = Condition.TRUE)
           @DisplayName(
               "Generated `enum`-class with `String` values HAS `\"UNKNOWN_DEFAULT_OPEN_API\"` as a constant")
           void
               whenConfigOptionEnumUnknownDefaultCaseIsTrueThenGeneratedEnumClassHasUnknownDefaultOpenApiEnumConstant(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.enumUnknownDefaultCase());
             Assumptions.assumeTrue(
                 String.class.equals(generatedSource.generatedFields()[0].type()));
 
@@ -932,12 +931,12 @@ public abstract class GeneratedEnumTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedEnumProvider.class)
+          @AssumptionFilter(enumUnknownDefaultCase = Condition.TRUE)
           @DisplayName(
               "Generated `enum`-class with `String` values HAS `\"UNKNOWN_DEFAULT_OPEN_API\"` constant with `value` as `\"unknown_default_open_api\"`")
           void
               whenConfigOptionEnumUnknownDefaultCaseIsTrueThenGeneratedEnumClassHasUnknownDefaultOpenApiEnumConstantWithExpectedStringValue(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.enumUnknownDefaultCase());
             Assumptions.assumeTrue(
                 String.class.equals(generatedSource.generatedFields()[0].type()));
 
@@ -947,12 +946,12 @@ public abstract class GeneratedEnumTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedEnumProvider.class)
+          @AssumptionFilter(enumUnknownDefaultCase = Condition.TRUE)
           @DisplayName(
               "Generated `enum`-class with `URI` values HAS `\"UNKNOWN_DEFAULT_OPEN_API\"` as a constant")
           void
               whenConfigOptionEnumUnknownDefaultCaseIsTrueThenGeneratedEnumClassHasUriUnknownDefaultOpenApiEnumConstant(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.enumUnknownDefaultCase());
             Assumptions.assumeTrue(URI.class.equals(generatedSource.generatedFields()[0].type()));
 
             CustomAssertions.assertClassHasEnumConstantWithName(
@@ -961,12 +960,12 @@ public abstract class GeneratedEnumTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedEnumProvider.class)
+          @AssumptionFilter(enumUnknownDefaultCase = Condition.TRUE)
           @DisplayName(
               "Generated `enum`-class with `URI` values HAS `\"UNKNOWN_DEFAULT_OPEN_API\"` constant with `value` as `URI.create(\"11184809\")`")
           void
               whenConfigOptionEnumUnknownDefaultCaseIsTrueThenGeneratedEnumClassHasUnknownDefaultOpenApiEnumConstantWithExpectedUriValue(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.enumUnknownDefaultCase());
             Assumptions.assumeTrue(URI.class.equals(generatedSource.generatedFields()[0].type()));
 
             CustomAssertions.assertClassHasEnumConstantWithValue(
@@ -975,12 +974,12 @@ public abstract class GeneratedEnumTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedEnumProvider.class)
+          @AssumptionFilter(enumUnknownDefaultCase = Condition.TRUE)
           @DisplayName(
               "Generated `enum`-class with `Integer` values HAS `\"NUMBER_unknown_default_open_api\"` as a constant")
           void
               whenConfigOptionEnumUnknownDefaultCaseIsTrueThenGeneratedEnumClassHasNumberUnknownDefaultOpenApiEnumConstant(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.enumUnknownDefaultCase());
             Assumptions.assumeTrue(
                 Integer.class.equals(generatedSource.generatedFields()[0].type()));
 
@@ -990,12 +989,12 @@ public abstract class GeneratedEnumTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedEnumProvider.class)
+          @AssumptionFilter(enumUnknownDefaultCase = Condition.TRUE)
           @DisplayName(
               "Generated `enum`-class with `Integer` values HAS `\"NUMBER_unknown_default_open_api\"` constant with `value` as `11184809`")
           void
               whenConfigOptionEnumUnknownDefaultCaseIsTrueThenGeneratedEnumClassHasUnknownDefaultOpenApiEnumConstantWithExpectedIntegerValue(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.enumUnknownDefaultCase());
             Assumptions.assumeTrue(
                 Integer.class.equals(generatedSource.generatedFields()[0].type()));
 
@@ -1005,11 +1004,11 @@ public abstract class GeneratedEnumTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedEnumProvider.class)
+          @AssumptionFilter(enumUnknownDefaultCase = Condition.TRUE)
           @DisplayName(
               "Generated `static fromValue(T)` method returns `NUMBER_unknown_default_open_api` when `null` is given")
           void whenConfigOptionEnumUnknownDefaultCaseIsTrueThenFromValueReturnsIntegerDefaultValue(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.enumUnknownDefaultCase());
             Assumptions.assumeTrue(
                 Integer.class.equals(generatedSource.generatedFields()[0].type()));
             CustomAssertions.assertStaticMethodReturnsNonNull(
@@ -1022,11 +1021,11 @@ public abstract class GeneratedEnumTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedEnumProvider.class)
+          @AssumptionFilter(enumUnknownDefaultCase = Condition.TRUE)
           @DisplayName(
               "Generated `static fromValue(T)` method returns `\"NUMBER_unknown_default_open_api\"` when `null` is given")
           void whenConfigOptionEnumUnknownDefaultCaseIsTrueThenFromValueReturnsStringDefaultValue(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.enumUnknownDefaultCase());
             Assumptions.assumeTrue(
                 String.class.equals(generatedSource.generatedFields()[0].type()));
 
@@ -1040,11 +1039,11 @@ public abstract class GeneratedEnumTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedEnumProvider.class)
+          @AssumptionFilter(enumUnknownDefaultCase = Condition.TRUE)
           @DisplayName(
               "Generated `static fromValue(T)` method returns `\"UNKNOWN_DEFAULT_OPEN_API\"` when `null` is given")
           void whenConfigOptionEnumUnknownDefaultCaseIsTrueThenFromValueReturnsUriDefaultValue(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.enumUnknownDefaultCase());
             Assumptions.assumeTrue(URI.class.equals(generatedSource.generatedFields()[0].type()));
 
             CustomAssertions.assertStaticMethodReturnsNonNull(
