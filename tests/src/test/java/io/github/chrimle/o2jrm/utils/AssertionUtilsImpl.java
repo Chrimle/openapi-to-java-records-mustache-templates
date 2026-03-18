@@ -22,7 +22,6 @@ import io.github.chrimle.o2jrm.models.GeneratedField;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.*;
 import javax.validation.constraints.DecimalMax;
-import javax.validation.constraints.DecimalMin;
 import org.junit.jupiter.api.Assertions;
 
 public class AssertionUtilsImpl {
@@ -98,11 +97,13 @@ public class AssertionUtilsImpl {
       } else {
         CustomAssertions.assertFieldIsNotAnnotatedWith(field, maxAnnotation);
       }
-      final Class<DecimalMin> decimalMinAnnotation = DecimalMin.class;
+      final Class<? extends Annotation> decimalMinAnnotation =
+          generatedSource.getBeanValidationAnnotations().get(BeanValidationAnnotation.DECIMAL_MIN);
       if (generatedField.decimalMin().isPresent()) {
-        final DecimalMin decimalMin =
+        final var decimalMin =
             CustomAssertions.assertFieldIsAnnotatedWith(field, decimalMinAnnotation);
-        Assertions.assertEquals(generatedField.decimalMin().get(), decimalMin.value());
+        BeanValidationAssertions.assertDecimalMinAnnotation(
+            decimalMinAnnotation, generatedField.decimalMin().get(), decimalMin);
       } else {
         CustomAssertions.assertFieldIsNotAnnotatedWith(field, decimalMinAnnotation);
       }

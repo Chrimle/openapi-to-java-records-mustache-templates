@@ -44,4 +44,12 @@ public class BeanValidationAssertions {
     final var maxMethod = CustomAssertions.assertClassHasMethod(expectedAnnotationClass, "value");
     CustomAssertions.assertInstanceMethodReturnsValue(maxMethod, expectedMax, actualAnnotation);
   }
+
+  public static void assertDecimalMinAnnotation(
+      final Class<? extends Annotation> expectedAnnotationClass,
+      final String expectedMin,
+      final Annotation actualAnnotation) {
+    final var minMethod = CustomAssertions.assertClassHasMethod(expectedAnnotationClass, "value");
+    CustomAssertions.assertInstanceMethodReturnsValue(minMethod, expectedMin, actualAnnotation);
+  }
 }
