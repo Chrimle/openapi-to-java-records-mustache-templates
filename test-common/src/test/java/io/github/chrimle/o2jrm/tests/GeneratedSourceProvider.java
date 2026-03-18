@@ -23,6 +23,9 @@ public abstract class GeneratedSourceProvider implements ArgumentsProvider {
               if (!(assumptionFilter
                   .enumUnknownDefaultCase()
                   .test(generatedSource.enumUnknownDefaultCase()))) return false;
+              if (!(assumptionFilter
+                  .hasAdditionalEnumTypeAnnotations()
+                  .test(generatedSource.hasAdditionalEnumTypeAnnotations()))) return false;
               if (!(assumptionFilter.hasXImplements().test(generatedSource.hasXImplements())))
                 return false;
               if (!(assumptionFilter.isDeprecated().test(generatedSource.isDeprecated())))

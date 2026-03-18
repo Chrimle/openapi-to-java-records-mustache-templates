@@ -11,6 +11,8 @@ public @interface AssumptionFilter {
 
   Condition enumUnknownDefaultCase() default Condition.ANY;
 
+  Condition hasAdditionalEnumTypeAnnotations() default Condition.ANY;
+
   Condition hasXImplements() default Condition.ANY;
 
   Condition isDeprecated() default Condition.ANY;

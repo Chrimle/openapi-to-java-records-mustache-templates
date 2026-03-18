@@ -549,12 +549,11 @@ public abstract class GeneratedEnumTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedEnumProvider.class)
+          @AssumptionFilter(hasAdditionalEnumTypeAnnotations = Condition.FALSE)
           @DisplayName("Generated `enum` class is NOT annotated with additional annotations")
           void
               whenConfigOptionAdditionalEnumTypeAnnotationsIsUnsetThenGeneratedEnumDoesNotHaveAdditionalAnnotations(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeFalse(generatedSource.hasAdditionalEnumTypeAnnotations());
-
             CustomAssertions.assertClassIsNotAnnotatedWith(
                 generatedSource.getClassUnderTest(), TestAnnotationOne.class);
             CustomAssertions.assertClassIsNotAnnotatedWith(
@@ -571,12 +570,11 @@ public abstract class GeneratedEnumTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedEnumProvider.class)
+          @AssumptionFilter(hasAdditionalEnumTypeAnnotations = Condition.TRUE)
           @DisplayName("Generated `enum` class is annotated with additional annotations")
           void
               whenConfigOptionAdditionalEnumTypeAnnotationsIsSetThenGeneratedEnumHasAdditionalAnnotations(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.hasAdditionalEnumTypeAnnotations());
-
             CustomAssertions.assertClassIsAnnotatedWith(
                 generatedSource.getClassUnderTest(), TestAnnotationOne.class);
             CustomAssertions.assertClassIsAnnotatedWith(
