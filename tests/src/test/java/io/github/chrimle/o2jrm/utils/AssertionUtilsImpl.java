@@ -24,7 +24,6 @@ import java.lang.reflect.*;
 import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import org.junit.jupiter.api.Assertions;
 
 public class AssertionUtilsImpl {
@@ -82,10 +81,12 @@ public class AssertionUtilsImpl {
       } else {
         CustomAssertions.assertFieldIsNotAnnotatedWith(field, sizeAnnotation);
       }
-      final Class<Min> minAnnotation = Min.class;
+      final Class<? extends Annotation> minAnnotation =
+          generatedSource.getBeanValidationAnnotations().get(BeanValidationAnnotation.MIN);
       if (generatedField.minimum().isPresent()) {
-        final Min min = CustomAssertions.assertFieldIsAnnotatedWith(field, minAnnotation);
-        Assertions.assertEquals(generatedField.minimum().get(), min.value());
+        final var min = CustomAssertions.assertFieldIsAnnotatedWith(field, minAnnotation);
+        BeanValidationAssertions.assertMinAnnotation(
+            minAnnotation, generatedField.minimum().get(), min);
       } else {
         CustomAssertions.assertFieldIsNotAnnotatedWith(field, minAnnotation);
       }

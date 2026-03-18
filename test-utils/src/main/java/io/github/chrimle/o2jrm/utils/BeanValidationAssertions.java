@@ -28,4 +28,12 @@ public class BeanValidationAssertions {
     final var maxMethod = CustomAssertions.assertClassHasMethod(expectedAnnotationClass, "max");
     CustomAssertions.assertInstanceMethodReturnsValue(maxMethod, expectedMax, actualAnnotation);
   }
+
+  public static void assertMinAnnotation(
+      final Class<? extends Annotation> expectedAnnotationClass,
+      final long expectedMin,
+      final Annotation actualAnnotation) {
+    final var minMethod = CustomAssertions.assertClassHasMethod(expectedAnnotationClass, "value");
+    CustomAssertions.assertInstanceMethodReturnsValue(minMethod, expectedMin, actualAnnotation);
+  }
 }
