@@ -443,9 +443,7 @@ public abstract class GeneratedRecordTests {
               "When `jsonElement` is `null` and `record` has required fields Then `validateJsonElement`-method throws `IllegalArgumentException`")
           void whenJsonElementIsNullAndRecordHasRequiredFieldsThenIllegalArgumentExceptionIsThrown(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(
-                Arrays.stream(generatedSource.generatedFields())
-                    .anyMatch(GeneratedField::isRequired));
+            Assumptions.assumeTrue(generatedSource.hasRequiredGeneratedFields());
 
             final Method validateJsonElementMethod =
                 CustomAssertions.assertClassHasMethod(
@@ -462,9 +460,7 @@ public abstract class GeneratedRecordTests {
           void
               whenJsonElementIsEmptyJsonAndRecordHasRequiredFieldsThenIllegalArgumentExceptionIsThrown(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(
-                Arrays.stream(generatedSource.generatedFields())
-                    .anyMatch(GeneratedField::isRequired));
+            Assumptions.assumeTrue(generatedSource.hasRequiredGeneratedFields());
 
             final Method validateJsonElementMethod =
                 CustomAssertions.assertClassHasMethod(
@@ -481,9 +477,7 @@ public abstract class GeneratedRecordTests {
               "When `jsonElement` is `null` and `record` has no required fields Then `validateJsonElement`-method throws `NullPointerException`")
           void whenJsonElementIsNullAndRecordHasNoRequiredFieldsThenNullPointerExceptionIsThrown(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(
-                Arrays.stream(generatedSource.generatedFields())
-                    .noneMatch(GeneratedField::isRequired));
+            Assumptions.assumeFalse(generatedSource.hasRequiredGeneratedFields());
 
             final Method validateJsonElementMethod =
                 CustomAssertions.assertClassHasMethod(
@@ -499,9 +493,7 @@ public abstract class GeneratedRecordTests {
               "When `jsonElement` is empty JSON and `record` has no required fields Then `validateJsonElement`-method throws nothing")
           void whenJsonElementIsEmptyJsonAndRecordHasNoRequiredFieldsThenNothingIsThrown(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(
-                Arrays.stream(generatedSource.generatedFields())
-                    .noneMatch(GeneratedField::isRequired));
+            Assumptions.assumeFalse(generatedSource.hasRequiredGeneratedFields());
 
             final Method validateJsonElementMethod =
                 CustomAssertions.assertClassHasMethod(
@@ -532,9 +524,7 @@ public abstract class GeneratedRecordTests {
               "When `jsonElement` does NOT have expected key Then `validateJsonElement`-method throws `IllegalArgumentException`")
           void whenJsonElementDoesNotHaveExpectedKeyThenIllegalArgumentExceptionIsThrown(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(
-                Arrays.stream(generatedSource.generatedFields())
-                    .anyMatch(GeneratedField::isRequired));
+            Assumptions.assumeTrue(generatedSource.hasRequiredGeneratedFields());
 
             final Method validateJsonElementMethod =
                 CustomAssertions.assertClassHasMethod(
@@ -563,9 +553,7 @@ public abstract class GeneratedRecordTests {
               "When required `jsonElement` value is `null` Then `validateJsonElement`-method throws `IllegalArgumentException`")
           void whenRequiredJsonElementValueIsNullThenIllegalArgumentExceptionIsThrown(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(
-                Arrays.stream(generatedSource.generatedFields())
-                    .anyMatch(GeneratedField::isRequired));
+            Assumptions.assumeTrue(generatedSource.hasRequiredGeneratedFields());
 
             final Method validateJsonElementMethod =
                 CustomAssertions.assertClassHasMethod(
