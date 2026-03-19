@@ -466,7 +466,7 @@
                                 <compilerArgs combine.self="override">
                                     <arg>-XDcompilePolicy=simple</arg>
                                 </compilerArgs>
-                                <annotationProcessorPaths combine.self="override" />
+                                <annotationProcessorPaths combine.self="override"/>
                             </configuration>
                         </plugin>
                     </plugins>
