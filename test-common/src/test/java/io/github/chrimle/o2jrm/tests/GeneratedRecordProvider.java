@@ -6,7 +6,8 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.ArgumentsProvider;
 import org.junit.jupiter.params.support.ParameterDeclarations;
 
-public class GeneratedRecordProvider extends GeneratedSourceProvider implements ArgumentsProvider {
+public final class GeneratedRecordProvider extends GeneratedSourceProvider
+    implements ArgumentsProvider {
 
   public static final String GENERATED_RECORD_TESTS_METHOD_SOURCE =
       "io.github.chrimle.o2jrm.tests.GeneratedRecordImplTests#allPluginExecutionsAndGeneratedRecordCombinations";
