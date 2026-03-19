@@ -448,5 +448,30 @@
     </build>
 
     <!-- === Profiles === -->
-    <profiles/>
+    <profiles>
+        <profile>
+            <id>disable-ep-in-ci</id>
+            <activation>
+                <property>
+                    <name>env.CI</name>
+                </property>
+            </activation>
+            <build>
+                <pluginManagement>
+                    <plugins>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-compiler-plugin</artifactId>
+                            <configuration>
+                                <compilerArgs combine.self="override">
+                                    <arg>-XDcompilePolicy=simple</arg>
+                                </compilerArgs>
+                                <annotationProcessorPaths combine.self="override" />
+                            </configuration>
+                        </plugin>
+                    </plugins>
+                </pluginManagement>
+            </build>
+        </profile>
+    </profiles>
 </project>
