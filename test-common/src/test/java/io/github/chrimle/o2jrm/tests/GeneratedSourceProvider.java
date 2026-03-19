@@ -2,6 +2,7 @@ package io.github.chrimle.o2jrm.tests;
 
 import io.github.chrimle.o2jrm.GeneratedSource;
 import java.lang.reflect.Method;
+import java.util.List;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.params.provider.Arguments;
@@ -15,11 +16,10 @@ public abstract class GeneratedSourceProvider implements ArgumentsProvider {
     final var assumptionFilter =
         context.getRequiredTestMethod().getAnnotation(AssumptionFilter.class);
 
-    return invokeMethodSource(fullyQualifiedMethodName)
+    return invokeMethodSource(fullyQualifiedMethodName).stream()
         .filter(
-            arguments -> {
+            generatedSource -> {
               if (assumptionFilter == null) return true;
-              final GeneratedSource generatedSource = (GeneratedSource) arguments.get()[0];
               if (!assumptionFilter
                   .enumUnknownDefaultCase()
                   .test(generatedSource.enumUnknownDefaultCase())) return false;
@@ -61,11 +61,12 @@ public abstract class GeneratedSourceProvider implements ArgumentsProvider {
                   .useEnumCaseInsensitive()
                   .test(generatedSource.useEnumCaseInsensitive())) return false;
               return true;
-            });
+            })
+        .map(Arguments::of);
   }
 
   @SuppressWarnings("unchecked")
-  Stream<Arguments> invokeMethodSource(final String fullyQualifiedMethodName) {
+  List<GeneratedSource> invokeMethodSource(final String fullyQualifiedMethodName) {
     try {
       String[] parts = fullyQualifiedMethodName.split("#");
       String className = parts[0];
@@ -75,7 +76,7 @@ public abstract class GeneratedSourceProvider implements ArgumentsProvider {
       Method method = clazz.getDeclaredMethod(methodName);
       method.setAccessible(true);
 
-      return (Stream<Arguments>) method.invoke(null);
+      return (List<GeneratedSource>) method.invoke(null);
     } catch (Exception e) {
       throw new RuntimeException(e);
     }
