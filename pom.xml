@@ -257,6 +257,13 @@
     <build>
         <pluginManagement>
             <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <configuration>
+                        <skip>${env.CI}</skip>
+                    </configuration>
+                </plugin>
                 <!-- Retrieves and unpacks the Custom Mustache Templates & OpenAPI Spec (for tests) -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
