@@ -32,6 +32,9 @@ public abstract class GeneratedSourceProvider implements ArgumentsProvider {
                   .hasAdditionalModelTypeAnnotations()
                   .test(generatedSource.hasAdditionalModelTypeAnnotations()))) return false;
               if (!(assumptionFilter
+                  .hasRequiredGeneratedFields()
+                  .test(generatedSource.hasRequiredGeneratedFields()))) return false;
+              if (!(assumptionFilter
                   .hasExtraAnnotations()
                   .test(generatedSource.hasExtraAnnotations()))) return false;
               if (!(assumptionFilter.hasXImplements().test(generatedSource.hasXImplements())))

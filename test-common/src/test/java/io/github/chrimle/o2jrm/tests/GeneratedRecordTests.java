@@ -438,13 +438,13 @@ public abstract class GeneratedRecordTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedRecordProvider.class)
-          @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
+          @AssumptionFilter(
+              hasRequiredGeneratedFields = Condition.TRUE,
+              isLibraryOkHttpGson = Condition.TRUE)
           @DisplayName(
               "When `jsonElement` is `null` and `record` has required fields Then `validateJsonElement`-method throws `IllegalArgumentException`")
           void whenJsonElementIsNullAndRecordHasRequiredFieldsThenIllegalArgumentExceptionIsThrown(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.hasRequiredGeneratedFields());
-
             final Method validateJsonElementMethod =
                 CustomAssertions.assertClassHasMethod(
                     generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
@@ -454,14 +454,14 @@ public abstract class GeneratedRecordTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedRecordProvider.class)
-          @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
+          @AssumptionFilter(
+              hasRequiredGeneratedFields = Condition.TRUE,
+              isLibraryOkHttpGson = Condition.TRUE)
           @DisplayName(
               "When `jsonElement` is empty JSON and `record` has required fields Then `validateJsonElement`-method throws `IllegalArgumentException`")
           void
               whenJsonElementIsEmptyJsonAndRecordHasRequiredFieldsThenIllegalArgumentExceptionIsThrown(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.hasRequiredGeneratedFields());
-
             final Method validateJsonElementMethod =
                 CustomAssertions.assertClassHasMethod(
                     generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
@@ -472,13 +472,13 @@ public abstract class GeneratedRecordTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedRecordProvider.class)
-          @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
+          @AssumptionFilter(
+              hasRequiredGeneratedFields = Condition.FALSE,
+              isLibraryOkHttpGson = Condition.TRUE)
           @DisplayName(
               "When `jsonElement` is `null` and `record` has no required fields Then `validateJsonElement`-method throws `NullPointerException`")
           void whenJsonElementIsNullAndRecordHasNoRequiredFieldsThenNullPointerExceptionIsThrown(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeFalse(generatedSource.hasRequiredGeneratedFields());
-
             final Method validateJsonElementMethod =
                 CustomAssertions.assertClassHasMethod(
                     generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
@@ -488,13 +488,13 @@ public abstract class GeneratedRecordTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedRecordProvider.class)
-          @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
+          @AssumptionFilter(
+              hasRequiredGeneratedFields = Condition.FALSE,
+              isLibraryOkHttpGson = Condition.TRUE)
           @DisplayName(
               "When `jsonElement` is empty JSON and `record` has no required fields Then `validateJsonElement`-method throws nothing")
           void whenJsonElementIsEmptyJsonAndRecordHasNoRequiredFieldsThenNothingIsThrown(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeFalse(generatedSource.hasRequiredGeneratedFields());
-
             final Method validateJsonElementMethod =
                 CustomAssertions.assertClassHasMethod(
                     generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
@@ -519,13 +519,13 @@ public abstract class GeneratedRecordTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedRecordProvider.class)
-          @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
+          @AssumptionFilter(
+              hasRequiredGeneratedFields = Condition.TRUE,
+              isLibraryOkHttpGson = Condition.TRUE)
           @DisplayName(
               "When `jsonElement` does NOT have expected key Then `validateJsonElement`-method throws `IllegalArgumentException`")
           void whenJsonElementDoesNotHaveExpectedKeyThenIllegalArgumentExceptionIsThrown(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.hasRequiredGeneratedFields());
-
             final Method validateJsonElementMethod =
                 CustomAssertions.assertClassHasMethod(
                     generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
@@ -548,13 +548,13 @@ public abstract class GeneratedRecordTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedRecordProvider.class)
-          @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
+          @AssumptionFilter(
+              hasRequiredGeneratedFields = Condition.TRUE,
+              isLibraryOkHttpGson = Condition.TRUE)
           @DisplayName(
               "When required `jsonElement` value is `null` Then `validateJsonElement`-method throws `IllegalArgumentException`")
           void whenRequiredJsonElementValueIsNullThenIllegalArgumentExceptionIsThrown(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.hasRequiredGeneratedFields());
-
             final Method validateJsonElementMethod =
                 CustomAssertions.assertClassHasMethod(
                     generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
