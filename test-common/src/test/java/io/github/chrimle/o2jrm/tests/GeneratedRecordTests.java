@@ -1301,13 +1301,12 @@ public abstract class GeneratedRecordTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedRecordProvider.class)
+          @AssumptionFilter(useBeanValidation = Condition.FALSE)
           @DisplayName(
               "Generated `record` does NOT use Jakarta Bean Validation annotations on fields")
           void
               whenUseBeanValidationIsFalseThenFieldsAreNotAnnotatedWithJakartaBeanValidationAnnotations(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeFalse(generatedSource.useBeanValidation());
-
             for (final GeneratedField<?> generatedField : generatedSource.generatedFields()) {
               final Field field =
                   CustomAssertions.assertClassHasField(
@@ -1329,11 +1328,11 @@ public abstract class GeneratedRecordTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedRecordProvider.class)
+          @AssumptionFilter(useBeanValidation = Condition.TRUE)
           @DisplayName("Generated `record` use Jakarta Bean Validation annotations on fields")
           void
               whenUseBeanValidationIsTrueThenFieldsAreAnnotatedWithJakartaBeanValidationAnnotations(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.useBeanValidation());
             AssertionUtilsImpl.assertRecordHasFieldsOfTypeWithNullableAnnotations(generatedSource);
           }
         }

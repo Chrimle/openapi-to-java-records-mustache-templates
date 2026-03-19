@@ -35,5 +35,7 @@ public @interface AssumptionFilter {
 
   Condition serializableModel() default Condition.ANY;
 
+  Condition useBeanValidation() default Condition.ANY;
+
   Condition useEnumCaseInsensitive() default Condition.ANY;
 }

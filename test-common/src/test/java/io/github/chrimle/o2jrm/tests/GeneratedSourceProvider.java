@@ -54,6 +54,8 @@ public abstract class GeneratedSourceProvider implements ArgumentsProvider {
                   .test(generatedSource.isSerializationLibraryJackson()))) return false;
               if (!(assumptionFilter.serializableModel().test(generatedSource.serializableModel())))
                 return false;
+              if (!(assumptionFilter.useBeanValidation().test(generatedSource.useBeanValidation())))
+                return false;
               if (!(assumptionFilter
                   .useEnumCaseInsensitive()
                   .test(generatedSource.useEnumCaseInsensitive()))) return false;
