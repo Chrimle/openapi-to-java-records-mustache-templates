@@ -48,11 +48,10 @@ import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.Locale;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Assumptions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ArgumentsSource;
 
 /**
  * Tests for <b>all</b> generated {@code enum} classes. Tests are grouped by the <i>method of
@@ -89,9 +88,6 @@ import org.junit.jupiter.params.provider.MethodSource;
 @DisplayName("Test Generated `enum` classes")
 public abstract class GeneratedEnumTests {
 
-  public static final String GENERATED_ENUM_TESTS_METHOD_SOURCE =
-      "io.github.chrimle.o2jrm.tests.GeneratedEnumImplTests#allPluginExecutionsAndGeneratedEnumCombinations";
-
   @Nested
   @DisplayName("Testing OpenAPI Schemas & Properties")
   class OpenAPITests {
@@ -105,7 +101,7 @@ public abstract class GeneratedEnumTests {
       class EnumTests {
 
         @ParameterizedTest
-        @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+        @ArgumentsSource(GeneratedEnumProvider.class)
         @DisplayName("Generates an `enum` class")
         void whenIsEnumThenGeneratedClassIsEnumClass(final GeneratedSource generatedSource) {
           CustomAssertions.assertClassIsEnumClass(generatedSource.getClassUnderTest());
@@ -116,20 +112,19 @@ public abstract class GeneratedEnumTests {
         class GetValueMethodTests {
 
           @ParameterizedTest
-          @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+          @ArgumentsSource(GeneratedEnumProvider.class)
           @DisplayName("Generated `enum` classes always has `getValue()`-method")
           void alwaysGenerateGetValueMethod(final GeneratedSource generatedSource) {
             CustomAssertions.assertClassHasMethod(generatedSource.getClassUnderTest(), "getValue");
           }
 
           @ParameterizedTest
-          @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+          @ArgumentsSource(GeneratedEnumProvider.class)
+          @AssumptionFilter(isSerializationLibraryJackson = Condition.TRUE)
           @DisplayName(
               "When `serializationLibrary` is `jackson` Then `getValue()`-method IS annotated with `@JsonValue`")
           void whenSerializationLibraryIsJacksonThenGetValueMethodIsAnnotatedWithJsonValue(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.isSerializationLibraryJackson());
-
             CustomAssertions.assertMethodIsAnnotatedWith(
                 CustomAssertions.assertClassHasMethod(
                     generatedSource.getClassUnderTest(), "getValue"),
@@ -137,13 +132,12 @@ public abstract class GeneratedEnumTests {
           }
 
           @ParameterizedTest
-          @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+          @ArgumentsSource(GeneratedEnumProvider.class)
+          @AssumptionFilter(isSerializationLibraryJackson = Condition.FALSE)
           @DisplayName(
               "When `serializationLibrary` is NOT `jackson` Then `getValue()`-method is NOT annotated with `@JsonValue`")
           void whenSerializationLibraryIsNotJacksonThenGetValueMethodIsNotAnnotatedWithJsonValue(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeFalse(generatedSource.isSerializationLibraryJackson());
-
             CustomAssertions.assertMethodIsNotAnnotatedWith(
                 CustomAssertions.assertClassHasMethod(
                     generatedSource.getClassUnderTest(), "getValue"),
@@ -156,21 +150,21 @@ public abstract class GeneratedEnumTests {
         class ConstantsTests {
 
           @ParameterizedTest
-          @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+          @ArgumentsSource(GeneratedEnumProvider.class)
+          @AssumptionFilter(enumUnknownDefaultCase = Condition.FALSE)
           @DisplayName("Generates an `enum` with expected number of constants")
           void whenEnumHasConstantsThenGeneratedEnumClassHasExpectedNumberOfConstants(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeFalse(generatedSource.enumUnknownDefaultCase());
             CustomAssertions.assertClassHasEnumConstants(
                 generatedSource.getClassUnderTest(), generatedSource.generatedFields().length);
           }
 
           @ParameterizedTest
-          @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+          @ArgumentsSource(GeneratedEnumProvider.class)
+          @AssumptionFilter(enumUnknownDefaultCase = Condition.FALSE)
           @DisplayName("Generates `enum` constants with expected names")
           void whenEnumHasConstantsThenGeneratedEnumClassHasConstantsWithExpectedNames(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeFalse(generatedSource.enumUnknownDefaultCase());
             CustomAssertions.assertClassHasEnumConstantsWithNames(
                 generatedSource.getClassUnderTest(),
                 Arrays.stream(generatedSource.generatedFields())
@@ -179,12 +173,12 @@ public abstract class GeneratedEnumTests {
           }
 
           @ParameterizedTest
-          @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+          @ArgumentsSource(GeneratedEnumProvider.class)
+          @AssumptionFilter(enumUnknownDefaultCase = Condition.FALSE)
           @DisplayName(
               "OpenAPI `{schema}.enum.{constants}` -> Generates `enum` constants with expected values")
           void whenEnumHasConstantsThenGeneratedEnumClassHasConstantsWithExpectedValues(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeFalse(generatedSource.enumUnknownDefaultCase());
             CustomAssertions.assertClassHasEnumConstantsWithValues(
                 generatedSource.getClassUnderTest(),
                 Arrays.stream(generatedSource.generatedFields())
@@ -202,11 +196,11 @@ public abstract class GeneratedEnumTests {
         @DisplayName("Testing `components.schemas.{schema}.deprecated: false`")
         class DeprecatedFalseTests {
           @ParameterizedTest
-          @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+          @ArgumentsSource(GeneratedEnumProvider.class)
+          @AssumptionFilter(isDeprecated = Condition.FALSE)
           @DisplayName("Generated `enum` class is NOT annotated with `@Deprecated`")
           void whenEnumIsNotDeprecatedThenGeneratedEnumClassNotIsAnnotatedDeprecated(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeFalse(generatedSource.isDeprecated());
             CustomAssertions.assertClassIsNotAnnotatedWith(
                 generatedSource.getClassUnderTest(), Deprecated.class);
           }
@@ -216,11 +210,11 @@ public abstract class GeneratedEnumTests {
         @DisplayName("Testing `components.schemas.{schema}.deprecated: true`")
         class DeprecatedTrueTests {
           @ParameterizedTest
-          @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+          @ArgumentsSource(GeneratedEnumProvider.class)
+          @AssumptionFilter(isDeprecated = Condition.TRUE)
           @DisplayName("Generated `enum` class is annotated with `@Deprecated`")
           void whenEnumIsDeprecatedThenGeneratedEnumClassIsAnnotatedDeprecated(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.isDeprecated());
             CustomAssertions.assertClassIsAnnotatedWith(
                 generatedSource.getClassUnderTest(), Deprecated.class);
           }
@@ -231,11 +225,11 @@ public abstract class GeneratedEnumTests {
       @DisplayName("Testing `components.schemas.{schema}.x-implements`")
       class XImplementsTests {
         @ParameterizedTest
-        @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+        @ArgumentsSource(GeneratedEnumProvider.class)
+        @AssumptionFilter(hasXImplements = Condition.FALSE)
         @DisplayName("Generated `enum` class does NOT `implements` any interfaces")
         void whenEnumHasNoXImplementsThenGeneratedEnumClassDoesNotImplementInterfaces(
             final GeneratedSource generatedSource) {
-          Assumptions.assumeFalse(generatedSource.hasXImplements());
           CustomAssertions.assertClassDoesNotImplementInterface(
               generatedSource.getClassUnderTest(), TestInterfaceOne.class);
           CustomAssertions.assertClassDoesNotImplementInterface(
@@ -243,11 +237,11 @@ public abstract class GeneratedEnumTests {
         }
 
         @ParameterizedTest
-        @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+        @ArgumentsSource(GeneratedEnumProvider.class)
+        @AssumptionFilter(hasXImplements = Condition.TRUE)
         @DisplayName("Generated `enum` class DOES `implements` expected interfaces")
         void whenEnumHasXImplementsThenGeneratedEnumClassImplementInterfaces(
             final GeneratedSource generatedSource) {
-          Assumptions.assumeTrue(generatedSource.hasXImplements());
           for (final var expectedInterface : generatedSource.getXImplementsInterfaces()) {
             CustomAssertions.assertClassImplementsInterface(
                 generatedSource.getClassUnderTest(), expectedInterface);
@@ -270,24 +264,21 @@ public abstract class GeneratedEnumTests {
       class OkHttpGsonTests {
 
         @ParameterizedTest
-        @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+        @ArgumentsSource(GeneratedEnumProvider.class)
+        @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
         @DisplayName("Generated `enum` HAS `validateJsonElement`-method")
         void whenLibraryIsOkHttpGsonThenGeneratedEnumHasValidateJsonElementMethod(
             final GeneratedSource generatedSource) {
-          Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-
           CustomAssertions.assertClassHasMethod(
               generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
         }
 
         @ParameterizedTest
-        @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+        @ArgumentsSource(GeneratedEnumProvider.class)
+        @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE, enumValueClass = String.class)
         @DisplayName("Generated `validateJsonElement`-method can be invoked with `String`")
         void whenLibraryIsOkHttpGsonThenGeneratedValidateJsonElementMethodCanBeInvokedWithString(
             final GeneratedSource generatedSource) {
-          Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-          Assumptions.assumeTrue(String.class.equals(generatedSource.generatedFields()[0].type()));
-
           final Method validateJsonElementMethod =
               CustomAssertions.assertClassHasMethod(
                   generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
@@ -300,13 +291,11 @@ public abstract class GeneratedEnumTests {
         }
 
         @ParameterizedTest
-        @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+        @ArgumentsSource(GeneratedEnumProvider.class)
+        @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE, enumValueClass = Integer.class)
         @DisplayName("Generated `validateJsonElement`-method can be invoked with `Integer`")
         void whenLibraryIsOkHttpGsonThenGeneratedValidateJsonElementMethodCanBeInvokedWithInteger(
             final GeneratedSource generatedSource) {
-          Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-          Assumptions.assumeTrue(Integer.class.equals(generatedSource.generatedFields()[0].type()));
-
           final Method validateJsonElementMethod =
               CustomAssertions.assertClassHasMethod(
                   generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
@@ -319,13 +308,11 @@ public abstract class GeneratedEnumTests {
         }
 
         @ParameterizedTest
-        @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+        @ArgumentsSource(GeneratedEnumProvider.class)
+        @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE, enumValueClass = URI.class)
         @DisplayName("Generated `validateJsonElement`-method can be invoked with `URI`")
         void whenLibraryIsOkHttpGsonThenGeneratedValidateJsonElementMethodCanBeInvokedWithUri(
             final GeneratedSource generatedSource) {
-          Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-          Assumptions.assumeTrue(URI.class.equals(generatedSource.generatedFields()[0].type()));
-
           final Method validateJsonElementMethod =
               CustomAssertions.assertClassHasMethod(
                   generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
@@ -342,23 +329,21 @@ public abstract class GeneratedEnumTests {
         class AdapterInnerClassTests {
 
           @ParameterizedTest
-          @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+          @ArgumentsSource(GeneratedEnumProvider.class)
+          @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
           @DisplayName("Generated `enum` has `Adapter` inner-class")
           void whenLibraryIsOkHttpGsonThenGeneratedEnumHasAdapterInnerClass(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-
             CustomAssertions.assertClassHasInnerClass(
                 generatedSource.getClassUnderTest(), "Adapter");
           }
 
           @ParameterizedTest
-          @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+          @ArgumentsSource(GeneratedEnumProvider.class)
+          @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
           @DisplayName("Generated `enum` is annotated `@JsonAdapter`")
-          void whenLibraryisOkHttpGsonThenGeneratedEnumIsAnnotatedWithJsonAdapter(
+          void whenLibraryIsOkHttpGsonThenGeneratedEnumIsAnnotatedWithJsonAdapter(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-
             final JsonAdapter jsonAdapter =
                 CustomAssertions.assertClassIsAnnotatedWith(
                     generatedSource.getClassUnderTest(), JsonAdapter.class);
@@ -373,12 +358,11 @@ public abstract class GeneratedEnumTests {
           class WriteMethodTests {
 
             @ParameterizedTest
-            @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+            @ArgumentsSource(GeneratedEnumProvider.class)
+            @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
             @DisplayName("when `JsonWriter` is `null` Then `NullPointerException` is thrown")
             void whenJsonWriterIsNullThenNullPointerExceptionIsThrown(
                 final GeneratedSource generatedSource) {
-              Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-
               final Class<?> adapterClass =
                   CustomAssertions.assertClassHasInnerClass(
                       generatedSource.getClassUnderTest(), "Adapter");
@@ -401,11 +385,10 @@ public abstract class GeneratedEnumTests {
             }
 
             @ParameterizedTest
-            @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+            @ArgumentsSource(GeneratedEnumProvider.class)
+            @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
             @DisplayName("when `JsonWriter` is NOT `null` Then nothing is thrown")
             void whenJsonWriterIsNotNullThenNothingIsThrown(final GeneratedSource generatedSource) {
-              Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-
               final Class<?> adapterClass =
                   CustomAssertions.assertClassHasInnerClass(
                       generatedSource.getClassUnderTest(), "Adapter");
@@ -434,12 +417,11 @@ public abstract class GeneratedEnumTests {
           class ReadMethodTests {
 
             @ParameterizedTest
-            @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+            @ArgumentsSource(GeneratedEnumProvider.class)
+            @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
             @DisplayName("when `JsonReader` is `null` Then `NullPointerException` is thrown")
             void whenJsonReaderIsNullThenNullPointerExceptionIsThrown(
                 final GeneratedSource generatedSource) {
-              Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-
               final Class<?> adapterClass =
                   CustomAssertions.assertClassHasInnerClass(
                       generatedSource.getClassUnderTest(), "Adapter");
@@ -455,12 +437,11 @@ public abstract class GeneratedEnumTests {
             }
 
             @ParameterizedTest
-            @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+            @ArgumentsSource(GeneratedEnumProvider.class)
+            @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
             @DisplayName("when `jsonString` is invalid Then `IllegalArgumentException` is thrown")
             void whenJsonReaderIsInvalidThenIllegalArgumentExceptionIsThrown(
                 final GeneratedSource generatedSource) {
-              Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-
               final Class<?> adapterClass =
                   CustomAssertions.assertClassHasInnerClass(
                       generatedSource.getClassUnderTest(), "Adapter");
@@ -485,11 +466,10 @@ public abstract class GeneratedEnumTests {
             }
 
             @ParameterizedTest
-            @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+            @ArgumentsSource(GeneratedEnumProvider.class)
+            @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
             @DisplayName("when `JsonReader` is valid Then nothing is thrown")
             void whenJsonReaderIsValidThenNothingIsThrown(final GeneratedSource generatedSource) {
-              Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-
               final Class<?> adapterClass =
                   CustomAssertions.assertClassHasInnerClass(
                       generatedSource.getClassUnderTest(), "Adapter");
@@ -517,34 +497,31 @@ public abstract class GeneratedEnumTests {
       class WebClientTests {
 
         @ParameterizedTest
-        @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+        @ArgumentsSource(GeneratedEnumProvider.class)
+        @AssumptionFilter(isLibraryWebClient = Condition.TRUE)
         @DisplayName("Generated `enum` does NOT have `validateJsonElement`-method")
         void whenLibraryIsWebClientThenGeneratedEnumDoesNotHaveValidateJsonElementMethod(
             final GeneratedSource generatedSource) {
-          Assumptions.assumeTrue(generatedSource.isLibraryWebClient());
-
           CustomAssertions.assertClassDoesNotHaveMethod(
               generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
         }
 
         @ParameterizedTest
-        @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+        @ArgumentsSource(GeneratedEnumProvider.class)
+        @AssumptionFilter(isLibraryWebClient = Condition.TRUE)
         @DisplayName("Generated `enum` does NOT have `Adapter` inner-class")
         void whenLibraryIsWebClientThenGeneratedEnumDoesNotHaveAdapterInnerClass(
             final GeneratedSource generatedSource) {
-          Assumptions.assumeTrue(generatedSource.isLibraryWebClient());
-
           CustomAssertions.assertClassDoesNotHaveInnerClass(
               generatedSource.getClassUnderTest(), "Adapter");
         }
 
         @ParameterizedTest
-        @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+        @ArgumentsSource(GeneratedEnumProvider.class)
+        @AssumptionFilter(isLibraryWebClient = Condition.TRUE)
         @DisplayName("Generated `enum` is NOT annotated `@JsonAdapter`")
         void whenLibraryIsWebClientThenGeneratedEnumIsNotAnnotatedWithJsonAdapter(
             final GeneratedSource generatedSource) {
-          Assumptions.assumeTrue(generatedSource.isLibraryWebClient());
-
           CustomAssertions.assertClassIsNotAnnotatedWith(
               generatedSource.getClassUnderTest(), JsonAdapter.class);
         }
@@ -564,13 +541,12 @@ public abstract class GeneratedEnumTests {
         class AdditionalEnumTypeAnnotationsUnsetTests {
 
           @ParameterizedTest
-          @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+          @ArgumentsSource(GeneratedEnumProvider.class)
+          @AssumptionFilter(hasAdditionalEnumTypeAnnotations = Condition.FALSE)
           @DisplayName("Generated `enum` class is NOT annotated with additional annotations")
           void
               whenConfigOptionAdditionalEnumTypeAnnotationsIsUnsetThenGeneratedEnumDoesNotHaveAdditionalAnnotations(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeFalse(generatedSource.hasAdditionalEnumTypeAnnotations());
-
             CustomAssertions.assertClassIsNotAnnotatedWith(
                 generatedSource.getClassUnderTest(), TestAnnotationOne.class);
             CustomAssertions.assertClassIsNotAnnotatedWith(
@@ -586,13 +562,12 @@ public abstract class GeneratedEnumTests {
         class AdditionalEnumTypeAnnotationsSetTests {
 
           @ParameterizedTest
-          @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+          @ArgumentsSource(GeneratedEnumProvider.class)
+          @AssumptionFilter(hasAdditionalEnumTypeAnnotations = Condition.TRUE)
           @DisplayName("Generated `enum` class is annotated with additional annotations")
           void
               whenConfigOptionAdditionalEnumTypeAnnotationsIsSetThenGeneratedEnumHasAdditionalAnnotations(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.hasAdditionalEnumTypeAnnotations());
-
             CustomAssertions.assertClassIsAnnotatedWith(
                 generatedSource.getClassUnderTest(), TestAnnotationOne.class);
             CustomAssertions.assertClassIsAnnotatedWith(
@@ -612,13 +587,12 @@ public abstract class GeneratedEnumTests {
         class SerializableModelFalseTests {
 
           @ParameterizedTest
-          @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+          @ArgumentsSource(GeneratedEnumProvider.class)
+          @AssumptionFilter(serializableModel = Condition.FALSE)
           @DisplayName("Generated `enum` does NOT implement `Serializable`")
           void
               whenConfigOptionSerializableModelIsFalseThenGeneratedEnumClassDoesNotImplementSerializable(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeFalse(generatedSource.serializableModel());
-
             CustomAssertions.assertClassDoesNotImplementInterface(
                 generatedSource.getClassUnderTest(), Serializable.class);
           }
@@ -629,27 +603,23 @@ public abstract class GeneratedEnumTests {
         class SerializableModelTrueTests {
 
           @ParameterizedTest
-          @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+          @ArgumentsSource(GeneratedEnumProvider.class)
+          @AssumptionFilter(isInnerEnum = Condition.FALSE, serializableModel = Condition.TRUE)
           @DisplayName("Generated OUTER `enum` implement `Serializable`")
           void
               whenConfigOptionSerializableModelIsTrueThenOuterGeneratedEnumClassImplementsSerializable(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.serializableModel());
-            Assumptions.assumeFalse(generatedSource.isInnerEnum());
-
             CustomAssertions.assertClassImplementsInterface(
                 generatedSource.getClassUnderTest(), Serializable.class);
           }
 
           @ParameterizedTest
-          @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+          @ArgumentsSource(GeneratedEnumProvider.class)
+          @AssumptionFilter(isInnerEnum = Condition.TRUE, serializableModel = Condition.TRUE)
           @DisplayName("Generated INNER `enum` does NOT implement `Serializable`")
           void
               whenConfigOptionSerializableModelIsTrueThenInnerGeneratedEnumClassDoesNotImplementsSerializable(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.serializableModel());
-            Assumptions.assumeTrue(generatedSource.isInnerEnum());
-
             CustomAssertions.assertClassDoesNotImplementInterface(
                 generatedSource.getClassUnderTest(), Serializable.class);
           }
@@ -661,7 +631,7 @@ public abstract class GeneratedEnumTests {
       class UseEnumCaseInsensitiveTests {
 
         @ParameterizedTest
-        @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+        @ArgumentsSource(GeneratedEnumProvider.class)
         @DisplayName("Generated `enum` class ALWAYS has a `static fromValue(T)` method")
         void alwaysGenerateEnumClassWithStaticFromValueMethod(
             final GeneratedSource generatedSource) {
@@ -670,13 +640,12 @@ public abstract class GeneratedEnumTests {
         }
 
         @ParameterizedTest
-        @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+        @ArgumentsSource(GeneratedEnumProvider.class)
+        @AssumptionFilter(isSerializationLibraryJackson = Condition.TRUE)
         @DisplayName(
             "When `serializationLibrary` is `jackson` Then generated `fromValue(T)` method is annotated with `@JsonCreator`")
         void whenSerializationLibraryIsJacksonThenFromValueMethodIsAnnotatedWithJsonCreator(
             final GeneratedSource generatedSource) {
-          Assumptions.assumeTrue(generatedSource.isSerializationLibraryJackson());
-
           CustomAssertions.assertMethodIsAnnotatedWith(
               CustomAssertions.assertClassHasMethod(
                   generatedSource.getClassUnderTest(),
@@ -686,13 +655,12 @@ public abstract class GeneratedEnumTests {
         }
 
         @ParameterizedTest
-        @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+        @ArgumentsSource(GeneratedEnumProvider.class)
+        @AssumptionFilter(isSerializationLibraryJackson = Condition.FALSE)
         @DisplayName(
             "When `serializationLibrary` is NOT `jackson` Then generated `fromValue(T)` method is NOT annotated with `@JsonCreator`")
         void whenSerializationLibraryIsNotJacksonThenFromValueMethodIsNotAnnotatedWithJsonCreator(
             final GeneratedSource generatedSource) {
-          Assumptions.assumeFalse(generatedSource.isSerializationLibraryJackson());
-
           CustomAssertions.assertMethodIsNotAnnotatedWith(
               CustomAssertions.assertClassHasMethod(
                   generatedSource.getClassUnderTest(),
@@ -702,12 +670,12 @@ public abstract class GeneratedEnumTests {
         }
 
         @ParameterizedTest
-        @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+        @ArgumentsSource(GeneratedEnumProvider.class)
+        @AssumptionFilter(enumUnknownDefaultCase = Condition.FALSE)
         @DisplayName(
             "Generated `static fromValue(T)` method ALWAYS `throw IllegalArgumentException` when `null` is given")
         void alwaysThrowIllegalArgumentExceptionWhenProvidingNullAsArgumentToStaticFromValueMethod(
             final GeneratedSource generatedSource) {
-          Assumptions.assumeFalse(generatedSource.enumUnknownDefaultCase());
           CustomAssertions.assertStaticMethodThrowsWhenInvoked(
               CustomAssertions.assertClassHasMethod(
                   generatedSource.getClassUnderTest(),
@@ -718,15 +686,13 @@ public abstract class GeneratedEnumTests {
         }
 
         @ParameterizedTest
-        @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+        @ArgumentsSource(GeneratedEnumProvider.class)
+        @AssumptionFilter(enumUnknownDefaultCase = Condition.FALSE, enumValueClass = String.class)
         @DisplayName(
             "Generated `static fromValue(T)` method ALWAYS `throw IllegalArgumentException` when non-matching string `value` is given")
         void
             alwaysThrowIllegalArgumentExceptionWhenProvidingNonMatchingStringValueAsArgumentToStaticFromValueMethod(
                 final GeneratedSource generatedSource) {
-          Assumptions.assumeFalse(generatedSource.enumUnknownDefaultCase());
-          Assumptions.assumeTrue(String.class.equals(generatedSource.generatedFields()[0].type()));
-
           CustomAssertions.assertStaticMethodThrowsWhenInvoked(
               CustomAssertions.assertClassHasMethod(
                   generatedSource.getClassUnderTest(),
@@ -737,15 +703,13 @@ public abstract class GeneratedEnumTests {
         }
 
         @ParameterizedTest
-        @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+        @ArgumentsSource(GeneratedEnumProvider.class)
+        @AssumptionFilter(enumUnknownDefaultCase = Condition.FALSE, enumValueClass = Integer.class)
         @DisplayName(
             "Generated `static fromValue(T)` method ALWAYS `throw IllegalArgumentException` when non-matching integer `value` is given")
         void
             alwaysThrowIllegalArgumentExceptionWhenProvidingNonMatchingIntegerValueAsArgumentToStaticFromValueMethod(
                 final GeneratedSource generatedSource) {
-          Assumptions.assumeFalse(generatedSource.enumUnknownDefaultCase());
-          Assumptions.assumeTrue(Integer.class.equals(generatedSource.generatedFields()[0].type()));
-
           CustomAssertions.assertStaticMethodThrowsWhenInvoked(
               CustomAssertions.assertClassHasMethod(
                   generatedSource.getClassUnderTest(),
@@ -756,7 +720,7 @@ public abstract class GeneratedEnumTests {
         }
 
         @ParameterizedTest
-        @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+        @ArgumentsSource(GeneratedEnumProvider.class)
         @DisplayName(
             "Generated `static fromValue(T)` method ALWAYS return expected `enum`-constant when `value` match")
         void
@@ -778,17 +742,16 @@ public abstract class GeneratedEnumTests {
         class UseEnumCaseInsensitiveFalseTests {
 
           @ParameterizedTest
-          @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+          @ArgumentsSource(GeneratedEnumProvider.class)
+          @AssumptionFilter(
+              enumUnknownDefaultCase = Condition.FALSE,
+              enumValueClass = String.class,
+              useEnumCaseInsensitive = Condition.FALSE)
           @DisplayName(
               "Generated `static fromValue(T)` method throws `IllegalArgumentException` when string `value` has wrong case")
           void
               whenConfigOptionUseEnumCaseInsensitiveIsFalseThenFromValueMethodThrowsIllegalArgumentExceptionWhenGivenValueHasWrongCase(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeFalse(generatedSource.enumUnknownDefaultCase());
-            Assumptions.assumeFalse(generatedSource.useEnumCaseInsensitive());
-            Assumptions.assumeTrue(
-                String.class.equals(generatedSource.generatedFields()[0].type()));
-
             final Method fromValueMethod =
                 CustomAssertions.assertClassHasMethod(
                     generatedSource.getClassUnderTest(),
@@ -808,16 +771,13 @@ public abstract class GeneratedEnumTests {
         class UseEnumCaseInsensitiveTrueTests {
 
           @ParameterizedTest
-          @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+          @ArgumentsSource(GeneratedEnumProvider.class)
+          @AssumptionFilter(useEnumCaseInsensitive = Condition.TRUE, enumValueClass = String.class)
           @DisplayName(
               "Generated `static fromValue(T)` method returns `enum`-constant when string `value` has different case")
           void
               whenConfigOptionUseEnumCaseInsensitiveIsTrueThenFromValueMethodReturnsEnumConstantWithDifferentCase(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.useEnumCaseInsensitive());
-            Assumptions.assumeTrue(
-                String.class.equals(generatedSource.generatedFields()[0].type()));
-
             final Method fromValueMethod =
                 CustomAssertions.assertClassHasMethod(
                     generatedSource.getClassUnderTest(),
@@ -841,69 +801,62 @@ public abstract class GeneratedEnumTests {
         class EnumUnknownDefaultCaseFalseTests {
 
           @ParameterizedTest
-          @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+          @ArgumentsSource(GeneratedEnumProvider.class)
+          @AssumptionFilter(enumUnknownDefaultCase = Condition.FALSE)
           @DisplayName("Generates an `enum` with expected number of constants")
           void
               whenConfigOptionEnumUnknownDefaultCaseIsFalseThenGeneratedEnumClassHasExpectedNumberOfConstants(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeFalse(generatedSource.enumUnknownDefaultCase());
             CustomAssertions.assertClassHasEnumConstants(
                 generatedSource.getClassUnderTest(), generatedSource.generatedFields().length);
           }
 
           @ParameterizedTest
-          @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+          @ArgumentsSource(GeneratedEnumProvider.class)
+          @AssumptionFilter(enumUnknownDefaultCase = Condition.FALSE, enumValueClass = String.class)
           @DisplayName(
               "Generated `enum`-class with `String` values does NOT have `\"UNKNOWN_DEFAULT_OPEN_API\"` as a constant")
           void
               whenConfigOptionEnumUnknownDefaultCaseIsFalseThenGeneratedEnumClassDoesNotHaveUnknownDefaultOpenApiEnumConstant(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeFalse(generatedSource.enumUnknownDefaultCase());
-            Assumptions.assumeTrue(
-                String.class.equals(generatedSource.generatedFields()[0].type()));
-
             CustomAssertions.assertClassDoesNotHaveEnumConstantWithName(
                 generatedSource.getClassUnderTest(), "UNKNOWN_DEFAULT_OPEN_API");
           }
 
           @ParameterizedTest
-          @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+          @ArgumentsSource(GeneratedEnumProvider.class)
+          @AssumptionFilter(
+              enumUnknownDefaultCase = Condition.FALSE,
+              enumValueClass = Integer.class)
           @DisplayName(
               "Generated `enum`-class with `Integer` values does NOT have `\"NUMBER_unknown_default_open_api\"` as a constant")
           void
               whenConfigOptionEnumUnknownDefaultCaseIsFalseThenGeneratedEnumClassDoesNotHaveNumberUnknownDefaultOpenApiEnumConstant(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeFalse(generatedSource.enumUnknownDefaultCase());
-            Assumptions.assumeTrue(
-                Integer.class.equals(generatedSource.generatedFields()[0].type()));
-
             CustomAssertions.assertClassDoesNotHaveEnumConstantWithName(
                 generatedSource.getClassUnderTest(), "NUMBER_unknown_default_open_api");
           }
 
           @ParameterizedTest
-          @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+          @ArgumentsSource(GeneratedEnumProvider.class)
+          @AssumptionFilter(enumUnknownDefaultCase = Condition.FALSE, enumValueClass = URI.class)
           @DisplayName(
               "Generated `enum`-class with `URI` values does NOT have `\"UNKNOWN_DEFAULT_OPEN_API\"` as a constant")
           void
               whenConfigOptionEnumUnknownDefaultCaseIsFalseThenGeneratedEnumClassDoesNotHaveUriUnknownDefaultOpenApiEnumConstant(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeFalse(generatedSource.enumUnknownDefaultCase());
-            Assumptions.assumeTrue(URI.class.equals(generatedSource.generatedFields()[0].type()));
-
             CustomAssertions.assertClassDoesNotHaveEnumConstantWithName(
                 generatedSource.getClassUnderTest(), "UNKNOWN_DEFAULT_OPEN_API");
           }
 
           @ParameterizedTest
-          @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+          @ArgumentsSource(GeneratedEnumProvider.class)
+          @AssumptionFilter(enumUnknownDefaultCase = Condition.FALSE)
           @DisplayName(
               "Generated `static fromValue(T)` method ALWAYS `throw IllegalArgumentException` when `null` is given")
           void
               alwaysThrowIllegalArgumentExceptionWhenProvidingNullAsArgumentToStaticFromValueMethod(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeFalse(generatedSource.enumUnknownDefaultCase());
-
             CustomAssertions.assertStaticMethodThrowsWhenInvoked(
                 CustomAssertions.assertClassHasMethod(
                     generatedSource.getClassUnderTest(),
@@ -919,114 +872,96 @@ public abstract class GeneratedEnumTests {
         class EnumUnknownDefaultCaseTrueTests {
 
           @ParameterizedTest
-          @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+          @ArgumentsSource(GeneratedEnumProvider.class)
+          @AssumptionFilter(enumUnknownDefaultCase = Condition.TRUE)
           @DisplayName(
               "Generates an `enum` with expected number of constants PLUS an additional one constant")
           void
               whenConfigOptionEnumUnknownDefaultCaseIsTrueThenGeneratedEnumClassHasExpectedNumberOfConstantsPlusOne(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.enumUnknownDefaultCase());
             CustomAssertions.assertClassHasEnumConstants(
                 generatedSource.getClassUnderTest(), generatedSource.generatedFields().length + 1);
           }
 
           @ParameterizedTest
-          @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+          @ArgumentsSource(GeneratedEnumProvider.class)
+          @AssumptionFilter(enumUnknownDefaultCase = Condition.TRUE, enumValueClass = String.class)
           @DisplayName(
               "Generated `enum`-class with `String` values HAS `\"UNKNOWN_DEFAULT_OPEN_API\"` as a constant")
           void
               whenConfigOptionEnumUnknownDefaultCaseIsTrueThenGeneratedEnumClassHasUnknownDefaultOpenApiEnumConstant(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.enumUnknownDefaultCase());
-            Assumptions.assumeTrue(
-                String.class.equals(generatedSource.generatedFields()[0].type()));
-
             CustomAssertions.assertClassHasEnumConstantWithName(
                 generatedSource.getClassUnderTest(), "UNKNOWN_DEFAULT_OPEN_API");
           }
 
           @ParameterizedTest
-          @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+          @ArgumentsSource(GeneratedEnumProvider.class)
+          @AssumptionFilter(enumUnknownDefaultCase = Condition.TRUE, enumValueClass = String.class)
           @DisplayName(
               "Generated `enum`-class with `String` values HAS `\"UNKNOWN_DEFAULT_OPEN_API\"` constant with `value` as `\"unknown_default_open_api\"`")
           void
               whenConfigOptionEnumUnknownDefaultCaseIsTrueThenGeneratedEnumClassHasUnknownDefaultOpenApiEnumConstantWithExpectedStringValue(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.enumUnknownDefaultCase());
-            Assumptions.assumeTrue(
-                String.class.equals(generatedSource.generatedFields()[0].type()));
-
             CustomAssertions.assertClassHasEnumConstantWithValue(
                 generatedSource.getClassUnderTest(), "unknown_default_open_api");
           }
 
           @ParameterizedTest
-          @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+          @ArgumentsSource(GeneratedEnumProvider.class)
+          @AssumptionFilter(enumUnknownDefaultCase = Condition.TRUE, enumValueClass = URI.class)
           @DisplayName(
               "Generated `enum`-class with `URI` values HAS `\"UNKNOWN_DEFAULT_OPEN_API\"` as a constant")
           void
               whenConfigOptionEnumUnknownDefaultCaseIsTrueThenGeneratedEnumClassHasUriUnknownDefaultOpenApiEnumConstant(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.enumUnknownDefaultCase());
-            Assumptions.assumeTrue(URI.class.equals(generatedSource.generatedFields()[0].type()));
-
             CustomAssertions.assertClassHasEnumConstantWithName(
                 generatedSource.getClassUnderTest(), "UNKNOWN_DEFAULT_OPEN_API");
           }
 
           @ParameterizedTest
-          @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+          @ArgumentsSource(GeneratedEnumProvider.class)
+          @AssumptionFilter(enumUnknownDefaultCase = Condition.TRUE, enumValueClass = URI.class)
           @DisplayName(
               "Generated `enum`-class with `URI` values HAS `\"UNKNOWN_DEFAULT_OPEN_API\"` constant with `value` as `URI.create(\"11184809\")`")
           void
               whenConfigOptionEnumUnknownDefaultCaseIsTrueThenGeneratedEnumClassHasUnknownDefaultOpenApiEnumConstantWithExpectedUriValue(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.enumUnknownDefaultCase());
-            Assumptions.assumeTrue(URI.class.equals(generatedSource.generatedFields()[0].type()));
-
             CustomAssertions.assertClassHasEnumConstantWithValue(
                 generatedSource.getClassUnderTest(), URI.create("11184809"));
           }
 
           @ParameterizedTest
-          @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+          @ArgumentsSource(GeneratedEnumProvider.class)
+          @AssumptionFilter(enumUnknownDefaultCase = Condition.TRUE, enumValueClass = Integer.class)
           @DisplayName(
               "Generated `enum`-class with `Integer` values HAS `\"NUMBER_unknown_default_open_api\"` as a constant")
           void
               whenConfigOptionEnumUnknownDefaultCaseIsTrueThenGeneratedEnumClassHasNumberUnknownDefaultOpenApiEnumConstant(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.enumUnknownDefaultCase());
-            Assumptions.assumeTrue(
-                Integer.class.equals(generatedSource.generatedFields()[0].type()));
-
             CustomAssertions.assertClassHasEnumConstantWithName(
                 generatedSource.getClassUnderTest(), "NUMBER_unknown_default_open_api");
           }
 
           @ParameterizedTest
-          @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+          @ArgumentsSource(GeneratedEnumProvider.class)
+          @AssumptionFilter(enumUnknownDefaultCase = Condition.TRUE, enumValueClass = Integer.class)
           @DisplayName(
               "Generated `enum`-class with `Integer` values HAS `\"NUMBER_unknown_default_open_api\"` constant with `value` as `11184809`")
           void
               whenConfigOptionEnumUnknownDefaultCaseIsTrueThenGeneratedEnumClassHasUnknownDefaultOpenApiEnumConstantWithExpectedIntegerValue(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.enumUnknownDefaultCase());
-            Assumptions.assumeTrue(
-                Integer.class.equals(generatedSource.generatedFields()[0].type()));
-
             CustomAssertions.assertClassHasEnumConstantWithValue(
                 generatedSource.getClassUnderTest(), 11184809);
           }
 
           @ParameterizedTest
-          @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+          @ArgumentsSource(GeneratedEnumProvider.class)
+          @AssumptionFilter(enumUnknownDefaultCase = Condition.TRUE, enumValueClass = Integer.class)
           @DisplayName(
               "Generated `static fromValue(T)` method returns `NUMBER_unknown_default_open_api` when `null` is given")
           void whenConfigOptionEnumUnknownDefaultCaseIsTrueThenFromValueReturnsIntegerDefaultValue(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.enumUnknownDefaultCase());
-            Assumptions.assumeTrue(
-                Integer.class.equals(generatedSource.generatedFields()[0].type()));
             CustomAssertions.assertStaticMethodReturnsNonNull(
                 CustomAssertions.assertClassHasMethod(
                     generatedSource.getClassUnderTest(),
@@ -1036,15 +971,12 @@ public abstract class GeneratedEnumTests {
           }
 
           @ParameterizedTest
-          @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+          @ArgumentsSource(GeneratedEnumProvider.class)
+          @AssumptionFilter(enumUnknownDefaultCase = Condition.TRUE, enumValueClass = String.class)
           @DisplayName(
               "Generated `static fromValue(T)` method returns `\"NUMBER_unknown_default_open_api\"` when `null` is given")
           void whenConfigOptionEnumUnknownDefaultCaseIsTrueThenFromValueReturnsStringDefaultValue(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.enumUnknownDefaultCase());
-            Assumptions.assumeTrue(
-                String.class.equals(generatedSource.generatedFields()[0].type()));
-
             CustomAssertions.assertStaticMethodReturnsNonNull(
                 CustomAssertions.assertClassHasMethod(
                     generatedSource.getClassUnderTest(),
@@ -1054,14 +986,12 @@ public abstract class GeneratedEnumTests {
           }
 
           @ParameterizedTest
-          @MethodSource(GENERATED_ENUM_TESTS_METHOD_SOURCE)
+          @ArgumentsSource(GeneratedEnumProvider.class)
+          @AssumptionFilter(enumUnknownDefaultCase = Condition.TRUE, enumValueClass = URI.class)
           @DisplayName(
               "Generated `static fromValue(T)` method returns `\"UNKNOWN_DEFAULT_OPEN_API\"` when `null` is given")
           void whenConfigOptionEnumUnknownDefaultCaseIsTrueThenFromValueReturnsUriDefaultValue(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.enumUnknownDefaultCase());
-            Assumptions.assumeTrue(URI.class.equals(generatedSource.generatedFields()[0].type()));
-
             CustomAssertions.assertStaticMethodReturnsNonNull(
                 CustomAssertions.assertClassHasMethod(
                     generatedSource.getClassUnderTest(),

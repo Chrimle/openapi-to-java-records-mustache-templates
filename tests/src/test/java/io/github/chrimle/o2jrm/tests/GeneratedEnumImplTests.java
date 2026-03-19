@@ -22,16 +22,16 @@ import io.github.chrimle.o2jrm.models.BeanValidationAnnotation;
 import io.github.chrimle.o2jrm.models.GeneratedClass;
 import io.github.chrimle.o2jrm.models.GeneratedClassImpl;
 import io.github.chrimle.o2jrm.models.GeneratedEnumImpl;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.*;
-import org.junit.jupiter.params.provider.Arguments;
 
 @DisplayName("Test Generated `enum` classes")
 final class GeneratedEnumImplTests extends GeneratedEnumTests {
 
   @SuppressWarnings("unused")
-  static Stream<Arguments> allPluginExecutionsAndGeneratedEnumCombinations() {
+  static List<GeneratedSource> allPluginExecutionsAndGeneratedEnumCombinations() {
     return Stream.of(PluginExecutionImpl.values())
         .flatMap(
             pluginExecution ->
@@ -63,6 +63,6 @@ final class GeneratedEnumImplTests extends GeneratedEnumTests {
                                     javax.validation.constraints.DecimalMax.class,
                                     BeanValidationAnnotation.EMAIL,
                                     javax.validation.constraints.Email.class))))
-        .map(Arguments::of);
+        .toList();
   }
 }

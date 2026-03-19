@@ -127,6 +127,14 @@ public class GeneratedSource {
     return generatedFields;
   }
 
+  public boolean hasRequiredGeneratedFields() {
+    return Arrays.stream(generatedFields()).anyMatch(GeneratedField::isRequired);
+  }
+
+  public Class<?> enumValueClass() {
+    return generatedFields()[0].type();
+  }
+
   public Class<?> getClassUnderTest() {
     return classUnderTest;
   }

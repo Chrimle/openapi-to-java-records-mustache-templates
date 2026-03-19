@@ -53,7 +53,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ArgumentsSource;
 
 /**
  * Tests for <b>all</b> generated {@code record} classes. Tests are grouped by the <i>method of
@@ -96,9 +96,6 @@ import org.junit.jupiter.params.provider.MethodSource;
 @DisplayName("Testing Generated `record` classes")
 public abstract class GeneratedRecordTests {
 
-  public static final String GENERATED_RECORD_TESTS_METHOD_SOURCE =
-      "io.github.chrimle.o2jrm.tests.GeneratedRecordImplTests#allPluginExecutionsAndGeneratedRecordCombinations";
-
   @Nested
   @DisplayName("Testing OpenAPI Schemas & Properties")
   class OpenAPITests {
@@ -112,7 +109,7 @@ public abstract class GeneratedRecordTests {
       class TypeTests {
 
         @ParameterizedTest
-        @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+        @ArgumentsSource(GeneratedRecordProvider.class)
         @DisplayName("OpenAPI `{schema}.type: object` -> Generates a `record` class")
         void whenIsObjectThenGeneratedClassIsRecordClass(final GeneratedSource generatedSource) {
           CustomAssertions.assertClassIsRecordClass(generatedSource.getClassUnderTest());
@@ -127,12 +124,11 @@ public abstract class GeneratedRecordTests {
         @DisplayName("Testing `components.schemas.{schema}.deprecated: false`")
         class DeprecatedFalseTests {
           @ParameterizedTest
-          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+          @ArgumentsSource(GeneratedRecordProvider.class)
+          @AssumptionFilter(isDeprecated = Condition.FALSE)
           @DisplayName("Generated `record` is NOT annotated with `@Deprecated`")
           void whenRecordIsNotDeprecatedThenGeneratedRecordClassIsNotAnnotatedDeprecated(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeFalse(generatedSource.isDeprecated());
-
             CustomAssertions.assertClassIsNotAnnotatedWith(
                 generatedSource.getClassUnderTest(), Deprecated.class);
           }
@@ -142,12 +138,11 @@ public abstract class GeneratedRecordTests {
         @DisplayName("Testing `components.schemas.{schema}.deprecated: true`")
         class DeprecatedTrueTests {
           @ParameterizedTest
-          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+          @ArgumentsSource(GeneratedRecordProvider.class)
+          @AssumptionFilter(isDeprecated = Condition.TRUE)
           @DisplayName("Generated `record` is annotated with `@Deprecated`")
           void whenRecordIsDeprecatedThenGeneratedRecordClassIsAnnotatedDeprecated(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.isDeprecated());
-
             CustomAssertions.assertClassIsAnnotatedWith(
                 generatedSource.getClassUnderTest(), Deprecated.class);
           }
@@ -159,11 +154,11 @@ public abstract class GeneratedRecordTests {
       class XImplementsTests {
 
         @ParameterizedTest
-        @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+        @ArgumentsSource(GeneratedRecordProvider.class)
+        @AssumptionFilter(hasXImplements = Condition.FALSE)
         @DisplayName("Generated `record` class does NOT `implements` any interfaces")
         void whenRecordHasNoXImplementsThenGeneratedRecordClassDoesNotImplementInterfaces(
             final GeneratedSource generatedSource) {
-          Assumptions.assumeFalse(generatedSource.hasXImplements());
           CustomAssertions.assertClassDoesNotImplementInterface(
               generatedSource.getClassUnderTest(), TestInterfaceOne.class);
           CustomAssertions.assertClassDoesNotImplementInterface(
@@ -171,11 +166,11 @@ public abstract class GeneratedRecordTests {
         }
 
         @ParameterizedTest
-        @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+        @ArgumentsSource(GeneratedRecordProvider.class)
+        @AssumptionFilter(hasXImplements = Condition.TRUE)
         @DisplayName("Generated `record` class DOES `implements` expected interfaces")
         void whenRecordHasXImplementsThenGeneratedRecordClassImplementInterfaces(
             final GeneratedSource generatedSource) {
-          Assumptions.assumeTrue(generatedSource.hasXImplements());
           for (final var expectedInterface : generatedSource.getXImplementsInterfaces()) {
             CustomAssertions.assertClassImplementsInterface(
                 generatedSource.getClassUnderTest(), expectedInterface);
@@ -191,12 +186,11 @@ public abstract class GeneratedRecordTests {
         @DisplayName("Testing `components.schemas.{schema}.x-class-extra-annotation: <null>`")
         class XClassExtraAnnotationUnsetTests {
           @ParameterizedTest
-          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+          @ArgumentsSource(GeneratedRecordProvider.class)
+          @AssumptionFilter(hasExtraAnnotations = Condition.FALSE)
           @DisplayName("Generated `record` has no extra annotations")
           void whenExtraClassAnnotationsIsNotSetThenGeneratedRecordHasNoExtraAnnotations(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeFalse(generatedSource.hasExtraAnnotations());
-
             CustomAssertions.assertClassIsNotAnnotatedWith(
                 generatedSource.getClassUnderTest(), TestExtraAnnotation.class);
             CustomAssertions.assertClassIsNotAnnotatedWith(
@@ -208,12 +202,11 @@ public abstract class GeneratedRecordTests {
         @DisplayName("Testing `components.schemas.{schema}.x-class-extra-annotation: <not-null>`")
         class XClassExtraAnnotationSetTests {
           @ParameterizedTest
-          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+          @ArgumentsSource(GeneratedRecordProvider.class)
+          @AssumptionFilter(hasExtraAnnotations = Condition.TRUE)
           @DisplayName("Generated `record` has extra annotations")
           void whenExtraClassAnnotationsIsNotSetThenGeneratedRecordHasNoExtraAnnotations(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.hasExtraAnnotations());
-
             for (final Class<? extends Annotation> annotation :
                 generatedSource.getExtraAnnotations()) {
               CustomAssertions.assertClassIsAnnotatedWith(
@@ -228,7 +221,7 @@ public abstract class GeneratedRecordTests {
       class PropertiesTests {
 
         @ParameterizedTest
-        @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+        @ArgumentsSource(GeneratedRecordProvider.class)
         @DisplayName("Generates a constructor with properties as method arguments")
         void whenObjectHasPropertiesThenGeneratedConstructorHasMethodArguments(
             final GeneratedSource generatedSource) {
@@ -237,11 +230,11 @@ public abstract class GeneratedRecordTests {
         }
 
         @ParameterizedTest
-        @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+        @ArgumentsSource(GeneratedRecordProvider.class)
+        @AssumptionFilter(isSerializationLibraryJackson = Condition.FALSE)
         @DisplayName("[okhttp-gson] Generated constructor is NOT annotated `@JsonCreator`")
         void whenNotJacksonThenGeneratedConstructorIsNotAnnotatedJsonCreator(
             final GeneratedSource generatedSource) {
-          Assumptions.assumeFalse(generatedSource.isSerializationLibraryJackson());
           final Constructor<?> constructor =
               CustomAssertions.assertClassHasConstructor(
                   generatedSource.getClassUnderTest(), generatedSource.fieldClasses());
@@ -249,11 +242,11 @@ public abstract class GeneratedRecordTests {
         }
 
         @ParameterizedTest
-        @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+        @ArgumentsSource(GeneratedRecordProvider.class)
+        @AssumptionFilter(isSerializationLibraryJackson = Condition.TRUE)
         @DisplayName("[webclient] Generated constructor IS annotated `@JsonCreator`")
         void whenJacksonThenGeneratedConstructorIsAnnotatedJsonCreator(
             final GeneratedSource generatedSource) {
-          Assumptions.assumeTrue(generatedSource.isSerializationLibraryJackson());
           final Constructor<?> constructor =
               CustomAssertions.assertClassHasConstructor(
                   generatedSource.getClassUnderTest(), generatedSource.fieldClasses());
@@ -261,33 +254,29 @@ public abstract class GeneratedRecordTests {
         }
 
         @ParameterizedTest
-        @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+        @ArgumentsSource(GeneratedRecordProvider.class)
+        @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE, serializableModel = Condition.FALSE)
         @DisplayName(
             "[okhttp-gson] Generated `record` has same number of fields as OpenAPI properties")
         void whenObjectHasPropertiesThenGeneratedRecordHasSameNumberOfFields_okhttp_gson(
             final GeneratedSource generatedSource) {
-          Assumptions.assumeFalse(generatedSource.serializableModel());
-          Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-
           CustomAssertions.assertClassHasNumberOfFields(
               generatedSource.getClassUnderTest(), generatedSource.generatedFields().length + 2);
         }
 
         @ParameterizedTest
-        @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+        @ArgumentsSource(GeneratedRecordProvider.class)
+        @AssumptionFilter(isLibraryWebClient = Condition.TRUE, serializableModel = Condition.FALSE)
         @DisplayName(
             "[webclient] Generated `record` has same number of fields as OpenAPI properties")
         void whenObjectHasPropertiesThenGeneratedRecordHasSameNumberOfFields_webclient(
             final GeneratedSource generatedSource) {
-          Assumptions.assumeFalse(generatedSource.serializableModel());
-          Assumptions.assumeTrue(generatedSource.isLibraryWebClient());
-
           CustomAssertions.assertClassHasNumberOfFields(
               generatedSource.getClassUnderTest(), generatedSource.generatedFields().length);
         }
 
         @ParameterizedTest
-        @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+        @ArgumentsSource(GeneratedRecordProvider.class)
         @DisplayName("Generated `record` has fields with same name and type as OpenAPI properties")
         void whenObjectHasPropertiesThenGeneratedRecordHasFieldsWithSameNameAndType(
             final GeneratedSource generatedSource) {
@@ -298,7 +287,7 @@ public abstract class GeneratedRecordTests {
         }
 
         @ParameterizedTest
-        @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+        @ArgumentsSource(GeneratedRecordProvider.class)
         @DisplayName("Instantiating the `record` will set fields to provided values")
         void whenObjectHasPropertiesThenFieldIsSetToProvidedValueWhenInstantiatingRecord(
             final GeneratedSource generatedSource) {
@@ -314,7 +303,7 @@ public abstract class GeneratedRecordTests {
           @DisplayName("Testing `{schema}.properties.{property}.default`")
           class DefaultTests {
             @ParameterizedTest
-            @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+            @ArgumentsSource(GeneratedRecordProvider.class)
             @DisplayName(
                 "Instantiating the `record` with `null` will set fields to `null` or `default`")
             void whenPropertyHasDefaultSetThenFieldIsSetToDefaultValueWhenInstantiatingWithNull(
@@ -334,7 +323,7 @@ public abstract class GeneratedRecordTests {
             class XFieldExtraAnnotationUnsetTests {
 
               @ParameterizedTest
-              @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+              @ArgumentsSource(GeneratedRecordProvider.class)
               @DisplayName("Generated `field` is NOT annotated with extra field annotations`")
               void whenXFieldExtraAnnotationIsUnsetThenFieldIsNotAnnotatedWithExtraFieldAnnotation(
                   final GeneratedSource generatedSource) {
@@ -360,7 +349,7 @@ public abstract class GeneratedRecordTests {
             class XFieldExtraAnnotationSetTests {
 
               @ParameterizedTest
-              @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+              @ArgumentsSource(GeneratedRecordProvider.class)
               @DisplayName("Generated `field` is annotated with extra field annotations`")
               void whenXFieldExtraAnnotationIsSetThenFieldIsAnnotatedWithExtraFieldAnnotation(
                   final GeneratedSource generatedSource) {
@@ -398,12 +387,11 @@ public abstract class GeneratedRecordTests {
       class OkHttpGsonTests {
 
         @ParameterizedTest
-        @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+        @ArgumentsSource(GeneratedRecordProvider.class)
+        @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
         @DisplayName("Generated `record` HAS `openapiFields`-field")
         void whenLibraryIsOkHttpGsonThenGeneratedRecordHasOpenApiFieldsField(
             final GeneratedSource generatedSource) throws IllegalAccessException {
-          Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-
           final Field openapiFields =
               CustomAssertions.assertClassHasField(
                   generatedSource.getClassUnderTest(), "openapiFields", HashSet.class);
@@ -417,12 +405,11 @@ public abstract class GeneratedRecordTests {
         }
 
         @ParameterizedTest
-        @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+        @ArgumentsSource(GeneratedRecordProvider.class)
+        @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
         @DisplayName("Generated `record` HAS `openapiRequiredFields`-field")
         void whenLibraryIsOkHttpGsonThenGeneratedRecordHasOpenApiRequiredFieldsField(
             final GeneratedSource generatedSource) throws IllegalAccessException {
-          Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-
           final Field openapiRequiredFields =
               CustomAssertions.assertClassHasField(
                   generatedSource.getClassUnderTest(), "openapiRequiredFields", HashSet.class);
@@ -436,12 +423,11 @@ public abstract class GeneratedRecordTests {
         }
 
         @ParameterizedTest
-        @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+        @ArgumentsSource(GeneratedRecordProvider.class)
+        @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
         @DisplayName("Generated `record` HAS `validateJsonElement`-method")
         void whenLibraryIsOkHttpGsonThenGeneratedRecordHasValidateJsonElementMethod(
             final GeneratedSource generatedSource) {
-          Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-
           CustomAssertions.assertClassHasMethod(
               generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
         }
@@ -451,16 +437,14 @@ public abstract class GeneratedRecordTests {
         class ValidateJsonElementMethodTests {
 
           @ParameterizedTest
-          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+          @ArgumentsSource(GeneratedRecordProvider.class)
+          @AssumptionFilter(
+              hasRequiredGeneratedFields = Condition.TRUE,
+              isLibraryOkHttpGson = Condition.TRUE)
           @DisplayName(
               "When `jsonElement` is `null` and `record` has required fields Then `validateJsonElement`-method throws `IllegalArgumentException`")
           void whenJsonElementIsNullAndRecordHasRequiredFieldsThenIllegalArgumentExceptionIsThrown(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-            Assumptions.assumeTrue(
-                Arrays.stream(generatedSource.generatedFields())
-                    .anyMatch(GeneratedField::isRequired));
-
             final Method validateJsonElementMethod =
                 CustomAssertions.assertClassHasMethod(
                     generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
@@ -469,17 +453,15 @@ public abstract class GeneratedRecordTests {
           }
 
           @ParameterizedTest
-          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+          @ArgumentsSource(GeneratedRecordProvider.class)
+          @AssumptionFilter(
+              hasRequiredGeneratedFields = Condition.TRUE,
+              isLibraryOkHttpGson = Condition.TRUE)
           @DisplayName(
               "When `jsonElement` is empty JSON and `record` has required fields Then `validateJsonElement`-method throws `IllegalArgumentException`")
           void
               whenJsonElementIsEmptyJsonAndRecordHasRequiredFieldsThenIllegalArgumentExceptionIsThrown(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-            Assumptions.assumeTrue(
-                Arrays.stream(generatedSource.generatedFields())
-                    .anyMatch(GeneratedField::isRequired));
-
             final Method validateJsonElementMethod =
                 CustomAssertions.assertClassHasMethod(
                     generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
@@ -489,16 +471,14 @@ public abstract class GeneratedRecordTests {
           }
 
           @ParameterizedTest
-          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+          @ArgumentsSource(GeneratedRecordProvider.class)
+          @AssumptionFilter(
+              hasRequiredGeneratedFields = Condition.FALSE,
+              isLibraryOkHttpGson = Condition.TRUE)
           @DisplayName(
               "When `jsonElement` is `null` and `record` has no required fields Then `validateJsonElement`-method throws `NullPointerException`")
           void whenJsonElementIsNullAndRecordHasNoRequiredFieldsThenNullPointerExceptionIsThrown(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-            Assumptions.assumeTrue(
-                Arrays.stream(generatedSource.generatedFields())
-                    .noneMatch(GeneratedField::isRequired));
-
             final Method validateJsonElementMethod =
                 CustomAssertions.assertClassHasMethod(
                     generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
@@ -507,16 +487,14 @@ public abstract class GeneratedRecordTests {
           }
 
           @ParameterizedTest
-          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+          @ArgumentsSource(GeneratedRecordProvider.class)
+          @AssumptionFilter(
+              hasRequiredGeneratedFields = Condition.FALSE,
+              isLibraryOkHttpGson = Condition.TRUE)
           @DisplayName(
               "When `jsonElement` is empty JSON and `record` has no required fields Then `validateJsonElement`-method throws nothing")
           void whenJsonElementIsEmptyJsonAndRecordHasNoRequiredFieldsThenNothingIsThrown(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-            Assumptions.assumeTrue(
-                Arrays.stream(generatedSource.generatedFields())
-                    .noneMatch(GeneratedField::isRequired));
-
             final Method validateJsonElementMethod =
                 CustomAssertions.assertClassHasMethod(
                     generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
@@ -525,13 +503,12 @@ public abstract class GeneratedRecordTests {
           }
 
           @ParameterizedTest
-          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+          @ArgumentsSource(GeneratedRecordProvider.class)
+          @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
           @DisplayName(
               "When `jsonElement` has unexpected key Then `validateJsonElement`-method throws `IllegalArgumentException`")
           void whenJsonElementHasUnexpectedKeyThenIllegalArgumentExceptionIsThrown(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-
             final Method validateJsonElementMethod =
                 CustomAssertions.assertClassHasMethod(
                     generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
@@ -541,16 +518,14 @@ public abstract class GeneratedRecordTests {
           }
 
           @ParameterizedTest
-          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+          @ArgumentsSource(GeneratedRecordProvider.class)
+          @AssumptionFilter(
+              hasRequiredGeneratedFields = Condition.TRUE,
+              isLibraryOkHttpGson = Condition.TRUE)
           @DisplayName(
               "When `jsonElement` does NOT have expected key Then `validateJsonElement`-method throws `IllegalArgumentException`")
           void whenJsonElementDoesNotHaveExpectedKeyThenIllegalArgumentExceptionIsThrown(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-            Assumptions.assumeTrue(
-                Arrays.stream(generatedSource.generatedFields())
-                    .anyMatch(GeneratedField::isRequired));
-
             final Method validateJsonElementMethod =
                 CustomAssertions.assertClassHasMethod(
                     generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
@@ -572,16 +547,14 @@ public abstract class GeneratedRecordTests {
           }
 
           @ParameterizedTest
-          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+          @ArgumentsSource(GeneratedRecordProvider.class)
+          @AssumptionFilter(
+              hasRequiredGeneratedFields = Condition.TRUE,
+              isLibraryOkHttpGson = Condition.TRUE)
           @DisplayName(
               "When required `jsonElement` value is `null` Then `validateJsonElement`-method throws `IllegalArgumentException`")
           void whenRequiredJsonElementValueIsNullThenIllegalArgumentExceptionIsThrown(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-            Assumptions.assumeTrue(
-                Arrays.stream(generatedSource.generatedFields())
-                    .anyMatch(GeneratedField::isRequired));
-
             final Method validateJsonElementMethod =
                 CustomAssertions.assertClassHasMethod(
                     generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
@@ -600,13 +573,12 @@ public abstract class GeneratedRecordTests {
           }
 
           @ParameterizedTest
-          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+          @ArgumentsSource(GeneratedRecordProvider.class)
+          @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
           @DisplayName(
               "When optional `jsonElement` values are `null` Then `validateJsonElement`-method throws nothing")
           void whenOptionalJsonElementValuesAreNullThenNothingIsThrown(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-
             final Method validateJsonElementMethod =
                 CustomAssertions.assertClassHasMethod(
                     generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
@@ -650,13 +622,12 @@ public abstract class GeneratedRecordTests {
           }
 
           @ParameterizedTest
-          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+          @ArgumentsSource(GeneratedRecordProvider.class)
+          @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
           @DisplayName(
               "When optional `jsonElement` values is not present Then `validateJsonElement`-method throws nothing")
           void whenOptionalJsonElementValuesIsNotPresentThenNothingIsThrown(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-
             final Method validateJsonElementMethod =
                 CustomAssertions.assertClassHasMethod(
                     generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
@@ -683,12 +654,11 @@ public abstract class GeneratedRecordTests {
           }
 
           @ParameterizedTest
-          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+          @ArgumentsSource(GeneratedRecordProvider.class)
+          @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
           @DisplayName(
               "When `jsonElement` value is valid Then `validateJsonElement`-method throws nothing")
           void whenJsonElementIsValidThenNothingIsThrown(final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-
             final Method validateJsonElementMethod =
                 CustomAssertions.assertClassHasMethod(
                     generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
@@ -706,13 +676,12 @@ public abstract class GeneratedRecordTests {
           }
 
           @ParameterizedTest
-          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+          @ArgumentsSource(GeneratedRecordProvider.class)
+          @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
           @DisplayName(
               "When required `jsonElement` value is unexpected type Then `validateJsonElement`-method throws `IllegalArgumentException`")
           void whenRequiredJsonElementValueIsUnexpectedTypeThenIllegalArgumentExceptionIsThrown(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-
             final Method validateJsonElementMethod =
                 CustomAssertions.assertClassHasMethod(
                     generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
@@ -758,14 +727,13 @@ public abstract class GeneratedRecordTests {
           }
 
           @ParameterizedTest
-          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+          @ArgumentsSource(GeneratedRecordProvider.class)
+          @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
           @DisplayName(
               "When required `jsonElement` value is unexpectedly not JSON primitive Then `validateJsonElement`-method throws `IllegalArgumentException`")
           void
               whenRequiredJsonElementValueIsUnexpectedlyNotJsonPrimitiveThenIllegalArgumentExceptionIsThrown(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-
             final Method validateJsonElementMethod =
                 CustomAssertions.assertClassHasMethod(
                     generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
@@ -809,37 +777,34 @@ public abstract class GeneratedRecordTests {
         class CustomTypeAdapterFactoryTests {
 
           @ParameterizedTest
-          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+          @ArgumentsSource(GeneratedRecordProvider.class)
+          @AssumptionFilter(isLibraryOkHttpGson = Condition.FALSE)
           @DisplayName(
               "When `library` is NOT `okhttp-gson` Then inner-class `CustomTypeAdapterFactory` is NOT generated")
           void whenLibraryIsNotOkHttpGsonThenInnerClassCustomTypeAdapterFactoryIsNotGenerated(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeFalse(generatedSource.isLibraryOkHttpGson());
-
             CustomAssertions.assertClassDoesNotHaveInnerClass(
                 generatedSource.getClassUnderTest(), "CustomTypeAdapterFactory");
           }
 
           @ParameterizedTest
-          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+          @ArgumentsSource(GeneratedRecordProvider.class)
+          @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
           @DisplayName(
               "When `library` IS `okhttp-gson` Then inner-class `CustomTypeAdapterFactory` IS generated")
           void whenLibraryIsOkHttpGsonThenInnerClassCustomTypeAdapterFactoryIsGenerated(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-
             CustomAssertions.assertClassHasInnerClass(
                 generatedSource.getClassUnderTest(), "CustomTypeAdapterFactory");
           }
 
           @ParameterizedTest
-          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+          @ArgumentsSource(GeneratedRecordProvider.class)
+          @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
           @DisplayName(
               "`CustomTypeAdapterFactory`-class `implements` the `TypeAdapterFactory`-interface")
           void customTypeAdapterFactoryClassImplementsTheTypeAdapterFactoryInterface(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-
             CustomAssertions.assertClassImplementsInterface(
                 CustomAssertions.assertClassHasInnerClass(
                     generatedSource.getClassUnderTest(), "CustomTypeAdapterFactory"),
@@ -851,11 +816,10 @@ public abstract class GeneratedRecordTests {
           class CreateMethodTests {
 
             @ParameterizedTest
-            @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+            @ArgumentsSource(GeneratedRecordProvider.class)
+            @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
             @DisplayName("`create(Gson, TypeToken<T>)` method is generated")
             void createMethodIsGenerated(final GeneratedSource generatedSource) {
-              Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-
               CustomAssertions.assertClassHasMethod(
                   CustomAssertions.assertClassHasInnerClass(
                       generatedSource.getClassUnderTest(), "CustomTypeAdapterFactory"),
@@ -865,13 +829,12 @@ public abstract class GeneratedRecordTests {
             }
 
             @ParameterizedTest
-            @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+            @ArgumentsSource(GeneratedRecordProvider.class)
+            @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
             @DisplayName(
                 "`create(Gson, TypeToken<T>)` throws `NullPointerException` when `gson` is `null`")
             void createMethodThrowsNullPointerExceptionWhenGsonIsNull(
                 final GeneratedSource generatedSource) {
-              Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-
               final Class<?> customTypeAdapterFactory =
                   CustomAssertions.assertClassHasInnerClass(
                       generatedSource.getClassUnderTest(), "CustomTypeAdapterFactory");
@@ -890,13 +853,12 @@ public abstract class GeneratedRecordTests {
             }
 
             @ParameterizedTest
-            @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+            @ArgumentsSource(GeneratedRecordProvider.class)
+            @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
             @DisplayName(
                 "`create(Gson, TypeToken<T>)` throws `NullPointerException` when `typeToken` is `null`")
             void createMethodThrowsNullPointerExceptionWhenTypeTokenIsNull(
                 final GeneratedSource generatedSource) {
-              Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-
               final Class<?> customTypeAdapterFactory =
                   CustomAssertions.assertClassHasInnerClass(
                       generatedSource.getClassUnderTest(), "CustomTypeAdapterFactory");
@@ -911,13 +873,12 @@ public abstract class GeneratedRecordTests {
             }
 
             @ParameterizedTest
-            @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+            @ArgumentsSource(GeneratedRecordProvider.class)
+            @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
             @DisplayName(
                 "`create(Gson, TypeToken<T>)` returns `null` when `typeToken` is NOT the parent class")
             void createMethodReturnsNullWhenTypeTokenIsNotTheParentClass(
                 final GeneratedSource generatedSource) {
-              Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-
               final Class<?> customTypeAdapterFactory =
                   CustomAssertions.assertClassHasInnerClass(
                       generatedSource.getClassUnderTest(), "CustomTypeAdapterFactory");
@@ -932,13 +893,12 @@ public abstract class GeneratedRecordTests {
             }
 
             @ParameterizedTest
-            @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+            @ArgumentsSource(GeneratedRecordProvider.class)
+            @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
             @DisplayName(
                 "`create(Gson, TypeToken<T>)` returns non-null `TypeAdapter` when `typeToken` IS the parent class")
             void createMethodReturnsNonNullTypeAdapterWhenTypeTokenIsTheParentClass(
                 final GeneratedSource generatedSource) {
-              Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-
               final Class<?> customTypeAdapterFactory =
                   CustomAssertions.assertClassHasInnerClass(
                       generatedSource.getClassUnderTest(), "CustomTypeAdapterFactory");
@@ -957,11 +917,10 @@ public abstract class GeneratedRecordTests {
             class TypeAdapterTests {
 
               @ParameterizedTest
-              @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+              @ArgumentsSource(GeneratedRecordProvider.class)
+              @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
               @DisplayName("`create(Gson, TypeToken<T>)` returns `NullSafeTypeAdapter`")
               void createMethodReturnsNullSafeTypeAdapter(final GeneratedSource generatedSource) {
-                Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-
                 final Class<?> customTypeAdapterFactory =
                     CustomAssertions.assertClassHasInnerClass(
                         generatedSource.getClassUnderTest(), "CustomTypeAdapterFactory");
@@ -987,12 +946,11 @@ public abstract class GeneratedRecordTests {
               class writeMethodTests {
 
                 @ParameterizedTest
-                @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+                @ArgumentsSource(GeneratedRecordProvider.class)
+                @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
                 @DisplayName("when `JsonWriter` is `null` Then `NullPointerException` is thrown")
                 void whenJsonWriterIsNullThenNullPointerExceptionIsThrown(
                     final GeneratedSource generatedSource) {
-                  Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-
                   final Class<?> customTypeAdapterFactory =
                       CustomAssertions.assertClassHasInnerClass(
                           generatedSource.getClassUnderTest(), "CustomTypeAdapterFactory");
@@ -1023,12 +981,11 @@ public abstract class GeneratedRecordTests {
                 }
 
                 @ParameterizedTest
-                @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+                @ArgumentsSource(GeneratedRecordProvider.class)
+                @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
                 @DisplayName("when `JsonWriter` is NOT `null` Then nothing is thrown")
                 void whenJsonWriterIsNotNullThenNothingIsThrown(
                     final GeneratedSource generatedSource) {
-                  Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-
                   final Class<?> customTypeAdapterFactory =
                       CustomAssertions.assertClassHasInnerClass(
                           generatedSource.getClassUnderTest(), "CustomTypeAdapterFactory");
@@ -1065,12 +1022,11 @@ public abstract class GeneratedRecordTests {
               class ReadMethodTests {
 
                 @ParameterizedTest
-                @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+                @ArgumentsSource(GeneratedRecordProvider.class)
+                @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
                 @DisplayName("when `jsonReader` is `null` Then `NullPointerException` is thrown")
                 void whenJsonReaderIsNullThenNullPointerExceptionIsThrown(
                     final GeneratedSource generatedSource) {
-                  Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-
                   final Class<?> customTypeAdapterFactory =
                       CustomAssertions.assertClassHasInnerClass(
                           generatedSource.getClassUnderTest(), "CustomTypeAdapterFactory");
@@ -1095,12 +1051,11 @@ public abstract class GeneratedRecordTests {
                 }
 
                 @ParameterizedTest
-                @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+                @ArgumentsSource(GeneratedRecordProvider.class)
+                @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
                 @DisplayName("when `jsonReader` is `nullInputStream` Then `EOFException` is thrown")
                 void whenJsonReaderIsNullInputStreamThenEOFExceptionIsThrown(
                     final GeneratedSource generatedSource) {
-                  Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-
                   final Class<?> customTypeAdapterFactory =
                       CustomAssertions.assertClassHasInnerClass(
                           generatedSource.getClassUnderTest(), "CustomTypeAdapterFactory");
@@ -1130,12 +1085,11 @@ public abstract class GeneratedRecordTests {
                 }
 
                 @ParameterizedTest
-                @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+                @ArgumentsSource(GeneratedRecordProvider.class)
+                @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
                 @DisplayName("when `jsonReader` is valid Then nothing is thrown")
                 void whenJsonReaderIsValidThenNothingIsThrown(
                     final GeneratedSource generatedSource) {
-                  Assumptions.assumeTrue(generatedSource.isLibraryOkHttpGson());
-
                   final Class<?> customTypeAdapterFactory =
                       CustomAssertions.assertClassHasInnerClass(
                           generatedSource.getClassUnderTest(), "CustomTypeAdapterFactory");
@@ -1171,34 +1125,31 @@ public abstract class GeneratedRecordTests {
       class WebClientTests {
 
         @ParameterizedTest
-        @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+        @ArgumentsSource(GeneratedRecordProvider.class)
+        @AssumptionFilter(isLibraryWebClient = Condition.TRUE)
         @DisplayName("Generated `record` does NOT have `openapiFields`-field")
         void whenLibraryIsWebClientThenGeneratedRecordDoesNotHaveOpenApiFieldsField(
             final GeneratedSource generatedSource) {
-          Assumptions.assumeTrue(generatedSource.isLibraryWebClient());
-
           CustomAssertions.assertClassDoesNotHaveFieldWithName(
               generatedSource.getClassUnderTest(), "openapiFields");
         }
 
         @ParameterizedTest
-        @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+        @ArgumentsSource(GeneratedRecordProvider.class)
+        @AssumptionFilter(isLibraryWebClient = Condition.TRUE)
         @DisplayName("Generated `record` does NOT have `openapiRequiredFields`-field")
         void whenLibraryIsWebClientThenGeneratedRecordDoesNotHaveOpenApiRequiredFieldsField(
             final GeneratedSource generatedSource) {
-          Assumptions.assumeTrue(generatedSource.isLibraryWebClient());
-
           CustomAssertions.assertClassDoesNotHaveFieldWithName(
               generatedSource.getClassUnderTest(), "openapiRequiredFields");
         }
 
         @ParameterizedTest
-        @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+        @ArgumentsSource(GeneratedRecordProvider.class)
+        @AssumptionFilter(isLibraryWebClient = Condition.TRUE)
         @DisplayName("Generated `record` does NOT have `validateJsonElement`-method")
         void whenLibraryIsWebClientThenGeneratedRecordDoesNotHaveValidateJsonElementMethod(
             final GeneratedSource generatedSource) {
-          Assumptions.assumeTrue(generatedSource.isLibraryWebClient());
-
           CustomAssertions.assertClassDoesNotHaveMethod(
               generatedSource.getClassUnderTest(), "validateJsonElement", JsonElement.class);
         }
@@ -1217,14 +1168,12 @@ public abstract class GeneratedRecordTests {
         @DisplayName("Testing `<additionalModelTypeAnnotations></additionalModelTypeAnnotations>`")
         class AdditionalModelTypeAnnotationsUnsetTests {
           @ParameterizedTest
-          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+          @ArgumentsSource(GeneratedRecordProvider.class)
+          @AssumptionFilter(hasAdditionalModelTypeAnnotations = Condition.FALSE)
           @DisplayName("Generated `record` does NOT have additional annotations")
           void
               whenAdditionalModelTypeAnnotationsIsNotSetThenGeneratedRecordClassDoesNotHaveAdditionalAnnotations(
                   final GeneratedSource generatedSource) {
-
-            Assumptions.assumeFalse(generatedSource.hasAdditionalModelTypeAnnotations());
-
             CustomAssertions.assertClassIsNotAnnotatedWith(
                 generatedSource.getClassUnderTest(), TestAnnotationOne.class);
             CustomAssertions.assertClassIsNotAnnotatedWith(
@@ -1239,14 +1188,12 @@ public abstract class GeneratedRecordTests {
             "Testing `<additionalModelTypeAnnotations>@TestAnnotationOne;@TestAnnotationTwo;@TestAnnotationThree</additionalModelTypeAnnotations>`")
         class AdditionalModelTypeAnnotationsSetTests {
           @ParameterizedTest
-          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+          @ArgumentsSource(GeneratedRecordProvider.class)
+          @AssumptionFilter(hasAdditionalModelTypeAnnotations = Condition.TRUE)
           @DisplayName("Generated `record` has additional annotations")
           void
               whenConfigOptionAdditionalModelTypeAnnotationsIsSetThenGeneratedRecordClassHasAdditionalAnnotations(
                   final GeneratedSource generatedSource) {
-
-            Assumptions.assumeTrue(generatedSource.hasAdditionalModelTypeAnnotations());
-
             CustomAssertions.assertClassIsAnnotatedWith(
                 generatedSource.getClassUnderTest(), TestAnnotationOne.class);
             CustomAssertions.assertClassIsAnnotatedWith(
@@ -1266,25 +1213,23 @@ public abstract class GeneratedRecordTests {
         class SerializableModelFalseTests {
 
           @ParameterizedTest
-          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+          @ArgumentsSource(GeneratedRecordProvider.class)
+          @AssumptionFilter(serializableModel = Condition.FALSE)
           @DisplayName("Generated `record` does NOT implement `Serializable`")
           void
               whenConfigOptionSerializableModelIsFalseThenGeneratedRecordClassDoesNotImplementSerializable(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeFalse(generatedSource.serializableModel());
-
             CustomAssertions.assertClassDoesNotImplementInterface(
                 generatedSource.getClassUnderTest(), Serializable.class);
           }
 
           @ParameterizedTest
-          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+          @ArgumentsSource(GeneratedRecordProvider.class)
+          @AssumptionFilter(serializableModel = Condition.FALSE)
           @DisplayName("Generated `record` does NOT have `serialVersionUID`-field")
           void
               whenConfigOptionSerializableModelIsFalseThenGeneratedRecordClassDoesNotHaveSerialVersionUidField(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeFalse(generatedSource.serializableModel());
-
             CustomAssertions.assertClassDoesNotHaveFieldWithName(
                 generatedSource.getClassUnderTest(), "serialVersionUID");
           }
@@ -1295,13 +1240,12 @@ public abstract class GeneratedRecordTests {
         class SerializableModelTrueTests {
 
           @ParameterizedTest
-          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+          @ArgumentsSource(GeneratedRecordProvider.class)
+          @AssumptionFilter(serializableModel = Condition.TRUE)
           @DisplayName("Generated `record` implement `Serializable`")
           void
               whenConfigOptionSerializableModelIsTrueThenGeneratedRecordClassImplementsSerializable(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.serializableModel());
-
             CustomAssertions.assertClassImplementsInterface(
                 generatedSource.getClassUnderTest(), Serializable.class);
           }
@@ -1317,13 +1261,12 @@ public abstract class GeneratedRecordTests {
         class GenerateBuildersFalseTests {
 
           @ParameterizedTest
-          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+          @ArgumentsSource(GeneratedRecordProvider.class)
+          @AssumptionFilter(generateBuilders = Condition.FALSE)
           @DisplayName("Generated `record` does NOT have inner `Builder`-class")
           void
               whenConfigOptionGenerateBuildersIsFalseThenGeneratedRecordDoesNotHaveInnerBuilderClass(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeFalse(generatedSource.generateBuilders());
-
             CustomAssertions.assertClassDoesNotHaveMethod(
                 generatedSource.getClassUnderTest(), "builder");
             CustomAssertions.assertClassDoesNotHaveInnerClass(
@@ -1335,12 +1278,11 @@ public abstract class GeneratedRecordTests {
         @DisplayName("Testing `<generateBuilders>true</generateBuilders>`")
         class GenerateBuildersTrueTests {
           @ParameterizedTest
-          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+          @ArgumentsSource(GeneratedRecordProvider.class)
+          @AssumptionFilter(generateBuilders = Condition.TRUE)
           @DisplayName("Generated `record` has inner `Builder`-class")
           void whenConfigOptionGenerateBuildersIsSetThenGeneratedRecordHasInnerBuilderClass(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.generateBuilders());
-
             CustomAssertions.assertClassHasMethod(generatedSource.getClassUnderTest(), "builder");
             CustomAssertions.assertClassHasInnerClass(
                 generatedSource.getClassUnderTest(), "Builder");
@@ -1358,14 +1300,13 @@ public abstract class GeneratedRecordTests {
         class UseBeanValidationFalseTests {
 
           @ParameterizedTest
-          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+          @ArgumentsSource(GeneratedRecordProvider.class)
+          @AssumptionFilter(useBeanValidation = Condition.FALSE)
           @DisplayName(
               "Generated `record` does NOT use Jakarta Bean Validation annotations on fields")
           void
               whenUseBeanValidationIsFalseThenFieldsAreNotAnnotatedWithJakartaBeanValidationAnnotations(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeFalse(generatedSource.useBeanValidation());
-
             for (final GeneratedField<?> generatedField : generatedSource.generatedFields()) {
               final Field field =
                   CustomAssertions.assertClassHasField(
@@ -1386,12 +1327,12 @@ public abstract class GeneratedRecordTests {
         class UseBeanValidationTrueTests {
 
           @ParameterizedTest
-          @MethodSource(GENERATED_RECORD_TESTS_METHOD_SOURCE)
+          @ArgumentsSource(GeneratedRecordProvider.class)
+          @AssumptionFilter(useBeanValidation = Condition.TRUE)
           @DisplayName("Generated `record` use Jakarta Bean Validation annotations on fields")
           void
               whenUseBeanValidationIsTrueThenFieldsAreAnnotatedWithJakartaBeanValidationAnnotations(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(generatedSource.useBeanValidation());
             AssertionUtilsImpl.assertRecordHasFieldsOfTypeWithNullableAnnotations(generatedSource);
           }
         }

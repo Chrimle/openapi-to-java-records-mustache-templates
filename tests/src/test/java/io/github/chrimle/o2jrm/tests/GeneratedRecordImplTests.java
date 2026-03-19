@@ -22,10 +22,10 @@ import io.github.chrimle.o2jrm.models.BeanValidationAnnotation;
 import io.github.chrimle.o2jrm.models.GeneratedClass;
 import io.github.chrimle.o2jrm.models.GeneratedClassImpl;
 import io.github.chrimle.o2jrm.models.GeneratedRecordImpl;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.*;
-import org.junit.jupiter.params.provider.Arguments;
 
 @DisplayName("Testing Generated `record` classes")
 final class GeneratedRecordImplTests extends GeneratedRecordTests {
@@ -37,7 +37,7 @@ final class GeneratedRecordImplTests extends GeneratedRecordTests {
    * @return a stream of {@code GeneratedSource}s.
    */
   @SuppressWarnings("unused")
-  static Stream<Arguments> allPluginExecutionsAndGeneratedRecordCombinations() {
+  static List<GeneratedSource> allPluginExecutionsAndGeneratedRecordCombinations() {
     return Stream.of(PluginExecutionImpl.values())
         .flatMap(
             pluginExecution ->
@@ -69,6 +69,6 @@ final class GeneratedRecordImplTests extends GeneratedRecordTests {
                                     javax.validation.constraints.DecimalMax.class,
                                     BeanValidationAnnotation.EMAIL,
                                     javax.validation.constraints.Email.class))))
-        .map(Arguments::of);
+        .toList();
   }
 }
