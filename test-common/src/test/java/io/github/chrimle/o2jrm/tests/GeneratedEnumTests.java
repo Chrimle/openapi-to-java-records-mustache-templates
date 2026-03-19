@@ -280,7 +280,7 @@ public abstract class GeneratedEnumTests {
         @DisplayName("Generated `validateJsonElement`-method can be invoked with `String`")
         void whenLibraryIsOkHttpGsonThenGeneratedValidateJsonElementMethodCanBeInvokedWithString(
             final GeneratedSource generatedSource) {
-          Assumptions.assumeTrue(String.class.equals(generatedSource.generatedFields()[0].type()));
+          Assumptions.assumeTrue(String.class.equals(generatedSource.enumValueClass()));
 
           final Method validateJsonElementMethod =
               CustomAssertions.assertClassHasMethod(
@@ -299,7 +299,7 @@ public abstract class GeneratedEnumTests {
         @DisplayName("Generated `validateJsonElement`-method can be invoked with `Integer`")
         void whenLibraryIsOkHttpGsonThenGeneratedValidateJsonElementMethodCanBeInvokedWithInteger(
             final GeneratedSource generatedSource) {
-          Assumptions.assumeTrue(Integer.class.equals(generatedSource.generatedFields()[0].type()));
+          Assumptions.assumeTrue(Integer.class.equals(generatedSource.enumValueClass()));
 
           final Method validateJsonElementMethod =
               CustomAssertions.assertClassHasMethod(
@@ -318,7 +318,7 @@ public abstract class GeneratedEnumTests {
         @DisplayName("Generated `validateJsonElement`-method can be invoked with `URI`")
         void whenLibraryIsOkHttpGsonThenGeneratedValidateJsonElementMethodCanBeInvokedWithUri(
             final GeneratedSource generatedSource) {
-          Assumptions.assumeTrue(URI.class.equals(generatedSource.generatedFields()[0].type()));
+          Assumptions.assumeTrue(URI.class.equals(generatedSource.enumValueClass()));
 
           final Method validateJsonElementMethod =
               CustomAssertions.assertClassHasMethod(
@@ -700,7 +700,7 @@ public abstract class GeneratedEnumTests {
         void
             alwaysThrowIllegalArgumentExceptionWhenProvidingNonMatchingStringValueAsArgumentToStaticFromValueMethod(
                 final GeneratedSource generatedSource) {
-          Assumptions.assumeTrue(String.class.equals(generatedSource.generatedFields()[0].type()));
+          Assumptions.assumeTrue(String.class.equals(generatedSource.enumValueClass()));
 
           CustomAssertions.assertStaticMethodThrowsWhenInvoked(
               CustomAssertions.assertClassHasMethod(
@@ -719,7 +719,7 @@ public abstract class GeneratedEnumTests {
         void
             alwaysThrowIllegalArgumentExceptionWhenProvidingNonMatchingIntegerValueAsArgumentToStaticFromValueMethod(
                 final GeneratedSource generatedSource) {
-          Assumptions.assumeTrue(Integer.class.equals(generatedSource.generatedFields()[0].type()));
+          Assumptions.assumeTrue(Integer.class.equals(generatedSource.enumValueClass()));
 
           CustomAssertions.assertStaticMethodThrowsWhenInvoked(
               CustomAssertions.assertClassHasMethod(
@@ -762,8 +762,7 @@ public abstract class GeneratedEnumTests {
           void
               whenConfigOptionUseEnumCaseInsensitiveIsFalseThenFromValueMethodThrowsIllegalArgumentExceptionWhenGivenValueHasWrongCase(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(
-                String.class.equals(generatedSource.generatedFields()[0].type()));
+            Assumptions.assumeTrue(String.class.equals(generatedSource.enumValueClass()));
 
             final Method fromValueMethod =
                 CustomAssertions.assertClassHasMethod(
@@ -791,8 +790,7 @@ public abstract class GeneratedEnumTests {
           void
               whenConfigOptionUseEnumCaseInsensitiveIsTrueThenFromValueMethodReturnsEnumConstantWithDifferentCase(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(
-                String.class.equals(generatedSource.generatedFields()[0].type()));
+            Assumptions.assumeTrue(String.class.equals(generatedSource.enumValueClass()));
 
             final Method fromValueMethod =
                 CustomAssertions.assertClassHasMethod(
@@ -835,8 +833,7 @@ public abstract class GeneratedEnumTests {
           void
               whenConfigOptionEnumUnknownDefaultCaseIsFalseThenGeneratedEnumClassDoesNotHaveUnknownDefaultOpenApiEnumConstant(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(
-                String.class.equals(generatedSource.generatedFields()[0].type()));
+            Assumptions.assumeTrue(String.class.equals(generatedSource.enumValueClass()));
 
             CustomAssertions.assertClassDoesNotHaveEnumConstantWithName(
                 generatedSource.getClassUnderTest(), "UNKNOWN_DEFAULT_OPEN_API");
@@ -850,8 +847,7 @@ public abstract class GeneratedEnumTests {
           void
               whenConfigOptionEnumUnknownDefaultCaseIsFalseThenGeneratedEnumClassDoesNotHaveNumberUnknownDefaultOpenApiEnumConstant(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(
-                Integer.class.equals(generatedSource.generatedFields()[0].type()));
+            Assumptions.assumeTrue(Integer.class.equals(generatedSource.enumValueClass()));
 
             CustomAssertions.assertClassDoesNotHaveEnumConstantWithName(
                 generatedSource.getClassUnderTest(), "NUMBER_unknown_default_open_api");
@@ -865,7 +861,7 @@ public abstract class GeneratedEnumTests {
           void
               whenConfigOptionEnumUnknownDefaultCaseIsFalseThenGeneratedEnumClassDoesNotHaveUriUnknownDefaultOpenApiEnumConstant(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(URI.class.equals(generatedSource.generatedFields()[0].type()));
+            Assumptions.assumeTrue(URI.class.equals(generatedSource.enumValueClass()));
 
             CustomAssertions.assertClassDoesNotHaveEnumConstantWithName(
                 generatedSource.getClassUnderTest(), "UNKNOWN_DEFAULT_OPEN_API");
@@ -913,8 +909,7 @@ public abstract class GeneratedEnumTests {
           void
               whenConfigOptionEnumUnknownDefaultCaseIsTrueThenGeneratedEnumClassHasUnknownDefaultOpenApiEnumConstant(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(
-                String.class.equals(generatedSource.generatedFields()[0].type()));
+            Assumptions.assumeTrue(String.class.equals(generatedSource.enumValueClass()));
 
             CustomAssertions.assertClassHasEnumConstantWithName(
                 generatedSource.getClassUnderTest(), "UNKNOWN_DEFAULT_OPEN_API");
@@ -928,8 +923,7 @@ public abstract class GeneratedEnumTests {
           void
               whenConfigOptionEnumUnknownDefaultCaseIsTrueThenGeneratedEnumClassHasUnknownDefaultOpenApiEnumConstantWithExpectedStringValue(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(
-                String.class.equals(generatedSource.generatedFields()[0].type()));
+            Assumptions.assumeTrue(String.class.equals(generatedSource.enumValueClass()));
 
             CustomAssertions.assertClassHasEnumConstantWithValue(
                 generatedSource.getClassUnderTest(), "unknown_default_open_api");
@@ -943,7 +937,7 @@ public abstract class GeneratedEnumTests {
           void
               whenConfigOptionEnumUnknownDefaultCaseIsTrueThenGeneratedEnumClassHasUriUnknownDefaultOpenApiEnumConstant(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(URI.class.equals(generatedSource.generatedFields()[0].type()));
+            Assumptions.assumeTrue(URI.class.equals(generatedSource.enumValueClass()));
 
             CustomAssertions.assertClassHasEnumConstantWithName(
                 generatedSource.getClassUnderTest(), "UNKNOWN_DEFAULT_OPEN_API");
@@ -957,7 +951,7 @@ public abstract class GeneratedEnumTests {
           void
               whenConfigOptionEnumUnknownDefaultCaseIsTrueThenGeneratedEnumClassHasUnknownDefaultOpenApiEnumConstantWithExpectedUriValue(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(URI.class.equals(generatedSource.generatedFields()[0].type()));
+            Assumptions.assumeTrue(URI.class.equals(generatedSource.enumValueClass()));
 
             CustomAssertions.assertClassHasEnumConstantWithValue(
                 generatedSource.getClassUnderTest(), URI.create("11184809"));
@@ -971,8 +965,7 @@ public abstract class GeneratedEnumTests {
           void
               whenConfigOptionEnumUnknownDefaultCaseIsTrueThenGeneratedEnumClassHasNumberUnknownDefaultOpenApiEnumConstant(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(
-                Integer.class.equals(generatedSource.generatedFields()[0].type()));
+            Assumptions.assumeTrue(Integer.class.equals(generatedSource.enumValueClass()));
 
             CustomAssertions.assertClassHasEnumConstantWithName(
                 generatedSource.getClassUnderTest(), "NUMBER_unknown_default_open_api");
@@ -986,8 +979,7 @@ public abstract class GeneratedEnumTests {
           void
               whenConfigOptionEnumUnknownDefaultCaseIsTrueThenGeneratedEnumClassHasUnknownDefaultOpenApiEnumConstantWithExpectedIntegerValue(
                   final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(
-                Integer.class.equals(generatedSource.generatedFields()[0].type()));
+            Assumptions.assumeTrue(Integer.class.equals(generatedSource.enumValueClass()));
 
             CustomAssertions.assertClassHasEnumConstantWithValue(
                 generatedSource.getClassUnderTest(), 11184809);
@@ -1000,8 +992,7 @@ public abstract class GeneratedEnumTests {
               "Generated `static fromValue(T)` method returns `NUMBER_unknown_default_open_api` when `null` is given")
           void whenConfigOptionEnumUnknownDefaultCaseIsTrueThenFromValueReturnsIntegerDefaultValue(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(
-                Integer.class.equals(generatedSource.generatedFields()[0].type()));
+            Assumptions.assumeTrue(Integer.class.equals(generatedSource.enumValueClass()));
             CustomAssertions.assertStaticMethodReturnsNonNull(
                 CustomAssertions.assertClassHasMethod(
                     generatedSource.getClassUnderTest(),
@@ -1017,8 +1008,7 @@ public abstract class GeneratedEnumTests {
               "Generated `static fromValue(T)` method returns `\"NUMBER_unknown_default_open_api\"` when `null` is given")
           void whenConfigOptionEnumUnknownDefaultCaseIsTrueThenFromValueReturnsStringDefaultValue(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(
-                String.class.equals(generatedSource.generatedFields()[0].type()));
+            Assumptions.assumeTrue(String.class.equals(generatedSource.enumValueClass()));
 
             CustomAssertions.assertStaticMethodReturnsNonNull(
                 CustomAssertions.assertClassHasMethod(
@@ -1035,7 +1025,7 @@ public abstract class GeneratedEnumTests {
               "Generated `static fromValue(T)` method returns `\"UNKNOWN_DEFAULT_OPEN_API\"` when `null` is given")
           void whenConfigOptionEnumUnknownDefaultCaseIsTrueThenFromValueReturnsUriDefaultValue(
               final GeneratedSource generatedSource) {
-            Assumptions.assumeTrue(URI.class.equals(generatedSource.generatedFields()[0].type()));
+            Assumptions.assumeTrue(URI.class.equals(generatedSource.enumValueClass()));
 
             CustomAssertions.assertStaticMethodReturnsNonNull(
                 CustomAssertions.assertClassHasMethod(
