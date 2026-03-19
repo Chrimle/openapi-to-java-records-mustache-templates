@@ -20,48 +20,46 @@ public abstract class GeneratedSourceProvider implements ArgumentsProvider {
             arguments -> {
               if (assumptionFilter == null) return true;
               final GeneratedSource generatedSource = (GeneratedSource) arguments.get()[0];
-              if (!(assumptionFilter
+              if (!assumptionFilter
                   .enumUnknownDefaultCase()
-                  .test(generatedSource.enumUnknownDefaultCase()))) return false;
+                  .test(generatedSource.enumUnknownDefaultCase())) return false;
               if (!(assumptionFilter.enumValueClass().equals(Object.class)
                   || assumptionFilter.enumValueClass().equals(generatedSource.enumValueClass())))
                 return false;
-              if (!(assumptionFilter.generateBuilders().test(generatedSource.generateBuilders())))
+              if (!assumptionFilter.generateBuilders().test(generatedSource.generateBuilders()))
                 return false;
-              if (!(assumptionFilter
+              if (!assumptionFilter
                   .hasAdditionalEnumTypeAnnotations()
-                  .test(generatedSource.hasAdditionalEnumTypeAnnotations()))) return false;
-              if (!(assumptionFilter
+                  .test(generatedSource.hasAdditionalEnumTypeAnnotations())) return false;
+              if (!assumptionFilter
                   .hasAdditionalModelTypeAnnotations()
-                  .test(generatedSource.hasAdditionalModelTypeAnnotations()))) return false;
-              if (!(assumptionFilter
+                  .test(generatedSource.hasAdditionalModelTypeAnnotations())) return false;
+              if (!assumptionFilter
                   .hasRequiredGeneratedFields()
-                  .test(generatedSource.hasRequiredGeneratedFields()))) return false;
-              if (!(assumptionFilter
+                  .test(generatedSource.hasRequiredGeneratedFields())) return false;
+              if (!assumptionFilter
                   .hasExtraAnnotations()
-                  .test(generatedSource.hasExtraAnnotations()))) return false;
-              if (!(assumptionFilter.hasXImplements().test(generatedSource.hasXImplements())))
+                  .test(generatedSource.hasExtraAnnotations())) return false;
+              if (!assumptionFilter.hasXImplements().test(generatedSource.hasXImplements()))
                 return false;
-              if (!(assumptionFilter.isDeprecated().test(generatedSource.isDeprecated())))
+              if (!assumptionFilter.isDeprecated().test(generatedSource.isDeprecated()))
                 return false;
-              if (!(assumptionFilter.isInnerEnum().test(generatedSource.isInnerEnum())))
-                return false;
-              if (!(assumptionFilter
+              if (!assumptionFilter.isInnerEnum().test(generatedSource.isInnerEnum())) return false;
+              if (!assumptionFilter
                   .isLibraryOkHttpGson()
-                  .test(generatedSource.isLibraryOkHttpGson()))) return false;
-              if (!(assumptionFilter
-                  .isLibraryWebClient()
-                  .test(generatedSource.isLibraryWebClient()))) return false;
-              if (!(assumptionFilter
+                  .test(generatedSource.isLibraryOkHttpGson())) return false;
+              if (!assumptionFilter.isLibraryWebClient().test(generatedSource.isLibraryWebClient()))
+                return false;
+              if (!assumptionFilter
                   .isSerializationLibraryJackson()
-                  .test(generatedSource.isSerializationLibraryJackson()))) return false;
-              if (!(assumptionFilter.serializableModel().test(generatedSource.serializableModel())))
+                  .test(generatedSource.isSerializationLibraryJackson())) return false;
+              if (!assumptionFilter.serializableModel().test(generatedSource.serializableModel()))
                 return false;
-              if (!(assumptionFilter.useBeanValidation().test(generatedSource.useBeanValidation())))
+              if (!assumptionFilter.useBeanValidation().test(generatedSource.useBeanValidation()))
                 return false;
-              if (!(assumptionFilter
+              if (!assumptionFilter
                   .useEnumCaseInsensitive()
-                  .test(generatedSource.useEnumCaseInsensitive()))) return false;
+                  .test(generatedSource.useEnumCaseInsensitive())) return false;
               return true;
             });
   }
