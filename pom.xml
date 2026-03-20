@@ -8,7 +8,7 @@
     <parent>
         <groupId>io.github.chrimle</groupId>
         <artifactId>chrimle-oss-parent</artifactId>
-        <version>0.9.0</version>
+        <version>0.10.0</version>
     </parent>
 
     <!-- === Project Coordinates === -->
@@ -448,5 +448,17 @@
     </build>
 
     <!-- === Profiles === -->
-    <profiles/>
+    <profiles>
+        <profile>
+            <id>skip-errorprone</id>
+            <activation>
+                <property>
+                    <name>env.CI</name>
+                </property>
+            </activation>
+            <properties>
+                <errorProneArg/>
+            </properties>
+        </profile>
+    </profiles>
 </project>
