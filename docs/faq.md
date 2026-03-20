@@ -1,7 +1,6 @@
 ---
-layout: page
+layout: default
 title: FAQ
-permalink: /faq/
 ---
 
 - ### What version of Java is supported?
