@@ -1,7 +1,6 @@
 ---
-layout: page
+layout: default
 title: About
-permalink: /about/
 ---
 
 This project is developed and maintained solely by [@Chrimle](https://github.com/Chrimle).
