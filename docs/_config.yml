@@ -4,8 +4,3 @@ theme: jekyll-theme-leap-day
 # Docs: https://github.com/pages-themes/leap-day
 
 show_downloads: true
-
-# These are ignored by the default 'leap-day' layout
-header_pages:
-  - faq.md
-  - about.md
