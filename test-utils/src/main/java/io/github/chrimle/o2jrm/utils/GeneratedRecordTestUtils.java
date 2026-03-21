@@ -32,8 +32,7 @@ import org.junit.jupiter.api.Assertions;
 @SuppressWarnings("java:S5960")
 public class GeneratedRecordTestUtils {
 
-  private GeneratedRecordTestUtils() {
-  }
+  private GeneratedRecordTestUtils() {}
 
   /**
    * Asserts that the {@code record} can be instantiated with test values.

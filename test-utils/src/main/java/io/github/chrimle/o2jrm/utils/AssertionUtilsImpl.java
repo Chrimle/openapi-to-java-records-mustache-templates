@@ -24,8 +24,7 @@ import java.lang.reflect.*;
 
 public class AssertionUtilsImpl {
 
-  private AssertionUtilsImpl() {
-  }
+  private AssertionUtilsImpl() {}
 
   public static void assertRecordHasFieldsOfTypeWithNullableAnnotations(
       final GeneratedSource generatedSource) {

@@ -129,9 +129,7 @@ public record GeneratedField<T>(
                 + ReflectionUtils.getRequiredMethod(type, "getValue")
                     .invoke(type.getEnumConstants()[0])
                 + "\"]";
-          } catch (IllegalAccessException e) {
-            throw new RuntimeException(e);
-          } catch (InvocationTargetException e) {
+          } catch (IllegalAccessException | InvocationTargetException e) {
             throw new RuntimeException(e);
           }
         }
@@ -148,9 +146,7 @@ public record GeneratedField<T>(
             + "\": \""
             + ReflectionUtils.getRequiredMethod(type, "getValue").invoke(type.getEnumConstants()[0])
             + "\"";
-      } catch (IllegalAccessException e) {
-        throw new RuntimeException(e);
-      } catch (InvocationTargetException e) {
+      } catch (IllegalAccessException | InvocationTargetException e) {
         throw new RuntimeException(e);
       }
     }
