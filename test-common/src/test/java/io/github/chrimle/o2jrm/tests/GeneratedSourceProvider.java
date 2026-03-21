@@ -3,6 +3,7 @@ package io.github.chrimle.o2jrm.tests;
 import io.github.chrimle.o2jrm.GeneratedSource;
 import java.lang.reflect.Method;
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.params.provider.Arguments;
@@ -10,6 +11,9 @@ import org.junit.jupiter.params.provider.ArgumentsProvider;
 
 public abstract sealed class GeneratedSourceProvider implements ArgumentsProvider
     permits GeneratedEnumProvider, GeneratedRecordProvider {
+
+  private static final ConcurrentHashMap<String, List<GeneratedSource>> ARGUMENTS_PER_METHOD =
+      new ConcurrentHashMap<>();
 
   Stream<Arguments> applyFilters(
       final String methodSourceClassName,
@@ -19,7 +23,11 @@ public abstract sealed class GeneratedSourceProvider implements ArgumentsProvide
     final var assumptionFilter =
         context.getRequiredTestMethod().getAnnotation(AssumptionFilter.class);
 
-    return invokeMethodSource(methodSourceClassName, methodSourceMethodName).stream()
+    return ARGUMENTS_PER_METHOD
+        .computeIfAbsent(
+            methodSourceMethodName,
+            key -> invokeMethodSource(methodSourceClassName, methodSourceMethodName))
+        .stream()
         .filter(
             generatedSource -> {
               if (assumptionFilter == null) return true;
