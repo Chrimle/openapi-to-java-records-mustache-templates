@@ -31,6 +31,7 @@ import org.junit.jupiter.api.Assertions;
  * @implNote This class should only contain Assertion-methods which complements {@link Assertions}
  *     and should be as <i>generic</i> as possible.
  */
+@SuppressWarnings("java:S5960")
 public sealed class CustomUtilityAssertions permits CustomAssertions {
 
   protected CustomUtilityAssertions() {}

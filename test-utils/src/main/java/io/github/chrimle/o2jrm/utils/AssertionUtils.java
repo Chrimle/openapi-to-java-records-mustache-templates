@@ -20,7 +20,11 @@ import io.github.chrimle.o2jrm.GeneratedSource;
 import io.github.chrimle.o2jrm.models.GeneratedField;
 import org.junit.jupiter.api.Assertions;
 
+@SuppressWarnings("java:S5960")
 public class AssertionUtils {
+
+  private AssertionUtils() {
+  }
 
   public static void assertInnerBuilderClassExistsAndCanBuildRecord(
       final GeneratedSource generatedSource) {
