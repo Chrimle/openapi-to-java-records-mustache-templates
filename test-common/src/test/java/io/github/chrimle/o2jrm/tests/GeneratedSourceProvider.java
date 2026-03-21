@@ -12,12 +12,14 @@ public abstract sealed class GeneratedSourceProvider implements ArgumentsProvide
     permits GeneratedEnumProvider, GeneratedRecordProvider {
 
   Stream<Arguments> applyFilters(
-      final String fullyQualifiedMethodName, final ExtensionContext context) {
+      final String methodSourceClassName,
+      final String methodSourceMethodName,
+      final ExtensionContext context) {
 
     final var assumptionFilter =
         context.getRequiredTestMethod().getAnnotation(AssumptionFilter.class);
 
-    return invokeMethodSource(fullyQualifiedMethodName).stream()
+    return invokeMethodSource(methodSourceClassName, methodSourceMethodName).stream()
         .filter(
             generatedSource -> {
               if (assumptionFilter == null) return true;
@@ -67,12 +69,8 @@ public abstract sealed class GeneratedSourceProvider implements ArgumentsProvide
   }
 
   @SuppressWarnings("unchecked")
-  List<GeneratedSource> invokeMethodSource(final String fullyQualifiedMethodName) {
+  List<GeneratedSource> invokeMethodSource(final String className, final String methodName) {
     try {
-      String[] parts = fullyQualifiedMethodName.split("#");
-      String className = parts[0];
-      String methodName = parts[1];
-
       Class<?> clazz = Class.forName(className);
       Method method = clazz.getDeclaredMethod(methodName);
       method.setAccessible(true);
