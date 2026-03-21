@@ -2,6 +2,7 @@ package io.github.chrimle.o2jrm.tests;
 
 import java.util.function.UnaryOperator;
 
+@SuppressWarnings("ImmutableEnumChecker")
 public enum Condition {
   ANY(ignored -> true),
   TRUE(bool -> bool),
