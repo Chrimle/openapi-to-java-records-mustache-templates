@@ -39,6 +39,7 @@ tests/target/spotless-index
 test-useJakartaEe/target/spotless-index
 test-utils/target/spotless-index
 test-common/target/spotless-index
+test-spring/target/spotless-index
 
 # Maven Archiver & Status
 mustache-templates/target/maven-archiver
@@ -51,6 +52,7 @@ test-utils/target/maven-archiver
 test-utils/target/maven-status
 test-common/target/maven-archiver
 test-common/target/maven-status
+test-spring/target/maven-archiver
 
 tests/target/dependency-maven-plugin-markers
 tests/target/surefire-reports

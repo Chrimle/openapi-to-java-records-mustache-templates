@@ -23,6 +23,7 @@
         <module>test-common</module>
         <module>test-useJakartaEe</module>
         <module>test-utils</module>
+        <module>test-spring</module>
     </modules>
 
     <!-- Project Information -->
@@ -326,7 +327,7 @@
                         <publishingServerId>central</publishingServerId>
                         <tokenAuth>true</tokenAuth>
                         <autoPublish>true</autoPublish>
-                        <excludeArtifacts>openapi-to-java-records-mustache-templates-tests,openapi-to-java-records-mustache-templates-test-common,openapi-to-java-records-mustache-templates-test-usejakartaee,openapi-to-java-records-mustache-templates-test-utils</excludeArtifacts>
+                        <excludeArtifacts>openapi-to-java-records-mustache-templates-tests,openapi-to-java-records-mustache-templates-test-common,openapi-to-java-records-mustache-templates-test-usejakartaee,openapi-to-java-records-mustache-templates-test-utils,openapi-to-java-records-mustache-templates-test-spring</excludeArtifacts>
                     </configuration>
                 </plugin>
                 <!-- Override Parent Configuration -->
