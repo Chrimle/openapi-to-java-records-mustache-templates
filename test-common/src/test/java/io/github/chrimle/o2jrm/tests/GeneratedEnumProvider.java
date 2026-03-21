@@ -9,12 +9,17 @@ import org.junit.jupiter.params.support.ParameterDeclarations;
 public final class GeneratedEnumProvider extends GeneratedSourceProvider
     implements ArgumentsProvider {
 
-  public static final String GENERATED_ENUM_TESTS_METHOD_SOURCE =
-      "io.github.chrimle.o2jrm.tests.GeneratedEnumImplTests#allPluginExecutionsAndGeneratedEnumCombinations";
+  public static final String GENERATED_ENUM_TESTS_METHOD_SOURCE_CLASS =
+      "io.github.chrimle.o2jrm.tests.GeneratedEnumImplTests";
+  public static final String GENERATED_ENUM_TESTS_METHOD_SOURCE_METHOD =
+      "allPluginExecutionsAndGeneratedEnumCombinations";
 
   @Override
   public Stream<? extends Arguments> provideArguments(
       ParameterDeclarations parameters, ExtensionContext context) throws Exception {
-    return applyFilters(GENERATED_ENUM_TESTS_METHOD_SOURCE, context);
+    return applyFilters(
+        GENERATED_ENUM_TESTS_METHOD_SOURCE_CLASS,
+        GENERATED_ENUM_TESTS_METHOD_SOURCE_METHOD,
+        context);
   }
 }
