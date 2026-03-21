@@ -55,8 +55,10 @@ test-common/target/maven-status
 test-spring/target/maven-archiver
 
 tests/target/dependency-maven-plugin-markers
-tests/target/surefire-reports
 test-useJakartaEe/target/dependency-maven-plugin-markers
+test-spring/target/dependency-maven-plugin-markers
+
+tests/target/surefire-reports
 test-useJakartaEe/target/surefire-reports
 
 tests/target/generated-sources/openapi/src/*
@@ -114,9 +116,12 @@ test-common/target/classes/api.yaml
 
 # Ignore Imported Files
 tests/target/classes/templates
-tests/target/classes/api.yaml
-
 test-useJakartaEe/target/classes/templates
+test-spring/target/classes/spring-templates
+
+tests/target/classes/api.yaml
 test-useJakartaEe/target/classes/api.yaml
+test-spring/target/classes/api.yaml
+
 /test-useJakartaEe/target/test-classes/junit-platform.properties
 /tests/target/test-classes/junit-platform.properties

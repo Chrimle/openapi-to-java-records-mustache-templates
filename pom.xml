@@ -125,6 +125,16 @@
         <!-- Spotless -->
         <spotless.check.skip>false</spotless.check.skip> <!-- Unused imports causes build to fail -->
         <!-- /Spotless -->
+
+        <!-- Default mustache-templates used by Java Generators -->
+        <templatesToCopy>
+            templates/generateBuilders.mustache,
+            templates/javadoc.mustache,
+            templates/licenseInfo.mustache,
+            templates/modelEnum.mustache,
+            templates/pojo.mustache,
+            templates/useBeanValidation.mustache
+        </templatesToCopy>
     </properties>
 
     <scm>
@@ -278,14 +288,7 @@
                                         <type>jar</type>
                                         <overWrite>true</overWrite>
                                         <outputDirectory>${project.build.outputDirectory}</outputDirectory>
-                                        <includes>
-                                            templates/generateBuilders.mustache,
-                                            templates/javadoc.mustache,
-                                            templates/licenseInfo.mustache,
-                                            templates/modelEnum.mustache,
-                                            templates/pojo.mustache,
-                                            templates/useBeanValidation.mustache
-                                        </includes>
+                                        <includes>${templatesToCopy}</includes>
                                     </artifactItem>
                                 </artifactItems>
                             </configuration>

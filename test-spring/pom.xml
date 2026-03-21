@@ -12,6 +12,12 @@
     <description>Module for Testing spring-templates with Spring-Generator</description>
     <!-- / Project Information -->
 
+    <properties>
+        <templatesToCopy>
+            spring-templates/pojo.mustache
+        </templatesToCopy>
+    </properties>
+
 
     <dependencies>
         <!-- Sub Modules -->
@@ -30,6 +36,9 @@
 
     <build>
         <plugins>
+            <plugin>
+                <artifactId>maven-dependency-plugin</artifactId>
+            </plugin>
             <plugin>
                 <!-- Skip Deploying to GitHub Packages -->
                 <artifactId>maven-deploy-plugin</artifactId>
