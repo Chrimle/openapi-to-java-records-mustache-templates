@@ -102,56 +102,55 @@ public record GeneratedField<T>(
 
   public String getKeyAndValueAsJson() {
     if (type == String.class) {
-      return "\"" + name + "\": \"testString\"";
+      return "\"%s\": \"testString\"".formatted(name);
     }
     if (type == Integer.class) {
-      return "\"" + name + "\": 42";
+      return "\"%s\": 42".formatted(name);
     }
     if (type == BigDecimal.class) {
-      return "\"" + name + "\": 42";
+      return "\"%s\": 42".formatted(name);
     }
     if (type == Long.class) {
-      return "\"" + name + "\": 42";
+      return "\"%s\": 42".formatted(name);
     }
     if (type == Boolean.class) {
-      return "\"" + name + "\": true";
+      return "\"%s\": true".formatted(name);
     }
     if (type == UUID.class) {
-      return "\"" + name + "\": \"00000000-0000-0000-0000-000000000001\"";
+      return "\"%s\": \"00000000-0000-0000-0000-000000000001\"".formatted(name);
     }
     if (type == List.class || type == Set.class) {
       if (compositeType.isPresent()) {
         if (compositeType.get().isEnum()) {
           try {
-            return "\""
-                + name
-                + "\": [\""
-                + ReflectionUtils.getRequiredMethod(type, "getValue")
-                    .invoke(type.getEnumConstants()[0])
-                + "\"]";
+            return "\"%s\": [\"%s\"]"
+                .formatted(
+                    name,
+                    ReflectionUtils.getRequiredMethod(type, "getValue")
+                        .invoke(type.getEnumConstants()[0]));
           } catch (IllegalAccessException | InvocationTargetException e) {
             throw new RuntimeException(e);
           }
         }
         if (compositeType.get().isRecord()) {
-          return "\"" + name + "\": [{\"field1\": true}]";
+          return "\"%s\": [{\"field1\": true}]".formatted(name);
         }
       }
-      return "\"" + name + "\": []";
+      return "\"%s\": []".formatted(name);
     }
     if (type.isEnum()) {
       try {
-        return "\""
-            + name
-            + "\": \""
-            + ReflectionUtils.getRequiredMethod(type, "getValue").invoke(type.getEnumConstants()[0])
-            + "\"";
+        return "\"%s\": \"%s\""
+            .formatted(
+                name,
+                ReflectionUtils.getRequiredMethod(type, "getValue")
+                    .invoke(type.getEnumConstants()[0]));
       } catch (IllegalAccessException | InvocationTargetException e) {
         throw new RuntimeException(e);
       }
     }
     if (type.isRecord()) {
-      return "\"" + name + "\": {\"field1\": true}";
+      return "\"%s\": {\"field1\": true}".formatted(name);
     }
     throw new UnsupportedOperationException();
   }
