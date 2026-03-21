@@ -27,9 +27,7 @@ If you have feedback or suggestions, please share it in either [Discussions](htt
 If you want a more detailed guide with simple examples to get started, check out the Wiki-page
 > [Beginner Guide (Step-by-Step)](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/wiki/Beginner-Guide-%28Step‐by‐Step%29).
 
-<details>
-
-<summary>Supported `openapi-generator` Versions</summary>
+## Supported `openapi-generator` Versions
 
 - [7.20.0](https://github.com/OpenAPITools/openapi-generator/releases/tag/v7.20.0) - 2026, Feb 16 (latest)
 - [7.19.0](https://github.com/OpenAPITools/openapi-generator/releases/tag/v7.19.0) - 2026, Jan 19
@@ -43,8 +41,6 @@ If you want a more detailed guide with simple examples to get started, check out
 - [7.11.0](https://github.com/OpenAPITools/openapi-generator/releases/tag/v7.11.0) - 2025, Jan 20
 
 Older/newer versions may work, but are currently not part of the CI Test Suite.
-
-</details>
 
 ## Obtain Mustache Templates
 
