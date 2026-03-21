@@ -65,6 +65,9 @@
             <!-- Propagate Maven Project properties to any variables, such as '${project.version}' -->
             <plugin>
                 <artifactId>maven-resources-plugin</artifactId>
+                <configuration>
+                    <outputDirectory>${updated-mustache-templates-directory}</outputDirectory>
+                </configuration>
                 <executions>
                     <execution>
                         <id>propagate-maven-project-properties</id>
@@ -82,7 +85,26 @@
                                     <filtering>true</filtering>
                                 </resource>
                             </resources>
-                            <outputDirectory>${updated-mustache-templates-directory}</outputDirectory>
+                            <outputDirectory/>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>copy-templates-to-spring-templates</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <resources>
+                                <resource>
+                                    <directory>${original-mustache-templates-directory}/templates</directory>
+                                    <includes>
+                                        <include>pojo.mustache</include>
+                                    </includes>
+                                    <filtering>true</filtering>
+                                </resource>
+                            </resources>
+                            <outputDirectory>${updated-mustache-templates-directory}/spring-templates</outputDirectory>
                         </configuration>
                     </execution>
                 </executions>
