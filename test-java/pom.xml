@@ -10,8 +10,9 @@
     </parent>
 
     <!-- Project Information -->
-    <name>OpenAPI to Java records :: Mustache Templates :: Tests</name>
-    <artifactId>openapi-to-java-records-mustache-templates-tests</artifactId>
+    <name>OpenAPI to Java records :: Mustache Templates :: Test :: Java</name>
+    <artifactId>openapi-to-java-records-mustache-templates-test-java</artifactId>
+    <description>Test Module for Java Generators</description>
     <!-- / Project Information -->
 
     <properties>

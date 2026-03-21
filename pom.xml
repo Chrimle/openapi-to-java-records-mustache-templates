@@ -19,8 +19,8 @@
     <!-- === Sub Modules === -->
     <modules>
         <module>mustache-templates</module>
-        <module>tests</module>
         <module>test-common</module>
+        <module>test-java</module>
         <module>test-useJakartaEe</module>
         <module>test-utils</module>
     </modules>
@@ -326,7 +326,7 @@
                         <publishingServerId>central</publishingServerId>
                         <tokenAuth>true</tokenAuth>
                         <autoPublish>true</autoPublish>
-                        <excludeArtifacts>openapi-to-java-records-mustache-templates-tests,openapi-to-java-records-mustache-templates-test-common,openapi-to-java-records-mustache-templates-test-usejakartaee,openapi-to-java-records-mustache-templates-test-utils</excludeArtifacts>
+                        <excludeArtifacts>openapi-to-java-records-mustache-templates-test-java,openapi-to-java-records-mustache-templates-test-common,openapi-to-java-records-mustache-templates-test-usejakartaee,openapi-to-java-records-mustache-templates-test-utils</excludeArtifacts>
                     </configuration>
                 </plugin>
                 <!-- Override Parent Configuration -->
