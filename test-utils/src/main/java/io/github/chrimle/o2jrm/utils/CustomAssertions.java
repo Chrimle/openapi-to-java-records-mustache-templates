@@ -30,6 +30,7 @@ import org.junit.jupiter.api.Assertions;
  *
  * @since 2.5.3
  */
+@SuppressWarnings("java:S5960")
 public final class CustomAssertions extends CustomUtilityAssertions {
 
   private CustomAssertions() {

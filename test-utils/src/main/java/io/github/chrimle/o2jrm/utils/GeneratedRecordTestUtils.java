@@ -29,7 +29,10 @@ import java.util.Set;
 import org.junit.jupiter.api.Assertions;
 
 /** Generalized Test-class for testing Generated Record-classes */
+@SuppressWarnings("java:S5960")
 public class GeneratedRecordTestUtils {
+
+  private GeneratedRecordTestUtils() {}
 
   /**
    * Asserts that the {@code record} can be instantiated with test values.
