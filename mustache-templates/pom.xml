@@ -56,8 +56,8 @@
 
     <properties>
         <!-- Location of updated `.mustache` template files -->
-        <original-mustache-templates-directory>src/main/resources/templates</original-mustache-templates-directory>
-        <updated-mustache-templates-directory>${project.build.outputDirectory}/templates</updated-mustache-templates-directory>
+        <original-mustache-templates-directory>src/main/resources</original-mustache-templates-directory>
+        <updated-mustache-templates-directory>${project.build.outputDirectory}</updated-mustache-templates-directory>
     </properties>
 
     <build>
