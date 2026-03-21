@@ -27,6 +27,25 @@ If you have feedback or suggestions, please share it in either [Discussions](htt
 If you want a more detailed guide with simple examples to get started, check out the Wiki-page
 > [Beginner Guide (Step-by-Step)](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/wiki/Beginner-Guide-%28Step‐by‐Step%29).
 
+<details>
+
+<summary>Supported `openapi-generator` Versions</summary>
+
+- [7.20.0](https://github.com/OpenAPITools/openapi-generator/releases/tag/v7.20.0) - 2026, Feb 16 (latest)
+- [7.19.0](https://github.com/OpenAPITools/openapi-generator/releases/tag/v7.19.0) - 2026, Jan 19
+- [7.18.0](https://github.com/OpenAPITools/openapi-generator/releases/tag/v7.18.0) - 2025, Dec 22
+- [7.17.0](https://github.com/OpenAPITools/openapi-generator/releases/tag/v7.17.0) - 2025, Oct 29
+- [7.16.0](https://github.com/OpenAPITools/openapi-generator/releases/tag/v7.16.0) - 2025, Sep 28
+- [7.15.0](https://github.com/OpenAPITools/openapi-generator/releases/tag/v7.15.0) - 2025, Aug 22
+- [7.14.0](https://github.com/OpenAPITools/openapi-generator/releases/tag/v7.14.0) - 2025, Jun 25
+- [7.13.0](https://github.com/OpenAPITools/openapi-generator/releases/tag/v7.13.0) - 2025, Apr 27
+- [7.12.0](https://github.com/OpenAPITools/openapi-generator/releases/tag/v7.12.0) - 2025, Feb 28
+- [7.11.0](https://github.com/OpenAPITools/openapi-generator/releases/tag/v7.11.0) - 2025, Jan 20
+
+Older/newer versions may work, but are currently not part of the CI Test Suite.
+
+</details>
+
 ## Obtain Mustache Templates
 
 > [!NOTE]
