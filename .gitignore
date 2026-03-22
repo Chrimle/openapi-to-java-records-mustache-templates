@@ -60,8 +60,8 @@ test-useJakartaEe/target/surefire-reports
 test-java/target/generated-sources/openapi/src/*
 !test-java/target/generated-sources/openapi/src/**/
 
-test-useJakartaEe/target/generated-sources/openapi/src/*
-!test-useJakartaEe/target/generated-sources/openapi/src/**/
+test-useJakartaEe/target/generated-sources/*
+!test-useJakartaEe/target/generated-sources/**/
 
 test-java/target/generated-sources/openapi/src/.github
 test-java/target/generated-sources/openapi/src/.openapi-generator
@@ -69,11 +69,11 @@ test-java/target/generated-sources/openapi/src/api
 test-java/target/generated-sources/openapi/src/gradle
 test-java/target/generated-sources/openapi/src/src/main
 
-test-useJakartaEe/target/generated-sources/openapi/src/.github
-test-useJakartaEe/target/generated-sources/openapi/src/.openapi-generator
-test-useJakartaEe/target/generated-sources/openapi/src/api
-test-useJakartaEe/target/generated-sources/openapi/src/gradle
-test-useJakartaEe/target/generated-sources/openapi/src/src/main
+test-useJakartaEe/target/generated-sources/.github
+test-useJakartaEe/target/generated-sources/.openapi-generator
+test-useJakartaEe/target/generated-sources/api
+test-useJakartaEe/target/generated-sources/gradle
+test-useJakartaEe/target/generated-sources/src/main
 # Exclude Supporting Files
 **/auth/**
 AbstractOpenApiSchema.java

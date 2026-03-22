@@ -32,7 +32,7 @@
         <!-- Always set useJakartaEe=true -->
         <useJakartaEe.default>true</useJakartaEe.default>
         <!-- Default `configuration.configOptions`-option values -->
-        <output.default>target/generated-sources/openapi/src</output.default>
+        <output.default>target/generated-sources</output.default>
 
         <!-- Plugin Executions -->
         <!-- The Plugin Execution with Standard Configurations -->
