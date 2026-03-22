@@ -57,17 +57,17 @@ test-java/target/surefire-reports
 test-useJakartaEe/target/dependency-maven-plugin-markers
 test-useJakartaEe/target/surefire-reports
 
-test-java/target/generated-sources/openapi/src/*
-!test-java/target/generated-sources/openapi/src/**/
+test-java/target/generated-sources/*
+!test-java/target/generated-sources/**/
 
 test-useJakartaEe/target/generated-sources/*
 !test-useJakartaEe/target/generated-sources/**/
 
-test-java/target/generated-sources/openapi/src/.github
-test-java/target/generated-sources/openapi/src/.openapi-generator
-test-java/target/generated-sources/openapi/src/api
-test-java/target/generated-sources/openapi/src/gradle
-test-java/target/generated-sources/openapi/src/src/main
+test-java/target/generated-sources/.github
+test-java/target/generated-sources/.openapi-generator
+test-java/target/generated-sources/api
+test-java/target/generated-sources/gradle
+test-java/target/generated-sources/src/main
 
 test-useJakartaEe/target/generated-sources/.github
 test-useJakartaEe/target/generated-sources/.openapi-generator
