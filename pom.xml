@@ -324,7 +324,6 @@
                     <extensions>true</extensions>
                     <configuration>
                         <publishingServerId>central</publishingServerId>
-                        <tokenAuth>true</tokenAuth>
                         <autoPublish>true</autoPublish>
                         <excludeArtifacts>openapi-to-java-records-mustache-templates-test-java,openapi-to-java-records-mustache-templates-test-common,openapi-to-java-records-mustache-templates-test-java-usejakartaee,openapi-to-java-records-mustache-templates-test-utils</excludeArtifacts>
                     </configuration>
