@@ -35,8 +35,8 @@ replay_pid*
 # Spotless
 target/spotless-index
 mustache-templates/target/spotless-index
-tests/target/spotless-index
-test-useJakartaEe/target/spotless-index
+test-java/target/spotless-index
+test-java-useJakartaEe/target/spotless-index
 test-utils/target/spotless-index
 test-common/target/spotless-index
 test-spring/target/spotless-index
@@ -44,40 +44,40 @@ test-spring/target/spotless-index
 # Maven Archiver & Status
 mustache-templates/target/maven-archiver
 mustache-templates/target/maven-status
-tests/target/maven-archiver
-tests/target/maven-status
-test-useJakartaEe/target/maven-archiver
-test-useJakartaEe/target/maven-status
+test-java/target/maven-archiver
+test-java/target/maven-status
+test-java-useJakartaEe/target/maven-archiver
+test-java-useJakartaEe/target/maven-status
 test-utils/target/maven-archiver
 test-utils/target/maven-status
 test-common/target/maven-archiver
 test-common/target/maven-status
 test-spring/target/maven-archiver
 
-tests/target/dependency-maven-plugin-markers
-test-useJakartaEe/target/dependency-maven-plugin-markers
+test-java/target/dependency-maven-plugin-markers
+test-java-useJakartaEe/target/dependency-maven-plugin-markers
 test-spring/target/dependency-maven-plugin-markers
 
-tests/target/surefire-reports
-test-useJakartaEe/target/surefire-reports
+test-java/target/surefire-reports
+test-java-useJakartaEe/target/surefire-reports
 
-tests/target/generated-sources/openapi/src/*
-!tests/target/generated-sources/openapi/src/**/
+test-java/target/generated-sources/*
+!test-java/target/generated-sources/**/
 
-test-useJakartaEe/target/generated-sources/openapi/src/*
-!test-useJakartaEe/target/generated-sources/openapi/src/**/
+test-java-useJakartaEe/target/generated-sources/*
+!test-java-useJakartaEe/target/generated-sources/**/
 
-tests/target/generated-sources/openapi/src/.github
-tests/target/generated-sources/openapi/src/.openapi-generator
-tests/target/generated-sources/openapi/src/api
-tests/target/generated-sources/openapi/src/gradle
-tests/target/generated-sources/openapi/src/src/main
+test-java/target/generated-sources/.github
+test-java/target/generated-sources/.openapi-generator
+test-java/target/generated-sources/api
+test-java/target/generated-sources/gradle
+test-java/target/generated-sources/src/main
 
-test-useJakartaEe/target/generated-sources/openapi/src/.github
-test-useJakartaEe/target/generated-sources/openapi/src/.openapi-generator
-test-useJakartaEe/target/generated-sources/openapi/src/api
-test-useJakartaEe/target/generated-sources/openapi/src/gradle
-test-useJakartaEe/target/generated-sources/openapi/src/src/main
+test-java-useJakartaEe/target/generated-sources/.github
+test-java-useJakartaEe/target/generated-sources/.openapi-generator
+test-java-useJakartaEe/target/generated-sources/api
+test-java-useJakartaEe/target/generated-sources/gradle
+test-java-useJakartaEe/target/generated-sources/src/main
 # Exclude Supporting Files
 **/auth/**
 AbstractOpenApiSchema.java
@@ -104,24 +104,24 @@ ServerConfiguration.java
 ServerVariable.java
 StringUtil.java
 
-tests/target/site/jacoco
-tests/target/jacoco.exec
+test-java/target/site/jacoco
+test-java/target/jacoco.exec
 
-test-useJakartaEe/target/site/jacoco
-test-useJakartaEe/target/jacoco.exec
+test-java-useJakartaEe/target/site/jacoco
+test-java-useJakartaEe/target/jacoco.exec
 
 test-common/target/site/jacoco
 test-common/target/jacoco.exec
 test-common/target/classes/api.yaml
 
 # Ignore Imported Files
-tests/target/classes/templates
-test-useJakartaEe/target/classes/templates
+test-java/target/classes/templates
+test-java-useJakartaEe/target/classes/templates
 test-spring/target/classes/spring-templates
 
-tests/target/classes/api.yaml
-test-useJakartaEe/target/classes/api.yaml
+test-java/target/classes/api.yaml
+test-java-useJakartaEe/target/classes/api.yaml
 test-spring/target/classes/api.yaml
 
-/test-useJakartaEe/target/test-classes/junit-platform.properties
-/tests/target/test-classes/junit-platform.properties
+test-java/target/test-classes/junit-platform.properties
+test-java-useJakartaEe/target/test-classes/junit-platform.properties
