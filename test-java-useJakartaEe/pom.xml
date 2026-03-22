@@ -10,8 +10,9 @@
     </parent>
 
     <!-- Project Information -->
-    <name>OpenAPI to Java records :: Mustache Templates :: Test useJakartaEe</name>
-    <artifactId>openapi-to-java-records-mustache-templates-test-usejakartaee</artifactId>
+    <name>OpenAPI to Java records :: Mustache Templates :: Test :: Java useJakartaEe</name>
+    <artifactId>openapi-to-java-records-mustache-templates-test-java-usejakartaee</artifactId>
+    <description>Test Module for Java Generators with useJakartaEe</description>
     <!-- / Project Information -->
 
     <properties>
