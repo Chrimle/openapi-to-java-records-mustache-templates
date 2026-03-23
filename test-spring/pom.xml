@@ -4,7 +4,7 @@
     <parent>
         <groupId>io.github.chrimle</groupId>
         <artifactId>openapi-to-java-records-mustache-templates-parent</artifactId>
-        <version>3.5.1</version>
+        <version>3.5.2</version>
     </parent>
     <!-- Project Information -->
     <name>OpenAPI to Java records :: Mustache Templates :: Test Spring</name>
