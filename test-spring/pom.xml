@@ -13,8 +13,11 @@
     <!-- / Project Information -->
 
     <properties>
+        <!-- Unpack the spring-templates instead -->
         <templatesToCopy>
-            spring-templates/pojo.mustache
+            spring-templates/javadoc.mustache,
+            spring-templates/pojo.mustache,
+            spring-templates/useBeanValidation.mustache
         </templatesToCopy>
     </properties>
 
