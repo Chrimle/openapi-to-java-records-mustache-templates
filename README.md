@@ -31,7 +31,8 @@ If you want a more detailed guide with simple examples to get started, check out
 
 These _mustache templates_ (**[latest release](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/releases)**) are backwards-compatible and are continuously tested with all these versions:
 
-- [7.20.0](https://github.com/OpenAPITools/openapi-generator/releases/tag/v7.20.0) - 2026, Feb 16 (latest)
+- [7.21.0](https://github.com/OpenAPITools/openapi-generator/releases/tag/v7.21.0) - 2026, Mar 24 (latest)
+- [7.20.0](https://github.com/OpenAPITools/openapi-generator/releases/tag/v7.20.0) - 2026, Feb 16
 - [7.19.0](https://github.com/OpenAPITools/openapi-generator/releases/tag/v7.19.0) - 2026, Jan 19
 - [7.18.0](https://github.com/OpenAPITools/openapi-generator/releases/tag/v7.18.0) - 2025, Dec 22
 - [7.17.0](https://github.com/OpenAPITools/openapi-generator/releases/tag/v7.17.0) - 2025, Oct 29
