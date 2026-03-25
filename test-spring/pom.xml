@@ -1,0 +1,56 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>io.github.chrimle</groupId>
+        <artifactId>openapi-to-java-records-mustache-templates-parent</artifactId>
+        <version>3.6.0</version>
+    </parent>
+    <!-- Project Information -->
+    <name>OpenAPI to Java records :: Mustache Templates :: Test Spring</name>
+    <artifactId>openapi-to-java-records-mustache-templates-test-spring</artifactId>
+    <description>Module for Testing spring-templates with Spring-Generator</description>
+    <!-- / Project Information -->
+
+    <properties>
+        <!-- Unpack the spring-templates instead -->
+        <templatesToCopy>
+            spring-templates/javadoc.mustache,
+            spring-templates/pojo.mustache,
+            spring-templates/useBeanValidation.mustache
+        </templatesToCopy>
+        <!-- Unpack the Spring-compatible OpenAPI Spec instead -->
+        <specsToCopy>spring-api.yaml</specsToCopy>
+    </properties>
+
+
+    <dependencies>
+        <!-- Sub Modules -->
+        <dependency>
+            <groupId>io.github.chrimle</groupId>
+            <artifactId>openapi-to-java-records-mustache-templates-test-utils</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.github.chrimle</groupId>
+            <artifactId>openapi-to-java-records-mustache-templates-test-common</artifactId>
+            <classifier>tests</classifier>
+        </dependency>
+        <!-- / Sub Modules -->
+    </dependencies>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-dependency-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <!-- Skip Deploying to GitHub Packages -->
+                <artifactId>maven-deploy-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

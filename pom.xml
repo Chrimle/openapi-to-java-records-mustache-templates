@@ -22,6 +22,7 @@
         <module>test-common</module>
         <module>test-java</module>
         <module>test-java-useJakartaEe</module>
+        <module>test-spring</module>
         <module>test-utils</module>
     </modules>
 
@@ -124,6 +125,18 @@
         <!-- Spotless -->
         <spotless.check.skip>false</spotless.check.skip> <!-- Unused imports causes build to fail -->
         <!-- /Spotless -->
+
+        <!-- Default mustache-templates used by Java Generators -->
+        <templatesToCopy>
+            templates/generateBuilders.mustache,
+            templates/javadoc.mustache,
+            templates/licenseInfo.mustache,
+            templates/modelEnum.mustache,
+            templates/pojo.mustache,
+            templates/useBeanValidation.mustache
+        </templatesToCopy>
+        <!-- Default OpenAPI Specs used by Java Generators -->
+        <specsToCopy>api.yaml</specsToCopy>
     </properties>
 
     <scm>
@@ -277,14 +290,7 @@
                                         <type>jar</type>
                                         <overWrite>true</overWrite>
                                         <outputDirectory>${project.build.outputDirectory}</outputDirectory>
-                                        <includes>
-                                            templates/generateBuilders.mustache,
-                                            templates/javadoc.mustache,
-                                            templates/licenseInfo.mustache,
-                                            templates/modelEnum.mustache,
-                                            templates/pojo.mustache,
-                                            templates/useBeanValidation.mustache
-                                        </includes>
+                                        <includes>${templatesToCopy}</includes>
                                     </artifactItem>
                                 </artifactItems>
                             </configuration>
@@ -304,7 +310,7 @@
                                         <type>jar</type>
                                         <overWrite>true</overWrite>
                                         <outputDirectory>${project.build.outputDirectory}</outputDirectory>
-                                        <includes>api.yaml</includes>
+                                        <includes>${specsToCopy}</includes>
                                     </artifactItem>
                                 </artifactItems>
                             </configuration>
@@ -325,7 +331,7 @@
                     <configuration>
                         <publishingServerId>central</publishingServerId>
                         <autoPublish>true</autoPublish>
-                        <excludeArtifacts>openapi-to-java-records-mustache-templates-test-java,openapi-to-java-records-mustache-templates-test-common,openapi-to-java-records-mustache-templates-test-java-usejakartaee,openapi-to-java-records-mustache-templates-test-utils</excludeArtifacts>
+                        <excludeArtifacts>openapi-to-java-records-mustache-templates-test-java,openapi-to-java-records-mustache-templates-test-common,openapi-to-java-records-mustache-templates-test-java-usejakartaee,openapi-to-java-records-mustache-templates-test-utils,openapi-to-java-records-mustache-templates-test-spring</excludeArtifacts>
                     </configuration>
                 </plugin>
                 <!-- Override Parent Configuration -->

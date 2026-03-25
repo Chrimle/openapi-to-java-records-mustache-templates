@@ -39,6 +39,7 @@ test-java/target/spotless-index
 test-java-useJakartaEe/target/spotless-index
 test-utils/target/spotless-index
 test-common/target/spotless-index
+test-spring/target/spotless-index
 
 # Maven Archiver & Status
 mustache-templates/target/maven-archiver
@@ -51,10 +52,13 @@ test-utils/target/maven-archiver
 test-utils/target/maven-status
 test-common/target/maven-archiver
 test-common/target/maven-status
+test-spring/target/maven-archiver
 
 test-java/target/dependency-maven-plugin-markers
-test-java/target/surefire-reports
 test-java-useJakartaEe/target/dependency-maven-plugin-markers
+test-spring/target/dependency-maven-plugin-markers
+
+test-java/target/surefire-reports
 test-java-useJakartaEe/target/surefire-reports
 
 test-java/target/generated-sources/*
@@ -109,13 +113,16 @@ test-java-useJakartaEe/target/jacoco.exec
 test-common/target/site/jacoco
 test-common/target/jacoco.exec
 test-common/target/classes/api.yaml
+test-common/target/classes/spring-api.yaml
 
 # Ignore Imported Files
 test-java/target/classes/templates
-test-java/target/classes/api.yaml
-
 test-java-useJakartaEe/target/classes/templates
-test-java-useJakartaEe/target/classes/api.yaml
+test-spring/target/classes/spring-templates
 
-test-java-useJakartaEe/target/test-classes/junit-platform.properties
+test-java/target/classes/api.yaml
+test-java-useJakartaEe/target/classes/api.yaml
+test-spring/target/classes/spring-api.yaml
+
 test-java/target/test-classes/junit-platform.properties
+test-java-useJakartaEe/target/test-classes/junit-platform.properties
