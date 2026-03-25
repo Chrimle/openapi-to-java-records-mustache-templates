@@ -135,6 +135,8 @@
             templates/pojo.mustache,
             templates/useBeanValidation.mustache
         </templatesToCopy>
+        <!-- Default OpenAPI Specs used by Java Generators -->
+        <specsToCopy>api.yaml</specsToCopy>
     </properties>
 
     <scm>
@@ -308,7 +310,7 @@
                                         <type>jar</type>
                                         <overWrite>true</overWrite>
                                         <outputDirectory>${project.build.outputDirectory}</outputDirectory>
-                                        <includes>api.yaml</includes>
+                                        <includes>${specsToCopy}</includes>
                                     </artifactItem>
                                 </artifactItems>
                             </configuration>

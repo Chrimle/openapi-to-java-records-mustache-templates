@@ -113,6 +113,7 @@ test-java-useJakartaEe/target/jacoco.exec
 test-common/target/site/jacoco
 test-common/target/jacoco.exec
 test-common/target/classes/api.yaml
+test-common/target/classes/spring-api.yaml
 
 # Ignore Imported Files
 test-java/target/classes/templates
@@ -121,7 +122,7 @@ test-spring/target/classes/spring-templates
 
 test-java/target/classes/api.yaml
 test-java-useJakartaEe/target/classes/api.yaml
-test-spring/target/classes/api.yaml
+test-spring/target/classes/spring-api.yaml
 
 test-java/target/test-classes/junit-platform.properties
 test-java-useJakartaEe/target/test-classes/junit-platform.properties

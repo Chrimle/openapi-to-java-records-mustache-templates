@@ -19,6 +19,8 @@
             spring-templates/pojo.mustache,
             spring-templates/useBeanValidation.mustache
         </templatesToCopy>
+        <!-- Unpack the Spring-compatible OpenAPI Spec instead -->
+        <specsToCopy>spring-api.yaml</specsToCopy>
     </properties>
 
 
