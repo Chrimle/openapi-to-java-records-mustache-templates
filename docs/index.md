@@ -21,6 +21,12 @@ If you have feedback or suggestions, please share it in either [Discussions](htt
 > This project is, _and will continue to be_, solely maintained by [Chrimle](https://github.com/Chrimle).
 > While _direct_ code contributions are disallowed, your feedback is the most valuable contribution - please share it!
 
+# Used by ...
+
+> **TIP**
+> 
+> Does your organization use this project? Be featured here, by filling out this form: [Update Organization Usage](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/issues/new/choose)
+
 # Getting Started
 > If you want a more detailed guide with simple examples to get started, check out the Wiki-page
 > [Beginner Guide (Step-by-Step)](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/wiki/Beginner-Guide-%28Step‐by‐Step%29).
