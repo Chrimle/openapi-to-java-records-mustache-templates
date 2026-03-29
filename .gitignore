@@ -29,7 +29,7 @@
 hs_err_pid*
 replay_pid*
 
-.idea
+.idea/*
 *.iml
 
 # Spotless
@@ -119,3 +119,6 @@ test-java-useJakartaEe/target/classes/api.yaml
 
 test-java-useJakartaEe/target/test-classes/junit-platform.properties
 test-java/target/test-classes/junit-platform.properties
+
+# Track Copyright header Settings
+!.idea/copyright/
