@@ -121,4 +121,4 @@ test-java-useJakartaEe/target/test-classes/junit-platform.properties
 test-java/target/test-classes/junit-platform.properties
 
 # Track Copyright header Settings
-!.idea/copyright/*
+!.idea/copyright/
