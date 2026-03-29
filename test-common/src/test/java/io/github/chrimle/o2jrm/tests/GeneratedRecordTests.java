@@ -39,7 +39,6 @@ import io.github.chrimle.o2jrm.tests.GeneratedRecordTests.OpenAPITests.SchemaTes
 import io.github.chrimle.o2jrm.tests.GeneratedRecordTests.OpenAPITests.SchemaTests.TypeTests;
 import io.github.chrimle.o2jrm.tests.GeneratedRecordTests.OpenAPITests.SchemaTests.XClassExtraAnnotationTests;
 import io.github.chrimle.o2jrm.utils.AssertionUtils;
-import io.github.chrimle.o2jrm.utils.AssertionUtilsImpl;
 import io.github.chrimle.o2jrm.utils.CustomAssertions;
 import io.github.chrimle.o2jrm.utils.GeneratedRecordTestUtils;
 import java.io.*;
@@ -1333,7 +1332,7 @@ public abstract class GeneratedRecordTests {
           void
               whenUseBeanValidationIsTrueThenFieldsAreAnnotatedWithJakartaBeanValidationAnnotations(
                   final GeneratedSource generatedSource) {
-            AssertionUtilsImpl.assertRecordHasFieldsOfTypeWithNullableAnnotations(generatedSource);
+            AssertionUtils.assertRecordHasFieldsOfTypeWithNullableAnnotations(generatedSource);
           }
         }
       }
