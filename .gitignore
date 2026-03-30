@@ -53,6 +53,7 @@ test-utils/target/maven-status
 test-common/target/maven-archiver
 test-common/target/maven-status
 test-spring/target/maven-archiver
+test-spring/target/maven-status
 
 test-java/target/dependency-maven-plugin-markers
 test-java-useJakartaEe/target/dependency-maven-plugin-markers
@@ -67,6 +68,9 @@ test-java/target/generated-sources/*
 test-java-useJakartaEe/target/generated-sources/*
 !test-java-useJakartaEe/target/generated-sources/**/
 
+test-spring/target/generated-sources/*
+!test-spring/target/generated-sources/**/
+
 test-java/target/generated-sources/.github
 test-java/target/generated-sources/.openapi-generator
 test-java/target/generated-sources/api
@@ -78,6 +82,13 @@ test-java-useJakartaEe/target/generated-sources/.openapi-generator
 test-java-useJakartaEe/target/generated-sources/api
 test-java-useJakartaEe/target/generated-sources/gradle
 test-java-useJakartaEe/target/generated-sources/src/main
+
+test-spring/target/generated-sources/.github
+test-spring/target/generated-sources/.openapi-generator
+test-spring/target/generated-sources/api
+test-spring/target/generated-sources/gradle
+test-spring/target/generated-sources/src/main
+
 # Exclude Supporting Files
 **/auth/**
 AbstractOpenApiSchema.java
