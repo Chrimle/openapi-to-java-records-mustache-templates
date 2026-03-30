@@ -29,7 +29,7 @@
 hs_err_pid*
 replay_pid*
 
-.idea
+.idea/*
 *.iml
 
 # Spotless
@@ -126,3 +126,6 @@ test-spring/target/classes/spring-api.yaml
 
 test-java/target/test-classes/junit-platform.properties
 test-java-useJakartaEe/target/test-classes/junit-platform.properties
+
+# Track Copyright header Settings
+!.idea/copyright/
