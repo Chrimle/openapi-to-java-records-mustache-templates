@@ -101,7 +101,7 @@
                                     <filtering>true</filtering>
                                 </resource>
                             </resources>
-                            <outputDirectory>${updated-mustache-templates-directory}/templates</outputDirectory>
+                            <outputDirectory>${updated-mustache-templates-directory}</outputDirectory>
                         </configuration>
                     </execution>
                     <execution>
