@@ -1,0 +1,322 @@
+{{!
+   Copyright 2024-2026 Chrimle
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+
+}}{{!
+  Source: openapi-to-java-records-mustache-templates
+  Version: 3.6.0
+  Type: Override
+  Dependencies:
+    - `additionalModelTypeAnnotations.mustache` (Official)
+    - `generateBuilders.mustache`
+    - `javadoc.mustache`
+    - `useBeanValidation.mustache`
+  Dependents:
+    - Official Templates
+  Additional Context:
+    - This template is overriding an official 'openapi-generator-maven-plugin' template.
+
+}}{{!
+    Imports needed for 'okhttp-gson'
+}}{{#gson}}import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapterFactory;
+{{#vars}}{{#isEnum}}{{#-first}}import com.google.gson.annotations.JsonAdapter;
+{{/-first}}{{/isEnum}}{{/vars}}{{!
+}}import com.google.gson.reflect.TypeToken;
+import java.util.HashSet;
+import java.util.Set;
+
+{{/gson}}{{!
+}}{{>javadoc}}{{!
+}}{{#isDeprecated}}@Deprecated
+{{/isDeprecated}}{{!
+}}{{>additionalModelTypeAnnotations}}{{!
+}}{{#vendorExtensions.x-class-extra-annotation}}{{!
+  }}{{{vendorExtensions.x-class-extra-annotation}}}
+{{/vendorExtensions.x-class-extra-annotation}}{{!
+}}public record {{classname}}(
+    {{#vars}}{{!
+    }}{{#vendorExtensions.x-field-extra-annotation}}{{!
+        }}{{{.}}}
+    {{/vendorExtensions.x-field-extra-annotation}}{{!
+    }}{{>useBeanValidation}}{{{datatypeWithEnum}}} {{name}}{{^-last}},
+    {{/-last}}{{/vars}}){{#vendorExtensions.x-implements}}{{#-first}}
+    implements {{{.}}}{{/-first}}{{^-first}}, {{{.}}}{{/-first}}{{/vendorExtensions.x-implements}} {
+
+{{#gson}}  /** A set containing the names of all instance fields defined in this class. */
+  public static final HashSet<String> openapiFields =
+      new HashSet<String>(
+          Set.of({{#allVars}}"{{baseName}}"{{^-last}},
+              {{/-last}}{{/allVars}}));
+
+  /** A set containing the names of all required fields defined in this class. */
+  public static final HashSet<String> openapiRequiredFields ={{#requiredVars}}{{#-first}}
+     {{/-first}}{{/requiredVars}} new HashSet<String>({{#requiredVars}}{{#-first}}
+          {{/-first}}{{/requiredVars}}Set.of({{#requiredVars}}"{{baseName}}"{{^-last}},
+              {{/-last}}{{/requiredVars}}));
+
+{{/gson}}
+{{#jackson}}  @JsonCreator
+{{/jackson}}
+  public {{classname}}(
+      {{#vars}}final {{{datatypeWithEnum}}} {{name}}{{^-last}},
+      {{/-last}}{{/vars}}) {
+{{#vars}}    this.{{name}} = {{^defaultValue}}{{name}};{{/defaultValue}}{{!
+                            }}{{#defaultValue}}{{!
+                                }}{{#isArray}}Objects.requireNonNullElseGet({{name}}, () -> {{{.}}});{{/isArray}}{{!
+                                }}{{^isArray}}Objects.requireNonNullElse({{name}}, {{{.}}});{{/isArray}}{{!
+                            }}{{/defaultValue}}
+{{/vars}}  }{{#generateBuilders}}{{>generateBuilders}}{{/generateBuilders}}{{!
+    Generate inner enum classes
+  }}{{#vars}}{{#isEnum}}
+
+  /**
+   * {{description}}{{^description}}{{datatypeWithEnum}}{{/description}}
+   */
+{{#additionalEnumTypeAnnotations}}  {{{.}}}
+{{/additionalEnumTypeAnnotations}}{{!
+}}{{#gson}}{{!
+}}  @JsonAdapter({{{datatypeWithEnum}}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}}.Adapter.class)
+{{/gson}}{{!
+}}  public enum {{datatypeWithEnum}} {
+    {{#allowableValues}}{{#enumVars}}{{!
+  }}{{#enumDescription}}{{!
+  }}/**
+     * {{.}}
+     */
+    {{/enumDescription}}{{!
+    }}{{{name}}}({{{value}}}){{^-last}},
+    {{/-last}}{{#-last}};{{/-last}}{{!
+    }}{{/enumVars}}{{/allowableValues}}
+
+    private final {{{dataType}}} value;
+
+    {{datatypeWithEnum}}(final {{{dataType}}} value) {
+      this.value = value;
+    }
+
+    /**
+     * Gets the {@code value} of this enum.
+     *
+     * @return the value of this enum.
+     */
+{{#jackson}}    @JsonValue
+{{/jackson}}
+    public {{{dataType}}} getValue() {
+      return value;
+    }
+
+    /**
+     * {{#isString}}Case-{{#useEnumCaseInsensitive}}in{{/useEnumCaseInsensitive}}sensitively m{{/isString}}{{^isString}}M{{/isString}}atches the given {@code value} to an enum constant using {@link{{#isString}}
+     *{{/isString}} #getValue()}.
+     *
+     * <p><b>NOTE:</b> if multiple enum constants have a matching value, the first enum constant is
+     * returned, by the order they are declared.
+     *
+     * @param value of the enum.
+     * @return a {@link {{datatypeWithEnum}} } with the matching value{{#enumUnknownDefaultCase}}, or
+     *     {@link #{{#allowableValues}}{{#enumVars}}{{#-last}}{{{name}}} }{{/-last}}{{/enumVars}}{{/allowableValues}} if no match is found.{{/enumUnknownDefaultCase}}{{^enumUnknownDefaultCase}}.
+     * @throws IllegalArgumentException if no enum has a value matching the given value.{{/enumUnknownDefaultCase}}
+     */
+{{#jackson}}    @JsonCreator
+{{/jackson}}
+    public static {{datatypeWithEnum}} fromValue(final {{{dataType}}} value) {
+      for (final {{datatypeWithEnum}} constant : {{datatypeWithEnum}}.values()) {
+        if (constant.getValue().equals{{#useEnumCaseInsensitive}}{{#isString}}{{^isUri}}IgnoreCase{{/isUri}}{{/isString}}{{/useEnumCaseInsensitive}}(value)) {
+          return constant;
+        }
+      }
+      {{#enumUnknownDefaultCase}}{{#allowableValues}}{{#enumVars}}{{#-last}}return {{{name}}};{{/-last}}{{/enumVars}}{{/allowableValues}}{{/enumUnknownDefaultCase}}{{^enumUnknownDefaultCase}}throw new IllegalArgumentException("Unexpected value '" + value + "'");{{/enumUnknownDefaultCase}}
+    }
+{{#gson}}
+
+    /**
+     * Validates the JSON Element and throws an exception if issues are found.
+     *
+     * @param jsonElement to validate.
+     * @throws IOException if the JSON Element is not a valid {{datatypeWithEnum}} object.
+     */
+    public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
+      final {{^isNumber}}{{{dataType}}}{{/isNumber}}{{#isNumber}}String{{/isNumber}} value = {{#isUri}}URI.create({{/isUri}}jsonElement.{{#isNumber}}getAsString(){{/isNumber}}{{#isInteger}}getAsInt(){{/isInteger}}{{#isUri}}getAsString()){{/isUri}}{{^isNumber}}{{^isInteger}}{{^isUri}}getAs{{{dataType}}}(){{/isUri}}{{/isInteger}}{{/isNumber}};
+      {{{datatypeWithEnum}}}{{^datatypeWithEnum}}{{{classname}}}{{/datatypeWithEnum}}.fromValue({{#isNumber}}new BigDecimal({{/isNumber}}value{{#isNumber}}){{/isNumber}});
+    }
+
+    /**
+     * Converts {@link {{{datatypeWithEnum}}}{{^datatypeWithEnum}}{{{classname}}}{{/datatypeWithEnum}} } objects to and from JSON.
+     *
+     * @see com.google.gson.TypeAdapter
+     */
+    public static class Adapter extends TypeAdapter<{{{datatypeWithEnum}}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}}> {
+
+      /**
+       * Writes the {@link #value} of the {@code enumeration} as a JSON-string to the {@code
+       * jsonWriter}.
+       *
+       * @param jsonWriter to write the value to.
+       * @param enumeration to write as JSON.
+       * @throws IOException if the {@code jsonWriter} fails to write the value.
+       * @throws NullPointerException if {@code jsonWriter} or {@code enumeration} is {@code null}.
+       */
+      @Override
+      public void write(final JsonWriter jsonWriter, final {{{datatypeWithEnum}}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}} enumeration)
+          throws IOException {
+        jsonWriter.value(enumeration.getValue(){{#isUri}}.toASCIIString(){{/isUri}});
+      }
+
+      /**
+       * Reads the <i>next</i> JSON-value from the {@code jsonReader} and converts it to a {@link
+       * {{{datatypeWithEnum}}}{{^datatypeWithEnum}}{{{classname}}}{{/datatypeWithEnum}} }.
+       *
+       * @param jsonReader to read the JSON-string from.
+       * @return a {@link {{{datatypeWithEnum}}}{{^datatypeWithEnum}}{{{classname}}}{{/datatypeWithEnum}} }.
+       * @throws IOException if the {@code jsonReader} fails to read a value.
+       * @throws NullPointerException if {@code jsonReader} is {@code null}.
+       * @see #fromValue
+       */
+      @Override
+      public {{{datatypeWithEnum}}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}} read(final JsonReader jsonReader) throws IOException {
+        final {{^isNumber}}{{{dataType}}}{{/isNumber}}{{#isNumber}}String{{/isNumber}} value = {{#isFloat}}(float) {{/isFloat}}{{#isUri}}URI.create({{/isUri}}jsonReader.{{#isNumber}}nextString(){{/isNumber}}{{#isInteger}}nextInt(){{/isInteger}}{{#isUri}}nextString()){{/isUri}}{{^isNumber}}{{^isInteger}}{{^isUri}}{{#isFloat}}nextDouble{{/isFloat}}{{^isFloat}}next{{{dataType}}}{{/isFloat}}(){{/isUri}}{{/isInteger}}{{/isNumber}};
+        return {{{datatypeWithEnum}}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}}.fromValue({{#isNumber}}new BigDecimal({{/isNumber}}value{{#isNumber}}){{/isNumber}});
+      }
+    }
+{{/gson}}
+  }{{/isEnum}}{{/vars}}
+{{#gson}}
+
+  /**
+   * Validates the JSON Element and throws an exception if issues are found.
+   *
+   * @param jsonElement to validate.
+   * @throws IOException if the JSON Element is not a valid {{classname}} object.
+   */
+  public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
+{{#requiredVars}}{{#-first}}{{!
+}}    if (jsonElement == null) {
+      throw new IllegalArgumentException(
+          String.format(
+              java.util.Locale.ROOT,
+              "The required field(s) %s in {{{classname}}} is not found in the empty JSON string",
+              {{classname}}.openapiRequiredFields.toString()));
+    }
+
+{{/-first}}{{/requiredVars}}{{!
+}}{{^hasChildren}}{{^isAdditionalPropertiesTrue}}{{!
+}}    for (final String key : jsonElement.getAsJsonObject().keySet()) {
+      if (!{{classname}}.openapiFields.contains(key)) {
+        throw new IllegalArgumentException(
+            String.format(
+                java.util.Locale.ROOT,
+                "The field `%s` in the JSON string is not defined in the `{{classname}}` properties. JSON: %s",
+                key,
+                jsonElement));
+      }
+    }
+{{/isAdditionalPropertiesTrue}}{{!
+}}{{#requiredVars}}{{#-first}}
+    for (final String requiredField : {{classname}}.openapiRequiredFields) {
+      if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+        throw new IllegalArgumentException(
+            String.format(
+                java.util.Locale.ROOT,
+                "The required field `%s` is not found in the JSON string: %s",
+                requiredField,
+                jsonElement));
+      }
+    }
+{{/-first}}{{/requiredVars}}{{/hasChildren}}{{!
+}}{{^discriminator}}{{#hasVars}}
+    final JsonObject jsonObj = jsonElement.getAsJsonObject();
+{{/hasVars}}{{!
+}}{{#vars}}{{^required}}
+    if (jsonObj.get("{{{baseName}}}") != null && !jsonObj.get("{{{baseName}}}").isJsonNull()) { {{/required}}{{!
+}}{{^isModel}}{{^isEnumRef}}{{^isEnum}}
+{{^required}}  {{/required}}    if (!jsonObj.get("{{{baseName}}}").{{#isArray}}isJsonArray(){{/isArray}}{{^isContainer}}{{^isModel}}isJsonPrimitive(){{/isModel}}{{/isContainer}}) {
+{{^required}}  {{/required}}      throw new IllegalArgumentException(
+{{^required}}  {{/required}}          String.format(
+{{^required}}  {{/required}}              java.util.Locale.ROOT,
+{{^required}}  {{/required}}              "Expected the field `{{{baseName}}}` to be {{#isArray}}an array{{/isArray}}{{^isArray}}a primitive type{{/isArray}} in the JSON string but got `%s`",
+{{^required}}  {{/required}}              jsonObj.get("{{{baseName}}}")));
+{{^required}}  {{/required}}    }{{!
+}}{{/isEnum}}{{/isEnumRef}}{{/isModel}}{{!
+}}{{#items.isModel}}
+{{^required}}  {{/required}}    for (final JsonElement element : jsonObj.getAsJsonArray("{{{baseName}}}").asList()) {
+{{^required}}  {{/required}}      {{{items.dataType}}}.validateJsonElement(element);
+{{^required}}  {{/required}}    }{{!
+}}{{/items.isModel}}{{!
+}}{{^isContainer}}{{#isModel}}
+{{^required}}  {{/required}}    {{{dataType}}}.validateJsonElement(jsonObj.get("{{{baseName}}}"));{{!
+}}{{/isModel}}{{/isContainer}}{{!
+}}{{#isEnum}}
+{{^required}}  {{/required}}    {{{datatypeWithEnum}}}.validateJsonElement(jsonObj.get("{{{baseName}}}"));{{!
+}}{{/isEnum}}{{!
+}}{{#isEnumRef}}
+{{^required}}  {{/required}}    {{{dataType}}}.validateJsonElement(jsonObj.get("{{{baseName}}}"));{{!
+}}{{/isEnumRef}}
+{{^required}}
+    }
+{{/required}}{{/vars}}{{/discriminator}}{{!
+}}  }
+{{^hasChildren}}
+
+  /**
+   * Creates {@link TypeAdapter}s for {@link {{classname}} }s and other
+   * <i>assignable</i> types.
+   */
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+
+    /**
+     * {@inheritDoc}
+     *
+     * @param gson to create the {@link TypeAdapter} from.
+     * @param type to <i>serialize</i>/<i>deserialize</i>.
+     * @return an (<i>anonymous</i>) instance of {@link TypeAdapter<{{classname}}>}, or
+     *     {@code null} if {@code T} is not <i>assignable</i> to {@link {{classname}} }.
+     * @param <T> class to <i>serialize</i>/<i>deserialize</i>.
+     */
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(final Gson gson, final TypeToken<T> type) {
+      if (!{{classname}}.class.isAssignableFrom(type.getRawType())) {
+        return null;
+      }
+      final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+      final TypeAdapter<{{classname}}> thisAdapter =
+          gson.getDelegateAdapter(this, TypeToken.get({{classname}}.class));
+
+      return (TypeAdapter<T>)
+          new TypeAdapter<{{classname}}>() {
+
+            @Override
+            public void write(final JsonWriter out, final {{classname}} value)
+                throws IOException {
+              final JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+              elementAdapter.write(out, obj);
+            }
+
+            @Override
+            public {{classname}} read(final JsonReader in) throws IOException {
+              final JsonElement jsonElement = elementAdapter.read(in);
+              validateJsonElement(jsonElement);
+{{^isAdditionalPropertiesTrue}}
+              return thisAdapter.fromJsonTree(jsonElement);
+{{/isAdditionalPropertiesTrue}}
+            }
+          }.nullSafe();
+    }
+  }
+{{/hasChildren}}
+{{/gson}}
+}
