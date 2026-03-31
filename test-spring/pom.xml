@@ -36,6 +36,7 @@
         <!-- Unpack the spring-templates instead -->
         <templatesToCopy>
             spring-templates/javadoc.mustache,
+            spring-templates/licenseInfo.mustache,
             spring-templates/pojo.mustache,
             spring-templates/useBeanValidation.mustache
         </templatesToCopy>

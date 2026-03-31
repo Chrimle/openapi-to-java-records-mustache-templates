@@ -116,6 +116,7 @@
                                     <directory>${original-mustache-templates-directory}/templates</directory>
                                     <includes>
                                         <include>javadoc.mustache</include>
+                                        <include>licenseInfo.mustache</include>
                                         <include>pojo.mustache</include>
                                         <include>useBeanValidation.mustache</include>
                                     </includes>
