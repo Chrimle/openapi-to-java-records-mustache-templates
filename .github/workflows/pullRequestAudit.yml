@@ -23,7 +23,7 @@ jobs:
         with:
           script: |
             const categoriesRequiringSemanticVersion = ['feat', 'bug'];
-            const requiredCategories = ['feat', 'bug', 'doc', 'test', 'dependencies', 'meta', 'security'];
+            const requiredCategories = ['feat', 'bug', 'doc', 'test', 'dependencies', 'meta', 'security', 'preview'];
             const semanticVersions = ['MAJOR', 'MINOR', 'PATCH'];
 
             const labels = context.payload.pull_request.labels;
