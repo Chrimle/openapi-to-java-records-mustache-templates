@@ -20,5 +20,5 @@ changelog:
       labels:
         - dependencies
     - title: Preview Changes
-      -labels:
+      labels:
         - preview
