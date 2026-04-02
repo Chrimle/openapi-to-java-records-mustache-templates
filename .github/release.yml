@@ -19,3 +19,6 @@ changelog:
     - title: Dependency Updates
       labels:
         - dependencies
+    - title: Preview Changes
+      labels:
+        - preview
