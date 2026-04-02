@@ -56,16 +56,16 @@ Older/newer versions may work, but are currently not part of the CI Test Suite.
 > **NOTE**
 >
 > The Maven artifact **only** contains the `.mustache` template files and a `LICENSE.txt`.
-> - `spring-templates/` (preview/experimental. See [#684](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/pull/684))
->   - `javadoc.mustache`
->   - `licenseInfo.mustache`
->   - `pojo.mustache`
->   - `useBeanValidation.mustache`
-> - `templates/`
+> - `templates/` (**stable**. Used by `java` Generators)
 >   - `generateBuilders.mustache`
 >   - `javadoc.mustache`
 >   - `licenseInfo.mustache`
 >   - `modelEnum.mustache`
+>   - `pojo.mustache`
+>   - `useBeanValidation.mustache`
+> - `spring-templates/` (**preview/experimental**. Used by `spring` Generators. See [#684](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/pull/684))
+>   - `javadoc.mustache`
+>   - `licenseInfo.mustache`
 >   - `pojo.mustache`
 >   - `useBeanValidation.mustache`
 > - `LICENSE.txt`
