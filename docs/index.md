@@ -4,6 +4,8 @@
 ![JUnit Test Suite](https://img.shields.io/badge/JUnit_Test_Suite-24112_Tests-blue?style=flat)
 [![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/Chrimle/openapi-to-java-records-mustache-templates/badge)](https://scorecard.dev/viewer/?uri=github.com/Chrimle/openapi-to-java-records-mustache-templates)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/12077/badge)](https://www.bestpractices.dev/projects/12077)
+![Scarf Downloads](https://api.scarf.sh/v2/packages/Chrimle/848ce8d9-2bb9-4340-8ba4-66d5f7e78ba0/downloads-badge)
+![Scarf Commercial Users](https://api.scarf.sh/v2/packages/Chrimle/848ce8d9-2bb9-4340-8ba4-66d5f7e78ba0/commercial-users-badge)
 
 Project containing [Mustache-templates](https://mustache.github.io/) used by [openapi-generator-maven-plugin](https://github.com/OpenAPITools/openapi-generator/blob/master/modules/openapi-generator-maven-plugin/README.md) to generate [Java Records](https://docs.oracle.com/en/java/javase/17/language/records.html) from [OpenAPI Specifications](https://swagger.io/specification/).
 
@@ -54,16 +56,16 @@ Older/newer versions may work, but are currently not part of the CI Test Suite.
 > **NOTE**
 >
 > The Maven artifact **only** contains the `.mustache` template files and a `LICENSE.txt`.
-> - `spring-templates/` (preview/experimental. See [#684](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/pull/684))
->   - `javadoc.mustache`
->   - `licenseInfo.mustache`
->   - `pojo.mustache`
->   - `useBeanValidation.mustache`
-> - `templates/`
+> - `templates/` (**stable**. Used by `java` Generators)
 >   - `generateBuilders.mustache`
 >   - `javadoc.mustache`
 >   - `licenseInfo.mustache`
 >   - `modelEnum.mustache`
+>   - `pojo.mustache`
+>   - `useBeanValidation.mustache`
+> - `spring-templates/` (**preview/experimental**. Used by `spring` Generators. See [#684](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/pull/684))
+>   - `javadoc.mustache`
+>   - `licenseInfo.mustache`
 >   - `pojo.mustache`
 >   - `useBeanValidation.mustache`
 > - `LICENSE.txt`
