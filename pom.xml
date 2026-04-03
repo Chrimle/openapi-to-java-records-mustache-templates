@@ -336,7 +336,12 @@
                     <configuration>
                         <publishingServerId>central</publishingServerId>
                         <autoPublish>true</autoPublish>
-                        <excludeArtifacts>openapi-to-java-records-mustache-templates-test-java,openapi-to-java-records-mustache-templates-test-common,openapi-to-java-records-mustache-templates-test-java-usejakartaee,openapi-to-java-records-mustache-templates-test-utils</excludeArtifacts>
+                        <excludeArtifacts>
+                            <excludeArtifact>openapi-to-java-records-mustache-templates-test-java</excludeArtifact>
+                            <excludeArtifact>openapi-to-java-records-mustache-templates-test-common</excludeArtifact>
+                            <excludeArtifact>openapi-to-java-records-mustache-templates-test-java-usejakartaee</excludeArtifact>
+                            <excludeArtifact>openapi-to-java-records-mustache-templates-test-utils</excludeArtifact>
+                        </excludeArtifacts>
                     </configuration>
                 </plugin>
                 <!-- Override Parent Configuration -->
