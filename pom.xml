@@ -337,8 +337,8 @@
                         <publishingServerId>central</publishingServerId>
                         <autoPublish>true</autoPublish>
                         <excludeArtifacts>
-                            <excludeArtifact>openapi-to-java-records-mustache-templates-test-java</excludeArtifact>
                             <excludeArtifact>openapi-to-java-records-mustache-templates-test-common</excludeArtifact>
+                            <excludeArtifact>openapi-to-java-records-mustache-templates-test-java</excludeArtifact>
                             <excludeArtifact>openapi-to-java-records-mustache-templates-test-java-usejakartaee</excludeArtifact>
                             <excludeArtifact>openapi-to-java-records-mustache-templates-test-utils</excludeArtifact>
                         </excludeArtifacts>
