@@ -95,9 +95,6 @@
         <maven.plugin.validation>VERBOSE</maven.plugin.validation>
 
         <!-- Dependency Versions -->
-        <!-- Replace this with Jackson-bom! -->
-        <jackson.version>2.21.2</jackson.version>
-        <!-- Optional Dependencies -->
         <okhttp.version>4.12.0</okhttp.version>
         <spring-web.version>6.2.12</spring-web.version>
         <!-- / Dependency Versions -->
@@ -166,20 +163,17 @@
             </dependency>
             <!-- / Sub-Modules -->
             <dependency>
+                <groupId>com.fasterxml.jackson</groupId>
+                <artifactId>jackson-bom</artifactId>
+                <version>2.21.2</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+            <dependency>
                 <!-- Needed when library=webclient -->
                 <groupId>com.fasterxml.jackson.core</groupId>
                 <artifactId>jackson-annotations</artifactId>
                 <version>2.19.0</version>
-            </dependency>
-            <dependency>
-                <groupId>com.fasterxml.jackson.core</groupId>
-                <artifactId>jackson-core</artifactId>
-                <version>${jackson.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.fasterxml.jackson.core</groupId>
-                <artifactId>jackson-databind</artifactId>
-                <version>${jackson.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.fasterxml.jackson.datatype</groupId>
