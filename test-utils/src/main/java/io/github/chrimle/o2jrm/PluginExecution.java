@@ -36,6 +36,10 @@ public interface PluginExecution {
     return Library.isLibraryOkHttpGson(getLibrary());
   }
 
+  default boolean isLibrarySpringBoot() {
+    return Library.isLibrarySpringBoot(getLibrary());
+  }
+
   default boolean isLibraryWebClient() {
     return Library.isLibraryWebClient(getLibrary());
   }

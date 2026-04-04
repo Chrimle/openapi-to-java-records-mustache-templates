@@ -142,6 +142,10 @@ public class GeneratedSource {
     return pluginExecution.isLibraryOkHttpGson();
   }
 
+  public boolean isLibrarySpringBoot() {
+    return pluginExecution.isLibrarySpringBoot();
+  }
+
   public boolean isLibraryWebClient() {
     return pluginExecution.isLibraryWebClient();
   }
