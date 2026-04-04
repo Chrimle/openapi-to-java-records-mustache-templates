@@ -50,6 +50,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.stream.Collectors;
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.condition.DisabledIf;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ArgumentsSource;
 
@@ -231,6 +232,7 @@ public abstract class GeneratedRecordTests {
         @ArgumentsSource(GeneratedRecordProvider.class)
         @AssumptionFilter(isSerializationLibraryJackson = Condition.FALSE)
         @DisplayName("[okhttp-gson] Generated constructor is NOT annotated `@JsonCreator`")
+        @DisabledIf("io.github.chrimle.o2jrm.tests.GeneratedRecordImplTests#isSpringGenerator")
         void whenNotJacksonThenGeneratedConstructorIsNotAnnotatedJsonCreator(
             final GeneratedSource generatedSource) {
           final Constructor<?> constructor =
@@ -243,6 +245,7 @@ public abstract class GeneratedRecordTests {
         @ArgumentsSource(GeneratedRecordProvider.class)
         @AssumptionFilter(isSerializationLibraryJackson = Condition.TRUE)
         @DisplayName("[webclient] Generated constructor IS annotated `@JsonCreator`")
+        @DisabledIf("io.github.chrimle.o2jrm.tests.GeneratedRecordImplTests#isSpringGenerator")
         void whenJacksonThenGeneratedConstructorIsAnnotatedJsonCreator(
             final GeneratedSource generatedSource) {
           final Constructor<?> constructor =
@@ -256,6 +259,7 @@ public abstract class GeneratedRecordTests {
         @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE, serializableModel = Condition.FALSE)
         @DisplayName(
             "[okhttp-gson] Generated `record` has same number of fields as OpenAPI properties")
+        @DisabledIf("io.github.chrimle.o2jrm.tests.GeneratedRecordImplTests#isSpringGenerator")
         void whenObjectHasPropertiesThenGeneratedRecordHasSameNumberOfFields_okhttp_gson(
             final GeneratedSource generatedSource) {
           CustomAssertions.assertClassHasNumberOfFields(
@@ -267,6 +271,7 @@ public abstract class GeneratedRecordTests {
         @AssumptionFilter(isLibraryWebClient = Condition.TRUE, serializableModel = Condition.FALSE)
         @DisplayName(
             "[webclient] Generated `record` has same number of fields as OpenAPI properties")
+        @DisabledIf("io.github.chrimle.o2jrm.tests.GeneratedRecordImplTests#isSpringGenerator")
         void whenObjectHasPropertiesThenGeneratedRecordHasSameNumberOfFields_webclient(
             final GeneratedSource generatedSource) {
           CustomAssertions.assertClassHasNumberOfFields(
@@ -374,6 +379,7 @@ public abstract class GeneratedRecordTests {
 
   @Nested
   @DisplayName("Testing `openapi-generator` Configurations & ConfigOptions")
+  @DisabledIf("io.github.chrimle.o2jrm.tests.GeneratedRecordImplTests#isSpringGenerator")
   class GeneratorConfigurationTests {
 
     @Nested
@@ -1156,6 +1162,7 @@ public abstract class GeneratedRecordTests {
 
     @Nested
     @DisplayName("Testing `<configOptions>`")
+    @DisabledIf("io.github.chrimle.o2jrm.tests.GeneratedRecordImplTests#isSpringGenerator")
     class ConfigOptionsTests {
 
       @Nested

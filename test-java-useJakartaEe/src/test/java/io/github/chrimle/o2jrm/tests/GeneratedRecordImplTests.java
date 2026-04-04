@@ -30,6 +30,15 @@ import org.junit.jupiter.api.*;
 final class GeneratedRecordImplTests extends GeneratedRecordTests {
 
   /**
+   * Whether some tests should be {@code Disabled} or not.
+   *
+   * @deprecated Temporary, until Spring-boot Generator is tested...
+   */
+  static boolean isSpringGenerator() {
+    return false;
+  }
+
+  /**
    * Generates a {@link GeneratedSource} for every possible combination of {@link
    * PluginExecutionImpl} and {@link GeneratedRecordImpl}.
    *
