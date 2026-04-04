@@ -73,9 +73,10 @@ public abstract sealed class GeneratedSourceProvider implements ArgumentsProvide
               if (!assumptionFilter.isDeprecated().test(generatedSource.isDeprecated()))
                 return false;
               if (!assumptionFilter.isInnerEnum().test(generatedSource.isInnerEnum())) return false;
-              if (!Arrays.stream(assumptionFilter.isOneOfLibraries())
-                  .toList()
-                  .contains(generatedSource.getLibrary())) return false;
+              if (assumptionFilter.isOneOfLibraries().length > 0
+                  && !Arrays.stream(assumptionFilter.isOneOfLibraries())
+                      .toList()
+                      .contains(generatedSource.getLibrary())) return false;
               if (!assumptionFilter
                   .isSerializationLibraryJackson()
                   .test(generatedSource.isSerializationLibraryJackson())) return false;

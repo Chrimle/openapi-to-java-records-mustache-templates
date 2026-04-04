@@ -46,7 +46,7 @@ public @interface AssumptionFilter {
 
   Condition isInnerEnum() default Condition.ANY;
 
-  Library[] isOneOfLibraries() default {Library.OKHTTP_GSON, Library.WEBCLIENT};
+  Library[] isOneOfLibraries() default {};
 
   Condition isSerializationLibraryJackson() default Condition.ANY;
 
