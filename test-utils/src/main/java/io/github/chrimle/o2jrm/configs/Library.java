@@ -18,6 +18,7 @@ package io.github.chrimle.o2jrm.configs;
 
 public enum Library {
   OKHTTP_GSON("okhttp-gson"),
+  SPRING_BOOT("spring-boot"),
   WEBCLIENT("webclient");
 
   private final String id;
@@ -32,6 +33,10 @@ public enum Library {
 
   public static boolean isLibraryOkHttpGson(final Library library) {
     return library == Library.OKHTTP_GSON;
+  }
+
+  public static boolean isLibrarySpringBoot(final Library library) {
+    return library == Library.SPRING_BOOT;
   }
 
   public static boolean isLibraryWebClient(final Library library) {
