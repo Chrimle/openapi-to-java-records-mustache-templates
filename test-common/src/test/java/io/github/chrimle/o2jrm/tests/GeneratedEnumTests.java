@@ -26,6 +26,7 @@ import io.github.chrimle.o2jrm.GeneratedSource;
 import io.github.chrimle.o2jrm.annotations.TestAnnotationOne;
 import io.github.chrimle.o2jrm.annotations.TestAnnotationThree;
 import io.github.chrimle.o2jrm.annotations.TestAnnotationTwo;
+import io.github.chrimle.o2jrm.configs.Library;
 import io.github.chrimle.o2jrm.interfaces.TestInterfaceOne;
 import io.github.chrimle.o2jrm.interfaces.TestInterfaceTwo;
 import io.github.chrimle.o2jrm.models.GeneratedField;
@@ -264,7 +265,7 @@ public abstract class GeneratedEnumTests {
 
         @ParameterizedTest
         @ArgumentsSource(GeneratedEnumProvider.class)
-        @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
+        @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON})
         @DisplayName("Generated `enum` HAS `validateJsonElement`-method")
         void whenLibraryIsOkHttpGsonThenGeneratedEnumHasValidateJsonElementMethod(
             final GeneratedSource generatedSource) {
@@ -274,7 +275,9 @@ public abstract class GeneratedEnumTests {
 
         @ParameterizedTest
         @ArgumentsSource(GeneratedEnumProvider.class)
-        @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE, enumValueClass = String.class)
+        @AssumptionFilter(
+            isOneOfLibraries = {Library.OKHTTP_GSON},
+            enumValueClass = String.class)
         @DisplayName("Generated `validateJsonElement`-method can be invoked with `String`")
         void whenLibraryIsOkHttpGsonThenGeneratedValidateJsonElementMethodCanBeInvokedWithString(
             final GeneratedSource generatedSource) {
@@ -291,7 +294,9 @@ public abstract class GeneratedEnumTests {
 
         @ParameterizedTest
         @ArgumentsSource(GeneratedEnumProvider.class)
-        @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE, enumValueClass = Integer.class)
+        @AssumptionFilter(
+            isOneOfLibraries = {Library.OKHTTP_GSON},
+            enumValueClass = Integer.class)
         @DisplayName("Generated `validateJsonElement`-method can be invoked with `Integer`")
         void whenLibraryIsOkHttpGsonThenGeneratedValidateJsonElementMethodCanBeInvokedWithInteger(
             final GeneratedSource generatedSource) {
@@ -308,7 +313,9 @@ public abstract class GeneratedEnumTests {
 
         @ParameterizedTest
         @ArgumentsSource(GeneratedEnumProvider.class)
-        @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE, enumValueClass = URI.class)
+        @AssumptionFilter(
+            isOneOfLibraries = {Library.OKHTTP_GSON},
+            enumValueClass = URI.class)
         @DisplayName("Generated `validateJsonElement`-method can be invoked with `URI`")
         void whenLibraryIsOkHttpGsonThenGeneratedValidateJsonElementMethodCanBeInvokedWithUri(
             final GeneratedSource generatedSource) {
@@ -329,7 +336,7 @@ public abstract class GeneratedEnumTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedEnumProvider.class)
-          @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
+          @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON})
           @DisplayName("Generated `enum` has `Adapter` inner-class")
           void whenLibraryIsOkHttpGsonThenGeneratedEnumHasAdapterInnerClass(
               final GeneratedSource generatedSource) {
@@ -339,7 +346,7 @@ public abstract class GeneratedEnumTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedEnumProvider.class)
-          @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
+          @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON})
           @DisplayName("Generated `enum` is annotated `@JsonAdapter`")
           void whenLibraryIsOkHttpGsonThenGeneratedEnumIsAnnotatedWithJsonAdapter(
               final GeneratedSource generatedSource) {
@@ -358,7 +365,7 @@ public abstract class GeneratedEnumTests {
 
             @ParameterizedTest
             @ArgumentsSource(GeneratedEnumProvider.class)
-            @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
+            @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON})
             @DisplayName("when `JsonWriter` is `null` Then `NullPointerException` is thrown")
             void whenJsonWriterIsNullThenNullPointerExceptionIsThrown(
                 final GeneratedSource generatedSource) {
@@ -385,7 +392,7 @@ public abstract class GeneratedEnumTests {
 
             @ParameterizedTest
             @ArgumentsSource(GeneratedEnumProvider.class)
-            @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
+            @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON})
             @DisplayName("when `JsonWriter` is NOT `null` Then nothing is thrown")
             void whenJsonWriterIsNotNullThenNothingIsThrown(final GeneratedSource generatedSource) {
               final Class<?> adapterClass =
@@ -417,7 +424,7 @@ public abstract class GeneratedEnumTests {
 
             @ParameterizedTest
             @ArgumentsSource(GeneratedEnumProvider.class)
-            @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
+            @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON})
             @DisplayName("when `JsonReader` is `null` Then `NullPointerException` is thrown")
             void whenJsonReaderIsNullThenNullPointerExceptionIsThrown(
                 final GeneratedSource generatedSource) {
@@ -437,7 +444,7 @@ public abstract class GeneratedEnumTests {
 
             @ParameterizedTest
             @ArgumentsSource(GeneratedEnumProvider.class)
-            @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
+            @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON})
             @DisplayName("when `jsonString` is invalid Then `IllegalArgumentException` is thrown")
             void whenJsonReaderIsInvalidThenIllegalArgumentExceptionIsThrown(
                 final GeneratedSource generatedSource) {
@@ -466,7 +473,7 @@ public abstract class GeneratedEnumTests {
 
             @ParameterizedTest
             @ArgumentsSource(GeneratedEnumProvider.class)
-            @AssumptionFilter(isLibraryOkHttpGson = Condition.TRUE)
+            @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON})
             @DisplayName("when `JsonReader` is valid Then nothing is thrown")
             void whenJsonReaderIsValidThenNothingIsThrown(final GeneratedSource generatedSource) {
               final Class<?> adapterClass =
@@ -497,7 +504,7 @@ public abstract class GeneratedEnumTests {
 
         @ParameterizedTest
         @ArgumentsSource(GeneratedEnumProvider.class)
-        @AssumptionFilter(isLibraryWebClient = Condition.TRUE)
+        @AssumptionFilter(isOneOfLibraries = {Library.WEBCLIENT})
         @DisplayName("Generated `enum` does NOT have `validateJsonElement`-method")
         void whenLibraryIsWebClientThenGeneratedEnumDoesNotHaveValidateJsonElementMethod(
             final GeneratedSource generatedSource) {
@@ -507,7 +514,7 @@ public abstract class GeneratedEnumTests {
 
         @ParameterizedTest
         @ArgumentsSource(GeneratedEnumProvider.class)
-        @AssumptionFilter(isLibraryWebClient = Condition.TRUE)
+        @AssumptionFilter(isOneOfLibraries = {Library.WEBCLIENT})
         @DisplayName("Generated `enum` does NOT have `Adapter` inner-class")
         void whenLibraryIsWebClientThenGeneratedEnumDoesNotHaveAdapterInnerClass(
             final GeneratedSource generatedSource) {
@@ -517,7 +524,7 @@ public abstract class GeneratedEnumTests {
 
         @ParameterizedTest
         @ArgumentsSource(GeneratedEnumProvider.class)
-        @AssumptionFilter(isLibraryWebClient = Condition.TRUE)
+        @AssumptionFilter(isOneOfLibraries = {Library.WEBCLIENT})
         @DisplayName("Generated `enum` is NOT annotated `@JsonAdapter`")
         void whenLibraryIsWebClientThenGeneratedEnumIsNotAnnotatedWithJsonAdapter(
             final GeneratedSource generatedSource) {

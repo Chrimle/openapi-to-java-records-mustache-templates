@@ -30,16 +30,4 @@ public enum Library {
   public String getId() {
     return id;
   }
-
-  public static boolean isLibraryOkHttpGson(final Library library) {
-    return library == Library.OKHTTP_GSON;
-  }
-
-  public static boolean isLibrarySpringBoot(final Library library) {
-    return library == Library.SPRING_BOOT;
-  }
-
-  public static boolean isLibraryWebClient(final Library library) {
-    return library == Library.WEBCLIENT;
-  }
 }
