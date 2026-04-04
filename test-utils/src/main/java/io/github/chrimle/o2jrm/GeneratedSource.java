@@ -143,14 +143,6 @@ public class GeneratedSource {
     return pluginExecution.getLibrary();
   }
 
-  public boolean isLibraryOkHttpGson() {
-    return pluginExecution.isLibraryOkHttpGson();
-  }
-
-  public boolean isLibraryWebClient() {
-    return pluginExecution.isLibraryWebClient();
-  }
-
   public boolean isSerializationLibraryJackson() {
     return pluginExecution.isSerializationLibraryJackson();
   }
