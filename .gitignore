@@ -33,29 +33,14 @@ replay_pid*
 *.iml
 
 # Spotless
-target/spotless-index
-mustache-templates/target/spotless-index
-test-java/target/spotless-index
-test-java-useJakartaEe/target/spotless-index
-test-utils/target/spotless-index
-test-common/target/spotless-index
+**/spotless-index
 
 # Maven Archiver & Status
-mustache-templates/target/maven-archiver
-mustache-templates/target/maven-status
-test-java/target/maven-archiver
-test-java/target/maven-status
-test-java-useJakartaEe/target/maven-archiver
-test-java-useJakartaEe/target/maven-status
-test-utils/target/maven-archiver
-test-utils/target/maven-status
-test-common/target/maven-archiver
-test-common/target/maven-status
+*/target/maven-archiver
+*/target/maven-status
 
-test-java/target/dependency-maven-plugin-markers
-test-java/target/surefire-reports
-test-java-useJakartaEe/target/dependency-maven-plugin-markers
-test-java-useJakartaEe/target/surefire-reports
+*/target/dependency-maven-plugin-markers
+*/target/surefire-reports
 
 test-java/target/generated-sources/*
 !test-java/target/generated-sources/**/
@@ -63,17 +48,13 @@ test-java/target/generated-sources/*
 test-java-useJakartaEe/target/generated-sources/*
 !test-java-useJakartaEe/target/generated-sources/**/
 
-test-java/target/generated-sources/.github
-test-java/target/generated-sources/.openapi-generator
-test-java/target/generated-sources/api
-test-java/target/generated-sources/gradle
-test-java/target/generated-sources/src/main
+# Exclude Generated Meta Files
+*/target/generated-sources/.github
+*/target/generated-sources/.openapi-generator
+*/target/generated-sources/api
+*/target/generated-sources/gradle
+*/target/generated-sources/src/main
 
-test-java-useJakartaEe/target/generated-sources/.github
-test-java-useJakartaEe/target/generated-sources/.openapi-generator
-test-java-useJakartaEe/target/generated-sources/api
-test-java-useJakartaEe/target/generated-sources/gradle
-test-java-useJakartaEe/target/generated-sources/src/main
 # Exclude Supporting Files
 **/auth/**
 AbstractOpenApiSchema.java
@@ -100,25 +81,18 @@ ServerConfiguration.java
 ServerVariable.java
 StringUtil.java
 
-test-java/target/site/jacoco
-test-java/target/jacoco.exec
-
-test-java-useJakartaEe/target/site/jacoco
-test-java-useJakartaEe/target/jacoco.exec
-
-test-common/target/site/jacoco
-test-common/target/jacoco.exec
-test-common/target/classes/api.yaml
+# Jacoco
+*/target/site/jacoco
+*/target/jacoco.exec
 
 # Ignore Imported Files
-test-java/target/classes/templates
-test-java/target/classes/api.yaml
+*/target/classes/api.yaml
+*/target/classes/templates
+# Keep the Official Mustache Templates!
+!mustache-templates/target/classes/templates
 
-test-java-useJakartaEe/target/classes/templates
-test-java-useJakartaEe/target/classes/api.yaml
-
-test-java-useJakartaEe/target/test-classes/junit-platform.properties
-test-java/target/test-classes/junit-platform.properties
+# JUnit
+*/target/test-classes/junit-platform.properties
 
 # Track Copyright header Settings
 !.idea/copyright/
