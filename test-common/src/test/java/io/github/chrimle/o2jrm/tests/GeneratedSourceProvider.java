@@ -77,9 +77,6 @@ public abstract sealed class GeneratedSourceProvider implements ArgumentsProvide
                   .toList()
                   .contains(generatedSource.getLibrary())) return false;
               if (!assumptionFilter
-                  .isLibraryOkHttpGson()
-                  .test(generatedSource.isLibraryOkHttpGson())) return false;
-              if (!assumptionFilter
                   .isSerializationLibraryJackson()
                   .test(generatedSource.isSerializationLibraryJackson())) return false;
               if (!assumptionFilter.serializableModel().test(generatedSource.serializableModel()))

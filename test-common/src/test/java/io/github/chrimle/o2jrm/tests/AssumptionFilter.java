@@ -48,8 +48,6 @@ public @interface AssumptionFilter {
 
   Library[] isOneOfLibraries() default {Library.OKHTTP_GSON, Library.WEBCLIENT};
 
-  Condition isLibraryOkHttpGson() default Condition.ANY;
-
   Condition isSerializationLibraryJackson() default Condition.ANY;
 
   Condition serializableModel() default Condition.ANY;
