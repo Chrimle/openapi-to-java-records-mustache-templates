@@ -61,6 +61,7 @@ test-spring/target/dependency-maven-plugin-markers
 
 test-java/target/surefire-reports
 test-java-useJakartaEe/target/surefire-reports
+test-spring/target/surefire-reports
 
 test-java/target/generated-sources/*
 !test-java/target/generated-sources/**/
@@ -121,6 +122,9 @@ test-java/target/jacoco.exec
 test-java-useJakartaEe/target/site/jacoco
 test-java-useJakartaEe/target/jacoco.exec
 
+test-spring/target/site/jacoco
+test-spring/target/jacoco.exec
+
 test-common/target/site/jacoco
 test-common/target/jacoco.exec
 test-common/target/classes/api.yaml
@@ -137,6 +141,7 @@ test-spring/target/classes/spring-api.yaml
 
 test-java/target/test-classes/junit-platform.properties
 test-java-useJakartaEe/target/test-classes/junit-platform.properties
+test-spring/target/test-classes/junit-platform.properties
 
 # Track Copyright header Settings
 !.idea/copyright/
