@@ -1168,7 +1168,6 @@ public abstract class GeneratedRecordTests {
 
     @Nested
     @DisplayName("Testing `<configOptions>`")
-    @DisabledIf("io.github.chrimle.o2jrm.tests.GeneratedRecordImplTests#isSpringGenerator")
     class ConfigOptionsTests {
 
       @Nested
@@ -1197,6 +1196,7 @@ public abstract class GeneratedRecordTests {
         @Nested
         @DisplayName(
             "Testing `<additionalModelTypeAnnotations>@TestAnnotationOne;@TestAnnotationTwo;@TestAnnotationThree</additionalModelTypeAnnotations>`")
+        @DisabledIf("io.github.chrimle.o2jrm.tests.GeneratedRecordImplTests#isSpringGenerator")
         class AdditionalModelTypeAnnotationsSetTests {
           @ParameterizedTest
           @ArgumentsSource(GeneratedRecordProvider.class)
@@ -1248,6 +1248,7 @@ public abstract class GeneratedRecordTests {
 
         @Nested
         @DisplayName("Testing `<serializableModel>true</serializableModel>`")
+        @DisabledIf("io.github.chrimle.o2jrm.tests.GeneratedRecordImplTests#isSpringGenerator")
         class SerializableModelTrueTests {
 
           @ParameterizedTest
@@ -1287,6 +1288,7 @@ public abstract class GeneratedRecordTests {
 
         @Nested
         @DisplayName("Testing `<generateBuilders>true</generateBuilders>`")
+        @DisabledIf("io.github.chrimle.o2jrm.tests.GeneratedRecordImplTests#isSpringGenerator")
         class GenerateBuildersTrueTests {
           @ParameterizedTest
           @ArgumentsSource(GeneratedRecordProvider.class)
@@ -1335,6 +1337,7 @@ public abstract class GeneratedRecordTests {
 
         @Nested
         @DisplayName("Testing `<useBeanValidation>true</useBeanValidation>`")
+        @DisabledIf("io.github.chrimle.o2jrm.tests.GeneratedRecordImplTests#isSpringGenerator")
         class UseBeanValidationTrueTests {
 
           @ParameterizedTest
