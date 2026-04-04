@@ -32,14 +32,6 @@ public interface PluginExecution {
 
   List<ConfigOption> getConfigOptions();
 
-  default boolean isLibraryOkHttpGson() {
-    return Library.isLibraryOkHttpGson(getLibrary());
-  }
-
-  default boolean isLibraryWebClient() {
-    return Library.isLibraryWebClient(getLibrary());
-  }
-
   default boolean isSerializationLibraryJackson() {
     return switch (getLibrary()) {
       case OKHTTP_GSON -> false;

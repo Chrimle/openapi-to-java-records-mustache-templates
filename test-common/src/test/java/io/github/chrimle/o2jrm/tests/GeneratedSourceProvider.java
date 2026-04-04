@@ -18,6 +18,7 @@ package io.github.chrimle.o2jrm.tests;
 
 import io.github.chrimle.o2jrm.GeneratedSource;
 import java.lang.reflect.Method;
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Stream;
@@ -72,11 +73,10 @@ public abstract sealed class GeneratedSourceProvider implements ArgumentsProvide
               if (!assumptionFilter.isDeprecated().test(generatedSource.isDeprecated()))
                 return false;
               if (!assumptionFilter.isInnerEnum().test(generatedSource.isInnerEnum())) return false;
-              if (!assumptionFilter
-                  .isLibraryOkHttpGson()
-                  .test(generatedSource.isLibraryOkHttpGson())) return false;
-              if (!assumptionFilter.isLibraryWebClient().test(generatedSource.isLibraryWebClient()))
-                return false;
+              if (assumptionFilter.isOneOfLibraries().length > 0
+                  && !Arrays.stream(assumptionFilter.isOneOfLibraries())
+                      .toList()
+                      .contains(generatedSource.getLibrary())) return false;
               if (!assumptionFilter
                   .isSerializationLibraryJackson()
                   .test(generatedSource.isSerializationLibraryJackson())) return false;
