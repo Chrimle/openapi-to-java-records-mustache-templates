@@ -16,6 +16,8 @@
 
 package io.github.chrimle.o2jrm.tests;
 
+import io.github.chrimle.o2jrm.configs.Library;
+
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -44,6 +46,8 @@ public @interface AssumptionFilter {
   Condition isDeprecated() default Condition.ANY;
 
   Condition isInnerEnum() default Condition.ANY;
+
+  Library[] isOneOfLibraries() default {Library.OKHTTP_GSON, Library.WEBCLIENT};
 
   Condition isLibraryOkHttpGson() default Condition.ANY;
 
