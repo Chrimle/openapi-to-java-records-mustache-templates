@@ -26,6 +26,7 @@ import io.github.chrimle.o2jrm.GeneratedSource;
 import io.github.chrimle.o2jrm.annotations.TestAnnotationOne;
 import io.github.chrimle.o2jrm.annotations.TestAnnotationThree;
 import io.github.chrimle.o2jrm.annotations.TestAnnotationTwo;
+import io.github.chrimle.o2jrm.configs.Library;
 import io.github.chrimle.o2jrm.interfaces.TestInterfaceOne;
 import io.github.chrimle.o2jrm.interfaces.TestInterfaceTwo;
 import io.github.chrimle.o2jrm.models.GeneratedField;
@@ -497,7 +498,7 @@ public abstract class GeneratedEnumTests {
 
         @ParameterizedTest
         @ArgumentsSource(GeneratedEnumProvider.class)
-        @AssumptionFilter(isLibraryWebClient = Condition.TRUE)
+        @AssumptionFilter(isOneOfLibraries = {Library.WEBCLIENT})
         @DisplayName("Generated `enum` does NOT have `validateJsonElement`-method")
         void whenLibraryIsWebClientThenGeneratedEnumDoesNotHaveValidateJsonElementMethod(
             final GeneratedSource generatedSource) {
@@ -507,7 +508,7 @@ public abstract class GeneratedEnumTests {
 
         @ParameterizedTest
         @ArgumentsSource(GeneratedEnumProvider.class)
-        @AssumptionFilter(isLibraryWebClient = Condition.TRUE)
+        @AssumptionFilter(isOneOfLibraries = {Library.WEBCLIENT})
         @DisplayName("Generated `enum` does NOT have `Adapter` inner-class")
         void whenLibraryIsWebClientThenGeneratedEnumDoesNotHaveAdapterInnerClass(
             final GeneratedSource generatedSource) {
@@ -517,7 +518,7 @@ public abstract class GeneratedEnumTests {
 
         @ParameterizedTest
         @ArgumentsSource(GeneratedEnumProvider.class)
-        @AssumptionFilter(isLibraryWebClient = Condition.TRUE)
+        @AssumptionFilter(isOneOfLibraries = {Library.WEBCLIENT})
         @DisplayName("Generated `enum` is NOT annotated `@JsonAdapter`")
         void whenLibraryIsWebClientThenGeneratedEnumIsNotAnnotatedWithJsonAdapter(
             final GeneratedSource generatedSource) {

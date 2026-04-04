@@ -22,6 +22,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.github.chrimle.o2jrm.GeneratedSource;
 import io.github.chrimle.o2jrm.annotations.*;
+import io.github.chrimle.o2jrm.configs.Library;
 import io.github.chrimle.o2jrm.interfaces.TestInterfaceOne;
 import io.github.chrimle.o2jrm.interfaces.TestInterfaceTwo;
 import io.github.chrimle.o2jrm.models.GeneratedField;
@@ -264,7 +265,9 @@ public abstract class GeneratedRecordTests {
 
         @ParameterizedTest
         @ArgumentsSource(GeneratedRecordProvider.class)
-        @AssumptionFilter(isLibraryWebClient = Condition.TRUE, serializableModel = Condition.FALSE)
+        @AssumptionFilter(
+            isOneOfLibraries = {Library.WEBCLIENT},
+            serializableModel = Condition.FALSE)
         @DisplayName(
             "[webclient] Generated `record` has same number of fields as OpenAPI properties")
         void whenObjectHasPropertiesThenGeneratedRecordHasSameNumberOfFields_webclient(
@@ -1124,7 +1127,7 @@ public abstract class GeneratedRecordTests {
 
         @ParameterizedTest
         @ArgumentsSource(GeneratedRecordProvider.class)
-        @AssumptionFilter(isLibraryWebClient = Condition.TRUE)
+        @AssumptionFilter(isOneOfLibraries = {Library.WEBCLIENT})
         @DisplayName("Generated `record` does NOT have `openapiFields`-field")
         void whenLibraryIsWebClientThenGeneratedRecordDoesNotHaveOpenApiFieldsField(
             final GeneratedSource generatedSource) {
@@ -1134,7 +1137,7 @@ public abstract class GeneratedRecordTests {
 
         @ParameterizedTest
         @ArgumentsSource(GeneratedRecordProvider.class)
-        @AssumptionFilter(isLibraryWebClient = Condition.TRUE)
+        @AssumptionFilter(isOneOfLibraries = {Library.WEBCLIENT})
         @DisplayName("Generated `record` does NOT have `openapiRequiredFields`-field")
         void whenLibraryIsWebClientThenGeneratedRecordDoesNotHaveOpenApiRequiredFieldsField(
             final GeneratedSource generatedSource) {
@@ -1144,7 +1147,7 @@ public abstract class GeneratedRecordTests {
 
         @ParameterizedTest
         @ArgumentsSource(GeneratedRecordProvider.class)
-        @AssumptionFilter(isLibraryWebClient = Condition.TRUE)
+        @AssumptionFilter(isOneOfLibraries = {Library.WEBCLIENT})
         @DisplayName("Generated `record` does NOT have `validateJsonElement`-method")
         void whenLibraryIsWebClientThenGeneratedRecordDoesNotHaveValidateJsonElementMethod(
             final GeneratedSource generatedSource) {
