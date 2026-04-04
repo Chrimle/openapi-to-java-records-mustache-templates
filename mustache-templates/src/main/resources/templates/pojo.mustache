@@ -58,13 +58,13 @@ import java.util.Set;
 
 {{#gson}}  /** A set containing the names of all instance fields defined in this class. */
   public static final HashSet<String> openapiFields =
-      new HashSet<String>(
+      new HashSet<>(
           Set.of({{#allVars}}"{{baseName}}"{{^-last}},
               {{/-last}}{{/allVars}}));
 
   /** A set containing the names of all required fields defined in this class. */
   public static final HashSet<String> openapiRequiredFields ={{#requiredVars}}{{#-first}}
-     {{/-first}}{{/requiredVars}} new HashSet<String>({{#requiredVars}}{{#-first}}
+     {{/-first}}{{/requiredVars}} new HashSet<>({{#requiredVars}}{{#-first}}
           Set.of({{/-first}}{{/requiredVars}}{{#requiredVars}}"{{baseName}}"{{^-last}},
               {{/-last}}{{#-last}}){{/-last}}{{/requiredVars}});
 
