@@ -15,6 +15,7 @@
  */
 package io.github.chrimle.o2jrm;
 
+import io.github.chrimle.o2jrm.configs.Library;
 import io.github.chrimle.o2jrm.models.BeanValidationAnnotation;
 import io.github.chrimle.o2jrm.models.GeneratedClass;
 import io.github.chrimle.o2jrm.models.GeneratedField;
@@ -136,6 +137,10 @@ public class GeneratedSource {
 
   public Class<?> getClassUnderTest() {
     return classUnderTest;
+  }
+
+  public Library getLibrary() {
+    return pluginExecution.getLibrary();
   }
 
   public boolean isLibraryOkHttpGson() {

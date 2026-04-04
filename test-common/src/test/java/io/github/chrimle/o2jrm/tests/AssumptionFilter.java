@@ -17,7 +17,6 @@
 package io.github.chrimle.o2jrm.tests;
 
 import io.github.chrimle.o2jrm.configs.Library;
-
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
