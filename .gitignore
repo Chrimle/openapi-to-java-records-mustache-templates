@@ -42,11 +42,9 @@ replay_pid*
 */target/dependency-maven-plugin-markers
 */target/surefire-reports
 
-test-java/target/generated-sources/*
-!test-java/target/generated-sources/**/
-
-test-java-useJakartaEe/target/generated-sources/*
-!test-java-useJakartaEe/target/generated-sources/**/
+# Include Sub-directories (each plugin execution), but not root (Generated Meta Files)
+*/target/generated-sources/*
+!*/target/generated-sources/**/
 
 # Exclude Generated Meta Files
 */target/generated-sources/.github
