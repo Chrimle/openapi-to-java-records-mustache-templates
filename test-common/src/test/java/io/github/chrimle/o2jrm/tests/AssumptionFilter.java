@@ -27,8 +27,6 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface AssumptionFilter {
 
-  Condition enumUnknownDefaultCase() default Condition.ANY;
-
   Class<?> enumValueClass() default Object.class;
 
   Condition generateBuilders() default Condition.ANY;

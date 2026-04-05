@@ -48,9 +48,6 @@ public abstract sealed class GeneratedSourceProvider implements ArgumentsProvide
         .filter(
             generatedSource -> {
               if (assumptionFilter == null) return true;
-              if (!assumptionFilter
-                  .enumUnknownDefaultCase()
-                  .test(generatedSource.enumUnknownDefaultCase())) return false;
               if (!(assumptionFilter.enumValueClass().equals(Object.class)
                   || assumptionFilter.enumValueClass().equals(generatedSource.enumValueClass())))
                 return false;
