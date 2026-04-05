@@ -70,12 +70,6 @@
         </snapshotRepository>
     </distributionManagement>
 
-    <properties>
-        <!-- Location of updated `.mustache` template files -->
-        <original-mustache-templates-directory>src/main/resources</original-mustache-templates-directory>
-        <updated-mustache-templates-directory>${project.build.outputDirectory}</updated-mustache-templates-directory>
-    </properties>
-
     <build>
         <plugins>
             <plugin>
@@ -93,8 +87,8 @@
                                     <filter token="project.version" value="${project.version}"/>
                                 </filterset>
                                 <!-- Copy Java Templates WITHOUT renaming -->
-                                <copy todir="${updated-mustache-templates-directory}/templates" overwrite="true">
-                                    <fileset dir="${original-mustache-templates-directory}/templates">
+                                <copy todir="${project.build.outputDirectory}/templates" overwrite="true">
+                                    <fileset dir="src/main/resources/templates">
                                         <include name="generateBuilders.mustache"/>
                                         <include name="javadoc.mustache"/>
                                         <include name="licenseInfo.mustache"/>
@@ -105,8 +99,8 @@
                                     <filterset refid="versionFilter"/>
                                 </copy>
                                 <!-- Copy Spring Templates WITHOUT renaming -->
-                                <copy todir="${updated-mustache-templates-directory}/spring-templates" overwrite="true">
-                                    <fileset dir="${original-mustache-templates-directory}/templates">
+                                <copy todir="${project.build.outputDirectory}/spring-templates" overwrite="true">
+                                    <fileset dir="src/main/resources/templates">
                                         <include name="javadoc.mustache"/>
                                         <include name="licenseInfo.mustache"/>
                                         <include name="pojo.mustache"/>
