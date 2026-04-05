@@ -22,6 +22,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.github.chrimle.o2jrm.GeneratedSource;
 import io.github.chrimle.o2jrm.annotations.*;
+import io.github.chrimle.o2jrm.configs.ConfigOption;
 import io.github.chrimle.o2jrm.configs.Library;
 import io.github.chrimle.o2jrm.interfaces.TestInterfaceOne;
 import io.github.chrimle.o2jrm.interfaces.TestInterfaceTwo;
@@ -256,7 +257,7 @@ public abstract class GeneratedRecordTests {
         @ArgumentsSource(GeneratedRecordProvider.class)
         @AssumptionFilter(
             isOneOfLibraries = {Library.OKHTTP_GSON},
-            serializableModel = Condition.FALSE)
+            disabledConfigOptions = ConfigOption.SERIALIZABLE_MODEL)
         @DisplayName(
             "[okhttp-gson] Generated `record` has same number of fields as OpenAPI properties")
         void whenObjectHasPropertiesThenGeneratedRecordHasSameNumberOfFields_okhttp_gson(
@@ -269,7 +270,7 @@ public abstract class GeneratedRecordTests {
         @ArgumentsSource(GeneratedRecordProvider.class)
         @AssumptionFilter(
             isOneOfLibraries = {Library.WEBCLIENT},
-            serializableModel = Condition.FALSE)
+            disabledConfigOptions = ConfigOption.SERIALIZABLE_MODEL)
         @DisplayName(
             "[webclient] Generated `record` has same number of fields as OpenAPI properties")
         void whenObjectHasPropertiesThenGeneratedRecordHasSameNumberOfFields_webclient(
@@ -1217,7 +1218,7 @@ public abstract class GeneratedRecordTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedRecordProvider.class)
-          @AssumptionFilter(serializableModel = Condition.FALSE)
+          @AssumptionFilter(disabledConfigOptions = ConfigOption.SERIALIZABLE_MODEL)
           @DisplayName("Generated `record` does NOT implement `Serializable`")
           void
               whenConfigOptionSerializableModelIsFalseThenGeneratedRecordClassDoesNotImplementSerializable(
@@ -1228,7 +1229,7 @@ public abstract class GeneratedRecordTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedRecordProvider.class)
-          @AssumptionFilter(serializableModel = Condition.FALSE)
+          @AssumptionFilter(disabledConfigOptions = ConfigOption.SERIALIZABLE_MODEL)
           @DisplayName("Generated `record` does NOT have `serialVersionUID`-field")
           void
               whenConfigOptionSerializableModelIsFalseThenGeneratedRecordClassDoesNotHaveSerialVersionUidField(
@@ -1244,7 +1245,7 @@ public abstract class GeneratedRecordTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedRecordProvider.class)
-          @AssumptionFilter(serializableModel = Condition.TRUE)
+          @AssumptionFilter(enabledConfigOptions = {ConfigOption.SERIALIZABLE_MODEL})
           @DisplayName("Generated `record` implement `Serializable`")
           void
               whenConfigOptionSerializableModelIsTrueThenGeneratedRecordClassImplementsSerializable(
@@ -1265,7 +1266,7 @@ public abstract class GeneratedRecordTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedRecordProvider.class)
-          @AssumptionFilter(generateBuilders = Condition.FALSE)
+          @AssumptionFilter(disabledConfigOptions = ConfigOption.GENERATE_BUILDERS)
           @DisplayName("Generated `record` does NOT have inner `Builder`-class")
           void
               whenConfigOptionGenerateBuildersIsFalseThenGeneratedRecordDoesNotHaveInnerBuilderClass(
@@ -1282,7 +1283,7 @@ public abstract class GeneratedRecordTests {
         class GenerateBuildersTrueTests {
           @ParameterizedTest
           @ArgumentsSource(GeneratedRecordProvider.class)
-          @AssumptionFilter(generateBuilders = Condition.TRUE)
+          @AssumptionFilter(enabledConfigOptions = ConfigOption.GENERATE_BUILDERS)
           @DisplayName("Generated `record` has inner `Builder`-class")
           void whenConfigOptionGenerateBuildersIsSetThenGeneratedRecordHasInnerBuilderClass(
               final GeneratedSource generatedSource) {
@@ -1304,7 +1305,7 @@ public abstract class GeneratedRecordTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedRecordProvider.class)
-          @AssumptionFilter(useBeanValidation = Condition.FALSE)
+          @AssumptionFilter(disabledConfigOptions = ConfigOption.USE_BEAN_VALIDATION)
           @DisplayName(
               "Generated `record` does NOT use Jakarta Bean Validation annotations on fields")
           void
@@ -1331,7 +1332,7 @@ public abstract class GeneratedRecordTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedRecordProvider.class)
-          @AssumptionFilter(useBeanValidation = Condition.TRUE)
+          @AssumptionFilter(enabledConfigOptions = ConfigOption.USE_BEAN_VALIDATION)
           @DisplayName("Generated `record` use Jakarta Bean Validation annotations on fields")
           void
               whenUseBeanValidationIsTrueThenFieldsAreAnnotatedWithJakartaBeanValidationAnnotations(

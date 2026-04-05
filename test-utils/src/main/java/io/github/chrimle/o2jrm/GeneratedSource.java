@@ -15,12 +15,14 @@
  */
 package io.github.chrimle.o2jrm;
 
+import io.github.chrimle.o2jrm.configs.ConfigOption;
 import io.github.chrimle.o2jrm.configs.Library;
 import io.github.chrimle.o2jrm.models.BeanValidationAnnotation;
 import io.github.chrimle.o2jrm.models.GeneratedClass;
 import io.github.chrimle.o2jrm.models.GeneratedField;
 import java.lang.annotation.Annotation;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -63,28 +65,12 @@ public class GeneratedSource {
     this.beanValidationAnnotations = beanValidationAnnotations;
   }
 
-  public boolean generateBuilders() {
-    return pluginExecution.generateBuilders();
-  }
-
   public boolean hasAdditionalEnumTypeAnnotations() {
     return pluginExecution.hasAdditionalEnumTypeAnnotations();
   }
 
   public boolean hasAdditionalModelTypeAnnotations() {
     return pluginExecution.hasAdditionalModelTypeAnnotations();
-  }
-
-  public boolean serializableModel() {
-    return pluginExecution.serializableModel();
-  }
-
-  public boolean useBeanValidation() {
-    return pluginExecution.useBeanValidation();
-  }
-
-  public boolean useEnumCaseInsensitive() {
-    return pluginExecution.useEnumCaseInsensitive();
   }
 
   public boolean enumUnknownDefaultCase() {
@@ -137,6 +123,10 @@ public class GeneratedSource {
 
   public Class<?> getClassUnderTest() {
     return classUnderTest;
+  }
+
+  public Collection<ConfigOption> getEnabledConfigOptions() {
+    return pluginExecution.getConfigOptions();
   }
 
   public Library getLibrary() {

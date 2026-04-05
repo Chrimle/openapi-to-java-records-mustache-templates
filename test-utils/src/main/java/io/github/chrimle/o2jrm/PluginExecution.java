@@ -47,20 +47,8 @@ public interface PluginExecution {
     return hasConfigOption(ConfigOption.USE_JAKARTA_EE);
   }
 
-  default boolean useEnumCaseInsensitive() {
-    return hasConfigOption(ConfigOption.USE_ENUM_CASE_INSENSITIVE);
-  }
-
   default boolean enumUnknownDefaultCase() {
     return hasConfigOption(ConfigOption.ENUM_UNKNOWN_DEFAULT_CASE);
-  }
-
-  default boolean useBeanValidation() {
-    return hasConfigOption(ConfigOption.USE_BEAN_VALIDATION);
-  }
-
-  default boolean serializableModel() {
-    return hasConfigOption(ConfigOption.SERIALIZABLE_MODEL);
   }
 
   default boolean hasAdditionalModelTypeAnnotations() {
@@ -69,9 +57,5 @@ public interface PluginExecution {
 
   default boolean hasAdditionalEnumTypeAnnotations() {
     return hasConfigOption(ConfigOption.ADDITIONAL_ENUM_TYPE_ANNOTATIONS);
-  }
-
-  default boolean generateBuilders() {
-    return hasConfigOption(ConfigOption.GENERATE_BUILDERS);
   }
 }

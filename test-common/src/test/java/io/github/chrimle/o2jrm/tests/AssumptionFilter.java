@@ -16,6 +16,7 @@
 
 package io.github.chrimle.o2jrm.tests;
 
+import io.github.chrimle.o2jrm.configs.ConfigOption;
 import io.github.chrimle.o2jrm.configs.Library;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -25,8 +26,6 @@ import java.lang.annotation.Target;
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface AssumptionFilter {
-
-  Condition enumUnknownDefaultCase() default Condition.ANY;
 
   Class<?> enumValueClass() default Object.class;
 
@@ -46,13 +45,11 @@ public @interface AssumptionFilter {
 
   Condition isInnerEnum() default Condition.ANY;
 
+  ConfigOption[] enabledConfigOptions() default {};
+
+  ConfigOption[] disabledConfigOptions() default {};
+
   Library[] isOneOfLibraries() default {};
 
   Condition isSerializationLibraryJackson() default Condition.ANY;
-
-  Condition serializableModel() default Condition.ANY;
-
-  Condition useBeanValidation() default Condition.ANY;
-
-  Condition useEnumCaseInsensitive() default Condition.ANY;
 }

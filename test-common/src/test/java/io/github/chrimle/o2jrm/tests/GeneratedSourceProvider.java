@@ -48,13 +48,8 @@ public abstract sealed class GeneratedSourceProvider implements ArgumentsProvide
         .filter(
             generatedSource -> {
               if (assumptionFilter == null) return true;
-              if (!assumptionFilter
-                  .enumUnknownDefaultCase()
-                  .test(generatedSource.enumUnknownDefaultCase())) return false;
               if (!(assumptionFilter.enumValueClass().equals(Object.class)
                   || assumptionFilter.enumValueClass().equals(generatedSource.enumValueClass())))
-                return false;
-              if (!assumptionFilter.generateBuilders().test(generatedSource.generateBuilders()))
                 return false;
               if (!assumptionFilter
                   .hasAdditionalEnumTypeAnnotations()
@@ -73,6 +68,18 @@ public abstract sealed class GeneratedSourceProvider implements ArgumentsProvide
               if (!assumptionFilter.isDeprecated().test(generatedSource.isDeprecated()))
                 return false;
               if (!assumptionFilter.isInnerEnum().test(generatedSource.isInnerEnum())) return false;
+              if (assumptionFilter.enabledConfigOptions().length > 0
+                  && !Arrays.stream(assumptionFilter.enabledConfigOptions())
+                      .allMatch(
+                          configOption ->
+                              generatedSource.getEnabledConfigOptions().contains(configOption)))
+                return false;
+              if (assumptionFilter.disabledConfigOptions().length > 0
+                  && Arrays.stream(assumptionFilter.disabledConfigOptions())
+                      .anyMatch(
+                          configOption ->
+                              generatedSource.getEnabledConfigOptions().contains(configOption)))
+                return false;
               if (assumptionFilter.isOneOfLibraries().length > 0
                   && !Arrays.stream(assumptionFilter.isOneOfLibraries())
                       .toList()
@@ -80,13 +87,6 @@ public abstract sealed class GeneratedSourceProvider implements ArgumentsProvide
               if (!assumptionFilter
                   .isSerializationLibraryJackson()
                   .test(generatedSource.isSerializationLibraryJackson())) return false;
-              if (!assumptionFilter.serializableModel().test(generatedSource.serializableModel()))
-                return false;
-              if (!assumptionFilter.useBeanValidation().test(generatedSource.useBeanValidation()))
-                return false;
-              if (!assumptionFilter
-                  .useEnumCaseInsensitive()
-                  .test(generatedSource.useEnumCaseInsensitive())) return false;
               return true;
             })
         .map(Arguments::of);
