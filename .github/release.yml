@@ -10,15 +10,39 @@ changelog:
     - title: Security
       labels:
         - security
+
     - title: New Features
       labels:
         - feat
+
+    - title: "[okhttp-gson] New Features"
+      labels:
+        - feat
+        - "library: okhttp-gson"
+
+    - title: "[webclient] New Features"
+      labels:
+        - feat
+        - "library: webclient"
+
     - title: Bug Fixes
       labels:
         - bug
+
+    - title: "[okhttp-gson] Bug Fixes"
+      labels:
+        - bug
+        - "library: okhttp-gson"
+
+    - title: "[webclient] Bug Fixes"
+      labels:
+        - bug
+        - "library: webclient"
+
     - title: Dependency Updates
       labels:
         - dependencies
+
     - title: Preview Changes
       labels:
         - preview
