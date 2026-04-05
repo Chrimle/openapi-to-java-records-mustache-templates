@@ -26,6 +26,7 @@ import io.github.chrimle.o2jrm.GeneratedSource;
 import io.github.chrimle.o2jrm.annotations.TestAnnotationOne;
 import io.github.chrimle.o2jrm.annotations.TestAnnotationThree;
 import io.github.chrimle.o2jrm.annotations.TestAnnotationTwo;
+import io.github.chrimle.o2jrm.configs.ConfigOption;
 import io.github.chrimle.o2jrm.configs.Library;
 import io.github.chrimle.o2jrm.interfaces.TestInterfaceOne;
 import io.github.chrimle.o2jrm.interfaces.TestInterfaceTwo;
@@ -594,7 +595,7 @@ public abstract class GeneratedEnumTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedEnumProvider.class)
-          @AssumptionFilter(serializableModel = Condition.FALSE)
+          @AssumptionFilter(disabledConfigOptions = ConfigOption.SERIALIZABLE_MODEL)
           @DisplayName("Generated `enum` does NOT implement `Serializable`")
           void
               whenConfigOptionSerializableModelIsFalseThenGeneratedEnumClassDoesNotImplementSerializable(
@@ -610,7 +611,9 @@ public abstract class GeneratedEnumTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedEnumProvider.class)
-          @AssumptionFilter(isInnerEnum = Condition.FALSE, serializableModel = Condition.TRUE)
+          @AssumptionFilter(
+              isInnerEnum = Condition.FALSE,
+              enabledConfigOptions = ConfigOption.SERIALIZABLE_MODEL)
           @DisplayName("Generated OUTER `enum` implement `Serializable`")
           void
               whenConfigOptionSerializableModelIsTrueThenOuterGeneratedEnumClassImplementsSerializable(
@@ -621,7 +624,9 @@ public abstract class GeneratedEnumTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedEnumProvider.class)
-          @AssumptionFilter(isInnerEnum = Condition.TRUE, serializableModel = Condition.TRUE)
+          @AssumptionFilter(
+              isInnerEnum = Condition.TRUE,
+              enabledConfigOptions = ConfigOption.SERIALIZABLE_MODEL)
           @DisplayName("Generated INNER `enum` does NOT implement `Serializable`")
           void
               whenConfigOptionSerializableModelIsTrueThenInnerGeneratedEnumClassDoesNotImplementsSerializable(

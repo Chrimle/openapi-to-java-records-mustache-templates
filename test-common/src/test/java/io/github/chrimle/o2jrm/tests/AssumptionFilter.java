@@ -16,6 +16,7 @@
 
 package io.github.chrimle.o2jrm.tests;
 
+import io.github.chrimle.o2jrm.configs.ConfigOption;
 import io.github.chrimle.o2jrm.configs.Library;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -45,6 +46,10 @@ public @interface AssumptionFilter {
   Condition isDeprecated() default Condition.ANY;
 
   Condition isInnerEnum() default Condition.ANY;
+
+  ConfigOption[] enabledConfigOptions() default {};
+
+  ConfigOption[] disabledConfigOptions() default {};
 
   Library[] isOneOfLibraries() default {};
 
