@@ -43,10 +43,6 @@ public interface PluginExecution {
     return getConfigOptions().contains(configOption);
   }
 
-  default boolean useJakartaEe() {
-    return hasConfigOption(ConfigOption.USE_JAKARTA_EE);
-  }
-
   default boolean enumUnknownDefaultCase() {
     return hasConfigOption(ConfigOption.ENUM_UNKNOWN_DEFAULT_CASE);
   }
