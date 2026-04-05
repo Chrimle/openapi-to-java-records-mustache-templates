@@ -91,11 +91,24 @@
                         </goals>
                         <configuration>
                             <target>
+                                <!-- Propagate Maven Project properties to any variables, such as '${project.version}' -->
                                 <filterset id="versionFilter" begintoken="${" endtoken="}">
                                     <filter token="project.version" value="${project.version}"/>
                                 </filterset>
-                                <!-- Copy Templates WITHOUT renaming -->
-                                <copy todir="${updated-mustache-templates-directory}/spring-templates">
+                                <!-- Copy Java Templates WITHOUT renaming -->
+                                <copy todir="${updated-mustache-templates-directory}/templates" overwrite="true">
+                                    <fileset dir="${original-mustache-templates-directory}/templates">
+                                        <include name="generateBuilders.mustache"/>
+                                        <include name="javadoc.mustache"/>
+                                        <include name="licenseInfo.mustache"/>
+                                        <include name="modelEnum.mustache"/>
+                                        <include name="pojo.mustache"/>
+                                        <include name="useBeanValidation.mustache"/>
+                                    </fileset>
+                                    <filterset refid="versionFilter"/>
+                                </copy>
+                                <!-- Copy Spring Templates WITHOUT renaming -->
+                                <copy todir="${updated-mustache-templates-directory}/spring-templates" overwrite="true">
                                     <fileset dir="${original-mustache-templates-directory}/templates">
                                         <include name="javadoc.mustache"/>
                                         <include name="licenseInfo.mustache"/>
@@ -108,32 +121,6 @@
 <!--                                <copy file="${original-mustache-templates-directory}/templates/modelEnum.mustache"-->
 <!--                                      tofile="${updated-mustache-templates-directory}/spring-templates/enumOuterClass.mustache"/>-->
                             </target>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <!-- Propagate Maven Project properties to any variables, such as '${project.version}' -->
-            <plugin>
-                <artifactId>maven-resources-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>propagate-maven-project-properties</id>
-                        <phase>compile</phase>
-                        <goals>
-                            <goal>copy-resources</goal>
-                        </goals>
-                        <configuration>
-                            <resources>
-                                <resource>
-                                    <directory>${original-mustache-templates-directory}</directory>
-                                    <includes>
-                                        <include>**/*.mustache</include>
-                                    </includes>
-                                    <filtering>true</filtering>
-                                </resource>
-                            </resources>
-                            <outputDirectory>${updated-mustache-templates-directory}</outputDirectory>
                         </configuration>
                     </execution>
                 </executions>
