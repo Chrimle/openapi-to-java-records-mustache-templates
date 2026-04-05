@@ -49,11 +49,11 @@ public record ExampleRecordTwoImplements(
 
   /** A set containing the names of all instance fields defined in this class. */
   public static final HashSet<String> openapiFields =
-      new HashSet<String>(
+      new HashSet<>(
           Set.of("field1"));
 
   /** A set containing the names of all required fields defined in this class. */
-  public static final HashSet<String> openapiRequiredFields = new HashSet<String>(Set.of());
+  public static final HashSet<String> openapiRequiredFields = new HashSet<>();
 
   public ExampleRecordTwoImplements(
       final Boolean field1) {
