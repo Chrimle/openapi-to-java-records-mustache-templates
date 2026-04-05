@@ -21,65 +21,103 @@ package io.github.chrimle.o2jrm.spring;
 import java.util.Objects;
 import com.google.gson.annotations.SerializedName;
 
-import java.io.IOException;
-import com.google.gson.TypeAdapter;
 import com.google.gson.JsonElement;
+import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 /**
  * Example of an Enum which implements an interface.
  */
 @JsonAdapter(ExampleImplementsEnum.Adapter.class)
 public enum ExampleImplementsEnum implements io.github.chrimle.o2jrm.interfaces.TestInterfaceOne {
-  
   ENUM1("ENUM1"),
-  
   ENUM2("ENUM2"),
-  
   ENUM3("ENUM3");
 
-  private String value;
+  private final String value;
 
-  ExampleImplementsEnum(String value) {
+  ExampleImplementsEnum(final String value) {
     this.value = value;
   }
 
+  /**
+   * Gets the {@code value} of this enum.
+   *
+   * @return the value of this enum.
+   */
   public String getValue() {
     return value;
   }
 
-  @Override
-  public String toString() {
-    return String.valueOf(value);
-  }
-
-  public static ExampleImplementsEnum fromValue(String value) {
-    for (ExampleImplementsEnum b : ExampleImplementsEnum.values()) {
-      if (b.value.equals(value)) {
-        return b;
+  /**
+   * Case-sensitively matches the given {@code value} to an enum constant using {@link #getValue()}.
+   *
+   * <p><b>NOTE:</b> if multiple enum constants have a matching value, the first enum constant is
+   * returned, by the order they are declared.
+   *
+   * @param value of the enum.
+   * @return a {@link ExampleImplementsEnum } with the matching value.
+   * @throws IllegalArgumentException if no enum has a value matching the given value.
+   */
+  public static ExampleImplementsEnum fromValue(final String value) {
+    for (final ExampleImplementsEnum constant : ExampleImplementsEnum.values()) {
+      if (constant.getValue().equals(value)) {
+        return constant;
       }
     }
     throw new IllegalArgumentException("Unexpected value '" + value + "'");
   }
 
+  /**
+   * Validates the JSON Element and throws an exception if issues are found.
+   *
+   * @param jsonElement to validate.
+   * @throws IOException if the JSON Element is not a valid ExampleImplementsEnum object.
+   */
+  public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
+    final String value = jsonElement.getAsString();
+    ExampleImplementsEnum.fromValue(value);
+  }
+
+  /**
+   * Converts {@link ExampleImplementsEnum } objects to and from JSON.
+   *
+   * @see com.google.gson.TypeAdapter
+   */
   public static class Adapter extends TypeAdapter<ExampleImplementsEnum> {
+
+    /**
+     * Writes the {@link #value} of the {@code enumeration} as a JSON-string to the {@code
+     * jsonWriter}.
+     *
+     * @param jsonWriter to write the value to.
+     * @param enumeration to write as JSON.
+     * @throws IOException if the {@code jsonWriter} fails to write the value.
+     * @throws NullPointerException if {@code jsonWriter} or {@code enumeration} is {@code null}.
+     */
     @Override
-    public void write(final JsonWriter jsonWriter, final ExampleImplementsEnum enumeration) throws IOException {
+    public void write(final JsonWriter jsonWriter, final ExampleImplementsEnum enumeration)
+        throws IOException {
       jsonWriter.value(enumeration.getValue());
     }
 
+    /**
+     * Reads the <i>next</i> JSON-value from the {@code jsonReader} and converts it to a {@link
+     * ExampleImplementsEnum }.
+     *
+     * @param jsonReader to read the JSON-string from.
+     * @return a {@link ExampleImplementsEnum }.
+     * @throws IOException if the {@code jsonReader} fails to read a value.
+     * @throws NullPointerException if {@code jsonReader} is {@code null}.
+     * @see #fromValue
+     */
     @Override
     public ExampleImplementsEnum read(final JsonReader jsonReader) throws IOException {
-      String value = jsonReader.nextString();
+      final String value = jsonReader.nextString();
       return ExampleImplementsEnum.fromValue(value);
     }
   }
-
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-    String value = jsonElement.getAsString();
-    ExampleImplementsEnum.fromValue(value);
-  }
 }
-

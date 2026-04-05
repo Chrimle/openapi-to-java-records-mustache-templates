@@ -109,8 +109,8 @@
                                     <filterset refid="versionFilter"/>
                                 </copy>
                                 <!-- Copy Templates and Rename -->
-<!--                                <copy file="${original-mustache-templates-directory}/templates/modelEnum.mustache"-->
-<!--                                      tofile="${updated-mustache-templates-directory}/spring-templates/enumOuterClass.mustache"/>-->
+                                <copy file="src/main/resources/templates/modelEnum.mustache"
+                                      tofile="${project.build.outputDirectory}/spring-templates/modelEnum.mustache"/>
                             </target>
                         </configuration>
                     </execution>
