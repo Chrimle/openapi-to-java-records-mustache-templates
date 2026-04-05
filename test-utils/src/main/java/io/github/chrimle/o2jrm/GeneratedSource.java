@@ -77,10 +77,6 @@ public class GeneratedSource {
     return pluginExecution.hasAdditionalModelTypeAnnotations();
   }
 
-  public boolean serializableModel() {
-    return pluginExecution.serializableModel();
-  }
-
   public boolean useBeanValidation() {
     return pluginExecution.useBeanValidation();
   }

@@ -92,8 +92,6 @@ public abstract sealed class GeneratedSourceProvider implements ArgumentsProvide
               if (!assumptionFilter
                   .isSerializationLibraryJackson()
                   .test(generatedSource.isSerializationLibraryJackson())) return false;
-              if (!assumptionFilter.serializableModel().test(generatedSource.serializableModel()))
-                return false;
               if (!assumptionFilter.useBeanValidation().test(generatedSource.useBeanValidation()))
                 return false;
               if (!assumptionFilter

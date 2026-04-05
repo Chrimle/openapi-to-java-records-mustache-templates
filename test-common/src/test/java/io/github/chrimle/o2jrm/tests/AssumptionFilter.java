@@ -55,8 +55,6 @@ public @interface AssumptionFilter {
 
   Condition isSerializationLibraryJackson() default Condition.ANY;
 
-  Condition serializableModel() default Condition.ANY;
-
   Condition useBeanValidation() default Condition.ANY;
 
   Condition useEnumCaseInsensitive() default Condition.ANY;

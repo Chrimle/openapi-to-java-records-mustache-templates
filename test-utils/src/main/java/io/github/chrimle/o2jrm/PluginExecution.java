@@ -59,10 +59,6 @@ public interface PluginExecution {
     return hasConfigOption(ConfigOption.USE_BEAN_VALIDATION);
   }
 
-  default boolean serializableModel() {
-    return hasConfigOption(ConfigOption.SERIALIZABLE_MODEL);
-  }
-
   default boolean hasAdditionalModelTypeAnnotations() {
     return hasConfigOption(ConfigOption.ADDITIONAL_MODEL_TYPE_ANNOTATIONS);
   }
