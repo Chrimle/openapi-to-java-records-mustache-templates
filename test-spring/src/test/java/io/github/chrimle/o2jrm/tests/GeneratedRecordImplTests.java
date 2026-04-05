@@ -35,7 +35,7 @@ final class GeneratedRecordImplTests extends GeneratedRecordTests {
    * @deprecated Temporary, until Spring-boot Generator is tested...
    */
   static boolean isSpringGenerator() {
-    return false;
+    return true;
   }
 
   /**

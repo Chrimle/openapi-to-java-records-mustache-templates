@@ -1,0 +1,212 @@
+<!--
+  ~   Copyright 2024-2026 Chrimle
+  ~
+  ~   Licensed under the Apache License, Version 2.0 (the "License");
+  ~   you may not use this file except in compliance with the License.
+  ~   You may obtain a copy of the License at
+  ~
+  ~       http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~   Unless required by applicable law or agreed to in writing, software
+  ~   distributed under the License is distributed on an "AS IS" BASIS,
+  ~   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~   See the License for the specific language governing permissions and
+  ~   limitations under the License.
+  -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>io.github.chrimle</groupId>
+        <artifactId>openapi-to-java-records-mustache-templates-parent</artifactId>
+        <version>3.6.0</version>
+    </parent>
+    <!-- Project Information -->
+    <name>OpenAPI to Java records :: Mustache Templates :: Test Spring</name>
+    <artifactId>openapi-to-java-records-mustache-templates-test-spring</artifactId>
+    <description>Module for Testing spring-templates with Spring-Generator</description>
+    <!-- / Project Information -->
+
+    <properties>
+        <!-- Overridden Dependencies -->
+        <hibernate-validator.version>6.2.5.Final</hibernate-validator.version>
+        <jakarta.validation-api.version>2.0.2</jakarta.validation-api.version>
+
+        <!-- Unpack the spring-templates instead -->
+        <templatesToCopy>
+            spring-templates/javadoc.mustache,
+            spring-templates/licenseInfo.mustache,
+            spring-templates/pojo.mustache,
+            spring-templates/useBeanValidation.mustache
+        </templatesToCopy>
+        <!-- Unpack the Spring-compatible OpenAPI Spec instead -->
+        <specsToCopy>spring-api.yaml</specsToCopy>
+
+        <!-- Default `configuration`-option values -->
+        <modelPackage.default>${project.groupId}.o2jrm</modelPackage.default>
+        <generateModels.default>true</generateModels.default>
+        <generateApis.default>false</generateApis.default>
+        <generateModelTests.default>false</generateModelTests.default>
+        <generateModelDocumentation.default>false</generateModelDocumentation.default>
+        <generatorName.default>java</generatorName.default>
+        <sourceFolder.default>src/gen/java/main</sourceFolder.default>
+        <inputSpec.default>${project.build.outputDirectory}/spring-api.yaml</inputSpec.default>
+        <templateDirectory.default>${project.build.outputDirectory}/spring-templates</templateDirectory.default>
+        <!-- Default `configuration.configOptions`-option values -->
+        <output.default>target/generated-sources</output.default>
+    </properties>
+
+
+    <dependencies>
+        <!-- Sub Modules -->
+        <dependency>
+            <groupId>io.github.chrimle</groupId>
+            <artifactId>openapi-to-java-records-mustache-templates-test-utils</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.github.chrimle</groupId>
+            <artifactId>openapi-to-java-records-mustache-templates-test-common</artifactId>
+            <classifier>tests</classifier>
+        </dependency>
+        <!-- / Sub Modules -->
+        <dependency>
+            <!-- Needed when library=webclient -->
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+        </dependency>
+        <dependency>
+            <!-- Needed when configOptions.useJakartaEe=false -->
+            <groupId>com.github.spotbugs</groupId>
+            <artifactId>spotbugs-annotations</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>jsr305</artifactId>
+        </dependency>
+        <dependency>
+            <!-- Needed when library=okhttp-gson -->
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>logging-interceptor</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+        </dependency>
+        <dependency>
+            <!-- Needed when generateSupportingFiles=true -->
+            <groupId>com.squareup.okio</groupId>
+            <artifactId>okio-jvm</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.gsonfire</groupId>
+            <artifactId>gson-fire</artifactId>
+        </dependency>
+        <dependency>
+            <!-- Needed when configOptions.useJakartaEe=true -->
+            <groupId>jakarta.annotation</groupId>
+            <artifactId>jakarta.annotation-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
+        </dependency>
+        <dependency>
+            <!-- Needed for @Generated annotation -->
+            <groupId>javax.annotation</groupId>
+            <artifactId>javax.annotation-api</artifactId>
+        </dependency>
+        <dependency>
+            <!-- Needed when useBeanValidation=true -->
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>${hibernate-validator.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.openapitools</groupId>
+            <artifactId>jackson-databind-nullable</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webflux</artifactId>
+        </dependency>
+    </dependencies>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-dependency-plugin</artifactId>
+            </plugin>
+            <plugin>
+            <groupId>org.openapitools</groupId>
+            <artifactId>openapi-generator-maven-plugin</artifactId>
+            <configuration>
+                <output>${output.default}</output>
+                <generateModels>${generateModels.default}</generateModels>
+                <generateApis>${generateApis.default}</generateApis>
+                <generateModelTests>${generateModelTests.default}</generateModelTests>
+                <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
+                <inputSpec>${inputSpec.default}</inputSpec>
+                <templateDirectory>${templateDirectory.default}</templateDirectory>
+                <generatorName>${generatorName.default}</generatorName>
+                <configOptions>
+                    <sourceFolder>${sourceFolder.default}</sourceFolder>
+                </configOptions>
+            </configuration>
+            <executions>
+            <execution>
+                <id>generate-spring}</id>
+                <goals>
+                    <goal>generate</goal>
+                </goals>
+                <configuration>
+                    <modelPackage>${modelPackage.default}.spring</modelPackage>
+                </configuration>
+            </execution>
+            </executions>
+            </plugin>
+            <plugin>
+                <!-- Skip Deploying to GitHub Packages -->
+                <artifactId>maven-deploy-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

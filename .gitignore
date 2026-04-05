@@ -85,9 +85,13 @@ StringUtil.java
 
 # Ignore Imported Files
 */target/classes/api.yaml
+*/target/classes/spring-api.yaml
+
 */target/classes/templates
+*/target/classes/spring-templates
 # Keep the Official Mustache Templates!
 !mustache-templates/target/classes/templates
+!mustache-templates/target/classes/spring-templates
 
 # JUnit
 */target/test-classes/junit-platform.properties
