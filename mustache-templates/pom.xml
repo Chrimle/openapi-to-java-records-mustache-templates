@@ -92,7 +92,7 @@
                         <configuration>
                             <target>
                                 <!-- Copy Templates WITHOUT renaming -->
-                                <copy todir="${original-mustache-templates-directory}/spring-templates">
+                                <copy todir="${updated-mustache-templates-directory}/spring-templates">
                                     <fileset dir="${original-mustache-templates-directory}/templates">
                                         <include name="javadoc.mustache"/>
                                         <include name="licenseInfo.mustache"/>
@@ -102,7 +102,7 @@
                                 </copy>
                                 <!-- Copy Templates and Rename -->
 <!--                                <copy file="${original-mustache-templates-directory}/templates/modelEnum.mustache"-->
-<!--                                      tofile="${original-mustache-templates-directory}/spring-templates/enumOuterClass.mustache"/>-->
+<!--                                      tofile="${updated-mustache-templates-directory}/spring-templates/enumOuterClass.mustache"/>-->
                             </target>
                         </configuration>
                     </execution>

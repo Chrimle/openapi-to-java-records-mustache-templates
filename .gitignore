@@ -101,9 +101,3 @@ StringUtil.java
 
 # Track Copyright header Settings
 !.idea/copyright/
-
-# Ignore Copied Templates (source)
-mustache-templates/src/main/resources/spring-templates/javadoc.mustache
-mustache-templates/src/main/resources/spring-templates/licenseInfo.mustache
-mustache-templates/src/main/resources/spring-templates/pojo.mustache
-mustache-templates/src/main/resources/spring-templates/useBeanValidation.mustache
