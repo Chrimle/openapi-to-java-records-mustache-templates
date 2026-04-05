@@ -81,9 +81,6 @@
             <!-- Propagate Maven Project properties to any variables, such as '${project.version}' -->
             <plugin>
                 <artifactId>maven-resources-plugin</artifactId>
-                <configuration>
-                    <outputDirectory>${updated-mustache-templates-directory}</outputDirectory>
-                </configuration>
                 <executions>
                     <execution>
                         <id>propagate-maven-project-properties</id>
