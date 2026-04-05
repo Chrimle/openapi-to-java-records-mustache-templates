@@ -91,6 +91,9 @@
                         </goals>
                         <configuration>
                             <target>
+                                <filterset id="versionFilter" begintoken="${" endtoken="}">
+                                    <filter token="project.version" value="${project.version}"/>
+                                </filterset>
                                 <!-- Copy Templates WITHOUT renaming -->
                                 <copy todir="${updated-mustache-templates-directory}/spring-templates">
                                     <fileset dir="${original-mustache-templates-directory}/templates">
@@ -99,6 +102,7 @@
                                         <include name="pojo.mustache"/>
                                         <include name="useBeanValidation.mustache"/>
                                     </fileset>
+                                    <filterset refid="versionFilter"/>
                                 </copy>
                                 <!-- Copy Templates and Rename -->
 <!--                                <copy file="${original-mustache-templates-directory}/templates/modelEnum.mustache"-->
