@@ -78,11 +78,8 @@
 
     <build>
         <plugins>
-            <!-- Copies Templates from /templates into /spring-templates for reuse -->
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
-                <version>3.1.0</version>
                 <executions>
                     <execution>
                         <phase>process-resources</phase>
