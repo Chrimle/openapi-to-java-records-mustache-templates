@@ -94,9 +94,6 @@ public abstract sealed class GeneratedSourceProvider implements ArgumentsProvide
                   .test(generatedSource.isSerializationLibraryJackson())) return false;
               if (!assumptionFilter.useBeanValidation().test(generatedSource.useBeanValidation()))
                 return false;
-              if (!assumptionFilter
-                  .useEnumCaseInsensitive()
-                  .test(generatedSource.useEnumCaseInsensitive())) return false;
               return true;
             })
         .map(Arguments::of);

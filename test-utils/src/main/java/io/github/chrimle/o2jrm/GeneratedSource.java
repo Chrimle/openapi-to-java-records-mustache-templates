@@ -81,10 +81,6 @@ public class GeneratedSource {
     return pluginExecution.useBeanValidation();
   }
 
-  public boolean useEnumCaseInsensitive() {
-    return pluginExecution.useEnumCaseInsensitive();
-  }
-
   public boolean enumUnknownDefaultCase() {
     return pluginExecution.enumUnknownDefaultCase();
   }

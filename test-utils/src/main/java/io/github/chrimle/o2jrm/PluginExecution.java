@@ -47,10 +47,6 @@ public interface PluginExecution {
     return hasConfigOption(ConfigOption.USE_JAKARTA_EE);
   }
 
-  default boolean useEnumCaseInsensitive() {
-    return hasConfigOption(ConfigOption.USE_ENUM_CASE_INSENSITIVE);
-  }
-
   default boolean enumUnknownDefaultCase() {
     return hasConfigOption(ConfigOption.ENUM_UNKNOWN_DEFAULT_CASE);
   }
