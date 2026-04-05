@@ -58,8 +58,4 @@ public interface PluginExecution {
   default boolean hasAdditionalEnumTypeAnnotations() {
     return hasConfigOption(ConfigOption.ADDITIONAL_ENUM_TYPE_ANNOTATIONS);
   }
-
-  default boolean generateBuilders() {
-    return hasConfigOption(ConfigOption.GENERATE_BUILDERS);
-  }
 }

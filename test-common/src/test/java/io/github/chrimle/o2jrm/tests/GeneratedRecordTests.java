@@ -1266,7 +1266,7 @@ public abstract class GeneratedRecordTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedRecordProvider.class)
-          @AssumptionFilter(generateBuilders = Condition.FALSE)
+          @AssumptionFilter(disabledConfigOptions = ConfigOption.GENERATE_BUILDERS)
           @DisplayName("Generated `record` does NOT have inner `Builder`-class")
           void
               whenConfigOptionGenerateBuildersIsFalseThenGeneratedRecordDoesNotHaveInnerBuilderClass(
@@ -1283,7 +1283,7 @@ public abstract class GeneratedRecordTests {
         class GenerateBuildersTrueTests {
           @ParameterizedTest
           @ArgumentsSource(GeneratedRecordProvider.class)
-          @AssumptionFilter(generateBuilders = Condition.TRUE)
+          @AssumptionFilter(enabledConfigOptions = ConfigOption.GENERATE_BUILDERS)
           @DisplayName("Generated `record` has inner `Builder`-class")
           void whenConfigOptionGenerateBuildersIsSetThenGeneratedRecordHasInnerBuilderClass(
               final GeneratedSource generatedSource) {

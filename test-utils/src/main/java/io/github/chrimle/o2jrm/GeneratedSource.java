@@ -65,10 +65,6 @@ public class GeneratedSource {
     this.beanValidationAnnotations = beanValidationAnnotations;
   }
 
-  public boolean generateBuilders() {
-    return pluginExecution.generateBuilders();
-  }
-
   public boolean hasAdditionalEnumTypeAnnotations() {
     return pluginExecution.hasAdditionalEnumTypeAnnotations();
   }
