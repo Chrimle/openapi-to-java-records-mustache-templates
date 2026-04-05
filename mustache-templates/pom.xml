@@ -78,32 +78,41 @@
 
     <build>
         <plugins>
+            <!-- Copies Templates from /templates into /spring-templates for reuse -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <target>
+                                <!-- Copy Templates WITHOUT renaming -->
+                                <copy todir="${original-mustache-templates-directory}/spring-templates">
+                                    <fileset dir="${original-mustache-templates-directory}/templates">
+                                        <include name="javadoc.mustache"/>
+                                        <include name="licenseInfo.mustache"/>
+                                        <include name="pojo.mustache"/>
+                                        <include name="useBeanValidation.mustache"/>
+                                    </fileset>
+                                </copy>
+                                <!-- Copy Templates and Rename -->
+<!--                                <copy file="${original-mustache-templates-directory}/templates/modelEnum.mustache"-->
+<!--                                      tofile="${original-mustache-templates-directory}/spring-templates/enumOuterClass.mustache"/>-->
+                            </target>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Propagate Maven Project properties to any variables, such as '${project.version}' -->
             <plugin>
                 <artifactId>maven-resources-plugin</artifactId>
                 <executions>
-                    <!-- Copies Templates from /templates into /spring-templates for reuse -->
-                    <execution>
-                        <id>copy-templates-to-spring-templates</id>
-                        <phase>compile</phase>
-                        <goals>
-                            <goal>copy-resources</goal>
-                        </goals>
-                        <configuration>
-                            <resources>
-                                <resource>
-                                    <directory>${original-mustache-templates-directory}/templates</directory>
-                                    <includes>
-                                        <include>javadoc.mustache</include>
-                                        <include>licenseInfo.mustache</include>
-                                        <include>pojo.mustache</include>
-                                        <include>useBeanValidation.mustache</include>
-                                    </includes>
-                                </resource>
-                            </resources>
-                            <outputDirectory>${original-mustache-templates-directory}/spring-templates</outputDirectory>
-                        </configuration>
-                    </execution>
-                    <!-- Propagate Maven Project properties to any variables, such as '${project.version}' -->
                     <execution>
                         <id>propagate-maven-project-properties</id>
                         <phase>compile</phase>

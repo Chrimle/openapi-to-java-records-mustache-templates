@@ -32,6 +32,9 @@ replay_pid*
 .idea/*
 *.iml
 
+# Antrun
+mustache-templates/target/antrun/build-main.xml
+
 # Spotless
 **/spotless-index
 
