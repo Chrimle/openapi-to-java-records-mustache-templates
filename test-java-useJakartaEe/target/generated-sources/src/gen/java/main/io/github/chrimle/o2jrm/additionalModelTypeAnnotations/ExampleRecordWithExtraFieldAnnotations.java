@@ -80,7 +80,7 @@ public record ExampleRecordWithExtraFieldAnnotations(
               "twoAnnotationsAsArray"));
 
   /** A set containing the names of all required fields defined in this class. */
-  public static final HashSet<String> openapiRequiredFields = new HashSet<>(Set.of());
+  public static final HashSet<String> openapiRequiredFields = new HashSet<>();
 
   public ExampleRecordWithExtraFieldAnnotations(
       final Boolean oneAnnotationAsInline,

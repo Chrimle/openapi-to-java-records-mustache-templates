@@ -49,7 +49,7 @@ public record ExampleNullableRecord(
           Set.of("field1"));
 
   /** A set containing the names of all required fields defined in this class. */
-  public static final HashSet<String> openapiRequiredFields = new HashSet<>(Set.of());
+  public static final HashSet<String> openapiRequiredFields = new HashSet<>();
 
   public ExampleNullableRecord(
       final Boolean field1) {
