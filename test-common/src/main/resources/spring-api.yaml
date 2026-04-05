@@ -255,73 +255,73 @@ components:
           type: string
           description: a String field with a default value
           default: someDefaultValue
-#    ExampleImplementsEnum:
-#      type: string
-#      description: Example of an Enum which implements an interface.
-#      enum:
-#        - ENUM1
-#        - ENUM2
-#        - ENUM3
-#      x-implements:
-#        - io.github.chrimle.o2jrm.interfaces.TestInterfaceOne
-#    ExampleTwoImplementsEnum:
-#      type: string
-#      description: Example of an Enum which implements two interfaces.
-#      enum:
-#        - ENUM1
-#        - ENUM2
-#        - ENUM3
-#      x-implements:
-#        - io.github.chrimle.o2jrm.interfaces.TestInterfaceOne
-#        - io.github.chrimle.o2jrm.interfaces.TestInterfaceTwo
-#    ExampleEnum:
-#      type: string
-#      description: Example of an Enum
-#      enum:
-#        - ENUM1
-#        - ENUM2
-#        - ENUM3
-#      x-enum-descriptions:
-#        - Some description of ENUM1
-#        - Some description of ENUM2
-#        - Some description of ENUM3
-#    ExampleNullableEnum:
-#      type: string
-#      description: Example of an Enum
-#      nullable: true
-#      enum:
-#        - ENUM1
-#        - ENUM2
-#        - ENUM3
-#      x-enum-descriptions:
-#        - Some description of ENUM1
-#        - Some description of ENUM2
-#        - Some description of ENUM3
-#    ExampleUriEnum:
-#      type: string
-#      # TODO: Bug in openapi-generator
-#      #format: uri
-#      description: Example of an Enum with URI values
-#      enum:
-#        - "https://github.com/Chrimle/openapi-to-java-records-mustache-templates"
-#        - "https://chrimle.github.io/openapi-to-java-records-mustache-templates/"
-#    ExampleEnumWithIntegerValues:
-#      type: integer
-#      description: Example of an Enum with integer values
-#      enum:
-#        - 100
-#        - 200
-#        - 300
-#        - 400
-#        - 500
-#    DeprecatedExampleEnum:
-#      type: string
-#      deprecated: true
-#      description: Example of a deprecated Enum
-#      enum:
-#        - ENUM1
-#        - ENUM2
-#        - ENUM3
+    ExampleImplementsEnum:
+      type: string
+      description: Example of an Enum which implements an interface.
+      enum:
+        - ENUM1
+        - ENUM2
+        - ENUM3
+      x-implements:
+        - io.github.chrimle.o2jrm.interfaces.TestInterfaceOne
+    ExampleTwoImplementsEnum:
+      type: string
+      description: Example of an Enum which implements two interfaces.
+      enum:
+        - ENUM1
+        - ENUM2
+        - ENUM3
+      x-implements:
+        - io.github.chrimle.o2jrm.interfaces.TestInterfaceOne
+        - io.github.chrimle.o2jrm.interfaces.TestInterfaceTwo
+    ExampleEnum:
+      type: string
+      description: Example of an Enum
+      enum:
+        - ENUM1
+        - ENUM2
+        - ENUM3
+      x-enum-descriptions:
+        - Some description of ENUM1
+        - Some description of ENUM2
+        - Some description of ENUM3
+    ExampleNullableEnum:
+      type: string
+      description: Example of an Enum
+      nullable: true
+      enum:
+        - ENUM1
+        - ENUM2
+        - ENUM3
+      x-enum-descriptions:
+        - Some description of ENUM1
+        - Some description of ENUM2
+        - Some description of ENUM3
+    ExampleUriEnum:
+      type: string
+      # TODO: Bug in openapi-generator
+      #format: uri
+      description: Example of an Enum with URI values
+      enum:
+        - "https://github.com/Chrimle/openapi-to-java-records-mustache-templates"
+        - "https://chrimle.github.io/openapi-to-java-records-mustache-templates/"
+    ExampleEnumWithIntegerValues:
+      type: integer
+      description: Example of an Enum with integer values
+      enum:
+        - 100
+        - 200
+        - 300
+        - 400
+        - 500
+    DeprecatedExampleEnum:
+      type: string
+      deprecated: true
+      description: Example of a deprecated Enum
+      enum:
+        - ENUM1
+        - ENUM2
+        - ENUM3
 #    RecordWithInnerEnums:
 #      type: object
 #      description: Example of a Record with inner enum classes
