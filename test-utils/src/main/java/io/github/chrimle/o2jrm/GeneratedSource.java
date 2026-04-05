@@ -77,10 +77,6 @@ public class GeneratedSource {
     return pluginExecution.enumUnknownDefaultCase();
   }
 
-  public boolean useJakartaEe() {
-    return pluginExecution.useJakartaEe();
-  }
-
   public boolean isDeprecated() {
     return generatedClass.isDeprecated();
   }
