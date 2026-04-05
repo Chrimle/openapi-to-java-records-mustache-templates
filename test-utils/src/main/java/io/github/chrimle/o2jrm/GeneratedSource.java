@@ -77,10 +77,6 @@ public class GeneratedSource {
     return pluginExecution.hasAdditionalModelTypeAnnotations();
   }
 
-  public boolean useBeanValidation() {
-    return pluginExecution.useBeanValidation();
-  }
-
   public boolean enumUnknownDefaultCase() {
     return pluginExecution.enumUnknownDefaultCase();
   }

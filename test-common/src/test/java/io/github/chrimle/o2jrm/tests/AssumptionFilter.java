@@ -54,6 +54,4 @@ public @interface AssumptionFilter {
   Library[] isOneOfLibraries() default {};
 
   Condition isSerializationLibraryJackson() default Condition.ANY;
-
-  Condition useBeanValidation() default Condition.ANY;
 }

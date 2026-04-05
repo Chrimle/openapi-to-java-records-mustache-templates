@@ -1305,7 +1305,7 @@ public abstract class GeneratedRecordTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedRecordProvider.class)
-          @AssumptionFilter(useBeanValidation = Condition.FALSE)
+          @AssumptionFilter(disabledConfigOptions = ConfigOption.USE_BEAN_VALIDATION)
           @DisplayName(
               "Generated `record` does NOT use Jakarta Bean Validation annotations on fields")
           void
@@ -1332,7 +1332,7 @@ public abstract class GeneratedRecordTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedRecordProvider.class)
-          @AssumptionFilter(useBeanValidation = Condition.TRUE)
+          @AssumptionFilter(enabledConfigOptions = ConfigOption.USE_BEAN_VALIDATION)
           @DisplayName("Generated `record` use Jakarta Bean Validation annotations on fields")
           void
               whenUseBeanValidationIsTrueThenFieldsAreAnnotatedWithJakartaBeanValidationAnnotations(

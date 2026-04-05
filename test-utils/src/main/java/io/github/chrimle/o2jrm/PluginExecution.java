@@ -51,10 +51,6 @@ public interface PluginExecution {
     return hasConfigOption(ConfigOption.ENUM_UNKNOWN_DEFAULT_CASE);
   }
 
-  default boolean useBeanValidation() {
-    return hasConfigOption(ConfigOption.USE_BEAN_VALIDATION);
-  }
-
   default boolean hasAdditionalModelTypeAnnotations() {
     return hasConfigOption(ConfigOption.ADDITIONAL_MODEL_TYPE_ANNOTATIONS);
   }
