@@ -103,14 +103,12 @@
                                     <fileset dir="src/main/resources/templates">
                                         <include name="javadoc.mustache"/>
                                         <include name="licenseInfo.mustache"/>
+                                        <include name="modelEnum.mustache"/>
                                         <include name="pojo.mustache"/>
                                         <include name="useBeanValidation.mustache"/>
                                     </fileset>
                                     <filterset refid="versionFilter"/>
                                 </copy>
-                                <!-- Copy Templates and Rename -->
-<!--                                <copy file="${original-mustache-templates-directory}/templates/modelEnum.mustache"-->
-<!--                                      tofile="${updated-mustache-templates-directory}/spring-templates/enumOuterClass.mustache"/>-->
                             </target>
                         </configuration>
                     </execution>

@@ -35,7 +35,7 @@ final class GeneratedEnumImplTests extends GeneratedEnumTests {
    * @deprecated Temporary, until Spring-boot Generator is tested...
    */
   static boolean isSpringGenerator() {
-    return false;
+    return true;
   }
 
   @SuppressWarnings("unused")

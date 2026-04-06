@@ -34,9 +34,9 @@ public interface GeneratedClassImpl extends GeneratedClass {
     if (generatedClass instanceof final GeneratedRecordImpl generatedRecord) {
       return GeneratedRecordImpl.getGeneratedFields(generatedRecord, pluginExecution);
     }
-    //    if (generatedClass instanceof final GeneratedEnumImpl generatedEnum) {
-    //      return generatedEnum.getGeneratedFields();
-    //    }
+    if (generatedClass instanceof final GeneratedEnumImpl generatedEnum) {
+      return generatedEnum.getGeneratedFields();
+    }
     throw new IllegalArgumentException("Unsupported `GeneratedClass`:" + generatedClass);
   }
 }

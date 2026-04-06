@@ -24,6 +24,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import io.github.chrimle.o2jrm.spring.ExampleEnum;
 import io.github.chrimle.o2jrm.spring.ExampleRecord;
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -51,6 +52,7 @@ import java.util.Set;
  * @param field5 an Array of Boolean field
  * @param field6 a Set field
  * @param field7 ExampleRecord.
+ * @param field8 ExampleEnum.
  */
 public record RecordWithRequiredFieldsOfEachType(
     Boolean field1,
@@ -59,7 +61,8 @@ public record RecordWithRequiredFieldsOfEachType(
     BigDecimal field4,
     List<Boolean> field5,
     Set<Boolean> field6,
-    ExampleRecord field7) {
+    ExampleRecord field7,
+    ExampleEnum field8) {
 
   /** A set containing the names of all instance fields defined in this class. */
   public static final HashSet<String> openapiFields =
@@ -70,7 +73,8 @@ public record RecordWithRequiredFieldsOfEachType(
               "field4",
               "field5",
               "field6",
-              "field7"));
+              "field7",
+              "field8"));
 
   /** A set containing the names of all required fields defined in this class. */
   public static final HashSet<String> openapiRequiredFields =
@@ -81,7 +85,8 @@ public record RecordWithRequiredFieldsOfEachType(
               "field4",
               "field5",
               "field6",
-              "field7"));
+              "field7",
+              "field8"));
 
   public RecordWithRequiredFieldsOfEachType(
       final Boolean field1,
@@ -90,7 +95,8 @@ public record RecordWithRequiredFieldsOfEachType(
       final BigDecimal field4,
       final List<Boolean> field5,
       final Set<Boolean> field6,
-      final ExampleRecord field7) {
+      final ExampleRecord field7,
+      final ExampleEnum field8) {
     this.field1 = field1;
     this.field2 = field2;
     this.field3 = field3;
@@ -98,6 +104,7 @@ public record RecordWithRequiredFieldsOfEachType(
     this.field5 = Objects.requireNonNullElseGet(field5, () -> new ArrayList<>());
     this.field6 = Objects.requireNonNullElseGet(field6, () -> new LinkedHashSet<>());
     this.field7 = field7;
+    this.field8 = field8;
   }
 
   /**
@@ -188,6 +195,8 @@ public record RecordWithRequiredFieldsOfEachType(
     }
 
     ExampleRecord.validateJsonElement(jsonObj.get("field7"));
+
+    ExampleEnum.validateJsonElement(jsonObj.get("field8"));
   }
 
   /**

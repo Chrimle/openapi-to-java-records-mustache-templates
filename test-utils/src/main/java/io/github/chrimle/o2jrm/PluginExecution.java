@@ -34,8 +34,8 @@ public interface PluginExecution {
 
   default boolean isSerializationLibraryJackson() {
     return switch (getLibrary()) {
-      case OKHTTP_GSON -> false;
-      case SPRING_BOOT, WEBCLIENT -> true;
+      case OKHTTP_GSON, SPRING_BOOT -> false;
+      case WEBCLIENT -> true;
     };
   }
 
