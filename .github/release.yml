@@ -14,6 +14,10 @@ changelog:
     - title: New Features
       labels:
         - feat
+      exclude:
+        labels:
+          - "library: okhttp-gson"
+          - "library: webclient"
 
     - title: "[okhttp-gson] New Features"
       labels:
@@ -34,6 +38,10 @@ changelog:
     - title: Bug Fixes
       labels:
         - bug
+      exclude:
+        labels:
+          - "library: okhttp-gson"
+          - "library: webclient"
 
     - title: "[okhttp-gson] Bug Fixes"
       labels:
