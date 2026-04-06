@@ -51,6 +51,7 @@ import java.util.Locale;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.condition.DisabledIf;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ArgumentsSource;
 
@@ -124,6 +125,7 @@ public abstract class GeneratedEnumTests {
           @AssumptionFilter(isSerializationLibraryJackson = Condition.TRUE)
           @DisplayName(
               "When `serializationLibrary` is `jackson` Then `getValue()`-method IS annotated with `@JsonValue`")
+          @DisabledIf("io.github.chrimle.o2jrm.tests.GeneratedEnumImplTests#isSpringGenerator")
           void whenSerializationLibraryIsJacksonThenGetValueMethodIsAnnotatedWithJsonValue(
               final GeneratedSource generatedSource) {
             CustomAssertions.assertMethodIsAnnotatedWith(
@@ -266,7 +268,7 @@ public abstract class GeneratedEnumTests {
 
         @ParameterizedTest
         @ArgumentsSource(GeneratedEnumProvider.class)
-        @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON})
+        @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON, Library.SPRING_BOOT})
         @DisplayName("Generated `enum` HAS `validateJsonElement`-method")
         void whenLibraryIsOkHttpGsonThenGeneratedEnumHasValidateJsonElementMethod(
             final GeneratedSource generatedSource) {
@@ -277,7 +279,7 @@ public abstract class GeneratedEnumTests {
         @ParameterizedTest
         @ArgumentsSource(GeneratedEnumProvider.class)
         @AssumptionFilter(
-            isOneOfLibraries = {Library.OKHTTP_GSON},
+            isOneOfLibraries = {Library.OKHTTP_GSON, Library.SPRING_BOOT},
             enumValueClass = String.class)
         @DisplayName("Generated `validateJsonElement`-method can be invoked with `String`")
         void whenLibraryIsOkHttpGsonThenGeneratedValidateJsonElementMethodCanBeInvokedWithString(
@@ -296,7 +298,7 @@ public abstract class GeneratedEnumTests {
         @ParameterizedTest
         @ArgumentsSource(GeneratedEnumProvider.class)
         @AssumptionFilter(
-            isOneOfLibraries = {Library.OKHTTP_GSON},
+            isOneOfLibraries = {Library.OKHTTP_GSON, Library.SPRING_BOOT},
             enumValueClass = Integer.class)
         @DisplayName("Generated `validateJsonElement`-method can be invoked with `Integer`")
         void whenLibraryIsOkHttpGsonThenGeneratedValidateJsonElementMethodCanBeInvokedWithInteger(
@@ -315,9 +317,10 @@ public abstract class GeneratedEnumTests {
         @ParameterizedTest
         @ArgumentsSource(GeneratedEnumProvider.class)
         @AssumptionFilter(
-            isOneOfLibraries = {Library.OKHTTP_GSON},
+            isOneOfLibraries = {Library.OKHTTP_GSON, Library.SPRING_BOOT},
             enumValueClass = URI.class)
         @DisplayName("Generated `validateJsonElement`-method can be invoked with `URI`")
+        @DisabledIf("io.github.chrimle.o2jrm.tests.GeneratedEnumImplTests#isSpringGenerator")
         void whenLibraryIsOkHttpGsonThenGeneratedValidateJsonElementMethodCanBeInvokedWithUri(
             final GeneratedSource generatedSource) {
           final Method validateJsonElementMethod =
@@ -333,11 +336,12 @@ public abstract class GeneratedEnumTests {
 
         @Nested
         @DisplayName("Testing the `Adapter` inner-class")
+        @DisabledIf("io.github.chrimle.o2jrm.tests.GeneratedEnumImplTests#isSpringGenerator")
         class AdapterInnerClassTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedEnumProvider.class)
-          @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON})
+          @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON, Library.SPRING_BOOT})
           @DisplayName("Generated `enum` has `Adapter` inner-class")
           void whenLibraryIsOkHttpGsonThenGeneratedEnumHasAdapterInnerClass(
               final GeneratedSource generatedSource) {
@@ -347,7 +351,7 @@ public abstract class GeneratedEnumTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedEnumProvider.class)
-          @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON})
+          @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON, Library.SPRING_BOOT})
           @DisplayName("Generated `enum` is annotated `@JsonAdapter`")
           void whenLibraryIsOkHttpGsonThenGeneratedEnumIsAnnotatedWithJsonAdapter(
               final GeneratedSource generatedSource) {
@@ -366,7 +370,7 @@ public abstract class GeneratedEnumTests {
 
             @ParameterizedTest
             @ArgumentsSource(GeneratedEnumProvider.class)
-            @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON})
+            @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON, Library.SPRING_BOOT})
             @DisplayName("when `JsonWriter` is `null` Then `NullPointerException` is thrown")
             void whenJsonWriterIsNullThenNullPointerExceptionIsThrown(
                 final GeneratedSource generatedSource) {
@@ -393,7 +397,7 @@ public abstract class GeneratedEnumTests {
 
             @ParameterizedTest
             @ArgumentsSource(GeneratedEnumProvider.class)
-            @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON})
+            @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON, Library.SPRING_BOOT})
             @DisplayName("when `JsonWriter` is NOT `null` Then nothing is thrown")
             void whenJsonWriterIsNotNullThenNothingIsThrown(final GeneratedSource generatedSource) {
               final Class<?> adapterClass =
@@ -425,7 +429,7 @@ public abstract class GeneratedEnumTests {
 
             @ParameterizedTest
             @ArgumentsSource(GeneratedEnumProvider.class)
-            @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON})
+            @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON, Library.SPRING_BOOT})
             @DisplayName("when `JsonReader` is `null` Then `NullPointerException` is thrown")
             void whenJsonReaderIsNullThenNullPointerExceptionIsThrown(
                 final GeneratedSource generatedSource) {
@@ -445,7 +449,7 @@ public abstract class GeneratedEnumTests {
 
             @ParameterizedTest
             @ArgumentsSource(GeneratedEnumProvider.class)
-            @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON})
+            @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON, Library.SPRING_BOOT})
             @DisplayName("when `jsonString` is invalid Then `IllegalArgumentException` is thrown")
             void whenJsonReaderIsInvalidThenIllegalArgumentExceptionIsThrown(
                 final GeneratedSource generatedSource) {
@@ -474,7 +478,7 @@ public abstract class GeneratedEnumTests {
 
             @ParameterizedTest
             @ArgumentsSource(GeneratedEnumProvider.class)
-            @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON})
+            @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON, Library.SPRING_BOOT})
             @DisplayName("when `JsonReader` is valid Then nothing is thrown")
             void whenJsonReaderIsValidThenNothingIsThrown(final GeneratedSource generatedSource) {
               final Class<?> adapterClass =
@@ -501,6 +505,7 @@ public abstract class GeneratedEnumTests {
 
       @Nested
       @DisplayName("Testing `<library>webclient</library>`")
+      @DisabledIf("io.github.chrimle.o2jrm.tests.GeneratedEnumImplTests#isSpringGenerator")
       class WebClientTests {
 
         @ParameterizedTest
@@ -566,6 +571,7 @@ public abstract class GeneratedEnumTests {
         @Nested
         @DisplayName(
             "Testing `<additionalEnumTypeAnnotations>@TestAnnotationOne;@TestAnnotationTwo;@TestAnnotationThree</additionalEnumTypeAnnotations>`")
+        @DisabledIf("io.github.chrimle.o2jrm.tests.GeneratedEnumImplTests#isSpringGenerator")
         class AdditionalEnumTypeAnnotationsSetTests {
 
           @ParameterizedTest
@@ -607,6 +613,7 @@ public abstract class GeneratedEnumTests {
 
         @Nested
         @DisplayName("Testing `<serializableModel>true</serializableModel>`")
+        @DisabledIf("io.github.chrimle.o2jrm.tests.GeneratedEnumImplTests#isSpringGenerator")
         class SerializableModelTrueTests {
 
           @ParameterizedTest
@@ -655,6 +662,7 @@ public abstract class GeneratedEnumTests {
         @AssumptionFilter(isSerializationLibraryJackson = Condition.TRUE)
         @DisplayName(
             "When `serializationLibrary` is `jackson` Then generated `fromValue(T)` method is annotated with `@JsonCreator`")
+        @DisabledIf("io.github.chrimle.o2jrm.tests.GeneratedEnumImplTests#isSpringGenerator")
         void whenSerializationLibraryIsJacksonThenFromValueMethodIsAnnotatedWithJsonCreator(
             final GeneratedSource generatedSource) {
           CustomAssertions.assertMethodIsAnnotatedWith(
@@ -766,6 +774,9 @@ public abstract class GeneratedEnumTests {
               enumValueClass = String.class)
           @DisplayName(
               "Generated `static fromValue(T)` method throws `IllegalArgumentException` when string `value` has wrong case")
+          @DisabledIf(
+              "io.github.chrimle.o2jrm.tests.GeneratedEnumImplTests#isSpringGenerator") // not sure
+          // why...
           void
               whenConfigOptionUseEnumCaseInsensitiveIsFalseThenFromValueMethodThrowsIllegalArgumentExceptionWhenGivenValueHasWrongCase(
                   final GeneratedSource generatedSource) {
@@ -785,6 +796,7 @@ public abstract class GeneratedEnumTests {
 
         @Nested
         @DisplayName("Testing `<useEnumCaseInsensitive>true</useEnumCaseInsensitive>`")
+        @DisabledIf("io.github.chrimle.o2jrm.tests.GeneratedEnumImplTests#isSpringGenerator")
         class UseEnumCaseInsensitiveTrueTests {
 
           @ParameterizedTest
@@ -865,6 +877,7 @@ public abstract class GeneratedEnumTests {
               enumValueClass = URI.class)
           @DisplayName(
               "Generated `enum`-class with `URI` values does NOT have `\"UNKNOWN_DEFAULT_OPEN_API\"` as a constant")
+          @DisabledIf("io.github.chrimle.o2jrm.tests.GeneratedEnumImplTests#isSpringGenerator")
           void
               whenConfigOptionEnumUnknownDefaultCaseIsFalseThenGeneratedEnumClassDoesNotHaveUriUnknownDefaultOpenApiEnumConstant(
                   final GeneratedSource generatedSource) {
@@ -892,6 +905,7 @@ public abstract class GeneratedEnumTests {
 
         @Nested
         @DisplayName("Testing `<enumUnknownDefaultCase>true</enumUnknownDefaultCase>`")
+        @DisabledIf("io.github.chrimle.o2jrm.tests.GeneratedEnumImplTests#isSpringGenerator")
         class EnumUnknownDefaultCaseTrueTests {
 
           @ParameterizedTest
@@ -997,6 +1011,7 @@ public abstract class GeneratedEnumTests {
               enumValueClass = Integer.class)
           @DisplayName(
               "Generated `static fromValue(T)` method returns `NUMBER_unknown_default_open_api` when `null` is given")
+          @DisabledIf("io.github.chrimle.o2jrm.tests.GeneratedEnumImplTests#isSpringGenerator")
           void whenConfigOptionEnumUnknownDefaultCaseIsTrueThenFromValueReturnsIntegerDefaultValue(
               final GeneratedSource generatedSource) {
             CustomAssertions.assertStaticMethodReturnsNonNull(

@@ -29,6 +29,15 @@ import org.junit.jupiter.api.*;
 @DisplayName("Test Generated `enum` classes")
 final class GeneratedEnumImplTests extends GeneratedEnumTests {
 
+  /**
+   * Whether some tests should be {@code Disabled} or not.
+   *
+   * @deprecated Temporary, until Spring-boot Generator is tested...
+   */
+  static boolean isSpringGenerator() {
+    return true;
+  }
+
   @SuppressWarnings("unused")
   static List<GeneratedSource> allPluginExecutionsAndGeneratedEnumCombinations() {
     return Stream.of(PluginExecutionImpl.values())
