@@ -19,11 +19,17 @@ changelog:
       labels:
         - feat
         - "library: okhttp-gson"
+      exclude:
+        labels:
+          - bug
 
     - title: "[webclient] New Features"
       labels:
         - feat
         - "library: webclient"
+      exclude:
+        labels:
+          - bug
 
     - title: Bug Fixes
       labels:
@@ -33,11 +39,17 @@ changelog:
       labels:
         - bug
         - "library: okhttp-gson"
+      exclude:
+        labels:
+          - feat
 
     - title: "[webclient] Bug Fixes"
       labels:
         - bug
         - "library: webclient"
+      exclude:
+        labels:
+          - feat
 
     - title: Dependency Updates
       labels:
