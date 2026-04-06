@@ -336,7 +336,6 @@ public abstract class GeneratedEnumTests {
 
         @Nested
         @DisplayName("Testing the `Adapter` inner-class")
-        @DisabledIf("io.github.chrimle.o2jrm.tests.GeneratedEnumImplTests#isSpringGenerator")
         class AdapterInnerClassTests {
 
           @ParameterizedTest
