@@ -68,36 +68,36 @@ public enum GeneratedEnumImpl implements GeneratedEnum, GeneratedClassImpl {
       GeneratedField.of("NUMBER_300", Integer.class, 300).build(),
       GeneratedField.of("NUMBER_400", Integer.class, 400).build(),
       GeneratedField.of("NUMBER_500", Integer.class, 500).build()),
-  //  EXAMPLE_INNER_ENUM(
-  //      "RecordWithInnerEnums$ExampleInnerEnum",
-  //      false,
-  //      List.of(),
-  //      GeneratedField.of("ENUM1", String.class, "ENUM1").build(),
-  //      GeneratedField.of("ENUM2", String.class, "ENUM2").build(),
-  //      GeneratedField.of("ENUM3", String.class, "ENUM3").build()),
-  //  EXAMPLE_INNER_TWO_ENUM(
-  //      "RecordWithInnerEnums$ExampleInnerTwoEnum",
-  //      false,
-  //      List.of(),
-  //      GeneratedField.of("NUMBER_404", Integer.class, 404).build(),
-  //      GeneratedField.of("NUMBER_501", Integer.class, 501).build(),
-  //      GeneratedField.of("NUMBER_503", Integer.class, 503).build()),
-  //  EXAMPLE_INNER_THREE_ENUM(
-  //      "RecordWithInnerEnums$ExampleInnerThreeEnum",
-  //      false,
-  //      List.of(),
-  //      GeneratedField.of(
-  //              "HTTPS_GITHUB_COM_CHRIMLE_OPENAPI_TO_JAVA_RECORDS_MUSTACHE_TEMPLATES",
-  //              URI.class,
-  //
-  // URI.create("https://github.com/Chrimle/openapi-to-java-records-mustache-templates"))
-  //          .build(),
-  //      GeneratedField.of(
-  //              "HTTPS_CHRIMLE_GITHUB_IO_OPENAPI_TO_JAVA_RECORDS_MUSTACHE_TEMPLATES_",
-  //              URI.class,
-  //
-  // URI.create("https://chrimle.github.io/openapi-to-java-records-mustache-templates/"))
-  //          .build()),
+  EXAMPLE_INNER_ENUM(
+      "RecordWithInnerEnums$ExampleInnerEnum",
+      false,
+      List.of(),
+      GeneratedField.of("ENUM1", String.class, "ENUM1").build(),
+      GeneratedField.of("ENUM2", String.class, "ENUM2").build(),
+      GeneratedField.of("ENUM3", String.class, "ENUM3").build()),
+  EXAMPLE_INNER_TWO_ENUM(
+      "RecordWithInnerEnums$ExampleInnerTwoEnum",
+      false,
+      List.of(),
+      GeneratedField.of("NUMBER_404", Integer.class, 404).build(),
+      GeneratedField.of("NUMBER_501", Integer.class, 501).build(),
+      GeneratedField.of("NUMBER_503", Integer.class, 503).build()),
+  EXAMPLE_INNER_THREE_ENUM(
+      "RecordWithInnerEnums$ExampleInnerThreeEnum",
+      false,
+      List.of(),
+      GeneratedField.of(
+              "HTTPS_GITHUB_COM_CHRIMLE_OPENAPI_TO_JAVA_RECORDS_MUSTACHE_TEMPLATES",
+              String.class, // URI.class,
+              "https://github.com/Chrimle/openapi-to-java-records-mustache-templates" // URI.create("https://github.com/Chrimle/openapi-to-java-records-mustache-templates")
+              )
+          .build(),
+      GeneratedField.of(
+              "HTTPS_CHRIMLE_GITHUB_IO_OPENAPI_TO_JAVA_RECORDS_MUSTACHE_TEMPLATES_",
+              String.class, // URI.class,
+              "https://chrimle.github.io/openapi-to-java-records-mustache-templates/" // URI.create("https://chrimle.github.io/openapi-to-java-records-mustache-templates/")
+              )
+          .build()),
   EXAMPLE_IMPLEMENTS_ENUM(
       "ExampleImplementsEnum",
       false,

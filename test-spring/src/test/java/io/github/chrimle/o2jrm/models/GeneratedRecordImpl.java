@@ -177,7 +177,7 @@ public enum GeneratedRecordImpl implements GeneratedRecord, GeneratedClassImpl {
    * does not list all expected fields to be generated. This is done in {@link
    * #getGeneratedFields(GeneratedClass, PluginExecution)}.
    */
-  //  RECORD_WITH_INNER_ENUMS("RecordWithInnerEnums", false, List.of(), List.of()),
+  RECORD_WITH_INNER_ENUMS("RecordWithInnerEnums", false, List.of(), List.of()),
   /**
    * This class reference another class, which requires Reflection at runtime. Hence, this class
    * does not list all expected fields to be generated. This is done in {@link
@@ -271,23 +271,21 @@ public enum GeneratedRecordImpl implements GeneratedRecord, GeneratedClassImpl {
   public static GeneratedField<?>[] getGeneratedFields(
       final GeneratedRecordImpl generatedRecord, final PluginExecution pluginExecution) {
     return switch (generatedRecord) {
-      //      case RECORD_WITH_INNER_ENUMS ->
-      //          List.of(
-      //                  GeneratedField.of(
-      //                          "exampleInner",
-      //                          GeneratedEnumImpl.EXAMPLE_INNER_ENUM.getClass(pluginExecution))
-      //                      .build(),
-      //                  GeneratedField.of(
-      //                          "exampleInnerTwo",
-      //
-      // GeneratedEnumImpl.EXAMPLE_INNER_TWO_ENUM.getClass(pluginExecution))
-      //                      .build(),
-      //                  GeneratedField.of(
-      //                          "exampleInnerThree",
-      //
-      // GeneratedEnumImpl.EXAMPLE_INNER_THREE_ENUM.getClass(pluginExecution))
-      //                      .build())
-      //              .toArray(new GeneratedField[] {});
+      case RECORD_WITH_INNER_ENUMS ->
+          List.of(
+                  GeneratedField.of(
+                          "exampleInner",
+                          GeneratedEnumImpl.EXAMPLE_INNER_ENUM.getClass(pluginExecution))
+                      .build(),
+                  GeneratedField.of(
+                          "exampleInnerTwo",
+                          GeneratedEnumImpl.EXAMPLE_INNER_TWO_ENUM.getClass(pluginExecution))
+                      .build(),
+                  GeneratedField.of(
+                          "exampleInnerThree",
+                          GeneratedEnumImpl.EXAMPLE_INNER_THREE_ENUM.getClass(pluginExecution))
+                      .build())
+              .toArray(new GeneratedField[] {});
       case RECORD_WITH_REQUIRED_FIELDS_OF_EACH_TYPE ->
           List.of(
                   GeneratedField.of("field1", Boolean.class)
@@ -319,15 +317,12 @@ public enum GeneratedRecordImpl implements GeneratedRecord, GeneratedClassImpl {
                       .isRequired(true)
                       .isBeanValidationNullable(false)
                       .isCustomClass(true)
-                      .build()
-                  // ,
-                  //                  GeneratedField.of(
-                  //                          "field8",
-                  // GeneratedEnumImpl.EXAMPLE_ENUM.getClass(pluginExecution))
-                  //                      .isRequired(true)
-                  //                      .isBeanValidationNullable(false)
-                  //                      .build()
-                  )
+                      .build(),
+                  GeneratedField.of(
+                          "field8", GeneratedEnumImpl.EXAMPLE_ENUM.getClass(pluginExecution))
+                      .isRequired(true)
+                      .isBeanValidationNullable(false)
+                      .build())
               .toArray(new GeneratedField[] {});
       case RECORD_WITH_NULLABLE_FIELDS_OF_EACH_TYPE ->
           List.of(
@@ -361,16 +356,13 @@ public enum GeneratedRecordImpl implements GeneratedRecord, GeneratedClassImpl {
                       .isRequired(false)
                       .isNullable(true)
                       .isCustomClass(true)
-                      .build()
-                  //                  ,
-                  //                  GeneratedField.of(
-                  //                          "field8",
-                  //
-                  // GeneratedEnumImpl.EXAMPLE_NULLABLE_ENUM.getClass(pluginExecution))
-                  //                      .isRequired(false)
-                  //                      .isNullable(true)
-                  //                      .build()
-                  )
+                      .build(),
+                  GeneratedField.of(
+                          "field8",
+                          GeneratedEnumImpl.EXAMPLE_NULLABLE_ENUM.getClass(pluginExecution))
+                      .isRequired(false)
+                      .isNullable(true)
+                      .build())
               .toArray(new GeneratedField[] {});
       case RECORD_WITH_COLLECTIONS_OF_RECORDS ->
           List.of(

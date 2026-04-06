@@ -58,9 +58,9 @@ components:
         field7:
           description: an ExampleRecord field
           $ref: '#/components/schemas/ExampleRecord'
-#        field8:
-#          description: an ExampleEnum field
-#          $ref: '#/components/schemas/ExampleEnum'
+        field8:
+          description: an ExampleEnum field
+          $ref: '#/components/schemas/ExampleEnum'
     RecordWithNullableFieldsOfEachType:
       type: object
       description: Example of a Record with fields of each type
@@ -104,10 +104,10 @@ components:
         field7:
           description: an ExampleNullableRecord field
           $ref: '#/components/schemas/ExampleNullableRecord'
-#        field8:
-#          description: an ExampleNullableEnum field
-#          nullable: true
-#          $ref: '#/components/schemas/ExampleNullableEnum'
+        field8:
+          description: an ExampleNullableEnum field
+          nullable: true
+          $ref: '#/components/schemas/ExampleNullableEnum'
     ExampleRecordWithCollectionsOfRecords:
       type: object
       description: Example of a Record with collections of records.
@@ -322,36 +322,36 @@ components:
         - ENUM1
         - ENUM2
         - ENUM3
-#    RecordWithInnerEnums:
-#      type: object
-#      description: Example of a Record with inner enum classes
-#      properties:
-#        exampleInner:
-#          type: string
-#          description: Example of an inner enum class
-#          enum:
-#            - ENUM1
-#            - ENUM2
-#            - ENUM3
-#          x-enum-descriptions:
-#            - Some description of ENUM1
-#            - Some description of ENUM2
-#            - Some description of ENUM3
-#        exampleInnerTwo:
-#          type: integer
-#          description: Example of another inner enum class with integer values
-#          enum:
-#            - 404
-#            - 501
-#            - 503
-#        exampleInnerThree:
-#          type: string
-#          # TODO: Bug in openapi-generator
-#          #format: uri
-#          description: Example of another inner enum class with URI values
-#          enum:
-#            - "https://github.com/Chrimle/openapi-to-java-records-mustache-templates"
-#            - "https://chrimle.github.io/openapi-to-java-records-mustache-templates/"
+    RecordWithInnerEnums:
+      type: object
+      description: Example of a Record with inner enum classes
+      properties:
+        exampleInner:
+          type: string
+          description: Example of an inner enum class
+          enum:
+            - ENUM1
+            - ENUM2
+            - ENUM3
+          x-enum-descriptions:
+            - Some description of ENUM1
+            - Some description of ENUM2
+            - Some description of ENUM3
+        exampleInnerTwo:
+          type: integer
+          description: Example of another inner enum class with integer values
+          enum:
+            - 404
+            - 501
+            - 503
+        exampleInnerThree:
+          type: string
+          # TODO: Bug in openapi-generator
+          #format: uri
+          description: Example of another inner enum class with URI values
+          enum:
+            - "https://github.com/Chrimle/openapi-to-java-records-mustache-templates"
+            - "https://chrimle.github.io/openapi-to-java-records-mustache-templates/"
     RecordWithAllConstraints:
       type: object
       description: Example of a Record which has fields with constraints

@@ -24,6 +24,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import io.github.chrimle.o2jrm.spring.ExampleNullableEnum;
 import io.github.chrimle.o2jrm.spring.ExampleNullableRecord;
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -52,6 +53,7 @@ import java.util.Set;
  * @param field5 an Array of Boolean field
  * @param field6 a Set field
  * @param field7 ExampleNullableRecord.
+ * @param field8 ExampleNullableEnum.
  */
 public record RecordWithNullableFieldsOfEachType(
     Boolean field1,
@@ -60,7 +62,8 @@ public record RecordWithNullableFieldsOfEachType(
     BigDecimal field4,
     List<Boolean> field5,
     Set<Boolean> field6,
-    ExampleNullableRecord field7) {
+    ExampleNullableRecord field7,
+    ExampleNullableEnum field8) {
 
   /** A set containing the names of all instance fields defined in this class. */
   public static final HashSet<String> openapiFields =
@@ -71,7 +74,8 @@ public record RecordWithNullableFieldsOfEachType(
               "field4",
               "field5",
               "field6",
-              "field7"));
+              "field7",
+              "field8"));
 
   /** A set containing the names of all required fields defined in this class. */
   public static final HashSet<String> openapiRequiredFields =
@@ -90,7 +94,8 @@ public record RecordWithNullableFieldsOfEachType(
       final BigDecimal field4,
       final List<Boolean> field5,
       final Set<Boolean> field6,
-      final ExampleNullableRecord field7) {
+      final ExampleNullableRecord field7,
+      final ExampleNullableEnum field8) {
     this.field1 = field1;
     this.field2 = field2;
     this.field3 = field3;
@@ -98,6 +103,7 @@ public record RecordWithNullableFieldsOfEachType(
     this.field5 = field5;
     this.field6 = field6;
     this.field7 = field7;
+    this.field8 = field8;
   }
 
   /**
@@ -189,6 +195,10 @@ public record RecordWithNullableFieldsOfEachType(
 
     if (jsonObj.get("field7") != null && !jsonObj.get("field7").isJsonNull()) { 
       ExampleNullableRecord.validateJsonElement(jsonObj.get("field7"));
+    }
+
+    if (jsonObj.get("field8") != null && !jsonObj.get("field8").isJsonNull()) { 
+      ExampleNullableEnum.validateJsonElement(jsonObj.get("field8"));
     }
   }
 
