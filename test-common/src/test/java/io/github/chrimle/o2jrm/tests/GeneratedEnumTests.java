@@ -611,7 +611,6 @@ public abstract class GeneratedEnumTests {
 
         @Nested
         @DisplayName("Testing `<serializableModel>true</serializableModel>`")
-        @DisabledIf("io.github.chrimle.o2jrm.tests.GeneratedEnumImplTests#isSpringGenerator")
         class SerializableModelTrueTests {
 
           @ParameterizedTest

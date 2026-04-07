@@ -1249,7 +1249,6 @@ public abstract class GeneratedRecordTests {
 
         @Nested
         @DisplayName("Testing `<serializableModel>true</serializableModel>`")
-        @DisabledIf("io.github.chrimle.o2jrm.tests.GeneratedRecordImplTests#isSpringGenerator")
         class SerializableModelTrueTests {
 
           @ParameterizedTest
