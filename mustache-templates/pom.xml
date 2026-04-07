@@ -55,6 +55,14 @@
             <url>https://www.chrimle.com</url>
         </developer>
     </developers>
+    <issueManagement>
+        <system>GitHub Issues</system>
+        <url>https://github.com/Chrimle/openapi-to-java-records-mustache-templates/issues</url>
+    </issueManagement>
+    <ciManagement>
+        <system>github-actions</system>
+        <url>https://github.com/Chrimle/openapi-to-java-records-mustache-templates/actions</url>
+    </ciManagement>
     <!-- / Project Information -->
 
     <distributionManagement>
