@@ -16,7 +16,7 @@
  *
  */
 
-package io.github.chrimle.o2jrm.spring;
+package io.github.chrimle.o2jrm.standard;
 
 import java.util.Objects;
 import com.google.gson.TypeAdapter;
@@ -24,8 +24,8 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.github.chrimle.o2jrm.spring.ExampleNullableEnum;
-import io.github.chrimle.o2jrm.spring.ExampleNullableRecord;
+import io.github.chrimle.o2jrm.standard.ExampleNullableEnum;
+import io.github.chrimle.o2jrm.standard.ExampleNullableRecord;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;

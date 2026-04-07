@@ -16,7 +16,7 @@
  *
  */
 
-package io.github.chrimle.o2jrm.spring;
+package io.github.chrimle.o2jrm.additionalEnumTypeAnnotations;
 
 import java.util.Objects;
 import com.google.gson.annotations.SerializedName;
@@ -29,19 +29,29 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
 /**
- * Example of an Enum with integer values
+ * Example of an Enum
  */
-@JsonAdapter(ExampleEnumWithIntegerValues.Adapter.class)
-public enum ExampleEnumWithIntegerValues {
-  NUMBER_100(100),
-  NUMBER_200(200),
-  NUMBER_300(300),
-  NUMBER_400(400),
-  NUMBER_500(500);
+@io.github.chrimle.o2jrm.annotations.TestAnnotationOne
+@io.github.chrimle.o2jrm.annotations.TestAnnotationTwo
+@io.github.chrimle.o2jrm.annotations.TestAnnotationThree
+@JsonAdapter(ExampleEnum.Adapter.class)
+public enum ExampleEnum {
+  /**
+   * Some description of ENUM1
+   */
+  ENUM1("ENUM1"),
+  /**
+   * Some description of ENUM2
+   */
+  ENUM2("ENUM2"),
+  /**
+   * Some description of ENUM3
+   */
+  ENUM3("ENUM3");
 
-  private final Integer value;
+  private final String value;
 
-  ExampleEnumWithIntegerValues(final Integer value) {
+  ExampleEnum(final String value) {
     this.value = value;
   }
 
@@ -50,22 +60,22 @@ public enum ExampleEnumWithIntegerValues {
    *
    * @return the value of this enum.
    */
-  public Integer getValue() {
+  public String getValue() {
     return value;
   }
 
   /**
-   * Matches the given {@code value} to an enum constant using {@link #getValue()}.
+   * Case-sensitively matches the given {@code value} to an enum constant using {@link #getValue()}.
    *
    * <p><b>NOTE:</b> if multiple enum constants have a matching value, the first enum constant is
    * returned, by the order they are declared.
    *
    * @param value of the enum.
-   * @return a {@link ExampleEnumWithIntegerValues } with the matching value.
+   * @return a {@link ExampleEnum } with the matching value.
    * @throws IllegalArgumentException if no enum has a value matching the given value.
    */
-  public static ExampleEnumWithIntegerValues fromValue(final Integer value) {
-    for (final ExampleEnumWithIntegerValues constant : ExampleEnumWithIntegerValues.values()) {
+  public static ExampleEnum fromValue(final String value) {
+    for (final ExampleEnum constant : ExampleEnum.values()) {
       if (constant.getValue().equals(value)) {
         return constant;
       }
@@ -77,19 +87,19 @@ public enum ExampleEnumWithIntegerValues {
    * Validates the JSON Element and throws an exception if issues are found.
    *
    * @param jsonElement to validate.
-   * @throws IOException if the JSON Element is not a valid ExampleEnumWithIntegerValues object.
+   * @throws IOException if the JSON Element is not a valid ExampleEnum object.
    */
   public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
-    final Integer value = jsonElement.getAsInt();
-    ExampleEnumWithIntegerValues.fromValue(value);
+    final String value = jsonElement.getAsString();
+    ExampleEnum.fromValue(value);
   }
 
   /**
-   * Converts {@link ExampleEnumWithIntegerValues } objects to and from JSON.
+   * Converts {@link ExampleEnum } objects to and from JSON.
    *
    * @see com.google.gson.TypeAdapter
    */
-  public static class Adapter extends TypeAdapter<ExampleEnumWithIntegerValues> {
+  public static class Adapter extends TypeAdapter<ExampleEnum> {
 
     /**
      * Writes the {@link #value} of the {@code enumeration} as a JSON-string to the {@code
@@ -101,25 +111,25 @@ public enum ExampleEnumWithIntegerValues {
      * @throws NullPointerException if {@code jsonWriter} or {@code enumeration} is {@code null}.
      */
     @Override
-    public void write(final JsonWriter jsonWriter, final ExampleEnumWithIntegerValues enumeration)
+    public void write(final JsonWriter jsonWriter, final ExampleEnum enumeration)
         throws IOException {
       jsonWriter.value(enumeration.getValue());
     }
 
     /**
      * Reads the <i>next</i> JSON-value from the {@code jsonReader} and converts it to a {@link
-     * ExampleEnumWithIntegerValues }.
+     * ExampleEnum }.
      *
      * @param jsonReader to read the JSON-string from.
-     * @return a {@link ExampleEnumWithIntegerValues }.
+     * @return a {@link ExampleEnum }.
      * @throws IOException if the {@code jsonReader} fails to read a value.
      * @throws NullPointerException if {@code jsonReader} is {@code null}.
      * @see #fromValue
      */
     @Override
-    public ExampleEnumWithIntegerValues read(final JsonReader jsonReader) throws IOException {
-      final Integer value = jsonReader.nextInt();
-      return ExampleEnumWithIntegerValues.fromValue(value);
+    public ExampleEnum read(final JsonReader jsonReader) throws IOException {
+      final String value = jsonReader.nextString();
+      return ExampleEnum.fromValue(value);
     }
   }
 }

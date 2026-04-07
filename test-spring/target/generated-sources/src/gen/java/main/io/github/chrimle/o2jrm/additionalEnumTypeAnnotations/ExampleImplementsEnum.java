@@ -16,7 +16,7 @@
  *
  */
 
-package io.github.chrimle.o2jrm.spring;
+package io.github.chrimle.o2jrm.additionalEnumTypeAnnotations;
 
 import java.util.Objects;
 import com.google.gson.annotations.SerializedName;
@@ -29,26 +29,20 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
 /**
- * Example of an Enum
+ * Example of an Enum which implements an interface.
  */
-@JsonAdapter(ExampleNullableEnum.Adapter.class)
-public enum ExampleNullableEnum {
-  /**
-   * Some description of ENUM1
-   */
+@io.github.chrimle.o2jrm.annotations.TestAnnotationOne
+@io.github.chrimle.o2jrm.annotations.TestAnnotationTwo
+@io.github.chrimle.o2jrm.annotations.TestAnnotationThree
+@JsonAdapter(ExampleImplementsEnum.Adapter.class)
+public enum ExampleImplementsEnum implements io.github.chrimle.o2jrm.interfaces.TestInterfaceOne {
   ENUM1("ENUM1"),
-  /**
-   * Some description of ENUM2
-   */
   ENUM2("ENUM2"),
-  /**
-   * Some description of ENUM3
-   */
   ENUM3("ENUM3");
 
   private final String value;
 
-  ExampleNullableEnum(final String value) {
+  ExampleImplementsEnum(final String value) {
     this.value = value;
   }
 
@@ -68,11 +62,11 @@ public enum ExampleNullableEnum {
    * returned, by the order they are declared.
    *
    * @param value of the enum.
-   * @return a {@link ExampleNullableEnum } with the matching value.
+   * @return a {@link ExampleImplementsEnum } with the matching value.
    * @throws IllegalArgumentException if no enum has a value matching the given value.
    */
-  public static ExampleNullableEnum fromValue(final String value) {
-    for (final ExampleNullableEnum constant : ExampleNullableEnum.values()) {
+  public static ExampleImplementsEnum fromValue(final String value) {
+    for (final ExampleImplementsEnum constant : ExampleImplementsEnum.values()) {
       if (constant.getValue().equals(value)) {
         return constant;
       }
@@ -84,19 +78,19 @@ public enum ExampleNullableEnum {
    * Validates the JSON Element and throws an exception if issues are found.
    *
    * @param jsonElement to validate.
-   * @throws IOException if the JSON Element is not a valid ExampleNullableEnum object.
+   * @throws IOException if the JSON Element is not a valid ExampleImplementsEnum object.
    */
   public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
     final String value = jsonElement.getAsString();
-    ExampleNullableEnum.fromValue(value);
+    ExampleImplementsEnum.fromValue(value);
   }
 
   /**
-   * Converts {@link ExampleNullableEnum } objects to and from JSON.
+   * Converts {@link ExampleImplementsEnum } objects to and from JSON.
    *
    * @see com.google.gson.TypeAdapter
    */
-  public static class Adapter extends TypeAdapter<ExampleNullableEnum> {
+  public static class Adapter extends TypeAdapter<ExampleImplementsEnum> {
 
     /**
      * Writes the {@link #value} of the {@code enumeration} as a JSON-string to the {@code
@@ -108,25 +102,25 @@ public enum ExampleNullableEnum {
      * @throws NullPointerException if {@code jsonWriter} or {@code enumeration} is {@code null}.
      */
     @Override
-    public void write(final JsonWriter jsonWriter, final ExampleNullableEnum enumeration)
+    public void write(final JsonWriter jsonWriter, final ExampleImplementsEnum enumeration)
         throws IOException {
       jsonWriter.value(enumeration.getValue());
     }
 
     /**
      * Reads the <i>next</i> JSON-value from the {@code jsonReader} and converts it to a {@link
-     * ExampleNullableEnum }.
+     * ExampleImplementsEnum }.
      *
      * @param jsonReader to read the JSON-string from.
-     * @return a {@link ExampleNullableEnum }.
+     * @return a {@link ExampleImplementsEnum }.
      * @throws IOException if the {@code jsonReader} fails to read a value.
      * @throws NullPointerException if {@code jsonReader} is {@code null}.
      * @see #fromValue
      */
     @Override
-    public ExampleNullableEnum read(final JsonReader jsonReader) throws IOException {
+    public ExampleImplementsEnum read(final JsonReader jsonReader) throws IOException {
       final String value = jsonReader.nextString();
-      return ExampleNullableEnum.fromValue(value);
+      return ExampleImplementsEnum.fromValue(value);
     }
   }
 }

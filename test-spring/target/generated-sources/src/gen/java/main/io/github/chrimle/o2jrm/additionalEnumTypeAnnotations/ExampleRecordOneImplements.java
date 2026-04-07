@@ -16,7 +16,7 @@
  *
  */
 
-package io.github.chrimle.o2jrm.spring;
+package io.github.chrimle.o2jrm.additionalEnumTypeAnnotations;
 
 import java.util.Objects;
 import com.google.gson.TypeAdapter;
@@ -36,14 +36,13 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Example of a deprecated Record
+ * Example of an Record which implements an interface.
  *
- * @deprecated
  * @param field1 a boolean field
  */
-@Deprecated
-public record DeprecatedExampleRecord(
-    Boolean field1) {
+public record ExampleRecordOneImplements(
+    Boolean field1)
+    implements io.github.chrimle.o2jrm.interfaces.TestInterfaceOne {
 
   /** A set containing the names of all instance fields defined in this class. */
   public static final HashSet<String> openapiFields =
@@ -53,7 +52,7 @@ public record DeprecatedExampleRecord(
   /** A set containing the names of all required fields defined in this class. */
   public static final HashSet<String> openapiRequiredFields = new HashSet<>();
 
-  public DeprecatedExampleRecord(
+  public ExampleRecordOneImplements(
       final Boolean field1) {
     this.field1 = field1;
   }
@@ -62,15 +61,15 @@ public record DeprecatedExampleRecord(
    * Validates the JSON Element and throws an exception if issues are found.
    *
    * @param jsonElement to validate.
-   * @throws IOException if the JSON Element is not a valid DeprecatedExampleRecord object.
+   * @throws IOException if the JSON Element is not a valid ExampleRecordOneImplements object.
    */
   public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
     for (final String key : jsonElement.getAsJsonObject().keySet()) {
-      if (!DeprecatedExampleRecord.openapiFields.contains(key)) {
+      if (!ExampleRecordOneImplements.openapiFields.contains(key)) {
         throw new IllegalArgumentException(
             String.format(
                 java.util.Locale.ROOT,
-                "The field `%s` in the JSON string is not defined in the `DeprecatedExampleRecord` properties. JSON: %s",
+                "The field `%s` in the JSON string is not defined in the `ExampleRecordOneImplements` properties. JSON: %s",
                 key,
                 jsonElement));
       }
@@ -90,7 +89,7 @@ public record DeprecatedExampleRecord(
   }
 
   /**
-   * Creates {@link TypeAdapter}s for {@link DeprecatedExampleRecord }s and other
+   * Creates {@link TypeAdapter}s for {@link ExampleRecordOneImplements }s and other
    * <i>assignable</i> types.
    */
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -100,32 +99,32 @@ public record DeprecatedExampleRecord(
      *
      * @param gson to create the {@link TypeAdapter} from.
      * @param type to <i>serialize</i>/<i>deserialize</i>.
-     * @return an (<i>anonymous</i>) instance of {@link TypeAdapter<DeprecatedExampleRecord>}, or
-     *     {@code null} if {@code T} is not <i>assignable</i> to {@link DeprecatedExampleRecord }.
+     * @return an (<i>anonymous</i>) instance of {@link TypeAdapter<ExampleRecordOneImplements>}, or
+     *     {@code null} if {@code T} is not <i>assignable</i> to {@link ExampleRecordOneImplements }.
      * @param <T> class to <i>serialize</i>/<i>deserialize</i>.
      */
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(final Gson gson, final TypeToken<T> type) {
-      if (!DeprecatedExampleRecord.class.isAssignableFrom(type.getRawType())) {
+      if (!ExampleRecordOneImplements.class.isAssignableFrom(type.getRawType())) {
         return null;
       }
       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-      final TypeAdapter<DeprecatedExampleRecord> thisAdapter =
-          gson.getDelegateAdapter(this, TypeToken.get(DeprecatedExampleRecord.class));
+      final TypeAdapter<ExampleRecordOneImplements> thisAdapter =
+          gson.getDelegateAdapter(this, TypeToken.get(ExampleRecordOneImplements.class));
 
       return (TypeAdapter<T>)
-          new TypeAdapter<DeprecatedExampleRecord>() {
+          new TypeAdapter<ExampleRecordOneImplements>() {
 
             @Override
-            public void write(final JsonWriter out, final DeprecatedExampleRecord value)
+            public void write(final JsonWriter out, final ExampleRecordOneImplements value)
                 throws IOException {
               final JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
               elementAdapter.write(out, obj);
             }
 
             @Override
-            public DeprecatedExampleRecord read(final JsonReader in) throws IOException {
+            public ExampleRecordOneImplements read(final JsonReader in) throws IOException {
               final JsonElement jsonElement = elementAdapter.read(in);
               validateJsonElement(jsonElement);
               return thisAdapter.fromJsonTree(jsonElement);

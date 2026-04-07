@@ -16,7 +16,7 @@
  *
  */
 
-package io.github.chrimle.o2jrm.spring;
+package io.github.chrimle.o2jrm.standard;
 
 import java.util.Objects;
 import com.google.gson.annotations.SerializedName;
@@ -29,17 +29,16 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
 /**
- * Example of an Enum which implements two interfaces.
+ * Example of an Enum with URI values
  */
-@JsonAdapter(ExampleTwoImplementsEnum.Adapter.class)
-public enum ExampleTwoImplementsEnum implements io.github.chrimle.o2jrm.interfaces.TestInterfaceOne, io.github.chrimle.o2jrm.interfaces.TestInterfaceTwo {
-  ENUM1("ENUM1"),
-  ENUM2("ENUM2"),
-  ENUM3("ENUM3");
+@JsonAdapter(ExampleUriEnum.Adapter.class)
+public enum ExampleUriEnum {
+  HTTPS_GITHUB_COM_CHRIMLE_OPENAPI_TO_JAVA_RECORDS_MUSTACHE_TEMPLATES("https://github.com/Chrimle/openapi-to-java-records-mustache-templates"),
+  HTTPS_CHRIMLE_GITHUB_IO_OPENAPI_TO_JAVA_RECORDS_MUSTACHE_TEMPLATES_("https://chrimle.github.io/openapi-to-java-records-mustache-templates/");
 
   private final String value;
 
-  ExampleTwoImplementsEnum(final String value) {
+  ExampleUriEnum(final String value) {
     this.value = value;
   }
 
@@ -59,11 +58,11 @@ public enum ExampleTwoImplementsEnum implements io.github.chrimle.o2jrm.interfac
    * returned, by the order they are declared.
    *
    * @param value of the enum.
-   * @return a {@link ExampleTwoImplementsEnum } with the matching value.
+   * @return a {@link ExampleUriEnum } with the matching value.
    * @throws IllegalArgumentException if no enum has a value matching the given value.
    */
-  public static ExampleTwoImplementsEnum fromValue(final String value) {
-    for (final ExampleTwoImplementsEnum constant : ExampleTwoImplementsEnum.values()) {
+  public static ExampleUriEnum fromValue(final String value) {
+    for (final ExampleUriEnum constant : ExampleUriEnum.values()) {
       if (constant.getValue().equals(value)) {
         return constant;
       }
@@ -75,19 +74,19 @@ public enum ExampleTwoImplementsEnum implements io.github.chrimle.o2jrm.interfac
    * Validates the JSON Element and throws an exception if issues are found.
    *
    * @param jsonElement to validate.
-   * @throws IOException if the JSON Element is not a valid ExampleTwoImplementsEnum object.
+   * @throws IOException if the JSON Element is not a valid ExampleUriEnum object.
    */
   public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
     final String value = jsonElement.getAsString();
-    ExampleTwoImplementsEnum.fromValue(value);
+    ExampleUriEnum.fromValue(value);
   }
 
   /**
-   * Converts {@link ExampleTwoImplementsEnum } objects to and from JSON.
+   * Converts {@link ExampleUriEnum } objects to and from JSON.
    *
    * @see com.google.gson.TypeAdapter
    */
-  public static class Adapter extends TypeAdapter<ExampleTwoImplementsEnum> {
+  public static class Adapter extends TypeAdapter<ExampleUriEnum> {
 
     /**
      * Writes the {@link #value} of the {@code enumeration} as a JSON-string to the {@code
@@ -99,25 +98,25 @@ public enum ExampleTwoImplementsEnum implements io.github.chrimle.o2jrm.interfac
      * @throws NullPointerException if {@code jsonWriter} or {@code enumeration} is {@code null}.
      */
     @Override
-    public void write(final JsonWriter jsonWriter, final ExampleTwoImplementsEnum enumeration)
+    public void write(final JsonWriter jsonWriter, final ExampleUriEnum enumeration)
         throws IOException {
       jsonWriter.value(enumeration.getValue());
     }
 
     /**
      * Reads the <i>next</i> JSON-value from the {@code jsonReader} and converts it to a {@link
-     * ExampleTwoImplementsEnum }.
+     * ExampleUriEnum }.
      *
      * @param jsonReader to read the JSON-string from.
-     * @return a {@link ExampleTwoImplementsEnum }.
+     * @return a {@link ExampleUriEnum }.
      * @throws IOException if the {@code jsonReader} fails to read a value.
      * @throws NullPointerException if {@code jsonReader} is {@code null}.
      * @see #fromValue
      */
     @Override
-    public ExampleTwoImplementsEnum read(final JsonReader jsonReader) throws IOException {
+    public ExampleUriEnum read(final JsonReader jsonReader) throws IOException {
       final String value = jsonReader.nextString();
-      return ExampleTwoImplementsEnum.fromValue(value);
+      return ExampleUriEnum.fromValue(value);
     }
   }
 }
