@@ -1197,7 +1197,6 @@ public abstract class GeneratedRecordTests {
         @Nested
         @DisplayName(
             "Testing `<additionalModelTypeAnnotations>@TestAnnotationOne;@TestAnnotationTwo;@TestAnnotationThree</additionalModelTypeAnnotations>`")
-        @DisabledIf("io.github.chrimle.o2jrm.tests.GeneratedRecordImplTests#isSpringGenerator")
         class AdditionalModelTypeAnnotationsSetTests {
           @ParameterizedTest
           @ArgumentsSource(GeneratedRecordProvider.class)
