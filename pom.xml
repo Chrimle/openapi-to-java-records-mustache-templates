@@ -77,7 +77,7 @@
         <system>github-actions</system>
         <url>https://github.com/Chrimle/openapi-to-java-records-mustache-templates/actions</url>
     </ciManagement>
-    <!-- -->
+    <!-- / Project Information -->
 
     <distributionManagement>
         <repository>
