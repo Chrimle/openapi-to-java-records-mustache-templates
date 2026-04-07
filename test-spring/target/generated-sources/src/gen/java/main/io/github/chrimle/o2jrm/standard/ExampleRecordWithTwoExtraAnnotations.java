@@ -16,7 +16,7 @@
  *
  */
 
-package io.github.chrimle.o2jrm.spring;
+package io.github.chrimle.o2jrm.standard;
 
 import java.util.Objects;
 import com.google.gson.TypeAdapter;
@@ -36,12 +36,14 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Example of a Record with default fields
+ * Example of a Record with two extra annotations
  *
- * @param field1 a String field with a default value
+ * @param field1 a boolean field
  */
-public record ExampleRecordWithDefaultFields(
-    String field1) {
+@io.github.chrimle.o2jrm.annotations.TestExtraAnnotation
+@io.github.chrimle.o2jrm.annotations.TestExtraAnnotationTwo
+public record ExampleRecordWithTwoExtraAnnotations(
+    Boolean field1) {
 
   /** A set containing the names of all instance fields defined in this class. */
   public static final HashSet<String> openapiFields =
@@ -51,24 +53,24 @@ public record ExampleRecordWithDefaultFields(
   /** A set containing the names of all required fields defined in this class. */
   public static final HashSet<String> openapiRequiredFields = new HashSet<>();
 
-  public ExampleRecordWithDefaultFields(
-      final String field1) {
-    this.field1 = Objects.requireNonNullElse(field1, "someDefaultValue");
+  public ExampleRecordWithTwoExtraAnnotations(
+      final Boolean field1) {
+    this.field1 = field1;
   }
 
   /**
    * Validates the JSON Element and throws an exception if issues are found.
    *
    * @param jsonElement to validate.
-   * @throws IOException if the JSON Element is not a valid ExampleRecordWithDefaultFields object.
+   * @throws IOException if the JSON Element is not a valid ExampleRecordWithTwoExtraAnnotations object.
    */
   public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
     for (final String key : jsonElement.getAsJsonObject().keySet()) {
-      if (!ExampleRecordWithDefaultFields.openapiFields.contains(key)) {
+      if (!ExampleRecordWithTwoExtraAnnotations.openapiFields.contains(key)) {
         throw new IllegalArgumentException(
             String.format(
                 java.util.Locale.ROOT,
-                "The field `%s` in the JSON string is not defined in the `ExampleRecordWithDefaultFields` properties. JSON: %s",
+                "The field `%s` in the JSON string is not defined in the `ExampleRecordWithTwoExtraAnnotations` properties. JSON: %s",
                 key,
                 jsonElement));
       }
@@ -88,7 +90,7 @@ public record ExampleRecordWithDefaultFields(
   }
 
   /**
-   * Creates {@link TypeAdapter}s for {@link ExampleRecordWithDefaultFields }s and other
+   * Creates {@link TypeAdapter}s for {@link ExampleRecordWithTwoExtraAnnotations }s and other
    * <i>assignable</i> types.
    */
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -98,32 +100,32 @@ public record ExampleRecordWithDefaultFields(
      *
      * @param gson to create the {@link TypeAdapter} from.
      * @param type to <i>serialize</i>/<i>deserialize</i>.
-     * @return an (<i>anonymous</i>) instance of {@link TypeAdapter<ExampleRecordWithDefaultFields>}, or
-     *     {@code null} if {@code T} is not <i>assignable</i> to {@link ExampleRecordWithDefaultFields }.
+     * @return an (<i>anonymous</i>) instance of {@link TypeAdapter<ExampleRecordWithTwoExtraAnnotations>}, or
+     *     {@code null} if {@code T} is not <i>assignable</i> to {@link ExampleRecordWithTwoExtraAnnotations }.
      * @param <T> class to <i>serialize</i>/<i>deserialize</i>.
      */
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(final Gson gson, final TypeToken<T> type) {
-      if (!ExampleRecordWithDefaultFields.class.isAssignableFrom(type.getRawType())) {
+      if (!ExampleRecordWithTwoExtraAnnotations.class.isAssignableFrom(type.getRawType())) {
         return null;
       }
       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-      final TypeAdapter<ExampleRecordWithDefaultFields> thisAdapter =
-          gson.getDelegateAdapter(this, TypeToken.get(ExampleRecordWithDefaultFields.class));
+      final TypeAdapter<ExampleRecordWithTwoExtraAnnotations> thisAdapter =
+          gson.getDelegateAdapter(this, TypeToken.get(ExampleRecordWithTwoExtraAnnotations.class));
 
       return (TypeAdapter<T>)
-          new TypeAdapter<ExampleRecordWithDefaultFields>() {
+          new TypeAdapter<ExampleRecordWithTwoExtraAnnotations>() {
 
             @Override
-            public void write(final JsonWriter out, final ExampleRecordWithDefaultFields value)
+            public void write(final JsonWriter out, final ExampleRecordWithTwoExtraAnnotations value)
                 throws IOException {
               final JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
               elementAdapter.write(out, obj);
             }
 
             @Override
-            public ExampleRecordWithDefaultFields read(final JsonReader in) throws IOException {
+            public ExampleRecordWithTwoExtraAnnotations read(final JsonReader in) throws IOException {
               final JsonElement jsonElement = elementAdapter.read(in);
               validateJsonElement(jsonElement);
               return thisAdapter.fromJsonTree(jsonElement);

@@ -16,7 +16,7 @@
  *
  */
 
-package io.github.chrimle.o2jrm.spring;
+package io.github.chrimle.o2jrm.standard;
 
 import java.util.Objects;
 import com.google.gson.TypeAdapter;
@@ -36,48 +36,40 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Example of a Record with an extra annotation
+ * Example of an Record which implements an interface.
  *
- * @param field1 a boolean field with an extra field annotation
- * @param field2 a boolean field with two extra field annotations
+ * @param field1 a boolean field
  */
-@io.github.chrimle.o2jrm.annotations.TestExtraAnnotation
-public record ExampleRecordWithOneExtraAnnotation(
-    @io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationOne
-    Boolean field1,
-    @io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationOne
-@io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationTwo
-    Boolean field2) {
+public record ExampleRecordOneImplements(
+    Boolean field1)
+    implements io.github.chrimle.o2jrm.interfaces.TestInterfaceOne {
 
   /** A set containing the names of all instance fields defined in this class. */
   public static final HashSet<String> openapiFields =
       new HashSet<>(
-          Set.of("field1",
-              "field2"));
+          Set.of("field1"));
 
   /** A set containing the names of all required fields defined in this class. */
   public static final HashSet<String> openapiRequiredFields = new HashSet<>();
 
-  public ExampleRecordWithOneExtraAnnotation(
-      final Boolean field1,
-      final Boolean field2) {
+  public ExampleRecordOneImplements(
+      final Boolean field1) {
     this.field1 = field1;
-    this.field2 = field2;
   }
 
   /**
    * Validates the JSON Element and throws an exception if issues are found.
    *
    * @param jsonElement to validate.
-   * @throws IOException if the JSON Element is not a valid ExampleRecordWithOneExtraAnnotation object.
+   * @throws IOException if the JSON Element is not a valid ExampleRecordOneImplements object.
    */
   public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
     for (final String key : jsonElement.getAsJsonObject().keySet()) {
-      if (!ExampleRecordWithOneExtraAnnotation.openapiFields.contains(key)) {
+      if (!ExampleRecordOneImplements.openapiFields.contains(key)) {
         throw new IllegalArgumentException(
             String.format(
                 java.util.Locale.ROOT,
-                "The field `%s` in the JSON string is not defined in the `ExampleRecordWithOneExtraAnnotation` properties. JSON: %s",
+                "The field `%s` in the JSON string is not defined in the `ExampleRecordOneImplements` properties. JSON: %s",
                 key,
                 jsonElement));
       }
@@ -94,20 +86,10 @@ public record ExampleRecordWithOneExtraAnnotation(
                 jsonObj.get("field1")));
       }
     }
-
-    if (jsonObj.get("field2") != null && !jsonObj.get("field2").isJsonNull()) { 
-      if (!jsonObj.get("field2").isJsonPrimitive()) {
-        throw new IllegalArgumentException(
-            String.format(
-                java.util.Locale.ROOT,
-                "Expected the field `field2` to be a primitive type in the JSON string but got `%s`",
-                jsonObj.get("field2")));
-      }
-    }
   }
 
   /**
-   * Creates {@link TypeAdapter}s for {@link ExampleRecordWithOneExtraAnnotation }s and other
+   * Creates {@link TypeAdapter}s for {@link ExampleRecordOneImplements }s and other
    * <i>assignable</i> types.
    */
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -117,32 +99,32 @@ public record ExampleRecordWithOneExtraAnnotation(
      *
      * @param gson to create the {@link TypeAdapter} from.
      * @param type to <i>serialize</i>/<i>deserialize</i>.
-     * @return an (<i>anonymous</i>) instance of {@link TypeAdapter<ExampleRecordWithOneExtraAnnotation>}, or
-     *     {@code null} if {@code T} is not <i>assignable</i> to {@link ExampleRecordWithOneExtraAnnotation }.
+     * @return an (<i>anonymous</i>) instance of {@link TypeAdapter<ExampleRecordOneImplements>}, or
+     *     {@code null} if {@code T} is not <i>assignable</i> to {@link ExampleRecordOneImplements }.
      * @param <T> class to <i>serialize</i>/<i>deserialize</i>.
      */
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(final Gson gson, final TypeToken<T> type) {
-      if (!ExampleRecordWithOneExtraAnnotation.class.isAssignableFrom(type.getRawType())) {
+      if (!ExampleRecordOneImplements.class.isAssignableFrom(type.getRawType())) {
         return null;
       }
       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-      final TypeAdapter<ExampleRecordWithOneExtraAnnotation> thisAdapter =
-          gson.getDelegateAdapter(this, TypeToken.get(ExampleRecordWithOneExtraAnnotation.class));
+      final TypeAdapter<ExampleRecordOneImplements> thisAdapter =
+          gson.getDelegateAdapter(this, TypeToken.get(ExampleRecordOneImplements.class));
 
       return (TypeAdapter<T>)
-          new TypeAdapter<ExampleRecordWithOneExtraAnnotation>() {
+          new TypeAdapter<ExampleRecordOneImplements>() {
 
             @Override
-            public void write(final JsonWriter out, final ExampleRecordWithOneExtraAnnotation value)
+            public void write(final JsonWriter out, final ExampleRecordOneImplements value)
                 throws IOException {
               final JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
               elementAdapter.write(out, obj);
             }
 
             @Override
-            public ExampleRecordWithOneExtraAnnotation read(final JsonReader in) throws IOException {
+            public ExampleRecordOneImplements read(final JsonReader in) throws IOException {
               final JsonElement jsonElement = elementAdapter.read(in);
               validateJsonElement(jsonElement);
               return thisAdapter.fromJsonTree(jsonElement);

@@ -16,7 +16,7 @@
  *
  */
 
-package io.github.chrimle.o2jrm.spring;
+package io.github.chrimle.o2jrm.standard;
 
 import java.util.Objects;
 import com.google.gson.annotations.SerializedName;
@@ -29,17 +29,20 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
 /**
- * Example of an Enum which implements an interface.
+ * Example of a deprecated Enum
+ *
+ * @deprecated
  */
-@JsonAdapter(ExampleImplementsEnum.Adapter.class)
-public enum ExampleImplementsEnum implements io.github.chrimle.o2jrm.interfaces.TestInterfaceOne {
+@Deprecated
+@JsonAdapter(DeprecatedExampleEnum.Adapter.class)
+public enum DeprecatedExampleEnum {
   ENUM1("ENUM1"),
   ENUM2("ENUM2"),
   ENUM3("ENUM3");
 
   private final String value;
 
-  ExampleImplementsEnum(final String value) {
+  DeprecatedExampleEnum(final String value) {
     this.value = value;
   }
 
@@ -59,11 +62,11 @@ public enum ExampleImplementsEnum implements io.github.chrimle.o2jrm.interfaces.
    * returned, by the order they are declared.
    *
    * @param value of the enum.
-   * @return a {@link ExampleImplementsEnum } with the matching value.
+   * @return a {@link DeprecatedExampleEnum } with the matching value.
    * @throws IllegalArgumentException if no enum has a value matching the given value.
    */
-  public static ExampleImplementsEnum fromValue(final String value) {
-    for (final ExampleImplementsEnum constant : ExampleImplementsEnum.values()) {
+  public static DeprecatedExampleEnum fromValue(final String value) {
+    for (final DeprecatedExampleEnum constant : DeprecatedExampleEnum.values()) {
       if (constant.getValue().equals(value)) {
         return constant;
       }
@@ -75,19 +78,19 @@ public enum ExampleImplementsEnum implements io.github.chrimle.o2jrm.interfaces.
    * Validates the JSON Element and throws an exception if issues are found.
    *
    * @param jsonElement to validate.
-   * @throws IOException if the JSON Element is not a valid ExampleImplementsEnum object.
+   * @throws IOException if the JSON Element is not a valid DeprecatedExampleEnum object.
    */
   public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
     final String value = jsonElement.getAsString();
-    ExampleImplementsEnum.fromValue(value);
+    DeprecatedExampleEnum.fromValue(value);
   }
 
   /**
-   * Converts {@link ExampleImplementsEnum } objects to and from JSON.
+   * Converts {@link DeprecatedExampleEnum } objects to and from JSON.
    *
    * @see com.google.gson.TypeAdapter
    */
-  public static class Adapter extends TypeAdapter<ExampleImplementsEnum> {
+  public static class Adapter extends TypeAdapter<DeprecatedExampleEnum> {
 
     /**
      * Writes the {@link #value} of the {@code enumeration} as a JSON-string to the {@code
@@ -99,25 +102,25 @@ public enum ExampleImplementsEnum implements io.github.chrimle.o2jrm.interfaces.
      * @throws NullPointerException if {@code jsonWriter} or {@code enumeration} is {@code null}.
      */
     @Override
-    public void write(final JsonWriter jsonWriter, final ExampleImplementsEnum enumeration)
+    public void write(final JsonWriter jsonWriter, final DeprecatedExampleEnum enumeration)
         throws IOException {
       jsonWriter.value(enumeration.getValue());
     }
 
     /**
      * Reads the <i>next</i> JSON-value from the {@code jsonReader} and converts it to a {@link
-     * ExampleImplementsEnum }.
+     * DeprecatedExampleEnum }.
      *
      * @param jsonReader to read the JSON-string from.
-     * @return a {@link ExampleImplementsEnum }.
+     * @return a {@link DeprecatedExampleEnum }.
      * @throws IOException if the {@code jsonReader} fails to read a value.
      * @throws NullPointerException if {@code jsonReader} is {@code null}.
      * @see #fromValue
      */
     @Override
-    public ExampleImplementsEnum read(final JsonReader jsonReader) throws IOException {
+    public DeprecatedExampleEnum read(final JsonReader jsonReader) throws IOException {
       final String value = jsonReader.nextString();
-      return ExampleImplementsEnum.fromValue(value);
+      return DeprecatedExampleEnum.fromValue(value);
     }
   }
 }
