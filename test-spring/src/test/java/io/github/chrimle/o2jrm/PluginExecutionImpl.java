@@ -32,6 +32,10 @@ public enum PluginExecutionImpl implements PluginExecution {
       "additionalEnumTypeAnnotations",
       Library.SPRING_BOOT,
       ConfigOption.ADDITIONAL_ENUM_TYPE_ANNOTATIONS),
+  ADDITIONAL_MODEL_TYPE_ANNOTATIONS(
+      "additionalModelTypeAnnotations",
+      Library.SPRING_BOOT,
+      ConfigOption.ADDITIONAL_MODEL_TYPE_ANNOTATIONS),
   SERIALIZABLE_MODEL("serializableModel", Library.SPRING_BOOT, ConfigOption.SERIALIZABLE_MODEL);
 
   private final String packageName;

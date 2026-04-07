@@ -212,6 +212,22 @@
                         </configuration>
                     </execution>
                     <execution>
+                        <id>generate-spring-additionalModelTypeAnnotations</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <modelPackage>${modelPackage.default}.additionalModelTypeAnnotations</modelPackage>
+                            <configOptions>
+                                <additionalModelTypeAnnotations>
+                                    @io.github.chrimle.o2jrm.annotations.TestAnnotationOne
+                                    @io.github.chrimle.o2jrm.annotations.TestAnnotationTwo
+                                    @io.github.chrimle.o2jrm.annotations.TestAnnotationThree
+                                </additionalModelTypeAnnotations>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+                    <execution>
                         <id>generate-spring-serializableModel</id>
                         <goals>
                             <goal>generate</goal>
