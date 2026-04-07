@@ -174,32 +174,44 @@
                 <artifactId>maven-dependency-plugin</artifactId>
             </plugin>
             <plugin>
-            <groupId>org.openapitools</groupId>
-            <artifactId>openapi-generator-maven-plugin</artifactId>
-            <configuration>
-                <output>${output.default}</output>
-                <generateModels>${generateModels.default}</generateModels>
-                <generateApis>${generateApis.default}</generateApis>
-                <generateModelTests>${generateModelTests.default}</generateModelTests>
-                <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
-                <inputSpec>${inputSpec.default}</inputSpec>
-                <templateDirectory>${templateDirectory.default}</templateDirectory>
-                <generatorName>${generatorName.default}</generatorName>
-                <configOptions>
-                    <sourceFolder>${sourceFolder.default}</sourceFolder>
-                </configOptions>
-            </configuration>
-            <executions>
-            <execution>
-                <id>generate-spring}</id>
-                <goals>
-                    <goal>generate</goal>
-                </goals>
+                <groupId>org.openapitools</groupId>
+                <artifactId>openapi-generator-maven-plugin</artifactId>
                 <configuration>
-                    <modelPackage>${modelPackage.default}.spring</modelPackage>
+                    <output>${output.default}</output>
+                    <generateModels>${generateModels.default}</generateModels>
+                    <generateApis>${generateApis.default}</generateApis>
+                    <generateModelTests>${generateModelTests.default}</generateModelTests>
+                    <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
+                    <inputSpec>${inputSpec.default}</inputSpec>
+                    <templateDirectory>${templateDirectory.default}</templateDirectory>
+                    <generatorName>${generatorName.default}</generatorName>
+                    <configOptions>
+                        <sourceFolder>${sourceFolder.default}</sourceFolder>
+                    </configOptions>
                 </configuration>
-            </execution>
-            </executions>
+                <executions>
+                    <execution>
+                        <id>generate-spring-standard</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <modelPackage>${modelPackage.default}.standard</modelPackage>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>generate-spring-additionalEnumTypeAnnotations</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <modelPackage>${modelPackage.default}.additionalEnumTypeAnnotations</modelPackage>
+                            <configOptions>
+                                <additionalEnumTypeAnnotations>@io.github.chrimle.o2jrm.annotations.TestAnnotationOne;@io.github.chrimle.o2jrm.annotations.TestAnnotationTwo;@io.github.chrimle.o2jrm.annotations.TestAnnotationThree;</additionalEnumTypeAnnotations>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <!-- Skip Deploying to GitHub Packages -->
