@@ -27,7 +27,11 @@ import java.util.List;
  */
 @SuppressWarnings("ImmutableEnumChecker")
 public enum PluginExecutionImpl implements PluginExecution {
-  STANDARD("standard", Library.SPRING_BOOT);
+  STANDARD("standard", Library.SPRING_BOOT),
+  ADDITIONAL_ENUM_TYPE_ANNOTATIONS(
+      "additionalEnumTypeAnnotations",
+      Library.SPRING_BOOT,
+      ConfigOption.ADDITIONAL_ENUM_TYPE_ANNOTATIONS);
 
   private final String packageName;
   private final Library library;

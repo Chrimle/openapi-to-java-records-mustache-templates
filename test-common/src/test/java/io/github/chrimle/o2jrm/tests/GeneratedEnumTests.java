@@ -570,7 +570,6 @@ public abstract class GeneratedEnumTests {
         @Nested
         @DisplayName(
             "Testing `<additionalEnumTypeAnnotations>@TestAnnotationOne;@TestAnnotationTwo;@TestAnnotationThree</additionalEnumTypeAnnotations>`")
-        @DisabledIf("io.github.chrimle.o2jrm.tests.GeneratedEnumImplTests#isSpringGenerator")
         class AdditionalEnumTypeAnnotationsSetTests {
 
           @ParameterizedTest
