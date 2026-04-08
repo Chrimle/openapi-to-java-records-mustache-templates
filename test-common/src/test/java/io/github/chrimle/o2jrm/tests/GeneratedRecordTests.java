@@ -258,11 +258,10 @@ public abstract class GeneratedRecordTests {
         @ParameterizedTest
         @ArgumentsSource(GeneratedRecordProvider.class)
         @AssumptionFilter(
-            isOneOfLibraries = {Library.OKHTTP_GSON},
+            isOneOfLibraries = {Library.OKHTTP_GSON, Library.SPRING_BOOT},
             disabledConfigOptions = ConfigOption.SERIALIZABLE_MODEL)
         @DisplayName(
             "[okhttp-gson] Generated `record` has same number of fields as OpenAPI properties")
-        @DisabledIf("io.github.chrimle.o2jrm.tests.GeneratedRecordImplTests#isSpringGenerator")
         void whenObjectHasPropertiesThenGeneratedRecordHasSameNumberOfFields_okhttp_gson(
             final GeneratedSource generatedSource) {
           CustomAssertions.assertClassHasNumberOfFields(
