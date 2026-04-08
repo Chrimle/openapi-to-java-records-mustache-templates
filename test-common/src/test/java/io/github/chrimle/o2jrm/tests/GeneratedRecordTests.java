@@ -232,9 +232,8 @@ public abstract class GeneratedRecordTests {
 
         @ParameterizedTest
         @ArgumentsSource(GeneratedRecordProvider.class)
-        @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON})
+        @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON, Library.SPRING_BOOT})
         @DisplayName("[okhttp-gson] Generated constructor is NOT annotated `@JsonCreator`")
-        @DisabledIf("io.github.chrimle.o2jrm.tests.GeneratedRecordImplTests#isSpringGenerator")
         void whenNotJacksonThenGeneratedConstructorIsNotAnnotatedJsonCreator(
             final GeneratedSource generatedSource) {
           final Constructor<?> constructor =
