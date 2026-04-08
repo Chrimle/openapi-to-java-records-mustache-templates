@@ -122,7 +122,7 @@ public abstract class GeneratedEnumTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedEnumProvider.class)
-          @AssumptionFilter(isSerializationLibraryJackson = Condition.TRUE)
+          @AssumptionFilter(isOneOfLibraries = Library.WEBCLIENT)
           @DisplayName(
               "When `serializationLibrary` is `jackson` Then `getValue()`-method IS annotated with `@JsonValue`")
           @DisabledIf("io.github.chrimle.o2jrm.tests.GeneratedEnumImplTests#isSpringGenerator")
@@ -136,7 +136,7 @@ public abstract class GeneratedEnumTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedEnumProvider.class)
-          @AssumptionFilter(isSerializationLibraryJackson = Condition.FALSE)
+          @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON, Library.SPRING_BOOT})
           @DisplayName(
               "When `serializationLibrary` is NOT `jackson` Then `getValue()`-method is NOT annotated with `@JsonValue`")
           void whenSerializationLibraryIsNotJacksonThenGetValueMethodIsNotAnnotatedWithJsonValue(
@@ -656,7 +656,7 @@ public abstract class GeneratedEnumTests {
 
         @ParameterizedTest
         @ArgumentsSource(GeneratedEnumProvider.class)
-        @AssumptionFilter(isSerializationLibraryJackson = Condition.TRUE)
+        @AssumptionFilter(isOneOfLibraries = Library.WEBCLIENT)
         @DisplayName(
             "When `serializationLibrary` is `jackson` Then generated `fromValue(T)` method is annotated with `@JsonCreator`")
         @DisabledIf("io.github.chrimle.o2jrm.tests.GeneratedEnumImplTests#isSpringGenerator")
@@ -672,7 +672,7 @@ public abstract class GeneratedEnumTests {
 
         @ParameterizedTest
         @ArgumentsSource(GeneratedEnumProvider.class)
-        @AssumptionFilter(isSerializationLibraryJackson = Condition.FALSE)
+        @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON, Library.SPRING_BOOT})
         @DisplayName(
             "When `serializationLibrary` is NOT `jackson` Then generated `fromValue(T)` method is NOT annotated with `@JsonCreator`")
         void whenSerializationLibraryIsNotJacksonThenFromValueMethodIsNotAnnotatedWithJsonCreator(

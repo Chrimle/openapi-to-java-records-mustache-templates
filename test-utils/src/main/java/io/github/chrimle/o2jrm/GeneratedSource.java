@@ -129,10 +129,6 @@ public class GeneratedSource {
     return pluginExecution.getLibrary();
   }
 
-  public boolean isSerializationLibraryJackson() {
-    return pluginExecution.isSerializationLibraryJackson();
-  }
-
   public String getClassAsJsonString() {
     StringBuilder jsonString = new StringBuilder("{");
     for (int i = 0; i < generatedFields.length; i++) {

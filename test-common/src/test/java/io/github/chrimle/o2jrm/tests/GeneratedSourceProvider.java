@@ -84,9 +84,6 @@ public abstract sealed class GeneratedSourceProvider implements ArgumentsProvide
                   && !Arrays.stream(assumptionFilter.isOneOfLibraries())
                       .toList()
                       .contains(generatedSource.getLibrary())) return false;
-              if (!assumptionFilter
-                  .isSerializationLibraryJackson()
-                  .test(generatedSource.isSerializationLibraryJackson())) return false;
               return true;
             })
         .map(Arguments::of);

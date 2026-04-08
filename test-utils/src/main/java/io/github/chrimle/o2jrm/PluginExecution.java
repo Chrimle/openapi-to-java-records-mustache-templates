@@ -32,13 +32,6 @@ public interface PluginExecution {
 
   List<ConfigOption> getConfigOptions();
 
-  default boolean isSerializationLibraryJackson() {
-    return switch (getLibrary()) {
-      case OKHTTP_GSON, SPRING_BOOT -> false;
-      case WEBCLIENT -> true;
-    };
-  }
-
   default boolean hasConfigOption(final ConfigOption configOption) {
     return getConfigOptions().contains(configOption);
   }

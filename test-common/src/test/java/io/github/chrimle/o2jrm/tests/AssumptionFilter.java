@@ -69,7 +69,4 @@ public @interface AssumptionFilter {
 
   /** Collection of {@link Library}s. Default allows all {@link Library}s. */
   Library[] isOneOfLibraries() default {};
-
-  /** Whether {@code jackson} serialization library is used. */
-  Condition isSerializationLibraryJackson() default Condition.ANY;
 }
