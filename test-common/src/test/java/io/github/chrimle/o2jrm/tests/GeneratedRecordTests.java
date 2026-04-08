@@ -1334,7 +1334,6 @@ public abstract class GeneratedRecordTests {
 
         @Nested
         @DisplayName("Testing `<useBeanValidation>true</useBeanValidation>`")
-        @DisabledIf("io.github.chrimle.o2jrm.tests.GeneratedRecordImplTests#isSpringGenerator")
         class UseBeanValidationTrueTests {
 
           @ParameterizedTest
