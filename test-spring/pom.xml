@@ -229,6 +229,18 @@
                         </configuration>
                     </execution>
                     <execution>
+                        <id>generate-spring-enumUnknownDefaultCase</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <modelPackage>${modelPackage.default}.enumUnknownDefaultCase</modelPackage>
+                            <configOptions>
+                                <enumUnknownDefaultCase>true</enumUnknownDefaultCase>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+                    <execution>
                         <id>generate-spring-generateBuilders</id>
                         <goals>
                             <goal>generate</goal>
