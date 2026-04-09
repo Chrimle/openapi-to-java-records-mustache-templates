@@ -35,6 +35,7 @@
 
         <!-- Unpack the spring-templates instead -->
         <templatesToCopy>
+            spring-templates/generateBuilders.mustache,
             spring-templates/javadoc.mustache,
             spring-templates/licenseInfo.mustache,
             spring-templates/modelEnum.mustache,
@@ -224,6 +225,18 @@
                                     @io.github.chrimle.o2jrm.annotations.TestAnnotationTwo
                                     @io.github.chrimle.o2jrm.annotations.TestAnnotationThree
                                 </additionalModelTypeAnnotations>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>generate-spring-generateBuilders</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <modelPackage>${modelPackage.default}.generateBuilders</modelPackage>
+                            <configOptions>
+                                <generateBuilders>true</generateBuilders>
                             </configOptions>
                         </configuration>
                     </execution>

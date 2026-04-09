@@ -109,6 +109,7 @@
                                 <!-- Copy Spring Templates WITHOUT renaming -->
                                 <copy todir="${project.build.outputDirectory}/spring-templates" overwrite="true">
                                     <fileset dir="src/main/resources/templates">
+                                        <include name="generateBuilders.mustache"/>
                                         <include name="javadoc.mustache"/>
                                         <include name="licenseInfo.mustache"/>
                                         <include name="modelEnum.mustache"/>

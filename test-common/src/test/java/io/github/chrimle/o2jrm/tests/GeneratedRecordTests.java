@@ -1285,7 +1285,6 @@ public abstract class GeneratedRecordTests {
 
         @Nested
         @DisplayName("Testing `<generateBuilders>true</generateBuilders>`")
-        @DisabledIf("io.github.chrimle.o2jrm.tests.GeneratedRecordImplTests#isSpringGenerator")
         class GenerateBuildersTrueTests {
           @ParameterizedTest
           @ArgumentsSource(GeneratedRecordProvider.class)

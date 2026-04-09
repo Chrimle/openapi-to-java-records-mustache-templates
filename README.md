@@ -64,6 +64,7 @@ Older/newer versions may work, but are currently not part of the CI Test Suite.
 >   - `pojo.mustache`
 >   - `useBeanValidation.mustache`
 > - `spring-templates/` (**preview/experimental**. Used by `spring` Generators. See [#684](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/pull/684))
+>   - `generateBuilders.mustache`
 >   - `javadoc.mustache`
 >   - `licenseInfo.mustache`
 >   - `modelEnum.mustache`
