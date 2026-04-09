@@ -16,7 +16,7 @@
  *
  */
 
-package io.github.chrimle.o2jrm.serializableModel;
+package io.github.chrimle.o2jrm.useEnumCaseInsensitive;
 
 import java.util.Objects;
 import com.google.gson.TypeAdapter;
@@ -26,7 +26,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
-import java.io.Serializable;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
@@ -47,8 +46,7 @@ import java.util.Set;
 public record RecordWithInnerEnums(
     ExampleInnerEnum exampleInner,
     ExampleInnerTwoEnum exampleInnerTwo,
-    ExampleInnerThreeEnum exampleInnerThree)
-    implements Serializable {
+    ExampleInnerThreeEnum exampleInnerThree) {
 
   /** A set containing the names of all instance fields defined in this class. */
   public static final HashSet<String> openapiFields =
@@ -103,7 +101,7 @@ public record RecordWithInnerEnums(
     }
 
     /**
-     * Case-sensitively matches the given {@code value} to an enum constant using {@link
+     * Case-insensitively matches the given {@code value} to an enum constant using {@link
      * #getValue()}.
      *
      * <p><b>NOTE:</b> if multiple enum constants have a matching value, the first enum constant is
@@ -115,7 +113,7 @@ public record RecordWithInnerEnums(
      */
     public static ExampleInnerEnum fromValue(final String value) {
       for (final ExampleInnerEnum constant : ExampleInnerEnum.values()) {
-        if (constant.getValue().equals(value)) {
+        if (constant.getValue().equalsIgnoreCase(value)) {
           return constant;
         }
       }
@@ -291,7 +289,7 @@ public record RecordWithInnerEnums(
     }
 
     /**
-     * Case-sensitively matches the given {@code value} to an enum constant using {@link
+     * Case-insensitively matches the given {@code value} to an enum constant using {@link
      * #getValue()}.
      *
      * <p><b>NOTE:</b> if multiple enum constants have a matching value, the first enum constant is
@@ -303,7 +301,7 @@ public record RecordWithInnerEnums(
      */
     public static ExampleInnerThreeEnum fromValue(final String value) {
       for (final ExampleInnerThreeEnum constant : ExampleInnerThreeEnum.values()) {
-        if (constant.getValue().equals(value)) {
+        if (constant.getValue().equalsIgnoreCase(value)) {
           return constant;
         }
       }

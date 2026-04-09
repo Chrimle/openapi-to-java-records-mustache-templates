@@ -771,9 +771,6 @@ public abstract class GeneratedEnumTests {
               enumValueClass = String.class)
           @DisplayName(
               "Generated `static fromValue(T)` method throws `IllegalArgumentException` when string `value` has wrong case")
-          @DisabledIf(
-              "io.github.chrimle.o2jrm.tests.GeneratedEnumImplTests#isSpringGenerator") // not sure
-          // why...
           void
               whenConfigOptionUseEnumCaseInsensitiveIsFalseThenFromValueMethodThrowsIllegalArgumentExceptionWhenGivenValueHasWrongCase(
                   final GeneratedSource generatedSource) {
@@ -793,7 +790,6 @@ public abstract class GeneratedEnumTests {
 
         @Nested
         @DisplayName("Testing `<useEnumCaseInsensitive>true</useEnumCaseInsensitive>`")
-        @DisabledIf("io.github.chrimle.o2jrm.tests.GeneratedEnumImplTests#isSpringGenerator")
         class UseEnumCaseInsensitiveTrueTests {
 
           @ParameterizedTest

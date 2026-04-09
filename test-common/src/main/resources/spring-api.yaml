@@ -302,9 +302,10 @@ components:
       # TODO: Bug in openapi-generator
       #format: uri
       description: Example of an Enum with URI values
+      # TODO: Since this is temporarily not a URI, this URL will not differ from .toLowerCase(), hence capitalizing Chrimle.
       enum:
         - "https://github.com/Chrimle/openapi-to-java-records-mustache-templates"
-        - "https://chrimle.github.io/openapi-to-java-records-mustache-templates/"
+        - "https://Chrimle.github.io/openapi-to-java-records-mustache-templates/"
     ExampleEnumWithIntegerValues:
       type: integer
       description: Example of an Enum with integer values
@@ -349,9 +350,10 @@ components:
           # TODO: Bug in openapi-generator
           #format: uri
           description: Example of another inner enum class with URI values
+          # TODO: Since this is temporarily not a URI, this URL will not differ from .toLowerCase(), hence capitalizing Chrimle.
           enum:
             - "https://github.com/Chrimle/openapi-to-java-records-mustache-templates"
-            - "https://chrimle.github.io/openapi-to-java-records-mustache-templates/"
+            - "https://Chrimle.github.io/openapi-to-java-records-mustache-templates/"
     RecordWithAllConstraints:
       type: object
       description: Example of a Record which has fields with constraints

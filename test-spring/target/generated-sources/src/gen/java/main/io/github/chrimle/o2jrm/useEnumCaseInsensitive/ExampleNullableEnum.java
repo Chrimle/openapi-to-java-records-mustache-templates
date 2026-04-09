@@ -16,7 +16,7 @@
  *
  */
 
-package io.github.chrimle.o2jrm.additionalEnumTypeAnnotations;
+package io.github.chrimle.o2jrm.useEnumCaseInsensitive;
 
 import java.util.Objects;
 import com.google.gson.annotations.SerializedName;
@@ -29,19 +29,26 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
 /**
- * Example of an Enum with URI values
+ * Example of an Enum
  */
-@io.github.chrimle.o2jrm.annotations.TestAnnotationOne
-@io.github.chrimle.o2jrm.annotations.TestAnnotationTwo
-@io.github.chrimle.o2jrm.annotations.TestAnnotationThree
-@JsonAdapter(ExampleUriEnum.Adapter.class)
-public enum ExampleUriEnum {
-  HTTPS_GITHUB_COM_CHRIMLE_OPENAPI_TO_JAVA_RECORDS_MUSTACHE_TEMPLATES("https://github.com/Chrimle/openapi-to-java-records-mustache-templates"),
-  HTTPS_CHRIMLE_GITHUB_IO_OPENAPI_TO_JAVA_RECORDS_MUSTACHE_TEMPLATES_("https://Chrimle.github.io/openapi-to-java-records-mustache-templates/");
+@JsonAdapter(ExampleNullableEnum.Adapter.class)
+public enum ExampleNullableEnum {
+  /**
+   * Some description of ENUM1
+   */
+  ENUM1("ENUM1"),
+  /**
+   * Some description of ENUM2
+   */
+  ENUM2("ENUM2"),
+  /**
+   * Some description of ENUM3
+   */
+  ENUM3("ENUM3");
 
   private final String value;
 
-  ExampleUriEnum(final String value) {
+  ExampleNullableEnum(final String value) {
     this.value = value;
   }
 
@@ -55,18 +62,19 @@ public enum ExampleUriEnum {
   }
 
   /**
-   * Case-sensitively matches the given {@code value} to an enum constant using {@link #getValue()}.
+   * Case-insensitively matches the given {@code value} to an enum constant using {@link
+   * #getValue()}.
    *
    * <p><b>NOTE:</b> if multiple enum constants have a matching value, the first enum constant is
    * returned, by the order they are declared.
    *
    * @param value of the enum.
-   * @return a {@link ExampleUriEnum } with the matching value.
+   * @return a {@link ExampleNullableEnum } with the matching value.
    * @throws IllegalArgumentException if no enum has a value matching the given value.
    */
-  public static ExampleUriEnum fromValue(final String value) {
-    for (final ExampleUriEnum constant : ExampleUriEnum.values()) {
-      if (constant.getValue().equals(value)) {
+  public static ExampleNullableEnum fromValue(final String value) {
+    for (final ExampleNullableEnum constant : ExampleNullableEnum.values()) {
+      if (constant.getValue().equalsIgnoreCase(value)) {
         return constant;
       }
     }
@@ -77,19 +85,19 @@ public enum ExampleUriEnum {
    * Validates the JSON Element and throws an exception if issues are found.
    *
    * @param jsonElement to validate.
-   * @throws IOException if the JSON Element is not a valid ExampleUriEnum object.
+   * @throws IOException if the JSON Element is not a valid ExampleNullableEnum object.
    */
   public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
     final String value = jsonElement.getAsString();
-    ExampleUriEnum.fromValue(value);
+    ExampleNullableEnum.fromValue(value);
   }
 
   /**
-   * Converts {@link ExampleUriEnum } objects to and from JSON.
+   * Converts {@link ExampleNullableEnum } objects to and from JSON.
    *
    * @see com.google.gson.TypeAdapter
    */
-  public static class Adapter extends TypeAdapter<ExampleUriEnum> {
+  public static class Adapter extends TypeAdapter<ExampleNullableEnum> {
 
     /**
      * Writes the {@link #value} of the {@code enumeration} as a JSON-string to the {@code
@@ -101,25 +109,25 @@ public enum ExampleUriEnum {
      * @throws NullPointerException if {@code jsonWriter} or {@code enumeration} is {@code null}.
      */
     @Override
-    public void write(final JsonWriter jsonWriter, final ExampleUriEnum enumeration)
+    public void write(final JsonWriter jsonWriter, final ExampleNullableEnum enumeration)
         throws IOException {
       jsonWriter.value(enumeration.getValue());
     }
 
     /**
      * Reads the <i>next</i> JSON-value from the {@code jsonReader} and converts it to a {@link
-     * ExampleUriEnum }.
+     * ExampleNullableEnum }.
      *
      * @param jsonReader to read the JSON-string from.
-     * @return a {@link ExampleUriEnum }.
+     * @return a {@link ExampleNullableEnum }.
      * @throws IOException if the {@code jsonReader} fails to read a value.
      * @throws NullPointerException if {@code jsonReader} is {@code null}.
      * @see #fromValue
      */
     @Override
-    public ExampleUriEnum read(final JsonReader jsonReader) throws IOException {
+    public ExampleNullableEnum read(final JsonReader jsonReader) throws IOException {
       final String value = jsonReader.nextString();
-      return ExampleUriEnum.fromValue(value);
+      return ExampleNullableEnum.fromValue(value);
     }
   }
 }

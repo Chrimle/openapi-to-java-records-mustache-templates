@@ -34,7 +34,7 @@ import java.io.IOException;
 @JsonAdapter(ExampleUriEnum.Adapter.class)
 public enum ExampleUriEnum {
   HTTPS_GITHUB_COM_CHRIMLE_OPENAPI_TO_JAVA_RECORDS_MUSTACHE_TEMPLATES("https://github.com/Chrimle/openapi-to-java-records-mustache-templates"),
-  HTTPS_CHRIMLE_GITHUB_IO_OPENAPI_TO_JAVA_RECORDS_MUSTACHE_TEMPLATES_("https://chrimle.github.io/openapi-to-java-records-mustache-templates/");
+  HTTPS_CHRIMLE_GITHUB_IO_OPENAPI_TO_JAVA_RECORDS_MUSTACHE_TEMPLATES_("https://Chrimle.github.io/openapi-to-java-records-mustache-templates/");
 
   private final String value;
 

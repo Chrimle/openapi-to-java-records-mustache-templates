@@ -56,7 +56,7 @@ public enum GeneratedEnumImpl implements GeneratedEnum, GeneratedClassImpl {
       GeneratedField.of(
               "HTTPS_CHRIMLE_GITHUB_IO_OPENAPI_TO_JAVA_RECORDS_MUSTACHE_TEMPLATES_",
               String.class, // URI.class,
-              "https://chrimle.github.io/openapi-to-java-records-mustache-templates/" // URI.create("https://chrimle.github.io/openapi-to-java-records-mustache-templates/")
+              "https://Chrimle.github.io/openapi-to-java-records-mustache-templates/" // URI.create("https://chrimle.github.io/openapi-to-java-records-mustache-templates/")
               )
           .build()),
   EXAMPLE_ENUM_WITH_INTEGER_VALUES(
@@ -95,7 +95,7 @@ public enum GeneratedEnumImpl implements GeneratedEnum, GeneratedClassImpl {
       GeneratedField.of(
               "HTTPS_CHRIMLE_GITHUB_IO_OPENAPI_TO_JAVA_RECORDS_MUSTACHE_TEMPLATES_",
               String.class, // URI.class,
-              "https://chrimle.github.io/openapi-to-java-records-mustache-templates/" // URI.create("https://chrimle.github.io/openapi-to-java-records-mustache-templates/")
+              "https://Chrimle.github.io/openapi-to-java-records-mustache-templates/" // URI.create("https://chrimle.github.io/openapi-to-java-records-mustache-templates/")
               )
           .build()),
   EXAMPLE_IMPLEMENTS_ENUM(

@@ -16,7 +16,7 @@
  *
  */
 
-package io.github.chrimle.o2jrm.additionalEnumTypeAnnotations;
+package io.github.chrimle.o2jrm.useEnumCaseInsensitive;
 
 import java.util.Objects;
 import com.google.gson.annotations.SerializedName;
@@ -31,9 +31,6 @@ import java.io.IOException;
 /**
  * Example of an Enum with URI values
  */
-@io.github.chrimle.o2jrm.annotations.TestAnnotationOne
-@io.github.chrimle.o2jrm.annotations.TestAnnotationTwo
-@io.github.chrimle.o2jrm.annotations.TestAnnotationThree
 @JsonAdapter(ExampleUriEnum.Adapter.class)
 public enum ExampleUriEnum {
   HTTPS_GITHUB_COM_CHRIMLE_OPENAPI_TO_JAVA_RECORDS_MUSTACHE_TEMPLATES("https://github.com/Chrimle/openapi-to-java-records-mustache-templates"),
@@ -55,7 +52,8 @@ public enum ExampleUriEnum {
   }
 
   /**
-   * Case-sensitively matches the given {@code value} to an enum constant using {@link #getValue()}.
+   * Case-insensitively matches the given {@code value} to an enum constant using {@link
+   * #getValue()}.
    *
    * <p><b>NOTE:</b> if multiple enum constants have a matching value, the first enum constant is
    * returned, by the order they are declared.
@@ -66,7 +64,7 @@ public enum ExampleUriEnum {
    */
   public static ExampleUriEnum fromValue(final String value) {
     for (final ExampleUriEnum constant : ExampleUriEnum.values()) {
-      if (constant.getValue().equals(value)) {
+      if (constant.getValue().equalsIgnoreCase(value)) {
         return constant;
       }
     }
