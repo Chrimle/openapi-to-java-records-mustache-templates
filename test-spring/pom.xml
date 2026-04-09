@@ -241,6 +241,19 @@
                         </configuration>
                     </execution>
                     <execution>
+                        <id>generate-spring-enumDefaultCaseAndCaseInsensitive</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <modelPackage>${modelPackage.default}.enumDefaultCaseAndCaseInsensitive</modelPackage>
+                            <configOptions>
+                                <enumUnknownDefaultCase>true</enumUnknownDefaultCase>
+                                <useEnumCaseInsensitive>true</useEnumCaseInsensitive>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+                    <execution>
                         <id>generate-spring-generateBuilders</id>
                         <goals>
                             <goal>generate</goal>

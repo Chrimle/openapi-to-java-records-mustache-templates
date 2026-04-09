@@ -1005,7 +1005,6 @@ public abstract class GeneratedEnumTests {
               enumValueClass = Integer.class)
           @DisplayName(
               "Generated `static fromValue(T)` method returns `NUMBER_unknown_default_open_api` when `null` is given")
-          @DisabledIf("io.github.chrimle.o2jrm.tests.GeneratedEnumImplTests#isSpringGenerator")
           void whenConfigOptionEnumUnknownDefaultCaseIsTrueThenFromValueReturnsIntegerDefaultValue(
               final GeneratedSource generatedSource) {
             CustomAssertions.assertStaticMethodReturnsNonNull(

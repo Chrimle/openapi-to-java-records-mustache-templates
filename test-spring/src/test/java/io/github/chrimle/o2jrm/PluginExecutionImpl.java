@@ -38,6 +38,15 @@ public enum PluginExecutionImpl implements PluginExecution {
       ConfigOption.ADDITIONAL_MODEL_TYPE_ANNOTATIONS),
   ENUM_UNKNOWN_DEFAULT_CASE(
       "enumUnknownDefaultCase", Library.SPRING_BOOT, ConfigOption.ENUM_UNKNOWN_DEFAULT_CASE),
+  /**
+   * This PluginExecution tests the compatibility of {@link ConfigOption#ENUM_UNKNOWN_DEFAULT_CASE}
+   * and {@link ConfigOption#USE_ENUM_CASE_INSENSITIVE}.
+   */
+  ENUM_DEFAULT_CASE_AND_CASE_INSENSITIVE(
+      "enumDefaultCaseAndCaseInsensitive",
+      Library.SPRING_BOOT,
+      ConfigOption.ENUM_UNKNOWN_DEFAULT_CASE,
+      ConfigOption.USE_ENUM_CASE_INSENSITIVE),
   GENERATE_BUILDERS("generateBuilders", Library.SPRING_BOOT, ConfigOption.GENERATE_BUILDERS),
   SERIALIZABLE_MODEL("serializableModel", Library.SPRING_BOOT, ConfigOption.SERIALIZABLE_MODEL),
   USE_BEAN_VALIDATION("useBeanValidation", Library.SPRING_BOOT, ConfigOption.USE_BEAN_VALIDATION),
