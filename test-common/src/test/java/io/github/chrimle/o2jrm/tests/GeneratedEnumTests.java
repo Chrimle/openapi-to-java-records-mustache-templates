@@ -23,21 +23,18 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.github.chrimle.o2jrm.GeneratedSource;
-import io.github.chrimle.o2jrm.annotations.TestAnnotationOne;
-import io.github.chrimle.o2jrm.annotations.TestAnnotationThree;
-import io.github.chrimle.o2jrm.annotations.TestAnnotationTwo;
 import io.github.chrimle.o2jrm.configs.ConfigOption;
 import io.github.chrimle.o2jrm.configs.Library;
 import io.github.chrimle.o2jrm.interfaces.TestInterfaceOne;
 import io.github.chrimle.o2jrm.interfaces.TestInterfaceTwo;
 import io.github.chrimle.o2jrm.models.GeneratedField;
 import io.github.chrimle.o2jrm.tests.GeneratedEnumTests.GeneratorConfigurationTests.ConfigOptionsTests;
-import io.github.chrimle.o2jrm.tests.GeneratedEnumTests.GeneratorConfigurationTests.ConfigOptionsTests.AdditionalEnumTypeAnnotationsTests;
 import io.github.chrimle.o2jrm.tests.GeneratedEnumTests.GeneratorConfigurationTests.ConfigOptionsTests.UseEnumCaseInsensitiveTests;
 import io.github.chrimle.o2jrm.tests.GeneratedEnumTests.OpenAPITests.SchemaTests;
 import io.github.chrimle.o2jrm.tests.GeneratedEnumTests.OpenAPITests.SchemaTests.DeprecatedTests;
 import io.github.chrimle.o2jrm.tests.GeneratedEnumTests.OpenAPITests.SchemaTests.EnumTests;
 import io.github.chrimle.o2jrm.tests.GeneratedEnumTests.OpenAPITests.SchemaTests.EnumTests.ConstantsTests;
+import io.github.chrimle.o2jrm.tests.enums.configOptions.AdditionalEnumTypeAnnotationsTests;
 import io.github.chrimle.o2jrm.utils.CustomAssertions;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
@@ -83,12 +80,11 @@ import org.junit.jupiter.params.provider.ArgumentsSource;
  *
  * <ul>
  *   <li>{@link ConfigOptionsTests configOptions}
- *   <li>{@link AdditionalEnumTypeAnnotationsTests additionalEnumTypeAnnotations}
  *   <li>{@link UseEnumCaseInsensitiveTests useEnumCaseInsensitive}
  * </ul>
  */
 @DisplayName("Test Generated `enum` classes")
-public abstract class GeneratedEnumTests {
+public abstract class GeneratedEnumTests extends AdditionalEnumTypeAnnotationsTests {
 
   @Nested
   @DisplayName("Testing OpenAPI Schemas & Properties")
@@ -542,52 +538,6 @@ public abstract class GeneratedEnumTests {
     @Nested
     @DisplayName("Testing `<configOptions>`")
     class ConfigOptionsTests {
-
-      @Nested
-      @DisplayName("Testing `<additionalEnumTypeAnnotations>`")
-      class AdditionalEnumTypeAnnotationsTests {
-
-        @Nested
-        @DisplayName("Testing `<additionalEnumTypeAnnotations></additionalEnumTypeAnnotations>`")
-        class AdditionalEnumTypeAnnotationsUnsetTests {
-
-          @ParameterizedTest
-          @ArgumentsSource(GeneratedEnumProvider.class)
-          @AssumptionFilter(hasAdditionalEnumTypeAnnotations = Condition.FALSE)
-          @DisplayName("Generated `enum` class is NOT annotated with additional annotations")
-          void
-              whenConfigOptionAdditionalEnumTypeAnnotationsIsUnsetThenGeneratedEnumDoesNotHaveAdditionalAnnotations(
-                  final GeneratedSource generatedSource) {
-            CustomAssertions.assertClassIsNotAnnotatedWith(
-                generatedSource.getClassUnderTest(), TestAnnotationOne.class);
-            CustomAssertions.assertClassIsNotAnnotatedWith(
-                generatedSource.getClassUnderTest(), TestAnnotationTwo.class);
-            CustomAssertions.assertClassIsNotAnnotatedWith(
-                generatedSource.getClassUnderTest(), TestAnnotationThree.class);
-          }
-        }
-
-        @Nested
-        @DisplayName(
-            "Testing `<additionalEnumTypeAnnotations>@TestAnnotationOne;@TestAnnotationTwo;@TestAnnotationThree</additionalEnumTypeAnnotations>`")
-        class AdditionalEnumTypeAnnotationsSetTests {
-
-          @ParameterizedTest
-          @ArgumentsSource(GeneratedEnumProvider.class)
-          @AssumptionFilter(hasAdditionalEnumTypeAnnotations = Condition.TRUE)
-          @DisplayName("Generated `enum` class is annotated with additional annotations")
-          void
-              whenConfigOptionAdditionalEnumTypeAnnotationsIsSetThenGeneratedEnumHasAdditionalAnnotations(
-                  final GeneratedSource generatedSource) {
-            CustomAssertions.assertClassIsAnnotatedWith(
-                generatedSource.getClassUnderTest(), TestAnnotationOne.class);
-            CustomAssertions.assertClassIsAnnotatedWith(
-                generatedSource.getClassUnderTest(), TestAnnotationTwo.class);
-            CustomAssertions.assertClassIsAnnotatedWith(
-                generatedSource.getClassUnderTest(), TestAnnotationThree.class);
-          }
-        }
-      }
 
       @Nested
       @DisplayName("Testing `<serializableModel>`")
