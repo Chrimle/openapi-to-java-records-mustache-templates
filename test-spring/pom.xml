@@ -264,6 +264,18 @@
                             </configOptions>
                         </configuration>
                     </execution>
+                    <execution>
+                        <id>generate-spring-useEnumCaseInsensitive</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <modelPackage>${modelPackage.default}.useEnumCaseInsensitive</modelPackage>
+                            <configOptions>
+                                <useEnumCaseInsensitive>true</useEnumCaseInsensitive>
+                            </configOptions>
+                        </configuration>
+                    </execution>
                 </executions>
             </plugin>
             <plugin>
