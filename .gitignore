@@ -103,4 +103,3 @@ StringUtil.java
 !.idea/copyright/
 # Track some IntelliJ Setting Files
 !.idea/google-java-format.xml
-!.idea/vcs.xml
