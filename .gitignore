@@ -30,6 +30,7 @@ hs_err_pid*
 replay_pid*
 
 .idea/*
+!.idea/vcs.xml
 *.iml
 
 # Antrun
