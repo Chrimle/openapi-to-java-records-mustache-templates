@@ -101,3 +101,5 @@ StringUtil.java
 
 # Track Copyright header Settings
 !.idea/copyright/
+# Track The google-java-format Settings
+!.idea/google-java-format.xml
