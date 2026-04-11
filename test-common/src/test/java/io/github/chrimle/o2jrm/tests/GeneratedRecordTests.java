@@ -1137,12 +1137,11 @@ public abstract class GeneratedRecordTests {
 
       @Nested
       @DisplayName("Testing `<library>webclient</library>`")
-      @DisabledIf("io.github.chrimle.o2jrm.tests.GeneratedRecordImplTests#isSpringGenerator")
       class WebClientTests {
 
         @ParameterizedTest
         @ArgumentsSource(GeneratedRecordProvider.class)
-        @AssumptionFilter(isOneOfLibraries = {Library.WEBCLIENT})
+        @AssumptionFilter(isOneOfLibraries = {Library.WEBCLIENT, Library.SPRING_BOOT})
         @DisplayName("Generated `record` does NOT have `openapiFields`-field")
         void whenLibraryIsWebClientThenGeneratedRecordDoesNotHaveOpenApiFieldsField(
             final GeneratedSource generatedSource) {
@@ -1152,7 +1151,7 @@ public abstract class GeneratedRecordTests {
 
         @ParameterizedTest
         @ArgumentsSource(GeneratedRecordProvider.class)
-        @AssumptionFilter(isOneOfLibraries = {Library.WEBCLIENT})
+        @AssumptionFilter(isOneOfLibraries = {Library.WEBCLIENT, Library.SPRING_BOOT})
         @DisplayName("Generated `record` does NOT have `openapiRequiredFields`-field")
         void whenLibraryIsWebClientThenGeneratedRecordDoesNotHaveOpenApiRequiredFieldsField(
             final GeneratedSource generatedSource) {
@@ -1162,7 +1161,7 @@ public abstract class GeneratedRecordTests {
 
         @ParameterizedTest
         @ArgumentsSource(GeneratedRecordProvider.class)
-        @AssumptionFilter(isOneOfLibraries = {Library.WEBCLIENT})
+        @AssumptionFilter(isOneOfLibraries = {Library.WEBCLIENT, Library.SPRING_BOOT})
         @DisplayName("Generated `record` does NOT have `validateJsonElement`-method")
         void whenLibraryIsWebClientThenGeneratedRecordDoesNotHaveValidateJsonElementMethod(
             final GeneratedSource generatedSource) {
@@ -1311,8 +1310,21 @@ public abstract class GeneratedRecordTests {
       @DisplayName("Testing `<useBeanValidation>`")
       class UseBeanValidationTests {
 
+        @ParameterizedTest
+        @ArgumentsSource(GeneratedRecordProvider.class)
+        @AssumptionFilter(isOneOfLibraries = Library.SPRING_BOOT)
+        @DisplayName(
+            "[spring-boot] Generated `record` ALWAYS use Jakarta Bean Validation annotations on fields")
+        @EnabledIf("io.github.chrimle.o2jrm.tests.GeneratedRecordImplTests#isSpringGenerator")
+        void
+            whenLibraryIsSpringBootThenFieldsAreAlwaysAnnotatedWithJakartaBeanValidationAnnotations(
+                final GeneratedSource generatedSource) {
+          AssertionUtils.assertRecordHasFieldsOfTypeWithNullableAnnotations(generatedSource);
+        }
+
         @Nested
         @DisplayName("Testing `<useBeanValidation>false</useBeanValidation>`")
+        @DisabledIf("io.github.chrimle.o2jrm.tests.GeneratedRecordImplTests#isSpringGenerator")
         class UseBeanValidationFalseTests {
 
           @ParameterizedTest
@@ -1322,7 +1334,6 @@ public abstract class GeneratedRecordTests {
               isOneOfLibraries = {Library.OKHTTP_GSON, Library.WEBCLIENT})
           @DisplayName(
               "Generated `record` does NOT use Jakarta Bean Validation annotations on fields")
-          @DisabledIf("io.github.chrimle.o2jrm.tests.GeneratedRecordImplTests#isSpringGenerator")
           void
               whenUseBeanValidationIsFalseThenFieldsAreNotAnnotatedWithJakartaBeanValidationAnnotations(
                   final GeneratedSource generatedSource) {
@@ -1339,24 +1350,11 @@ public abstract class GeneratedRecordTests {
               }
             }
           }
-
-          @ParameterizedTest
-          @ArgumentsSource(GeneratedRecordProvider.class)
-          @AssumptionFilter(
-              isOneOfLibraries = Library.SPRING_BOOT,
-              disabledConfigOptions = ConfigOption.USE_BEAN_VALIDATION)
-          @DisplayName(
-              "[spring-boot] Generated `record` ALWAYS use Jakarta Bean Validation annotations on fields")
-          @EnabledIf("io.github.chrimle.o2jrm.tests.GeneratedRecordImplTests#isSpringGenerator")
-          void
-              whenLibraryIsSpringBootThenFieldsAreAlwaysAnnotatedWithJakartaBeanValidationAnnotations(
-                  final GeneratedSource generatedSource) {
-            AssertionUtils.assertRecordHasFieldsOfTypeWithNullableAnnotations(generatedSource);
-          }
         }
 
         @Nested
         @DisplayName("Testing `<useBeanValidation>true</useBeanValidation>`")
+        @DisabledIf("io.github.chrimle.o2jrm.tests.GeneratedRecordImplTests#isSpringGenerator")
         class UseBeanValidationTrueTests {
 
           @ParameterizedTest
