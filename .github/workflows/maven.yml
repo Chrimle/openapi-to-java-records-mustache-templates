@@ -45,4 +45,15 @@ jobs:
           distribution: 'temurin'
           cache: maven
       - name: Maven Build - openapi-generator-maven-plugin:${{ matrix.openapi-generator-maven-plugin-version }}
-        run: mvn -B package --no-transfer-progress --file pom.xml -Dopenapi-generator-maven-plugin.version=${{ matrix.openapi-generator-maven-plugin-version }}
+        run: |
+          # Check Modules to Skip Building
+          # Skip test-spring, since the mustache templates are not backwards compatible with these versions
+          SPRING_INCOMPATIBLE_VERSIONS="7.18.0"
+          SKIP_FLAG=""
+          
+          if [[ $SPRING_INCOMPATIBLE_VERSIONS =~ "${{ matrix.openapi-generator-maven-plugin-version }}" ]]; then
+            echo "Incompatible version detected. Skipping test-spring module."
+            SKIP_FLAG="-pl '!test-spring'"
+          fi
+          
+          mvn -B package $SKIP_FLAG --no-transfer-progress --file pom.xml -Dopenapi-generator-maven-plugin.version=${{ matrix.openapi-generator-maven-plugin-version }}
