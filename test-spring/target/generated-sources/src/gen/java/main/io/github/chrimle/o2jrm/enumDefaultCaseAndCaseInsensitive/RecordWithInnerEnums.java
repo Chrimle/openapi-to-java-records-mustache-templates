@@ -5,6 +5,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import java.net.URI;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
@@ -144,13 +145,13 @@ public record RecordWithInnerEnums(
    * Example of another inner enum class with URI values
    */
   public enum ExampleInnerThreeEnum {
-    HTTPS_GITHUB_COM_CHRIMLE_OPENAPI_TO_JAVA_RECORDS_MUSTACHE_TEMPLATES("https://github.com/Chrimle/openapi-to-java-records-mustache-templates"),
-    HTTPS_CHRIMLE_GITHUB_IO_OPENAPI_TO_JAVA_RECORDS_MUSTACHE_TEMPLATES_("https://Chrimle.github.io/openapi-to-java-records-mustache-templates/"),
-    UNKNOWN_DEFAULT_OPEN_API("unknown_default_open_api");
+    HTTPS_GITHUB_COM_CHRIMLE_OPENAPI_TO_JAVA_RECORDS_MUSTACHE_TEMPLATES(URI.create("https://github.com/Chrimle/openapi-to-java-records-mustache-templates")),
+    HTTPS_CHRIMLE_GITHUB_IO_OPENAPI_TO_JAVA_RECORDS_MUSTACHE_TEMPLATES_(URI.create("https://chrimle.github.io/openapi-to-java-records-mustache-templates/")),
+    UNKNOWN_DEFAULT_OPEN_API(URI.create("11184809"));
 
-    private final String value;
+    private final URI value;
 
-    ExampleInnerThreeEnum(final String value) {
+    ExampleInnerThreeEnum(final URI value) {
       this.value = value;
     }
 
@@ -160,7 +161,7 @@ public record RecordWithInnerEnums(
      * @return the value of this enum.
      */
     @JsonValue
-    public String getValue() {
+    public URI getValue() {
       return value;
     }
 
@@ -176,9 +177,9 @@ public record RecordWithInnerEnums(
      *     {@link #UNKNOWN_DEFAULT_OPEN_API } if no match is found.
      */
     @JsonCreator
-    public static ExampleInnerThreeEnum fromValue(final String value) {
+    public static ExampleInnerThreeEnum fromValue(final URI value) {
       for (final ExampleInnerThreeEnum constant : ExampleInnerThreeEnum.values()) {
-        if (constant.getValue().equalsIgnoreCase(value)) {
+        if (constant.getValue().equals(value)) {
           return constant;
         }
       }

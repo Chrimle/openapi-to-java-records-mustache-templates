@@ -869,7 +869,6 @@ public abstract class GeneratedEnumTests {
               enumValueClass = URI.class)
           @DisplayName(
               "Generated `enum`-class with `URI` values does NOT have `\"UNKNOWN_DEFAULT_OPEN_API\"` as a constant")
-          @DisabledIf("io.github.chrimle.o2jrm.tests.GeneratedEnumImplTests#isSpringGenerator")
           void
               whenConfigOptionEnumUnknownDefaultCaseIsFalseThenGeneratedEnumClassDoesNotHaveUriUnknownDefaultOpenApiEnumConstant(
                   final GeneratedSource generatedSource) {
@@ -946,7 +945,6 @@ public abstract class GeneratedEnumTests {
               enumValueClass = URI.class)
           @DisplayName(
               "Generated `enum`-class with `URI` values HAS `\"UNKNOWN_DEFAULT_OPEN_API\"` as a constant")
-          @DisabledIf("io.github.chrimle.o2jrm.tests.GeneratedEnumImplTests#isSpringGenerator")
           void
               whenConfigOptionEnumUnknownDefaultCaseIsTrueThenGeneratedEnumClassHasUriUnknownDefaultOpenApiEnumConstant(
                   final GeneratedSource generatedSource) {
@@ -961,7 +959,6 @@ public abstract class GeneratedEnumTests {
               enumValueClass = URI.class)
           @DisplayName(
               "Generated `enum`-class with `URI` values HAS `\"UNKNOWN_DEFAULT_OPEN_API\"` constant with `value` as `URI.create(\"11184809\")`")
-          @DisabledIf("io.github.chrimle.o2jrm.tests.GeneratedEnumImplTests#isSpringGenerator")
           void
               whenConfigOptionEnumUnknownDefaultCaseIsTrueThenGeneratedEnumClassHasUnknownDefaultOpenApiEnumConstantWithExpectedUriValue(
                   final GeneratedSource generatedSource) {
@@ -1038,7 +1035,6 @@ public abstract class GeneratedEnumTests {
               enumValueClass = URI.class)
           @DisplayName(
               "Generated `static fromValue(T)` method returns `\"UNKNOWN_DEFAULT_OPEN_API\"` when `null` is given")
-          @DisabledIf("io.github.chrimle.o2jrm.tests.GeneratedEnumImplTests#isSpringGenerator")
           void whenConfigOptionEnumUnknownDefaultCaseIsTrueThenFromValueReturnsUriDefaultValue(
               final GeneratedSource generatedSource) {
             CustomAssertions.assertStaticMethodReturnsNonNull(

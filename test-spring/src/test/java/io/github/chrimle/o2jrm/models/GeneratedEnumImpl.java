@@ -17,6 +17,7 @@ package io.github.chrimle.o2jrm.models;
 
 import io.github.chrimle.o2jrm.interfaces.TestInterfaceOne;
 import io.github.chrimle.o2jrm.interfaces.TestInterfaceTwo;
+import java.net.URI;
 import java.util.List;
 
 /** Enum class listing all expected {@code enum} classes to be generated from the OpenAPI spec. */
@@ -49,15 +50,13 @@ public enum GeneratedEnumImpl implements GeneratedEnum, GeneratedClassImpl {
       List.of(),
       GeneratedField.of(
               "HTTPS_GITHUB_COM_CHRIMLE_OPENAPI_TO_JAVA_RECORDS_MUSTACHE_TEMPLATES",
-              String.class, // URI.class,
-              "https://github.com/Chrimle/openapi-to-java-records-mustache-templates" // URI.create("https://github.com/Chrimle/openapi-to-java-records-mustache-templates")
-              )
+              URI.class,
+              URI.create("https://github.com/Chrimle/openapi-to-java-records-mustache-templates"))
           .build(),
       GeneratedField.of(
               "HTTPS_CHRIMLE_GITHUB_IO_OPENAPI_TO_JAVA_RECORDS_MUSTACHE_TEMPLATES_",
-              String.class, // URI.class,
-              "https://Chrimle.github.io/openapi-to-java-records-mustache-templates/" // URI.create("https://chrimle.github.io/openapi-to-java-records-mustache-templates/")
-              )
+              URI.class,
+              URI.create("https://chrimle.github.io/openapi-to-java-records-mustache-templates/"))
           .build()),
   EXAMPLE_ENUM_WITH_INTEGER_VALUES(
       "ExampleEnumWithIntegerValues",
@@ -88,15 +87,13 @@ public enum GeneratedEnumImpl implements GeneratedEnum, GeneratedClassImpl {
       List.of(),
       GeneratedField.of(
               "HTTPS_GITHUB_COM_CHRIMLE_OPENAPI_TO_JAVA_RECORDS_MUSTACHE_TEMPLATES",
-              String.class, // URI.class,
-              "https://github.com/Chrimle/openapi-to-java-records-mustache-templates" // URI.create("https://github.com/Chrimle/openapi-to-java-records-mustache-templates")
-              )
+              URI.class,
+              URI.create("https://github.com/Chrimle/openapi-to-java-records-mustache-templates"))
           .build(),
       GeneratedField.of(
               "HTTPS_CHRIMLE_GITHUB_IO_OPENAPI_TO_JAVA_RECORDS_MUSTACHE_TEMPLATES_",
-              String.class, // URI.class,
-              "https://Chrimle.github.io/openapi-to-java-records-mustache-templates/" // URI.create("https://chrimle.github.io/openapi-to-java-records-mustache-templates/")
-              )
+              URI.class,
+              URI.create("https://chrimle.github.io/openapi-to-java-records-mustache-templates/"))
           .build()),
   EXAMPLE_IMPLEMENTS_ENUM(
       "ExampleImplementsEnum",
