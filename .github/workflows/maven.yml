@@ -48,7 +48,7 @@ jobs:
         run: |
           # Check Modules to Skip Building
           # Skip test-spring, since the mustache templates are not backwards compatible with these versions
-          SPRING_INCOMPATIBLE_VERSIONS="7.13.0 7.14.0 7.15.0 7.16.0 7.17.0 7.18.0 7.19.0"
+          SPRING_INCOMPATIBLE_VERSIONS="7.12.0 7.13.0 7.14.0 7.15.0 7.16.0 7.17.0 7.18.0 7.19.0"
           SKIP_FLAG=""
           
           if [[ $SPRING_INCOMPATIBLE_VERSIONS =~ "${{ matrix.openapi-generator-maven-plugin-version }}" ]]; then
