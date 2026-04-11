@@ -53,6 +53,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.condition.DisabledIf;
+import org.junit.jupiter.api.condition.EnabledIf;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ArgumentsSource;
 
@@ -1316,9 +1317,12 @@ public abstract class GeneratedRecordTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedRecordProvider.class)
-          @AssumptionFilter(disabledConfigOptions = ConfigOption.USE_BEAN_VALIDATION)
+          @AssumptionFilter(
+              disabledConfigOptions = ConfigOption.USE_BEAN_VALIDATION,
+              isOneOfLibraries = {Library.OKHTTP_GSON, Library.WEBCLIENT})
           @DisplayName(
               "Generated `record` does NOT use Jakarta Bean Validation annotations on fields")
+          @DisabledIf("io.github.chrimle.o2jrm.tests.GeneratedRecordImplTests#isSpringGenerator")
           void
               whenUseBeanValidationIsFalseThenFieldsAreNotAnnotatedWithJakartaBeanValidationAnnotations(
                   final GeneratedSource generatedSource) {
@@ -1334,6 +1338,20 @@ public abstract class GeneratedRecordTests {
                 CustomAssertions.assertFieldIsNotAnnotatedWith(field, annotation);
               }
             }
+          }
+
+          @ParameterizedTest
+          @ArgumentsSource(GeneratedRecordProvider.class)
+          @AssumptionFilter(
+              isOneOfLibraries = Library.SPRING_BOOT,
+              disabledConfigOptions = ConfigOption.USE_BEAN_VALIDATION)
+          @DisplayName(
+              "[spring-boot] Generated `record` ALWAYS use Jakarta Bean Validation annotations on fields")
+          @EnabledIf("io.github.chrimle.o2jrm.tests.GeneratedRecordImplTests#isSpringGenerator")
+          void
+              whenLibraryIsSpringBootThenFieldsAreAlwaysAnnotatedWithJakartaBeanValidationAnnotations(
+                  final GeneratedSource generatedSource) {
+            AssertionUtils.assertRecordHasFieldsOfTypeWithNullableAnnotations(generatedSource);
           }
         }
 
