@@ -18,44 +18,51 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
  * Example of a deprecated Enum
+ *
+ * @deprecated
  */
+@Deprecated
 @io.github.chrimle.o2jrm.annotations.TestAnnotationOne
 @io.github.chrimle.o2jrm.annotations.TestAnnotationTwo
 @io.github.chrimle.o2jrm.annotations.TestAnnotationThree
-
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-04-11T13:25:31.735137700+02:00[Europe/Stockholm]", comments = "Generator version: 7.21.0")
 public enum DeprecatedExampleEnum {
-  
   ENUM1("ENUM1"),
-  
   ENUM2("ENUM2"),
-  
   ENUM3("ENUM3");
 
   private final String value;
 
-  DeprecatedExampleEnum(String value) {
+  DeprecatedExampleEnum(final String value) {
     this.value = value;
   }
 
+  /**
+   * Gets the {@code value} of this enum.
+   *
+   * @return the value of this enum.
+   */
   @JsonValue
   public String getValue() {
     return value;
   }
 
-  @Override
-  public String toString() {
-    return String.valueOf(value);
-  }
-
+  /**
+   * Case-sensitively matches the given {@code value} to an enum constant using {@link #getValue()}.
+   *
+   * <p><b>NOTE:</b> if multiple enum constants have a matching value, the first enum constant is
+   * returned, by the order they are declared.
+   *
+   * @param value of the enum.
+   * @return a {@link DeprecatedExampleEnum } with the matching value.
+   * @throws IllegalArgumentException if no enum has a value matching the given value.
+   */
   @JsonCreator
-  public static DeprecatedExampleEnum fromValue(String value) {
-    for (DeprecatedExampleEnum b : DeprecatedExampleEnum.values()) {
-      if (b.value.equals(value)) {
-        return b;
+  public static DeprecatedExampleEnum fromValue(final String value) {
+    for (final DeprecatedExampleEnum constant : DeprecatedExampleEnum.values()) {
+      if (constant.getValue().equals(value)) {
+        return constant;
       }
     }
     throw new IllegalArgumentException("Unexpected value '" + value + "'");
   }
 }
-

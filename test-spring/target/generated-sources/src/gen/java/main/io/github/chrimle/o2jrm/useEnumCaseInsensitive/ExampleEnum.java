@@ -19,20 +19,15 @@ import com.fasterxml.jackson.annotation.JsonValue;
 /**
  * Example of an Enum
  */
-
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-04-11T13:25:35.729646800+02:00[Europe/Stockholm]", comments = "Generator version: 7.21.0")
 public enum ExampleEnum {
-  
   /**
    * Some description of ENUM1
    */
   ENUM1("ENUM1"),
-  
   /**
    * Some description of ENUM2
    */
   ENUM2("ENUM2"),
-  
   /**
    * Some description of ENUM3
    */
@@ -40,28 +35,38 @@ public enum ExampleEnum {
 
   private final String value;
 
-  ExampleEnum(String value) {
+  ExampleEnum(final String value) {
     this.value = value;
   }
 
+  /**
+   * Gets the {@code value} of this enum.
+   *
+   * @return the value of this enum.
+   */
   @JsonValue
   public String getValue() {
     return value;
   }
 
-  @Override
-  public String toString() {
-    return String.valueOf(value);
-  }
-
+  /**
+   * Case-insensitively matches the given {@code value} to an enum constant using {@link
+   * #getValue()}.
+   *
+   * <p><b>NOTE:</b> if multiple enum constants have a matching value, the first enum constant is
+   * returned, by the order they are declared.
+   *
+   * @param value of the enum.
+   * @return a {@link ExampleEnum } with the matching value.
+   * @throws IllegalArgumentException if no enum has a value matching the given value.
+   */
   @JsonCreator
-  public static ExampleEnum fromValue(String value) {
-    for (ExampleEnum b : ExampleEnum.values()) {
-      if (b.value.equalsIgnoreCase(value)) {
-        return b;
+  public static ExampleEnum fromValue(final String value) {
+    for (final ExampleEnum constant : ExampleEnum.values()) {
+      if (constant.getValue().equalsIgnoreCase(value)) {
+        return constant;
       }
     }
     throw new IllegalArgumentException("Unexpected value '" + value + "'");
   }
 }
-

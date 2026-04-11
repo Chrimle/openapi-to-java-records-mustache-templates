@@ -504,12 +504,11 @@ public abstract class GeneratedEnumTests {
 
       @Nested
       @DisplayName("Testing `<library>webclient</library>`")
-      @DisabledIf("io.github.chrimle.o2jrm.tests.GeneratedEnumImplTests#isSpringGenerator")
       class WebClientTests {
 
         @ParameterizedTest
         @ArgumentsSource(GeneratedEnumProvider.class)
-        @AssumptionFilter(isOneOfLibraries = {Library.WEBCLIENT})
+        @AssumptionFilter(isOneOfLibraries = {Library.WEBCLIENT, Library.SPRING_BOOT})
         @DisplayName("Generated `enum` does NOT have `validateJsonElement`-method")
         void whenLibraryIsWebClientThenGeneratedEnumDoesNotHaveValidateJsonElementMethod(
             final GeneratedSource generatedSource) {
@@ -519,7 +518,7 @@ public abstract class GeneratedEnumTests {
 
         @ParameterizedTest
         @ArgumentsSource(GeneratedEnumProvider.class)
-        @AssumptionFilter(isOneOfLibraries = {Library.WEBCLIENT})
+        @AssumptionFilter(isOneOfLibraries = {Library.WEBCLIENT, Library.SPRING_BOOT})
         @DisplayName("Generated `enum` does NOT have `Adapter` inner-class")
         void whenLibraryIsWebClientThenGeneratedEnumDoesNotHaveAdapterInnerClass(
             final GeneratedSource generatedSource) {
@@ -529,7 +528,7 @@ public abstract class GeneratedEnumTests {
 
         @ParameterizedTest
         @ArgumentsSource(GeneratedEnumProvider.class)
-        @AssumptionFilter(isOneOfLibraries = {Library.WEBCLIENT})
+        @AssumptionFilter(isOneOfLibraries = {Library.WEBCLIENT, Library.SPRING_BOOT})
         @DisplayName("Generated `enum` is NOT annotated `@JsonAdapter`")
         void whenLibraryIsWebClientThenGeneratedEnumIsNotAnnotatedWithJsonAdapter(
             final GeneratedSource generatedSource) {

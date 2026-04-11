@@ -19,46 +19,47 @@ import com.fasterxml.jackson.annotation.JsonValue;
 /**
  * Example of an Enum with integer values
  */
-
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-04-11T13:25:33.770396400+02:00[Europe/Stockholm]", comments = "Generator version: 7.21.0")
 public enum ExampleEnumWithIntegerValues {
-  
   NUMBER_100(100),
-  
   NUMBER_200(200),
-  
   NUMBER_300(300),
-  
   NUMBER_400(400),
-  
   NUMBER_500(500),
-  
   NUMBER_unknown_default_open_api(11184809);
 
   private final Integer value;
 
-  ExampleEnumWithIntegerValues(Integer value) {
+  ExampleEnumWithIntegerValues(final Integer value) {
     this.value = value;
   }
 
+  /**
+   * Gets the {@code value} of this enum.
+   *
+   * @return the value of this enum.
+   */
   @JsonValue
   public Integer getValue() {
     return value;
   }
 
-  @Override
-  public String toString() {
-    return String.valueOf(value);
-  }
-
+  /**
+   * Matches the given {@code value} to an enum constant using {@link #getValue()}.
+   *
+   * <p><b>NOTE:</b> if multiple enum constants have a matching value, the first enum constant is
+   * returned, by the order they are declared.
+   *
+   * @param value of the enum.
+   * @return a {@link ExampleEnumWithIntegerValues } with the matching value, or {@link
+   *     #NUMBER_unknown_default_open_api } if no match is found.
+   */
   @JsonCreator
-  public static ExampleEnumWithIntegerValues fromValue(Integer value) {
-    for (ExampleEnumWithIntegerValues b : ExampleEnumWithIntegerValues.values()) {
-      if (b.value.equals(value)) {
-        return b;
+  public static ExampleEnumWithIntegerValues fromValue(final Integer value) {
+    for (final ExampleEnumWithIntegerValues constant : ExampleEnumWithIntegerValues.values()) {
+      if (constant.getValue().equals(value)) {
+        return constant;
       }
     }
     return NUMBER_unknown_default_open_api;
   }
 }
-

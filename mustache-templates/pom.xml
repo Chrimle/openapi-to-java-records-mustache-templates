@@ -112,10 +112,14 @@
                                         <include name="generateBuilders.mustache"/>
                                         <include name="javadoc.mustache"/>
                                         <include name="licenseInfo.mustache"/>
-                                        <include name="modelEnum.mustache"/>
                                         <include name="pojo.mustache"/>
                                         <include name="useBeanValidation.mustache"/>
                                     </fileset>
+                                    <filterset refid="versionFilter"/>
+                                </copy>
+                                <copy file="src/main/resources/templates/modelEnum.mustache"
+                                      tofile="${project.build.outputDirectory}/spring-templates/enumOuterClass.mustache"
+                                      overwrite="true">
                                     <filterset refid="versionFilter"/>
                                 </copy>
                             </target>
