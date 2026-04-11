@@ -49,6 +49,7 @@
         <modelPackage.default>${project.groupId}.o2jrm</modelPackage.default>
         <generateModels.default>true</generateModels.default>
         <generateApis.default>false</generateApis.default>
+        <generateApiTests.default>false</generateApiTests.default>
         <generateModelTests.default>false</generateModelTests.default>
         <generateModelDocumentation.default>false</generateModelDocumentation.default>
         <generatorName.default>spring</generatorName.default>
@@ -57,6 +58,8 @@
         <templateDirectory.default>${project.build.outputDirectory}/spring-templates</templateDirectory.default>
         <!-- Default `configuration.configOptions`-option values -->
         <output.default>target/generated-sources</output.default>
+        <generateApiDocumentation.default>false</generateApiDocumentation.default>
+        <generateSupportingFiles.default>false</generateSupportingFiles.default>
     </properties>
 
 
@@ -199,9 +202,12 @@
                 <artifactId>openapi-generator-maven-plugin</artifactId>
                 <configuration>
                     <output>${output.default}</output>
-                    <generateModels>${generateModels.default}</generateModels>
                     <generateApis>${generateApis.default}</generateApis>
+                    <generateApiTests>${generateApiTests.default}</generateApiTests>
+                    <generateModels>${generateModels.default}</generateModels>
                     <generateModelTests>${generateModelTests.default}</generateModelTests>
+                    <generateApiDocumentation>${generateApiDocumentation.default}</generateApiDocumentation>
+                    <generateSupportingFiles>${generateSupportingFiles.default}</generateSupportingFiles>
                     <generateModelDocumentation>${generateModelDocumentation.default}</generateModelDocumentation>
                     <inputSpec>${inputSpec.default}</inputSpec>
                     <templateDirectory>${templateDirectory.default}</templateDirectory>
