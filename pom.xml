@@ -97,6 +97,8 @@
 
         <!-- Dependency Versions -->
         <okhttp.version>4.12.0</okhttp.version>
+        <swagger.version>2.2.37</swagger.version>
+        <spring-boot.version>3.5.7</spring-boot.version>
         <spring-web.version>6.2.12</spring-web.version>
         <!-- / Dependency Versions -->
 
@@ -149,8 +151,6 @@
             templates/pojo.mustache,
             templates/useBeanValidation.mustache
         </templatesToCopy>
-        <!-- Default OpenAPI Specs used by Java Generators -->
-        <specsToCopy>api.yaml</specsToCopy>
     </properties>
 
     <scm>
@@ -233,10 +233,26 @@
                 <version>1.9.0</version>
             </dependency>
             <dependency>
+                <!-- Needed for Spring-Boot Generator -->
+                <groupId>io.swagger.core.v3</groupId>
+                <artifactId>swagger-annotations</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.swagger.core.v3</groupId>
+                <artifactId>swagger-models</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+            <dependency>
                 <!-- Needed when configOptions.useJakartaEe=true -->
                 <groupId>jakarta.annotation</groupId>
                 <artifactId>jakarta.annotation-api</artifactId>
                 <version>3.0.0</version>
+            </dependency>
+            <dependency>
+                <groupId>jakarta.servlet</groupId>
+                <artifactId>jakarta.servlet-api</artifactId>
+                <version>6.0.0</version>
             </dependency>
             <dependency>
                 <groupId>jakarta.validation</groupId>
@@ -274,6 +290,16 @@
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-webflux</artifactId>
                 <version>${spring-web.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-autoconfigure</artifactId>
+                <version>${spring-boot.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -326,7 +352,7 @@
                                         <type>jar</type>
                                         <overWrite>true</overWrite>
                                         <outputDirectory>${project.build.outputDirectory}</outputDirectory>
-                                        <includes>${specsToCopy}</includes>
+                                        <includes>api.yaml</includes>
                                     </artifactItem>
                                 </artifactItems>
                             </configuration>

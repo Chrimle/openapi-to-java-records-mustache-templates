@@ -88,7 +88,6 @@ StringUtil.java
 
 # Ignore Imported Files
 */target/classes/api.yaml
-*/target/classes/spring-api.yaml
 
 */target/classes/templates
 */target/classes/spring-templates

@@ -53,6 +53,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.condition.DisabledIf;
+import org.junit.jupiter.api.condition.EnabledIf;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ArgumentsSource;
 
@@ -232,8 +233,9 @@ public abstract class GeneratedRecordTests {
 
         @ParameterizedTest
         @ArgumentsSource(GeneratedRecordProvider.class)
-        @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON, Library.SPRING_BOOT})
+        @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON})
         @DisplayName("[okhttp-gson] Generated constructor is NOT annotated `@JsonCreator`")
+        @DisabledIf("io.github.chrimle.o2jrm.tests.GeneratedRecordImplTests#isSpringGenerator")
         void whenNotJacksonThenGeneratedConstructorIsNotAnnotatedJsonCreator(
             final GeneratedSource generatedSource) {
           final Constructor<?> constructor =
@@ -244,9 +246,8 @@ public abstract class GeneratedRecordTests {
 
         @ParameterizedTest
         @ArgumentsSource(GeneratedRecordProvider.class)
-        @AssumptionFilter(isOneOfLibraries = Library.WEBCLIENT)
+        @AssumptionFilter(isOneOfLibraries = {Library.WEBCLIENT, Library.SPRING_BOOT})
         @DisplayName("[webclient] Generated constructor IS annotated `@JsonCreator`")
-        @DisabledIf("io.github.chrimle.o2jrm.tests.GeneratedRecordImplTests#isSpringGenerator")
         void whenJacksonThenGeneratedConstructorIsAnnotatedJsonCreator(
             final GeneratedSource generatedSource) {
           final Constructor<?> constructor =
@@ -258,10 +259,11 @@ public abstract class GeneratedRecordTests {
         @ParameterizedTest
         @ArgumentsSource(GeneratedRecordProvider.class)
         @AssumptionFilter(
-            isOneOfLibraries = {Library.OKHTTP_GSON, Library.SPRING_BOOT},
+            isOneOfLibraries = {Library.OKHTTP_GSON},
             disabledConfigOptions = ConfigOption.SERIALIZABLE_MODEL)
         @DisplayName(
             "[okhttp-gson] Generated `record` has same number of fields as OpenAPI properties")
+        @DisabledIf("io.github.chrimle.o2jrm.tests.GeneratedRecordImplTests#isSpringGenerator")
         void whenObjectHasPropertiesThenGeneratedRecordHasSameNumberOfFields_okhttp_gson(
             final GeneratedSource generatedSource) {
           CustomAssertions.assertClassHasNumberOfFields(
@@ -271,11 +273,10 @@ public abstract class GeneratedRecordTests {
         @ParameterizedTest
         @ArgumentsSource(GeneratedRecordProvider.class)
         @AssumptionFilter(
-            isOneOfLibraries = {Library.WEBCLIENT},
+            isOneOfLibraries = {Library.WEBCLIENT, Library.SPRING_BOOT},
             disabledConfigOptions = ConfigOption.SERIALIZABLE_MODEL)
         @DisplayName(
             "[webclient] Generated `record` has same number of fields as OpenAPI properties")
-        @DisabledIf("io.github.chrimle.o2jrm.tests.GeneratedRecordImplTests#isSpringGenerator")
         void whenObjectHasPropertiesThenGeneratedRecordHasSameNumberOfFields_webclient(
             final GeneratedSource generatedSource) {
           CustomAssertions.assertClassHasNumberOfFields(
@@ -395,8 +396,9 @@ public abstract class GeneratedRecordTests {
 
         @ParameterizedTest
         @ArgumentsSource(GeneratedRecordProvider.class)
-        @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON, Library.SPRING_BOOT})
+        @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON})
         @DisplayName("Generated `record` HAS `openapiFields`-field")
+        @DisabledIf("io.github.chrimle.o2jrm.tests.GeneratedRecordImplTests#isSpringGenerator")
         void whenLibraryIsOkHttpGsonThenGeneratedRecordHasOpenApiFieldsField(
             final GeneratedSource generatedSource) throws IllegalAccessException {
           final Field openapiFields =
@@ -413,8 +415,9 @@ public abstract class GeneratedRecordTests {
 
         @ParameterizedTest
         @ArgumentsSource(GeneratedRecordProvider.class)
-        @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON, Library.SPRING_BOOT})
+        @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON})
         @DisplayName("Generated `record` HAS `openapiRequiredFields`-field")
+        @DisabledIf("io.github.chrimle.o2jrm.tests.GeneratedRecordImplTests#isSpringGenerator")
         void whenLibraryIsOkHttpGsonThenGeneratedRecordHasOpenApiRequiredFieldsField(
             final GeneratedSource generatedSource) throws IllegalAccessException {
           final Field openapiRequiredFields =
@@ -431,8 +434,9 @@ public abstract class GeneratedRecordTests {
 
         @ParameterizedTest
         @ArgumentsSource(GeneratedRecordProvider.class)
-        @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON, Library.SPRING_BOOT})
+        @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON})
         @DisplayName("Generated `record` HAS `validateJsonElement`-method")
+        @DisabledIf("io.github.chrimle.o2jrm.tests.GeneratedRecordImplTests#isSpringGenerator")
         void whenLibraryIsOkHttpGsonThenGeneratedRecordHasValidateJsonElementMethod(
             final GeneratedSource generatedSource) {
           CustomAssertions.assertClassHasMethod(
@@ -441,13 +445,14 @@ public abstract class GeneratedRecordTests {
 
         @Nested
         @DisplayName("Testing the `validateJsonElement`-method")
+        @DisabledIf("io.github.chrimle.o2jrm.tests.GeneratedRecordImplTests#isSpringGenerator")
         class ValidateJsonElementMethodTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedRecordProvider.class)
           @AssumptionFilter(
               hasRequiredGeneratedFields = Condition.TRUE,
-              isOneOfLibraries = {Library.OKHTTP_GSON, Library.SPRING_BOOT})
+              isOneOfLibraries = {Library.OKHTTP_GSON})
           @DisplayName(
               "When `jsonElement` is `null` and `record` has required fields Then `validateJsonElement`-method throws `IllegalArgumentException`")
           void whenJsonElementIsNullAndRecordHasRequiredFieldsThenIllegalArgumentExceptionIsThrown(
@@ -463,7 +468,7 @@ public abstract class GeneratedRecordTests {
           @ArgumentsSource(GeneratedRecordProvider.class)
           @AssumptionFilter(
               hasRequiredGeneratedFields = Condition.TRUE,
-              isOneOfLibraries = {Library.OKHTTP_GSON, Library.SPRING_BOOT})
+              isOneOfLibraries = {Library.OKHTTP_GSON})
           @DisplayName(
               "When `jsonElement` is empty JSON and `record` has required fields Then `validateJsonElement`-method throws `IllegalArgumentException`")
           void
@@ -481,7 +486,7 @@ public abstract class GeneratedRecordTests {
           @ArgumentsSource(GeneratedRecordProvider.class)
           @AssumptionFilter(
               hasRequiredGeneratedFields = Condition.FALSE,
-              isOneOfLibraries = {Library.OKHTTP_GSON, Library.SPRING_BOOT})
+              isOneOfLibraries = {Library.OKHTTP_GSON})
           @DisplayName(
               "When `jsonElement` is `null` and `record` has no required fields Then `validateJsonElement`-method throws `NullPointerException`")
           void whenJsonElementIsNullAndRecordHasNoRequiredFieldsThenNullPointerExceptionIsThrown(
@@ -497,7 +502,7 @@ public abstract class GeneratedRecordTests {
           @ArgumentsSource(GeneratedRecordProvider.class)
           @AssumptionFilter(
               hasRequiredGeneratedFields = Condition.FALSE,
-              isOneOfLibraries = {Library.OKHTTP_GSON, Library.SPRING_BOOT})
+              isOneOfLibraries = {Library.OKHTTP_GSON})
           @DisplayName(
               "When `jsonElement` is empty JSON and `record` has no required fields Then `validateJsonElement`-method throws nothing")
           void whenJsonElementIsEmptyJsonAndRecordHasNoRequiredFieldsThenNothingIsThrown(
@@ -511,7 +516,7 @@ public abstract class GeneratedRecordTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedRecordProvider.class)
-          @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON, Library.SPRING_BOOT})
+          @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON})
           @DisplayName(
               "When `jsonElement` has unexpected key Then `validateJsonElement`-method throws `IllegalArgumentException`")
           void whenJsonElementHasUnexpectedKeyThenIllegalArgumentExceptionIsThrown(
@@ -528,7 +533,7 @@ public abstract class GeneratedRecordTests {
           @ArgumentsSource(GeneratedRecordProvider.class)
           @AssumptionFilter(
               hasRequiredGeneratedFields = Condition.TRUE,
-              isOneOfLibraries = {Library.OKHTTP_GSON, Library.SPRING_BOOT})
+              isOneOfLibraries = {Library.OKHTTP_GSON})
           @DisplayName(
               "When `jsonElement` does NOT have expected key Then `validateJsonElement`-method throws `IllegalArgumentException`")
           void whenJsonElementDoesNotHaveExpectedKeyThenIllegalArgumentExceptionIsThrown(
@@ -557,7 +562,7 @@ public abstract class GeneratedRecordTests {
           @ArgumentsSource(GeneratedRecordProvider.class)
           @AssumptionFilter(
               hasRequiredGeneratedFields = Condition.TRUE,
-              isOneOfLibraries = {Library.OKHTTP_GSON, Library.SPRING_BOOT})
+              isOneOfLibraries = {Library.OKHTTP_GSON})
           @DisplayName(
               "When required `jsonElement` value is `null` Then `validateJsonElement`-method throws `IllegalArgumentException`")
           void whenRequiredJsonElementValueIsNullThenIllegalArgumentExceptionIsThrown(
@@ -581,7 +586,7 @@ public abstract class GeneratedRecordTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedRecordProvider.class)
-          @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON, Library.SPRING_BOOT})
+          @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON})
           @DisplayName(
               "When optional `jsonElement` values are `null` Then `validateJsonElement`-method throws nothing")
           void whenOptionalJsonElementValuesAreNullThenNothingIsThrown(
@@ -630,7 +635,7 @@ public abstract class GeneratedRecordTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedRecordProvider.class)
-          @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON, Library.SPRING_BOOT})
+          @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON})
           @DisplayName(
               "When optional `jsonElement` values is not present Then `validateJsonElement`-method throws nothing")
           void whenOptionalJsonElementValuesIsNotPresentThenNothingIsThrown(
@@ -662,7 +667,7 @@ public abstract class GeneratedRecordTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedRecordProvider.class)
-          @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON, Library.SPRING_BOOT})
+          @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON})
           @DisplayName(
               "When `jsonElement` value is valid Then `validateJsonElement`-method throws nothing")
           void whenJsonElementIsValidThenNothingIsThrown(final GeneratedSource generatedSource) {
@@ -684,7 +689,7 @@ public abstract class GeneratedRecordTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedRecordProvider.class)
-          @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON, Library.SPRING_BOOT})
+          @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON})
           @DisplayName(
               "When required `jsonElement` value is unexpected type Then `validateJsonElement`-method throws `IllegalArgumentException`")
           void whenRequiredJsonElementValueIsUnexpectedTypeThenIllegalArgumentExceptionIsThrown(
@@ -735,7 +740,7 @@ public abstract class GeneratedRecordTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedRecordProvider.class)
-          @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON, Library.SPRING_BOOT})
+          @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON})
           @DisplayName(
               "When required `jsonElement` value is unexpectedly not JSON primitive Then `validateJsonElement`-method throws `IllegalArgumentException`")
           void
@@ -785,8 +790,7 @@ public abstract class GeneratedRecordTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedRecordProvider.class)
-          @DisabledIf("io.github.chrimle.o2jrm.tests.GeneratedRecordImplTests#isSpringGenerator")
-          @AssumptionFilter(isOneOfLibraries = {Library.WEBCLIENT})
+          @AssumptionFilter(isOneOfLibraries = {Library.WEBCLIENT, Library.SPRING_BOOT})
           @DisplayName(
               "When `library` is NOT `okhttp-gson` Then inner-class `CustomTypeAdapterFactory` is NOT generated")
           void whenLibraryIsNotOkHttpGsonThenInnerClassCustomTypeAdapterFactoryIsNotGenerated(
@@ -797,7 +801,8 @@ public abstract class GeneratedRecordTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedRecordProvider.class)
-          @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON, Library.SPRING_BOOT})
+          @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON})
+          @DisabledIf("io.github.chrimle.o2jrm.tests.GeneratedRecordImplTests#isSpringGenerator")
           @DisplayName(
               "When `library` IS `okhttp-gson` Then inner-class `CustomTypeAdapterFactory` IS generated")
           void whenLibraryIsOkHttpGsonThenInnerClassCustomTypeAdapterFactoryIsGenerated(
@@ -808,7 +813,8 @@ public abstract class GeneratedRecordTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedRecordProvider.class)
-          @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON, Library.SPRING_BOOT})
+          @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON})
+          @DisabledIf("io.github.chrimle.o2jrm.tests.GeneratedRecordImplTests#isSpringGenerator")
           @DisplayName(
               "`CustomTypeAdapterFactory`-class `implements` the `TypeAdapterFactory`-interface")
           void customTypeAdapterFactoryClassImplementsTheTypeAdapterFactoryInterface(
@@ -821,11 +827,12 @@ public abstract class GeneratedRecordTests {
 
           @Nested
           @DisplayName("Testing the `create(Gson, TypeToken<T>)` method")
+          @DisabledIf("io.github.chrimle.o2jrm.tests.GeneratedRecordImplTests#isSpringGenerator")
           class CreateMethodTests {
 
             @ParameterizedTest
             @ArgumentsSource(GeneratedRecordProvider.class)
-            @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON, Library.SPRING_BOOT})
+            @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON})
             @DisplayName("`create(Gson, TypeToken<T>)` method is generated")
             void createMethodIsGenerated(final GeneratedSource generatedSource) {
               CustomAssertions.assertClassHasMethod(
@@ -838,7 +845,7 @@ public abstract class GeneratedRecordTests {
 
             @ParameterizedTest
             @ArgumentsSource(GeneratedRecordProvider.class)
-            @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON, Library.SPRING_BOOT})
+            @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON})
             @DisplayName(
                 "`create(Gson, TypeToken<T>)` throws `NullPointerException` when `gson` is `null`")
             void createMethodThrowsNullPointerExceptionWhenGsonIsNull(
@@ -862,7 +869,7 @@ public abstract class GeneratedRecordTests {
 
             @ParameterizedTest
             @ArgumentsSource(GeneratedRecordProvider.class)
-            @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON, Library.SPRING_BOOT})
+            @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON})
             @DisplayName(
                 "`create(Gson, TypeToken<T>)` throws `NullPointerException` when `typeToken` is `null`")
             void createMethodThrowsNullPointerExceptionWhenTypeTokenIsNull(
@@ -882,7 +889,7 @@ public abstract class GeneratedRecordTests {
 
             @ParameterizedTest
             @ArgumentsSource(GeneratedRecordProvider.class)
-            @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON, Library.SPRING_BOOT})
+            @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON})
             @DisplayName(
                 "`create(Gson, TypeToken<T>)` returns `null` when `typeToken` is NOT the parent class")
             void createMethodReturnsNullWhenTypeTokenIsNotTheParentClass(
@@ -902,7 +909,7 @@ public abstract class GeneratedRecordTests {
 
             @ParameterizedTest
             @ArgumentsSource(GeneratedRecordProvider.class)
-            @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON, Library.SPRING_BOOT})
+            @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON})
             @DisplayName(
                 "`create(Gson, TypeToken<T>)` returns non-null `TypeAdapter` when `typeToken` IS the parent class")
             void createMethodReturnsNonNullTypeAdapterWhenTypeTokenIsTheParentClass(
@@ -926,7 +933,7 @@ public abstract class GeneratedRecordTests {
 
               @ParameterizedTest
               @ArgumentsSource(GeneratedRecordProvider.class)
-              @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON, Library.SPRING_BOOT})
+              @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON})
               @DisplayName("`create(Gson, TypeToken<T>)` returns `NullSafeTypeAdapter`")
               void createMethodReturnsNullSafeTypeAdapter(final GeneratedSource generatedSource) {
                 final Class<?> customTypeAdapterFactory =
@@ -955,7 +962,7 @@ public abstract class GeneratedRecordTests {
 
                 @ParameterizedTest
                 @ArgumentsSource(GeneratedRecordProvider.class)
-                @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON, Library.SPRING_BOOT})
+                @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON})
                 @DisplayName("when `JsonWriter` is `null` Then `NullPointerException` is thrown")
                 void whenJsonWriterIsNullThenNullPointerExceptionIsThrown(
                     final GeneratedSource generatedSource) {
@@ -990,7 +997,7 @@ public abstract class GeneratedRecordTests {
 
                 @ParameterizedTest
                 @ArgumentsSource(GeneratedRecordProvider.class)
-                @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON, Library.SPRING_BOOT})
+                @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON})
                 @DisplayName("when `JsonWriter` is NOT `null` Then nothing is thrown")
                 void whenJsonWriterIsNotNullThenNothingIsThrown(
                     final GeneratedSource generatedSource) {
@@ -1031,7 +1038,7 @@ public abstract class GeneratedRecordTests {
 
                 @ParameterizedTest
                 @ArgumentsSource(GeneratedRecordProvider.class)
-                @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON, Library.SPRING_BOOT})
+                @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON})
                 @DisplayName("when `jsonReader` is `null` Then `NullPointerException` is thrown")
                 void whenJsonReaderIsNullThenNullPointerExceptionIsThrown(
                     final GeneratedSource generatedSource) {
@@ -1060,7 +1067,7 @@ public abstract class GeneratedRecordTests {
 
                 @ParameterizedTest
                 @ArgumentsSource(GeneratedRecordProvider.class)
-                @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON, Library.SPRING_BOOT})
+                @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON})
                 @DisplayName("when `jsonReader` is `nullInputStream` Then `EOFException` is thrown")
                 void whenJsonReaderIsNullInputStreamThenEOFExceptionIsThrown(
                     final GeneratedSource generatedSource) {
@@ -1094,7 +1101,7 @@ public abstract class GeneratedRecordTests {
 
                 @ParameterizedTest
                 @ArgumentsSource(GeneratedRecordProvider.class)
-                @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON, Library.SPRING_BOOT})
+                @AssumptionFilter(isOneOfLibraries = {Library.OKHTTP_GSON})
                 @DisplayName("when `jsonReader` is valid Then nothing is thrown")
                 void whenJsonReaderIsValidThenNothingIsThrown(
                     final GeneratedSource generatedSource) {
@@ -1130,12 +1137,11 @@ public abstract class GeneratedRecordTests {
 
       @Nested
       @DisplayName("Testing `<library>webclient</library>`")
-      @DisabledIf("io.github.chrimle.o2jrm.tests.GeneratedRecordImplTests#isSpringGenerator")
       class WebClientTests {
 
         @ParameterizedTest
         @ArgumentsSource(GeneratedRecordProvider.class)
-        @AssumptionFilter(isOneOfLibraries = {Library.WEBCLIENT})
+        @AssumptionFilter(isOneOfLibraries = {Library.WEBCLIENT, Library.SPRING_BOOT})
         @DisplayName("Generated `record` does NOT have `openapiFields`-field")
         void whenLibraryIsWebClientThenGeneratedRecordDoesNotHaveOpenApiFieldsField(
             final GeneratedSource generatedSource) {
@@ -1145,7 +1151,7 @@ public abstract class GeneratedRecordTests {
 
         @ParameterizedTest
         @ArgumentsSource(GeneratedRecordProvider.class)
-        @AssumptionFilter(isOneOfLibraries = {Library.WEBCLIENT})
+        @AssumptionFilter(isOneOfLibraries = {Library.WEBCLIENT, Library.SPRING_BOOT})
         @DisplayName("Generated `record` does NOT have `openapiRequiredFields`-field")
         void whenLibraryIsWebClientThenGeneratedRecordDoesNotHaveOpenApiRequiredFieldsField(
             final GeneratedSource generatedSource) {
@@ -1155,7 +1161,7 @@ public abstract class GeneratedRecordTests {
 
         @ParameterizedTest
         @ArgumentsSource(GeneratedRecordProvider.class)
-        @AssumptionFilter(isOneOfLibraries = {Library.WEBCLIENT})
+        @AssumptionFilter(isOneOfLibraries = {Library.WEBCLIENT, Library.SPRING_BOOT})
         @DisplayName("Generated `record` does NOT have `validateJsonElement`-method")
         void whenLibraryIsWebClientThenGeneratedRecordDoesNotHaveValidateJsonElementMethod(
             final GeneratedSource generatedSource) {
@@ -1304,13 +1310,28 @@ public abstract class GeneratedRecordTests {
       @DisplayName("Testing `<useBeanValidation>`")
       class UseBeanValidationTests {
 
+        @ParameterizedTest
+        @ArgumentsSource(GeneratedRecordProvider.class)
+        @AssumptionFilter(isOneOfLibraries = Library.SPRING_BOOT)
+        @DisplayName(
+            "[spring-boot] Generated `record` ALWAYS use Jakarta Bean Validation annotations on fields")
+        @EnabledIf("io.github.chrimle.o2jrm.tests.GeneratedRecordImplTests#isSpringGenerator")
+        void
+            whenLibraryIsSpringBootThenFieldsAreAlwaysAnnotatedWithJakartaBeanValidationAnnotations(
+                final GeneratedSource generatedSource) {
+          AssertionUtils.assertRecordHasFieldsOfTypeWithNullableAnnotations(generatedSource);
+        }
+
         @Nested
         @DisplayName("Testing `<useBeanValidation>false</useBeanValidation>`")
+        @DisabledIf("io.github.chrimle.o2jrm.tests.GeneratedRecordImplTests#isSpringGenerator")
         class UseBeanValidationFalseTests {
 
           @ParameterizedTest
           @ArgumentsSource(GeneratedRecordProvider.class)
-          @AssumptionFilter(disabledConfigOptions = ConfigOption.USE_BEAN_VALIDATION)
+          @AssumptionFilter(
+              disabledConfigOptions = ConfigOption.USE_BEAN_VALIDATION,
+              isOneOfLibraries = {Library.OKHTTP_GSON, Library.WEBCLIENT})
           @DisplayName(
               "Generated `record` does NOT use Jakarta Bean Validation annotations on fields")
           void
@@ -1333,6 +1354,7 @@ public abstract class GeneratedRecordTests {
 
         @Nested
         @DisplayName("Testing `<useBeanValidation>true</useBeanValidation>`")
+        @DisabledIf("io.github.chrimle.o2jrm.tests.GeneratedRecordImplTests#isSpringGenerator")
         class UseBeanValidationTrueTests {
 
           @ParameterizedTest

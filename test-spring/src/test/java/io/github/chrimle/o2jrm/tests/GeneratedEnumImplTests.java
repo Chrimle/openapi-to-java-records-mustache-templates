@@ -54,23 +54,23 @@ final class GeneratedEnumImplTests extends GeneratedEnumTests {
                                 GeneratedClass.getClass(generatedEnum, pluginExecution),
                                 Map.of(
                                     BeanValidationAnnotation.VALID,
-                                    javax.validation.Valid.class,
+                                    jakarta.validation.Valid.class,
                                     BeanValidationAnnotation.NOT_NULL,
-                                    javax.validation.constraints.NotNull.class,
+                                    jakarta.validation.constraints.NotNull.class,
                                     BeanValidationAnnotation.PATTERN,
-                                    javax.validation.constraints.Pattern.class,
+                                    jakarta.validation.constraints.Pattern.class,
                                     BeanValidationAnnotation.SIZE,
-                                    javax.validation.constraints.Size.class,
+                                    jakarta.validation.constraints.Size.class,
                                     BeanValidationAnnotation.MIN,
-                                    javax.validation.constraints.Min.class,
+                                    jakarta.validation.constraints.Min.class,
                                     BeanValidationAnnotation.MAX,
-                                    javax.validation.constraints.Max.class,
+                                    jakarta.validation.constraints.Max.class,
                                     BeanValidationAnnotation.DECIMAL_MIN,
-                                    javax.validation.constraints.DecimalMin.class,
+                                    jakarta.validation.constraints.DecimalMin.class,
                                     BeanValidationAnnotation.DECIMAL_MAX,
-                                    javax.validation.constraints.DecimalMax.class,
+                                    jakarta.validation.constraints.DecimalMax.class,
                                     BeanValidationAnnotation.EMAIL,
-                                    javax.validation.constraints.Email.class))))
+                                    jakarta.validation.constraints.Email.class))))
         .toList();
   }
 }
