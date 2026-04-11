@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * Example of a deprecated Enum
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-04-11T01:30:33.650718900+02:00[Europe/Stockholm]", comments = "Generator version: 7.21.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-04-11T01:58:34.083576500+02:00[Europe/Stockholm]", comments = "Generator version: 7.21.0")
 public enum DeprecatedExampleEnum implements Serializable {
   
   ENUM1("ENUM1"),

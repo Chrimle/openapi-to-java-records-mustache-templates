@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * Example of an Enum which implements two interfaces.
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-04-11T01:30:32.127206800+02:00[Europe/Stockholm]", comments = "Generator version: 7.21.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-04-11T01:58:32.223699500+02:00[Europe/Stockholm]", comments = "Generator version: 7.21.0")
 public enum ExampleTwoImplementsEnum implements io.github.chrimle.o2jrm.interfaces.TestInterfaceOne, io.github.chrimle.o2jrm.interfaces.TestInterfaceTwo {
   
   ENUM1("ENUM1"),
