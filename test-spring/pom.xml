@@ -39,7 +39,6 @@
             spring-templates/javadoc.mustache,
             spring-templates/licenseInfo.mustache,
             spring-templates/enumOuterClass.mustache,
-            spring-templates/pojo.mustache,
             spring-templates/useBeanValidation.mustache
         </templatesToCopy>
 
@@ -321,6 +320,18 @@
                             <modelPackage>${modelPackage.default}.useEnumCaseInsensitive</modelPackage>
                             <configOptions>
                                 <useEnumCaseInsensitive>true</useEnumCaseInsensitive>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>generate-spring-useOptional</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <modelPackage>${modelPackage.default}.useOptional</modelPackage>
+                            <configOptions>
+                                <useOptional>true</useOptional>
                             </configOptions>
                         </configuration>
                     </execution>
