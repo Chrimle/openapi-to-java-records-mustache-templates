@@ -39,6 +39,7 @@
             spring-templates/javadoc.mustache,
             spring-templates/licenseInfo.mustache,
             spring-templates/enumOuterClass.mustache,
+            spring-templates/pojo.mustache,
             spring-templates/useBeanValidation.mustache
         </templatesToCopy>
 
