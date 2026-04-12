@@ -21,7 +21,7 @@ import jakarta.annotation.Generated;
  * @param field1 a boolean field
  */
 public record ExampleNullableRecord(
-    Boolean field1) {
+    Optional<Boolean> field1) {
 
   @JsonCreator
   public ExampleNullableRecord(

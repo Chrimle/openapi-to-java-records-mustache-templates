@@ -24,10 +24,10 @@ import jakarta.annotation.Generated;
 @io.github.chrimle.o2jrm.annotations.TestExtraAnnotation
 public record ExampleRecordWithOneExtraAnnotation(
     @io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationOne
-    Boolean field1,
+    Optional<Boolean> field1,
     @io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationOne
 @io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationTwo
-    Boolean field2) {
+    Optional<Boolean> field2) {
 
   @JsonCreator
   public ExampleRecordWithOneExtraAnnotation(

@@ -28,22 +28,22 @@ import jakarta.annotation.Generated;
  */
 public record ExampleRecordWithExtraFieldAnnotations(
     @io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationOne
-    Boolean oneAnnotationAsInline,
+    Optional<Boolean> oneAnnotationAsInline,
     @io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationOne
-    Boolean oneAnnotationAsNewLine,
+    Optional<Boolean> oneAnnotationAsNewLine,
     @io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationOne
-    Boolean oneAnnotationAsList,
+    Optional<Boolean> oneAnnotationAsList,
     @io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationOne
-    Boolean oneAnnotationAsArray,
+    Optional<Boolean> oneAnnotationAsArray,
     @io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationOne
 @io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationTwo
-    Boolean twoAnnotationsAsNewLine,
+    Optional<Boolean> twoAnnotationsAsNewLine,
     @io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationOne
     @io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationTwo
-    Boolean twoAnnotationsAsList,
+    Optional<Boolean> twoAnnotationsAsList,
     @io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationOne
     @io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationTwo
-    Boolean twoAnnotationsAsArray) {
+    Optional<Boolean> twoAnnotationsAsArray) {
 
   @JsonCreator
   public ExampleRecordWithExtraFieldAnnotations(

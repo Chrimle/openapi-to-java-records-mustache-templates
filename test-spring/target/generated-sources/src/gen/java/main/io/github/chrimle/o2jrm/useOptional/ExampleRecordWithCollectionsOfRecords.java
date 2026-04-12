@@ -31,9 +31,9 @@ import jakarta.annotation.Generated;
  * @param requiredRecordSet Another required field
  */
 public record ExampleRecordWithCollectionsOfRecords(
-    List<@Valid ExampleRecord> optionalRecordList,
+    Optional<List<@Valid ExampleRecord>> optionalRecordList,
     @NotNull List<@Valid ExampleRecord> requiredRecordList,
-    Set<@Valid ExampleRecord> optionalRecordSet,
+    Optional<Set<@Valid ExampleRecord>> optionalRecordSet,
     @NotNull Set<@Valid ExampleRecord> requiredRecordSet) {
 
   @JsonCreator

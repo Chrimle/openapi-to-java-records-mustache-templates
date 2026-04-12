@@ -45,8 +45,8 @@ public record RecordWithNullableFieldsOfEachType(
     BigDecimal field4,
     List<Boolean> field5,
     Set<Boolean> field6,
-    @Valid ExampleNullableRecord field7,
-    ExampleNullableEnum field8) {
+    Optional<@Valid ExampleNullableRecord> field7,
+    Optional<ExampleNullableEnum> field8) {
 
   @JsonCreator
   public RecordWithNullableFieldsOfEachType(

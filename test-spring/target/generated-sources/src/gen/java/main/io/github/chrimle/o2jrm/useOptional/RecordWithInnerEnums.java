@@ -25,9 +25,9 @@ import jakarta.annotation.Generated;
  * @param exampleInnerThree Example of another inner enum class with URI values
  */
 public record RecordWithInnerEnums(
-    ExampleInnerEnum exampleInner,
-    ExampleInnerTwoEnum exampleInnerTwo,
-    ExampleInnerThreeEnum exampleInnerThree) {
+    Optional<ExampleInnerEnum> exampleInner,
+    Optional<ExampleInnerTwoEnum> exampleInnerTwo,
+    Optional<ExampleInnerThreeEnum> exampleInnerThree) {
 
   @JsonCreator
   public RecordWithInnerEnums(
