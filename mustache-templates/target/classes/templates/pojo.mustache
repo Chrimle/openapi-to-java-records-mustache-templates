@@ -52,7 +52,7 @@ import java.util.Set;
     }}{{#vendorExtensions.x-field-extra-annotation}}{{!
         }}{{{.}}}
     {{/vendorExtensions.x-field-extra-annotation}}{{!
-    }}{{>useBeanValidation}}{{{datatypeWithEnum}}} {{name}}{{^-last}},
+    }}{{#useOptional}}{{^required}}Optional<{{/required}}{{/useOptional}}{{>useBeanValidation}}{{{datatypeWithEnum}}}{{#useOptional}}{{^required}}>{{/required}}{{/useOptional}} {{name}}{{^-last}},
     {{/-last}}{{/vars}}){{#vendorExtensions.x-implements}}{{#-first}}
     implements {{{.}}}{{/-first}}{{^-first}}, {{{.}}}{{/-first}}{{/vendorExtensions.x-implements}} {
 
