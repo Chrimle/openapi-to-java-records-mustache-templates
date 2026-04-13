@@ -64,7 +64,7 @@ public record RecordWithNullableFieldsOfEachType(
         field4,
         field5,
         field6,
-        field7,
-        field8);
+        Optional.ofNullable(field7),
+        Optional.ofNullable(field8));
   }
 }

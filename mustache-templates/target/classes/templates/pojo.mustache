@@ -76,7 +76,7 @@ import java.util.Set;
       {{/-last}}{{/vars}}) {
     {{#useOptional}}
     this({{#vars}}{{!
-            }}{{name}}{{^-last}},
+            }}{{^required}}Optional.of{{#isNullable}}Nullable{{/isNullable}}({{/required}}{{name}}{{^required}}){{/required}}{{^-last}},
         {{/-last}}{{!
         }}{{/vars}});
 {{/useOptional}}{{!

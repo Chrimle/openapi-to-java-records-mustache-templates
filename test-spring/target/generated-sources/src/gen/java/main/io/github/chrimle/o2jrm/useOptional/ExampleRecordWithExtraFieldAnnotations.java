@@ -54,12 +54,12 @@ public record ExampleRecordWithExtraFieldAnnotations(
       final Boolean twoAnnotationsAsNewLine,
       final Boolean twoAnnotationsAsList,
       final Boolean twoAnnotationsAsArray) {
-    this(oneAnnotationAsInline,
-        oneAnnotationAsNewLine,
-        oneAnnotationAsList,
-        oneAnnotationAsArray,
-        twoAnnotationsAsNewLine,
-        twoAnnotationsAsList,
-        twoAnnotationsAsArray);
+    this(Optional.of(oneAnnotationAsInline),
+        Optional.of(oneAnnotationAsNewLine),
+        Optional.of(oneAnnotationAsList),
+        Optional.of(oneAnnotationAsArray),
+        Optional.of(twoAnnotationsAsNewLine),
+        Optional.of(twoAnnotationsAsList),
+        Optional.of(twoAnnotationsAsArray));
   }
 }

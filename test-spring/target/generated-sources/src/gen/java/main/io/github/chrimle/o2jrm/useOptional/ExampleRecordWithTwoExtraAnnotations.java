@@ -28,6 +28,6 @@ public record ExampleRecordWithTwoExtraAnnotations(
   @JsonCreator
   public ExampleRecordWithTwoExtraAnnotations(
       final Boolean field1) {
-    this(field1);
+    this(Optional.of(field1));
   }
 }
