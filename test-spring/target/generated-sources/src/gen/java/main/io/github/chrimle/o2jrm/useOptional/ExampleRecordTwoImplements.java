@@ -27,6 +27,6 @@ public record ExampleRecordTwoImplements(
   @JsonCreator
   public ExampleRecordTwoImplements(
       final Boolean field1) {
-    this(Optional.of(field1));
+    this(Optional.ofNullable(field1));
   }
 }

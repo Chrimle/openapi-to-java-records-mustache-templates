@@ -26,6 +26,6 @@ public record ExampleRecordWithDefaultFields(
   @JsonCreator
   public ExampleRecordWithDefaultFields(
       final String field1) {
-    this(Optional.of(field1));
+    this(Optional.ofNullable(field1));
   }
 }

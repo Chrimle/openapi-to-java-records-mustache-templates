@@ -34,9 +34,9 @@ public record RecordWithInnerEnums(
       final ExampleInnerEnum exampleInner,
       final ExampleInnerTwoEnum exampleInnerTwo,
       final ExampleInnerThreeEnum exampleInnerThree) {
-    this(Optional.of(exampleInner),
-        Optional.of(exampleInnerTwo),
-        Optional.of(exampleInnerThree));
+    this(Optional.ofNullable(exampleInner),
+        Optional.ofNullable(exampleInnerTwo),
+        Optional.ofNullable(exampleInnerThree));
   }
 
   /**

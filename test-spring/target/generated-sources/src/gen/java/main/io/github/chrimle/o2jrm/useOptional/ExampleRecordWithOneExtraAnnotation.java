@@ -33,7 +33,7 @@ public record ExampleRecordWithOneExtraAnnotation(
   public ExampleRecordWithOneExtraAnnotation(
       final Boolean field1,
       final Boolean field2) {
-    this(Optional.of(field1),
-        Optional.of(field2));
+    this(Optional.ofNullable(field1),
+        Optional.ofNullable(field2));
   }
 }

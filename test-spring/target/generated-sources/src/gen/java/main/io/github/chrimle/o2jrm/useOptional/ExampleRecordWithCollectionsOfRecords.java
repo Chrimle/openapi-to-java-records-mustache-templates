@@ -42,9 +42,9 @@ public record ExampleRecordWithCollectionsOfRecords(
       final List<@Valid ExampleRecord> requiredRecordList,
       final Set<@Valid ExampleRecord> optionalRecordSet,
       final Set<@Valid ExampleRecord> requiredRecordSet) {
-    this(Optional.of(optionalRecordList),
+    this(Optional.ofNullable(optionalRecordList),
         requiredRecordList,
-        Optional.of(optionalRecordSet),
+        Optional.ofNullable(optionalRecordSet),
         requiredRecordSet);
   }
 }

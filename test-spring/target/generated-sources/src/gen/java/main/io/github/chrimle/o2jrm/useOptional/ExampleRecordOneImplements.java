@@ -27,6 +27,6 @@ public record ExampleRecordOneImplements(
   @JsonCreator
   public ExampleRecordOneImplements(
       final Boolean field1) {
-    this(Optional.of(field1));
+    this(Optional.ofNullable(field1));
   }
 }
