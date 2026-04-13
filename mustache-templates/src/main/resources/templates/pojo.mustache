@@ -75,7 +75,7 @@ import java.util.Set;
       {{#vars}}final {{{datatypeWithEnum}}} {{name}}{{^-last}},
       {{/-last}}{{/vars}}) {
     {{#useOptional}}
-    super({{#vars}}{{!
+    this({{#vars}}{{!
             }}{{name}}{{^-last}},
         {{/-last}}{{!
         }}{{/vars}});

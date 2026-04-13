@@ -26,6 +26,6 @@ public record ExampleRecordWithDefaultFields(
   @JsonCreator
   public ExampleRecordWithDefaultFields(
       final String field1) {
-    super(field1);
+    this(field1);
   }
 }

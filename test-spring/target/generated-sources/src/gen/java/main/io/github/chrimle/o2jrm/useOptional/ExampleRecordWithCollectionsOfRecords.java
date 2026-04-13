@@ -42,7 +42,7 @@ public record ExampleRecordWithCollectionsOfRecords(
       final List<@Valid ExampleRecord> requiredRecordList,
       final Set<@Valid ExampleRecord> optionalRecordSet,
       final Set<@Valid ExampleRecord> requiredRecordSet) {
-    super(optionalRecordList,
+    this(optionalRecordList,
         requiredRecordList,
         optionalRecordSet,
         requiredRecordSet);

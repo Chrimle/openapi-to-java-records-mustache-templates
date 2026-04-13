@@ -34,7 +34,7 @@ public record RecordWithInnerEnums(
       final ExampleInnerEnum exampleInner,
       final ExampleInnerTwoEnum exampleInnerTwo,
       final ExampleInnerThreeEnum exampleInnerThree) {
-    super(exampleInner,
+    this(exampleInner,
         exampleInnerTwo,
         exampleInnerThree);
   }

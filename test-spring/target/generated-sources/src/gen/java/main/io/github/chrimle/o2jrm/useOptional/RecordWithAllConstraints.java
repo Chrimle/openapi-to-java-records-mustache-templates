@@ -99,7 +99,7 @@ public record RecordWithAllConstraints(
       final BigDecimal bigDecimalMinimum,
       final BigDecimal bigDecimalMaximum,
       final BigDecimal bigDecimalMinimumAndMaximum) {
-    super(stringStandard,
+    this(stringStandard,
         stringDefault,
         stringNullable,
         stringRequired,

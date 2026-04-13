@@ -21,6 +21,7 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
+
 import java.util.*;
 import jakarta.annotation.Generated;
 
@@ -56,6 +57,13 @@ public record RecordWithRequiredFieldsOfEachType(
       final Set<Boolean> field6,
       final ExampleRecord field7,
       final ExampleEnum field8) {
-    super(field1, field2, field3, field4, field5, field6, field7, field8);
+    this(field1,
+        field2,
+        field3,
+        field4,
+        field5,
+        field6,
+        field7,
+        field8);
   }
 }

@@ -26,6 +26,6 @@ public record ExampleRecord(
   @JsonCreator
   public ExampleRecord(
       final Boolean field1) {
-    super(field1);
+    this(field1);
   }
 }

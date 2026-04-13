@@ -54,7 +54,7 @@ public record ExampleRecordWithExtraFieldAnnotations(
       final Boolean twoAnnotationsAsNewLine,
       final Boolean twoAnnotationsAsList,
       final Boolean twoAnnotationsAsArray) {
-    super(oneAnnotationAsInline,
+    this(oneAnnotationAsInline,
         oneAnnotationAsNewLine,
         oneAnnotationAsList,
         oneAnnotationAsArray,
