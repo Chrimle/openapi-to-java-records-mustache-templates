@@ -27,6 +27,6 @@ public record ExampleRecordOneImplements(
   @JsonCreator
   public ExampleRecordOneImplements(
       final Boolean field1) {
-    this.field1 = field1;
+    super(field1);
   }
 }

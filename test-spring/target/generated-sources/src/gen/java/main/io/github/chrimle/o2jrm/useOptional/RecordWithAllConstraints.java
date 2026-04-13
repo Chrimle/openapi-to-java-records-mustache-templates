@@ -99,28 +99,28 @@ public record RecordWithAllConstraints(
       final BigDecimal bigDecimalMinimum,
       final BigDecimal bigDecimalMaximum,
       final BigDecimal bigDecimalMinimumAndMaximum) {
-    this.stringStandard = stringStandard;
-    this.stringDefault = Objects.requireNonNullElse(stringDefault, "someDefaultValue");
-    this.stringNullable = stringNullable;
-    this.stringRequired = stringRequired;
-    this.stringRequiredNullable = stringRequiredNullable;
-    this.stringRequiredPattern = stringRequiredPattern;
-    this.stringEmailFormat = stringEmailFormat;
-    this.stringUuidFormat = stringUuidFormat;
-    this.stringMinLength = stringMinLength;
-    this.stringMaxLength = stringMaxLength;
-    this.stringMinAndMaxLength = stringMinAndMaxLength;
-    this.arrayMinItems = Objects.requireNonNullElseGet(arrayMinItems, () -> new ArrayList<>());
-    this.arrayMaxItems = Objects.requireNonNullElseGet(arrayMaxItems, () -> new ArrayList<>());
-    this.arrayMinAndMaxItems = Objects.requireNonNullElseGet(arrayMinAndMaxItems, () -> new ArrayList<>());
-    this.intMinimum = intMinimum;
-    this.intMaximum = intMaximum;
-    this.intMinimumAndMaximum = intMinimumAndMaximum;
-    this.longMinimum = longMinimum;
-    this.longMaximum = longMaximum;
-    this.longMinimumAndMaximum = longMinimumAndMaximum;
-    this.bigDecimalMinimum = bigDecimalMinimum;
-    this.bigDecimalMaximum = bigDecimalMaximum;
-    this.bigDecimalMinimumAndMaximum = bigDecimalMinimumAndMaximum;
+    super(stringStandard,
+        stringDefault,
+        stringNullable,
+        stringRequired,
+        stringRequiredNullable,
+        stringRequiredPattern,
+        stringEmailFormat,
+        stringUuidFormat,
+        stringMinLength,
+        stringMaxLength,
+        stringMinAndMaxLength,
+        arrayMinItems,
+        arrayMaxItems,
+        arrayMinAndMaxItems,
+        intMinimum,
+        intMaximum,
+        intMinimumAndMaximum,
+        longMinimum,
+        longMaximum,
+        longMinimumAndMaximum,
+        bigDecimalMinimum,
+        bigDecimalMaximum,
+        bigDecimalMinimumAndMaximum);
   }
 }

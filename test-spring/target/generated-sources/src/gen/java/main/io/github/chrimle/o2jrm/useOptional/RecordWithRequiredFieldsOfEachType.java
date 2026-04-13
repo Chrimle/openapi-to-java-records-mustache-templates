@@ -21,7 +21,6 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
-
 import java.util.*;
 import jakarta.annotation.Generated;
 
@@ -57,13 +56,6 @@ public record RecordWithRequiredFieldsOfEachType(
       final Set<Boolean> field6,
       final ExampleRecord field7,
       final ExampleEnum field8) {
-    this.field1 = field1;
-    this.field2 = field2;
-    this.field3 = field3;
-    this.field4 = field4;
-    this.field5 = Objects.requireNonNullElseGet(field5, () -> new ArrayList<>());
-    this.field6 = Objects.requireNonNullElseGet(field6, () -> new LinkedHashSet<>());
-    this.field7 = field7;
-    this.field8 = field8;
+    super(field1, field2, field3, field4, field5, field6, field7, field8);
   }
 }

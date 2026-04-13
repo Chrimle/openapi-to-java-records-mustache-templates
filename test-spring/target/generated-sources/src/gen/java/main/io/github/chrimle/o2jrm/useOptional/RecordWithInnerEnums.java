@@ -34,9 +34,9 @@ public record RecordWithInnerEnums(
       final ExampleInnerEnum exampleInner,
       final ExampleInnerTwoEnum exampleInnerTwo,
       final ExampleInnerThreeEnum exampleInnerThree) {
-    this.exampleInner = exampleInner;
-    this.exampleInnerTwo = exampleInnerTwo;
-    this.exampleInnerThree = exampleInnerThree;
+    super(exampleInner,
+        exampleInnerTwo,
+        exampleInnerThree);
   }
 
   /**

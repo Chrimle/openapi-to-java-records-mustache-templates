@@ -42,9 +42,9 @@ public record ExampleRecordWithCollectionsOfRecords(
       final List<@Valid ExampleRecord> requiredRecordList,
       final Set<@Valid ExampleRecord> optionalRecordSet,
       final Set<@Valid ExampleRecord> requiredRecordSet) {
-    this.optionalRecordList = Objects.requireNonNullElseGet(optionalRecordList, () -> new ArrayList<>());
-    this.requiredRecordList = Objects.requireNonNullElseGet(requiredRecordList, () -> new ArrayList<>());
-    this.optionalRecordSet = Objects.requireNonNullElseGet(optionalRecordSet, () -> new LinkedHashSet<>());
-    this.requiredRecordSet = Objects.requireNonNullElseGet(requiredRecordSet, () -> new LinkedHashSet<>());
+    super(optionalRecordList,
+        requiredRecordList,
+        optionalRecordSet,
+        requiredRecordSet);
   }
 }

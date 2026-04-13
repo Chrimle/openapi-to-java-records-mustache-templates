@@ -33,7 +33,7 @@ public record ExampleRecordWithOneExtraAnnotation(
   public ExampleRecordWithOneExtraAnnotation(
       final Boolean field1,
       final Boolean field2) {
-    this.field1 = field1;
-    this.field2 = field2;
+    super(field1,
+        field2);
   }
 }

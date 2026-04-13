@@ -22,7 +22,6 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
-
 import java.util.*;
 import jakarta.annotation.Generated;
 
@@ -58,13 +57,6 @@ public record RecordWithNullableFieldsOfEachType(
       final Set<Boolean> field6,
       final ExampleNullableRecord field7,
       final ExampleNullableEnum field8) {
-    this.field1 = field1;
-    this.field2 = field2;
-    this.field3 = field3;
-    this.field4 = field4;
-    this.field5 = field5;
-    this.field6 = field6;
-    this.field7 = field7;
-    this.field8 = field8;
+    super(field1, field2, field3, field4, field5, field6, field7, field8);
   }
 }

@@ -26,6 +26,6 @@ public record ExampleRecordWithDefaultFields(
   @JsonCreator
   public ExampleRecordWithDefaultFields(
       final String field1) {
-    this.field1 = Objects.requireNonNullElse(field1, "someDefaultValue");
+    super(field1);
   }
 }

@@ -28,6 +28,6 @@ public record DeprecatedExampleRecord(
   @JsonCreator
   public DeprecatedExampleRecord(
       final Boolean field1) {
-    this.field1 = field1;
+    super(field1);
   }
 }
