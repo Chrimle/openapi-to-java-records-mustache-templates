@@ -17,12 +17,21 @@ changelog:
       exclude:
         labels:
           - "library: okhttp-gson"
+          - "library: spring-boot"
           - "library: webclient"
 
     - title: "[okhttp-gson] New Features"
       labels:
         - feat
         - "library: okhttp-gson"
+      exclude:
+        labels:
+          - bug
+
+    - title: "[spring-boot] New Features"
+      labels:
+        - feat
+        - "library: spring-boot"
       exclude:
         labels:
           - bug
@@ -41,12 +50,21 @@ changelog:
       exclude:
         labels:
           - "library: okhttp-gson"
+          - "library: spring-boot"
           - "library: webclient"
 
     - title: "[okhttp-gson] Bug Fixes"
       labels:
         - bug
         - "library: okhttp-gson"
+      exclude:
+        labels:
+          - feat
+
+    - title: "[spring-boot] Bug Fixes"
+      labels:
+        - bug
+        - "library: spring-boot"
       exclude:
         labels:
           - feat
