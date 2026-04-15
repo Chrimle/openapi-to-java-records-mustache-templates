@@ -20,7 +20,7 @@
     <parent>
         <groupId>io.github.chrimle</groupId>
         <artifactId>openapi-to-java-records-mustache-templates-parent</artifactId>
-        <version>3.7.0</version>
+        <version>3.8.0</version>
     </parent>
     <!-- Project Information -->
     <name>OpenAPI to Java records :: Mustache Templates :: Test Spring</name>
