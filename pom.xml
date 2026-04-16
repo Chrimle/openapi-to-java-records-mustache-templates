@@ -29,7 +29,7 @@
 
     <!-- === Project Coordinates === -->
     <artifactId>openapi-to-java-records-mustache-templates-parent</artifactId>
-    <version>3.7.0</version>
+    <version>3.8.0</version>
     <packaging>pom</packaging>
 
     <!-- === Sub Modules === -->
@@ -97,7 +97,7 @@
 
         <!-- Dependency Versions -->
         <okhttp.version>4.12.0</okhttp.version>
-        <swagger.version>2.2.37</swagger.version>
+        <swagger.version>2.2.47</swagger.version>
         <spring-boot.version>3.5.7</spring-boot.version>
         <spring-web.version>6.2.12</spring-web.version>
         <!-- / Dependency Versions -->
@@ -252,7 +252,7 @@
             <dependency>
                 <groupId>jakarta.servlet</groupId>
                 <artifactId>jakarta.servlet-api</artifactId>
-                <version>6.0.0</version>
+                <version>6.1.0</version>
             </dependency>
             <dependency>
                 <groupId>jakarta.validation</groupId>
