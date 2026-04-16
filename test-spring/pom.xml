@@ -324,6 +324,18 @@
                             </configOptions>
                         </configuration>
                     </execution>
+                    <execution>
+                        <id>generate-spring-useOptional</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <modelPackage>${modelPackage.default}.useOptional</modelPackage>
+                            <configOptions>
+                                <useOptional>true</useOptional>
+                            </configOptions>
+                        </configuration>
+                    </execution>
                 </executions>
             </plugin>
             <plugin>
