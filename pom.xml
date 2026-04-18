@@ -67,6 +67,7 @@
             </roles>
             <timezone>CET</timezone>
             <url>https://www.chrimle.com</url>
+            <email>openapi2javarecords@protonmail.com</email>
         </developer>
     </developers>
     <issueManagement>
