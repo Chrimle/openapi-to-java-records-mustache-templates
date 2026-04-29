@@ -52,7 +52,7 @@ import java.util.Set;
     }}{{#vendorExtensions.x-field-extra-annotation}}{{!
         }}{{{.}}}
     {{/vendorExtensions.x-field-extra-annotation}}{{!
-    }}{{>useBeanValidation}}{{{datatypeWithEnum}}} {{name}}{{^-last}},
+    }}{{#useOptional}}{{^required}}Optional<{{/required}}{{/useOptional}}{{>useBeanValidation}}{{{datatypeWithEnum}}}{{#useOptional}}{{^required}}>{{/required}}{{/useOptional}} {{name}}{{^-last}},
     {{/-last}}{{/vars}}){{#vendorExtensions.x-implements}}{{#-first}}
     implements {{{.}}}{{/-first}}{{^-first}}, {{{.}}}{{/-first}}{{/vendorExtensions.x-implements}} {
 
@@ -74,12 +74,21 @@ import java.util.Set;
   public {{classname}}(
       {{#vars}}final {{{datatypeWithEnum}}} {{name}}{{^-last}},
       {{/-last}}{{/vars}}) {
-{{#vars}}    this.{{name}} = {{^defaultValue}}{{name}};{{/defaultValue}}{{!
-                            }}{{#defaultValue}}{{!
-                                }}{{#isArray}}Objects.requireNonNullElseGet({{name}}, () -> {{{.}}});{{/isArray}}{{!
-                                }}{{^isArray}}Objects.requireNonNullElse({{name}}, {{{.}}});{{/isArray}}{{!
-                            }}{{/defaultValue}}
-{{/vars}}  }{{#generateBuilders}}{{>generateBuilders}}{{/generateBuilders}}{{!
+    {{#useOptional}}
+    this({{#vars}}{{!
+            }}{{^required}}Optional.ofNullable({{/required}}{{name}}{{^required}}){{/required}}{{^-last}},
+        {{/-last}}{{!
+        }}{{/vars}});
+{{/useOptional}}{{!
+}}{{^useOptional}}{{!
+}}{{#vars}}{{!
+}}    this.{{name}} = {{^defaultValue}}{{name}};{{/defaultValue}}{{!
+                    }}{{#defaultValue}}{{!
+                        }}{{#isArray}}Objects.requireNonNullElseGet({{name}}, () -> {{{.}}});{{/isArray}}{{!
+                        }}{{^isArray}}Objects.requireNonNullElse({{name}}, {{{.}}});{{/isArray}}{{!
+                    }}{{/defaultValue}}
+{{/vars}}{{!
+}}{{/useOptional}}  }{{#generateBuilders}}{{>generateBuilders}}{{/generateBuilders}}{{!
     Generate inner enum classes
   }}{{#vars}}{{#isEnum}}
 
