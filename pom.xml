@@ -29,7 +29,7 @@
 
     <!-- === Project Coordinates === -->
     <artifactId>openapi-to-java-records-mustache-templates-parent</artifactId>
-    <version>3.8.0</version>
+    <version>3.9.0</version>
     <packaging>pom</packaging>
 
     <!-- === Sub Modules === -->
