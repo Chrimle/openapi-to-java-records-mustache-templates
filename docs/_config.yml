@@ -1,6 +1,13 @@
-author: 'Chrimle'
+title: openapi-to-java-records-mustache-templates
+description: >-
+  Generate Java Records from OpenAPI Specifications
 
-theme: jekyll-theme-leap-day
-# Docs: https://github.com/pages-themes/leap-day
+repository: Chrimle/openapi-to-java-records-mustache-templates
 
-show_downloads: true
+markdown: GFM
+
+plugins:
+  - jekyll-gfm-admonitions
+
+include:
+  - README.md
