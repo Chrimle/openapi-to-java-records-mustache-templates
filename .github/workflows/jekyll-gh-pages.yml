@@ -33,10 +33,12 @@ jobs:
         with:
           ruby-version: "3.3"
           bundler-cache: true
+          working-directory: ./docs
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d
       - name: Build with Jekyll
+        working-directory: ./docs
         run: bundle exec jekyll build -s ./docs -d ./_site --baseurl "${{ steps.pages.outputs.base_path }}"
         env:
           JEKYLL_ENV: production
