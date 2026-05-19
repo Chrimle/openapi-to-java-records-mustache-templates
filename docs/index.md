@@ -20,16 +20,17 @@ This is the best way to show appreciation for this project - Thank you! ❤️
 
 If you have feedback or suggestions, please share it in either [Discussions](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/discussions) or [Issues](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/issues)!
 
+> [!NOTE]
 > This project is, _and will continue to be_, solely maintained by [Chrimle](https://github.com/Chrimle).
 > While _direct_ code contributions are disallowed, your feedback is the most valuable contribution - please share it!
 
 # Used by ...
 
-> **TIP**
-> 
+> [!TIP]
 > Does your organization use this project? Be featured here, by filling out this form: [Update Organization Usage](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/issues/new/choose)
 
 # Getting Started
+> [!TIP]
 > If you want a more detailed guide with simple examples to get started, check out the Wiki-page
 > [Beginner Guide (Step-by-Step)](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/wiki/Beginner-Guide-%28Step‐by‐Step%29).
 
@@ -54,8 +55,7 @@ Older/newer versions may work, but are currently not part of the CI Test Suite.
 
 ## Obtain Mustache Templates
 
-> **NOTE**
->
+> [!NOTE]
 > The Maven artifact **only** contains the `.mustache` template files and a `LICENSE.txt`.
 > - `templates/` (**stable**. Used by `java` Generators)
 >   - `generateBuilders.mustache`
@@ -86,8 +86,7 @@ These mustache templates may be obtained in several (4) ways (_ordered by conven
 
 ### 1. Use `maven-dependency-plugin` (Recommended)
 Use a plugin such as `maven-dependency-plugin` to unpack the `.mustache` files from `io.github.chrimle:openapi-to-java-records-mustache-templates`.
-> **CAUTION**
-> 
+> [!CAUTION]
 > **SECURITY BEST PRACTICES**
 >
 > Do not unpack arbitrary files from the downloaded artifact. Always explicitly list individual files to unpack. (_Semantic Versioning is already considering this_).
@@ -143,10 +142,13 @@ In this example, each generated class field will be annotated with [Jakarta Bean
   </configuration>
 ```
 
+> [!TIP]
 > See [Supported 'openapi‐generator‐maven‐plugin' Configuration options](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/wiki/Supported-%27openapi‐generator‐maven‐plugin%27-Configuration-options)
 
 ## OpenAPI Specification
-
+<details open>
+<summary>Example OpenAPI Specification</summary>
+    
 ```yaml
 components:
   schemas:
@@ -240,6 +242,9 @@ components:
           format: uuid
 ```
 
+</details>
+
+> [!TIP]
 > See [Supported OpenAPI Specification properties](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/wiki/Supported-OpenAPI-Specification-properties)
 
 ## Generate models
@@ -248,10 +253,15 @@ Compile the project, for example via:
 mvn compile
 ```
 
+> [!TIP]
 > Further information about how to generate models can be found on [openapi-generator-maven-plugin](https://github.com/OpenAPITools/openapi-generator/blob/master/modules/openapi-generator-maven-plugin/README.md).
 
 ## Generated Java Record
 Unless the configuration property `<output>` has been set, the generated classes should be found under `./target/generated-sources/openapi`.
+
+<details open>
+    
+<summary>Resulting Java record from example OpenAPI spec.</summary>
 
 ```java
 package io.github.chrimle.o2jrm;
@@ -356,6 +366,8 @@ public record Person(
 }
 ```
 
+</details>
+
 ## Further examples
 
 Refer to the test-cases for generated classes, as these list supported plugin `<configuration>`-options and OpenAPI
@@ -386,13 +398,13 @@ Please, verify these steps _without_ custom mustache-template files:
 
 Once verified, use the custom mustache-template files and verify the following:
 1. Verify that the `openapi-generator-maven-plugin` configuration options are supported. See [Supported 'openapi‐generator‐maven‐plugin' Configuration options](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/wiki/Supported-%27openapi‐generator‐maven‐plugin%27-Configuration-options).
-    - If no configuration options are set, please proceed to the next step.
-    - If the configuration option is not listed as supported - please request it via [open an issue](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/issues/new/choose).
+   - If no configuration options are set, please proceed to the next step.
+   - If the configuration option is not listed as supported - please request it via [open an issue](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/issues/new/choose).
 2. Verify that the OpenAPI Specification properties are supported. See [Supported OpenAPI Specification properties](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/wiki/Supported-OpenAPI-Specification-properties).
-    - If the property is not listed as supported - please request it via [open an issue](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/issues/new/choose).
+   - If the property is not listed as supported - please request it via [open an issue](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/issues/new/choose).
 3. Compare `openapi-generator-maven-plugin` versions
-    - As a last resort, it could be due to using an older/newer version than what is used within this project for testing.
-      Even if this would solve the issue - please report it via [open an issue](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/issues/new/choose).
+   - As a last resort, it could be due to using an older/newer version than what is used within this project for testing.
+     Even if this would solve the issue - please report it via [open an issue](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/issues/new/choose).
 
 If problems persist, check the [open issues](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/issues).
 If the problem you are facing has not already been reported, please [open an issue](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/issues/new/choose) with details and instructions to reproduce.
@@ -405,4 +417,4 @@ If the problem you are facing has not already been reported, please [open an iss
 - [Mustache](https://mustache.github.io/)
 
 <!-- Scarf Pixel Tracker -->
-<img referrerpolicy="no-referrer-when-downgrade" src="https://static.scarf.sh/a.png?x-pxid=69fb491a-59d7-41c5-88fa-e7ead0ad117f" />
+<img referrerpolicy="no-referrer-when-downgrade" src="https://static.scarf.sh/a.png?x-pxid=d9ff30fa-ffcc-4963-a18d-9977bb84c3ad" />
