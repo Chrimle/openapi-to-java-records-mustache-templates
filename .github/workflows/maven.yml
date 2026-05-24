@@ -14,13 +14,12 @@ on:
   pull_request:
     branches: [ "main" ]
 
-permissions:
-  contents: read
-
 jobs:
   build:
     name: Maven Build
     runs-on: ubuntu-24.04-arm
+    permissions:
+      contents: read
     strategy:
       matrix:
         openapi-generator-maven-plugin-version: [
