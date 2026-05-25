@@ -3,6 +3,8 @@
 
 name: Maven Package
 
+permissions: {}
+
 on:
   release:
     types: [created]

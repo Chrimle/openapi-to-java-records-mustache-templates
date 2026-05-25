@@ -1,5 +1,7 @@
 name: Pull Request Auditor
 
+permissions: {}
+
 on:
   pull_request:
     types:
