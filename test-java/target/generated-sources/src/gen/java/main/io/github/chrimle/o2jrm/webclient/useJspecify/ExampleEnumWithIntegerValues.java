@@ -20,6 +20,7 @@ package io.github.chrimle.o2jrm.webclient.useJspecify;
 
 import java.util.Objects;
 import java.util.Arrays;
+import org.jspecify.annotations.Nullable;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 

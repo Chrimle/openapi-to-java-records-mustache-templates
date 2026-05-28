@@ -440,7 +440,7 @@
                             <modelPackage>${modelPackage.default}.${execution.webclient.useJspecify}</modelPackage>
                             <library>webclient</library>
                             <configOptions>
-                                <useJspecify>false</useJspecify>
+                                <useJspecify>true</useJspecify>
                             </configOptions>
                         </configuration>
                     </execution>
