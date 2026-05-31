@@ -33,12 +33,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  *
  * @param field1 a boolean field
  */
-public record ExampleNullableRecord(
-    Boolean field1) {
+public record ExampleNullableRecord(Boolean field1) {
 
   @JsonCreator
-  public ExampleNullableRecord(
-      final Boolean field1) {
+  public ExampleNullableRecord(final Boolean field1) {
     this.field1 = field1;
   }
 }

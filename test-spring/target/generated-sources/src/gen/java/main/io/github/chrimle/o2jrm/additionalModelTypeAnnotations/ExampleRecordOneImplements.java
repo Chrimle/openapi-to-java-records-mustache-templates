@@ -23,13 +23,11 @@ import jakarta.annotation.Generated;
 @io.github.chrimle.o2jrm.annotations.TestAnnotationOne
 @io.github.chrimle.o2jrm.annotations.TestAnnotationTwo
 @io.github.chrimle.o2jrm.annotations.TestAnnotationThree
-public record ExampleRecordOneImplements(
-    Boolean field1)
+public record ExampleRecordOneImplements(Boolean field1)
     implements io.github.chrimle.o2jrm.interfaces.TestInterfaceOne {
 
   @JsonCreator
-  public ExampleRecordOneImplements(
-      final Boolean field1) {
+  public ExampleRecordOneImplements(final Boolean field1) {
     this.field1 = field1;
   }
 }

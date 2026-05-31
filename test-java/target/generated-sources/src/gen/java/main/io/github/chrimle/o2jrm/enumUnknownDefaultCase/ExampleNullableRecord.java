@@ -40,8 +40,7 @@ import java.util.Set;
  *
  * @param field1 a boolean field
  */
-public record ExampleNullableRecord(
-    Boolean field1) {
+public record ExampleNullableRecord(Boolean field1) {
 
   /** A set containing the names of all instance fields defined in this class. */
   public static final HashSet<String> openapiFields =
@@ -51,8 +50,7 @@ public record ExampleNullableRecord(
   /** A set containing the names of all required fields defined in this class. */
   public static final HashSet<String> openapiRequiredFields = new HashSet<>();
 
-  public ExampleNullableRecord(
-      final Boolean field1) {
+  public ExampleNullableRecord(final Boolean field1) {
     this.field1 = field1;
   }
 

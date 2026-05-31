@@ -35,12 +35,10 @@ import jakarta.validation.Valid;
  *
  * @param field1 a boolean field
  */
-public record ExampleRecord(
-    Boolean field1) {
+public record ExampleRecord(Boolean field1) {
 
   @JsonCreator
-  public ExampleRecord(
-      final Boolean field1) {
+  public ExampleRecord(final Boolean field1) {
     this.field1 = field1;
   }
 }

@@ -43,8 +43,7 @@ import java.util.Set;
 @io.github.chrimle.o2jrm.annotations.TestAnnotationOne
 @io.github.chrimle.o2jrm.annotations.TestAnnotationTwo
 @io.github.chrimle.o2jrm.annotations.TestAnnotationThree
-public record ExampleRecordOneImplements(
-    Boolean field1)
+public record ExampleRecordOneImplements(Boolean field1)
     implements io.github.chrimle.o2jrm.interfaces.TestInterfaceOne {
 
   /** A set containing the names of all instance fields defined in this class. */
@@ -55,8 +54,7 @@ public record ExampleRecordOneImplements(
   /** A set containing the names of all required fields defined in this class. */
   public static final HashSet<String> openapiRequiredFields = new HashSet<>();
 
-  public ExampleRecordOneImplements(
-      final Boolean field1) {
+  public ExampleRecordOneImplements(final Boolean field1) {
     this.field1 = field1;
   }
 

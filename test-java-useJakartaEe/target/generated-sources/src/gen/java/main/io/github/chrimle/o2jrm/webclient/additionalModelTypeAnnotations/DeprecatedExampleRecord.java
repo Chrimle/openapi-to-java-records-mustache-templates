@@ -38,12 +38,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @io.github.chrimle.o2jrm.annotations.TestAnnotationOne
 @io.github.chrimle.o2jrm.annotations.TestAnnotationTwo
 @io.github.chrimle.o2jrm.annotations.TestAnnotationThree
-public record DeprecatedExampleRecord(
-    Boolean field1) {
+public record DeprecatedExampleRecord(Boolean field1) {
 
   @JsonCreator
-  public DeprecatedExampleRecord(
-      final Boolean field1) {
+  public DeprecatedExampleRecord(final Boolean field1) {
     this.field1 = field1;
   }
 }

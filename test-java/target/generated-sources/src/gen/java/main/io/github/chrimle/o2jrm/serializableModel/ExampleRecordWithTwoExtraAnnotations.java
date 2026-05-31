@@ -43,8 +43,7 @@ import java.util.Set;
  */
 @io.github.chrimle.o2jrm.annotations.TestExtraAnnotation
 @io.github.chrimle.o2jrm.annotations.TestExtraAnnotationTwo
-public record ExampleRecordWithTwoExtraAnnotations(
-    Boolean field1)
+public record ExampleRecordWithTwoExtraAnnotations(Boolean field1)
     implements Serializable {
 
   /** A set containing the names of all instance fields defined in this class. */
@@ -55,8 +54,7 @@ public record ExampleRecordWithTwoExtraAnnotations(
   /** A set containing the names of all required fields defined in this class. */
   public static final HashSet<String> openapiRequiredFields = new HashSet<>();
 
-  public ExampleRecordWithTwoExtraAnnotations(
-      final Boolean field1) {
+  public ExampleRecordWithTwoExtraAnnotations(final Boolean field1) {
     this.field1 = field1;
   }
 

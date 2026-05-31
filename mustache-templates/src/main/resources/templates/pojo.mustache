@@ -47,8 +47,9 @@ import java.util.Set;
 }}{{#vendorExtensions.x-class-extra-annotation}}{{!
   }}{{{vendorExtensions.x-class-extra-annotation}}}
 {{/vendorExtensions.x-class-extra-annotation}}{{!
-}}public record {{classname}}(
-    {{#vars}}{{!
+}}public record {{classname}}({{!
+}}{{#vars}}{{#-first}}{{^-last}}
+{{! New-line }}    {{/-last}}{{/-first}}{{!
     }}{{#vendorExtensions.x-field-extra-annotation}}{{!
         }}{{{.}}}
     {{/vendorExtensions.x-field-extra-annotation}}{{!
@@ -71,9 +72,10 @@ import java.util.Set;
 {{/gson}}
 {{#jackson}}  @JsonCreator
 {{/jackson}}
-  public {{classname}}(
-      {{#vars}}final {{{datatypeWithEnum}}} {{name}}{{^-last}},
-      {{/-last}}{{/vars}}) {
+  public {{classname}}({{!
+}}{{#vars}}{{#-first}}{{^-last}}
+{{! New-line }}      {{/-last}}{{/-first}}final {{{datatypeWithEnum}}} {{name}}{{^-last}},
+{{! New-line }}      {{/-last}}{{/vars}}) {
 {{#vars}}    this.{{name}} = {{^defaultValue}}{{name}};{{/defaultValue}}{{!
                             }}{{#defaultValue}}{{!
                                 }}{{#isArray}}Objects.requireNonNullElseGet({{name}}, () -> {{{.}}});{{/isArray}}{{!

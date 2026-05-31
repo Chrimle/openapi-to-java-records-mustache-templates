@@ -40,8 +40,7 @@ import java.util.Set;
  *
  * @param field1 a boolean field
  */
-public record ExampleRecordTwoImplements(
-    Boolean field1)
+public record ExampleRecordTwoImplements(Boolean field1)
     implements io.github.chrimle.o2jrm.interfaces.TestInterfaceOne, io.github.chrimle.o2jrm.interfaces.TestInterfaceTwo {
 
   /** A set containing the names of all instance fields defined in this class. */
@@ -52,8 +51,7 @@ public record ExampleRecordTwoImplements(
   /** A set containing the names of all required fields defined in this class. */
   public static final HashSet<String> openapiRequiredFields = new HashSet<>();
 
-  public ExampleRecordTwoImplements(
-      final Boolean field1) {
+  public ExampleRecordTwoImplements(final Boolean field1) {
     this.field1 = field1;
   }
 

@@ -37,12 +37,10 @@ import jakarta.validation.Valid;
  * @param field1 a boolean field
  */
 @Deprecated
-public record DeprecatedExampleRecord(
-    Boolean field1) {
+public record DeprecatedExampleRecord(Boolean field1) {
 
   @JsonCreator
-  public DeprecatedExampleRecord(
-      final Boolean field1) {
+  public DeprecatedExampleRecord(final Boolean field1) {
     this.field1 = field1;
   }
 }

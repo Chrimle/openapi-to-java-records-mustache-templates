@@ -23,12 +23,10 @@ import jakarta.annotation.Generated;
 @io.github.chrimle.o2jrm.annotations.TestAnnotationOne
 @io.github.chrimle.o2jrm.annotations.TestAnnotationTwo
 @io.github.chrimle.o2jrm.annotations.TestAnnotationThree
-public record ExampleNullableRecord(
-    Boolean field1) {
+public record ExampleNullableRecord(Boolean field1) {
 
   @JsonCreator
-  public ExampleNullableRecord(
-      final Boolean field1) {
+  public ExampleNullableRecord(final Boolean field1) {
     this.field1 = field1;
   }
 }

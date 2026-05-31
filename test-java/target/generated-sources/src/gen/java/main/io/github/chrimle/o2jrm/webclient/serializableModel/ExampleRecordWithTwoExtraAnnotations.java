@@ -36,13 +36,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  */
 @io.github.chrimle.o2jrm.annotations.TestExtraAnnotation
 @io.github.chrimle.o2jrm.annotations.TestExtraAnnotationTwo
-public record ExampleRecordWithTwoExtraAnnotations(
-    Boolean field1)
+public record ExampleRecordWithTwoExtraAnnotations(Boolean field1)
     implements Serializable {
 
   @JsonCreator
-  public ExampleRecordWithTwoExtraAnnotations(
-      final Boolean field1) {
+  public ExampleRecordWithTwoExtraAnnotations(final Boolean field1) {
     this.field1 = field1;
   }
 }
