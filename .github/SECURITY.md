@@ -51,3 +51,64 @@ Once a fix is ready and a new version is published, a public security advisory w
 >     - `useBeanValidation.mustache`
 > - **Review Generated Code**
 >   - **ALWAYS** secure that resulting files - _whether new, modified or removed_ - are as expected.
+
+# Project Architecture
+
+> An overview of the entities, contexts and domains within and surrounding this project.
+> The purpose of the following diagram, is to highlight key "actors" or entities in the complete use-case of this project.
+> Each entity presented **SHOULD** be considered having some impact of the resulting _Generated Code_, and **SHOULD** hence also be considered a point of risk.
+> Arrows indicate information/data flow, where _solid lines_ indicate a _direct_ influence, while _dotted lines_ **MAY** have an _indirect_ influence.
+> E.g. the OpenAPI Specification is directly used in openapi-generator, which will indirectly affect the Mustache Templates.
+
+```mermaid
+flowchart TB
+    invoker(("
+        Invoker
+        (User / CI)
+    "))
+    
+    subgraph openapi-to-java-records-mustache-templates
+        mustache_templates["Mustache Templates"]
+    end
+    subgraph Extended [Extended openapi-generator Context]
+        code_dependencies["Code Dependencies"]
+        plugin_configuration["
+            openapi-generator
+            Configuration
+        "]
+        subgraph openapi-generator
+        maven_plugin["openapi-generator-maven-plugin"]
+        openapi_generator_cli["openapi-generator-cli"]
+        openapi_generator["`openapi-generator`"]
+        end
+    end
+    subgraph External
+        cli["CLI"]
+        mvn_gradle["`Maven/Gradle`"]
+        openapi_spec["OpenAPI Specification"]
+    end
+    
+    generated_code["Generated Code"]
+    downstream_dependent["Downstream Dependent Code"]
+
+    style External fill:#500
+    style Extended fill:#550
+    style openapi-generator fill:#050
+    style openapi-to-java-records-mustache-templates fill:#050
+    
+    invoker --> mvn_gradle & cli
+    mvn_gradle --> maven_plugin
+    maven_plugin --> openapi_generator
+    cli --> openapi_generator_cli
+    openapi_generator_cli --> openapi_generator
+    plugin_configuration --> openapi_generator
+    code_dependencies -.-> openapi_generator
+    plugin_configuration -.-> mustache_templates
+    openapi_spec --> openapi_generator
+    openapi_spec -.-> mustache_templates
+    openapi_generator <--> mustache_templates
+    openapi_generator ==> generated_code
+    mustache_templates -.-> generated_code
+    generated_code ==> downstream_dependent
+
+```
