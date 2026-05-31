@@ -40,8 +40,7 @@ import java.util.Set;
  *
  * @param field1 a boolean field
  */
-public record ExampleRecord(
-    Boolean field1) {
+public record ExampleRecord(Boolean field1) {
 
   /** A set containing the names of all instance fields defined in this class. */
   public static final HashSet<String> openapiFields =

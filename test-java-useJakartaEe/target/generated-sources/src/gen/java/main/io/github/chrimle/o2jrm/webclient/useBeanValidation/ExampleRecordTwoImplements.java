@@ -35,8 +35,7 @@ import jakarta.validation.Valid;
  *
  * @param field1 a boolean field
  */
-public record ExampleRecordTwoImplements(
-    Boolean field1)
+public record ExampleRecordTwoImplements(Boolean field1)
     implements io.github.chrimle.o2jrm.interfaces.TestInterfaceOne, io.github.chrimle.o2jrm.interfaces.TestInterfaceTwo {
 
   @JsonCreator

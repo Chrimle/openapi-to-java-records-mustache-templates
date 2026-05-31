@@ -21,8 +21,7 @@ import jakarta.annotation.Generated;
  *
  * @param field1 a String field with a default value
  */
-public record ExampleRecordWithDefaultFields(
-    String field1)
+public record ExampleRecordWithDefaultFields(String field1)
     implements Serializable {
 
   @JsonCreator

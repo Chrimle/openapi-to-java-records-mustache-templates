@@ -36,8 +36,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @io.github.chrimle.o2jrm.annotations.TestAnnotationOne
 @io.github.chrimle.o2jrm.annotations.TestAnnotationTwo
 @io.github.chrimle.o2jrm.annotations.TestAnnotationThree
-public record ExampleRecordOneImplements(
-    Boolean field1)
+public record ExampleRecordOneImplements(Boolean field1)
     implements io.github.chrimle.o2jrm.interfaces.TestInterfaceOne {
 
   @JsonCreator

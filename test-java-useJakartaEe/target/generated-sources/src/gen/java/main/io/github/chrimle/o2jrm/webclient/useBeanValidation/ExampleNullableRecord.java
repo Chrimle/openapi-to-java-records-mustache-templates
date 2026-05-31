@@ -35,8 +35,7 @@ import jakarta.validation.Valid;
  *
  * @param field1 a boolean field
  */
-public record ExampleNullableRecord(
-    Boolean field1) {
+public record ExampleNullableRecord(Boolean field1) {
 
   @JsonCreator
   public ExampleNullableRecord(

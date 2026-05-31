@@ -23,8 +23,7 @@ import jakarta.annotation.Generated;
 @io.github.chrimle.o2jrm.annotations.TestAnnotationOne
 @io.github.chrimle.o2jrm.annotations.TestAnnotationTwo
 @io.github.chrimle.o2jrm.annotations.TestAnnotationThree
-public record ExampleRecord(
-    Boolean field1) {
+public record ExampleRecord(Boolean field1) {
 
   @JsonCreator
   public ExampleRecord(

@@ -35,8 +35,7 @@ import javax.validation.Valid;
  *
  * @param field1 a boolean field
  */
-public record ExampleRecord(
-    Boolean field1) {
+public record ExampleRecord(Boolean field1) {
 
   @JsonCreator
   public ExampleRecord(

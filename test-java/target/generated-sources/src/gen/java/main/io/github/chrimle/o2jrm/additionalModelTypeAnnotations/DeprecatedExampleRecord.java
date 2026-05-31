@@ -45,8 +45,7 @@ import java.util.Set;
 @io.github.chrimle.o2jrm.annotations.TestAnnotationOne
 @io.github.chrimle.o2jrm.annotations.TestAnnotationTwo
 @io.github.chrimle.o2jrm.annotations.TestAnnotationThree
-public record DeprecatedExampleRecord(
-    Boolean field1) {
+public record DeprecatedExampleRecord(Boolean field1) {
 
   /** A set containing the names of all instance fields defined in this class. */
   public static final HashSet<String> openapiFields =

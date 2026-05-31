@@ -21,8 +21,7 @@ import jakarta.annotation.Generated;
  *
  * @param field1 a boolean field
  */
-public record ExampleNullableRecord(
-    Boolean field1)
+public record ExampleNullableRecord(Boolean field1)
     implements Serializable {
 
   @JsonCreator

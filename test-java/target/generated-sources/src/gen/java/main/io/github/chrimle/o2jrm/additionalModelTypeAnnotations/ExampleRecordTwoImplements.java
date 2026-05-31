@@ -43,8 +43,7 @@ import java.util.Set;
 @io.github.chrimle.o2jrm.annotations.TestAnnotationOne
 @io.github.chrimle.o2jrm.annotations.TestAnnotationTwo
 @io.github.chrimle.o2jrm.annotations.TestAnnotationThree
-public record ExampleRecordTwoImplements(
-    Boolean field1)
+public record ExampleRecordTwoImplements(Boolean field1)
     implements io.github.chrimle.o2jrm.interfaces.TestInterfaceOne, io.github.chrimle.o2jrm.interfaces.TestInterfaceTwo {
 
   /** A set containing the names of all instance fields defined in this class. */

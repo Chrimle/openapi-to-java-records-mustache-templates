@@ -41,8 +41,7 @@ import java.util.Set;
  *
  * @param field1 a String field with a default value
  */
-public record ExampleRecordWithDefaultFields(
-    String field1)
+public record ExampleRecordWithDefaultFields(String field1)
     implements Serializable {
 
   /** A set containing the names of all instance fields defined in this class. */

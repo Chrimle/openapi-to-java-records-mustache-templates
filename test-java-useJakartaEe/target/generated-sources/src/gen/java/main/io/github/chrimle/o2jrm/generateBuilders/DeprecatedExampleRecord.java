@@ -42,8 +42,7 @@ import java.util.Set;
  * @param field1 a boolean field
  */
 @Deprecated
-public record DeprecatedExampleRecord(
-    Boolean field1) {
+public record DeprecatedExampleRecord(Boolean field1) {
 
   /** A set containing the names of all instance fields defined in this class. */
   public static final HashSet<String> openapiFields =
