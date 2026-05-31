@@ -3,11 +3,11 @@
 
 name: Maven Package
 
-permissions: {}
+permissions: { }
 
 on:
   release:
-    types: [created]
+    types: [ published ]
 
 jobs:
   build:
