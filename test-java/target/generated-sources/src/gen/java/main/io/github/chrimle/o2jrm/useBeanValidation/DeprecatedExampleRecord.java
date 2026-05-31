@@ -54,8 +54,7 @@ public record DeprecatedExampleRecord(Boolean field1) {
   /** A set containing the names of all required fields defined in this class. */
   public static final HashSet<String> openapiRequiredFields = new HashSet<>();
 
-  public DeprecatedExampleRecord(
-      final Boolean field1) {
+  public DeprecatedExampleRecord(final Boolean field1) {
     this.field1 = field1;
   }
 

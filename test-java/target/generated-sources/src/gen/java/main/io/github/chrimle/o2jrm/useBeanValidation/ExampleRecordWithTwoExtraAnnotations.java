@@ -54,8 +54,7 @@ public record ExampleRecordWithTwoExtraAnnotations(Boolean field1) {
   /** A set containing the names of all required fields defined in this class. */
   public static final HashSet<String> openapiRequiredFields = new HashSet<>();
 
-  public ExampleRecordWithTwoExtraAnnotations(
-      final Boolean field1) {
+  public ExampleRecordWithTwoExtraAnnotations(final Boolean field1) {
     this.field1 = field1;
   }
 

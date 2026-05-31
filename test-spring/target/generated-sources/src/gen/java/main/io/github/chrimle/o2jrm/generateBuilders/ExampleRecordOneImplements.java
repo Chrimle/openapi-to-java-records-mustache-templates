@@ -24,8 +24,7 @@ public record ExampleRecordOneImplements(Boolean field1)
     implements io.github.chrimle.o2jrm.interfaces.TestInterfaceOne {
 
   @JsonCreator
-  public ExampleRecordOneImplements(
-      final Boolean field1) {
+  public ExampleRecordOneImplements(final Boolean field1) {
     this.field1 = field1;
   }
 

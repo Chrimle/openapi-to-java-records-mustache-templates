@@ -28,8 +28,7 @@ import jakarta.annotation.Generated;
 public record DeprecatedExampleRecord(Boolean field1) {
 
   @JsonCreator
-  public DeprecatedExampleRecord(
-      final Boolean field1) {
+  public DeprecatedExampleRecord(final Boolean field1) {
     this.field1 = field1;
   }
 }

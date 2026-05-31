@@ -25,8 +25,7 @@ public record ExampleRecordTwoImplements(Boolean field1)
     implements io.github.chrimle.o2jrm.interfaces.TestInterfaceOne, io.github.chrimle.o2jrm.interfaces.TestInterfaceTwo, Serializable {
 
   @JsonCreator
-  public ExampleRecordTwoImplements(
-      final Boolean field1) {
+  public ExampleRecordTwoImplements(final Boolean field1) {
     this.field1 = field1;
   }
 }

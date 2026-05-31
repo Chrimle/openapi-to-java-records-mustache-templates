@@ -36,8 +36,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 public record ExampleRecordWithDefaultFields(String field1) {
 
   @JsonCreator
-  public ExampleRecordWithDefaultFields(
-      final String field1) {
+  public ExampleRecordWithDefaultFields(final String field1) {
     this.field1 = Objects.requireNonNullElse(field1, "someDefaultValue");
   }
 

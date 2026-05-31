@@ -52,8 +52,7 @@ public record ExampleRecordWithDefaultFields(String field1) {
   /** A set containing the names of all required fields defined in this class. */
   public static final HashSet<String> openapiRequiredFields = new HashSet<>();
 
-  public ExampleRecordWithDefaultFields(
-      final String field1) {
+  public ExampleRecordWithDefaultFields(final String field1) {
     this.field1 = Objects.requireNonNullElse(field1, "someDefaultValue");
   }
 

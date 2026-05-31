@@ -52,8 +52,7 @@ public record ExampleRecordTwoImplements(Boolean field1)
   /** A set containing the names of all required fields defined in this class. */
   public static final HashSet<String> openapiRequiredFields = new HashSet<>();
 
-  public ExampleRecordTwoImplements(
-      final Boolean field1) {
+  public ExampleRecordTwoImplements(final Boolean field1) {
     this.field1 = field1;
   }
 

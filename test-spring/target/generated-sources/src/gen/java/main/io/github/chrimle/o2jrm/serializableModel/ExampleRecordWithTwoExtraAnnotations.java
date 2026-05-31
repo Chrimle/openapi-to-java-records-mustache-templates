@@ -27,8 +27,7 @@ public record ExampleRecordWithTwoExtraAnnotations(Boolean field1)
     implements Serializable {
 
   @JsonCreator
-  public ExampleRecordWithTwoExtraAnnotations(
-      final Boolean field1) {
+  public ExampleRecordWithTwoExtraAnnotations(final Boolean field1) {
     this.field1 = field1;
   }
 }

@@ -72,9 +72,10 @@ import java.util.Set;
 {{/gson}}
 {{#jackson}}  @JsonCreator
 {{/jackson}}
-  public {{classname}}(
-      {{#vars}}final {{{datatypeWithEnum}}} {{name}}{{^-last}},
-      {{/-last}}{{/vars}}) {
+  public {{classname}}({{!
+}}{{#vars}}{{#-first}}{{^-last}}
+{{! New-line }}      {{/-last}}{{/-first}}final {{{datatypeWithEnum}}} {{name}}{{^-last}},
+{{! New-line }}      {{/-last}}{{/vars}}) {
 {{#vars}}    this.{{name}} = {{^defaultValue}}{{name}};{{/defaultValue}}{{!
                             }}{{#defaultValue}}{{!
                                 }}{{#isArray}}Objects.requireNonNullElseGet({{name}}, () -> {{{.}}});{{/isArray}}{{!
