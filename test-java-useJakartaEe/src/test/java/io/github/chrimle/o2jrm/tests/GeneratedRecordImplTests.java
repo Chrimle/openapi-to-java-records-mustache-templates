@@ -34,6 +34,8 @@ final class GeneratedRecordImplTests extends GeneratedRecordTests {
    *
    * @deprecated Temporary, until Spring-boot Generator is tested...
    */
+  @Deprecated
+  @SuppressWarnings("InlineMeSuggester")
   static boolean isSpringGenerator() {
     return false;
   }
