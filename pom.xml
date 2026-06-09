@@ -100,7 +100,7 @@
         <okhttp.version>4.12.0</okhttp.version>
         <swagger.version>2.2.50</swagger.version>
         <spring-boot.version>3.5.14</spring-boot.version>
-        <spring-web.version>6.2.18</spring-web.version>
+        <spring-web.version>6.2.19</spring-web.version>
         <!-- / Dependency Versions -->
 
         <!-- Build Plugin Versions -->
