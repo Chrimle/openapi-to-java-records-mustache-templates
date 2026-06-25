@@ -12,7 +12,7 @@
  * openapi-to-java-records-mustache-templates. For further information,
  * questions, requesting features or reporting issues, please visit:
  * https://github.com/Chrimle/openapi-to-java-records-mustache-templates.
- * Generated with Version: 3.9.0
+ * Generated with Version: 3.10.0
  *
  */
 
@@ -34,13 +34,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  *
  * @param field1 a boolean field
  */
-public record ExampleRecordOneImplements(
-    Boolean field1)
+public record ExampleRecordOneImplements(Boolean field1)
     implements io.github.chrimle.o2jrm.interfaces.TestInterfaceOne {
 
   @JsonCreator
-  public ExampleRecordOneImplements(
-      final Boolean field1) {
+  public ExampleRecordOneImplements(final Boolean field1) {
     this.field1 = field1;
   }
 }
