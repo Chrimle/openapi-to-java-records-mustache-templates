@@ -26,6 +26,13 @@ If you have feedback or suggestions, please share it in either [Discussions](htt
 
 # Used by ...
 
+<a href="https://www.eib.org/">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/usages/eib/dark.png">
+    <img alt="European Investment Bank (EIB)" src="assets/usages/eib/light.png" width="300" />
+  </picture>
+</a>
+
 > [!TIP]
 > Does your organization use this project? Be featured here, by filling out this form: [Update Organization Usage](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/issues/new/choose)
 
