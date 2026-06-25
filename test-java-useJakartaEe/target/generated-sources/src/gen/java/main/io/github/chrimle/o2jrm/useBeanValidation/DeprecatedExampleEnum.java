@@ -49,9 +49,9 @@ public enum DeprecatedExampleEnum {
   }
 
   /**
-   * Gets the {@code value} of this enum.
+   * Gets the {@link #value} of this enum.
    *
-   * @return the value of this enum.
+   * @return the {@code value} of this enum.
    */
   public String getValue() {
     return value;
@@ -60,8 +60,8 @@ public enum DeprecatedExampleEnum {
   /**
    * Case-sensitively matches the given {@code value} to an enum constant using {@link #getValue()}.
    *
-   * <p><b>NOTE:</b> if multiple enum constants have a matching value, the first enum constant is
-   * returned, by the order they are declared.
+   * <p><b>NOTE:</b> if multiple enum constants have a matching {@link #value}, the first enum
+   * constant is returned, by the order they are declared.
    *
    * @param value of the enum.
    * @return a {@link DeprecatedExampleEnum } with the matching value.
@@ -80,7 +80,7 @@ public enum DeprecatedExampleEnum {
    * Validates the JSON Element and throws an exception if issues are found.
    *
    * @param jsonElement to validate.
-   * @throws IOException if the JSON Element is not a valid DeprecatedExampleEnum object.
+   * @throws IOException if the JSON Element is not a valid {@link DeprecatedExampleEnum } object.
    */
   public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
     final String value = jsonElement.getAsString();
