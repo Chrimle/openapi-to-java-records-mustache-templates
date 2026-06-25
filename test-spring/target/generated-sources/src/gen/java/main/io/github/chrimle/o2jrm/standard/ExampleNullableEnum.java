@@ -40,9 +40,9 @@ public enum ExampleNullableEnum {
   }
 
   /**
-   * Gets the {@code value} of this enum.
+   * Gets the {@link #value} of this enum.
    *
-   * @return the value of this enum.
+   * @return the {@code value} of this enum.
    */
   @JsonValue
   public String getValue() {
@@ -52,8 +52,8 @@ public enum ExampleNullableEnum {
   /**
    * Case-sensitively matches the given {@code value} to an enum constant using {@link #getValue()}.
    *
-   * <p><b>NOTE:</b> if multiple enum constants have a matching value, the first enum constant is
-   * returned, by the order they are declared.
+   * <p><b>NOTE:</b> if multiple enum constants have a matching {@link #value}, the first enum
+   * constant is returned, by the order they are declared.
    *
    * @param value of the enum.
    * @return a {@link ExampleNullableEnum } with the matching value.

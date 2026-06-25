@@ -43,9 +43,9 @@ public enum ExampleUriEnum implements Serializable {
   }
 
   /**
-   * Gets the {@code value} of this enum.
+   * Gets the {@link #value} of this enum.
    *
-   * @return the value of this enum.
+   * @return the {@code value} of this enum.
    */
   @JsonValue
   public URI getValue() {
@@ -55,8 +55,8 @@ public enum ExampleUriEnum implements Serializable {
   /**
    * Matches the given {@code value} to an enum constant using {@link #getValue()}.
    *
-   * <p><b>NOTE:</b> if multiple enum constants have a matching value, the first enum constant is
-   * returned, by the order they are declared.
+   * <p><b>NOTE:</b> if multiple enum constants have a matching {@link #value}, the first enum
+   * constant is returned, by the order they are declared.
    *
    * @param value of the enum.
    * @return a {@link ExampleUriEnum } with the matching value.

@@ -45,9 +45,9 @@ public enum ExampleImplementsEnum implements io.github.chrimle.o2jrm.interfaces.
   }
 
   /**
-   * Gets the {@code value} of this enum.
+   * Gets the {@link #value} of this enum.
    *
-   * @return the value of this enum.
+   * @return the {@code value} of this enum.
    */
   public String getValue() {
     return value;
@@ -56,8 +56,8 @@ public enum ExampleImplementsEnum implements io.github.chrimle.o2jrm.interfaces.
   /**
    * Case-sensitively matches the given {@code value} to an enum constant using {@link #getValue()}.
    *
-   * <p><b>NOTE:</b> if multiple enum constants have a matching value, the first enum constant is
-   * returned, by the order they are declared.
+   * <p><b>NOTE:</b> if multiple enum constants have a matching {@link #value}, the first enum
+   * constant is returned, by the order they are declared.
    *
    * @param value of the enum.
    * @return a {@link ExampleImplementsEnum } with the matching value, or {@link
@@ -76,7 +76,7 @@ public enum ExampleImplementsEnum implements io.github.chrimle.o2jrm.interfaces.
    * Validates the JSON Element and throws an exception if issues are found.
    *
    * @param jsonElement to validate.
-   * @throws IOException if the JSON Element is not a valid ExampleImplementsEnum object.
+   * @throws IOException if the JSON Element is not a valid {@link ExampleImplementsEnum } object.
    */
   public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
     final String value = jsonElement.getAsString();
