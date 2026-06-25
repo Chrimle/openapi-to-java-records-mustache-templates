@@ -44,9 +44,9 @@ public enum ExampleEnumWithIntegerValues implements Serializable {
   }
 
   /**
-   * Gets the {@code value} of this enum.
+   * Gets the {@link #value} of this enum.
    *
-   * @return the value of this enum.
+   * @return the {@code value} of this enum.
    */
   @JsonValue
   public Integer getValue() {
@@ -56,7 +56,7 @@ public enum ExampleEnumWithIntegerValues implements Serializable {
   /**
    * Matches the given {@code value} to an enum constant using {@link #getValue()}.
    *
-   * <p><b>NOTE:</b> if multiple enum constants have a matching value, the first enum constant is
+   * <p><b>NOTE:</b> if multiple enum constants have a matching {@link #value}, the first enum constant is
    * returned, by the order they are declared.
    *
    * @param value of the enum.
