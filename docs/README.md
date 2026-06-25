@@ -26,10 +26,19 @@ If you have feedback or suggestions, please share it in either [Discussions](htt
 
 # Used by ...
 
+<style>
+  /* GitHub.com completely strips this style block, but GitHub Pages will execute it */
+  @media (prefers-color-scheme: dark) {
+    .eib-logo {
+      content: url("assets/usages/eib/light.png") !important;
+    }
+  }
+</style>
+
 <a href="https://www.eib.org/">
   <picture>
-    <source media="(prefers-color-scheme: light)" srcset="assets/usages/eib/light.png">
-    <img alt="European Investment Bank (EIB)" src="assets/usages/eib/dark.png" width="300" />
+    <source media="(prefers-color-scheme: dark)" srcset="assets/usages/eib/dark.png">
+    <img class="eib-logo" alt="European Investment Bank (EIB)" src="assets/usages/eib/light.png" width="300" />
   </picture>
 </a>
 
