@@ -9,11 +9,15 @@ updates:
     directory: /
     schedule:
       interval: daily
+    labels:
+      - "dependency"
 
   - package-ecosystem: github-actions
     directory: /
     schedule:
       interval: daily
+    labels:
+      - "meta"
 
   - package-ecosystem: bundler
     directory: /docs
