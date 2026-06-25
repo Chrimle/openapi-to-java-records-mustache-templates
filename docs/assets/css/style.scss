@@ -4,12 +4,15 @@
 
 @media (prefers-color-scheme: dark) {
   body, .markdown-body {
-    background-color: #0d1117 !important; /* GitHub's native dark background */
-    color: #c9d1d9 !important; /* GitHub's native dark text */
+    background-color: #0d1117 !important;
+    color: #c9d1d9 !important;
   }
 
-  /* Optional: Darken links to match GitHub's dark mode */
   .markdown-body a {
     color: #58a6ff !important;
+  }
+
+  .markdown-body img {
+    background-color: transparent !important;
   }
 }
