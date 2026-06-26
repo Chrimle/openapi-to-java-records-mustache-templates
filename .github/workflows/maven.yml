@@ -13,29 +13,59 @@ permissions: { }
 on:
   push:
     branches: [ "main" ]
-    paths-ignore:
-      - ".github/**.md"
-      - ".idea/**"
-      - "docs/**"
-      - ".gitattributes"
-      - ".gitignore"
-      - "CITATION.cff"
-      - "README.md"
-      - "LICENSE"
   pull_request:
     branches: [ "main" ]
-    paths-ignore:
-      - ".github/**.md"
-      - ".idea/**"
-      - "docs/**"
-      - ".gitattributes"
-      - ".gitignore"
-      - "CITATION.cff"
-      - "README.md"
-      - "LICENSE"
 
 jobs:
+  detect-changes:
+    name: Check Modified Files
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: read
+    outputs:
+      should_run: ${{ steps.check.outputs.should_run }}
+    steps:
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+      - name: Detect file changes via API
+        id: check
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ "${{ github.event_name }}" == "pull_request" ]; then
+            # For PRs: Ask the PR API (grabs up to 100 files, usually sufficient for CI)
+            URL="repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/files?per_page=100"
+          else
+            # For Pushes: Ask the Compare API
+            URL="repos/${{ github.repository }}/compare/${{ github.event.before }}...${{ github.event.after }}"
+          fi
+
+          CHANGED_FILES=$(gh api $URL --jq '.files[].filename' || gh api $URL --jq '.[].filename')
+          
+          echo "--- All Changed Files ---"
+          echo "$CHANGED_FILES"
+          
+          # Regex files to ignore...
+          IGNORE_PATTERN="^(\.github/.*\.md|\.idea/.*|docs/.*|\.gitattributes|\.gitignore|CITATION\.cff|README\.md|LICENSE)$"
+          
+          # Filter out the ignored files (grep -v inverts the match). 
+          # `|| true` prevents grep from returning an exit code 1 if no files match.
+          REMAINING_FILES=$(echo "$CHANGED_FILES" | grep -v -E "$IGNORE_PATTERN" || true)
+          
+          echo "--- Files requiring a build ---"
+          echo "$REMAINING_FILES"
+          
+          if [ -z "$REMAINING_FILES" ]; then
+            echo "Only ignored files were changed. Skipping the build matrix."
+            echo "should_run=false" >> $GITHUB_OUTPUT
+          else
+            echo "Relevant source files changed. Triggering the build matrix."
+            echo "should_run=true" >> $GITHUB_OUTPUT
+          fi
+
   build:
+    needs: detect-changes
+    if: ${{ needs.detect-changes.outputs.should_run == 'true' }}
     name: Maven Build
     runs-on: ubuntu-24.04-arm
     permissions:
