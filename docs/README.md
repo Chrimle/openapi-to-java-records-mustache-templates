@@ -26,10 +26,10 @@ If you have feedback or suggestions, please share it in either [Discussions](htt
 
 # Used by ...
 
-<a href="https://www.eib.org/">
+<a href="https://www.eib.org/" target="_blank">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="assets/usages/eib/dark.png">
-    <img alt="European Investment Bank (EIB)" src="assets/usages/eib/light.png" width="300" />
+    <img alt="European Investment Bank (EIB)" src="assets/usages/eib/light.png" height="150" />
   </picture>
 </a>
 
