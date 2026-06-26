@@ -8,13 +8,31 @@
 
 name: Java CI with Maven
 
-permissions: {}
+permissions: { }
 
 on:
   push:
     branches: [ "main" ]
+    paths-ignore:
+      - ".github/**.md"
+      - ".idea/**"
+      - "docs/**"
+      - ".gitattributes"
+      - ".gitignore"
+      - "CITATION.cff"
+      - "README.md"
+      - "LICENSE"
   pull_request:
     branches: [ "main" ]
+    paths-ignore:
+      - ".github/**.md"
+      - ".idea/**"
+      - "docs/**"
+      - ".gitattributes"
+      - ".gitignore"
+      - "CITATION.cff"
+      - "README.md"
+      - "LICENSE"
 
 jobs:
   build:
