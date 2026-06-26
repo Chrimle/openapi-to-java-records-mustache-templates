@@ -108,3 +108,18 @@ jobs:
           fi
           
           mvn -B package $SKIP_FLAG --no-transfer-progress --file pom.xml -Dopenapi-generator-maven-plugin.version=${{ matrix.openapi-generator-maven-plugin-version }}
+  maven-build-status:
+    name: Maven Build Status
+    needs: [ detect-changes, build ]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check build status
+        run: |
+          if [ "${{ needs.build.result }}" == "success" ] || [ "${{ needs.build.result }}" == "skipped" ]; then
+            echo "Build successful or skipped (as expected)."
+            exit 0
+          else
+            echo "Build failed or cancelled."
+            exit 1
+          fi
