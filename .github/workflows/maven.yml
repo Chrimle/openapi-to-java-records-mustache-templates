@@ -45,8 +45,23 @@ jobs:
           echo "--- All Changed Files ---"
           echo "$CHANGED_FILES"
           
-          # Regex files to ignore...
-          IGNORE_PATTERN="^(\.github/.*\.md|\.idea/.*|docs/.*|\.gitattributes|\.gitignore|CITATION\.cff|README\.md|LICENSE)$"
+          IGNORE_ARRAY=(
+            "\.github/.*\.md"
+            "\.idea/.*"
+            "docs/.*"
+            "\.gitattributes"
+            "\.gitignore"
+            "CITATION\.cff"
+            "README\.md"
+            "LICENSE"
+          )
+
+          OLD_IFS="$IFS"
+          IFS="|"
+          JOINED_PATTERNS="${IGNORE_ARRAY[*]}"
+          IFS="$OLD_IFS"
+
+          IGNORE_PATTERN="^(${JOINED_PATTERNS})$"
           
           # Filter out the ignored files (grep -v inverts the match). 
           # `|| true` prevents grep from returning an exit code 1 if no files match.
