@@ -143,8 +143,8 @@ public record RecordWithInnerEnums(
      * Case-sensitively matches the given {@code value} to an enum constant using {@link
      * #getValue()}.
      *
-     * <p><b>NOTE:</b> if multiple enum constants have a matching {@link #value}, the first enum
-     * constant is returned, by the order they are declared.
+     * <p><b>NOTE:</b> if multiple enum constants have a matching {@link #value}, the first matching
+     * enum constant is returned, by the order they are declared.
      *
      * @param value of the enum.
      * @return a {@link ExampleInnerEnum } with the matching value.
@@ -188,8 +188,8 @@ public record RecordWithInnerEnums(
     /**
      * Matches the given {@code value} to an enum constant using {@link #getValue()}.
      *
-     * <p><b>NOTE:</b> if multiple enum constants have a matching {@link #value}, the first enum
-     * constant is returned, by the order they are declared.
+     * <p><b>NOTE:</b> if multiple enum constants have a matching {@link #value}, the first matching
+     * enum constant is returned, by the order they are declared.
      *
      * @param value of the enum.
      * @return a {@link ExampleInnerTwoEnum } with the matching value.
@@ -233,8 +233,8 @@ public record RecordWithInnerEnums(
      * Case-sensitively matches the given {@code value} to an enum constant using {@link
      * #getValue()}.
      *
-     * <p><b>NOTE:</b> if multiple enum constants have a matching {@link #value}, the first enum
-     * constant is returned, by the order they are declared.
+     * <p><b>NOTE:</b> if multiple enum constants have a matching {@link #value}, the first matching
+     * enum constant is returned, by the order they are declared.
      *
      * @param value of the enum.
      * @return a {@link ExampleInnerThreeEnum } with the matching value.

@@ -44,8 +44,8 @@ public enum ExampleImplementsEnum implements io.github.chrimle.o2jrm.interfaces.
   /**
    * Case-sensitively matches the given {@code value} to an enum constant using {@link #getValue()}.
    *
-   * <p><b>NOTE:</b> if multiple enum constants have a matching {@link #value}, the first enum
-   * constant is returned, by the order they are declared.
+   * <p><b>NOTE:</b> if multiple enum constants have a matching {@link #value}, the first matching
+   * enum constant is returned, by the order they are declared.
    *
    * @param value of the enum.
    * @return a {@link ExampleImplementsEnum } with the matching value.
