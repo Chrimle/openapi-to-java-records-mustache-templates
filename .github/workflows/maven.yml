@@ -47,6 +47,12 @@ jobs:
           
           IGNORE_ARRAY=(
             "\.github/.*\.md"
+            "\.github/CODEOWNERS"
+            "\.github/dependabot.yml"
+            "\.github/FUNDING.yml"
+            "\.github/release.yml"
+            "\.github/workflows/jekyll-gh-pages.yml"
+            "\.github/workflows/pullRequestAudit.yml"
             "\.idea/.*"
             "docs/.*"
             "\.gitattributes"
