@@ -65,9 +65,9 @@ public record RecordWithInnerEnums(
     }
 
     /**
-     * Gets the {@code value} of this enum.
+     * Gets the {@link #value} of this enum.
      *
-     * @return the value of this enum.
+     * @return the {@code value} of this enum.
      */
     @JsonValue
     public String getValue() {
@@ -78,8 +78,8 @@ public record RecordWithInnerEnums(
      * Case-sensitively matches the given {@code value} to an enum constant using {@link
      * #getValue()}.
      *
-     * <p><b>NOTE:</b> if multiple enum constants have a matching value, the first enum constant is
-     * returned, by the order they are declared.
+     * <p><b>NOTE:</b> if multiple enum constants have a matching {@link #value}, the first enum
+     * constant is returned, by the order they are declared.
      *
      * @param value of the enum.
      * @return a {@link ExampleInnerEnum } with the matching value.
@@ -111,9 +111,9 @@ public record RecordWithInnerEnums(
     }
 
     /**
-     * Gets the {@code value} of this enum.
+     * Gets the {@link #value} of this enum.
      *
-     * @return the value of this enum.
+     * @return the {@code value} of this enum.
      */
     @JsonValue
     public Integer getValue() {
@@ -123,8 +123,8 @@ public record RecordWithInnerEnums(
     /**
      * Matches the given {@code value} to an enum constant using {@link #getValue()}.
      *
-     * <p><b>NOTE:</b> if multiple enum constants have a matching value, the first enum constant is
-     * returned, by the order they are declared.
+     * <p><b>NOTE:</b> if multiple enum constants have a matching {@link #value}, the first enum
+     * constant is returned, by the order they are declared.
      *
      * @param value of the enum.
      * @return a {@link ExampleInnerTwoEnum } with the matching value.
@@ -155,9 +155,9 @@ public record RecordWithInnerEnums(
     }
 
     /**
-     * Gets the {@code value} of this enum.
+     * Gets the {@link #value} of this enum.
      *
-     * @return the value of this enum.
+     * @return the {@code value} of this enum.
      */
     @JsonValue
     public URI getValue() {
@@ -168,8 +168,8 @@ public record RecordWithInnerEnums(
      * Case-sensitively matches the given {@code value} to an enum constant using {@link
      * #getValue()}.
      *
-     * <p><b>NOTE:</b> if multiple enum constants have a matching value, the first enum constant is
-     * returned, by the order they are declared.
+     * <p><b>NOTE:</b> if multiple enum constants have a matching {@link #value}, the first enum
+     * constant is returned, by the order they are declared.
      *
      * @param value of the enum.
      * @return a {@link ExampleInnerThreeEnum } with the matching value.

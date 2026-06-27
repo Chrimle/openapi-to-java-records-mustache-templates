@@ -160,9 +160,9 @@ public record RecordWithInnerEnums(
     }
 
     /**
-     * Gets the {@code value} of this enum.
+     * Gets the {@link #value} of this enum.
      *
-     * @return the value of this enum.
+     * @return the {@code value} of this enum.
      */
     public String getValue() {
       return value;
@@ -172,8 +172,8 @@ public record RecordWithInnerEnums(
      * Case-sensitively matches the given {@code value} to an enum constant using {@link
      * #getValue()}.
      *
-     * <p><b>NOTE:</b> if multiple enum constants have a matching value, the first enum constant is
-     * returned, by the order they are declared.
+     * <p><b>NOTE:</b> if multiple enum constants have a matching {@link #value}, the first enum
+     * constant is returned, by the order they are declared.
      *
      * @param value of the enum.
      * @return a {@link ExampleInnerEnum } with the matching value.
@@ -192,7 +192,7 @@ public record RecordWithInnerEnums(
      * Validates the JSON Element and throws an exception if issues are found.
      *
      * @param jsonElement to validate.
-     * @throws IOException if the JSON Element is not a valid ExampleInnerEnum object.
+     * @throws IOException if the JSON Element is not a valid {@link ExampleInnerEnum } object.
      */
     public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
       final String value = jsonElement.getAsString();
@@ -255,9 +255,9 @@ public record RecordWithInnerEnums(
     }
 
     /**
-     * Gets the {@code value} of this enum.
+     * Gets the {@link #value} of this enum.
      *
-     * @return the value of this enum.
+     * @return the {@code value} of this enum.
      */
     public Integer getValue() {
       return value;
@@ -266,8 +266,8 @@ public record RecordWithInnerEnums(
     /**
      * Matches the given {@code value} to an enum constant using {@link #getValue()}.
      *
-     * <p><b>NOTE:</b> if multiple enum constants have a matching value, the first enum constant is
-     * returned, by the order they are declared.
+     * <p><b>NOTE:</b> if multiple enum constants have a matching {@link #value}, the first enum
+     * constant is returned, by the order they are declared.
      *
      * @param value of the enum.
      * @return a {@link ExampleInnerTwoEnum } with the matching value.
@@ -286,7 +286,7 @@ public record RecordWithInnerEnums(
      * Validates the JSON Element and throws an exception if issues are found.
      *
      * @param jsonElement to validate.
-     * @throws IOException if the JSON Element is not a valid ExampleInnerTwoEnum object.
+     * @throws IOException if the JSON Element is not a valid {@link ExampleInnerTwoEnum } object.
      */
     public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
       final Integer value = jsonElement.getAsInt();
@@ -348,9 +348,9 @@ public record RecordWithInnerEnums(
     }
 
     /**
-     * Gets the {@code value} of this enum.
+     * Gets the {@link #value} of this enum.
      *
-     * @return the value of this enum.
+     * @return the {@code value} of this enum.
      */
     public URI getValue() {
       return value;
@@ -360,8 +360,8 @@ public record RecordWithInnerEnums(
      * Case-sensitively matches the given {@code value} to an enum constant using {@link
      * #getValue()}.
      *
-     * <p><b>NOTE:</b> if multiple enum constants have a matching value, the first enum constant is
-     * returned, by the order they are declared.
+     * <p><b>NOTE:</b> if multiple enum constants have a matching {@link #value}, the first enum
+     * constant is returned, by the order they are declared.
      *
      * @param value of the enum.
      * @return a {@link ExampleInnerThreeEnum } with the matching value.
@@ -380,7 +380,7 @@ public record RecordWithInnerEnums(
      * Validates the JSON Element and throws an exception if issues are found.
      *
      * @param jsonElement to validate.
-     * @throws IOException if the JSON Element is not a valid ExampleInnerThreeEnum object.
+     * @throws IOException if the JSON Element is not a valid {@link ExampleInnerThreeEnum } object.
      */
     public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
       final URI value = URI.create(jsonElement.getAsString());
@@ -431,7 +431,7 @@ public record RecordWithInnerEnums(
    * Validates the JSON Element and throws an exception if issues are found.
    *
    * @param jsonElement to validate.
-   * @throws IOException if the JSON Element is not a valid RecordWithInnerEnums object.
+   * @throws IOException if the JSON Element is not a valid {@link RecordWithInnerEnums } object.
    */
   public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
     for (final String key : jsonElement.getAsJsonObject().keySet()) {

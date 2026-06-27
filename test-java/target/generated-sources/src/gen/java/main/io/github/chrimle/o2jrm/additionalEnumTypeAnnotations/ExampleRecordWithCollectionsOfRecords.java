@@ -83,7 +83,7 @@ public record ExampleRecordWithCollectionsOfRecords(
    * Validates the JSON Element and throws an exception if issues are found.
    *
    * @param jsonElement to validate.
-   * @throws IOException if the JSON Element is not a valid ExampleRecordWithCollectionsOfRecords object.
+   * @throws IOException if the JSON Element is not a valid {@link ExampleRecordWithCollectionsOfRecords } object.
    */
   public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
     if (jsonElement == null) {

@@ -95,7 +95,7 @@ public record ExampleRecord(Boolean field1) {
    * Validates the JSON Element and throws an exception if issues are found.
    *
    * @param jsonElement to validate.
-   * @throws IOException if the JSON Element is not a valid ExampleRecord object.
+   * @throws IOException if the JSON Element is not a valid {@link ExampleRecord } object.
    */
   public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
     for (final String key : jsonElement.getAsJsonObject().keySet()) {
