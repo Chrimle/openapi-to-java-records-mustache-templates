@@ -3,7 +3,7 @@ description: >-
   Generate Java Records from OpenAPI Specifications
 
 github_username: Chrimle
-url: "https://chrimle.github.io"
+url: "https://github.com/Chrimle"
 baseurl: "/openapi-to-java-records-mustache-templates"
 
 repository: Chrimle/openapi-to-java-records-mustache-templates
