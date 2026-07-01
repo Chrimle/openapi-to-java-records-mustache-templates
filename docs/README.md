@@ -26,11 +26,19 @@ If you have feedback or suggestions, please share it in either [Discussions](htt
 
 # Used by ...
 
-| European Investment Bank (EIB) | https://www.eib.org/ |
-|--------------------------------|----------------------|
+> It is a privilege and honor to support organizations to build better software ❤️
 
-> [!TIP]
-> Does your organization use this project? Be featured here, by filling out this form: [Update Organization Usage](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/issues/new/choose)
+| Used by                                                                                                                                                                            |
+|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [European Investment Bank](https://www.eib.org/)                                                                                                                                   |
+| _... and many others!_                                                                                                                                                             |
+|                                                                                                                                                                                    |
+| Want to be featured here?<br/>Found a mistake?<br/>[Update Organization Usage](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/issues/new?template=usage.md) |
+
+> **All trademarks, logos, and brand names are the property of their respective owners.**
+> 
+> _The use of any company name or trademark in this list is for identification purposes only
+> and does not imply endorsement, sponsorship, or affiliation with this project._
 
 # Getting Started
 > [!TIP]
