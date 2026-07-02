@@ -80,5 +80,13 @@ public enum ConfigOption {
    *
    * @see #USE_ENUM_CASE_INSENSITIVE
    */
-  ENUM_UNKNOWN_DEFAULT_CASE
+  ENUM_UNKNOWN_DEFAULT_CASE,
+  /**
+   * {@code <useJspecify>}
+   *
+   * <p>Generated classes include {@link org.jspecify}-annotations for nullability.
+   *
+   * @see <a href="https://jspecify.dev/">JSpecify</a>
+   */
+  USE_JSPECIFY
 }
