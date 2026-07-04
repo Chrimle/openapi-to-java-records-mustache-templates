@@ -52,13 +52,14 @@ jobs:
             "\.github/FUNDING.yml"
             "\.github/release.yml"
             "\.github/workflows/jekyll-gh-pages.yml"
+            "\.github/workflows/maven-publish.yml"
             "\.github/workflows/pullRequestAudit.yml"
+            "\.github/workflows/scorecard.yml"
             "\.idea/.*"
             "docs/.*"
             "\.gitattributes"
             "\.gitignore"
             "CITATION\.cff"
-            "README\.md"
             "LICENSE"
           )
 
