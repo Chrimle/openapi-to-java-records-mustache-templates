@@ -18,7 +18,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
-      - name: Set up JDK 17
+      - name: Set up JDK 17 (GitHub Packages)
         uses: actions/setup-java@1bcf9fb12cf4aa7d266a90ae39939e61372fe520 # v5.4.0
         with:
           java-version: '17'
@@ -27,12 +27,12 @@ jobs:
       - name: Build with Maven
         run: mvn -B package --no-transfer-progress --file pom.xml
 
-      - name: Publish to GitHub Packages Apache Maven
-        run: mvn deploy --no-transfer-progress -Djacoco.skip=true
+      - name: Publish to GitHub Packages
+        run: mvn -B deploy --no-transfer-progress -DskipTests -Djacoco.skip=true
         env:
           GITHUB_TOKEN: ${{ github.token }}
 
-      - name: Set up Apache Maven Central
+      - name: Set up JDK 17 (Maven Central)
         uses: actions/setup-java@1bcf9fb12cf4aa7d266a90ae39939e61372fe520 # v5.4.0
         with: # running setup-java again overwrites the settings.xml
           distribution: 'temurin'
@@ -44,7 +44,7 @@ jobs:
           gpg-passphrase: MAVEN_GPG_PASSPHRASE # env variable for GPG private key passphrase
 
       - name: Publish to Apache Maven Central
-        run: mvn -P deploy-to-maven-central deploy --no-transfer-progress -Djacoco.skip=true
+        run: mvn -B -P deploy-to-maven-central deploy --no-transfer-progress -DskipTests -Djacoco.skip=true
         env:
           MAVEN_USERNAME: ${{ secrets.MAVEN_CENTRAL_USERNAME }}
           MAVEN_CENTRAL_TOKEN: ${{ secrets.MAVEN_CENTRAL_PASSWORD }}
