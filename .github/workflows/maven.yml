@@ -139,7 +139,7 @@ jobs:
   maven-build-status:
     name: Maven Build Status
     needs: [ detect-changes, build ]
-    if: always()
+    if: github.event.pull_request.draft == false || github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
       - name: Check build status
