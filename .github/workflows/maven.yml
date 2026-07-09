@@ -148,6 +148,9 @@ jobs:
             if [ "${{ needs.build.result }}" == "success" ]; then
               echo "Build successful!"
               exit 0
+            elif [ "${{ needs.build.result }}" == "skipped" ]; then
+              echo "Build was skipped, but is required to run!"
+              exit 1
             else
               echo "Build failed or was cancelled."
               exit 1
