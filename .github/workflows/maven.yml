@@ -144,10 +144,19 @@ jobs:
     steps:
       - name: Check build status
         run: |
-          if [ "${{ needs.build.result }}" == "success" ] || [ "${{ needs.build.result }}" == "skipped" ]; then
-            echo "Build successful or skipped (as expected)."
+          if [ "${{ needs.detect-changes.outputs.should_run }}" == "true" ]; then
+            if [ "${{ needs.build.result }}" == "success" ]; then
+              echo "Build successful!"
+              exit 0
+            else
+              echo "Build failed or was cancelled."
+              exit 1
+            fi
+          
+          if [ "${{ needs.detect-changes.outputs.should_run }}" == "false" ]; then
+            echo "Build was skipped (as expected)."
             exit 0
           else
-            echo "Build failed or cancelled."
+            echo "Unexpected outcome."
             exit 1
           fi
