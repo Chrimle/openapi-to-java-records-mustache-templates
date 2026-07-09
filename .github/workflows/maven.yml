@@ -152,6 +152,7 @@ jobs:
               echo "Build failed or was cancelled."
               exit 1
             fi
+          fi
           
           if [ "${{ needs.detect-changes.outputs.should_run }}" == "false" ]; then
             echo "Build was skipped (as expected)."
