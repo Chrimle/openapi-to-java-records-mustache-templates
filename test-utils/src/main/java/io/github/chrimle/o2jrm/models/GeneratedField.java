@@ -15,11 +15,11 @@
  */
 package io.github.chrimle.o2jrm.models;
 
+import io.github.chrimle.o2jrm.utils.CustomAssertions;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationTargetException;
 import java.math.BigDecimal;
 import java.util.*;
-import org.junit.platform.commons.util.ReflectionUtils;
 
 /**
  * Represents a generated field, along with additional properties which are expected to be true for
@@ -125,7 +125,7 @@ public record GeneratedField<T>(
             return "\"%s\": [\"%s\"]"
                 .formatted(
                     name,
-                    ReflectionUtils.getRequiredMethod(type, "getValue")
+                    CustomAssertions.assertClassHasMethod(type, "getValue")
                         .invoke(type.getEnumConstants()[0]));
           } catch (IllegalAccessException | InvocationTargetException e) {
             throw new RuntimeException(e);
@@ -142,7 +142,7 @@ public record GeneratedField<T>(
         return "\"%s\": \"%s\""
             .formatted(
                 name,
-                ReflectionUtils.getRequiredMethod(type, "getValue")
+                CustomAssertions.assertClassHasMethod(type, "getValue")
                     .invoke(type.getEnumConstants()[0]));
       } catch (IllegalAccessException | InvocationTargetException e) {
         throw new RuntimeException(e);

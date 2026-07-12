@@ -24,8 +24,7 @@ import java.util.Arrays;
 import org.junit.jupiter.api.Assertions;
 
 /**
- * Collection of custom assertion methods which complements {@link Assertions} and {@link
- * org.junit.platform.commons.util.ReflectionUtils}.
+ * Collection of custom assertion methods which complements {@link Assertions}.
  *
  * @since 2.5.3
  */
