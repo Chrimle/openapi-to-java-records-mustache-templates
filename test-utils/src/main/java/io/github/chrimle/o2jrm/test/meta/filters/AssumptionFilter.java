@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package io.github.chrimle.o2jrm.tests;
+package io.github.chrimle.o2jrm.test.meta.filters;
 
 import io.github.chrimle.o2jrm.test.meta.configs.ConfigOption;
 import io.github.chrimle.o2jrm.test.meta.configs.Library;

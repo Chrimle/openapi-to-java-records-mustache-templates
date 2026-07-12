@@ -29,6 +29,8 @@ import io.github.chrimle.o2jrm.test.interfaces.TestInterfaceOne;
 import io.github.chrimle.o2jrm.test.interfaces.TestInterfaceTwo;
 import io.github.chrimle.o2jrm.test.meta.configs.ConfigOption;
 import io.github.chrimle.o2jrm.test.meta.configs.Library;
+import io.github.chrimle.o2jrm.test.meta.filters.AssumptionFilter;
+import io.github.chrimle.o2jrm.test.meta.filters.Condition;
 import io.github.chrimle.o2jrm.test.meta.models.GeneratedField;
 import io.github.chrimle.o2jrm.test.meta.models.GeneratedSource;
 import io.github.chrimle.o2jrm.test.utils.CustomAssertions;
