@@ -18,20 +18,18 @@
 
 package io.github.chrimle.o2jrm.enumDefaultCaseAndCaseInsensitive;
 
-import java.util.Objects;
 import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.util.Arrays;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import io.github.chrimle.o2jrm.test.interfaces.TestInterfaceOne;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -41,7 +39,7 @@ import java.util.Set;
  * @param field1 a boolean field
  */
 public record ExampleRecordOneImplements(Boolean field1)
-    implements io.github.chrimle.o2jrm.interfaces.TestInterfaceOne {
+    implements TestInterfaceOne {
 
   /** A set containing the names of all instance fields defined in this class. */
   public static final HashSet<String> openapiFields =

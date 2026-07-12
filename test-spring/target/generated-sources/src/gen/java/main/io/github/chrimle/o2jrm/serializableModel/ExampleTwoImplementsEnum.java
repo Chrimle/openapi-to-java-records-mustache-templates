@@ -1,26 +1,18 @@
 package io.github.chrimle.o2jrm.serializableModel;
 
-import java.net.URI;
-import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonValue;
-import org.openapitools.jackson.nullable.JsonNullable;
+import io.github.chrimle.o2jrm.test.interfaces.TestInterfaceOne;
+import io.github.chrimle.o2jrm.test.interfaces.TestInterfaceTwo;
+
 import java.io.Serializable;
-import java.time.OffsetDateTime;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import io.swagger.v3.oas.annotations.media.Schema;
 
-
-import java.util.*;
-import jakarta.annotation.Generated;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
  * Example of an Enum which implements two interfaces.
  */
-public enum ExampleTwoImplementsEnum implements io.github.chrimle.o2jrm.interfaces.TestInterfaceOne, io.github.chrimle.o2jrm.interfaces.TestInterfaceTwo, Serializable {
+public enum ExampleTwoImplementsEnum implements TestInterfaceOne, TestInterfaceTwo, Serializable {
   ENUM1("ENUM1"),
   ENUM2("ENUM2"),
   ENUM3("ENUM3");

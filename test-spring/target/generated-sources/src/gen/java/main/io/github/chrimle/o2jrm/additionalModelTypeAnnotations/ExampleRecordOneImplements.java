@@ -1,19 +1,7 @@
 package io.github.chrimle.o2jrm.additionalModelTypeAnnotations;
 
-import java.net.URI;
-import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import org.springframework.lang.Nullable;
-import org.openapitools.jackson.nullable.JsonNullable;
-import java.time.OffsetDateTime;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import io.swagger.v3.oas.annotations.media.Schema;
-
-
-import java.util.*;
-import jakarta.annotation.Generated;
+import io.github.chrimle.o2jrm.test.interfaces.TestInterfaceOne;
 
 /**
  * Example of an Record which implements an interface.
@@ -24,7 +12,7 @@ import jakarta.annotation.Generated;
 @io.github.chrimle.o2jrm.test.annotations.TestAnnotationTwo
 @io.github.chrimle.o2jrm.test.annotations.TestAnnotationThree
 public record ExampleRecordOneImplements(Boolean field1)
-    implements io.github.chrimle.o2jrm.interfaces.TestInterfaceOne {
+    implements TestInterfaceOne {
 
   @JsonCreator
   public ExampleRecordOneImplements(final Boolean field1) {

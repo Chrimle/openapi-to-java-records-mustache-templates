@@ -15,8 +15,8 @@
  */
 package io.github.chrimle.o2jrm.models;
 
-import io.github.chrimle.o2jrm.interfaces.TestInterfaceOne;
-import io.github.chrimle.o2jrm.interfaces.TestInterfaceTwo;
+import io.github.chrimle.o2jrm.test.interfaces.TestInterfaceOne;
+import io.github.chrimle.o2jrm.test.interfaces.TestInterfaceTwo;
 import java.net.URI;
 import java.util.List;
 

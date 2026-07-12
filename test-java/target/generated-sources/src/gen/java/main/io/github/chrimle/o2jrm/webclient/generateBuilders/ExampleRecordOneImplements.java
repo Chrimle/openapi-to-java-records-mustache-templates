@@ -18,15 +18,8 @@
 
 package io.github.chrimle.o2jrm.webclient.generateBuilders;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonTypeName;
-import com.fasterxml.jackson.annotation.JsonValue;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.fasterxml.jackson.annotation.JsonTypeName;
+import io.github.chrimle.o2jrm.test.interfaces.TestInterfaceOne;
 
 /**
  * Example of an Record which implements an interface.
@@ -34,7 +27,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  * @param field1 a boolean field
  */
 public record ExampleRecordOneImplements(Boolean field1)
-    implements io.github.chrimle.o2jrm.interfaces.TestInterfaceOne {
+    implements TestInterfaceOne {
 
   @JsonCreator
   public ExampleRecordOneImplements(final Boolean field1) {

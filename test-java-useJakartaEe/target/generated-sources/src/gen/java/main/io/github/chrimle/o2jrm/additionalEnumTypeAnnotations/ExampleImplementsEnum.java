@@ -18,14 +18,13 @@
 
 package io.github.chrimle.o2jrm.additionalEnumTypeAnnotations;
 
-import java.util.Objects;
-import com.google.gson.annotations.SerializedName;
-
 import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import io.github.chrimle.o2jrm.test.interfaces.TestInterfaceOne;
+
 import java.io.IOException;
 
 /**
@@ -35,7 +34,7 @@ import java.io.IOException;
 @io.github.chrimle.o2jrm.test.annotations.TestAnnotationTwo
 @io.github.chrimle.o2jrm.test.annotations.TestAnnotationThree
 @JsonAdapter(ExampleImplementsEnum.Adapter.class)
-public enum ExampleImplementsEnum implements io.github.chrimle.o2jrm.interfaces.TestInterfaceOne {
+public enum ExampleImplementsEnum implements TestInterfaceOne {
   ENUM1("ENUM1"),
   ENUM2("ENUM2"),
   ENUM3("ENUM3");

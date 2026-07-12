@@ -14,6 +14,6 @@
  * limitations under the License.
  */
 
-package io.github.chrimle.o2jrm.interfaces;
+package io.github.chrimle.o2jrm.test.interfaces;
 
-public interface TestInterfaceTwo {}
+public interface TestInterfaceOne {}

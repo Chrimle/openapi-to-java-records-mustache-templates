@@ -16,12 +16,12 @@
 package io.github.chrimle.o2jrm.models;
 
 import io.github.chrimle.o2jrm.PluginExecution;
-import io.github.chrimle.o2jrm.interfaces.TestInterfaceOne;
-import io.github.chrimle.o2jrm.interfaces.TestInterfaceTwo;
 import io.github.chrimle.o2jrm.test.annotations.TestExtraAnnotation;
 import io.github.chrimle.o2jrm.test.annotations.TestExtraAnnotationTwo;
 import io.github.chrimle.o2jrm.test.annotations.TestFieldExtraAnnotationOne;
 import io.github.chrimle.o2jrm.test.annotations.TestFieldExtraAnnotationTwo;
+import io.github.chrimle.o2jrm.test.interfaces.TestInterfaceOne;
+import io.github.chrimle.o2jrm.test.interfaces.TestInterfaceTwo;
 import java.lang.annotation.Annotation;
 import java.math.BigDecimal;
 import java.util.List;
