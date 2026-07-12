@@ -19,9 +19,9 @@ import com.fasterxml.jackson.annotation.JsonValue;
 /**
  * Example of an Enum with integer values
  */
-@io.github.chrimle.o2jrm.annotations.TestAnnotationOne
-@io.github.chrimle.o2jrm.annotations.TestAnnotationTwo
-@io.github.chrimle.o2jrm.annotations.TestAnnotationThree
+@io.github.chrimle.o2jrm.test.annotations.TestAnnotationOne
+@io.github.chrimle.o2jrm.test.annotations.TestAnnotationTwo
+@io.github.chrimle.o2jrm.test.annotations.TestAnnotationThree
 public enum ExampleEnumWithIntegerValues {
   NUMBER_100(100),
   NUMBER_200(200),

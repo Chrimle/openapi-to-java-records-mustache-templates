@@ -35,8 +35,8 @@ import javax.validation.Valid;
  *
  * @param field1 a boolean field
  */
-@io.github.chrimle.o2jrm.annotations.TestExtraAnnotation
-@io.github.chrimle.o2jrm.annotations.TestExtraAnnotationTwo
+@io.github.chrimle.o2jrm.test.annotations.TestExtraAnnotation
+@io.github.chrimle.o2jrm.test.annotations.TestExtraAnnotationTwo
 public record ExampleRecordWithTwoExtraAnnotations(Boolean field1) {
 
   @JsonCreator

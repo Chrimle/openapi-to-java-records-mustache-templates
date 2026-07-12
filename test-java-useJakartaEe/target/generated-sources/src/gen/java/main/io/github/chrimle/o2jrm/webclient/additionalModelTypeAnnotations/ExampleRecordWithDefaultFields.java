@@ -33,9 +33,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  *
  * @param field1 a String field with a default value
  */
-@io.github.chrimle.o2jrm.annotations.TestAnnotationOne
-@io.github.chrimle.o2jrm.annotations.TestAnnotationTwo
-@io.github.chrimle.o2jrm.annotations.TestAnnotationThree
+@io.github.chrimle.o2jrm.test.annotations.TestAnnotationOne
+@io.github.chrimle.o2jrm.test.annotations.TestAnnotationTwo
+@io.github.chrimle.o2jrm.test.annotations.TestAnnotationThree
 public record ExampleRecordWithDefaultFields(String field1) {
 
   @JsonCreator

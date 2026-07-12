@@ -71,9 +71,9 @@ public record RecordWithInnerEnums(
   /**
    * Example of an inner enum class
    */
-  @io.github.chrimle.o2jrm.annotations.TestAnnotationOne
-  @io.github.chrimle.o2jrm.annotations.TestAnnotationTwo
-  @io.github.chrimle.o2jrm.annotations.TestAnnotationThree
+  @io.github.chrimle.o2jrm.test.annotations.TestAnnotationOne
+  @io.github.chrimle.o2jrm.test.annotations.TestAnnotationTwo
+  @io.github.chrimle.o2jrm.test.annotations.TestAnnotationThree
   @JsonAdapter(ExampleInnerEnum.Adapter.class)
   public enum ExampleInnerEnum {
     /**
@@ -178,9 +178,9 @@ public record RecordWithInnerEnums(
   /**
    * Example of another inner enum class with integer values
    */
-  @io.github.chrimle.o2jrm.annotations.TestAnnotationOne
-  @io.github.chrimle.o2jrm.annotations.TestAnnotationTwo
-  @io.github.chrimle.o2jrm.annotations.TestAnnotationThree
+  @io.github.chrimle.o2jrm.test.annotations.TestAnnotationOne
+  @io.github.chrimle.o2jrm.test.annotations.TestAnnotationTwo
+  @io.github.chrimle.o2jrm.test.annotations.TestAnnotationThree
   @JsonAdapter(ExampleInnerTwoEnum.Adapter.class)
   public enum ExampleInnerTwoEnum {
     NUMBER_404(404),
@@ -275,9 +275,9 @@ public record RecordWithInnerEnums(
   /**
    * Example of another inner enum class with URI values
    */
-  @io.github.chrimle.o2jrm.annotations.TestAnnotationOne
-  @io.github.chrimle.o2jrm.annotations.TestAnnotationTwo
-  @io.github.chrimle.o2jrm.annotations.TestAnnotationThree
+  @io.github.chrimle.o2jrm.test.annotations.TestAnnotationOne
+  @io.github.chrimle.o2jrm.test.annotations.TestAnnotationTwo
+  @io.github.chrimle.o2jrm.test.annotations.TestAnnotationThree
   @JsonAdapter(ExampleInnerThreeEnum.Adapter.class)
   public enum ExampleInnerThreeEnum {
     HTTPS_GITHUB_COM_CHRIMLE_OPENAPI_TO_JAVA_RECORDS_MUSTACHE_TEMPLATES(URI.create("https://github.com/Chrimle/openapi-to-java-records-mustache-templates")),

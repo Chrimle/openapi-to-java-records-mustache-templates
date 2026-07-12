@@ -49,9 +49,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  * @param field7 ExampleRecord.
  * @param field8 ExampleEnum.
  */
-@io.github.chrimle.o2jrm.annotations.TestAnnotationOne
-@io.github.chrimle.o2jrm.annotations.TestAnnotationTwo
-@io.github.chrimle.o2jrm.annotations.TestAnnotationThree
+@io.github.chrimle.o2jrm.test.annotations.TestAnnotationOne
+@io.github.chrimle.o2jrm.test.annotations.TestAnnotationTwo
+@io.github.chrimle.o2jrm.test.annotations.TestAnnotationThree
 public record RecordWithRequiredFieldsOfEachType(
     Boolean field1,
     String field2,

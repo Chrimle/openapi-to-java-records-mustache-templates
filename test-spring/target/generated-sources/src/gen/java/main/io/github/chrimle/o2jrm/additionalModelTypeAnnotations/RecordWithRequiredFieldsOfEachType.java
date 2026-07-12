@@ -37,9 +37,9 @@ import jakarta.annotation.Generated;
  * @param field7 ExampleRecord.
  * @param field8 ExampleEnum.
  */
-@io.github.chrimle.o2jrm.annotations.TestAnnotationOne
-@io.github.chrimle.o2jrm.annotations.TestAnnotationTwo
-@io.github.chrimle.o2jrm.annotations.TestAnnotationThree
+@io.github.chrimle.o2jrm.test.annotations.TestAnnotationOne
+@io.github.chrimle.o2jrm.test.annotations.TestAnnotationTwo
+@io.github.chrimle.o2jrm.test.annotations.TestAnnotationThree
 public record RecordWithRequiredFieldsOfEachType(
     @NotNull Boolean field1,
     @NotNull String field2,

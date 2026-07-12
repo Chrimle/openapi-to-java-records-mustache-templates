@@ -34,15 +34,15 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  * @param field1 a boolean field with an extra field annotation
  * @param field2 a boolean field with two extra field annotations
  */
-@io.github.chrimle.o2jrm.annotations.TestAnnotationOne
-@io.github.chrimle.o2jrm.annotations.TestAnnotationTwo
-@io.github.chrimle.o2jrm.annotations.TestAnnotationThree
-@io.github.chrimle.o2jrm.annotations.TestExtraAnnotation
+@io.github.chrimle.o2jrm.test.annotations.TestAnnotationOne
+@io.github.chrimle.o2jrm.test.annotations.TestAnnotationTwo
+@io.github.chrimle.o2jrm.test.annotations.TestAnnotationThree
+@io.github.chrimle.o2jrm.test.annotations.TestExtraAnnotation
 public record ExampleRecordWithOneExtraAnnotation(
-    @io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationOne
+    @io.github.chrimle.o2jrm.test.annotations.TestFieldExtraAnnotationOne
     Boolean field1,
-    @io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationOne
-@io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationTwo
+    @io.github.chrimle.o2jrm.test.annotations.TestFieldExtraAnnotationOne
+@io.github.chrimle.o2jrm.test.annotations.TestFieldExtraAnnotationTwo
     Boolean field2) {
 
   @JsonCreator

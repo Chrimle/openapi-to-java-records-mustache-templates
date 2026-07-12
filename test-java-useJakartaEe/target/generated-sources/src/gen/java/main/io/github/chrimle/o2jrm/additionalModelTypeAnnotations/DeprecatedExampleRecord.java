@@ -42,9 +42,9 @@ import java.util.Set;
  * @param field1 a boolean field
  */
 @Deprecated
-@io.github.chrimle.o2jrm.annotations.TestAnnotationOne
-@io.github.chrimle.o2jrm.annotations.TestAnnotationTwo
-@io.github.chrimle.o2jrm.annotations.TestAnnotationThree
+@io.github.chrimle.o2jrm.test.annotations.TestAnnotationOne
+@io.github.chrimle.o2jrm.test.annotations.TestAnnotationTwo
+@io.github.chrimle.o2jrm.test.annotations.TestAnnotationThree
 public record DeprecatedExampleRecord(Boolean field1) {
 
   /** A set containing the names of all instance fields defined in this class. */
