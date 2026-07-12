@@ -14,9 +14,8 @@
  * limitations under the License.
  */
 
-package io.github.chrimle.o2jrm.tests;
+package io.github.chrimle.o2jrm.test.meta.filters;
 
-import io.github.chrimle.o2jrm.test.meta.filters.GeneratedSourceProvider;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.params.provider.Arguments;
