@@ -45,48 +45,45 @@ public abstract sealed class GeneratedSourceProvider implements ArgumentsProvide
             methodSourceMethodName,
             key -> invokeMethodSource(methodSourceClassName, methodSourceMethodName))
         .stream()
-        .filter(
-            generatedSource -> {
-              if (assumptionFilter == null) return true;
-              if (!(assumptionFilter.enumValueClass().equals(Object.class)
-                  || assumptionFilter.enumValueClass().equals(generatedSource.enumValueClass())))
-                return false;
-              if (!assumptionFilter
-                  .hasAdditionalEnumTypeAnnotations()
-                  .test(generatedSource.hasAdditionalEnumTypeAnnotations())) return false;
-              if (!assumptionFilter
-                  .hasAdditionalModelTypeAnnotations()
-                  .test(generatedSource.hasAdditionalModelTypeAnnotations())) return false;
-              if (!assumptionFilter
-                  .hasRequiredGeneratedFields()
-                  .test(generatedSource.hasRequiredGeneratedFields())) return false;
-              if (!assumptionFilter
-                  .hasExtraAnnotations()
-                  .test(generatedSource.hasExtraAnnotations())) return false;
-              if (!assumptionFilter.hasXImplements().test(generatedSource.hasXImplements()))
-                return false;
-              if (!assumptionFilter.isDeprecated().test(generatedSource.isDeprecated()))
-                return false;
-              if (!assumptionFilter.isInnerEnum().test(generatedSource.isInnerEnum())) return false;
-              if (assumptionFilter.enabledConfigOptions().length > 0
-                  && !Arrays.stream(assumptionFilter.enabledConfigOptions())
-                      .allMatch(
-                          configOption ->
-                              generatedSource.getEnabledConfigOptions().contains(configOption)))
-                return false;
-              if (assumptionFilter.disabledConfigOptions().length > 0
-                  && Arrays.stream(assumptionFilter.disabledConfigOptions())
-                      .anyMatch(
-                          configOption ->
-                              generatedSource.getEnabledConfigOptions().contains(configOption)))
-                return false;
-              if (assumptionFilter.isOneOfLibraries().length > 0
-                  && !Arrays.stream(assumptionFilter.isOneOfLibraries())
-                      .toList()
-                      .contains(generatedSource.getLibrary())) return false;
-              return true;
-            })
+        .filter(generatedSource -> matchesFilter(generatedSource, assumptionFilter))
         .map(Arguments::of);
+  }
+
+  private static boolean matchesFilter(
+      final GeneratedSource generatedSource, final AssumptionFilter assumptionFilter) {
+    if (assumptionFilter == null) return true;
+    if (!(assumptionFilter.enumValueClass().equals(Object.class)
+        || assumptionFilter.enumValueClass().equals(generatedSource.enumValueClass())))
+      return false;
+    if (!assumptionFilter
+        .hasAdditionalEnumTypeAnnotations()
+        .test(generatedSource.hasAdditionalEnumTypeAnnotations())) return false;
+    if (!assumptionFilter
+        .hasAdditionalModelTypeAnnotations()
+        .test(generatedSource.hasAdditionalModelTypeAnnotations())) return false;
+    if (!assumptionFilter
+        .hasRequiredGeneratedFields()
+        .test(generatedSource.hasRequiredGeneratedFields())) return false;
+    if (!assumptionFilter.hasExtraAnnotations().test(generatedSource.hasExtraAnnotations()))
+      return false;
+    if (!assumptionFilter.hasXImplements().test(generatedSource.hasXImplements())) return false;
+    if (!assumptionFilter.isDeprecated().test(generatedSource.isDeprecated())) return false;
+    if (!assumptionFilter.isInnerEnum().test(generatedSource.isInnerEnum())) return false;
+    if (assumptionFilter.enabledConfigOptions().length > 0
+        && !Arrays.stream(assumptionFilter.enabledConfigOptions())
+            .allMatch(
+                configOption -> generatedSource.getEnabledConfigOptions().contains(configOption)))
+      return false;
+    if (assumptionFilter.disabledConfigOptions().length > 0
+        && Arrays.stream(assumptionFilter.disabledConfigOptions())
+            .anyMatch(
+                configOption -> generatedSource.getEnabledConfigOptions().contains(configOption)))
+      return false;
+    if (assumptionFilter.isOneOfLibraries().length > 0
+        && !Arrays.stream(assumptionFilter.isOneOfLibraries())
+            .toList()
+            .contains(generatedSource.getLibrary())) return false;
+    return true;
   }
 
   @SuppressWarnings("unchecked")
