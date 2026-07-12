@@ -36,9 +36,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  * @param exampleInnerTwo Example of another inner enum class with integer values
  * @param exampleInnerThree Example of another inner enum class with URI values
  */
-@io.github.chrimle.o2jrm.annotations.TestAnnotationOne
-@io.github.chrimle.o2jrm.annotations.TestAnnotationTwo
-@io.github.chrimle.o2jrm.annotations.TestAnnotationThree
+@io.github.chrimle.o2jrm.test.annotations.TestAnnotationOne
+@io.github.chrimle.o2jrm.test.annotations.TestAnnotationTwo
+@io.github.chrimle.o2jrm.test.annotations.TestAnnotationThree
 public record RecordWithInnerEnums(
     ExampleInnerEnum exampleInner,
     ExampleInnerTwoEnum exampleInnerTwo,

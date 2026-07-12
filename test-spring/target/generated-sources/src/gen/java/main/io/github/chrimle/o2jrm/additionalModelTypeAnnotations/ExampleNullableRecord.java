@@ -20,9 +20,9 @@ import jakarta.annotation.Generated;
  *
  * @param field1 a boolean field
  */
-@io.github.chrimle.o2jrm.annotations.TestAnnotationOne
-@io.github.chrimle.o2jrm.annotations.TestAnnotationTwo
-@io.github.chrimle.o2jrm.annotations.TestAnnotationThree
+@io.github.chrimle.o2jrm.test.annotations.TestAnnotationOne
+@io.github.chrimle.o2jrm.test.annotations.TestAnnotationTwo
+@io.github.chrimle.o2jrm.test.annotations.TestAnnotationThree
 public record ExampleNullableRecord(Boolean field1) {
 
   @JsonCreator

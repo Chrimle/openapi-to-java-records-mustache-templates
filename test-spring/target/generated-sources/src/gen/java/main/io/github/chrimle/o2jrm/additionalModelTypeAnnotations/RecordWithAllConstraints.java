@@ -49,9 +49,9 @@ import jakarta.annotation.Generated;
  * @param bigDecimalMaximum BigDecimal.
  * @param bigDecimalMinimumAndMaximum BigDecimal.
  */
-@io.github.chrimle.o2jrm.annotations.TestAnnotationOne
-@io.github.chrimle.o2jrm.annotations.TestAnnotationTwo
-@io.github.chrimle.o2jrm.annotations.TestAnnotationThree
+@io.github.chrimle.o2jrm.test.annotations.TestAnnotationOne
+@io.github.chrimle.o2jrm.test.annotations.TestAnnotationTwo
+@io.github.chrimle.o2jrm.test.annotations.TestAnnotationThree
 public record RecordWithAllConstraints(
     String stringStandard,
     String stringDefault,

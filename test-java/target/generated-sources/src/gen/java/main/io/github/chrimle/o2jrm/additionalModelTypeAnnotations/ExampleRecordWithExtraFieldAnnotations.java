@@ -46,26 +46,26 @@ import java.util.Set;
  * @param twoAnnotationsAsList Setting TWO annotations, using list.
  * @param twoAnnotationsAsArray Setting TWO annotations, using array.
  */
-@io.github.chrimle.o2jrm.annotations.TestAnnotationOne
-@io.github.chrimle.o2jrm.annotations.TestAnnotationTwo
-@io.github.chrimle.o2jrm.annotations.TestAnnotationThree
+@io.github.chrimle.o2jrm.test.annotations.TestAnnotationOne
+@io.github.chrimle.o2jrm.test.annotations.TestAnnotationTwo
+@io.github.chrimle.o2jrm.test.annotations.TestAnnotationThree
 public record ExampleRecordWithExtraFieldAnnotations(
-    @io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationOne
+    @io.github.chrimle.o2jrm.test.annotations.TestFieldExtraAnnotationOne
     Boolean oneAnnotationAsInline,
-    @io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationOne
+    @io.github.chrimle.o2jrm.test.annotations.TestFieldExtraAnnotationOne
     Boolean oneAnnotationAsNewLine,
-    @io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationOne
+    @io.github.chrimle.o2jrm.test.annotations.TestFieldExtraAnnotationOne
     Boolean oneAnnotationAsList,
-    @io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationOne
+    @io.github.chrimle.o2jrm.test.annotations.TestFieldExtraAnnotationOne
     Boolean oneAnnotationAsArray,
-    @io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationOne
-@io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationTwo
+    @io.github.chrimle.o2jrm.test.annotations.TestFieldExtraAnnotationOne
+@io.github.chrimle.o2jrm.test.annotations.TestFieldExtraAnnotationTwo
     Boolean twoAnnotationsAsNewLine,
-    @io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationOne
-    @io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationTwo
+    @io.github.chrimle.o2jrm.test.annotations.TestFieldExtraAnnotationOne
+    @io.github.chrimle.o2jrm.test.annotations.TestFieldExtraAnnotationTwo
     Boolean twoAnnotationsAsList,
-    @io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationOne
-    @io.github.chrimle.o2jrm.annotations.TestFieldExtraAnnotationTwo
+    @io.github.chrimle.o2jrm.test.annotations.TestFieldExtraAnnotationOne
+    @io.github.chrimle.o2jrm.test.annotations.TestFieldExtraAnnotationTwo
     Boolean twoAnnotationsAsArray) {
 
   /** A set containing the names of all instance fields defined in this class. */
