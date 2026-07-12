@@ -17,6 +17,7 @@
 package io.github.chrimle.o2jrm.test.meta.filters;
 
 import io.github.chrimle.o2jrm.test.meta.models.GeneratedSource;
+import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
@@ -31,35 +32,17 @@ public abstract sealed class GeneratedSourceProvider implements ArgumentsProvide
   private static final ConcurrentHashMap<ArgumentSource, List<GeneratedSource>>
       ARGUMENTS_PER_METHOD = new ConcurrentHashMap<>();
 
-  private static final ConcurrentHashMap<CacheKey, List<Arguments>> FILTERED_SOURCES_CACHE =
-      new ConcurrentHashMap<>();
-
-  private record CacheKey(ArgumentSource argumentSource, AssumptionFilter filter) {}
-
   protected Stream<Arguments> applyFilters(
       final ArgumentSource argumentSource, final ExtensionContext context) {
 
     final var assumptionFilter =
         context.getRequiredTestMethod().getAnnotation(AssumptionFilter.class);
 
-    final var cacheKey = new CacheKey(argumentSource, assumptionFilter);
-
-    return FILTERED_SOURCES_CACHE
-        .computeIfAbsent(
-            cacheKey,
-            key -> {
-              final Stream<GeneratedSource> rawSources =
-                  ARGUMENTS_PER_METHOD
-                      .computeIfAbsent(argumentSource, k -> invokeMethodSource(argumentSource))
-                      .stream();
-
-              return (assumptionFilter == null
-                      ? rawSources
-                      : rawSources.filter(source -> matchesFilter(source, assumptionFilter)))
-                  .map(Arguments::of)
-                  .toList();
-            })
-        .stream();
+    return ARGUMENTS_PER_METHOD
+        .computeIfAbsent(argumentSource, key -> invokeMethodSource(argumentSource))
+        .stream()
+        .filter(generatedSource -> matchesFilter(generatedSource, assumptionFilter))
+        .map(Arguments::of);
   }
 
   private static boolean matchesFilter(
