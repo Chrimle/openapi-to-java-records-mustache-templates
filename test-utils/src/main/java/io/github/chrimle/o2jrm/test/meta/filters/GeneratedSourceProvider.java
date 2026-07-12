@@ -14,9 +14,8 @@
  * limitations under the License.
  */
 
-package io.github.chrimle.o2jrm.tests;
+package io.github.chrimle.o2jrm.test.meta.filters;
 
-import io.github.chrimle.o2jrm.test.meta.filters.AssumptionFilter;
 import io.github.chrimle.o2jrm.test.meta.models.GeneratedSource;
 import java.lang.reflect.Method;
 import java.util.Arrays;
@@ -27,13 +26,12 @@ import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.ArgumentsProvider;
 
-public abstract sealed class GeneratedSourceProvider implements ArgumentsProvider
-    permits GeneratedEnumProvider, GeneratedRecordProvider {
+public abstract class GeneratedSourceProvider implements ArgumentsProvider {
 
   private static final ConcurrentHashMap<String, List<GeneratedSource>> ARGUMENTS_PER_METHOD =
       new ConcurrentHashMap<>();
 
-  Stream<Arguments> applyFilters(
+  protected Stream<Arguments> applyFilters(
       final String methodSourceClassName,
       final String methodSourceMethodName,
       final ExtensionContext context) {
@@ -91,7 +89,8 @@ public abstract sealed class GeneratedSourceProvider implements ArgumentsProvide
   }
 
   @SuppressWarnings("unchecked")
-  List<GeneratedSource> invokeMethodSource(final String className, final String methodName) {
+  private List<GeneratedSource> invokeMethodSource(
+      final String className, final String methodName) {
     try {
       Class<?> clazz = Class.forName(className);
       Method method = clazz.getDeclaredMethod(methodName);
