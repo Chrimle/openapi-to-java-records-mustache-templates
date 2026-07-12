@@ -29,21 +29,17 @@ import org.junit.jupiter.params.provider.ArgumentsProvider;
 public abstract sealed class GeneratedSourceProvider implements ArgumentsProvider
     permits GeneratedEnumProvider, GeneratedRecordProvider {
 
-  private static final ConcurrentHashMap<String, List<GeneratedSource>> ARGUMENTS_PER_METHOD =
-      new ConcurrentHashMap<>();
+  private static final ConcurrentHashMap<ArgumentSource, List<GeneratedSource>>
+      ARGUMENTS_PER_METHOD = new ConcurrentHashMap<>();
 
   protected Stream<Arguments> applyFilters(
-      final String methodSourceClassName,
-      final String methodSourceMethodName,
-      final ExtensionContext context) {
+      final ArgumentSource argumentSource, final ExtensionContext context) {
 
     final var assumptionFilter =
         context.getRequiredTestMethod().getAnnotation(AssumptionFilter.class);
 
     return ARGUMENTS_PER_METHOD
-        .computeIfAbsent(
-            methodSourceMethodName,
-            key -> invokeMethodSource(methodSourceClassName, methodSourceMethodName))
+        .computeIfAbsent(argumentSource, key -> invokeMethodSource(argumentSource))
         .stream()
         .filter(generatedSource -> matchesFilter(generatedSource, assumptionFilter))
         .map(Arguments::of);
@@ -87,11 +83,10 @@ public abstract sealed class GeneratedSourceProvider implements ArgumentsProvide
   }
 
   @SuppressWarnings("unchecked")
-  private List<GeneratedSource> invokeMethodSource(
-      final String className, final String methodName) {
+  private List<GeneratedSource> invokeMethodSource(final ArgumentSource argumentSource) {
     try {
-      Class<?> clazz = Class.forName(className);
-      Method method = clazz.getDeclaredMethod(methodName);
+      Class<?> clazz = Class.forName(argumentSource.className);
+      Method method = clazz.getDeclaredMethod(argumentSource.methodName);
       method.setAccessible(true);
 
       return (List<GeneratedSource>) method.invoke(null);
