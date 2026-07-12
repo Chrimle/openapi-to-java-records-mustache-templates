@@ -85,7 +85,8 @@ public enum PluginExecutionImpl implements PluginExecution {
       "webclient.enumDefaultCaseAndCaseInsensitive",
       Library.WEBCLIENT,
       ConfigOption.ENUM_UNKNOWN_DEFAULT_CASE,
-      ConfigOption.USE_ENUM_CASE_INSENSITIVE);
+      ConfigOption.USE_ENUM_CASE_INSENSITIVE),
+  WEBCLIENT_USE_JSPECIFY("webclient.useJspecify", Library.WEBCLIENT, ConfigOption.USE_JSPECIFY);
 
   private final String packageName;
   private final Library library;

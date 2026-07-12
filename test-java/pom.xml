@@ -67,6 +67,9 @@
         <!-- The Plugin Execution with enumUnknownDefaultCase=true && useEnumCaseInsensitive=true -->
         <execution.enumDefaultCaseAndCaseInsensitive>enumDefaultCaseAndCaseInsensitive</execution.enumDefaultCaseAndCaseInsensitive>
         <execution.webclient.enumDefaultCaseAndCaseInsensitive>webclient.enumDefaultCaseAndCaseInsensitive</execution.webclient.enumDefaultCaseAndCaseInsensitive>
+        <!-- The Plugin Execution with useJspecify=true -->
+        <execution.webclient.useJspecify>webclient.useJspecify</execution.webclient.useJspecify>
+
     </properties>
 
     <dependencies>
@@ -425,6 +428,19 @@
                             <configOptions>
                                 <enumUnknownDefaultCase>true</enumUnknownDefaultCase>
                                 <useEnumCaseInsensitive>true</useEnumCaseInsensitive>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>generate-${execution.webclient.useJspecify}</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <modelPackage>${modelPackage.default}.${execution.webclient.useJspecify}</modelPackage>
+                            <library>webclient</library>
+                            <configOptions>
+                                <useJspecify>true</useJspecify>
                             </configOptions>
                         </configuration>
                     </execution>
