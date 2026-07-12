@@ -16,7 +16,7 @@
 
 package io.github.chrimle.o2jrm.tests;
 
-import io.github.chrimle.o2jrm.GeneratedSource;
+import io.github.chrimle.o2jrm.test.meta.models.GeneratedSource;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.List;

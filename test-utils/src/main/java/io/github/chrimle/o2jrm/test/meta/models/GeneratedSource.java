@@ -13,13 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.github.chrimle.o2jrm;
+package io.github.chrimle.o2jrm.test.meta.models;
 
-import io.github.chrimle.o2jrm.configs.ConfigOption;
-import io.github.chrimle.o2jrm.configs.Library;
-import io.github.chrimle.o2jrm.models.BeanValidationAnnotation;
-import io.github.chrimle.o2jrm.models.GeneratedClass;
-import io.github.chrimle.o2jrm.models.GeneratedField;
+import io.github.chrimle.o2jrm.test.meta.configs.ConfigOption;
+import io.github.chrimle.o2jrm.test.meta.configs.Library;
+import io.github.chrimle.o2jrm.test.meta.configs.PluginExecution;
 import java.lang.annotation.Annotation;
 import java.util.Arrays;
 import java.util.Collection;

@@ -15,12 +15,12 @@
  */
 package io.github.chrimle.o2jrm.tests;
 
-import io.github.chrimle.o2jrm.GeneratedSource;
 import io.github.chrimle.o2jrm.PluginExecutionImpl;
-import io.github.chrimle.o2jrm.models.BeanValidationAnnotation;
-import io.github.chrimle.o2jrm.models.GeneratedClass;
 import io.github.chrimle.o2jrm.models.GeneratedClassImpl;
 import io.github.chrimle.o2jrm.models.GeneratedEnumImpl;
+import io.github.chrimle.o2jrm.test.meta.models.BeanValidationAnnotation;
+import io.github.chrimle.o2jrm.test.meta.models.GeneratedClass;
+import io.github.chrimle.o2jrm.test.meta.models.GeneratedSource;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;

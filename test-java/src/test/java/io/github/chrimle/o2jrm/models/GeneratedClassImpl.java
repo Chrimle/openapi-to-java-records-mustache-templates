@@ -15,7 +15,9 @@
  */
 package io.github.chrimle.o2jrm.models;
 
-import io.github.chrimle.o2jrm.PluginExecution;
+import io.github.chrimle.o2jrm.test.meta.configs.PluginExecution;
+import io.github.chrimle.o2jrm.test.meta.models.GeneratedClass;
+import io.github.chrimle.o2jrm.test.meta.models.GeneratedField;
 
 /**
  * Enum class listing all expected classes ({@code record}s and {@code enum}s) to be generated from

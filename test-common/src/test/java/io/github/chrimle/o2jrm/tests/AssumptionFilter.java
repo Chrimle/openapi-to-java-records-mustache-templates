@@ -16,16 +16,17 @@
 
 package io.github.chrimle.o2jrm.tests;
 
-import io.github.chrimle.o2jrm.configs.ConfigOption;
-import io.github.chrimle.o2jrm.configs.Library;
+import io.github.chrimle.o2jrm.test.meta.configs.ConfigOption;
+import io.github.chrimle.o2jrm.test.meta.configs.Library;
+import io.github.chrimle.o2jrm.test.meta.models.GeneratedSource;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Allows filtering {@link io.github.chrimle.o2jrm.GeneratedSource}s using {@link
- * org.junit.jupiter.api.Assumptions}, based on several criteria.
+ * Allows filtering {@link GeneratedSource}s using {@link org.junit.jupiter.api.Assumptions}, based
+ * on several criteria.
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)

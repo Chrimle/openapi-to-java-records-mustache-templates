@@ -13,13 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.github.chrimle.o2jrm.models;
+package io.github.chrimle.o2jrm.test.meta.models;
 
-import java.lang.annotation.Annotation;
-import java.util.List;
-
-/** Expected {@code enum} class to be generated from the OpenAPI spec. */
-public interface GeneratedEnum extends GeneratedClass {
+/** Expected {@code record} class to be generated from the OpenAPI spec. */
+public interface GeneratedRecord extends GeneratedClass {
 
   /**
    * {@inheritDoc}
@@ -28,7 +25,7 @@ public interface GeneratedEnum extends GeneratedClass {
    */
   @Override
   default boolean isEnum() {
-    return true;
+    return false;
   }
 
   /**
@@ -38,26 +35,6 @@ public interface GeneratedEnum extends GeneratedClass {
    */
   @Override
   default boolean isInnerEnum() {
-    return getSimpleClassName().contains("$");
-  }
-
-  /**
-   * {@inheritDoc}
-   *
-   * @return whether the class has extra annotations.
-   */
-  @Override
-  default boolean hasExtraAnnotations() {
     return false;
-  }
-
-  /**
-   * {@inheritDoc}
-   *
-   * @return the collection of annotations.
-   */
-  @Override
-  default List<Class<? extends Annotation>> getExtraAnnotations() {
-    return List.of();
   }
 }

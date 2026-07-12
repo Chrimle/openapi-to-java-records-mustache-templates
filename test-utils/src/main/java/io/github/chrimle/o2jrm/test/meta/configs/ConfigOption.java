@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.github.chrimle.o2jrm.configs;
+package io.github.chrimle.o2jrm.test.meta.configs;
 
 /** Represents a {@code <configOption>}-property in the Maven {@code <configuration>}. */
 public enum ConfigOption {

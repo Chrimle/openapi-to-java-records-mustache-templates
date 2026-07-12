@@ -17,6 +17,8 @@ package io.github.chrimle.o2jrm.models;
 
 import io.github.chrimle.o2jrm.test.interfaces.TestInterfaceOne;
 import io.github.chrimle.o2jrm.test.interfaces.TestInterfaceTwo;
+import io.github.chrimle.o2jrm.test.meta.models.GeneratedEnum;
+import io.github.chrimle.o2jrm.test.meta.models.GeneratedField;
 import java.net.URI;
 import java.util.List;
 

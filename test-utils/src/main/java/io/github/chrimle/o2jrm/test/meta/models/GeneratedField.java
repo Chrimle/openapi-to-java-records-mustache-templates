@@ -13,9 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.github.chrimle.o2jrm.models;
+package io.github.chrimle.o2jrm.test.meta.models;
 
-import io.github.chrimle.o2jrm.utils.CustomAssertions;
+import io.github.chrimle.o2jrm.test.utils.CustomAssertions;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationTargetException;
 import java.math.BigDecimal;
