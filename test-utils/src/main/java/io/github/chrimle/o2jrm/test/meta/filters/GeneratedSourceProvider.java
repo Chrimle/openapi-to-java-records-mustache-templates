@@ -17,7 +17,6 @@
 package io.github.chrimle.o2jrm.test.meta.filters;
 
 import io.github.chrimle.o2jrm.test.meta.models.GeneratedSource;
-import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
