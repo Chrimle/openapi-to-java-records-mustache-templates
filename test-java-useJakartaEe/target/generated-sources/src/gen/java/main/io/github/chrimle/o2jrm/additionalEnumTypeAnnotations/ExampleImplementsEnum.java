@@ -35,7 +35,7 @@ import java.io.IOException;
 @io.github.chrimle.o2jrm.test.annotations.TestAnnotationTwo
 @io.github.chrimle.o2jrm.test.annotations.TestAnnotationThree
 @JsonAdapter(ExampleImplementsEnum.Adapter.class)
-public enum ExampleImplementsEnum implements io.github.chrimle.o2jrm.interfaces.TestInterfaceOne {
+public enum ExampleImplementsEnum implements io.github.chrimle.o2jrm.test.interfaces.TestInterfaceOne {
   ENUM1("ENUM1"),
   ENUM2("ENUM2"),
   ENUM3("ENUM3");

@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 /**
  * Example of an Enum which implements two interfaces.
  */
-public enum ExampleTwoImplementsEnum implements io.github.chrimle.o2jrm.interfaces.TestInterfaceOne, io.github.chrimle.o2jrm.interfaces.TestInterfaceTwo {
+public enum ExampleTwoImplementsEnum implements io.github.chrimle.o2jrm.test.interfaces.TestInterfaceOne, io.github.chrimle.o2jrm.test.interfaces.TestInterfaceTwo {
   ENUM1("ENUM1"),
   ENUM2("ENUM2"),
   ENUM3("ENUM3");

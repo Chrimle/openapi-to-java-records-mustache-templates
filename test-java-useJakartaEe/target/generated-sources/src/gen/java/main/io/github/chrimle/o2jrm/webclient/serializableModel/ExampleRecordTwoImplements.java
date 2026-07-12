@@ -35,7 +35,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  * @param field1 a boolean field
  */
 public record ExampleRecordTwoImplements(Boolean field1)
-    implements io.github.chrimle.o2jrm.interfaces.TestInterfaceOne, io.github.chrimle.o2jrm.interfaces.TestInterfaceTwo, Serializable {
+    implements io.github.chrimle.o2jrm.test.interfaces.TestInterfaceOne, io.github.chrimle.o2jrm.test.interfaces.TestInterfaceTwo, Serializable {
 
   @JsonCreator
   public ExampleRecordTwoImplements(final Boolean field1) {

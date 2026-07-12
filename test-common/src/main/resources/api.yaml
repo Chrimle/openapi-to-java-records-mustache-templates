@@ -145,7 +145,7 @@ components:
           type: boolean
           description: a boolean field
       x-implements:
-        - io.github.chrimle.o2jrm.interfaces.TestInterfaceOne
+        - io.github.chrimle.o2jrm.test.interfaces.TestInterfaceOne
     ExampleRecordTwoImplements:
       type: object
       description: Example of an Record which implements two interfaces.
@@ -154,8 +154,8 @@ components:
           type: boolean
           description: a boolean field
       x-implements:
-        - io.github.chrimle.o2jrm.interfaces.TestInterfaceOne
-        - io.github.chrimle.o2jrm.interfaces.TestInterfaceTwo
+        - io.github.chrimle.o2jrm.test.interfaces.TestInterfaceOne
+        - io.github.chrimle.o2jrm.test.interfaces.TestInterfaceTwo
     ExampleRecord:
       type: object
       description: Example of a Record
@@ -263,7 +263,7 @@ components:
         - ENUM2
         - ENUM3
       x-implements:
-        - io.github.chrimle.o2jrm.interfaces.TestInterfaceOne
+        - io.github.chrimle.o2jrm.test.interfaces.TestInterfaceOne
     ExampleTwoImplementsEnum:
       type: string
       description: Example of an Enum which implements two interfaces.
@@ -272,8 +272,8 @@ components:
         - ENUM2
         - ENUM3
       x-implements:
-        - io.github.chrimle.o2jrm.interfaces.TestInterfaceOne
-        - io.github.chrimle.o2jrm.interfaces.TestInterfaceTwo
+        - io.github.chrimle.o2jrm.test.interfaces.TestInterfaceOne
+        - io.github.chrimle.o2jrm.test.interfaces.TestInterfaceTwo
     ExampleEnum:
       type: string
       description: Example of an Enum

@@ -24,7 +24,7 @@ import jakarta.annotation.Generated;
 @io.github.chrimle.o2jrm.test.annotations.TestAnnotationTwo
 @io.github.chrimle.o2jrm.test.annotations.TestAnnotationThree
 public record ExampleRecordTwoImplements(Boolean field1)
-    implements io.github.chrimle.o2jrm.interfaces.TestInterfaceOne, io.github.chrimle.o2jrm.interfaces.TestInterfaceTwo {
+    implements io.github.chrimle.o2jrm.test.interfaces.TestInterfaceOne, io.github.chrimle.o2jrm.test.interfaces.TestInterfaceTwo {
 
   @JsonCreator
   public ExampleRecordTwoImplements(final Boolean field1) {

@@ -42,7 +42,7 @@ import java.util.Set;
  * @param field1 a boolean field
  */
 public record ExampleRecordOneImplements(Boolean field1)
-    implements io.github.chrimle.o2jrm.interfaces.TestInterfaceOne, Serializable {
+    implements io.github.chrimle.o2jrm.test.interfaces.TestInterfaceOne, Serializable {
 
   /** A set containing the names of all instance fields defined in this class. */
   public static final HashSet<String> openapiFields =

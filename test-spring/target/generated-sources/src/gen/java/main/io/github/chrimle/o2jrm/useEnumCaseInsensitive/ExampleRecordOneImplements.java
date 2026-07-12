@@ -21,7 +21,7 @@ import jakarta.annotation.Generated;
  * @param field1 a boolean field
  */
 public record ExampleRecordOneImplements(Boolean field1)
-    implements io.github.chrimle.o2jrm.interfaces.TestInterfaceOne {
+    implements io.github.chrimle.o2jrm.test.interfaces.TestInterfaceOne {
 
   @JsonCreator
   public ExampleRecordOneImplements(final Boolean field1) {

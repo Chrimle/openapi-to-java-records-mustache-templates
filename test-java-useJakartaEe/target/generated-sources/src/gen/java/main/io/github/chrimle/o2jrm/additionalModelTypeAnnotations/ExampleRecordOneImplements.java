@@ -44,7 +44,7 @@ import java.util.Set;
 @io.github.chrimle.o2jrm.test.annotations.TestAnnotationTwo
 @io.github.chrimle.o2jrm.test.annotations.TestAnnotationThree
 public record ExampleRecordOneImplements(Boolean field1)
-    implements io.github.chrimle.o2jrm.interfaces.TestInterfaceOne {
+    implements io.github.chrimle.o2jrm.test.interfaces.TestInterfaceOne {
 
   /** A set containing the names of all instance fields defined in this class. */
   public static final HashSet<String> openapiFields =
