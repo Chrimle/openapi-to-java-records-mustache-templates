@@ -13,10 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.github.chrimle.o2jrm;
+package io.github.chrimle.o2jrm.test.meta.configs;
 
-import io.github.chrimle.o2jrm.configs.ConfigOption;
-import io.github.chrimle.o2jrm.configs.Library;
 import java.util.List;
 
 /**

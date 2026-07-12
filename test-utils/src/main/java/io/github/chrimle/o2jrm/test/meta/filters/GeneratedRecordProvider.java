@@ -14,16 +14,14 @@
  * limitations under the License.
  */
 
-package io.github.chrimle.o2jrm.tests;
+package io.github.chrimle.o2jrm.test.meta.filters;
 
 import java.util.stream.Stream;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.ArgumentsProvider;
 import org.junit.jupiter.params.support.ParameterDeclarations;
 
-public final class GeneratedRecordProvider extends GeneratedSourceProvider
-    implements ArgumentsProvider {
+public final class GeneratedRecordProvider extends GeneratedSourceProvider {
 
   public static final String GENERATED_RECORD_TESTS_METHOD_SOURCE_CLASS =
       "io.github.chrimle.o2jrm.tests.GeneratedRecordImplTests";

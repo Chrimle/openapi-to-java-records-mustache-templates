@@ -14,20 +14,16 @@
  * limitations under the License.
  */
 
-package io.github.chrimle.o2jrm.configs;
+package io.github.chrimle.o2jrm.test.meta.models;
 
-public enum Library {
-  OKHTTP_GSON("okhttp-gson"),
-  SPRING_BOOT("spring-boot"),
-  WEBCLIENT("webclient");
-
-  private final String id;
-
-  Library(final String id) {
-    this.id = id;
-  }
-
-  public String getId() {
-    return id;
-  }
+public enum BeanValidationAnnotation {
+  VALID,
+  NOT_NULL,
+  PATTERN,
+  SIZE,
+  MIN,
+  MAX,
+  DECIMAL_MIN,
+  DECIMAL_MAX,
+  EMAIL
 }

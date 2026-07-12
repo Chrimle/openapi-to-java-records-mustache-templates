@@ -13,11 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.github.chrimle.o2jrm.utils;
+package io.github.chrimle.o2jrm.test.utils;
 
-import io.github.chrimle.o2jrm.GeneratedSource;
-import io.github.chrimle.o2jrm.models.BeanValidationAnnotation;
-import io.github.chrimle.o2jrm.models.GeneratedField;
+import io.github.chrimle.o2jrm.test.meta.models.BeanValidationAnnotation;
+import io.github.chrimle.o2jrm.test.meta.models.GeneratedField;
+import io.github.chrimle.o2jrm.test.meta.models.GeneratedSource;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import org.junit.jupiter.api.Assertions;

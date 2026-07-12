@@ -14,16 +14,23 @@
  * limitations under the License.
  */
 
-package io.github.chrimle.o2jrm.models;
+package io.github.chrimle.o2jrm.test.meta.filters;
 
-public enum BeanValidationAnnotation {
-  VALID,
-  NOT_NULL,
-  PATTERN,
-  SIZE,
-  MIN,
-  MAX,
-  DECIMAL_MIN,
-  DECIMAL_MAX,
-  EMAIL
+import java.util.function.UnaryOperator;
+
+@SuppressWarnings("ImmutableEnumChecker")
+public enum Condition {
+  ANY(ignored -> true),
+  TRUE(bool -> bool),
+  FALSE(bool -> !bool);
+
+  private final UnaryOperator<Boolean> function;
+
+  Condition(UnaryOperator<Boolean> function) {
+    this.function = function;
+  }
+
+  public boolean test(final boolean bool) {
+    return function.apply(bool);
+  }
 }

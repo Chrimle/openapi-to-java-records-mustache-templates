@@ -15,8 +15,9 @@
  */
 package io.github.chrimle.o2jrm;
 
-import io.github.chrimle.o2jrm.configs.ConfigOption;
-import io.github.chrimle.o2jrm.configs.Library;
+import io.github.chrimle.o2jrm.test.meta.configs.ConfigOption;
+import io.github.chrimle.o2jrm.test.meta.configs.Library;
+import io.github.chrimle.o2jrm.test.meta.configs.PluginExecution;
 import java.util.List;
 
 /**

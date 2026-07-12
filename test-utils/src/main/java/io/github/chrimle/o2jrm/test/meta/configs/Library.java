@@ -13,28 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.github.chrimle.o2jrm.models;
 
-/** Expected {@code record} class to be generated from the OpenAPI spec. */
-public interface GeneratedRecord extends GeneratedClass {
+package io.github.chrimle.o2jrm.test.meta.configs;
 
-  /**
-   * {@inheritDoc}
-   *
-   * @return whether the class is an {@code enum} class.
-   */
-  @Override
-  default boolean isEnum() {
-    return false;
+public enum Library {
+  OKHTTP_GSON("okhttp-gson"),
+  SPRING_BOOT("spring-boot"),
+  WEBCLIENT("webclient");
+
+  private final String id;
+
+  Library(final String id) {
+    this.id = id;
   }
 
-  /**
-   * {@inheritDoc}
-   *
-   * @return whether the class is an <strong>inner</strong> {@code enum} class.
-   */
-  @Override
-  default boolean isInnerEnum() {
-    return false;
+  public String getId() {
+    return id;
   }
 }

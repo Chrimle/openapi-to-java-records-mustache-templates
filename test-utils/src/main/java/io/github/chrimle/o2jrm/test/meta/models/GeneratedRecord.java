@@ -13,24 +13,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package io.github.chrimle.o2jrm.test.meta.models;
 
-package io.github.chrimle.o2jrm.tests;
+/** Expected {@code record} class to be generated from the OpenAPI spec. */
+public interface GeneratedRecord extends GeneratedClass {
 
-import java.util.function.UnaryOperator;
-
-@SuppressWarnings("ImmutableEnumChecker")
-public enum Condition {
-  ANY(ignored -> true),
-  TRUE(bool -> bool),
-  FALSE(bool -> !bool);
-
-  private final UnaryOperator<Boolean> function;
-
-  Condition(UnaryOperator<Boolean> function) {
-    this.function = function;
+  /**
+   * {@inheritDoc}
+   *
+   * @return whether the class is an {@code enum} class.
+   */
+  @Override
+  default boolean isEnum() {
+    return false;
   }
 
-  public boolean test(final boolean bool) {
-    return function.apply(bool);
+  /**
+   * {@inheritDoc}
+   *
+   * @return whether the class is an <strong>inner</strong> {@code enum} class.
+   */
+  @Override
+  default boolean isInnerEnum() {
+    return false;
   }
 }
