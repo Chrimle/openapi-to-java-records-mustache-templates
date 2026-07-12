@@ -16,16 +16,19 @@
 
 package io.github.chrimle.o2jrm.test.meta.filters;
 
-import java.util.stream.Stream;
-import org.junit.jupiter.api.extension.ExtensionContext;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.support.ParameterDeclarations;
+public enum ArgumentSource {
+  ENUM(
+      "io.github.chrimle.o2jrm.tests.GeneratedEnumImplTests",
+      "allPluginExecutionsAndGeneratedEnumCombinations"),
+  RECORD(
+      "io.github.chrimle.o2jrm.tests.GeneratedRecordImplTests",
+      "allPluginExecutionsAndGeneratedRecordCombinations");
 
-public final class GeneratedRecordProvider extends GeneratedSourceProvider {
+  public final String className;
+  public final String methodName;
 
-  @Override
-  public Stream<? extends Arguments> provideArguments(
-      ParameterDeclarations parameters, ExtensionContext context) throws Exception {
-    return applyFilters(ArgumentSource.RECORD, context);
+  ArgumentSource(final String className, final String methodName) {
+    this.className = className;
+    this.methodName = methodName;
   }
 }

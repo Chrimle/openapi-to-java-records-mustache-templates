@@ -17,7 +17,6 @@
 package io.github.chrimle.o2jrm.test.meta.filters;
 
 import io.github.chrimle.o2jrm.test.meta.models.GeneratedSource;
-import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
@@ -29,72 +28,64 @@ import org.junit.jupiter.params.provider.ArgumentsProvider;
 public abstract sealed class GeneratedSourceProvider implements ArgumentsProvider
     permits GeneratedEnumProvider, GeneratedRecordProvider {
 
-  private static final ConcurrentHashMap<String, List<GeneratedSource>> ARGUMENTS_PER_METHOD =
-      new ConcurrentHashMap<>();
+  private static final ConcurrentHashMap<ArgumentSource, List<GeneratedSource>>
+      ARGUMENTS_PER_METHOD = new ConcurrentHashMap<>();
 
   protected Stream<Arguments> applyFilters(
-      final String methodSourceClassName,
-      final String methodSourceMethodName,
-      final ExtensionContext context) {
+      final ArgumentSource argumentSource, final ExtensionContext context) {
 
     final var assumptionFilter =
         context.getRequiredTestMethod().getAnnotation(AssumptionFilter.class);
 
     return ARGUMENTS_PER_METHOD
-        .computeIfAbsent(
-            methodSourceMethodName,
-            key -> invokeMethodSource(methodSourceClassName, methodSourceMethodName))
+        .computeIfAbsent(argumentSource, key -> invokeMethodSource(argumentSource))
         .stream()
-        .filter(
-            generatedSource -> {
-              if (assumptionFilter == null) return true;
-              if (!(assumptionFilter.enumValueClass().equals(Object.class)
-                  || assumptionFilter.enumValueClass().equals(generatedSource.enumValueClass())))
-                return false;
-              if (!assumptionFilter
-                  .hasAdditionalEnumTypeAnnotations()
-                  .test(generatedSource.hasAdditionalEnumTypeAnnotations())) return false;
-              if (!assumptionFilter
-                  .hasAdditionalModelTypeAnnotations()
-                  .test(generatedSource.hasAdditionalModelTypeAnnotations())) return false;
-              if (!assumptionFilter
-                  .hasRequiredGeneratedFields()
-                  .test(generatedSource.hasRequiredGeneratedFields())) return false;
-              if (!assumptionFilter
-                  .hasExtraAnnotations()
-                  .test(generatedSource.hasExtraAnnotations())) return false;
-              if (!assumptionFilter.hasXImplements().test(generatedSource.hasXImplements()))
-                return false;
-              if (!assumptionFilter.isDeprecated().test(generatedSource.isDeprecated()))
-                return false;
-              if (!assumptionFilter.isInnerEnum().test(generatedSource.isInnerEnum())) return false;
-              if (assumptionFilter.enabledConfigOptions().length > 0
-                  && !Arrays.stream(assumptionFilter.enabledConfigOptions())
-                      .allMatch(
-                          configOption ->
-                              generatedSource.getEnabledConfigOptions().contains(configOption)))
-                return false;
-              if (assumptionFilter.disabledConfigOptions().length > 0
-                  && Arrays.stream(assumptionFilter.disabledConfigOptions())
-                      .anyMatch(
-                          configOption ->
-                              generatedSource.getEnabledConfigOptions().contains(configOption)))
-                return false;
-              if (assumptionFilter.isOneOfLibraries().length > 0
-                  && !Arrays.stream(assumptionFilter.isOneOfLibraries())
-                      .toList()
-                      .contains(generatedSource.getLibrary())) return false;
-              return true;
-            })
+        .filter(generatedSource -> matchesFilter(generatedSource, assumptionFilter))
         .map(Arguments::of);
   }
 
+  private static boolean matchesFilter(
+      final GeneratedSource generatedSource, final AssumptionFilter assumptionFilter) {
+    if (assumptionFilter == null) return true;
+    if (!(assumptionFilter.enumValueClass().equals(Object.class)
+        || assumptionFilter.enumValueClass().equals(generatedSource.enumValueClass())))
+      return false;
+    if (!assumptionFilter
+        .hasAdditionalEnumTypeAnnotations()
+        .test(generatedSource.hasAdditionalEnumTypeAnnotations())) return false;
+    if (!assumptionFilter
+        .hasAdditionalModelTypeAnnotations()
+        .test(generatedSource.hasAdditionalModelTypeAnnotations())) return false;
+    if (!assumptionFilter
+        .hasRequiredGeneratedFields()
+        .test(generatedSource.hasRequiredGeneratedFields())) return false;
+    if (!assumptionFilter.hasExtraAnnotations().test(generatedSource.hasExtraAnnotations()))
+      return false;
+    if (!assumptionFilter.hasXImplements().test(generatedSource.hasXImplements())) return false;
+    if (!assumptionFilter.isDeprecated().test(generatedSource.isDeprecated())) return false;
+    if (!assumptionFilter.isInnerEnum().test(generatedSource.isInnerEnum())) return false;
+    if (assumptionFilter.enabledConfigOptions().length > 0
+        && !Arrays.stream(assumptionFilter.enabledConfigOptions())
+            .allMatch(
+                configOption -> generatedSource.getEnabledConfigOptions().contains(configOption)))
+      return false;
+    if (assumptionFilter.disabledConfigOptions().length > 0
+        && Arrays.stream(assumptionFilter.disabledConfigOptions())
+            .anyMatch(
+                configOption -> generatedSource.getEnabledConfigOptions().contains(configOption)))
+      return false;
+    if (assumptionFilter.isOneOfLibraries().length > 0
+        && !Arrays.stream(assumptionFilter.isOneOfLibraries())
+            .toList()
+            .contains(generatedSource.getLibrary())) return false;
+    return true;
+  }
+
   @SuppressWarnings("unchecked")
-  private List<GeneratedSource> invokeMethodSource(
-      final String className, final String methodName) {
+  private List<GeneratedSource> invokeMethodSource(final ArgumentSource argumentSource) {
     try {
-      Class<?> clazz = Class.forName(className);
-      Method method = clazz.getDeclaredMethod(methodName);
+      final var clazz = Class.forName(argumentSource.className);
+      final var method = clazz.getDeclaredMethod(argumentSource.methodName);
       method.setAccessible(true);
 
       return (List<GeneratedSource>) method.invoke(null);
