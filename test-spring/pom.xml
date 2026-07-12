@@ -218,7 +218,7 @@
                         <configuration>
                             <modelPackage>${modelPackage.default}.additionalEnumTypeAnnotations</modelPackage>
                             <configOptions>
-                                <additionalEnumTypeAnnotations>@io.github.chrimle.o2jrm.annotations.TestAnnotationOne;@io.github.chrimle.o2jrm.annotations.TestAnnotationTwo;@io.github.chrimle.o2jrm.annotations.TestAnnotationThree;</additionalEnumTypeAnnotations>
+                                <additionalEnumTypeAnnotations>@io.github.chrimle.o2jrm.test.annotations.TestAnnotationOne;@io.github.chrimle.o2jrm.test.annotations.TestAnnotationTwo;@io.github.chrimle.o2jrm.test.annotations.TestAnnotationThree;</additionalEnumTypeAnnotations>
                             </configOptions>
                         </configuration>
                     </execution>
@@ -231,9 +231,9 @@
                             <modelPackage>${modelPackage.default}.additionalModelTypeAnnotations</modelPackage>
                             <configOptions>
                                 <additionalModelTypeAnnotations>
-                                    @io.github.chrimle.o2jrm.annotations.TestAnnotationOne
-                                    @io.github.chrimle.o2jrm.annotations.TestAnnotationTwo
-                                    @io.github.chrimle.o2jrm.annotations.TestAnnotationThree
+                                    @io.github.chrimle.o2jrm.test.annotations.TestAnnotationOne
+                                    @io.github.chrimle.o2jrm.test.annotations.TestAnnotationTwo
+                                    @io.github.chrimle.o2jrm.test.annotations.TestAnnotationThree
                                 </additionalModelTypeAnnotations>
                             </configOptions>
                         </configuration>
