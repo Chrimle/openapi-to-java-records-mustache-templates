@@ -85,8 +85,8 @@ public abstract sealed class GeneratedSourceProvider implements ArgumentsProvide
   @SuppressWarnings("unchecked")
   private List<GeneratedSource> invokeMethodSource(final ArgumentSource argumentSource) {
     try {
-      Class<?> clazz = Class.forName(argumentSource.className);
-      Method method = clazz.getDeclaredMethod(argumentSource.methodName);
+      final var clazz = Class.forName(argumentSource.className);
+      final var method = clazz.getDeclaredMethod(argumentSource.methodName);
       method.setAccessible(true);
 
       return (List<GeneratedSource>) method.invoke(null);
