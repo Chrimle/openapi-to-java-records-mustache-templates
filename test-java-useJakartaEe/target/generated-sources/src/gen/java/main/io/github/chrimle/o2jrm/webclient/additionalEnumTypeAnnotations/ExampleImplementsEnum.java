@@ -18,9 +18,13 @@
 
 package io.github.chrimle.o2jrm.webclient.additionalEnumTypeAnnotations;
 
+import java.util.Objects;
+import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.github.chrimle.o2jrm.test.interfaces.TestInterfaceOne;
 
 /**
  * Example of an Enum which implements an interface.
@@ -28,7 +32,7 @@ import io.github.chrimle.o2jrm.test.interfaces.TestInterfaceOne;
 @io.github.chrimle.o2jrm.test.annotations.TestAnnotationOne
 @io.github.chrimle.o2jrm.test.annotations.TestAnnotationTwo
 @io.github.chrimle.o2jrm.test.annotations.TestAnnotationThree
-public enum ExampleImplementsEnum implements TestInterfaceOne {
+public enum ExampleImplementsEnum implements io.github.chrimle.o2jrm.test.interfaces.TestInterfaceOne {
   ENUM1("ENUM1"),
   ENUM2("ENUM2"),
   ENUM3("ENUM3");

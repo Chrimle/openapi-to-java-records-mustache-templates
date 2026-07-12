@@ -18,7 +18,12 @@
 
 package io.github.chrimle.o2jrm.webclient.useBeanValidation;
 
-import io.github.chrimle.o2jrm.test.interfaces.TestInterfaceOne;
+import java.util.Objects;
+import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -26,7 +31,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 /**
  * Example of an Enum which implements an interface.
  */
-public enum ExampleImplementsEnum implements TestInterfaceOne {
+public enum ExampleImplementsEnum implements io.github.chrimle.o2jrm.test.interfaces.TestInterfaceOne {
   ENUM1("ENUM1"),
   ENUM2("ENUM2"),
   ENUM3("ENUM3");

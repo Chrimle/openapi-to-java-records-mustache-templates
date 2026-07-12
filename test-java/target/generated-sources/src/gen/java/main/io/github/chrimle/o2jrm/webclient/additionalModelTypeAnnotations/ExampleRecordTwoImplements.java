@@ -18,9 +18,15 @@
 
 package io.github.chrimle.o2jrm.webclient.additionalModelTypeAnnotations;
 
+import java.util.Objects;
+import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import io.github.chrimle.o2jrm.test.interfaces.TestInterfaceOne;
-import io.github.chrimle.o2jrm.test.interfaces.TestInterfaceTwo;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * Example of an Record which implements two interfaces.
@@ -31,7 +37,7 @@ import io.github.chrimle.o2jrm.test.interfaces.TestInterfaceTwo;
 @io.github.chrimle.o2jrm.test.annotations.TestAnnotationTwo
 @io.github.chrimle.o2jrm.test.annotations.TestAnnotationThree
 public record ExampleRecordTwoImplements(Boolean field1)
-    implements TestInterfaceOne, TestInterfaceTwo {
+    implements io.github.chrimle.o2jrm.test.interfaces.TestInterfaceOne, io.github.chrimle.o2jrm.test.interfaces.TestInterfaceTwo {
 
   @JsonCreator
   public ExampleRecordTwoImplements(final Boolean field1) {

@@ -1,9 +1,20 @@
 package io.github.chrimle.o2jrm.serializableModel;
 
+import java.net.URI;
+import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import io.github.chrimle.o2jrm.test.interfaces.TestInterfaceOne;
-
+import org.springframework.lang.Nullable;
+import org.openapitools.jackson.nullable.JsonNullable;
 import java.io.Serializable;
+import java.time.OffsetDateTime;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
+import io.swagger.v3.oas.annotations.media.Schema;
+
+
+import java.util.*;
+import jakarta.annotation.Generated;
 
 /**
  * Example of an Record which implements an interface.
@@ -11,7 +22,7 @@ import java.io.Serializable;
  * @param field1 a boolean field
  */
 public record ExampleRecordOneImplements(Boolean field1)
-    implements TestInterfaceOne, Serializable {
+    implements io.github.chrimle.o2jrm.test.interfaces.TestInterfaceOne, Serializable {
 
   @JsonCreator
   public ExampleRecordOneImplements(final Boolean field1) {

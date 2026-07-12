@@ -18,14 +18,18 @@
 
 package io.github.chrimle.o2jrm.webclient.enumDefaultCaseAndCaseInsensitive;
 
+import java.util.Objects;
+import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.github.chrimle.o2jrm.test.interfaces.TestInterfaceOne;
 
 /**
  * Example of an Enum which implements an interface.
  */
-public enum ExampleImplementsEnum implements TestInterfaceOne {
+public enum ExampleImplementsEnum implements io.github.chrimle.o2jrm.test.interfaces.TestInterfaceOne {
   ENUM1("ENUM1"),
   ENUM2("ENUM2"),
   ENUM3("ENUM3"),

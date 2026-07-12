@@ -1,10 +1,20 @@
 package io.github.chrimle.o2jrm.additionalEnumTypeAnnotations;
 
+import java.net.URI;
+import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.github.chrimle.o2jrm.test.interfaces.TestInterfaceOne;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.time.OffsetDateTime;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
+import io.swagger.v3.oas.annotations.media.Schema;
 
+
+import java.util.*;
+import jakarta.annotation.Generated;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
  * Example of an Enum which implements an interface.
@@ -12,7 +22,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 @io.github.chrimle.o2jrm.test.annotations.TestAnnotationOne
 @io.github.chrimle.o2jrm.test.annotations.TestAnnotationTwo
 @io.github.chrimle.o2jrm.test.annotations.TestAnnotationThree
-public enum ExampleImplementsEnum implements TestInterfaceOne {
+public enum ExampleImplementsEnum implements io.github.chrimle.o2jrm.test.interfaces.TestInterfaceOne {
   ENUM1("ENUM1"),
   ENUM2("ENUM2"),
   ENUM3("ENUM3");

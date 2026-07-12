@@ -18,12 +18,16 @@
 
 package io.github.chrimle.o2jrm.webclient.serializableModel;
 
+import java.util.Objects;
+import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.io.Serializable;
-
-import io.github.chrimle.o2jrm.test.interfaces.TestInterfaceOne;
-import io.github.chrimle.o2jrm.test.interfaces.TestInterfaceTwo;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * Example of an Record which implements two interfaces.
@@ -31,7 +35,7 @@ import io.github.chrimle.o2jrm.test.interfaces.TestInterfaceTwo;
  * @param field1 a boolean field
  */
 public record ExampleRecordTwoImplements(Boolean field1)
-    implements TestInterfaceOne, TestInterfaceTwo, Serializable {
+    implements io.github.chrimle.o2jrm.test.interfaces.TestInterfaceOne, io.github.chrimle.o2jrm.test.interfaces.TestInterfaceTwo, Serializable {
 
   @JsonCreator
   public ExampleRecordTwoImplements(final Boolean field1) {

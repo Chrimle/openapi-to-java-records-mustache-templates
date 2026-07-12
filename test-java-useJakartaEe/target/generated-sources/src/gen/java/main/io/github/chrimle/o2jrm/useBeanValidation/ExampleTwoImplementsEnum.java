@@ -18,8 +18,10 @@
 
 package io.github.chrimle.o2jrm.useBeanValidation;
 
-import io.github.chrimle.o2jrm.test.interfaces.TestInterfaceOne;
-import io.github.chrimle.o2jrm.test.interfaces.TestInterfaceTwo;
+import java.util.Objects;
+import com.google.gson.annotations.SerializedName;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
@@ -32,7 +34,7 @@ import java.io.IOException;
  * Example of an Enum which implements two interfaces.
  */
 @JsonAdapter(ExampleTwoImplementsEnum.Adapter.class)
-public enum ExampleTwoImplementsEnum implements TestInterfaceOne, TestInterfaceTwo {
+public enum ExampleTwoImplementsEnum implements io.github.chrimle.o2jrm.test.interfaces.TestInterfaceOne, io.github.chrimle.o2jrm.test.interfaces.TestInterfaceTwo {
   ENUM1("ENUM1"),
   ENUM2("ENUM2"),
   ENUM3("ENUM3");
