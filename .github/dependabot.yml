@@ -9,6 +9,8 @@ updates:
     directory: /
     schedule:
       interval: daily
+    assignees:
+      - "Chrimle"
     labels:
       - "dependencies"
 
@@ -16,6 +18,8 @@ updates:
     directory: /
     schedule:
       interval: daily
+    assignees:
+      - "Chrimle"
     labels:
       - "meta"
 
@@ -23,3 +27,5 @@ updates:
     directory: /docs
     schedule:
       interval: daily
+    assignees:
+      - "Chrimle"
