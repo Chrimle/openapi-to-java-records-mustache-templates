@@ -198,7 +198,7 @@
                 <!-- Needed when configOptions.useJakartaEe=false -->
                 <groupId>com.github.spotbugs</groupId>
                 <artifactId>spotbugs-annotations</artifactId>
-                <version>4.10.2</version>
+                <version>4.10.3</version>
             </dependency>
             <dependency>
                 <groupId>com.google.code.findbugs</groupId>
