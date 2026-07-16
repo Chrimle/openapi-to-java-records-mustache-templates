@@ -13,6 +13,15 @@
     <artifactId>openapi-to-java-records-mustache-templates-test</artifactId>
     <packaging>pom</packaging>
 
+    <!-- === Sub Modules === -->
+    <modules>
+        <module>test-common</module>
+        <module>test-java</module>
+        <module>test-java-useJakartaEe</module>
+        <module>test-spring</module>
+        <module>test-utils</module>
+    </modules>
+
     <!-- Project Information -->
     <name>OpenAPI to Java records :: Mustache Templates :: Test</name>
 

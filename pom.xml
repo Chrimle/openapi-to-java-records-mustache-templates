@@ -35,11 +35,6 @@
     <!-- === Sub Modules === -->
     <modules>
         <module>mustache-templates</module>
-        <module>test-common</module>
-        <module>test-java</module>
-        <module>test-java-useJakartaEe</module>
-        <module>test-spring</module>
-        <module>test-utils</module>
         <module>test</module>
     </modules>
 
