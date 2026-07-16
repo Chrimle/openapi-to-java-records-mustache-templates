@@ -65,6 +65,11 @@
         </jacoco.excludes>
         <!-- /Jacoco -->
 
+        <!-- JSpecify -->
+        <!-- Exclude /target/ from NullAway-checks -->
+        <nullAwayArg>-Xep:NullAway:ERROR -XepOpt:NullAway:AnnotatedPackages=io.github.chrimle -XepExcludedPaths:.*/target/.*</nullAwayArg>
+        <!-- / JSpecify -->
+
         <!-- Spotless -->
         <spotless.check.skip>false</spotless.check.skip> <!-- Unused imports causes build to fail -->
         <!-- /Spotless -->
