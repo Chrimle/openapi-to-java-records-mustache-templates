@@ -363,6 +363,14 @@
                             <goal>apply</goal>
                         </goals>
                         <phase>validate</phase>
+                        <configuration>
+                            <java>
+                                <includes combine.self="override">
+                                    <include>src/main/**/*.java</include>
+                                    <include>src/test/**/*.java</include>
+                                </includes>
+                            </java>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
