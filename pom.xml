@@ -35,7 +35,7 @@
     <!-- === Sub Modules === -->
     <modules>
         <module>mustache-templates</module>
-        <module>test-parent</module>
+        <module>test</module>
     </modules>
 
     <!-- Project Information -->
