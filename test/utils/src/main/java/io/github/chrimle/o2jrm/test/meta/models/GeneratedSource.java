@@ -19,10 +19,7 @@ import io.github.chrimle.o2jrm.test.meta.configs.ConfigOption;
 import io.github.chrimle.o2jrm.test.meta.configs.Library;
 import io.github.chrimle.o2jrm.test.meta.configs.PluginExecution;
 import java.lang.annotation.Annotation;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import org.jspecify.annotations.NullMarked;
 
 /**
@@ -159,5 +156,10 @@ public class GeneratedSource {
 
   public Map<BeanValidationAnnotation, Class<? extends Annotation>> getBeanValidationAnnotations() {
     return beanValidationAnnotations;
+  }
+
+  public Class<? extends Annotation> getBeanValidationAnnotation(
+      final BeanValidationAnnotation beanValidationAnnotation) {
+    return Objects.requireNonNull(beanValidationAnnotations.get(beanValidationAnnotation));
   }
 }

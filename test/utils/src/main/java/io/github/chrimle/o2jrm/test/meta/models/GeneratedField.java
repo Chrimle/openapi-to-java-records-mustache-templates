@@ -76,6 +76,11 @@ public record GeneratedField<T>(
     Optional<String> decimalMax,
     List<Class<? extends Annotation>> extraFieldAnnotations) {
 
+  @Override
+  public T enumValue() {
+    return Objects.requireNonNull(enumValue);
+  }
+
   /**
    * Whether this field is <i>expected</i> to be a {@link com.google.gson.JsonPrimitive}, based on
    * the {@link #type} of this field.
