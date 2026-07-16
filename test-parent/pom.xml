@@ -10,16 +10,16 @@
     </parent>
 
     <!-- === Project Coordinates === -->
-    <artifactId>openapi-to-java-records-mustache-templates-test</artifactId>
+    <artifactId>openapi-to-java-records-mustache-templates-test-parent</artifactId>
     <packaging>pom</packaging>
 
     <!-- === Sub Modules === -->
     <modules>
-        <module>test-common</module>
-        <module>test-java</module>
-        <module>test-java-useJakartaEe</module>
-        <module>test-spring</module>
-        <module>test-utils</module>
+        <module>common</module>
+        <module>java</module>
+        <module>java-useJakartaEe</module>
+        <module>spring</module>
+        <module>utils</module>
     </modules>
 
     <!-- Project Information -->

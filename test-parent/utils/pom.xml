@@ -26,34 +26,22 @@
     </parent>
 
     <!-- Project Information -->
-    <name>OpenAPI to Java records :: Mustache Templates :: Test Common</name>
-    <artifactId>openapi-to-java-records-mustache-templates-test-common</artifactId>
+    <name>OpenAPI to Java records :: Mustache Templates :: Test :: Utils</name>
+    <artifactId>openapi-to-java-records-mustache-templates-test-utils</artifactId>
     <!-- / Project Information -->
 
     <dependencies>
-        <!-- Sub Modules -->
-        <dependency>
-            <groupId>io.github.chrimle</groupId>
-            <artifactId>openapi-to-java-records-mustache-templates-test-utils</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <!-- / Sub Modules -->
-        <dependency>
-            <!-- Needed when library=webclient -->
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-annotations</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <!-- Needed when library=okhttp-gson -->
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-            <scope>test</scope>
-        </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
-            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-commons</artifactId>
         </dependency>
     </dependencies>
 
@@ -64,16 +52,6 @@
                 <configuration>
                     <skip>true</skip>
                 </configuration>
-            </plugin>
-            <plugin>
-                <artifactId>maven-jar-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>test-jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>
