@@ -23,6 +23,6 @@
     </modules>
 
     <!-- Project Information -->
-    <name>OpenAPI to Java records :: Mustache Templates :: Test</name>
+    <name>OpenAPI to Java records :: Mustache Templates :: Test :: Parent</name>
 
 </project>
