@@ -21,7 +21,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>io.github.chrimle</groupId>
-        <artifactId>openapi-to-java-records-mustache-templates-parent</artifactId>
+        <artifactId>openapi-to-java-records-mustache-templates-test-parent</artifactId>
         <version>3.10.0</version>
     </parent>
 
