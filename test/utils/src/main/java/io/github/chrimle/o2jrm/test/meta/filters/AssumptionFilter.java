@@ -23,6 +23,7 @@ import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
+import org.jspecify.annotations.NullMarked;
 
 /**
  * Allows filtering {@link GeneratedSource}s using {@link org.junit.jupiter.api.Assumptions}, based
@@ -30,6 +31,7 @@ import java.lang.annotation.Target;
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
+@NullMarked
 public @interface AssumptionFilter {
 
   /** The <em>Type</em> of the enum {@code value}. Must match exactly. Default allows all types. */

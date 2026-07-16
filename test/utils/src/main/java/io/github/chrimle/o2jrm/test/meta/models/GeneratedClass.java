@@ -18,8 +18,10 @@ package io.github.chrimle.o2jrm.test.meta.models;
 import io.github.chrimle.o2jrm.test.meta.configs.PluginExecution;
 import java.lang.annotation.Annotation;
 import java.util.List;
+import org.jspecify.annotations.NullMarked;
 
 /** Expected class ({@code record} or {@code enum}) to be generated from the OpenAPI spec. */
+@NullMarked
 public interface GeneratedClass {
 
   /** The default package name of all generated classes. */

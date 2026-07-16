@@ -15,7 +15,10 @@
  */
 package io.github.chrimle.o2jrm.test.meta.configs;
 
+import org.jspecify.annotations.NullMarked;
+
 /** Represents a {@code <configOption>}-property in the Maven {@code <configuration>}. */
+@NullMarked
 public enum ConfigOption {
   /**
    * {@code <additionalEnumTypeAnnotations>}

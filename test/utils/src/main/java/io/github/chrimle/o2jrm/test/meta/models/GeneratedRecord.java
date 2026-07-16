@@ -15,7 +15,10 @@
  */
 package io.github.chrimle.o2jrm.test.meta.models;
 
+import org.jspecify.annotations.NullMarked;
+
 /** Expected {@code record} class to be generated from the OpenAPI spec. */
+@NullMarked
 public interface GeneratedRecord extends GeneratedClass {
 
   /**

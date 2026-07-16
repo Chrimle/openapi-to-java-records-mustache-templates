@@ -17,8 +17,10 @@
 package io.github.chrimle.o2jrm.test.meta.filters;
 
 import java.util.function.UnaryOperator;
+import org.jspecify.annotations.NullMarked;
 
 @SuppressWarnings("ImmutableEnumChecker")
+@NullMarked
 public enum Condition {
   ANY(ignored -> true),
   TRUE(bool -> bool),

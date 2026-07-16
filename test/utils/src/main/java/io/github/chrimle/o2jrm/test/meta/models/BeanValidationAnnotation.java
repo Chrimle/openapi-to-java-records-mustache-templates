@@ -16,6 +16,9 @@
 
 package io.github.chrimle.o2jrm.test.meta.models;
 
+import org.jspecify.annotations.NullMarked;
+
+@NullMarked
 public enum BeanValidationAnnotation {
   VALID,
   NOT_NULL,

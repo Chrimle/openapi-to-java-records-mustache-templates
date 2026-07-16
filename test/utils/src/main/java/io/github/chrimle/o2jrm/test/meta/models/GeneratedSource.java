@@ -23,6 +23,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import org.jspecify.annotations.NullMarked;
 
 /**
  * Represents a generated <i>source</i>, which contains:
@@ -41,6 +42,7 @@ import java.util.Map;
  * <p>Essentially, this class contains all details in order to be able to assert generated classes,
  * with consideration for {@code <configuration>} properties
  */
+@NullMarked
 public class GeneratedSource {
 
   private final Class<?> classUnderTest;

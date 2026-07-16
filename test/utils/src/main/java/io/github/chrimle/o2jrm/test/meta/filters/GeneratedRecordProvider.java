@@ -17,10 +17,12 @@
 package io.github.chrimle.o2jrm.test.meta.filters;
 
 import java.util.stream.Stream;
+import org.jspecify.annotations.NullMarked;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.support.ParameterDeclarations;
 
+@NullMarked
 public final class GeneratedRecordProvider extends GeneratedSourceProvider {
 
   @Override

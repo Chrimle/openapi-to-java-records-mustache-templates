@@ -25,10 +25,13 @@ import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
+import org.jspecify.annotations.NullMarked;
+import org.jspecify.annotations.Nullable;
 import org.junit.jupiter.api.Assertions;
 
 /** Generalized Test-class for testing Generated Record-classes */
 @SuppressWarnings("java:S5960")
+@NullMarked
 public class GeneratedRecordTestUtils {
 
   private GeneratedRecordTestUtils() {}
@@ -107,7 +110,7 @@ public class GeneratedRecordTestUtils {
    * @return the default value
    * @param <T> type of the class
    */
-  private static <T> T getClassSpecificDefaultValue(final Class<? extends T> fieldClass) {
+  private static <T> @Nullable T getClassSpecificDefaultValue(final Class<? extends T> fieldClass) {
     if (Arrays.class.equals(fieldClass)) {
       return fieldClass.cast(Collections.emptyList());
     }
@@ -128,7 +131,7 @@ public class GeneratedRecordTestUtils {
    * @param <T> type of the class
    */
   @SuppressWarnings("BooleanLiteral")
-  private static <T> T getClassSpecificTestingValue(final Class<? extends T> fieldClass) {
+  private static <T> @Nullable T getClassSpecificTestingValue(final Class<? extends T> fieldClass) {
     if (Boolean.class.equals(fieldClass)) {
       return fieldClass.cast(Boolean.TRUE);
     }

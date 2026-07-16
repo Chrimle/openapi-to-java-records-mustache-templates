@@ -16,6 +16,9 @@
 
 package io.github.chrimle.o2jrm.test.meta.filters;
 
+import org.jspecify.annotations.NullMarked;
+
+@NullMarked
 public enum ArgumentSource {
   ENUM(
       "io.github.chrimle.o2jrm.tests.GeneratedEnumImplTests",

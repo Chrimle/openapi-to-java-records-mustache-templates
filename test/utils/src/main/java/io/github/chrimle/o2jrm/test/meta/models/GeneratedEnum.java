@@ -17,8 +17,10 @@ package io.github.chrimle.o2jrm.test.meta.models;
 
 import java.lang.annotation.Annotation;
 import java.util.List;
+import org.jspecify.annotations.NullMarked;
 
 /** Expected {@code enum} class to be generated from the OpenAPI spec. */
+@NullMarked
 public interface GeneratedEnum extends GeneratedClass {
 
   /**
