@@ -21,20 +21,20 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>io.github.chrimle</groupId>
-        <artifactId>openapi-to-java-records-mustache-templates-parent</artifactId>
+        <artifactId>openapi-to-java-records-mustache-templates-test-parent</artifactId>
         <version>3.10.0</version>
     </parent>
 
     <!-- Project Information -->
-    <name>OpenAPI to Java records :: Mustache Templates :: Test :: Java useJakartaEe</name>
-    <artifactId>openapi-to-java-records-mustache-templates-test-java-usejakartaee</artifactId>
-    <description>Test Module for Java Generators with useJakartaEe</description>
+    <name>OpenAPI to Java records :: Mustache Templates :: Test :: Java</name>
+    <artifactId>openapi-to-java-records-mustache-templates-test-java</artifactId>
+    <description>Test Module for Java Generators</description>
     <!-- / Project Information -->
 
     <properties>
         <!-- Overridden Dependencies -->
-        <hibernate-validator.version>8.0.2.Final</hibernate-validator.version>
-        <jakarta.validation-api.version>3.0.2</jakarta.validation-api.version>
+        <hibernate-validator.version>6.2.5.Final</hibernate-validator.version>
+        <jakarta.validation-api.version>2.0.2</jakarta.validation-api.version>
 
         <!-- Default `configuration`-option values -->
         <modelPackage.default>${project.groupId}.o2jrm</modelPackage.default>
@@ -97,6 +97,15 @@
         <dependency>
             <groupId>com.fasterxml.jackson.datatype</groupId>
             <artifactId>jackson-datatype-jsr310</artifactId>
+        </dependency>
+        <dependency>
+            <!-- Needed when configOptions.useJakartaEe=false -->
+            <groupId>com.github.spotbugs</groupId>
+            <artifactId>spotbugs-annotations</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>jsr305</artifactId>
         </dependency>
         <dependency>
             <!-- Needed when library=okhttp-gson -->
@@ -187,7 +196,6 @@
                     <generatorName>java</generatorName>
                     <configOptions>
                         <sourceFolder>src/gen/java/main</sourceFolder>
-                        <useJakartaEe>true</useJakartaEe>
                     </configOptions>
                 </configuration>
                 <executions>

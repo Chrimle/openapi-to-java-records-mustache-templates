@@ -132,7 +132,7 @@ jobs:
           
           if [[ $SPRING_INCOMPATIBLE_VERSIONS =~ "${{ matrix.openapi-generator-maven-plugin-version }}" ]]; then
             echo "Incompatible version detected. Skipping test-spring module."
-            SKIP_FLAG="-pl \"!test-spring\""
+            SKIP_FLAG="-pl -:openapi-to-java-records-mustache-templates-test-spring"
           fi
           
           mvn -B package $SKIP_FLAG --no-transfer-progress --file pom.xml -Dopenapi-generator-maven-plugin.version=${{ matrix.openapi-generator-maven-plugin-version }}
