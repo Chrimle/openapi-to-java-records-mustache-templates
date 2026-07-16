@@ -16,6 +16,8 @@
 package io.github.chrimle.o2jrm.test.utils;
 
 import java.util.function.Supplier;
+import org.jspecify.annotations.NullMarked;
+import org.jspecify.annotations.Nullable;
 import org.junit.jupiter.api.Assertions;
 
 /**
@@ -31,6 +33,7 @@ import org.junit.jupiter.api.Assertions;
  *     and should be as <i>generic</i> as possible.
  */
 @SuppressWarnings("java:S5960")
+@NullMarked
 public sealed class CustomUtilityAssertions permits CustomAssertions {
 
   protected CustomUtilityAssertions() {}
@@ -44,7 +47,8 @@ public sealed class CustomUtilityAssertions permits CustomAssertions {
    * @since 2.5.3
    */
   public static <T> void assertNull(
-      final Supplier<T> objectSupplier, final Supplier<String> messageSupplier) {
+      final Supplier<@Nullable T> objectSupplier,
+      final Supplier<@Nullable String> messageSupplier) {
     Assertions.assertNull(objectSupplier.get(), messageSupplier);
   }
 
@@ -57,7 +61,8 @@ public sealed class CustomUtilityAssertions permits CustomAssertions {
    * @return the {@code object} if it is not {@code null}.
    * @since 2.5.3
    */
-  public static <T> T assertNotNull(final T object, final Supplier<String> messageSupplier) {
+  public static <T> T assertNotNull(
+      final @Nullable T object, final Supplier<@Nullable String> messageSupplier) {
     Assertions.assertNotNull(object, messageSupplier);
     return object;
   }
@@ -72,7 +77,8 @@ public sealed class CustomUtilityAssertions permits CustomAssertions {
    * @since 2.5.3
    */
   public static <T> T assertNotNull(
-      final Supplier<T> objectSupplier, final Supplier<String> messageSupplier) {
+      final Supplier<@Nullable T> objectSupplier,
+      final Supplier<@Nullable String> messageSupplier) {
     return assertNotNull(objectSupplier.get(), messageSupplier);
   }
 
@@ -86,9 +92,9 @@ public sealed class CustomUtilityAssertions permits CustomAssertions {
    * @since 2.5.3
    */
   public static void assertEquals(
-      final Object expected,
-      final Supplier<?> actualSupplier,
-      final Supplier<String> messageSupplier) {
+      final @Nullable Object expected,
+      final Supplier<? extends @Nullable Object> actualSupplier,
+      final Supplier<@Nullable String> messageSupplier) {
     Assertions.assertEquals(expected, actualSupplier.get(), messageSupplier);
   }
 }

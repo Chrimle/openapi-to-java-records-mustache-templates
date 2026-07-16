@@ -16,6 +16,9 @@
 
 package io.github.chrimle.o2jrm.test.meta.configs;
 
+import org.jspecify.annotations.NullMarked;
+
+@NullMarked
 public enum Library {
   OKHTTP_GSON("okhttp-gson"),
   SPRING_BOOT("spring-boot"),

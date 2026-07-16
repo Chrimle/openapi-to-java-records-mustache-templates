@@ -21,10 +21,13 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Stream;
+import org.jspecify.annotations.NullMarked;
+import org.jspecify.annotations.Nullable;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.ArgumentsProvider;
 
+@NullMarked
 public abstract sealed class GeneratedSourceProvider implements ArgumentsProvider
     permits GeneratedEnumProvider, GeneratedRecordProvider {
 
@@ -45,7 +48,7 @@ public abstract sealed class GeneratedSourceProvider implements ArgumentsProvide
   }
 
   private static boolean matchesFilter(
-      final GeneratedSource generatedSource, final AssumptionFilter assumptionFilter) {
+      final GeneratedSource generatedSource, final @Nullable AssumptionFilter assumptionFilter) {
     if (assumptionFilter == null) return true;
     if (!(assumptionFilter.enumValueClass().equals(Object.class)
         || assumptionFilter.enumValueClass().equals(generatedSource.enumValueClass())))

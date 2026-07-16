@@ -21,6 +21,8 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Arrays;
+import org.jspecify.annotations.NullMarked;
+import org.jspecify.annotations.Nullable;
 import org.junit.jupiter.api.Assertions;
 
 /**
@@ -29,6 +31,7 @@ import org.junit.jupiter.api.Assertions;
  * @since 2.5.3
  */
 @SuppressWarnings("java:S5960")
+@NullMarked
 public final class CustomAssertions extends CustomUtilityAssertions {
 
   private CustomAssertions() {
@@ -283,7 +286,7 @@ public final class CustomAssertions extends CustomUtilityAssertions {
   public static void assertStaticMethodThrowsWhenInvoked(
       final Method method,
       final Class<? extends Throwable> expectedException,
-      final Object... methodArguments) {
+      final @Nullable Object... methodArguments) {
     Assertions.assertInstanceOf(
         expectedException,
         Assertions.assertThrows(
@@ -307,7 +310,7 @@ public final class CustomAssertions extends CustomUtilityAssertions {
    * @since 2.5.3
    */
   public static Object assertStaticMethodCanBeInvoked(
-      final Method method, final Object... methodArguments) {
+      final Method method, final @Nullable Object... methodArguments) {
     return Assertions.assertDoesNotThrow(
         () -> method.invoke(null, methodArguments),
         () -> method + " could NOT be invoked with " + Arrays.toString(methodArguments));
@@ -323,7 +326,7 @@ public final class CustomAssertions extends CustomUtilityAssertions {
    * @since 2.5.3
    */
   public static Object assertStaticMethodReturnsNonNull(
-      final Method method, final Object... methodArguments) {
+      final Method method, final @Nullable Object... methodArguments) {
     return assertNotNull(
         () -> assertStaticMethodCanBeInvoked(method, methodArguments),
         () -> method + " returned null when invoked with " + Arrays.toString(methodArguments));
@@ -339,7 +342,9 @@ public final class CustomAssertions extends CustomUtilityAssertions {
    * @since 2.5.3
    */
   public static void assertStaticMethodReturnsValue(
-      final Method method, final Object expectedValue, final Object... methodArguments) {
+      final Method method,
+      final @Nullable Object expectedValue,
+      final @Nullable Object... methodArguments) {
     assertEquals(
         expectedValue,
         () -> assertStaticMethodCanBeInvoked(method, methodArguments),
@@ -363,7 +368,7 @@ public final class CustomAssertions extends CustomUtilityAssertions {
    * @since 2.5.3
    */
   public static Object assertInstanceMethodCanBeInvoked(
-      final Method method, final Object object, final Object... methodArguments) {
+      final Method method, final Object object, final @Nullable Object... methodArguments) {
     return Assertions.assertDoesNotThrow(
         () -> method.invoke(object, methodArguments),
         () -> method + " could NOT be invoked with " + Arrays.toString(methodArguments));
@@ -383,7 +388,7 @@ public final class CustomAssertions extends CustomUtilityAssertions {
       final Method method,
       final Class<? extends Throwable> expectedException,
       final Object object,
-      final Object... methodArguments) {
+      final @Nullable Object... methodArguments) {
     Assertions.assertInstanceOf(
         expectedException,
         Assertions.assertThrows(
@@ -408,7 +413,7 @@ public final class CustomAssertions extends CustomUtilityAssertions {
    * @since 2.5.3
    */
   public static Object assertInstanceMethodReturnsNonNull(
-      final Method method, final Object object, final Object... methodArguments) {
+      final Method method, final Object object, final @Nullable Object... methodArguments) {
     return assertNotNull(
         () -> assertInstanceMethodCanBeInvoked(method, object, methodArguments),
         () -> method + " returned null when invoked with " + Arrays.toString(methodArguments));
@@ -423,7 +428,7 @@ public final class CustomAssertions extends CustomUtilityAssertions {
    * @param methodArguments to invoke the {@code method} with.
    */
   public static void assertInstanceMethodReturnsNull(
-      final Method method, final Object object, final Object... methodArguments) {
+      final Method method, final Object object, final @Nullable Object... methodArguments) {
     assertInstanceMethodReturnsValue(method, null, object, methodArguments);
   }
 
@@ -439,9 +444,9 @@ public final class CustomAssertions extends CustomUtilityAssertions {
    */
   public static void assertInstanceMethodReturnsValue(
       final Method method,
-      final Object expectedValue,
+      final @Nullable Object expectedValue,
       final Object object,
-      final Object... methodArguments) {
+      final @Nullable Object... methodArguments) {
     assertEquals(
         expectedValue,
         () -> assertInstanceMethodCanBeInvoked(method, object, methodArguments),
@@ -484,7 +489,7 @@ public final class CustomAssertions extends CustomUtilityAssertions {
    * @since 2.5.3
    */
   public static <T> T assertConstructorCanInstantiateObject(
-      final Constructor<T> constructor, final Object... methodArguments) {
+      final Constructor<T> constructor, final @Nullable Object... methodArguments) {
     return Assertions.assertDoesNotThrow(
         () -> constructor.newInstance(methodArguments),
         () -> constructor + " could NOT be instantiated with " + Arrays.toString(methodArguments));

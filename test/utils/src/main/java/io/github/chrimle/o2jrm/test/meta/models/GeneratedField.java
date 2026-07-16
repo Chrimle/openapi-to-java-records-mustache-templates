@@ -20,6 +20,8 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationTargetException;
 import java.math.BigDecimal;
 import java.util.*;
+import org.jspecify.annotations.NullMarked;
+import org.jspecify.annotations.Nullable;
 
 /**
  * Represents a generated field, along with additional properties which are expected to be true for
@@ -51,6 +53,7 @@ import java.util.*;
  * @param extraFieldAnnotations of the field. Set in the OpenAPI spec.
  * @see Builder for constructing this class with default values
  */
+@NullMarked
 public record GeneratedField<T>(
     String name,
     Class<T> type,
@@ -60,7 +63,7 @@ public record GeneratedField<T>(
     boolean isBeanValidationNullable,
     boolean isCustomClass,
     boolean isEmail,
-    T enumValue,
+    @Nullable T enumValue,
     Optional<T> defaultValue,
     Optional<String> pattern,
     Optional<Integer> minLength,
@@ -176,7 +179,7 @@ public record GeneratedField<T>(
     private boolean isBeanValidationNullable = true;
     private boolean isCustomClass = false;
     private boolean isEmail = false;
-    private T enumValue;
+    private @Nullable T enumValue;
     private Optional<T> defaultValue = Optional.empty();
     private Optional<String> pattern = Optional.empty();
     private Optional<Integer> minLength = Optional.empty();
@@ -190,7 +193,10 @@ public record GeneratedField<T>(
     private final List<Class<? extends Annotation>> extraFieldAnnotations = new ArrayList<>();
 
     public Builder(
-        final String name, final Class<T> type, final T enumValue, final Class<?> compositeType) {
+        final String name,
+        final Class<T> type,
+        final @Nullable T enumValue,
+        final @Nullable Class<?> compositeType) {
       this.name = name;
       this.type = type;
       this.compositeType = Optional.ofNullable(compositeType);
@@ -222,17 +228,17 @@ public record GeneratedField<T>(
       return this;
     }
 
-    public Builder<T> enumValue(final T enumValue) {
+    public Builder<T> enumValue(final @Nullable T enumValue) {
       this.enumValue = enumValue;
       return this;
     }
 
-    public Builder<T> defaultValue(final T defaultValue) {
+    public Builder<T> defaultValue(final @Nullable T defaultValue) {
       this.defaultValue = Optional.ofNullable(defaultValue);
       return this;
     }
 
-    public Builder<T> pattern(final String pattern) {
+    public Builder<T> pattern(final @Nullable String pattern) {
       this.pattern = Optional.ofNullable(pattern);
       return this;
     }
@@ -267,12 +273,12 @@ public record GeneratedField<T>(
       return this;
     }
 
-    public Builder<T> decimalMin(final String decimalMin) {
+    public Builder<T> decimalMin(final @Nullable String decimalMin) {
       this.decimalMin = Optional.ofNullable(decimalMin);
       return this;
     }
 
-    public Builder<T> decimalMax(final String decimalMax) {
+    public Builder<T> decimalMax(final @Nullable String decimalMax) {
       this.decimalMax = Optional.ofNullable(decimalMax);
       return this;
     }
@@ -285,7 +291,7 @@ public record GeneratedField<T>(
     }
 
     public GeneratedField<T> build() {
-      return new GeneratedField<>(
+      return new GeneratedField<T>(
           name,
           type,
           compositeType,

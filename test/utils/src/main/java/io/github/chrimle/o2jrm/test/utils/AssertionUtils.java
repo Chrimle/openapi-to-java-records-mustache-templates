@@ -20,9 +20,11 @@ import io.github.chrimle.o2jrm.test.meta.models.GeneratedField;
 import io.github.chrimle.o2jrm.test.meta.models.GeneratedSource;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
+import org.jspecify.annotations.NullMarked;
 import org.junit.jupiter.api.Assertions;
 
 @SuppressWarnings("java:S5960")
+@NullMarked
 public class AssertionUtils {
 
   private AssertionUtils() {}

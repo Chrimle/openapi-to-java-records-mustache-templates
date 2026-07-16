@@ -16,12 +16,14 @@
 package io.github.chrimle.o2jrm.test.meta.configs;
 
 import java.util.List;
+import org.jspecify.annotations.NullMarked;
 
 /**
  * Represents a {@code <pluginExecution>} present in the Maven {@code <build>} step. This is used to
  * assert {@code <configuration>} or {@code <configOption>}-specific properties or behaviours of
  * generated classes.
  */
+@NullMarked
 public interface PluginExecution {
 
   String getPackageName();
