@@ -83,11 +83,8 @@ public enum ExampleNullableEnum {
    *     #UNKNOWN_DEFAULT_OPEN_API } if no match is found.
    */
   public static ExampleNullableEnum fromValue(final String value) {
-    for (final ExampleNullableEnum constant : ExampleNullableEnum.values()) {
-      if (constant.getValue().equals(value)) {
-        return constant;
-      }
-    }
+    final var result = VALUES.get(value);
+    if (result != null) return result;
     return UNKNOWN_DEFAULT_OPEN_API;
   }
 

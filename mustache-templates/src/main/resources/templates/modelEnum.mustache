@@ -112,11 +112,8 @@ import java.io.IOException;
 {{#jackson}}  @JsonCreator
 {{/jackson}}
   public static {{classname}} fromValue(final {{{dataType}}} value) {
-    for (final {{classname}} constant : {{classname}}.values()) {
-      if (constant.getValue().equals{{#useEnumCaseInsensitive}}{{#isString}}IgnoreCase{{/isString}}{{/useEnumCaseInsensitive}}(value)) {
-        return constant;
-      }
-    }
+    final var result = VALUES.get(value);
+    if (result != null) return result;
     {{#enumUnknownDefaultCase}}{{#allowableValues}}{{#enumVars}}{{#-last}}return {{{name}}};{{/-last}}{{/enumVars}}{{/allowableValues}}{{/enumUnknownDefaultCase}}{{^enumUnknownDefaultCase}}throw new IllegalArgumentException("Unexpected value '" + value + "'");{{/enumUnknownDefaultCase}}
   }
 {{#gson}}

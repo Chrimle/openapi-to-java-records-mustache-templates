@@ -65,11 +65,8 @@ public enum ExampleEnumWithIntegerValues implements Serializable {
    */
   @JsonCreator
   public static ExampleEnumWithIntegerValues fromValue(final Integer value) {
-    for (final ExampleEnumWithIntegerValues constant : ExampleEnumWithIntegerValues.values()) {
-      if (constant.getValue().equals(value)) {
-        return constant;
-      }
-    }
+    final var result = VALUES.get(value);
+    if (result != null) return result;
     throw new IllegalArgumentException("Unexpected value '" + value + "'");
   }
 }

@@ -74,11 +74,8 @@ public enum ExampleUriEnum {
    */
   @JsonCreator
   public static ExampleUriEnum fromValue(final URI value) {
-    for (final ExampleUriEnum constant : ExampleUriEnum.values()) {
-      if (constant.getValue().equals(value)) {
-        return constant;
-      }
-    }
+    final var result = VALUES.get(value);
+    if (result != null) return result;
     return UNKNOWN_DEFAULT_OPEN_API;
   }
 }

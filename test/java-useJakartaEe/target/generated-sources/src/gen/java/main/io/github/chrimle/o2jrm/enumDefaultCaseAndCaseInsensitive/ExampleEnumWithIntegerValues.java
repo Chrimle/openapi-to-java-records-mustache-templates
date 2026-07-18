@@ -76,11 +76,8 @@ public enum ExampleEnumWithIntegerValues {
    *     #NUMBER_unknown_default_open_api } if no match is found.
    */
   public static ExampleEnumWithIntegerValues fromValue(final Integer value) {
-    for (final ExampleEnumWithIntegerValues constant : ExampleEnumWithIntegerValues.values()) {
-      if (constant.getValue().equals(value)) {
-        return constant;
-      }
-    }
+    final var result = VALUES.get(value);
+    if (result != null) return result;
     return NUMBER_unknown_default_open_api;
   }
 

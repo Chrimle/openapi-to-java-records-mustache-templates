@@ -64,11 +64,8 @@ public enum ExampleImplementsEnum implements io.github.chrimle.o2jrm.test.interf
    */
   @JsonCreator
   public static ExampleImplementsEnum fromValue(final String value) {
-    for (final ExampleImplementsEnum constant : ExampleImplementsEnum.values()) {
-      if (constant.getValue().equalsIgnoreCase(value)) {
-        return constant;
-      }
-    }
+    final var result = VALUES.get(value);
+    if (result != null) return result;
     return UNKNOWN_DEFAULT_OPEN_API;
   }
 }

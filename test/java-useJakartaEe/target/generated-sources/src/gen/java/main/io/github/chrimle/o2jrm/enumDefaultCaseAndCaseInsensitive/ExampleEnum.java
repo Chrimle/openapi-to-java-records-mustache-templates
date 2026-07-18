@@ -84,11 +84,8 @@ public enum ExampleEnum {
    *     #UNKNOWN_DEFAULT_OPEN_API } if no match is found.
    */
   public static ExampleEnum fromValue(final String value) {
-    for (final ExampleEnum constant : ExampleEnum.values()) {
-      if (constant.getValue().equalsIgnoreCase(value)) {
-        return constant;
-      }
-    }
+    final var result = VALUES.get(value);
+    if (result != null) return result;
     return UNKNOWN_DEFAULT_OPEN_API;
   }
 

@@ -77,11 +77,8 @@ public enum ExampleUriEnum {
    * @throws IllegalArgumentException if no enum has a value matching the given value.
    */
   public static ExampleUriEnum fromValue(final URI value) {
-    for (final ExampleUriEnum constant : ExampleUriEnum.values()) {
-      if (constant.getValue().equals(value)) {
-        return constant;
-      }
-    }
+    final var result = VALUES.get(value);
+    if (result != null) return result;
     throw new IllegalArgumentException("Unexpected value '" + value + "'");
   }
 

@@ -82,11 +82,8 @@ public enum ExampleEnum implements Serializable {
    */
   @JsonCreator
   public static ExampleEnum fromValue(final String value) {
-    for (final ExampleEnum constant : ExampleEnum.values()) {
-      if (constant.getValue().equals(value)) {
-        return constant;
-      }
-    }
+    final var result = VALUES.get(value);
+    if (result != null) return result;
     throw new IllegalArgumentException("Unexpected value '" + value + "'");
   }
 }

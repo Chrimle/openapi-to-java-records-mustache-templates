@@ -74,11 +74,8 @@ public enum ExampleImplementsEnum implements io.github.chrimle.o2jrm.test.interf
    * @throws IllegalArgumentException if no enum has a value matching the given value.
    */
   public static ExampleImplementsEnum fromValue(final String value) {
-    for (final ExampleImplementsEnum constant : ExampleImplementsEnum.values()) {
-      if (constant.getValue().equals(value)) {
-        return constant;
-      }
-    }
+    final var result = VALUES.get(value);
+    if (result != null) return result;
     throw new IllegalArgumentException("Unexpected value '" + value + "'");
   }
 

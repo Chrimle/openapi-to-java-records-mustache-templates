@@ -77,11 +77,8 @@ public enum DeprecatedExampleEnum implements Serializable {
    * @throws IllegalArgumentException if no enum has a value matching the given value.
    */
   public static DeprecatedExampleEnum fromValue(final String value) {
-    for (final DeprecatedExampleEnum constant : DeprecatedExampleEnum.values()) {
-      if (constant.getValue().equals(value)) {
-        return constant;
-      }
-    }
+    final var result = VALUES.get(value);
+    if (result != null) return result;
     throw new IllegalArgumentException("Unexpected value '" + value + "'");
   }
 

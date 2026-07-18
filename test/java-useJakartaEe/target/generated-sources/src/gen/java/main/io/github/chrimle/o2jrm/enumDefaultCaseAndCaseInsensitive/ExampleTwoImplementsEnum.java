@@ -75,11 +75,8 @@ public enum ExampleTwoImplementsEnum implements io.github.chrimle.o2jrm.test.int
    *     #UNKNOWN_DEFAULT_OPEN_API } if no match is found.
    */
   public static ExampleTwoImplementsEnum fromValue(final String value) {
-    for (final ExampleTwoImplementsEnum constant : ExampleTwoImplementsEnum.values()) {
-      if (constant.getValue().equalsIgnoreCase(value)) {
-        return constant;
-      }
-    }
+    final var result = VALUES.get(value);
+    if (result != null) return result;
     return UNKNOWN_DEFAULT_OPEN_API;
   }
 

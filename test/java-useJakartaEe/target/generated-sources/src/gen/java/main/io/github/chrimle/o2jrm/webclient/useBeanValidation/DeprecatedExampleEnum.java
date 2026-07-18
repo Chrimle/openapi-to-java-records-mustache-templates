@@ -77,11 +77,8 @@ public enum DeprecatedExampleEnum {
    */
   @JsonCreator
   public static DeprecatedExampleEnum fromValue(final String value) {
-    for (final DeprecatedExampleEnum constant : DeprecatedExampleEnum.values()) {
-      if (constant.getValue().equals(value)) {
-        return constant;
-      }
-    }
+    final var result = VALUES.get(value);
+    if (result != null) return result;
     throw new IllegalArgumentException("Unexpected value '" + value + "'");
   }
 }
