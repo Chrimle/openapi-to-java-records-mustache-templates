@@ -91,9 +91,7 @@ public record RecordWithInnerEnums(
 
       static {
         final var map = new java.util.TreeMap<String, ExampleInnerEnum>(java.util.Comparator.nullsFirst(String.CASE_INSENSITIVE_ORDER));
-        for (final var e : values()) {
-          map.putIfAbsent(e.getValue(), e);
-        }
+        for (final var e : values()) map.putIfAbsent(e.getValue(), e);
         VALUE_MAP = java.util.Collections.unmodifiableMap(map);
       }
 
@@ -194,9 +192,7 @@ public record RecordWithInnerEnums(
 
       static {
         final var map = new java.util.HashMap<Integer, ExampleInnerTwoEnum>();
-        for (final var e : values()) {
-          map.putIfAbsent(e.getValue(), e);
-        }
+        for (final var e : values()) map.putIfAbsent(e.getValue(), e);
         VALUE_MAP = java.util.Collections.unmodifiableMap(map);
       }
 
@@ -295,9 +291,7 @@ public record RecordWithInnerEnums(
 
       static {
         final var map = new java.util.HashMap<URI, ExampleInnerThreeEnum>();
-        for (final var e : values()) {
-          map.putIfAbsent(e.getValue(), e);
-        }
+        for (final var e : values()) map.putIfAbsent(e.getValue(), e);
         VALUE_MAP = java.util.Collections.unmodifiableMap(map);
       }
 

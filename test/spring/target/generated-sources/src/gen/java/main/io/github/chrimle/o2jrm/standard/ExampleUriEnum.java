@@ -29,9 +29,7 @@ public enum ExampleUriEnum {
 
   static {
     final var map = new java.util.HashMap<URI, ExampleUriEnum>();
-    for (final var e : values()) {
-      map.putIfAbsent(e.getValue(), e);
-    }
+    for (final var e : values()) map.putIfAbsent(e.getValue(), e);
     VALUE_MAP = java.util.Collections.unmodifiableMap(map);
   }
 

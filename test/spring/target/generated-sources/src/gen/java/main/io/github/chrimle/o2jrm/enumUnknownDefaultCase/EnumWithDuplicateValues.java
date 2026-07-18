@@ -28,9 +28,7 @@ public enum EnumWithDuplicateValues {
 
   static {
     final var map = new java.util.HashMap<String, EnumWithDuplicateValues>();
-    for (final var e : values()) {
-      map.putIfAbsent(e.getValue(), e);
-    }
+    for (final var e : values()) map.putIfAbsent(e.getValue(), e);
     VALUE_MAP = java.util.Collections.unmodifiableMap(map);
   }
 

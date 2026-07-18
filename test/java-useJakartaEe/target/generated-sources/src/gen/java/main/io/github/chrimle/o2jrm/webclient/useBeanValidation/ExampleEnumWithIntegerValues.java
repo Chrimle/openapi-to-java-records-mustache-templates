@@ -42,9 +42,7 @@ public enum ExampleEnumWithIntegerValues {
 
   static {
     final var map = new java.util.HashMap<Integer, ExampleEnumWithIntegerValues>();
-    for (final var e : values()) {
-      map.putIfAbsent(e.getValue(), e);
-    }
+    for (final var e : values()) map.putIfAbsent(e.getValue(), e);
     VALUE_MAP = java.util.Collections.unmodifiableMap(map);
   }
 

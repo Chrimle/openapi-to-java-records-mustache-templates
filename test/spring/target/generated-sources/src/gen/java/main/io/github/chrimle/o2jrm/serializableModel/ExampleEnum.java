@@ -38,9 +38,7 @@ public enum ExampleEnum implements Serializable {
 
   static {
     final var map = new java.util.HashMap<String, ExampleEnum>();
-    for (final var e : values()) {
-      map.putIfAbsent(e.getValue(), e);
-    }
+    for (final var e : values()) map.putIfAbsent(e.getValue(), e);
     VALUE_MAP = java.util.Collections.unmodifiableMap(map);
   }
 

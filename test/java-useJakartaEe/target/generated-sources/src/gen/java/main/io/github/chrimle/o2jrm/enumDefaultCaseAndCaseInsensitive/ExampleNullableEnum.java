@@ -51,9 +51,7 @@ public enum ExampleNullableEnum {
 
   static {
     final var map = new java.util.TreeMap<String, ExampleNullableEnum>(java.util.Comparator.nullsFirst(String.CASE_INSENSITIVE_ORDER));
-    for (final var e : values()) {
-      map.putIfAbsent(e.getValue(), e);
-    }
+    for (final var e : values()) map.putIfAbsent(e.getValue(), e);
     VALUE_MAP = java.util.Collections.unmodifiableMap(map);
   }
 

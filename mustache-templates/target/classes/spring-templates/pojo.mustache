@@ -124,9 +124,7 @@ import java.util.Set;
           }}{{^useEnumCaseInsensitive}}{{!
             }}new java.util.HashMap<{{{dataType}}}, {{datatypeWithEnum}}>();{{!
           }}{{/useEnumCaseInsensitive}}
-        for (final var e : values()) {
-          map.putIfAbsent(e.getValue(), e);
-        }
+        for (final var e : values()) map.putIfAbsent(e.getValue(), e);
         VALUE_MAP = java.util.Collections.unmodifiableMap(map);
       }
 
