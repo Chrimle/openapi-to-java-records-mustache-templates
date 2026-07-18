@@ -36,7 +36,9 @@ public enum ExampleEnum {
   private static final java.util.Map<String, ExampleEnum> VALUE_MAP;
 
   static {
-    final var map = new java.util.TreeMap<String, ExampleEnum>(java.util.Comparator.nullsFirst(String.CASE_INSENSITIVE_ORDER));
+    final var map =
+        new java.util.TreeMap<String, ExampleEnum>(
+            java.util.Comparator.nullsFirst(String.CASE_INSENSITIVE_ORDER));
     for (final var e : values()) map.putIfAbsent(e.getValue(), e);
     VALUE_MAP = java.util.Collections.unmodifiableMap(map);
   }

@@ -30,7 +30,9 @@ public enum DeprecatedExampleEnum {
   private static final java.util.Map<String, DeprecatedExampleEnum> VALUE_MAP;
 
   static {
-    final var map = new java.util.TreeMap<String, DeprecatedExampleEnum>(java.util.Comparator.nullsFirst(String.CASE_INSENSITIVE_ORDER));
+    final var map =
+        new java.util.TreeMap<String, DeprecatedExampleEnum>(
+            java.util.Comparator.nullsFirst(String.CASE_INSENSITIVE_ORDER));
     for (final var e : values()) map.putIfAbsent(e.getValue(), e);
     VALUE_MAP = java.util.Collections.unmodifiableMap(map);
   }

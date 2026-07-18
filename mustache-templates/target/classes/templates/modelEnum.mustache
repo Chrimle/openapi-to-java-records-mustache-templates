@@ -61,19 +61,19 @@ import java.io.IOException;
   private static final java.util.Map<{{{dataType}}}, {{classname}}> VALUE_MAP;
 
   static {
-    final var map = {{!
+    final var map ={{!
     }}{{#useEnumCaseInsensitive}}{{!
-      }}{{#isString}}{{!
-        }}new java.util.TreeMap<{{{dataType}}}, {{classname}}>(java.util.Comparator.nullsFirst(String.CASE_INSENSITIVE_ORDER));{{!
+      }}{{#isString}}
+        new java.util.TreeMap<{{{dataType}}}, {{classname}}>(
+            java.util.Comparator.nullsFirst(String.CASE_INSENSITIVE_ORDER));{{!
       }}{{/isString}}{{!
       }}{{^isString}}{{!
-        }}new java.util.HashMap<{{{dataType}}}, {{classname}}>();{{!
+        }} new java.util.HashMap<{{{dataType}}}, {{classname}}>();{{!
       }}{{/isString}}{{!
     }}{{/useEnumCaseInsensitive}}{{!
     }}{{^useEnumCaseInsensitive}}{{!
-      }}new java.util.HashMap<{{{dataType}}}, {{classname}}>();{{!
-    }}{{/useEnumCaseInsensitive}}{{!
-    }}
+      }} new java.util.HashMap<{{{dataType}}}, {{classname}}>();{{!
+    }}{{/useEnumCaseInsensitive}}
     for (final var e : values()) map.putIfAbsent(e.getValue(), e);
     VALUE_MAP = java.util.Collections.unmodifiableMap(map);
   }
