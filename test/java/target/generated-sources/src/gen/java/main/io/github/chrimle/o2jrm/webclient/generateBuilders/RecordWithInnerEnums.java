@@ -174,11 +174,8 @@ public record RecordWithInnerEnums(
      */
     @JsonCreator
     public static ExampleInnerEnum fromValue(final String value) {
-      for (final ExampleInnerEnum constant : ExampleInnerEnum.values()) {
-        if (constant.getValue().equals(value)) {
-          return constant;
-        }
-      }
+      final var result = VALUE_MAP.get(value);
+      if (result != null) return result;
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
   }
@@ -229,11 +226,8 @@ public record RecordWithInnerEnums(
      */
     @JsonCreator
     public static ExampleInnerTwoEnum fromValue(final Integer value) {
-      for (final ExampleInnerTwoEnum constant : ExampleInnerTwoEnum.values()) {
-        if (constant.getValue().equals(value)) {
-          return constant;
-        }
-      }
+      final var result = VALUE_MAP.get(value);
+      if (result != null) return result;
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
   }
@@ -284,11 +278,8 @@ public record RecordWithInnerEnums(
      */
     @JsonCreator
     public static ExampleInnerThreeEnum fromValue(final URI value) {
-      for (final ExampleInnerThreeEnum constant : ExampleInnerThreeEnum.values()) {
-        if (constant.getValue().equals(value)) {
-          return constant;
-        }
-      }
+      final var result = VALUE_MAP.get(value);
+      if (result != null) return result;
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
   }

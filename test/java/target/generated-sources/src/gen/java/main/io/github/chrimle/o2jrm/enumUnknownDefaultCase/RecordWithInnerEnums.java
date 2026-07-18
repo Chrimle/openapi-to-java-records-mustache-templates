@@ -124,11 +124,8 @@ public record RecordWithInnerEnums(
      *     {@link #UNKNOWN_DEFAULT_OPEN_API } if no match is found.
      */
     public static ExampleInnerEnum fromValue(final String value) {
-      for (final ExampleInnerEnum constant : ExampleInnerEnum.values()) {
-        if (constant.getValue().equals(value)) {
-          return constant;
-        }
-      }
+      final var result = VALUE_MAP.get(value);
+      if (result != null) return result;
       return UNKNOWN_DEFAULT_OPEN_API;
     }
 
@@ -229,11 +226,8 @@ public record RecordWithInnerEnums(
      *     {@link #NUMBER_unknown_default_open_api } if no match is found.
      */
     public static ExampleInnerTwoEnum fromValue(final Integer value) {
-      for (final ExampleInnerTwoEnum constant : ExampleInnerTwoEnum.values()) {
-        if (constant.getValue().equals(value)) {
-          return constant;
-        }
-      }
+      final var result = VALUE_MAP.get(value);
+      if (result != null) return result;
       return NUMBER_unknown_default_open_api;
     }
 
@@ -334,11 +328,8 @@ public record RecordWithInnerEnums(
      *     {@link #UNKNOWN_DEFAULT_OPEN_API } if no match is found.
      */
     public static ExampleInnerThreeEnum fromValue(final URI value) {
-      for (final ExampleInnerThreeEnum constant : ExampleInnerThreeEnum.values()) {
-        if (constant.getValue().equals(value)) {
-          return constant;
-        }
-      }
+      final var result = VALUE_MAP.get(value);
+      if (result != null) return result;
       return UNKNOWN_DEFAULT_OPEN_API;
     }
 

@@ -162,11 +162,8 @@ import java.util.Set;
 {{#jackson}}    @JsonCreator
 {{/jackson}}
     public static {{datatypeWithEnum}} fromValue(final {{{dataType}}} value) {
-      for (final {{datatypeWithEnum}} constant : {{datatypeWithEnum}}.values()) {
-        if (constant.getValue().equals{{#useEnumCaseInsensitive}}{{#isString}}{{^isUri}}IgnoreCase{{/isUri}}{{/isString}}{{/useEnumCaseInsensitive}}(value)) {
-          return constant;
-        }
-      }
+      final var result = VALUE_MAP.get(value);
+      if (result != null) return result;
       {{#enumUnknownDefaultCase}}{{#allowableValues}}{{#enumVars}}{{#-last}}return {{{name}}};{{/-last}}{{/enumVars}}{{/allowableValues}}{{/enumUnknownDefaultCase}}{{^enumUnknownDefaultCase}}throw new IllegalArgumentException("Unexpected value '" + value + "'");{{/enumUnknownDefaultCase}}
     }
 {{#gson}}
