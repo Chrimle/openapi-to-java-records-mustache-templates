@@ -29,10 +29,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.util.Collections;
-import java.util.Map;
-import java.util.HashMap;
-
 /**
  * Example of an Enum
  */
@@ -51,14 +47,14 @@ public enum ExampleEnum implements Serializable {
    */
   ENUM3("ENUM3");
 
-  private static final Map<String, ExampleEnum> VALUES;
+  private static final java.util.Map<String, ExampleEnum> VALUES;
 
   static {
-    final var map = new HashMap<String, ExampleEnum>();
+    final var map = new java.util.HashMap<String, ExampleEnum>();
     for (final var e : values()) {
       map.putIfAbsent(e.getValue(), e);
     }
-    VALUES = Collections.unmodifiableMap(map);
+    VALUES = java.util.Collections.unmodifiableMap(map);
   }
 
   private final String value;

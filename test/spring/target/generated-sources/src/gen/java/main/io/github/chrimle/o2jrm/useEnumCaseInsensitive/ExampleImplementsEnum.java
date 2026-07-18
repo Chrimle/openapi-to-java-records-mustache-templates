@@ -16,10 +16,6 @@ import jakarta.annotation.Generated;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
-import java.util.Collections;
-import java.util.Map;
-import java.util.TreeMap;
-
 /**
  * Example of an Enum which implements an interface.
  */
@@ -28,14 +24,14 @@ public enum ExampleImplementsEnum implements io.github.chrimle.o2jrm.test.interf
   ENUM2("ENUM2"),
   ENUM3("ENUM3");
 
-  private static final Map<String, ExampleImplementsEnum> VALUES;
+  private static final java.util.Map<String, ExampleImplementsEnum> VALUES;
 
   static {
-    final var map = new TreeMap<String, ExampleImplementsEnum>(String.CASE_INSENSITIVE_ORDER);
+    final var map = new java.util.TreeMap<String, ExampleImplementsEnum>(String.CASE_INSENSITIVE_ORDER);
     for (final var e : values()) {
       map.putIfAbsent(e.getValue(), e);
     }
-    VALUES = Collections.unmodifiableMap(map);
+    VALUES = java.util.Collections.unmodifiableMap(map);
   }
 
   private final String value;

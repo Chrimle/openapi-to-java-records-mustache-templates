@@ -41,22 +41,7 @@ import java.io.IOException;
 {{/gson}}{{!
 }}{{#isUri}}import java.net.URI;
 
-{{/isUri}}
-import java.util.Collections;
-import java.util.Map;
-{{#useEnumCaseInsensitive}}{{!
-  }}{{#isString}}{{!
-    }}import java.util.TreeMap;{{!
-  }}{{/isString}}{{!
-  }}{{^isString}}{{!
-    }}import java.util.HashMap;{{!
-  }}{{/isString}}{{!
-}}{{/useEnumCaseInsensitive}}{{!
-}}{{^useEnumCaseInsensitive}}{{!
-  }}import java.util.HashMap;{{!
-}}{{/useEnumCaseInsensitive}}
-
-{{>javadoc}}{{!
+{{/isUri}}{{>javadoc}}{{!
 }}{{#isDeprecated}}@Deprecated
 {{/isDeprecated}}{{!
 }}{{>additionalEnumTypeAnnotations}}{{!
@@ -73,26 +58,26 @@ import java.util.Map;
   {{/-last}}{{#-last}};{{/-last}}{{!
   }}{{/enumVars}}{{/allowableValues}}
 
-  private static final Map<{{{dataType}}}, {{classname}}> VALUES;
+  private static final java.util.Map<{{{dataType}}}, {{classname}}> VALUES;
 
   static {
     final var map = {{!
     }}{{#useEnumCaseInsensitive}}{{!
       }}{{#isString}}{{!
-        }}new TreeMap<{{{dataType}}}, {{classname}}>(String.CASE_INSENSITIVE_ORDER);{{!
+        }}new java.util.TreeMap<{{{dataType}}}, {{classname}}>(String.CASE_INSENSITIVE_ORDER);{{!
       }}{{/isString}}{{!
       }}{{^isString}}{{!
-        }}new HashMap<{{{dataType}}}, {{classname}}>();{{!
+        }}new java.util.HashMap<{{{dataType}}}, {{classname}}>();{{!
       }}{{/isString}}{{!
     }}{{/useEnumCaseInsensitive}}{{!
     }}{{^useEnumCaseInsensitive}}{{!
-      }}new HashMap<{{{dataType}}}, {{classname}}>();{{!
+      }}new java.util.HashMap<{{{dataType}}}, {{classname}}>();{{!
     }}{{/useEnumCaseInsensitive}}{{!
     }}
     for (final var e : values()) {
       map.putIfAbsent(e.getValue(), e);
     }
-    VALUES = Collections.unmodifiableMap(map);
+    VALUES = java.util.Collections.unmodifiableMap(map);
   }
 
   private final {{{dataType}}} value;

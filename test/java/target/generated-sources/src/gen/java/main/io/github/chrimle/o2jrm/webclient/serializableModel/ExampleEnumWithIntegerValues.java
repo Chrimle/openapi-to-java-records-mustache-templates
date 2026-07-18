@@ -27,10 +27,6 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
-import java.util.Collections;
-import java.util.Map;
-import java.util.HashMap;
-
 /**
  * Example of an Enum with integer values
  */
@@ -41,14 +37,14 @@ public enum ExampleEnumWithIntegerValues implements Serializable {
   NUMBER_400(400),
   NUMBER_500(500);
 
-  private static final Map<Integer, ExampleEnumWithIntegerValues> VALUES;
+  private static final java.util.Map<Integer, ExampleEnumWithIntegerValues> VALUES;
 
   static {
-    final var map = new HashMap<Integer, ExampleEnumWithIntegerValues>();
+    final var map = new java.util.HashMap<Integer, ExampleEnumWithIntegerValues>();
     for (final var e : values()) {
       map.putIfAbsent(e.getValue(), e);
     }
-    VALUES = Collections.unmodifiableMap(map);
+    VALUES = java.util.Collections.unmodifiableMap(map);
   }
 
   private final Integer value;

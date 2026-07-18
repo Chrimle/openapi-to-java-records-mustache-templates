@@ -27,10 +27,6 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
-import java.util.Collections;
-import java.util.Map;
-import java.util.HashMap;
-
 /**
  * Example of a deprecated Enum
  *
@@ -42,14 +38,14 @@ public enum DeprecatedExampleEnum implements Serializable {
   ENUM2("ENUM2"),
   ENUM3("ENUM3");
 
-  private static final Map<String, DeprecatedExampleEnum> VALUES;
+  private static final java.util.Map<String, DeprecatedExampleEnum> VALUES;
 
   static {
-    final var map = new HashMap<String, DeprecatedExampleEnum>();
+    final var map = new java.util.HashMap<String, DeprecatedExampleEnum>();
     for (final var e : values()) {
       map.putIfAbsent(e.getValue(), e);
     }
-    VALUES = Collections.unmodifiableMap(map);
+    VALUES = java.util.Collections.unmodifiableMap(map);
   }
 
   private final String value;
