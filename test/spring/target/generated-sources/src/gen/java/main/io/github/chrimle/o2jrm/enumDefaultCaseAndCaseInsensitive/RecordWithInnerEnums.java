@@ -57,13 +57,15 @@ public record RecordWithInnerEnums(
     ENUM3("ENUM3"),
     UNKNOWN_DEFAULT_OPEN_API("unknown_default_open_api");
 
-      private static final java.util.Map<String, ExampleInnerEnum> VALUE_MAP;
+    private static final java.util.Map<String, ExampleInnerEnum> VALUE_MAP;
 
-      static {
-        final var map = new java.util.TreeMap<String, ExampleInnerEnum>(java.util.Comparator.nullsFirst(String.CASE_INSENSITIVE_ORDER));
-        for (final var e : values()) map.putIfAbsent(e.getValue(), e);
-        VALUE_MAP = java.util.Collections.unmodifiableMap(map);
-      }
+    static {
+      final var map =
+          new java.util.TreeMap<String, ExampleInnerEnum>(
+              java.util.Comparator.nullsFirst(String.CASE_INSENSITIVE_ORDER));
+      for (final var e : values()) map.putIfAbsent(e.getValue(), e);
+      VALUE_MAP = java.util.Collections.unmodifiableMap(map);
+    }
 
     private final String value;
 
@@ -109,13 +111,13 @@ public record RecordWithInnerEnums(
     NUMBER_503(503),
     NUMBER_unknown_default_open_api(11184809);
 
-      private static final java.util.Map<Integer, ExampleInnerTwoEnum> VALUE_MAP;
+    private static final java.util.Map<Integer, ExampleInnerTwoEnum> VALUE_MAP;
 
-      static {
-        final var map = new java.util.HashMap<Integer, ExampleInnerTwoEnum>();
-        for (final var e : values()) map.putIfAbsent(e.getValue(), e);
-        VALUE_MAP = java.util.Collections.unmodifiableMap(map);
-      }
+    static {
+      final var map = new java.util.HashMap<Integer, ExampleInnerTwoEnum>();
+      for (final var e : values()) map.putIfAbsent(e.getValue(), e);
+      VALUE_MAP = java.util.Collections.unmodifiableMap(map);
+    }
 
     private final Integer value;
 
@@ -159,13 +161,13 @@ public record RecordWithInnerEnums(
     HTTPS_CHRIMLE_GITHUB_IO_OPENAPI_TO_JAVA_RECORDS_MUSTACHE_TEMPLATES_(URI.create("https://chrimle.github.io/openapi-to-java-records-mustache-templates/")),
     UNKNOWN_DEFAULT_OPEN_API(URI.create("11184809"));
 
-      private static final java.util.Map<URI, ExampleInnerThreeEnum> VALUE_MAP;
+    private static final java.util.Map<URI, ExampleInnerThreeEnum> VALUE_MAP;
 
-      static {
-        final var map = new java.util.HashMap<URI, ExampleInnerThreeEnum>();
-        for (final var e : values()) map.putIfAbsent(e.getValue(), e);
-        VALUE_MAP = java.util.Collections.unmodifiableMap(map);
-      }
+    static {
+      final var map = new java.util.HashMap<URI, ExampleInnerThreeEnum>();
+      for (final var e : values()) map.putIfAbsent(e.getValue(), e);
+      VALUE_MAP = java.util.Collections.unmodifiableMap(map);
+    }
 
     private final URI value;
 

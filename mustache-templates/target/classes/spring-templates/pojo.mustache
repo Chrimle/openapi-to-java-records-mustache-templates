@@ -104,29 +104,30 @@ import java.util.Set;
     {{/-last}}{{#-last}};{{/-last}}{{!
     }}{{/enumVars}}{{/allowableValues}}
 
-      private static final java.util.Map<{{{dataType}}}, {{datatypeWithEnum}}> VALUE_MAP;
+    private static final java.util.Map<{{{dataType}}}, {{datatypeWithEnum}}> VALUE_MAP;
 
-      static {
-        final var map = {{!
-          }}{{#useEnumCaseInsensitive}}{{!
-            }}{{#isString}}{{!
-              }}{{^isUri}}{{!
-                }}new java.util.TreeMap<{{{dataType}}}, {{datatypeWithEnum}}>(java.util.Comparator.nullsFirst(String.CASE_INSENSITIVE_ORDER));{{!
-              }}{{/isUri}}{{!
-              }}{{#isUri}}{{!
-                }}new java.util.HashMap<{{{dataType}}}, {{datatypeWithEnum}}>();{{!
-              }}{{/isUri}}{{!
-            }}{{/isString}}{{!
-            }}{{^isString}}{{!
-              }}new java.util.HashMap<{{{dataType}}}, {{datatypeWithEnum}}>();{{!
-            }}{{/isString}}{{!
-          }}{{/useEnumCaseInsensitive}}{{!
-          }}{{^useEnumCaseInsensitive}}{{!
-            }}new java.util.HashMap<{{{dataType}}}, {{datatypeWithEnum}}>();{{!
-          }}{{/useEnumCaseInsensitive}}
-        for (final var e : values()) map.putIfAbsent(e.getValue(), e);
-        VALUE_MAP = java.util.Collections.unmodifiableMap(map);
-      }
+    static {
+      final var map ={{!
+        }}{{#useEnumCaseInsensitive}}{{!
+          }}{{#isString}}{{!
+            }}{{^isUri}}
+          new java.util.TreeMap<{{{dataType}}}, {{datatypeWithEnum}}>(
+              java.util.Comparator.nullsFirst(String.CASE_INSENSITIVE_ORDER));{{!
+            }}{{/isUri}}{{!
+            }}{{#isUri}}{{!
+              }} new java.util.HashMap<{{{dataType}}}, {{datatypeWithEnum}}>();{{!
+            }}{{/isUri}}{{!
+          }}{{/isString}}{{!
+          }}{{^isString}}{{!
+            }} new java.util.HashMap<{{{dataType}}}, {{datatypeWithEnum}}>();{{!
+          }}{{/isString}}{{!
+        }}{{/useEnumCaseInsensitive}}{{!
+        }}{{^useEnumCaseInsensitive}}{{!
+          }} new java.util.HashMap<{{{dataType}}}, {{datatypeWithEnum}}>();{{!
+        }}{{/useEnumCaseInsensitive}}
+      for (final var e : values()) map.putIfAbsent(e.getValue(), e);
+      VALUE_MAP = java.util.Collections.unmodifiableMap(map);
+    }
 
     private final {{{dataType}}} value;
 
