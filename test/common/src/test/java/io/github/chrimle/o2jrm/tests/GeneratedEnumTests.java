@@ -53,6 +53,7 @@ import java.util.Arrays;
 import java.util.Locale;
 import java.util.Map;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Assumptions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.condition.DisabledIf;
@@ -827,6 +828,35 @@ public abstract class GeneratedEnumTests {
               final Object enumValue =
                   ((String) generatedField.enumValue()).toLowerCase(Locale.ROOT);
               CustomAssertions.assertStaticMethodReturnsNonNull(fromValueMethod, enumValue);
+            }
+          }
+
+          @ParameterizedTest
+          @ArgumentsSource(GeneratedEnumProvider.class)
+          @AssumptionFilter(
+              enabledConfigOptions = ConfigOption.USE_ENUM_CASE_INSENSITIVE,
+              enumValueClass = String.class)
+          @DisplayName(
+              "Generated `static fromValue(T)` method returns the FIRST matching `enum`-constant")
+          void
+              whenConfigOptionUseEnumCaseInsensitiveIsTrueThenFromValueMethodReturnsFirstMatchingEnumValue(
+                  final GeneratedSource generatedSource) {
+            Assumptions.assumeTrue(
+                generatedSource
+                    .getClassUnderTest()
+                    .getSimpleName()
+                    .equals("EnumWithDuplicateValues"));
+            final Method fromValueMethod =
+                CustomAssertions.assertClassHasMethod(
+                    generatedSource.getClassUnderTest(),
+                    "fromValue",
+                    generatedSource.fieldClasses()[0]);
+            final var firstEnumConstant = generatedSource.getClassUnderTest().getEnumConstants()[0];
+            for (final GeneratedField<?> generatedField : generatedSource.generatedFields()) {
+              final Object enumValue =
+                  ((String) generatedField.enumValue()).toLowerCase(Locale.ROOT);
+              CustomAssertions.assertStaticMethodReturnsValue(
+                  fromValueMethod, firstEnumConstant, enumValue);
             }
           }
         }
