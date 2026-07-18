@@ -37,7 +37,7 @@ public enum ExampleTwoImplementsEnum implements io.github.chrimle.o2jrm.test.int
   private static final java.util.Map<String, ExampleTwoImplementsEnum> VALUES;
 
   static {
-    final var map = new java.util.TreeMap<String, ExampleTwoImplementsEnum>(String.CASE_INSENSITIVE_ORDER);
+    final var map = new java.util.TreeMap<String, ExampleTwoImplementsEnum>(java.util.Comparator.nullsFirst(String.CASE_INSENSITIVE_ORDER));
     for (final var e : values()) {
       map.putIfAbsent(e.getValue(), e);
     }

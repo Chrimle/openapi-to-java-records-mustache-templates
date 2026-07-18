@@ -37,7 +37,7 @@ public enum ExampleNullableEnum {
   private static final java.util.Map<String, ExampleNullableEnum> VALUES;
 
   static {
-    final var map = new java.util.TreeMap<String, ExampleNullableEnum>(String.CASE_INSENSITIVE_ORDER);
+    final var map = new java.util.TreeMap<String, ExampleNullableEnum>(java.util.Comparator.nullsFirst(String.CASE_INSENSITIVE_ORDER));
     for (final var e : values()) {
       map.putIfAbsent(e.getValue(), e);
     }

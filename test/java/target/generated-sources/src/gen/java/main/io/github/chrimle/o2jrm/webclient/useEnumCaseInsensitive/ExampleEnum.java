@@ -46,7 +46,7 @@ public enum ExampleEnum {
   private static final java.util.Map<String, ExampleEnum> VALUES;
 
   static {
-    final var map = new java.util.TreeMap<String, ExampleEnum>(String.CASE_INSENSITIVE_ORDER);
+    final var map = new java.util.TreeMap<String, ExampleEnum>(java.util.Comparator.nullsFirst(String.CASE_INSENSITIVE_ORDER));
     for (final var e : values()) {
       map.putIfAbsent(e.getValue(), e);
     }

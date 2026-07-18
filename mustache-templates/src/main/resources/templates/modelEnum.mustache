@@ -64,7 +64,7 @@ import java.io.IOException;
     final var map = {{!
     }}{{#useEnumCaseInsensitive}}{{!
       }}{{#isString}}{{!
-        }}new java.util.TreeMap<{{{dataType}}}, {{classname}}>(String.CASE_INSENSITIVE_ORDER);{{!
+        }}new java.util.TreeMap<{{{dataType}}}, {{classname}}>(java.util.Comparator.nullsFirst(String.CASE_INSENSITIVE_ORDER));{{!
       }}{{/isString}}{{!
       }}{{^isString}}{{!
         }}new java.util.HashMap<{{{dataType}}}, {{classname}}>();{{!
