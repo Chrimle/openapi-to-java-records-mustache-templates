@@ -44,6 +44,14 @@ public enum ExampleNullableEnum {
   ENUM3("ENUM3"),
   UNKNOWN_DEFAULT_OPEN_API("unknown_default_open_api");
 
+  private static final java.util.Map<String, ExampleNullableEnum> VALUE_MAP;
+
+  static {
+    final var map = new java.util.HashMap<String, ExampleNullableEnum>();
+    for (final var e : values()) map.putIfAbsent(e.getValue(), e);
+    VALUE_MAP = java.util.Collections.unmodifiableMap(map);
+  }
+
   private final String value;
 
   ExampleNullableEnum(final String value) {
@@ -72,11 +80,8 @@ public enum ExampleNullableEnum {
    */
   @JsonCreator
   public static ExampleNullableEnum fromValue(final String value) {
-    for (final ExampleNullableEnum constant : ExampleNullableEnum.values()) {
-      if (constant.getValue().equals(value)) {
-        return constant;
-      }
-    }
+    final var result = VALUE_MAP.get(value);
+    if (result != null) return result;
     return UNKNOWN_DEFAULT_OPEN_API;
   }
 }

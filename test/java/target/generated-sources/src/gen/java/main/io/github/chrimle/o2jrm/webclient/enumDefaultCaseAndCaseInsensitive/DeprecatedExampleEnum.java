@@ -38,6 +38,16 @@ public enum DeprecatedExampleEnum {
   ENUM3("ENUM3"),
   UNKNOWN_DEFAULT_OPEN_API("unknown_default_open_api");
 
+  private static final java.util.Map<String, DeprecatedExampleEnum> VALUE_MAP;
+
+  static {
+    final var map =
+        new java.util.TreeMap<String, DeprecatedExampleEnum>(
+            java.util.Comparator.nullsFirst(String.CASE_INSENSITIVE_ORDER));
+    for (final var e : values()) map.putIfAbsent(e.getValue(), e);
+    VALUE_MAP = java.util.Collections.unmodifiableMap(map);
+  }
+
   private final String value;
 
   DeprecatedExampleEnum(final String value) {
@@ -67,11 +77,8 @@ public enum DeprecatedExampleEnum {
    */
   @JsonCreator
   public static DeprecatedExampleEnum fromValue(final String value) {
-    for (final DeprecatedExampleEnum constant : DeprecatedExampleEnum.values()) {
-      if (constant.getValue().equalsIgnoreCase(value)) {
-        return constant;
-      }
-    }
+    final var result = VALUE_MAP.get(value);
+    if (result != null) return result;
     return UNKNOWN_DEFAULT_OPEN_API;
   }
 }

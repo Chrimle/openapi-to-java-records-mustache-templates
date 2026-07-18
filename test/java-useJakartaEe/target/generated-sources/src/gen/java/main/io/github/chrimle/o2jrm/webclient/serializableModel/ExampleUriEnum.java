@@ -36,6 +36,14 @@ public enum ExampleUriEnum implements Serializable {
   HTTPS_GITHUB_COM_CHRIMLE_OPENAPI_TO_JAVA_RECORDS_MUSTACHE_TEMPLATES(URI.create("https://github.com/Chrimle/openapi-to-java-records-mustache-templates")),
   HTTPS_CHRIMLE_GITHUB_IO_OPENAPI_TO_JAVA_RECORDS_MUSTACHE_TEMPLATES_(URI.create("https://chrimle.github.io/openapi-to-java-records-mustache-templates/"));
 
+  private static final java.util.Map<URI, ExampleUriEnum> VALUE_MAP;
+
+  static {
+    final var map = new java.util.HashMap<URI, ExampleUriEnum>();
+    for (final var e : values()) map.putIfAbsent(e.getValue(), e);
+    VALUE_MAP = java.util.Collections.unmodifiableMap(map);
+  }
+
   private final URI value;
 
   ExampleUriEnum(final URI value) {
@@ -64,11 +72,8 @@ public enum ExampleUriEnum implements Serializable {
    */
   @JsonCreator
   public static ExampleUriEnum fromValue(final URI value) {
-    for (final ExampleUriEnum constant : ExampleUriEnum.values()) {
-      if (constant.getValue().equals(value)) {
-        return constant;
-      }
-    }
+    final var result = VALUE_MAP.get(value);
+    if (result != null) return result;
     throw new IllegalArgumentException("Unexpected value '" + value + "'");
   }
 }

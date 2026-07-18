@@ -37,6 +37,14 @@ public enum ExampleImplementsEnum implements io.github.chrimle.o2jrm.test.interf
   ENUM2("ENUM2"),
   ENUM3("ENUM3");
 
+  private static final java.util.Map<String, ExampleImplementsEnum> VALUE_MAP;
+
+  static {
+    final var map = new java.util.HashMap<String, ExampleImplementsEnum>();
+    for (final var e : values()) map.putIfAbsent(e.getValue(), e);
+    VALUE_MAP = java.util.Collections.unmodifiableMap(map);
+  }
+
   private final String value;
 
   ExampleImplementsEnum(final String value) {
@@ -65,11 +73,8 @@ public enum ExampleImplementsEnum implements io.github.chrimle.o2jrm.test.interf
    */
   @JsonCreator
   public static ExampleImplementsEnum fromValue(final String value) {
-    for (final ExampleImplementsEnum constant : ExampleImplementsEnum.values()) {
-      if (constant.getValue().equals(value)) {
-        return constant;
-      }
-    }
+    final var result = VALUE_MAP.get(value);
+    if (result != null) return result;
     throw new IllegalArgumentException("Unexpected value '" + value + "'");
   }
 }

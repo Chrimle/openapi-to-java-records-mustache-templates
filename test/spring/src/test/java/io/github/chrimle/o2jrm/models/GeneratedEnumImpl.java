@@ -110,7 +110,13 @@ public enum GeneratedEnumImpl implements GeneratedEnum, GeneratedClassImpl {
       List.of(TestInterfaceOne.class, TestInterfaceTwo.class),
       GeneratedField.of("ENUM1", String.class, "ENUM1").build(),
       GeneratedField.of("ENUM2", String.class, "ENUM2").build(),
-      GeneratedField.of("ENUM3", String.class, "ENUM3").build());
+      GeneratedField.of("ENUM3", String.class, "ENUM3").build()),
+  ENUM_WITH_DUPLICATE_VALUES(
+      "EnumWithDuplicateValues",
+      false,
+      List.of(),
+      GeneratedField.of("EXAMPLE", String.class, "EXAMPLE").build(),
+      GeneratedField.of("EXAMPLE2", String.class, "Example").build());
 
   private final String simpleClassName;
   private final boolean isDeprecated;

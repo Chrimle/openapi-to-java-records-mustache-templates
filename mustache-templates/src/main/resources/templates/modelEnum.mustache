@@ -58,6 +58,26 @@ import java.io.IOException;
   {{/-last}}{{#-last}};{{/-last}}{{!
   }}{{/enumVars}}{{/allowableValues}}
 
+  private static final java.util.Map<{{{dataType}}}, {{classname}}> VALUE_MAP;
+
+  static {
+    final var map ={{!
+    }}{{#useEnumCaseInsensitive}}{{!
+      }}{{#isString}}
+        new java.util.TreeMap<{{{dataType}}}, {{classname}}>(
+            java.util.Comparator.nullsFirst(String.CASE_INSENSITIVE_ORDER));{{!
+      }}{{/isString}}{{!
+      }}{{^isString}}{{!
+        }} new java.util.HashMap<{{{dataType}}}, {{classname}}>();{{!
+      }}{{/isString}}{{!
+    }}{{/useEnumCaseInsensitive}}{{!
+    }}{{^useEnumCaseInsensitive}}{{!
+      }} new java.util.HashMap<{{{dataType}}}, {{classname}}>();{{!
+    }}{{/useEnumCaseInsensitive}}
+    for (final var e : values()) map.putIfAbsent(e.getValue(), e);
+    VALUE_MAP = java.util.Collections.unmodifiableMap(map);
+  }
+
   private final {{{dataType}}} value;
 
   {{{datatypeWithEnum}}}{{^datatypeWithEnum}}{{{classname}}}{{/datatypeWithEnum}}(final {{{dataType}}} value) {
@@ -90,11 +110,8 @@ import java.io.IOException;
 {{#jackson}}  @JsonCreator
 {{/jackson}}
   public static {{classname}} fromValue(final {{{dataType}}} value) {
-    for (final {{classname}} constant : {{classname}}.values()) {
-      if (constant.getValue().equals{{#useEnumCaseInsensitive}}{{#isString}}IgnoreCase{{/isString}}{{/useEnumCaseInsensitive}}(value)) {
-        return constant;
-      }
-    }
+    final var result = VALUE_MAP.get(value);
+    if (result != null) return result;
     {{#enumUnknownDefaultCase}}{{#allowableValues}}{{#enumVars}}{{#-last}}return {{{name}}};{{/-last}}{{/enumVars}}{{/allowableValues}}{{/enumUnknownDefaultCase}}{{^enumUnknownDefaultCase}}throw new IllegalArgumentException("Unexpected value '" + value + "'");{{/enumUnknownDefaultCase}}
   }
 {{#gson}}

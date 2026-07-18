@@ -37,6 +37,16 @@ public enum ExampleTwoImplementsEnum implements io.github.chrimle.o2jrm.test.int
   ENUM2("ENUM2"),
   ENUM3("ENUM3");
 
+  private static final java.util.Map<String, ExampleTwoImplementsEnum> VALUE_MAP;
+
+  static {
+    final var map =
+        new java.util.TreeMap<String, ExampleTwoImplementsEnum>(
+            java.util.Comparator.nullsFirst(String.CASE_INSENSITIVE_ORDER));
+    for (final var e : values()) map.putIfAbsent(e.getValue(), e);
+    VALUE_MAP = java.util.Collections.unmodifiableMap(map);
+  }
+
   private final String value;
 
   ExampleTwoImplementsEnum(final String value) {
@@ -64,11 +74,8 @@ public enum ExampleTwoImplementsEnum implements io.github.chrimle.o2jrm.test.int
    * @throws IllegalArgumentException if no enum has a value matching the given value.
    */
   public static ExampleTwoImplementsEnum fromValue(final String value) {
-    for (final ExampleTwoImplementsEnum constant : ExampleTwoImplementsEnum.values()) {
-      if (constant.getValue().equalsIgnoreCase(value)) {
-        return constant;
-      }
-    }
+    final var result = VALUE_MAP.get(value);
+    if (result != null) return result;
     throw new IllegalArgumentException("Unexpected value '" + value + "'");
   }
 

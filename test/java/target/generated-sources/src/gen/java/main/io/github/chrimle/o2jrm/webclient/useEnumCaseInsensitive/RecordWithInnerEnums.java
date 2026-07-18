@@ -68,6 +68,16 @@ public record RecordWithInnerEnums(
      */
     ENUM3("ENUM3");
 
+    private static final java.util.Map<String, ExampleInnerEnum> VALUE_MAP;
+
+    static {
+      final var map =
+          new java.util.TreeMap<String, ExampleInnerEnum>(
+              java.util.Comparator.nullsFirst(String.CASE_INSENSITIVE_ORDER));
+      for (final var e : values()) map.putIfAbsent(e.getValue(), e);
+      VALUE_MAP = java.util.Collections.unmodifiableMap(map);
+    }
+
     private final String value;
 
     ExampleInnerEnum(final String value) {
@@ -97,11 +107,8 @@ public record RecordWithInnerEnums(
      */
     @JsonCreator
     public static ExampleInnerEnum fromValue(final String value) {
-      for (final ExampleInnerEnum constant : ExampleInnerEnum.values()) {
-        if (constant.getValue().equalsIgnoreCase(value)) {
-          return constant;
-        }
-      }
+      final var result = VALUE_MAP.get(value);
+      if (result != null) return result;
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
   }
@@ -113,6 +120,14 @@ public record RecordWithInnerEnums(
     NUMBER_404(404),
     NUMBER_501(501),
     NUMBER_503(503);
+
+    private static final java.util.Map<Integer, ExampleInnerTwoEnum> VALUE_MAP;
+
+    static {
+      final var map = new java.util.HashMap<Integer, ExampleInnerTwoEnum>();
+      for (final var e : values()) map.putIfAbsent(e.getValue(), e);
+      VALUE_MAP = java.util.Collections.unmodifiableMap(map);
+    }
 
     private final Integer value;
 
@@ -142,11 +157,8 @@ public record RecordWithInnerEnums(
      */
     @JsonCreator
     public static ExampleInnerTwoEnum fromValue(final Integer value) {
-      for (final ExampleInnerTwoEnum constant : ExampleInnerTwoEnum.values()) {
-        if (constant.getValue().equals(value)) {
-          return constant;
-        }
-      }
+      final var result = VALUE_MAP.get(value);
+      if (result != null) return result;
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
   }
@@ -157,6 +169,14 @@ public record RecordWithInnerEnums(
   public enum ExampleInnerThreeEnum {
     HTTPS_GITHUB_COM_CHRIMLE_OPENAPI_TO_JAVA_RECORDS_MUSTACHE_TEMPLATES(URI.create("https://github.com/Chrimle/openapi-to-java-records-mustache-templates")),
     HTTPS_CHRIMLE_GITHUB_IO_OPENAPI_TO_JAVA_RECORDS_MUSTACHE_TEMPLATES_(URI.create("https://chrimle.github.io/openapi-to-java-records-mustache-templates/"));
+
+    private static final java.util.Map<URI, ExampleInnerThreeEnum> VALUE_MAP;
+
+    static {
+      final var map = new java.util.HashMap<URI, ExampleInnerThreeEnum>();
+      for (final var e : values()) map.putIfAbsent(e.getValue(), e);
+      VALUE_MAP = java.util.Collections.unmodifiableMap(map);
+    }
 
     private final URI value;
 
@@ -187,11 +207,8 @@ public record RecordWithInnerEnums(
      */
     @JsonCreator
     public static ExampleInnerThreeEnum fromValue(final URI value) {
-      for (final ExampleInnerThreeEnum constant : ExampleInnerThreeEnum.values()) {
-        if (constant.getValue().equals(value)) {
-          return constant;
-        }
-      }
+      final var result = VALUE_MAP.get(value);
+      if (result != null) return result;
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
   }

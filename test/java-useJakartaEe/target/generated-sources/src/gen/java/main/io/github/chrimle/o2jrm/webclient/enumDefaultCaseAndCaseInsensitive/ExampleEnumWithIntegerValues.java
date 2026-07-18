@@ -37,6 +37,14 @@ public enum ExampleEnumWithIntegerValues {
   NUMBER_500(500),
   NUMBER_unknown_default_open_api(11184809);
 
+  private static final java.util.Map<Integer, ExampleEnumWithIntegerValues> VALUE_MAP;
+
+  static {
+    final var map = new java.util.HashMap<Integer, ExampleEnumWithIntegerValues>();
+    for (final var e : values()) map.putIfAbsent(e.getValue(), e);
+    VALUE_MAP = java.util.Collections.unmodifiableMap(map);
+  }
+
   private final Integer value;
 
   ExampleEnumWithIntegerValues(final Integer value) {
@@ -65,11 +73,8 @@ public enum ExampleEnumWithIntegerValues {
    */
   @JsonCreator
   public static ExampleEnumWithIntegerValues fromValue(final Integer value) {
-    for (final ExampleEnumWithIntegerValues constant : ExampleEnumWithIntegerValues.values()) {
-      if (constant.getValue().equals(value)) {
-        return constant;
-      }
-    }
+    final var result = VALUE_MAP.get(value);
+    if (result != null) return result;
     return NUMBER_unknown_default_open_api;
   }
 }

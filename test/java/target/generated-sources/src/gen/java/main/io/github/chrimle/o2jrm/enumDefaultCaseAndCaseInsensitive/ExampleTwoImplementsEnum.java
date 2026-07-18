@@ -38,6 +38,16 @@ public enum ExampleTwoImplementsEnum implements io.github.chrimle.o2jrm.test.int
   ENUM3("ENUM3"),
   UNKNOWN_DEFAULT_OPEN_API("unknown_default_open_api");
 
+  private static final java.util.Map<String, ExampleTwoImplementsEnum> VALUE_MAP;
+
+  static {
+    final var map =
+        new java.util.TreeMap<String, ExampleTwoImplementsEnum>(
+            java.util.Comparator.nullsFirst(String.CASE_INSENSITIVE_ORDER));
+    for (final var e : values()) map.putIfAbsent(e.getValue(), e);
+    VALUE_MAP = java.util.Collections.unmodifiableMap(map);
+  }
+
   private final String value;
 
   ExampleTwoImplementsEnum(final String value) {
@@ -65,11 +75,8 @@ public enum ExampleTwoImplementsEnum implements io.github.chrimle.o2jrm.test.int
    *     #UNKNOWN_DEFAULT_OPEN_API } if no match is found.
    */
   public static ExampleTwoImplementsEnum fromValue(final String value) {
-    for (final ExampleTwoImplementsEnum constant : ExampleTwoImplementsEnum.values()) {
-      if (constant.getValue().equalsIgnoreCase(value)) {
-        return constant;
-      }
-    }
+    final var result = VALUE_MAP.get(value);
+    if (result != null) return result;
     return UNKNOWN_DEFAULT_OPEN_API;
   }
 

@@ -45,6 +45,14 @@ public enum ExampleEnum {
    */
   ENUM3("ENUM3");
 
+  private static final java.util.Map<String, ExampleEnum> VALUE_MAP;
+
+  static {
+    final var map = new java.util.HashMap<String, ExampleEnum>();
+    for (final var e : values()) map.putIfAbsent(e.getValue(), e);
+    VALUE_MAP = java.util.Collections.unmodifiableMap(map);
+  }
+
   private final String value;
 
   ExampleEnum(final String value) {
@@ -73,11 +81,8 @@ public enum ExampleEnum {
    */
   @JsonCreator
   public static ExampleEnum fromValue(final String value) {
-    for (final ExampleEnum constant : ExampleEnum.values()) {
-      if (constant.getValue().equals(value)) {
-        return constant;
-      }
-    }
+    final var result = VALUE_MAP.get(value);
+    if (result != null) return result;
     throw new IllegalArgumentException("Unexpected value '" + value + "'");
   }
 }

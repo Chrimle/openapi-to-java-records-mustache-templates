@@ -44,6 +44,14 @@ public enum ExampleNullableEnum implements Serializable {
    */
   ENUM3("ENUM3");
 
+  private static final java.util.Map<String, ExampleNullableEnum> VALUE_MAP;
+
+  static {
+    final var map = new java.util.HashMap<String, ExampleNullableEnum>();
+    for (final var e : values()) map.putIfAbsent(e.getValue(), e);
+    VALUE_MAP = java.util.Collections.unmodifiableMap(map);
+  }
+
   private final String value;
 
   ExampleNullableEnum(final String value) {
@@ -72,11 +80,8 @@ public enum ExampleNullableEnum implements Serializable {
    */
   @JsonCreator
   public static ExampleNullableEnum fromValue(final String value) {
-    for (final ExampleNullableEnum constant : ExampleNullableEnum.values()) {
-      if (constant.getValue().equals(value)) {
-        return constant;
-      }
-    }
+    final var result = VALUE_MAP.get(value);
+    if (result != null) return result;
     throw new IllegalArgumentException("Unexpected value '" + value + "'");
   }
 }

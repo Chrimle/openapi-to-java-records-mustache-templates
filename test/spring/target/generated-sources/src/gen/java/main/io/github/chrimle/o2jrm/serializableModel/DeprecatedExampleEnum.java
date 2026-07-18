@@ -28,6 +28,14 @@ public enum DeprecatedExampleEnum implements Serializable {
   ENUM2("ENUM2"),
   ENUM3("ENUM3");
 
+  private static final java.util.Map<String, DeprecatedExampleEnum> VALUE_MAP;
+
+  static {
+    final var map = new java.util.HashMap<String, DeprecatedExampleEnum>();
+    for (final var e : values()) map.putIfAbsent(e.getValue(), e);
+    VALUE_MAP = java.util.Collections.unmodifiableMap(map);
+  }
+
   private final String value;
 
   DeprecatedExampleEnum(final String value) {
@@ -56,11 +64,8 @@ public enum DeprecatedExampleEnum implements Serializable {
    */
   @JsonCreator
   public static DeprecatedExampleEnum fromValue(final String value) {
-    for (final DeprecatedExampleEnum constant : DeprecatedExampleEnum.values()) {
-      if (constant.getValue().equals(value)) {
-        return constant;
-      }
-    }
+    final var result = VALUE_MAP.get(value);
+    if (result != null) return result;
     throw new IllegalArgumentException("Unexpected value '" + value + "'");
   }
 }
