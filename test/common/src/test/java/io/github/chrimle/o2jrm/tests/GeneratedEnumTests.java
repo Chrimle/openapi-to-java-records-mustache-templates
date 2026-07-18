@@ -51,6 +51,8 @@ import java.net.URI;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.Locale;
+import java.util.Map;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -190,6 +192,18 @@ public abstract class GeneratedEnumTests {
                 Arrays.stream(generatedSource.generatedFields())
                     .map(GeneratedField::enumValue)
                     .toArray());
+          }
+        }
+
+        @Nested
+        @DisplayName("Testing `VALUES` field")
+        class ValueMapTests {
+
+          @ParameterizedTest
+          @ArgumentsSource(GeneratedEnumProvider.class)
+          @DisplayName("Generated `enum` classes always has `VALUES`-field")
+          void alwaysGenerateValuesField(final GeneratedSource generatedSource) {
+            CustomAssertions.assertClassHasField(generatedSource.getClassUnderTest(), "VALUES", Map.class);
           }
         }
       }
