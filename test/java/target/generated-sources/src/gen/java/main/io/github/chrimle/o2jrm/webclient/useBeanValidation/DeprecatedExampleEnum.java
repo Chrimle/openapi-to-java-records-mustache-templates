@@ -39,14 +39,14 @@ public enum DeprecatedExampleEnum {
   ENUM2("ENUM2"),
   ENUM3("ENUM3");
 
-  private static final java.util.Map<String, DeprecatedExampleEnum> VALUES;
+  private static final java.util.Map<String, DeprecatedExampleEnum> VALUE_MAP;
 
   static {
     final var map = new java.util.HashMap<String, DeprecatedExampleEnum>();
     for (final var e : values()) {
       map.putIfAbsent(e.getValue(), e);
     }
-    VALUES = java.util.Collections.unmodifiableMap(map);
+    VALUE_MAP = java.util.Collections.unmodifiableMap(map);
   }
 
   private final String value;
@@ -77,7 +77,7 @@ public enum DeprecatedExampleEnum {
    */
   @JsonCreator
   public static DeprecatedExampleEnum fromValue(final String value) {
-    final var result = VALUES.get(value);
+    final var result = VALUE_MAP.get(value);
     if (result != null) return result;
     throw new IllegalArgumentException("Unexpected value '" + value + "'");
   }

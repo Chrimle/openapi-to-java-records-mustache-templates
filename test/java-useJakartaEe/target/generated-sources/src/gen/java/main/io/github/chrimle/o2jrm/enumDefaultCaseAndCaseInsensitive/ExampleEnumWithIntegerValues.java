@@ -40,14 +40,14 @@ public enum ExampleEnumWithIntegerValues {
   NUMBER_500(500),
   NUMBER_unknown_default_open_api(11184809);
 
-  private static final java.util.Map<Integer, ExampleEnumWithIntegerValues> VALUES;
+  private static final java.util.Map<Integer, ExampleEnumWithIntegerValues> VALUE_MAP;
 
   static {
     final var map = new java.util.HashMap<Integer, ExampleEnumWithIntegerValues>();
     for (final var e : values()) {
       map.putIfAbsent(e.getValue(), e);
     }
-    VALUES = java.util.Collections.unmodifiableMap(map);
+    VALUE_MAP = java.util.Collections.unmodifiableMap(map);
   }
 
   private final Integer value;
@@ -76,7 +76,7 @@ public enum ExampleEnumWithIntegerValues {
    *     #NUMBER_unknown_default_open_api } if no match is found.
    */
   public static ExampleEnumWithIntegerValues fromValue(final Integer value) {
-    final var result = VALUES.get(value);
+    final var result = VALUE_MAP.get(value);
     if (result != null) return result;
     return NUMBER_unknown_default_open_api;
   }

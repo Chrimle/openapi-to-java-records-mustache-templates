@@ -41,14 +41,14 @@ public enum ExampleUriEnum {
   HTTPS_GITHUB_COM_CHRIMLE_OPENAPI_TO_JAVA_RECORDS_MUSTACHE_TEMPLATES(URI.create("https://github.com/Chrimle/openapi-to-java-records-mustache-templates")),
   HTTPS_CHRIMLE_GITHUB_IO_OPENAPI_TO_JAVA_RECORDS_MUSTACHE_TEMPLATES_(URI.create("https://chrimle.github.io/openapi-to-java-records-mustache-templates/"));
 
-  private static final java.util.Map<URI, ExampleUriEnum> VALUES;
+  private static final java.util.Map<URI, ExampleUriEnum> VALUE_MAP;
 
   static {
     final var map = new java.util.HashMap<URI, ExampleUriEnum>();
     for (final var e : values()) {
       map.putIfAbsent(e.getValue(), e);
     }
-    VALUES = java.util.Collections.unmodifiableMap(map);
+    VALUE_MAP = java.util.Collections.unmodifiableMap(map);
   }
 
   private final URI value;
@@ -77,7 +77,7 @@ public enum ExampleUriEnum {
    * @throws IllegalArgumentException if no enum has a value matching the given value.
    */
   public static ExampleUriEnum fromValue(final URI value) {
-    final var result = VALUES.get(value);
+    final var result = VALUE_MAP.get(value);
     if (result != null) return result;
     throw new IllegalArgumentException("Unexpected value '" + value + "'");
   }

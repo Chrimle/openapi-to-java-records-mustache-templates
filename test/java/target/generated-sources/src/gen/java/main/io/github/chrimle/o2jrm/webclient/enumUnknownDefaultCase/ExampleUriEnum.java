@@ -36,14 +36,14 @@ public enum ExampleUriEnum {
   HTTPS_CHRIMLE_GITHUB_IO_OPENAPI_TO_JAVA_RECORDS_MUSTACHE_TEMPLATES_(URI.create("https://chrimle.github.io/openapi-to-java-records-mustache-templates/")),
   UNKNOWN_DEFAULT_OPEN_API(URI.create("11184809"));
 
-  private static final java.util.Map<URI, ExampleUriEnum> VALUES;
+  private static final java.util.Map<URI, ExampleUriEnum> VALUE_MAP;
 
   static {
     final var map = new java.util.HashMap<URI, ExampleUriEnum>();
     for (final var e : values()) {
       map.putIfAbsent(e.getValue(), e);
     }
-    VALUES = java.util.Collections.unmodifiableMap(map);
+    VALUE_MAP = java.util.Collections.unmodifiableMap(map);
   }
 
   private final URI value;
@@ -74,7 +74,7 @@ public enum ExampleUriEnum {
    */
   @JsonCreator
   public static ExampleUriEnum fromValue(final URI value) {
-    final var result = VALUES.get(value);
+    final var result = VALUE_MAP.get(value);
     if (result != null) return result;
     return UNKNOWN_DEFAULT_OPEN_API;
   }

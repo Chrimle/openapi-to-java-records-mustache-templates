@@ -58,7 +58,7 @@ import java.io.IOException;
   {{/-last}}{{#-last}};{{/-last}}{{!
   }}{{/enumVars}}{{/allowableValues}}
 
-  private static final java.util.Map<{{{dataType}}}, {{classname}}> VALUES;
+  private static final java.util.Map<{{{dataType}}}, {{classname}}> VALUE_MAP;
 
   static {
     final var map = {{!
@@ -77,7 +77,7 @@ import java.io.IOException;
     for (final var e : values()) {
       map.putIfAbsent(e.getValue(), e);
     }
-    VALUES = java.util.Collections.unmodifiableMap(map);
+    VALUE_MAP = java.util.Collections.unmodifiableMap(map);
   }
 
   private final {{{dataType}}} value;
@@ -112,7 +112,7 @@ import java.io.IOException;
 {{#jackson}}  @JsonCreator
 {{/jackson}}
   public static {{classname}} fromValue(final {{{dataType}}} value) {
-    final var result = VALUES.get(value);
+    final var result = VALUE_MAP.get(value);
     if (result != null) return result;
     {{#enumUnknownDefaultCase}}{{#allowableValues}}{{#enumVars}}{{#-last}}return {{{name}}};{{/-last}}{{/enumVars}}{{/allowableValues}}{{/enumUnknownDefaultCase}}{{^enumUnknownDefaultCase}}throw new IllegalArgumentException("Unexpected value '" + value + "'");{{/enumUnknownDefaultCase}}
   }

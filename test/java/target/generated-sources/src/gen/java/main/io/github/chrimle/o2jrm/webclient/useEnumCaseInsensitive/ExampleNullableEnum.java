@@ -43,14 +43,14 @@ public enum ExampleNullableEnum {
    */
   ENUM3("ENUM3");
 
-  private static final java.util.Map<String, ExampleNullableEnum> VALUES;
+  private static final java.util.Map<String, ExampleNullableEnum> VALUE_MAP;
 
   static {
     final var map = new java.util.TreeMap<String, ExampleNullableEnum>(java.util.Comparator.nullsFirst(String.CASE_INSENSITIVE_ORDER));
     for (final var e : values()) {
       map.putIfAbsent(e.getValue(), e);
     }
-    VALUES = java.util.Collections.unmodifiableMap(map);
+    VALUE_MAP = java.util.Collections.unmodifiableMap(map);
   }
 
   private final String value;
@@ -82,7 +82,7 @@ public enum ExampleNullableEnum {
    */
   @JsonCreator
   public static ExampleNullableEnum fromValue(final String value) {
-    final var result = VALUES.get(value);
+    final var result = VALUE_MAP.get(value);
     if (result != null) return result;
     throw new IllegalArgumentException("Unexpected value '" + value + "'");
   }

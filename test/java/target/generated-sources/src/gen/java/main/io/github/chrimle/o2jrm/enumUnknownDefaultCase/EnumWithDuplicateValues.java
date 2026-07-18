@@ -37,14 +37,14 @@ public enum EnumWithDuplicateValues {
   EXAMPLE2("Example"),
   UNKNOWN_DEFAULT_OPEN_API("unknown_default_open_api");
 
-  private static final java.util.Map<String, EnumWithDuplicateValues> VALUES;
+  private static final java.util.Map<String, EnumWithDuplicateValues> VALUE_MAP;
 
   static {
     final var map = new java.util.HashMap<String, EnumWithDuplicateValues>();
     for (final var e : values()) {
       map.putIfAbsent(e.getValue(), e);
     }
-    VALUES = java.util.Collections.unmodifiableMap(map);
+    VALUE_MAP = java.util.Collections.unmodifiableMap(map);
   }
 
   private final String value;
@@ -73,7 +73,7 @@ public enum EnumWithDuplicateValues {
    *     #UNKNOWN_DEFAULT_OPEN_API } if no match is found.
    */
   public static EnumWithDuplicateValues fromValue(final String value) {
-    final var result = VALUES.get(value);
+    final var result = VALUE_MAP.get(value);
     if (result != null) return result;
     return UNKNOWN_DEFAULT_OPEN_API;
   }
