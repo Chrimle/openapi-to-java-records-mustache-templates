@@ -28,6 +28,10 @@ import jakarta.validation.Valid;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
+import java.util.Collections;
+import java.util.Map;
+import java.util.HashMap;
+
 /**
  * Example of an Enum which implements two interfaces.
  */
@@ -35,6 +39,16 @@ public enum ExampleTwoImplementsEnum implements io.github.chrimle.o2jrm.test.int
   ENUM1("ENUM1"),
   ENUM2("ENUM2"),
   ENUM3("ENUM3");
+
+  private static final Map<String, ExampleTwoImplementsEnum> VALUES;
+
+  static {
+    final var map = new HashMap<String, ExampleTwoImplementsEnum>();
+    for (final var e : values()) {
+      map.putIfAbsent(e.getValue(), e);
+    }
+    VALUES = Collections.unmodifiableMap(map);
+  }
 
   private final String value;
 

@@ -28,6 +28,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
+import java.util.Collections;
+import java.util.Map;
+import java.util.HashMap;
+
 /**
  * Example of an Enum
  */
@@ -46,6 +50,16 @@ public enum ExampleEnum {
    */
   ENUM3("ENUM3"),
   UNKNOWN_DEFAULT_OPEN_API("unknown_default_open_api");
+
+  private static final Map<String, ExampleEnum> VALUES;
+
+  static {
+    final var map = new HashMap<String, ExampleEnum>();
+    for (final var e : values()) {
+      map.putIfAbsent(e.getValue(), e);
+    }
+    VALUES = Collections.unmodifiableMap(map);
+  }
 
   private final String value;
 

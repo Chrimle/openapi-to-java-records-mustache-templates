@@ -28,6 +28,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
+import java.util.Collections;
+import java.util.Map;
+import java.util.HashMap;
+
 /**
  * Example of an Enum with integer values
  */
@@ -39,6 +43,16 @@ public enum ExampleEnumWithIntegerValues {
   NUMBER_400(400),
   NUMBER_500(500),
   NUMBER_unknown_default_open_api(11184809);
+
+  private static final Map<Integer, ExampleEnumWithIntegerValues> VALUES;
+
+  static {
+    final var map = new HashMap<Integer, ExampleEnumWithIntegerValues>();
+    for (final var e : values()) {
+      map.putIfAbsent(e.getValue(), e);
+    }
+    VALUES = Collections.unmodifiableMap(map);
+  }
 
   private final Integer value;
 

@@ -27,6 +27,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
+import java.util.Collections;
+import java.util.Map;
+import java.util.HashMap;
+
 /**
  * Example of an Enum
  */
@@ -43,6 +47,16 @@ public enum ExampleEnum implements Serializable {
    * Some description of ENUM3
    */
   ENUM3("ENUM3");
+
+  private static final Map<String, ExampleEnum> VALUES;
+
+  static {
+    final var map = new HashMap<String, ExampleEnum>();
+    for (final var e : values()) {
+      map.putIfAbsent(e.getValue(), e);
+    }
+    VALUES = Collections.unmodifiableMap(map);
+  }
 
   private final String value;
 

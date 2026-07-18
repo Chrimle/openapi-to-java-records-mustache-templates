@@ -30,12 +30,26 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 import java.net.URI;
 
+import java.util.Collections;
+import java.util.Map;
+import java.util.HashMap;
+
 /**
  * Example of an Enum with URI values
  */
 public enum ExampleUriEnum {
   HTTPS_GITHUB_COM_CHRIMLE_OPENAPI_TO_JAVA_RECORDS_MUSTACHE_TEMPLATES(URI.create("https://github.com/Chrimle/openapi-to-java-records-mustache-templates")),
   HTTPS_CHRIMLE_GITHUB_IO_OPENAPI_TO_JAVA_RECORDS_MUSTACHE_TEMPLATES_(URI.create("https://chrimle.github.io/openapi-to-java-records-mustache-templates/"));
+
+  private static final Map<URI, ExampleUriEnum> VALUES;
+
+  static {
+    final var map = new HashMap<URI, ExampleUriEnum>();
+    for (final var e : values()) {
+      map.putIfAbsent(e.getValue(), e);
+    }
+    VALUES = Collections.unmodifiableMap(map);
+  }
 
   private final URI value;
 
