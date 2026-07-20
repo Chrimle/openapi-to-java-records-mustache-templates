@@ -10,6 +10,7 @@ repository: Chrimle/openapi-to-java-records-mustache-templates
 theme: "just-the-docs"
 
 # Enable built-in features
+logo: "/assets/banner_logo.png"
 search_enabled: true
 heading_anchors: true
 
