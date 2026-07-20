@@ -165,8 +165,7 @@ In this example, each generated class field will be annotated with [Jakarta Bean
 > See [Supported 'openapi‐generator‐maven‐plugin' Configuration options](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/wiki/Supported-%27openapi‐generator‐maven‐plugin%27-Configuration-options)
 
 ## OpenAPI Specification
-<details open>
-<summary>Example OpenAPI Specification</summary>
+Example OpenAPI Specification
     
 ```yaml
 components:
@@ -261,8 +260,6 @@ components:
           format: uuid
 ```
 
-</details>
-
 > [!TIP]
 > See [Supported OpenAPI Specification properties](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/wiki/Supported-OpenAPI-Specification-properties)
 
@@ -278,9 +275,7 @@ mvn compile
 ## Generated Java Record
 Unless the configuration property `<output>` has been set, the generated classes should be found under `./target/generated-sources/openapi`.
 
-<details open>
-    
-<summary>Resulting Java record from example OpenAPI spec.</summary>
+Resulting Java record from example OpenAPI spec.
 
 ```java
 package io.github.chrimle.o2jrm;
@@ -384,8 +379,6 @@ public record Person(
   }
 }
 ```
-
-</details>
 
 ## Further examples
 
