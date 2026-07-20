@@ -93,7 +93,7 @@
         <maven.plugin.validation>VERBOSE</maven.plugin.validation>
 
         <!-- Build Plugin Versions -->
-        <openapi-generator-maven-plugin.version>7.23.0</openapi-generator-maven-plugin.version>
+        <openapi-generator-maven-plugin.version>7.24.0</openapi-generator-maven-plugin.version>
         <!-- / Build Plugin Versions -->
     </properties>
 
