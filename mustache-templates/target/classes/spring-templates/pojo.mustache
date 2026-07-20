@@ -45,7 +45,7 @@ import java.util.Set;
 {{/isDeprecated}}{{!
 }}{{>additionalModelTypeAnnotations}}{{!
 }}{{#vendorExtensions.x-class-extra-annotation}}{{!
-  }}{{{vendorExtensions.x-class-extra-annotation}}}
+  }}{{{.}}}
 {{/vendorExtensions.x-class-extra-annotation}}{{!
 }}public record {{classname}}({{!
 }}{{#vars}}{{#-first}}{{^-last}}
