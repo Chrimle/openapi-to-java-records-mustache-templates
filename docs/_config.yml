@@ -13,6 +13,7 @@ theme: "just-the-docs"
 logo: "/assets/banner_logo.png"
 search_enabled: true
 heading_anchors: true
+enable_copy_code_button: true
 
 # Proper Jekyll 4 GFM configuration
 markdown: kramdown
