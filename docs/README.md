@@ -49,7 +49,8 @@ If you have feedback or suggestions, please share it in either [Discussions](htt
 
 These _mustache templates_ (**[latest release](https://github.com/Chrimle/openapi-to-java-records-mustache-templates/releases)**) are backwards-compatible and are continuously tested with all these versions:
 
-- [7.23.0](https://github.com/OpenAPITools/openapi-generator/releases/tag/v7.23.0) - 2026, Jun 8 (latest)
+- [7.24.0](https://github.com/OpenAPITools/openapi-generator/releases/tag/v7.24.0) - 2026, Jul 20 (latest)
+- [7.23.0](https://github.com/OpenAPITools/openapi-generator/releases/tag/v7.23.0) - 2026, Jun 8
 - [7.22.0](https://github.com/OpenAPITools/openapi-generator/releases/tag/v7.22.0) - 2026, Apr 28
 - [7.21.0](https://github.com/OpenAPITools/openapi-generator/releases/tag/v7.21.0) - 2026, Mar 24
 - [7.20.0](https://github.com/OpenAPITools/openapi-generator/releases/tag/v7.20.0) - 2026, Feb 16
