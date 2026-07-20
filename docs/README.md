@@ -1,3 +1,9 @@
+---
+layout: default
+title: README
+nav_order: 1
+permalink: /
+---
 ![O2JRM Logo](assets/banner_logo.png)
 [![Maven Central Version](https://img.shields.io/maven-central/v/io.github.chrimle/openapi-to-java-records-mustache-templates?style=flat)](https://central.sonatype.com/artifact/io.github.chrimle/openapi-to-java-records-mustache-templates)
 [![MvnRepository](https://badges.mvnrepository.com/badge/io.github.chrimle/openapi-to-java-records-mustache-templates/badge.svg?type=rank&label=MvnRepository)](https://mvnrepository.com/artifact/io.github.chrimle/openapi-to-java-records-mustache-templates)

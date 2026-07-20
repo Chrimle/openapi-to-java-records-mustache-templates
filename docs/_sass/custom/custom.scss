@@ -1,0 +1,38 @@
+/* GitHub Flavored Markdown Alerts for just-the-docs */
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  color: inherit;
+  border-left: 0.25em solid;
+
+  .markdown-alert-title {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+  }
+}
+
+.markdown-alert-note {
+  border-left-color: #0969da;
+  background-color: rgba(9, 105, 218, 0.08);
+}
+
+.markdown-alert-tip {
+  border-left-color: #1a7f37;
+  background-color: rgba(26, 127, 55, 0.08);
+}
+
+.markdown-alert-important {
+  border-left-color: #8250df;
+  background-color: rgba(130, 80, 223, 0.08);
+}
+
+.markdown-alert-warning {
+  border-left-color: #9a6700;
+  background-color: rgba(154, 103, 0, 0.08);
+}
+
+.markdown-alert-caution {
+  border-left-color: #cf222e;
+  background-color: rgba(207, 34, 46, 0.08);
+}

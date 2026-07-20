@@ -1,6 +1,5 @@
 title: openapi-to-java-records-mustache-templates
-description: >-
-  Generate Java Records from OpenAPI Specifications
+description: Generate Java Records from OpenAPI Specifications
 
 github_username: Chrimle
 url: "https://github.com/Chrimle"
@@ -8,10 +7,21 @@ baseurl: "/openapi-to-java-records-mustache-templates"
 
 repository: Chrimle/openapi-to-java-records-mustache-templates
 
-markdown: GFM
+theme: "just-the-docs"
+
+# Enable built-in features
+search_enabled: true
+heading_anchors: true
+
+# Proper Jekyll 4 GFM configuration
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
 
 plugins:
   - jekyll-gfm-admonitions
+  - jekyll-readme-index
 
 include:
   - README.md

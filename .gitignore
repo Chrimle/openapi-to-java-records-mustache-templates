@@ -102,3 +102,8 @@ StringUtil.java
 !.idea/copyright/
 # Track The google-java-format Settings
 !.idea/google-java-format.xml
+
+# GitHub Pages Docs
+docs/.jekyll-cache
+docs/_site
+docs/Gemfile.lock
