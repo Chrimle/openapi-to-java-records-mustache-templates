@@ -5,13 +5,13 @@
 <script>
     const toggleDarkMode = document.querySelector('#theme-toggle');
     jtd.addEvent(toggleDarkMode, 'click', function() {
-       if (jtd.getTheme() === 'dark') {
-           jtd.setTheme('light');
-           toggleDarkMode.textContent = 'Switch to Dark Mode';
-       }
-       else {
+       if (jtd.getTheme() === 'light') {
            jtd.setTheme('dark');
            toggleDarkMode.textContent = 'Switch to Light Mode';
+       }
+       else {
+           jtd.setTheme('light');
+           toggleDarkMode.textContent = 'Switch to Dark Mode';
        }
    });
 </script>
