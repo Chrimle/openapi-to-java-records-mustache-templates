@@ -1,0 +1,17 @@
+<button id="theme-toggle" class="btn" type="button" style="width: 100%; margin-top: 1rem; border-color: rgba(128,128,128,0.3);">
+    Switch to Light Mode
+</button>
+
+<script>
+    const toggleDarkMode = document.querySelector('#theme-toggle');
+    jtd.addEvent(toggleDarkMode, 'click', function() {
+       if (jtd.getTheme() === 'light') {
+           jtd.setTheme('dark');
+           toggleDarkMode.textContent = 'Switch to Light Mode';
+       }
+       else {
+           jtd.setTheme('light');
+           toggleDarkMode.textContent = 'Switch to Dark Mode';
+       }
+   });
+</script>

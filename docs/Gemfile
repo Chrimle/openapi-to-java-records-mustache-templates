@@ -3,8 +3,10 @@
 source "https://rubygems.org"
 
 gem "jekyll"
+gem "just-the-docs"
 
 group :jekyll_plugins do
   gem "jekyll-gfm-admonitions", "1.4.4"
+  gem "jekyll-readme-index"
   gem "github-pages"
 end
