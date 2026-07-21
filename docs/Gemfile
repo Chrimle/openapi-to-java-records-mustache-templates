@@ -7,6 +7,6 @@ gem "just-the-docs"
 
 group :jekyll_plugins do
   gem "jekyll-gfm-admonitions", "1.4.4"
-  gem "jekyll-readme-index"
+  gem "jekyll-jtd-toc-nav"
   gem "github-pages"
 end

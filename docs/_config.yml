@@ -22,9 +22,14 @@ kramdown:
   input: GFM
   hard_wrap: false
 
+defaults:
+  - scope:
+      path: "README.md"
+    values:
+      layout: "default"
+      title: "Home"
+      nav_order: 1
+
 plugins:
   - jekyll-gfm-admonitions
-  - jekyll-readme-index
-
-include:
-  - README.md
+  - jekyll-jtd-toc-nav
