@@ -24,7 +24,4 @@ kramdown:
 
 plugins:
   - jekyll-gfm-admonitions
-  - jekyll-readme-index
-
-include:
-  - README.md
+  - jekyll-jtd-toc-nav
