@@ -91,9 +91,9 @@ import java.util.Set;
 {{#additionalEnumTypeAnnotations}}  {{{.}}}
 {{/additionalEnumTypeAnnotations}}{{!
 }}{{#gson}}{{!
-}}  @JsonAdapter({{#isContainer}}{{#mostInnerItems}}{{datatypeWithEnum}}{{/mostInnerItems}}{{/isContainer}}{{^isContainer}}{{datatypeWithEnum}}{{/isContainer}}.Adapter.class)
+}}  @JsonAdapter({{#mostInnerItems}}{{datatypeWithEnum}}{{/mostInnerItems}}{{^mostInnerItems}}{{datatypeWithEnum}}{{/mostInnerItems}}.Adapter.class)
 {{/gson}}{{!
-}}  public enum {{#isContainer}}{{#mostInnerItems}}{{datatypeWithEnum}}{{/mostInnerItems}}{{/isContainer}}{{^isContainer}}{{datatypeWithEnum}}{{/isContainer}} {
+}}  public enum {{#mostInnerItems}}{{datatypeWithEnum}}{{/mostInnerItems}}{{^mostInnerItems}}{{datatypeWithEnum}}{{/mostInnerItems}} {
     {{#allowableValues}}{{#enumVars}}{{!
   }}{{#enumDescription}}{{!
   }}/**
@@ -105,8 +105,8 @@ import java.util.Set;
     }}{{/enumVars}}{{/allowableValues}}
 
     private static final java.util.Map<{{!
-        }}{{#isContainer}}{{#mostInnerItems}}{{{dataType}}}, {{datatypeWithEnum}}{{/mostInnerItems}}{{/isContainer}}{{!
-        }}{{^isContainer}}{{{dataType}}}, {{datatypeWithEnum}}{{/isContainer}}{{!
+        }}{{#mostInnerItems}}{{{dataType}}}, {{datatypeWithEnum}}{{/mostInnerItems}}{{!
+        }}{{^mostInnerItems}}{{{dataType}}}, {{datatypeWithEnum}}{{/mostInnerItems}}{{!
       }}> VALUE_MAP;
 
     static {
@@ -115,38 +115,39 @@ import java.util.Set;
           }}{{#isString}}{{!
             }}{{^isUri}}
           new java.util.TreeMap<{{!
-            }}{{#isContainer}}{{#mostInnerItems}}{{{dataType}}}, {{datatypeWithEnum}}{{/mostInnerItems}}{{!
-            }}{{/isContainer}}{{^isContainer}}{{{dataType}}}, {{datatypeWithEnum}}{{/isContainer}}>(
+            }}{{#mostInnerItems}}{{{dataType}}}, {{datatypeWithEnum}}{{/mostInnerItems}}{{!
+            }}{{^mostInnerItems}}{{{dataType}}}, {{datatypeWithEnum}}{{/mostInnerItems}}>(
               java.util.Comparator.nullsFirst(String.CASE_INSENSITIVE_ORDER));{{!
             }}{{/isUri}}{{!
             }}{{#isUri}}{{!
               }} new java.util.HashMap<{{!
-                }}{{#isContainer}}{{#mostInnerItems}}{{{dataType}}}, {{datatypeWithEnum}}{{/mostInnerItems}}{{/isContainer}}{{!
-                }}{{^isContainer}}{{{dataType}}}, {{datatypeWithEnum}}{{/isContainer}}>();{{!
+                }}{{#mostInnerItems}}{{{dataType}}}, {{datatypeWithEnum}}{{/mostInnerItems}}{{!
+                }}{{^mostInnerItems}}{{{dataType}}}, {{datatypeWithEnum}}{{/mostInnerItems}}>();{{!
             }}{{/isUri}}{{!
           }}{{/isString}}{{!
           }}{{^isString}}{{!
             }} new java.util.HashMap<{{!
-                }}{{#isContainer}}{{#mostInnerItems}}{{{dataType}}}, {{datatypeWithEnum}}{{/mostInnerItems}}{{/isContainer}}{{!
-                }}{{^isContainer}}{{{dataType}}}, {{datatypeWithEnum}}{{/isContainer}}>();{{!
+                }}{{#mostInnerItems}}{{{dataType}}}, {{datatypeWithEnum}}{{/mostInnerItems}}{{!
+                }}{{^mostInnerItems}}{{{dataType}}}, {{datatypeWithEnum}}{{/mostInnerItems}}>();{{!
           }}{{/isString}}{{!
         }}{{/useEnumCaseInsensitive}}{{!
         }}{{^useEnumCaseInsensitive}}{{!
           }} new java.util.HashMap<{{!
-            }}{{#isContainer}}{{#mostInnerItems}}{{{dataType}}}, {{datatypeWithEnum}}{{/mostInnerItems}}{{/isContainer}}{{!
-            }}{{^isContainer}}{{{dataType}}}, {{datatypeWithEnum}}{{/isContainer}}>();{{!
+            }}{{#mostInnerItems}}{{{dataType}}}, {{datatypeWithEnum}}{{/mostInnerItems}}{{!
+            }}{{^mostInnerItems}}{{{dataType}}}, {{datatypeWithEnum}}{{/mostInnerItems}}>();{{!
         }}{{/useEnumCaseInsensitive}}
       for (final var e : values()) map.putIfAbsent(e.getValue(), e);
       VALUE_MAP = java.util.Collections.unmodifiableMap(map);
     }
 
-    private final {{#isContainer}}{{#mostInnerItems}}{{{dataType}}}{{/mostInnerItems}}{{/isContainer}}{{^isContainer}}{{{dataType}}}{{/isContainer}} value;
+    private final {{#mostInnerItems}}{{{dataType}}}{{/mostInnerItems}}{{^mostInnerItems}}{{{dataType}}}{{/mostInnerItems}} value;
 
-    {{#isContainer}}{{#mostInnerItems}}{{!
+    {{#mostInnerItems}}{{!
         }}{{datatypeWithEnum}}(final {{{dataType}}} value){{!
-    }}{{/mostInnerItems}}{{/isContainer}}{{!
-    }}{{^isContainer}}{{!
-        }}{{datatypeWithEnum}}(final {{{dataType}}} value){{/isContainer}} {
+    }}{{/mostInnerItems}}{{!
+    }}{{^mostInnerItems}}{{!
+        }}{{datatypeWithEnum}}(final {{{dataType}}} value){{!
+    }}{{/mostInnerItems}} {
       this.value = value;
     }
 
