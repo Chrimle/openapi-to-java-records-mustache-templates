@@ -478,9 +478,9 @@ public record RecordWithInnerEnums(
        * @see #fromValue
        */
       @Override
-      public List<ExampleEnumArrayEnum> read(final JsonReader jsonReader) throws IOException {
-        final List<String> value = jsonReader.nextList<String>();
-        return List<ExampleEnumArrayEnum>.fromValue(value);
+      public ExampleEnumArrayEnum read(final JsonReader jsonReader) throws IOException {
+        final String value = jsonReader.nextString();
+        return ExampleEnumArrayEnum.fromValue(value);
       }
     }
   }
