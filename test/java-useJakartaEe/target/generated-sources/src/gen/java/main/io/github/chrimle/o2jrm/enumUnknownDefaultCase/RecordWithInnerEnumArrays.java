@@ -226,7 +226,7 @@ public record RecordWithInnerEnumArrays(
      * @throws IOException if the JSON Element is not a valid {@link IntegerEnumArrayEnum } object.
      */
     public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
-      final Integer value = jsonElement.getAsInteger();
+      final Integer value = jsonElement.getAsInt();
       IntegerEnumArrayEnum.fromValue(value);
     }
 
@@ -325,7 +325,7 @@ public record RecordWithInnerEnumArrays(
      * @throws IOException if the JSON Element is not a valid {@link UriEnumArrayEnum } object.
      */
     public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
-      final URI value = jsonElement.getAsURI();
+      final URI value = URI.create(jsonElement.getAsString());
       UriEnumArrayEnum.fromValue(value);
     }
 
