@@ -398,7 +398,7 @@ public record RecordWithInnerEnums(
   @io.github.chrimle.o2jrm.test.annotations.TestAnnotationTwo
   @io.github.chrimle.o2jrm.test.annotations.TestAnnotationThree
   @JsonAdapter(List<ExampleEnumArrayEnum>.Adapter.class)
-  public enum List&lt;ExampleEnumArrayEnum&gt; {
+  public enum ExampleEnumArrayEnum {
     ENUM1("ENUM1"),
     ENUM2("ENUM2"),
     ENUM3("ENUM3");

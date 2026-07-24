@@ -224,7 +224,7 @@ public record RecordWithInnerEnums(
   /**
    * Example of an array of enums
    */
-  public enum List&lt;ExampleEnumArrayEnum&gt; {
+  public enum ExampleEnumArrayEnum {
     ENUM1("ENUM1"),
     ENUM2("ENUM2"),
     ENUM3("ENUM3"),
