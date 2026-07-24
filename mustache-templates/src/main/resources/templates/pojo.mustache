@@ -142,7 +142,11 @@ import java.util.Set;
 
     private final {{#isContainer}}{{#mostInnerItems}}{{{dataType}}}{{/mostInnerItems}}{{/isContainer}}{{^isContainer}}{{{dataType}}}{{/isContainer}} value;
 
-    {{datatypeWithEnum}}(final {{{dataType}}} value) {
+    {{#isContainer}}{{#mostInnerItems}}{{!
+        }}{{datatypeWithEnum}}(final {{{dataType}}} value){{!
+    }}{{/mostInnerItems}}{{/isContainer}}{{!
+    }}{{^isContainer}}{{!
+        }}{{datatypeWithEnum}}(final {{{dataType}}} value){{/isContainer}} {
       this.value = value;
     }
 

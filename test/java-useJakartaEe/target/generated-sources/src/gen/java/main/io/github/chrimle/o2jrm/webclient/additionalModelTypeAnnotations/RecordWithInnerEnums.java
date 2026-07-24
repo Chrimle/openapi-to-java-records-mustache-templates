@@ -239,7 +239,7 @@ public record RecordWithInnerEnums(
 
     private final String value;
 
-    List&lt;ExampleEnumArrayEnum&gt;(final List<String> value) {
+    ExampleEnumArrayEnum(final String value) {
       this.value = value;
     }
 
