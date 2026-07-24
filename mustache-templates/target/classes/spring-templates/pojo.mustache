@@ -220,7 +220,7 @@ import java.util.Set;
       @Override
       public void write(final JsonWriter jsonWriter, final {{#mostInnerItems}}{{datatypeWithEnum}}{{/mostInnerItems}}{{^mostInnerItems}}{{datatypeWithEnum}}{{/mostInnerItems}} enumeration)
           throws IOException {
-        jsonWriter.value(enumeration.getValue(){{#isUri}}.toASCIIString(){{/isUri}});
+        jsonWriter.value(enumeration.getValue(){{#mostInnerItems}}{{#isUri}}.toASCIIString(){{/isUri}}{{/mostInnerItems}}{{^mostInnerItems}}{{#isUri}}.toASCIIString(){{/isUri}}{{/mostInnerItems}});
       }
 
       /**

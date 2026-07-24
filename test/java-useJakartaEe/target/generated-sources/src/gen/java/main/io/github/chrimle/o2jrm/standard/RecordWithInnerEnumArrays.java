@@ -345,7 +345,7 @@ public record RecordWithInnerEnumArrays(
       @Override
       public void write(final JsonWriter jsonWriter, final UriEnumArrayEnum enumeration)
           throws IOException {
-        jsonWriter.value(enumeration.getValue());
+        jsonWriter.value(enumeration.getValue().toASCIIString());
       }
 
       /**
