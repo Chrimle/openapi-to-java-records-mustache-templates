@@ -26,9 +26,6 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.net.URI;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
@@ -38,24 +35,20 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  * @param exampleInner Example of an inner enum class
  * @param exampleInnerTwo Example of another inner enum class with integer values
  * @param exampleInnerThree Example of another inner enum class with URI values
- * @param exampleEnumArray Example of an array of enums
  */
 public record RecordWithInnerEnums(
     ExampleInnerEnum exampleInner,
     ExampleInnerTwoEnum exampleInnerTwo,
-    ExampleInnerThreeEnum exampleInnerThree,
-    List<ExampleEnumArrayEnum> exampleEnumArray) {
+    ExampleInnerThreeEnum exampleInnerThree) {
 
   @JsonCreator
   public RecordWithInnerEnums(
       final ExampleInnerEnum exampleInner,
       final ExampleInnerTwoEnum exampleInnerTwo,
-      final ExampleInnerThreeEnum exampleInnerThree,
-      final List<ExampleEnumArrayEnum> exampleEnumArray) {
+      final ExampleInnerThreeEnum exampleInnerThree) {
     this.exampleInner = exampleInner;
     this.exampleInnerTwo = exampleInnerTwo;
     this.exampleInnerThree = exampleInnerThree;
-    this.exampleEnumArray = Objects.requireNonNullElseGet(exampleEnumArray, () -> new ArrayList<>());
   }
 
   /**
@@ -212,56 +205,6 @@ public record RecordWithInnerEnums(
      */
     @JsonCreator
     public static ExampleInnerThreeEnum fromValue(final URI value) {
-      final var result = VALUE_MAP.get(value);
-      if (result != null) return result;
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
-  /**
-   * Example of an array of enums
-   */
-  public enum ExampleEnumArrayEnum {
-    ENUM1("ENUM1"),
-    ENUM2("ENUM2"),
-    ENUM3("ENUM3");
-
-    private static final java.util.Map<String, ExampleEnumArrayEnum> VALUE_MAP;
-
-    static {
-      final var map = new java.util.HashMap<String, ExampleEnumArrayEnum>();
-      for (final var e : values()) map.putIfAbsent(e.getValue(), e);
-      VALUE_MAP = java.util.Collections.unmodifiableMap(map);
-    }
-
-    private final String value;
-
-    ExampleEnumArrayEnum(final String value) {
-      this.value = value;
-    }
-
-    /**
-     * Gets the {@link #value} of this enum.
-     *
-     * @return the {@code value} of this enum.
-     */
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
-
-    /**
-     * Matches the given {@code value} to an enum constant using {@link #getValue()}.
-     *
-     * <p><b>NOTE:</b> if multiple enum constants have a matching {@link #value}, the first matching
-     * enum constant is returned, by the order they are declared.
-     *
-     * @param value of the enum.
-     * @return a {@link ExampleEnumArrayEnum } with the matching value.
-     * @throws IllegalArgumentException if no enum has a value matching the given value.
-     */
-    @JsonCreator
-    public static ExampleEnumArrayEnum fromValue(final String value) {
       final var result = VALUE_MAP.get(value);
       if (result != null) return result;
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
