@@ -450,7 +450,7 @@ public record RecordWithInnerEnums(
      *
      * @see com.google.gson.TypeAdapter
      */
-    public static class Adapter extends TypeAdapter<List<ExampleEnumArrayEnum>> {
+    public static class Adapter extends TypeAdapter<ExampleEnumArrayEnum> {
 
       /**
        * Writes the {@link #value} of the {@code enumeration} as a JSON-string to the {@code

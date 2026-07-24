@@ -199,7 +199,7 @@ import java.util.Set;
      *
      * @see com.google.gson.TypeAdapter
      */
-    public static class Adapter extends TypeAdapter<{{{datatypeWithEnum}}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}}> {
+    public static class Adapter extends TypeAdapter<{{#mostInnerItems}}{{datatypeWithEnum}}{{/mostInnerItems}}{{^mostInnerItems}}{{datatypeWithEnum}}{{/mostInnerItems}}> {
 
       /**
        * Writes the {@link #value} of the {@code enumeration} as a JSON-string to the {@code
