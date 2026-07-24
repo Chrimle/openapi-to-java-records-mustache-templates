@@ -91,7 +91,7 @@ import java.util.Set;
 {{#additionalEnumTypeAnnotations}}  {{{.}}}
 {{/additionalEnumTypeAnnotations}}{{!
 }}{{#gson}}{{!
-}}  @JsonAdapter({{{datatypeWithEnum}}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}}.Adapter.class)
+}}  @JsonAdapter({{#isContainer}}{{#mostInnerItems}}{{datatypeWithEnum}}{{/mostInnerItems}}{{/isContainer}}{{^isContainer}}{{datatypeWithEnum}}{{/isContainer}}.Adapter.class)
 {{/gson}}{{!
 }}  public enum {{#isContainer}}{{#mostInnerItems}}{{datatypeWithEnum}}{{/mostInnerItems}}{{/isContainer}}{{^isContainer}}{{datatypeWithEnum}}{{/isContainer}} {
     {{#allowableValues}}{{#enumVars}}{{!

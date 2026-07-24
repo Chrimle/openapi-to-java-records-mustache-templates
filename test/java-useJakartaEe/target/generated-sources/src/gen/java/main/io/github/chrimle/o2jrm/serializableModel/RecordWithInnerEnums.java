@@ -387,7 +387,7 @@ public record RecordWithInnerEnums(
   /**
    * Example of an array of enums
    */
-  @JsonAdapter(List<ExampleEnumArrayEnum>.Adapter.class)
+  @JsonAdapter(ExampleEnumArrayEnum.Adapter.class)
   public enum ExampleEnumArrayEnum {
     ENUM1("ENUM1"),
     ENUM2("ENUM2"),
