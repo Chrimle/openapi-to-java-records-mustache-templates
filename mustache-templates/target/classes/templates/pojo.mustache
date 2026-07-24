@@ -300,7 +300,7 @@ import java.util.Set;
 {{^required}}  {{/required}}    {{{dataType}}}.validateJsonElement(jsonObj.get("{{{baseName}}}"));{{!
 }}{{/isModel}}{{/isContainer}}{{!
 }}{{#isEnum}}
-{{^required}}  {{/required}}    {{{datatypeWithEnum}}}.validateJsonElement(jsonObj.get("{{{baseName}}}"));{{!
+{{^required}}  {{/required}}    {{#mostInnerItems}}{{datatypeWithEnum}}{{/mostInnerItems}}{{^mostInnerItems}}{{datatypeWithEnum}}{{/mostInnerItems}}.validateJsonElement(jsonObj.get("{{{baseName}}}"));{{!
 }}{{/isEnum}}{{!
 }}{{#isEnumRef}}
 {{^required}}  {{/required}}    {{{dataType}}}.validateJsonElement(jsonObj.get("{{{baseName}}}"));{{!

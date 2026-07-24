@@ -517,7 +517,7 @@ public record RecordWithInnerEnums(
     }
 
     if (jsonObj.get("exampleEnumArray") != null && !jsonObj.get("exampleEnumArray").isJsonNull()) { 
-      List<ExampleEnumArrayEnum>.validateJsonElement(jsonObj.get("exampleEnumArray"));
+      ExampleEnumArrayEnum.validateJsonElement(jsonObj.get("exampleEnumArray"));
     }
   }
 
