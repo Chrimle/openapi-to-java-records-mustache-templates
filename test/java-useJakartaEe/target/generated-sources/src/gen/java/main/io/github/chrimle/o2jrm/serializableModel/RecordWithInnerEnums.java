@@ -412,7 +412,7 @@ public record RecordWithInnerEnums(
      *
      * @return the {@code value} of this enum.
      */
-    public List<String> getValue() {
+    public String getValue() {
       return value;
     }
 

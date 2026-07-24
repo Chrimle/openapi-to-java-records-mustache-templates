@@ -250,7 +250,7 @@ public record RecordWithInnerEnums(
      * @return the {@code value} of this enum.
      */
     @JsonValue
-    public List<String> getValue() {
+    public String getValue() {
       return value;
     }
 
