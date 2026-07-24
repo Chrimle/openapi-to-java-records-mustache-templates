@@ -547,10 +547,10 @@ public record RecordWithInnerEnums(
 
       /**
        * Reads the <i>next</i> JSON-value from the {@code jsonReader} and converts it to a {@link
-       * List<ExampleEnumArrayEnum> }.
+       * ExampleEnumArrayEnum }.
        *
        * @param jsonReader to read the JSON-string from.
-       * @return a {@link List<ExampleEnumArrayEnum> }.
+       * @return a {@link ExampleEnumArrayEnum }.
        * @throws IOException if the {@code jsonReader} fails to read a value.
        * @throws NullPointerException if {@code jsonReader} is {@code null}.
        * @see #fromValue

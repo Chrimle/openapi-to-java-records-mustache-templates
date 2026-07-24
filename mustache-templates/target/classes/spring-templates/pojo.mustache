@@ -218,10 +218,10 @@ import java.util.Set;
 
       /**
        * Reads the <i>next</i> JSON-value from the {@code jsonReader} and converts it to a {@link
-       * {{{datatypeWithEnum}}}{{^datatypeWithEnum}}{{{classname}}}{{/datatypeWithEnum}} }.
+       * {{#mostInnerItems}}{{datatypeWithEnum}}{{/mostInnerItems}}{{^mostInnerItems}}{{datatypeWithEnum}}{{/mostInnerItems}} }.
        *
        * @param jsonReader to read the JSON-string from.
-       * @return a {@link {{{datatypeWithEnum}}}{{^datatypeWithEnum}}{{{classname}}}{{/datatypeWithEnum}} }.
+       * @return a {@link {{#mostInnerItems}}{{datatypeWithEnum}}{{/mostInnerItems}}{{^mostInnerItems}}{{datatypeWithEnum}}{{/mostInnerItems}} }.
        * @throws IOException if the {@code jsonReader} fails to read a value.
        * @throws NullPointerException if {@code jsonReader} is {@code null}.
        * @see #fromValue
