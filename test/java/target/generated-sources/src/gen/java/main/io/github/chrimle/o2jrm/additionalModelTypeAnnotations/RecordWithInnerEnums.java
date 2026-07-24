@@ -427,7 +427,7 @@ public record RecordWithInnerEnums(
      * @return a {@link List&lt;ExampleEnumArrayEnum&gt; } with the matching value.
      * @throws IllegalArgumentException if no enum has a value matching the given value.
      */
-    public static List&lt;ExampleEnumArrayEnum&gt; fromValue(final List<String> value) {
+    public static ExampleEnumArrayEnum fromValue(final String value) {
       final var result = VALUE_MAP.get(value);
       if (result != null) return result;
       throw new IllegalArgumentException("Unexpected value '" + value + "'");

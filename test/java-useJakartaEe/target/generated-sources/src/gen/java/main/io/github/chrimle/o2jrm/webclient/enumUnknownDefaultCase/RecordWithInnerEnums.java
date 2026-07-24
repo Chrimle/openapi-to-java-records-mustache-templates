@@ -265,7 +265,7 @@ public record RecordWithInnerEnums(
      *     {@link #UNKNOWN_DEFAULT_OPEN_API } if no match is found.
      */
     @JsonCreator
-    public static List&lt;ExampleEnumArrayEnum&gt; fromValue(final List<String> value) {
+    public static ExampleEnumArrayEnum fromValue(final String value) {
       final var result = VALUE_MAP.get(value);
       if (result != null) return result;
       return UNKNOWN_DEFAULT_OPEN_API;
