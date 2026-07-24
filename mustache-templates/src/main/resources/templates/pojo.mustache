@@ -211,7 +211,7 @@ import java.util.Set;
        * @throws NullPointerException if {@code jsonWriter} or {@code enumeration} is {@code null}.
        */
       @Override
-      public void write(final JsonWriter jsonWriter, final {{{datatypeWithEnum}}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}} enumeration)
+      public void write(final JsonWriter jsonWriter, final {{#mostInnerItems}}{{datatypeWithEnum}}{{/mostInnerItems}}{{^mostInnerItems}}{{datatypeWithEnum}}{{/mostInnerItems}} enumeration)
           throws IOException {
         jsonWriter.value(enumeration.getValue(){{#isUri}}.toASCIIString(){{/isUri}});
       }

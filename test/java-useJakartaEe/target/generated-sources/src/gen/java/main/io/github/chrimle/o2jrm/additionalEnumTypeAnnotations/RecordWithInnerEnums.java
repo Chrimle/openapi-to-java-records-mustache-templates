@@ -470,7 +470,7 @@ public record RecordWithInnerEnums(
        * @throws NullPointerException if {@code jsonWriter} or {@code enumeration} is {@code null}.
        */
       @Override
-      public void write(final JsonWriter jsonWriter, final List<ExampleEnumArrayEnum> enumeration)
+      public void write(final JsonWriter jsonWriter, final ExampleEnumArrayEnum enumeration)
           throws IOException {
         jsonWriter.value(enumeration.getValue());
       }
