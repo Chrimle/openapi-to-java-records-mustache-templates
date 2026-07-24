@@ -519,8 +519,8 @@ public record RecordWithInnerEnums(
      * @throws IOException if the JSON Element is not a valid {@link ExampleEnumArrayEnum } object.
      */
     public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
-      final List<String> value = jsonElement.getAsList<String>();
-      List<ExampleEnumArrayEnum>.fromValue(value);
+      final String value = jsonElement.getAsString();
+      ExampleEnumArrayEnum.fromValue(value);
     }
 
     /**
