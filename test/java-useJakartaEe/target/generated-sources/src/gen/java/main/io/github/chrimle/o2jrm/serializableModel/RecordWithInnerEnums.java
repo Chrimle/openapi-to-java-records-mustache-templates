@@ -423,7 +423,7 @@ public record RecordWithInnerEnums(
      * enum constant is returned, by the order they are declared.
      *
      * @param value of the enum.
-     * @return a {@link List&lt;ExampleEnumArrayEnum&gt; } with the matching value.
+     * @return a {@link ExampleEnumArrayEnum } with the matching value.
      * @throws IllegalArgumentException if no enum has a value matching the given value.
      */
     public static ExampleEnumArrayEnum fromValue(final String value) {
