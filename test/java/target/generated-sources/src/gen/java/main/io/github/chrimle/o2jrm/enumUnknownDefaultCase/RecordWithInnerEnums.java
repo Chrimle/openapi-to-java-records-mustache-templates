@@ -395,7 +395,7 @@ public record RecordWithInnerEnums(
     ENUM3("ENUM3"),
     UNKNOWN_DEFAULT_OPEN_API("unknown_default_open_api");
 
-    private static final java.util.Map<List<String>, List&lt;ExampleEnumArrayEnum&gt;> VALUE_MAP;
+    private static final java.util.Map<String, ExampleEnumArrayEnum> VALUE_MAP;
 
     static {
       final var map = new java.util.HashMap<List<String>, List&lt;ExampleEnumArrayEnum&gt;>();

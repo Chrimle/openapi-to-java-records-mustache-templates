@@ -238,7 +238,7 @@ public record RecordWithInnerEnums(
     ENUM2("ENUM2"),
     ENUM3("ENUM3");
 
-    private static final java.util.Map<List<String>, List&lt;ExampleEnumArrayEnum&gt;> VALUE_MAP;
+    private static final java.util.Map<String, ExampleEnumArrayEnum> VALUE_MAP;
 
     static {
       final var map = new java.util.HashMap<List<String>, List&lt;ExampleEnumArrayEnum&gt;>();

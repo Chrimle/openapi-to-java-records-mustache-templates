@@ -104,7 +104,10 @@ import java.util.Set;
     {{/-last}}{{#-last}};{{/-last}}{{!
     }}{{/enumVars}}{{/allowableValues}}
 
-    private static final java.util.Map<{{{dataType}}}, {{datatypeWithEnum}}> VALUE_MAP;
+    private static final java.util.Map<{{!
+        }}{{#isContainer}}{{#mostInnerItems}}{{{dataType}}}, {{datatypeWithEnum}}{{/mostInnerItems}}{{/isContainer}}{{!
+        }}{{^isContainer}}{{{dataType}}}, {{datatypeWithEnum}}{{/isContainer}}{{!
+      }}> VALUE_MAP;
 
     static {
       final var map ={{!
