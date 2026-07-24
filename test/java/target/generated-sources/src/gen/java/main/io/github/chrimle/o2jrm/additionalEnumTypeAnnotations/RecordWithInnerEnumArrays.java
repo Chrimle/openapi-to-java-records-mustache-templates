@@ -268,7 +268,7 @@ public record RecordWithInnerEnumArrays(
        */
       @Override
       public IntegerEnumArrayEnum read(final JsonReader jsonReader) throws IOException {
-        final Integer value = jsonReader.nextInteger();
+        final Integer value = jsonReader.nextInt();
         return IntegerEnumArrayEnum.fromValue(value);
       }
     }
@@ -369,7 +369,7 @@ public record RecordWithInnerEnumArrays(
        */
       @Override
       public UriEnumArrayEnum read(final JsonReader jsonReader) throws IOException {
-        final URI value = jsonReader.nextURI();
+        final URI value = URI.create(jsonReader.nextString());
         return UriEnumArrayEnum.fromValue(value);
       }
     }

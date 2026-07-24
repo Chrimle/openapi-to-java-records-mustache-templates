@@ -228,7 +228,14 @@ import java.util.Set;
        */
       @Override
       public {{#mostInnerItems}}{{datatypeWithEnum}}{{/mostInnerItems}}{{^mostInnerItems}}{{datatypeWithEnum}}{{/mostInnerItems}} read(final JsonReader jsonReader) throws IOException {
-        final {{^isNumber}}{{#mostInnerItems}}{{{dataType}}}{{/mostInnerItems}}{{^mostInnerItems}}{{{dataType}}}{{/mostInnerItems}}{{/isNumber}}{{#isNumber}}String{{/isNumber}} value = {{#isFloat}}(float) {{/isFloat}}{{#isUri}}URI.create({{/isUri}}jsonReader.{{#isNumber}}nextString(){{/isNumber}}{{#isInteger}}nextInt(){{/isInteger}}{{#isUri}}nextString()){{/isUri}}{{^isNumber}}{{^isInteger}}{{^isUri}}{{#isFloat}}nextDouble{{/isFloat}}{{^isFloat}}next{{#mostInnerItems}}{{{dataType}}}{{/mostInnerItems}}{{^mostInnerItems}}{{{dataType}}}{{/mostInnerItems}}{{/isFloat}}(){{/isUri}}{{/isInteger}}{{/isNumber}};
+        final {{^isNumber}}{{#mostInnerItems}}{{{dataType}}}{{/mostInnerItems}}{{^mostInnerItems}}{{{dataType}}}{{/mostInnerItems}}{{/isNumber}}{{#isNumber}}String{{/isNumber}} value = {{!
+            }}{{#mostInnerItems}}{{!
+                }}{{#isFloat}}(float) {{/isFloat}}{{#isUri}}URI.create({{/isUri}}jsonReader.{{#isNumber}}nextString(){{/isNumber}}{{#isInteger}}nextInt(){{/isInteger}}{{#isUri}}nextString()){{/isUri}}{{^isNumber}}{{^isInteger}}{{^isUri}}{{#isFloat}}nextDouble{{/isFloat}}{{^isFloat}}next{{{dataType}}}{{/isFloat}}(){{/isUri}}{{/isInteger}}{{/isNumber}}{{!
+            }}{{/mostInnerItems}}{{!
+            }}{{^mostInnerItems}}{{!
+                }}{{#isFloat}}(float) {{/isFloat}}{{#isUri}}URI.create({{/isUri}}jsonReader.{{#isNumber}}nextString(){{/isNumber}}{{#isInteger}}nextInt(){{/isInteger}}{{#isUri}}nextString()){{/isUri}}{{^isNumber}}{{^isInteger}}{{^isUri}}{{#isFloat}}nextDouble{{/isFloat}}{{^isFloat}}next{{{dataType}}}{{/isFloat}}(){{/isUri}}{{/isInteger}}{{/isNumber}}{{!
+            }}{{/mostInnerItems}}{{!
+        }};
         return {{#mostInnerItems}}{{datatypeWithEnum}}{{/mostInnerItems}}{{^mostInnerItems}}{{datatypeWithEnum}}{{/mostInnerItems}}.fromValue({{#isNumber}}new BigDecimal({{/isNumber}}value{{#isNumber}}){{/isNumber}});
       }
     }
