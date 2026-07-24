@@ -114,19 +114,27 @@ import java.util.Set;
         }}{{#useEnumCaseInsensitive}}{{!
           }}{{#isString}}{{!
             }}{{^isUri}}
-          new java.util.TreeMap<{{{dataType}}}, {{datatypeWithEnum}}>(
+          new java.util.TreeMap<{{!
+            }}{{#isContainer}}{{#mostInnerItems}}{{{dataType}}}, {{datatypeWithEnum}}{{/mostInnerItems}}{{!
+            }}{{/isContainer}}{{^isContainer}}{{{dataType}}}, {{datatypeWithEnum}}{{/isContainer}}>(
               java.util.Comparator.nullsFirst(String.CASE_INSENSITIVE_ORDER));{{!
             }}{{/isUri}}{{!
             }}{{#isUri}}{{!
-              }} new java.util.HashMap<{{{dataType}}}, {{datatypeWithEnum}}>();{{!
+              }} new java.util.HashMap<{{!
+                }}{{#isContainer}}{{#mostInnerItems}}{{{dataType}}}, {{datatypeWithEnum}}{{/mostInnerItems}}{{/isContainer}}{{!
+                }}{{^isContainer}}{{{dataType}}}, {{datatypeWithEnum}}{{/isContainer}}>();{{!
             }}{{/isUri}}{{!
           }}{{/isString}}{{!
           }}{{^isString}}{{!
-            }} new java.util.HashMap<{{{dataType}}}, {{datatypeWithEnum}}>();{{!
+            }} new java.util.HashMap<{{!
+                }}{{#isContainer}}{{#mostInnerItems}}{{{dataType}}}, {{datatypeWithEnum}}{{/mostInnerItems}}{{/isContainer}}{{!
+                }}{{^isContainer}}{{{dataType}}}, {{datatypeWithEnum}}{{/isContainer}}>();{{!
           }}{{/isString}}{{!
         }}{{/useEnumCaseInsensitive}}{{!
         }}{{^useEnumCaseInsensitive}}{{!
-          }} new java.util.HashMap<{{{dataType}}}, {{datatypeWithEnum}}>();{{!
+          }} new java.util.HashMap<{{!
+            }}{{#isContainer}}{{#mostInnerItems}}{{{dataType}}}, {{datatypeWithEnum}}{{/mostInnerItems}}{{/isContainer}}{{!
+            }}{{^isContainer}}{{{dataType}}}, {{datatypeWithEnum}}{{/isContainer}}>();{{!
         }}{{/useEnumCaseInsensitive}}
       for (final var e : values()) map.putIfAbsent(e.getValue(), e);
       VALUE_MAP = java.util.Collections.unmodifiableMap(map);

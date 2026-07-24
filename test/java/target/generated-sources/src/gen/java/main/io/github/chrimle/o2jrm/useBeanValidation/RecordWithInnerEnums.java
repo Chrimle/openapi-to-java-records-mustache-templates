@@ -396,7 +396,7 @@ public record RecordWithInnerEnums(
     private static final java.util.Map<String, ExampleEnumArrayEnum> VALUE_MAP;
 
     static {
-      final var map = new java.util.HashMap<List<String>, List&lt;ExampleEnumArrayEnum&gt;>();
+      final var map = new java.util.HashMap<String, ExampleEnumArrayEnum>();
       for (final var e : values()) map.putIfAbsent(e.getValue(), e);
       VALUE_MAP = java.util.Collections.unmodifiableMap(map);
     }
