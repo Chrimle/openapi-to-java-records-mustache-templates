@@ -481,7 +481,7 @@ public record RecordWithInnerEnums(
       VALUE_MAP = java.util.Collections.unmodifiableMap(map);
     }
 
-    private final List<String> value;
+    private final String value;
 
     List&lt;ExampleEnumArrayEnum&gt;(final List<String> value) {
       this.value = value;

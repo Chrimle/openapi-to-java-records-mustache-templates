@@ -140,7 +140,7 @@ import java.util.Set;
       VALUE_MAP = java.util.Collections.unmodifiableMap(map);
     }
 
-    private final {{{dataType}}} value;
+    private final {{#isContainer}}{{#mostInnerItems}}{{{dataType}}}{{/mostInnerItems}}{{/isContainer}}{{^isContainer}}{{{dataType}}}{{/isContainer}} value;
 
     {{datatypeWithEnum}}(final {{{dataType}}} value) {
       this.value = value;
