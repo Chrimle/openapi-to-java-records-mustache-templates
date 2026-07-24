@@ -26,7 +26,9 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
@@ -43,18 +45,21 @@ import java.util.Set;
  * @param exampleInner Example of an inner enum class
  * @param exampleInnerTwo Example of another inner enum class with integer values
  * @param exampleInnerThree Example of another inner enum class with URI values
+ * @param exampleEnumArray Example of an array of enums
  */
 public record RecordWithInnerEnums(
     ExampleInnerEnum exampleInner,
     ExampleInnerTwoEnum exampleInnerTwo,
-    ExampleInnerThreeEnum exampleInnerThree) {
+    ExampleInnerThreeEnum exampleInnerThree,
+    List<ExampleEnumArrayEnum> exampleEnumArray) {
 
   /** A set containing the names of all instance fields defined in this class. */
   public static final HashSet<String> openapiFields =
       new HashSet<>(
           Set.of("exampleInner",
               "exampleInnerTwo",
-              "exampleInnerThree"));
+              "exampleInnerThree",
+              "exampleEnumArray"));
 
   /** A set containing the names of all required fields defined in this class. */
   public static final HashSet<String> openapiRequiredFields = new HashSet<>();
@@ -62,10 +67,12 @@ public record RecordWithInnerEnums(
   public RecordWithInnerEnums(
       final ExampleInnerEnum exampleInner,
       final ExampleInnerTwoEnum exampleInnerTwo,
-      final ExampleInnerThreeEnum exampleInnerThree) {
+      final ExampleInnerThreeEnum exampleInnerThree,
+      final List<ExampleEnumArrayEnum> exampleEnumArray) {
     this.exampleInner = exampleInner;
     this.exampleInnerTwo = exampleInnerTwo;
     this.exampleInnerThree = exampleInnerThree;
+    this.exampleEnumArray = Objects.requireNonNullElseGet(exampleEnumArray, () -> new ArrayList<>());
   }
 
   /**
@@ -376,6 +383,105 @@ public record RecordWithInnerEnums(
   }
 
   /**
+   * Example of an array of enums
+   */
+  @JsonAdapter(List<ExampleEnumArrayEnum>.Adapter.class)
+  public enum List&lt;ExampleEnumArrayEnum&gt; {
+    ENUM1("ENUM1"),
+    ENUM2("ENUM2"),
+    ENUM3("ENUM3");
+
+    private static final java.util.Map<List<String>, List&lt;ExampleEnumArrayEnum&gt;> VALUE_MAP;
+
+    static {
+      final var map = new java.util.HashMap<List<String>, List&lt;ExampleEnumArrayEnum&gt;>();
+      for (final var e : values()) map.putIfAbsent(e.getValue(), e);
+      VALUE_MAP = java.util.Collections.unmodifiableMap(map);
+    }
+
+    private final List<String> value;
+
+    List&lt;ExampleEnumArrayEnum&gt;(final List<String> value) {
+      this.value = value;
+    }
+
+    /**
+     * Gets the {@link #value} of this enum.
+     *
+     * @return the {@code value} of this enum.
+     */
+    public List<String> getValue() {
+      return value;
+    }
+
+    /**
+     * Matches the given {@code value} to an enum constant using {@link #getValue()}.
+     *
+     * <p><b>NOTE:</b> if multiple enum constants have a matching {@link #value}, the first matching
+     * enum constant is returned, by the order they are declared.
+     *
+     * @param value of the enum.
+     * @return a {@link List&lt;ExampleEnumArrayEnum&gt; } with the matching value.
+     * @throws IllegalArgumentException if no enum has a value matching the given value.
+     */
+    public static List&lt;ExampleEnumArrayEnum&gt; fromValue(final List<String> value) {
+      final var result = VALUE_MAP.get(value);
+      if (result != null) return result;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues are found.
+     *
+     * @param jsonElement to validate.
+     * @throws IOException if the JSON Element is not a valid {@link List&lt;ExampleEnumArrayEnum&gt; } object.
+     */
+    public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
+      final List<String> value = jsonElement.getAsList<String>();
+      List<ExampleEnumArrayEnum>.fromValue(value);
+    }
+
+    /**
+     * Converts {@link List<ExampleEnumArrayEnum> } objects to and from JSON.
+     *
+     * @see com.google.gson.TypeAdapter
+     */
+    public static class Adapter extends TypeAdapter<List<ExampleEnumArrayEnum>> {
+
+      /**
+       * Writes the {@link #value} of the {@code enumeration} as a JSON-string to the {@code
+       * jsonWriter}.
+       *
+       * @param jsonWriter to write the value to.
+       * @param enumeration to write as JSON.
+       * @throws IOException if the {@code jsonWriter} fails to write the value.
+       * @throws NullPointerException if {@code jsonWriter} or {@code enumeration} is {@code null}.
+       */
+      @Override
+      public void write(final JsonWriter jsonWriter, final List<ExampleEnumArrayEnum> enumeration)
+          throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      /**
+       * Reads the <i>next</i> JSON-value from the {@code jsonReader} and converts it to a {@link
+       * List<ExampleEnumArrayEnum> }.
+       *
+       * @param jsonReader to read the JSON-string from.
+       * @return a {@link List<ExampleEnumArrayEnum> }.
+       * @throws IOException if the {@code jsonReader} fails to read a value.
+       * @throws NullPointerException if {@code jsonReader} is {@code null}.
+       * @see #fromValue
+       */
+      @Override
+      public List<ExampleEnumArrayEnum> read(final JsonReader jsonReader) throws IOException {
+        final List<String> value = jsonReader.nextList<String>();
+        return List<ExampleEnumArrayEnum>.fromValue(value);
+      }
+    }
+  }
+
+  /**
    * Validates the JSON Element and throws an exception if issues are found.
    *
    * @param jsonElement to validate.
@@ -405,6 +511,10 @@ public record RecordWithInnerEnums(
 
     if (jsonObj.get("exampleInnerThree") != null && !jsonObj.get("exampleInnerThree").isJsonNull()) { 
       ExampleInnerThreeEnum.validateJsonElement(jsonObj.get("exampleInnerThree"));
+    }
+
+    if (jsonObj.get("exampleEnumArray") != null && !jsonObj.get("exampleEnumArray").isJsonNull()) { 
+      List<ExampleEnumArrayEnum>.validateJsonElement(jsonObj.get("exampleEnumArray"));
     }
   }
 
