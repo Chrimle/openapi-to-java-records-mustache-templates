@@ -524,7 +524,7 @@ public record RecordWithInnerEnums(
     }
 
     /**
-     * Converts {@link List<ExampleEnumArrayEnum> } objects to and from JSON.
+     * Converts {@link ExampleEnumArrayEnum } objects to and from JSON.
      *
      * @see com.google.gson.TypeAdapter
      */
