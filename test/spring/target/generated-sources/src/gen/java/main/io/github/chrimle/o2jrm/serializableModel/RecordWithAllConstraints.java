@@ -27,29 +27,29 @@ import jakarta.annotation.Generated;
 /**
  * Example of a Record which has fields with constraints
  *
- * @param stringStandard String.
- * @param stringDefault String.
- * @param stringNullable String.
- * @param stringRequired String.
- * @param stringRequiredNullable String.
- * @param stringRequiredPattern String.
- * @param stringEmailFormat String.
- * @param stringUuidFormat UUID.
- * @param stringMinLength String.
- * @param stringMaxLength String.
- * @param stringMinAndMaxLength String.
- * @param arrayMinItems List<String>.
- * @param arrayMaxItems List<String>.
- * @param arrayMinAndMaxItems List<String>.
- * @param intMinimum Integer.
- * @param intMaximum Integer.
- * @param intMinimumAndMaximum Integer.
- * @param longMinimum Long.
- * @param longMaximum Long.
- * @param longMinimumAndMaximum Long.
- * @param bigDecimalMinimum BigDecimal.
- * @param bigDecimalMaximum BigDecimal.
- * @param bigDecimalMinimumAndMaximum BigDecimal.
+ * @param stringStandard Non-required, non-nullable String field.
+ * @param stringDefault Non-required, non-nullable String field with a default value.
+ * @param stringNullable Non-required, nullable String field.
+ * @param stringRequired Required, non-nullable String field.
+ * @param stringRequiredNullable Required, nullable String field.
+ * @param stringRequiredPattern Required, non-nullable String field with a RegEx-pattern.
+ * @param stringEmailFormat Non-required, non-nullable String field with Email format.
+ * @param stringUuidFormat Non-required, non-nullable UUID field.
+ * @param stringMinLength Non-required, non-nullable String field with minLength: 3.
+ * @param stringMaxLength Non-required, non-nullable String field with maxLength: 7.
+ * @param stringMinAndMaxLength Non-required, non-nullable String with minLength: 3 and maxLength: 7.
+ * @param arrayMinItems Non-required, non-nullable List with minItems: 1.
+ * @param arrayMaxItems Non-required, non-nullable List with maxItems: 10.
+ * @param arrayMinAndMaxItems Non-required, non-nullable List with minItems: 1 and maxItems: 10.
+ * @param intMinimum Non-required, non-nullable Integer with minimum: 18.
+ * @param intMaximum Non-required, non-nullable Integer with maximum: 100.
+ * @param intMinimumAndMaximum Non-required, non-nullable Integer with minimum: 0 and maximum: 100.
+ * @param longMinimum Non-required, non-nullable Long with minimum: 18.
+ * @param longMaximum Non-required, non-nullable Long with maximum: 100.
+ * @param longMinimumAndMaximum Non-required, non-nullable Long with minimum: 0 and maximum: 100.
+ * @param bigDecimalMinimum Non-required, non-nullable BigDecimal with minimum: 0.
+ * @param bigDecimalMaximum Non-required, non-nullable BigDecimal with maximum: 100.
+ * @param bigDecimalMinimumAndMaximum Non-required, non-nullable BigDecimal with minimum: 0 and maximum: 100.
  */
 public record RecordWithAllConstraints(
     String stringStandard,

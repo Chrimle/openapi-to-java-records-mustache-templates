@@ -26,29 +26,29 @@ import jakarta.annotation.Generated;
 /**
  * Example of a Record which has fields with constraints
  *
- * @param stringStandard String.
- * @param stringDefault String.
- * @param stringNullable String.
- * @param stringRequired String.
- * @param stringRequiredNullable String.
- * @param stringRequiredPattern String.
- * @param stringEmailFormat String.
- * @param stringUuidFormat UUID.
- * @param stringMinLength String.
- * @param stringMaxLength String.
- * @param stringMinAndMaxLength String.
- * @param arrayMinItems List<String>.
- * @param arrayMaxItems List<String>.
- * @param arrayMinAndMaxItems List<String>.
- * @param intMinimum Integer.
- * @param intMaximum Integer.
- * @param intMinimumAndMaximum Integer.
- * @param longMinimum Long.
- * @param longMaximum Long.
- * @param longMinimumAndMaximum Long.
- * @param bigDecimalMinimum BigDecimal.
- * @param bigDecimalMaximum BigDecimal.
- * @param bigDecimalMinimumAndMaximum BigDecimal.
+ * @param stringStandard Non-required, non-nullable String field.
+ * @param stringDefault Non-required, non-nullable String field with a default value.
+ * @param stringNullable Non-required, nullable String field.
+ * @param stringRequired Required, non-nullable String field.
+ * @param stringRequiredNullable Required, nullable String field.
+ * @param stringRequiredPattern Required, non-nullable String field with a RegEx-pattern.
+ * @param stringEmailFormat Non-required, non-nullable String field with Email format.
+ * @param stringUuidFormat Non-required, non-nullable UUID field.
+ * @param stringMinLength Non-required, non-nullable String field with minLength: 3.
+ * @param stringMaxLength Non-required, non-nullable String field with maxLength: 7.
+ * @param stringMinAndMaxLength Non-required, non-nullable String with minLength: 3 and maxLength: 7.
+ * @param arrayMinItems Non-required, non-nullable List with minItems: 1.
+ * @param arrayMaxItems Non-required, non-nullable List with maxItems: 10.
+ * @param arrayMinAndMaxItems Non-required, non-nullable List with minItems: 1 and maxItems: 10.
+ * @param intMinimum Non-required, non-nullable Integer with minimum: 18.
+ * @param intMaximum Non-required, non-nullable Integer with maximum: 100.
+ * @param intMinimumAndMaximum Non-required, non-nullable Integer with minimum: 0 and maximum: 100.
+ * @param longMinimum Non-required, non-nullable Long with minimum: 18.
+ * @param longMaximum Non-required, non-nullable Long with maximum: 100.
+ * @param longMinimumAndMaximum Non-required, non-nullable Long with minimum: 0 and maximum: 100.
+ * @param bigDecimalMinimum Non-required, non-nullable BigDecimal with minimum: 0.
+ * @param bigDecimalMaximum Non-required, non-nullable BigDecimal with maximum: 100.
+ * @param bigDecimalMinimumAndMaximum Non-required, non-nullable BigDecimal with minimum: 0 and maximum: 100.
  */
 public record RecordWithAllConstraints(
     String stringStandard,
@@ -157,7 +157,7 @@ public record RecordWithAllConstraints(
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
      *
-     * @param stringStandard sets the value of stringStandard.
+     * @param stringStandard Non-required, non-nullable String field..
      * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder stringStandard(final String stringStandard) {
@@ -170,7 +170,7 @@ public record RecordWithAllConstraints(
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
      *
-     * @param stringDefault sets the value of stringDefault.
+     * @param stringDefault Non-required, non-nullable String field with a default value..
      * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder stringDefault(final String stringDefault) {
@@ -183,7 +183,7 @@ public record RecordWithAllConstraints(
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
      *
-     * @param stringNullable sets the value of stringNullable.
+     * @param stringNullable Non-required, nullable String field..
      * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder stringNullable(final String stringNullable) {
@@ -196,7 +196,7 @@ public record RecordWithAllConstraints(
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
      *
-     * @param stringRequired sets the value of stringRequired.
+     * @param stringRequired Required, non-nullable String field..
      * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder stringRequired(final String stringRequired) {
@@ -209,7 +209,7 @@ public record RecordWithAllConstraints(
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
      *
-     * @param stringRequiredNullable sets the value of stringRequiredNullable.
+     * @param stringRequiredNullable Required, nullable String field..
      * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder stringRequiredNullable(final String stringRequiredNullable) {
@@ -222,7 +222,7 @@ public record RecordWithAllConstraints(
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
      *
-     * @param stringRequiredPattern sets the value of stringRequiredPattern.
+     * @param stringRequiredPattern Required, non-nullable String field with a RegEx-pattern..
      * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder stringRequiredPattern(final String stringRequiredPattern) {
@@ -235,7 +235,7 @@ public record RecordWithAllConstraints(
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
      *
-     * @param stringEmailFormat sets the value of stringEmailFormat.
+     * @param stringEmailFormat Non-required, non-nullable String field with Email format..
      * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder stringEmailFormat(final String stringEmailFormat) {
@@ -248,7 +248,7 @@ public record RecordWithAllConstraints(
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
      *
-     * @param stringUuidFormat sets the value of stringUuidFormat.
+     * @param stringUuidFormat Non-required, non-nullable UUID field..
      * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder stringUuidFormat(final UUID stringUuidFormat) {
@@ -261,7 +261,7 @@ public record RecordWithAllConstraints(
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
      *
-     * @param stringMinLength sets the value of stringMinLength.
+     * @param stringMinLength Non-required, non-nullable String field with minLength: 3..
      * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder stringMinLength(final String stringMinLength) {
@@ -274,7 +274,7 @@ public record RecordWithAllConstraints(
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
      *
-     * @param stringMaxLength sets the value of stringMaxLength.
+     * @param stringMaxLength Non-required, non-nullable String field with maxLength: 7..
      * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder stringMaxLength(final String stringMaxLength) {
@@ -287,7 +287,7 @@ public record RecordWithAllConstraints(
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
      *
-     * @param stringMinAndMaxLength sets the value of stringMinAndMaxLength.
+     * @param stringMinAndMaxLength Non-required, non-nullable String with minLength: 3 and maxLength: 7..
      * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder stringMinAndMaxLength(final String stringMinAndMaxLength) {
@@ -300,7 +300,7 @@ public record RecordWithAllConstraints(
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
      *
-     * @param arrayMinItems sets the value of arrayMinItems.
+     * @param arrayMinItems Non-required, non-nullable List with minItems: 1..
      * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder arrayMinItems(final List<String> arrayMinItems) {
@@ -313,7 +313,7 @@ public record RecordWithAllConstraints(
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
      *
-     * @param arrayMaxItems sets the value of arrayMaxItems.
+     * @param arrayMaxItems Non-required, non-nullable List with maxItems: 10..
      * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder arrayMaxItems(final List<String> arrayMaxItems) {
@@ -326,7 +326,7 @@ public record RecordWithAllConstraints(
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
      *
-     * @param arrayMinAndMaxItems sets the value of arrayMinAndMaxItems.
+     * @param arrayMinAndMaxItems Non-required, non-nullable List with minItems: 1 and maxItems: 10..
      * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder arrayMinAndMaxItems(final List<String> arrayMinAndMaxItems) {
@@ -339,7 +339,7 @@ public record RecordWithAllConstraints(
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
      *
-     * @param intMinimum sets the value of intMinimum.
+     * @param intMinimum Non-required, non-nullable Integer with minimum: 18..
      * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder intMinimum(final Integer intMinimum) {
@@ -352,7 +352,7 @@ public record RecordWithAllConstraints(
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
      *
-     * @param intMaximum sets the value of intMaximum.
+     * @param intMaximum Non-required, non-nullable Integer with maximum: 100..
      * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder intMaximum(final Integer intMaximum) {
@@ -365,7 +365,7 @@ public record RecordWithAllConstraints(
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
      *
-     * @param intMinimumAndMaximum sets the value of intMinimumAndMaximum.
+     * @param intMinimumAndMaximum Non-required, non-nullable Integer with minimum: 0 and maximum: 100..
      * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder intMinimumAndMaximum(final Integer intMinimumAndMaximum) {
@@ -378,7 +378,7 @@ public record RecordWithAllConstraints(
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
      *
-     * @param longMinimum sets the value of longMinimum.
+     * @param longMinimum Non-required, non-nullable Long with minimum: 18..
      * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder longMinimum(final Long longMinimum) {
@@ -391,7 +391,7 @@ public record RecordWithAllConstraints(
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
      *
-     * @param longMaximum sets the value of longMaximum.
+     * @param longMaximum Non-required, non-nullable Long with maximum: 100..
      * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder longMaximum(final Long longMaximum) {
@@ -404,7 +404,7 @@ public record RecordWithAllConstraints(
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
      *
-     * @param longMinimumAndMaximum sets the value of longMinimumAndMaximum.
+     * @param longMinimumAndMaximum Non-required, non-nullable Long with minimum: 0 and maximum: 100..
      * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder longMinimumAndMaximum(final Long longMinimumAndMaximum) {
@@ -417,7 +417,7 @@ public record RecordWithAllConstraints(
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
      *
-     * @param bigDecimalMinimum sets the value of bigDecimalMinimum.
+     * @param bigDecimalMinimum Non-required, non-nullable BigDecimal with minimum: 0..
      * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder bigDecimalMinimum(final BigDecimal bigDecimalMinimum) {
@@ -430,7 +430,7 @@ public record RecordWithAllConstraints(
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
      *
-     * @param bigDecimalMaximum sets the value of bigDecimalMaximum.
+     * @param bigDecimalMaximum Non-required, non-nullable BigDecimal with maximum: 100..
      * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder bigDecimalMaximum(final BigDecimal bigDecimalMaximum) {
@@ -443,7 +443,7 @@ public record RecordWithAllConstraints(
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
      *
-     * @param bigDecimalMinimumAndMaximum sets the value of bigDecimalMinimumAndMaximum.
+     * @param bigDecimalMinimumAndMaximum Non-required, non-nullable BigDecimal with minimum: 0 and maximum: 100..
      * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder bigDecimalMinimumAndMaximum(final BigDecimal bigDecimalMinimumAndMaximum) {

@@ -52,12 +52,6 @@ public enum GeneratedRecordImpl implements GeneratedRecord, GeneratedClassImpl {
       List.of(),
       List.of(),
       GeneratedField.of("field1", Boolean.class).build()),
-  EXAMPLE_RECORD_WITH_DEFAULT_FIELDS(
-      "ExampleRecordWithDefaultFields",
-      false,
-      List.of(),
-      List.of(),
-      GeneratedField.of("field1", String.class).defaultValue("someDefaultValue").build()),
   EXAMPLE_RECORD_WITH_EXTRA_FIELD_ANNOTATIONS(
       "ExampleRecordWithExtraFieldAnnotations",
       false,
