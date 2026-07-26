@@ -364,84 +364,111 @@ components:
         - stringRequiredNullable
         - stringRequiredPattern
       properties:
+        ### STRING FIELDS ###
         stringStandard:
+          description: "Non-required, non-nullable String field."
           type: string
         stringDefault:
+          description: "Non-required, non-nullable String field with a default value."
           type: string
           default: 'someDefaultValue'
         stringNullable:
+          description: "Non-required, nullable String field."
           type: string
           nullable: true
         stringRequired:
+          description: "Required, non-nullable String field."
           type: string
         stringRequiredNullable:
+          description: "Required, nullable String field."
           type: string
           nullable: true
         stringRequiredPattern:
+          description: "Required, non-nullable String field with a RegEx-pattern."
           type: string
           pattern: '^\d{3}-\d{2}-\d{4}$'
         stringEmailFormat:
+          description: "Non-required, non-nullable String field with Email format."
           type: string
           format: email
         stringUuidFormat:
+          description: "Non-required, non-nullable UUID field."
           type: string
           format: uuid
         stringMinLength:
+          description: "Non-required, non-nullable String field with minLength: 3."
           type: string
           minLength: 3
         stringMaxLength:
+          description: "Non-required, non-nullable String field with maxLength: 7."
           type: string
           maxLength: 7
         stringMinAndMaxLength:
+          description: "Non-required, non-nullable String with minLength: 3 and maxLength: 7."
           type: string
           minLength: 3
           maxLength: 7
+        ### ARRAY FIELDS ###
         arrayMinItems:
+          description: "Non-required, non-nullable List with minItems: 1."
           type: array
           minItems: 1
           items:
             type: string
         arrayMaxItems:
+          description: "Non-required, non-nullable List with maxItems: 10."
           type: array
           maxItems: 10
           items:
             type: string
         arrayMinAndMaxItems:
+          description: "Non-required, non-nullable List with minItems: 1 and maxItems: 10."
           type: array
           minItems: 1
           maxItems: 10
           items:
             type: string
+        ### INTEGER FIELDS ###
         intMinimum:
+          description: "Non-required, non-nullable Integer with minimum: 18."
           type: integer
           minimum: 18
         intMaximum:
+          description: "Non-required, non-nullable Integer with maximum: 100."
           type: integer
           maximum: 100
         intMinimumAndMaximum:
+          description: "Non-required, non-nullable Integer with minimum: 0 and maximum: 100."
           type: integer
           minimum: 0
           maximum: 100
         longMinimum:
+          description: "Non-required, non-nullable Long with minimum: 18."
           type: integer
           format: int64
           minimum: 18
         longMaximum:
+          description: "Non-required, non-nullable Long with maximum: 100."
           type: integer
           format: int64
           maximum: 100
         longMinimumAndMaximum:
+          description: "Non-required, non-nullable Long with minimum: 0 and maximum: 100."
           type: integer
           format: int64
           minimum: 0
           maximum: 100
+        ### NUMBER FIELDS ###
         bigDecimalMinimum:
+          description: "Non-required, non-nullable BigDecimal with minimum: 0."
           type: number
           minimum: 0
         bigDecimalMaximum:
+          description: "Non-required, non-nullable BigDecimal with maximum: 100."
           type: number
           maximum: 100
         bigDecimalMinimumAndMaximum:
+          description: "Non-required, non-nullable BigDecimal with minimum: 0 and maximum: 100."
           type: number
           minimum: 0
           maximum: 100
