@@ -40,6 +40,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 /**
  * Example of a Record which has fields with constraints
  *
+ * @param booleanStandard Non-required, non-nullable Boolean field.
+ * @param booleanDefault Non-required, non-nullable Boolean with a default value.
+ * @param booleanNullable Non-required, nullable Boolean field.
+ * @param booleanRequiredNullable Required, nullable Boolean field.
  * @param stringStandard Non-required, non-nullable String field.
  * @param stringDefault Non-required, non-nullable String field with a default value.
  * @param stringNullable Non-required, nullable String field.
@@ -67,6 +71,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  * @param bigDecimalMinimumAndMaximum Non-required, non-nullable BigDecimal with minimum: 0 and maximum: 100.
  */
 public record RecordWithAllConstraints(
+    Boolean booleanStandard,
+    Boolean booleanDefault,
+    Boolean booleanNullable,
+    Boolean booleanRequiredNullable,
     String stringStandard,
     String stringDefault,
     String stringNullable,
@@ -95,6 +103,10 @@ public record RecordWithAllConstraints(
 
   @JsonCreator
   public RecordWithAllConstraints(
+      final Boolean booleanStandard,
+      final Boolean booleanDefault,
+      final Boolean booleanNullable,
+      final Boolean booleanRequiredNullable,
       final String stringStandard,
       final String stringDefault,
       final String stringNullable,
@@ -120,6 +132,10 @@ public record RecordWithAllConstraints(
       final BigDecimal bigDecimalMinimum,
       final BigDecimal bigDecimalMaximum,
       final BigDecimal bigDecimalMinimumAndMaximum) {
+    this.booleanStandard = booleanStandard;
+    this.booleanDefault = Objects.requireNonNullElse(booleanDefault, true);
+    this.booleanNullable = booleanNullable;
+    this.booleanRequiredNullable = booleanRequiredNullable;
     this.stringStandard = stringStandard;
     this.stringDefault = Objects.requireNonNullElse(stringDefault, "someDefaultValue");
     this.stringNullable = stringNullable;

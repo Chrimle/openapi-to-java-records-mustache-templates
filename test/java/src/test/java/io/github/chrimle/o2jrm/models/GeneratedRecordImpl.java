@@ -118,6 +118,19 @@ public enum GeneratedRecordImpl implements GeneratedRecord, GeneratedClassImpl {
       false,
       List.of(),
       List.of(),
+      GeneratedField.of("booleanStandard", Boolean.class).build(),
+      GeneratedField.of("booleanDefault", Boolean.class).defaultValue(Boolean.TRUE).build(),
+      GeneratedField.of("booleanNullable", Boolean.class).isNullable(true).build(),
+      // FIXME: BUG, gets annotated @NotNull
+      // GeneratedField.of("booleanRequired", Boolean.class).isRequired(true).build(),
+      // GeneratedField.of("booleanRequiredDefault", Boolean.class)
+      //     .isRequired(true)
+      //     .defaultValue(Boolean.TRUE)
+      //     .build(),
+      GeneratedField.of("booleanRequiredNullable", Boolean.class)
+          .isRequired(true)
+          .isNullable(true)
+          .build(),
       GeneratedField.of("stringStandard", String.class).build(),
       GeneratedField.of("stringDefault", String.class).defaultValue("someDefaultValue").build(),
       GeneratedField.of("stringNullable", String.class).isNullable(true).build(),

@@ -43,6 +43,10 @@ import java.util.Set;
 /**
  * Example of a Record which has fields with constraints
  *
+ * @param booleanStandard Non-required, non-nullable Boolean field.
+ * @param booleanDefault Non-required, non-nullable Boolean with a default value.
+ * @param booleanNullable Non-required, nullable Boolean field.
+ * @param booleanRequiredNullable Required, nullable Boolean field.
  * @param stringStandard Non-required, non-nullable String field.
  * @param stringDefault Non-required, non-nullable String field with a default value.
  * @param stringNullable Non-required, nullable String field.
@@ -73,6 +77,10 @@ import java.util.Set;
 @io.github.chrimle.o2jrm.test.annotations.TestAnnotationTwo
 @io.github.chrimle.o2jrm.test.annotations.TestAnnotationThree
 public record RecordWithAllConstraints(
+    Boolean booleanStandard,
+    Boolean booleanDefault,
+    Boolean booleanNullable,
+    Boolean booleanRequiredNullable,
     String stringStandard,
     String stringDefault,
     String stringNullable,
@@ -102,7 +110,11 @@ public record RecordWithAllConstraints(
   /** A set containing the names of all instance fields defined in this class. */
   public static final HashSet<String> openapiFields =
       new HashSet<>(
-          Set.of("stringStandard",
+          Set.of("booleanStandard",
+              "booleanDefault",
+              "booleanNullable",
+              "booleanRequiredNullable",
+              "stringStandard",
               "stringDefault",
               "stringNullable",
               "stringRequired",
@@ -131,12 +143,17 @@ public record RecordWithAllConstraints(
   /** A set containing the names of all required fields defined in this class. */
   public static final HashSet<String> openapiRequiredFields =
       new HashSet<>(
-          Set.of("stringRequired",
+          Set.of("booleanRequiredNullable",
+              "stringRequired",
               "stringRequiredNullable",
               "stringRequiredPattern",
               "arrayRequiredNullable"));
 
   public RecordWithAllConstraints(
+      final Boolean booleanStandard,
+      final Boolean booleanDefault,
+      final Boolean booleanNullable,
+      final Boolean booleanRequiredNullable,
       final String stringStandard,
       final String stringDefault,
       final String stringNullable,
@@ -162,6 +179,10 @@ public record RecordWithAllConstraints(
       final BigDecimal bigDecimalMinimum,
       final BigDecimal bigDecimalMaximum,
       final BigDecimal bigDecimalMinimumAndMaximum) {
+    this.booleanStandard = booleanStandard;
+    this.booleanDefault = Objects.requireNonNullElse(booleanDefault, true);
+    this.booleanNullable = booleanNullable;
+    this.booleanRequiredNullable = booleanRequiredNullable;
     this.stringStandard = stringStandard;
     this.stringDefault = Objects.requireNonNullElse(stringDefault, "someDefaultValue");
     this.stringNullable = stringNullable;
@@ -227,6 +248,44 @@ public record RecordWithAllConstraints(
     }
 
     final JsonObject jsonObj = jsonElement.getAsJsonObject();
+
+    if (jsonObj.get("booleanStandard") != null && !jsonObj.get("booleanStandard").isJsonNull()) { 
+      if (!jsonObj.get("booleanStandard").isJsonPrimitive()) {
+        throw new IllegalArgumentException(
+            String.format(
+                java.util.Locale.ROOT,
+                "Expected the field `booleanStandard` to be a primitive type in the JSON string but got `%s`",
+                jsonObj.get("booleanStandard")));
+      }
+    }
+
+    if (jsonObj.get("booleanDefault") != null && !jsonObj.get("booleanDefault").isJsonNull()) { 
+      if (!jsonObj.get("booleanDefault").isJsonPrimitive()) {
+        throw new IllegalArgumentException(
+            String.format(
+                java.util.Locale.ROOT,
+                "Expected the field `booleanDefault` to be a primitive type in the JSON string but got `%s`",
+                jsonObj.get("booleanDefault")));
+      }
+    }
+
+    if (jsonObj.get("booleanNullable") != null && !jsonObj.get("booleanNullable").isJsonNull()) { 
+      if (!jsonObj.get("booleanNullable").isJsonPrimitive()) {
+        throw new IllegalArgumentException(
+            String.format(
+                java.util.Locale.ROOT,
+                "Expected the field `booleanNullable` to be a primitive type in the JSON string but got `%s`",
+                jsonObj.get("booleanNullable")));
+      }
+    }
+
+    if (!jsonObj.get("booleanRequiredNullable").isJsonPrimitive()) {
+      throw new IllegalArgumentException(
+          String.format(
+              java.util.Locale.ROOT,
+              "Expected the field `booleanRequiredNullable` to be a primitive type in the JSON string but got `%s`",
+              jsonObj.get("booleanRequiredNullable")));
+    }
 
     if (jsonObj.get("stringStandard") != null && !jsonObj.get("stringStandard").isJsonNull()) { 
       if (!jsonObj.get("stringStandard").isJsonPrimitive()) {
