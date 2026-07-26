@@ -54,6 +54,8 @@ import java.util.Set;
  * @param stringMinLength Non-required, non-nullable String field with minLength: 3.
  * @param stringMaxLength Non-required, non-nullable String field with maxLength: 7.
  * @param stringMinAndMaxLength Non-required, non-nullable String with minLength: 3 and maxLength: 7.
+ * @param arrayNullable Non-required, nullable List.
+ * @param arrayRequiredNullable Required, nullable List.
  * @param arrayMinItems Non-required, non-nullable List with minItems: 1.
  * @param arrayMaxItems Non-required, non-nullable List with maxItems: 10.
  * @param arrayMinAndMaxItems Non-required, non-nullable List with minItems: 1 and maxItems: 10.
@@ -79,6 +81,8 @@ public record RecordWithAllConstraints(
     String stringMinLength,
     String stringMaxLength,
     String stringMinAndMaxLength,
+    List<String> arrayNullable,
+    List<String> arrayRequiredNullable,
     List<String> arrayMinItems,
     List<String> arrayMaxItems,
     List<String> arrayMinAndMaxItems,
@@ -106,6 +110,8 @@ public record RecordWithAllConstraints(
               "stringMinLength",
               "stringMaxLength",
               "stringMinAndMaxLength",
+              "arrayNullable",
+              "arrayRequiredNullable",
               "arrayMinItems",
               "arrayMaxItems",
               "arrayMinAndMaxItems",
@@ -124,7 +130,8 @@ public record RecordWithAllConstraints(
       new HashSet<>(
           Set.of("stringRequired",
               "stringRequiredNullable",
-              "stringRequiredPattern"));
+              "stringRequiredPattern",
+              "arrayRequiredNullable"));
 
   public RecordWithAllConstraints(
       final String stringStandard,
@@ -138,6 +145,8 @@ public record RecordWithAllConstraints(
       final String stringMinLength,
       final String stringMaxLength,
       final String stringMinAndMaxLength,
+      final List<String> arrayNullable,
+      final List<String> arrayRequiredNullable,
       final List<String> arrayMinItems,
       final List<String> arrayMaxItems,
       final List<String> arrayMinAndMaxItems,
@@ -161,6 +170,8 @@ public record RecordWithAllConstraints(
     this.stringMinLength = stringMinLength;
     this.stringMaxLength = stringMaxLength;
     this.stringMinAndMaxLength = stringMinAndMaxLength;
+    this.arrayNullable = arrayNullable;
+    this.arrayRequiredNullable = arrayRequiredNullable;
     this.arrayMinItems = Objects.requireNonNullElseGet(arrayMinItems, () -> new ArrayList<>());
     this.arrayMaxItems = Objects.requireNonNullElseGet(arrayMaxItems, () -> new ArrayList<>());
     this.arrayMinAndMaxItems = Objects.requireNonNullElseGet(arrayMinAndMaxItems, () -> new ArrayList<>());
@@ -316,6 +327,24 @@ public record RecordWithAllConstraints(
                 "Expected the field `stringMinAndMaxLength` to be a primitive type in the JSON string but got `%s`",
                 jsonObj.get("stringMinAndMaxLength")));
       }
+    }
+
+    if (jsonObj.get("arrayNullable") != null && !jsonObj.get("arrayNullable").isJsonNull()) { 
+      if (!jsonObj.get("arrayNullable").isJsonArray()) {
+        throw new IllegalArgumentException(
+            String.format(
+                java.util.Locale.ROOT,
+                "Expected the field `arrayNullable` to be an array in the JSON string but got `%s`",
+                jsonObj.get("arrayNullable")));
+      }
+    }
+
+    if (!jsonObj.get("arrayRequiredNullable").isJsonArray()) {
+      throw new IllegalArgumentException(
+          String.format(
+              java.util.Locale.ROOT,
+              "Expected the field `arrayRequiredNullable` to be an array in the JSON string but got `%s`",
+              jsonObj.get("arrayRequiredNullable")));
     }
 
     if (jsonObj.get("arrayMinItems") != null && !jsonObj.get("arrayMinItems").isJsonNull()) { 

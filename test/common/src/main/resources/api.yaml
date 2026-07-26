@@ -355,6 +355,7 @@ components:
         - stringRequired
         - stringRequiredNullable
         - stringRequiredPattern
+        - arrayRequiredNullable
       properties:
         ### STRING FIELDS ###
         stringStandard:
@@ -401,6 +402,18 @@ components:
           minLength: 3
           maxLength: 7
         ### ARRAY FIELDS ###
+        arrayNullable:
+          description: "Non-required, nullable List."
+          type: array
+          nullable: true
+          items:
+            type: string
+        arrayRequiredNullable:
+          description: "Required, nullable List."
+          type: array
+          nullable: true
+          items:
+            type: string
         arrayMinItems:
           description: "Non-required, non-nullable List with minItems: 1."
           type: array

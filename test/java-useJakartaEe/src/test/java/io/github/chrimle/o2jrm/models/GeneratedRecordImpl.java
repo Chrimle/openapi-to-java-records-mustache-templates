@@ -139,6 +139,11 @@ public enum GeneratedRecordImpl implements GeneratedRecord, GeneratedClassImpl {
       GeneratedField.of("stringMinLength", String.class).minLength(3).build(),
       GeneratedField.of("stringMaxLength", String.class).maxLength(7).build(),
       GeneratedField.of("stringMinAndMaxLength", String.class).minLength(3).maxLength(7).build(),
+      GeneratedField.of("arrayNullable", List.class, String.class).isNullable(true).build(),
+      GeneratedField.of("arrayRequiredNullable", List.class, String.class)
+          .isRequired(true)
+          .isNullable(true)
+          .build(),
       GeneratedField.of("arrayMinItems", List.class, String.class).minItems(1).build(),
       GeneratedField.of("arrayMaxItems", List.class, String.class).maxItems(10).build(),
       GeneratedField.of("arrayMinAndMaxItems", List.class, String.class)
