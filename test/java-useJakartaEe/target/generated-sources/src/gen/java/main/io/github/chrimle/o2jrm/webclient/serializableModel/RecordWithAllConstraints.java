@@ -70,6 +70,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  * @param arrayUniqueRequired Required, non-nullable Set.
  * @param arrayUniqueNullable Non-required, nullable Set.
  * @param arrayUniqueRequiredNullable Required, nullable Set.
+ * @param intStandard Non-required, non-nullable Integer.
+ * @param intNullable Non-required, nullable Integer.
+ * @param intRequired Required, non-nullable Integer.
+ * @param intRequiredNullable Required, nullable Integer.
  * @param intMinimum Non-required, non-nullable Integer with minimum: 18.
  * @param intMaximum Non-required, non-nullable Integer with maximum: 100.
  * @param intMinimumAndMaximum Non-required, non-nullable Integer with minimum: 0 and maximum: 100.
@@ -115,6 +119,10 @@ public record RecordWithAllConstraints(
     Set<String> arrayUniqueRequired,
     Set<String> arrayUniqueNullable,
     Set<String> arrayUniqueRequiredNullable,
+    Integer intStandard,
+    Integer intNullable,
+    Integer intRequired,
+    Integer intRequiredNullable,
     Integer intMinimum,
     Integer intMaximum,
     Integer intMinimumAndMaximum,
@@ -162,6 +170,10 @@ public record RecordWithAllConstraints(
       final Set<String> arrayUniqueRequired,
       final Set<String> arrayUniqueNullable,
       final Set<String> arrayUniqueRequiredNullable,
+      final Integer intStandard,
+      final Integer intNullable,
+      final Integer intRequired,
+      final Integer intRequiredNullable,
       final Integer intMinimum,
       final Integer intMaximum,
       final Integer intMinimumAndMaximum,
@@ -205,6 +217,10 @@ public record RecordWithAllConstraints(
     this.arrayUniqueRequired = Objects.requireNonNullElseGet(arrayUniqueRequired, () -> new LinkedHashSet<>());
     this.arrayUniqueNullable = arrayUniqueNullable;
     this.arrayUniqueRequiredNullable = arrayUniqueRequiredNullable;
+    this.intStandard = intStandard;
+    this.intNullable = intNullable;
+    this.intRequired = intRequired;
+    this.intRequiredNullable = intRequiredNullable;
     this.intMinimum = intMinimum;
     this.intMaximum = intMaximum;
     this.intMinimumAndMaximum = intMinimumAndMaximum;

@@ -69,6 +69,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  * @param arrayUniqueRequired Required, non-nullable Set.
  * @param arrayUniqueNullable Non-required, nullable Set.
  * @param arrayUniqueRequiredNullable Required, nullable Set.
+ * @param intStandard Non-required, non-nullable Integer.
+ * @param intNullable Non-required, nullable Integer.
+ * @param intRequired Required, non-nullable Integer.
+ * @param intRequiredNullable Required, nullable Integer.
  * @param intMinimum Non-required, non-nullable Integer with minimum: 18.
  * @param intMaximum Non-required, non-nullable Integer with maximum: 100.
  * @param intMinimumAndMaximum Non-required, non-nullable Integer with minimum: 0 and maximum: 100.
@@ -114,6 +118,10 @@ public record RecordWithAllConstraints(
     Set<String> arrayUniqueRequired,
     Set<String> arrayUniqueNullable,
     Set<String> arrayUniqueRequiredNullable,
+    Integer intStandard,
+    Integer intNullable,
+    Integer intRequired,
+    Integer intRequiredNullable,
     Integer intMinimum,
     Integer intMaximum,
     Integer intMinimumAndMaximum,
@@ -160,6 +168,10 @@ public record RecordWithAllConstraints(
       final Set<String> arrayUniqueRequired,
       final Set<String> arrayUniqueNullable,
       final Set<String> arrayUniqueRequiredNullable,
+      final Integer intStandard,
+      final Integer intNullable,
+      final Integer intRequired,
+      final Integer intRequiredNullable,
       final Integer intMinimum,
       final Integer intMaximum,
       final Integer intMinimumAndMaximum,
@@ -203,6 +215,10 @@ public record RecordWithAllConstraints(
     this.arrayUniqueRequired = Objects.requireNonNullElseGet(arrayUniqueRequired, () -> new LinkedHashSet<>());
     this.arrayUniqueNullable = arrayUniqueNullable;
     this.arrayUniqueRequiredNullable = arrayUniqueRequiredNullable;
+    this.intStandard = intStandard;
+    this.intNullable = intNullable;
+    this.intRequired = intRequired;
+    this.intRequiredNullable = intRequiredNullable;
     this.intMinimum = intMinimum;
     this.intMaximum = intMaximum;
     this.intMinimumAndMaximum = intMinimumAndMaximum;
@@ -251,6 +267,10 @@ public record RecordWithAllConstraints(
     private Set<String> arrayUniqueRequired;
     private Set<String> arrayUniqueNullable;
     private Set<String> arrayUniqueRequiredNullable;
+    private Integer intStandard;
+    private Integer intNullable;
+    private Integer intRequired;
+    private Integer intRequiredNullable;
     private Integer intMinimum;
     private Integer intMaximum;
     private Integer intMinimumAndMaximum;
@@ -608,6 +628,58 @@ public record RecordWithAllConstraints(
     }
 
     /**
+     * Sets the value of {@link RecordWithAllConstraints#intStandard }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     *
+     * @param intStandard Non-required, non-nullable Integer..
+     * @return this {@link Builder}-instance for method-chaining.
+     */
+    public Builder intStandard(final Integer intStandard) {
+      this.intStandard = intStandard;
+      return this;
+    }
+
+    /**
+     * Sets the value of {@link RecordWithAllConstraints#intNullable }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     *
+     * @param intNullable Non-required, nullable Integer..
+     * @return this {@link Builder}-instance for method-chaining.
+     */
+    public Builder intNullable(final Integer intNullable) {
+      this.intNullable = intNullable;
+      return this;
+    }
+
+    /**
+     * Sets the value of {@link RecordWithAllConstraints#intRequired }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     *
+     * @param intRequired Required, non-nullable Integer..
+     * @return this {@link Builder}-instance for method-chaining.
+     */
+    public Builder intRequired(final Integer intRequired) {
+      this.intRequired = intRequired;
+      return this;
+    }
+
+    /**
+     * Sets the value of {@link RecordWithAllConstraints#intRequiredNullable }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     *
+     * @param intRequiredNullable Required, nullable Integer..
+     * @return this {@link Builder}-instance for method-chaining.
+     */
+    public Builder intRequiredNullable(final Integer intRequiredNullable) {
+      this.intRequiredNullable = intRequiredNullable;
+      return this;
+    }
+
+    /**
      * Sets the value of {@link RecordWithAllConstraints#intMinimum }.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
@@ -864,6 +936,10 @@ public record RecordWithAllConstraints(
           arrayUniqueRequired,
           arrayUniqueNullable,
           arrayUniqueRequiredNullable,
+          intStandard,
+          intNullable,
+          intRequired,
+          intRequiredNullable,
           intMinimum,
           intMaximum,
           intMinimumAndMaximum,

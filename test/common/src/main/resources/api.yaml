@@ -306,6 +306,8 @@ components:
         - arrayRequiredNullable
         - arrayUniqueRequired
         - arrayUniqueRequiredNullable
+        - intRequired
+        - intRequiredNullable
         - longRequired
         - longRequiredNullable
         - bigDecimalRequired
@@ -438,6 +440,20 @@ components:
           items:
             type: string
         ### INTEGER FIELDS ###
+        intStandard:
+          description: "Non-required, non-nullable Integer."
+          type: integer
+        intNullable:
+          description: "Non-required, nullable Integer."
+          type: integer
+          nullable: true
+        intRequired:
+          description: "Required, non-nullable Integer."
+          type: integer
+        intRequiredNullable:
+          description: "Required, nullable Integer."
+          type: integer
+          nullable: true
         intMinimum:
           description: "Non-required, non-nullable Integer with minimum: 18."
           type: integer
