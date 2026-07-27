@@ -310,12 +310,7 @@ public enum GeneratedRecordImpl implements GeneratedRecord, GeneratedClassImpl {
               .toArray(new GeneratedField[] {});
       case RECORD_WITH_REQUIRED_FIELDS_OF_EACH_TYPE ->
           List.of(
-                  GeneratedField.of("field1", Boolean.class).isRequired().build(),
-                  GeneratedField.of("field2", String.class).isRequired().build(),
                   GeneratedField.of("field3", Integer.class).isRequired().build(),
-                  GeneratedField.of("field4", BigDecimal.class).isRequired().build(),
-                  GeneratedField.of("field5", List.class, Boolean.class).isRequired().build(),
-                  GeneratedField.of("field6", Set.class, Boolean.class).isRequired().build(),
                   GeneratedField.of(
                           "field7", GeneratedRecordImpl.EXAMPLE_RECORD.getClass(pluginExecution))
                       .isRequired()
@@ -328,18 +323,7 @@ public enum GeneratedRecordImpl implements GeneratedRecord, GeneratedClassImpl {
               .toArray(new GeneratedField[] {});
       case RECORD_WITH_NULLABLE_FIELDS_OF_EACH_TYPE ->
           List.of(
-                  GeneratedField.of("field1", Boolean.class).isNullable().isRequired().build(),
-                  GeneratedField.of("field2", String.class).isNullable().isRequired().build(),
                   GeneratedField.of("field3", Integer.class).isNullable().isRequired().build(),
-                  GeneratedField.of("field4", BigDecimal.class).isNullable().isRequired().build(),
-                  GeneratedField.of("field5", List.class, Boolean.class)
-                      .isNullable()
-                      .isRequired()
-                      .build(),
-                  GeneratedField.of("field6", Set.class, Boolean.class)
-                      .isNullable()
-                      .isRequired()
-                      .build(),
                   GeneratedField.of(
                           "field7",
                           GeneratedRecordImpl.EXAMPLE_NULLABLE_RECORD.getClass(pluginExecution))
