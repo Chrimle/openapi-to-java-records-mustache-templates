@@ -168,6 +168,13 @@ public enum GeneratedRecordImpl implements GeneratedRecord, GeneratedClassImpl {
       GeneratedField.of("intMinimum", Integer.class).minimum(18).build(),
       GeneratedField.of("intMaximum", Integer.class).maximum(100).build(),
       GeneratedField.of("intMinimumAndMaximum", Integer.class).minimum(0).maximum(100).build(),
+      GeneratedField.of("longStandard", Long.class).build(),
+      GeneratedField.of("longNullable", Long.class).isNullable(true).build(),
+      GeneratedField.of("longRequired", Long.class).isRequired(true).build(),
+      GeneratedField.of("longRequiredNullable", Long.class)
+          .isRequired(true)
+          .isNullable(true)
+          .build(),
       GeneratedField.of("longMinimum", Long.class).minimum(18).build(),
       GeneratedField.of("longMaximum", Long.class).maximum(100).build(),
       GeneratedField.of("longMinimumAndMaximum", Long.class).minimum(0).maximum(100).build(),

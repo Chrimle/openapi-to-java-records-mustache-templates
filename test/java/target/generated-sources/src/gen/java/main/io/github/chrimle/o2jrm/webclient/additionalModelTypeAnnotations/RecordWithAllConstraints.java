@@ -72,6 +72,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  * @param intMinimum Non-required, non-nullable Integer with minimum: 18.
  * @param intMaximum Non-required, non-nullable Integer with maximum: 100.
  * @param intMinimumAndMaximum Non-required, non-nullable Integer with minimum: 0 and maximum: 100.
+ * @param longStandard Non-required, non-nullable Long.
+ * @param longNullable Non-required, nullable Long.
+ * @param longRequired Required, non-nullable Long.
+ * @param longRequiredNullable Required, nullable Long.
  * @param longMinimum Non-required, non-nullable Long with minimum: 18.
  * @param longMaximum Non-required, non-nullable Long with maximum: 100.
  * @param longMinimumAndMaximum Non-required, non-nullable Long with minimum: 0 and maximum: 100.
@@ -112,6 +116,10 @@ public record RecordWithAllConstraints(
     Integer intMinimum,
     Integer intMaximum,
     Integer intMinimumAndMaximum,
+    Long longStandard,
+    Long longNullable,
+    Long longRequired,
+    Long longRequiredNullable,
     Long longMinimum,
     Long longMaximum,
     Long longMinimumAndMaximum,
@@ -150,6 +158,10 @@ public record RecordWithAllConstraints(
       final Integer intMinimum,
       final Integer intMaximum,
       final Integer intMinimumAndMaximum,
+      final Long longStandard,
+      final Long longNullable,
+      final Long longRequired,
+      final Long longRequiredNullable,
       final Long longMinimum,
       final Long longMaximum,
       final Long longMinimumAndMaximum,
@@ -185,6 +197,10 @@ public record RecordWithAllConstraints(
     this.intMinimum = intMinimum;
     this.intMaximum = intMaximum;
     this.intMinimumAndMaximum = intMinimumAndMaximum;
+    this.longStandard = longStandard;
+    this.longNullable = longNullable;
+    this.longRequired = longRequired;
+    this.longRequiredNullable = longRequiredNullable;
     this.longMinimum = longMinimum;
     this.longMaximum = longMaximum;
     this.longMinimumAndMaximum = longMinimumAndMaximum;

@@ -58,6 +58,10 @@ import jakarta.annotation.Generated;
  * @param intMinimum Non-required, non-nullable Integer with minimum: 18.
  * @param intMaximum Non-required, non-nullable Integer with maximum: 100.
  * @param intMinimumAndMaximum Non-required, non-nullable Integer with minimum: 0 and maximum: 100.
+ * @param longStandard Non-required, non-nullable Long.
+ * @param longNullable Non-required, nullable Long.
+ * @param longRequired Required, non-nullable Long.
+ * @param longRequiredNullable Required, nullable Long.
  * @param longMinimum Non-required, non-nullable Long with minimum: 18.
  * @param longMaximum Non-required, non-nullable Long with maximum: 100.
  * @param longMinimumAndMaximum Non-required, non-nullable Long with minimum: 0 and maximum: 100.
@@ -95,6 +99,10 @@ public record RecordWithAllConstraints(
     @Min(18) Integer intMinimum,
     @Max(100) Integer intMaximum,
     @Min(0) @Max(100) Integer intMinimumAndMaximum,
+    Long longStandard,
+    Long longNullable,
+    @NotNull Long longRequired,
+    Long longRequiredNullable,
     @Min(18L) Long longMinimum,
     @Max(100L) Long longMaximum,
     @Min(0L) @Max(100L) Long longMinimumAndMaximum,
@@ -133,6 +141,10 @@ public record RecordWithAllConstraints(
       final Integer intMinimum,
       final Integer intMaximum,
       final Integer intMinimumAndMaximum,
+      final Long longStandard,
+      final Long longNullable,
+      final Long longRequired,
+      final Long longRequiredNullable,
       final Long longMinimum,
       final Long longMaximum,
       final Long longMinimumAndMaximum,
@@ -168,6 +180,10 @@ public record RecordWithAllConstraints(
     this.intMinimum = intMinimum;
     this.intMaximum = intMaximum;
     this.intMinimumAndMaximum = intMinimumAndMaximum;
+    this.longStandard = longStandard;
+    this.longNullable = longNullable;
+    this.longRequired = longRequired;
+    this.longRequiredNullable = longRequiredNullable;
     this.longMinimum = longMinimum;
     this.longMaximum = longMaximum;
     this.longMinimumAndMaximum = longMinimumAndMaximum;
@@ -208,6 +224,10 @@ public record RecordWithAllConstraints(
     private Integer intMinimum;
     private Integer intMaximum;
     private Integer intMinimumAndMaximum;
+    private Long longStandard;
+    private Long longNullable;
+    private Long longRequired;
+    private Long longRequiredNullable;
     private Long longMinimum;
     private Long longMaximum;
     private Long longMinimumAndMaximum;
@@ -593,6 +613,58 @@ public record RecordWithAllConstraints(
     }
 
     /**
+     * Sets the value of {@link RecordWithAllConstraints#longStandard }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     *
+     * @param longStandard Non-required, non-nullable Long..
+     * @return this {@link Builder}-instance for method-chaining.
+     */
+    public Builder longStandard(final Long longStandard) {
+      this.longStandard = longStandard;
+      return this;
+    }
+
+    /**
+     * Sets the value of {@link RecordWithAllConstraints#longNullable }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     *
+     * @param longNullable Non-required, nullable Long..
+     * @return this {@link Builder}-instance for method-chaining.
+     */
+    public Builder longNullable(final Long longNullable) {
+      this.longNullable = longNullable;
+      return this;
+    }
+
+    /**
+     * Sets the value of {@link RecordWithAllConstraints#longRequired }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     *
+     * @param longRequired Required, non-nullable Long..
+     * @return this {@link Builder}-instance for method-chaining.
+     */
+    public Builder longRequired(final Long longRequired) {
+      this.longRequired = longRequired;
+      return this;
+    }
+
+    /**
+     * Sets the value of {@link RecordWithAllConstraints#longRequiredNullable }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     *
+     * @param longRequiredNullable Required, nullable Long..
+     * @return this {@link Builder}-instance for method-chaining.
+     */
+    public Builder longRequiredNullable(final Long longRequiredNullable) {
+      this.longRequiredNullable = longRequiredNullable;
+      return this;
+    }
+
+    /**
      * Sets the value of {@link RecordWithAllConstraints#longMinimum }.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
@@ -709,6 +781,10 @@ public record RecordWithAllConstraints(
           intMinimum,
           intMaximum,
           intMinimumAndMaximum,
+          longStandard,
+          longNullable,
+          longRequired,
+          longRequiredNullable,
           longMinimum,
           longMaximum,
           longMinimumAndMaximum,

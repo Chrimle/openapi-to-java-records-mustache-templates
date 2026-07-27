@@ -361,6 +361,8 @@ components:
         - arrayRequiredNullable
         - arrayUniqueRequired
         - arrayUniqueRequiredNullable
+        - longRequired
+        - longRequiredNullable
       properties:
         ### BOOLEAN FIELDS ###
         booleanStandard:
@@ -502,6 +504,25 @@ components:
           type: integer
           minimum: 0
           maximum: 100
+        ### int64 / LONG FIELDS ###
+        longStandard:
+          description: "Non-required, non-nullable Long."
+          type: integer
+          format: int64
+        longNullable:
+          description: "Non-required, nullable Long."
+          type: integer
+          format: int64
+          nullable: true
+        longRequired:
+          description: "Required, non-nullable Long."
+          type: integer
+          format: int64
+        longRequiredNullable:
+          description: "Required, nullable Long."
+          type: integer
+          format: int64
+          nullable: true
         longMinimum:
           description: "Non-required, non-nullable Long with minimum: 18."
           type: integer

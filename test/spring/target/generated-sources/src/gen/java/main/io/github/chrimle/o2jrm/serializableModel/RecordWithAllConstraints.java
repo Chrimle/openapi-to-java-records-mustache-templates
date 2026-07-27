@@ -59,6 +59,10 @@ import jakarta.annotation.Generated;
  * @param intMinimum Non-required, non-nullable Integer with minimum: 18.
  * @param intMaximum Non-required, non-nullable Integer with maximum: 100.
  * @param intMinimumAndMaximum Non-required, non-nullable Integer with minimum: 0 and maximum: 100.
+ * @param longStandard Non-required, non-nullable Long.
+ * @param longNullable Non-required, nullable Long.
+ * @param longRequired Required, non-nullable Long.
+ * @param longRequiredNullable Required, nullable Long.
  * @param longMinimum Non-required, non-nullable Long with minimum: 18.
  * @param longMaximum Non-required, non-nullable Long with maximum: 100.
  * @param longMinimumAndMaximum Non-required, non-nullable Long with minimum: 0 and maximum: 100.
@@ -96,6 +100,10 @@ public record RecordWithAllConstraints(
     @Min(18) Integer intMinimum,
     @Max(100) Integer intMaximum,
     @Min(0) @Max(100) Integer intMinimumAndMaximum,
+    Long longStandard,
+    Long longNullable,
+    @NotNull Long longRequired,
+    Long longRequiredNullable,
     @Min(18L) Long longMinimum,
     @Max(100L) Long longMaximum,
     @Min(0L) @Max(100L) Long longMinimumAndMaximum,
@@ -135,6 +143,10 @@ public record RecordWithAllConstraints(
       final Integer intMinimum,
       final Integer intMaximum,
       final Integer intMinimumAndMaximum,
+      final Long longStandard,
+      final Long longNullable,
+      final Long longRequired,
+      final Long longRequiredNullable,
       final Long longMinimum,
       final Long longMaximum,
       final Long longMinimumAndMaximum,
@@ -170,6 +182,10 @@ public record RecordWithAllConstraints(
     this.intMinimum = intMinimum;
     this.intMaximum = intMaximum;
     this.intMinimumAndMaximum = intMinimumAndMaximum;
+    this.longStandard = longStandard;
+    this.longNullable = longNullable;
+    this.longRequired = longRequired;
+    this.longRequiredNullable = longRequiredNullable;
     this.longMinimum = longMinimum;
     this.longMaximum = longMaximum;
     this.longMinimumAndMaximum = longMinimumAndMaximum;

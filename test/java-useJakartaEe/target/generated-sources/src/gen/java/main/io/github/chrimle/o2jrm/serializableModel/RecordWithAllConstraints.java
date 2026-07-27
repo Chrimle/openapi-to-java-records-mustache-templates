@@ -75,6 +75,10 @@ import java.util.Set;
  * @param intMinimum Non-required, non-nullable Integer with minimum: 18.
  * @param intMaximum Non-required, non-nullable Integer with maximum: 100.
  * @param intMinimumAndMaximum Non-required, non-nullable Integer with minimum: 0 and maximum: 100.
+ * @param longStandard Non-required, non-nullable Long.
+ * @param longNullable Non-required, nullable Long.
+ * @param longRequired Required, non-nullable Long.
+ * @param longRequiredNullable Required, nullable Long.
  * @param longMinimum Non-required, non-nullable Long with minimum: 18.
  * @param longMaximum Non-required, non-nullable Long with maximum: 100.
  * @param longMinimumAndMaximum Non-required, non-nullable Long with minimum: 0 and maximum: 100.
@@ -112,6 +116,10 @@ public record RecordWithAllConstraints(
     Integer intMinimum,
     Integer intMaximum,
     Integer intMinimumAndMaximum,
+    Long longStandard,
+    Long longNullable,
+    Long longRequired,
+    Long longRequiredNullable,
     Long longMinimum,
     Long longMaximum,
     Long longMinimumAndMaximum,
@@ -152,6 +160,10 @@ public record RecordWithAllConstraints(
               "intMinimum",
               "intMaximum",
               "intMinimumAndMaximum",
+              "longStandard",
+              "longNullable",
+              "longRequired",
+              "longRequiredNullable",
               "longMinimum",
               "longMaximum",
               "longMinimumAndMaximum",
@@ -170,7 +182,9 @@ public record RecordWithAllConstraints(
               "stringRequiredPattern",
               "arrayRequiredNullable",
               "arrayUniqueRequired",
-              "arrayUniqueRequiredNullable"));
+              "arrayUniqueRequiredNullable",
+              "longRequired",
+              "longRequiredNullable"));
 
   public RecordWithAllConstraints(
       final Boolean booleanStandard,
@@ -202,6 +216,10 @@ public record RecordWithAllConstraints(
       final Integer intMinimum,
       final Integer intMaximum,
       final Integer intMinimumAndMaximum,
+      final Long longStandard,
+      final Long longNullable,
+      final Long longRequired,
+      final Long longRequiredNullable,
       final Long longMinimum,
       final Long longMaximum,
       final Long longMinimumAndMaximum,
@@ -237,6 +255,10 @@ public record RecordWithAllConstraints(
     this.intMinimum = intMinimum;
     this.intMaximum = intMaximum;
     this.intMinimumAndMaximum = intMinimumAndMaximum;
+    this.longStandard = longStandard;
+    this.longNullable = longNullable;
+    this.longRequired = longRequired;
+    this.longRequiredNullable = longRequiredNullable;
     this.longMinimum = longMinimum;
     this.longMaximum = longMaximum;
     this.longMinimumAndMaximum = longMinimumAndMaximum;
@@ -554,6 +576,42 @@ public record RecordWithAllConstraints(
                 "Expected the field `intMinimumAndMaximum` to be a primitive type in the JSON string but got `%s`",
                 jsonObj.get("intMinimumAndMaximum")));
       }
+    }
+
+    if (jsonObj.get("longStandard") != null && !jsonObj.get("longStandard").isJsonNull()) { 
+      if (!jsonObj.get("longStandard").isJsonPrimitive()) {
+        throw new IllegalArgumentException(
+            String.format(
+                java.util.Locale.ROOT,
+                "Expected the field `longStandard` to be a primitive type in the JSON string but got `%s`",
+                jsonObj.get("longStandard")));
+      }
+    }
+
+    if (jsonObj.get("longNullable") != null && !jsonObj.get("longNullable").isJsonNull()) { 
+      if (!jsonObj.get("longNullable").isJsonPrimitive()) {
+        throw new IllegalArgumentException(
+            String.format(
+                java.util.Locale.ROOT,
+                "Expected the field `longNullable` to be a primitive type in the JSON string but got `%s`",
+                jsonObj.get("longNullable")));
+      }
+    }
+
+    if (!jsonObj.get("longRequired").isJsonPrimitive()) {
+      throw new IllegalArgumentException(
+          String.format(
+              java.util.Locale.ROOT,
+              "Expected the field `longRequired` to be a primitive type in the JSON string but got `%s`",
+              jsonObj.get("longRequired")));
+    }
+
+    if (!jsonObj.get("longRequiredNullable").isJsonPrimitive()) {
+      throw new IllegalArgumentException(
+          String.format(
+              java.util.Locale.ROOT,
+              "Expected the field `longRequiredNullable` to be a primitive type in the JSON string but got `%s`",
+              jsonObj.get("longRequiredNullable")));
     }
 
     if (jsonObj.get("longMinimum") != null && !jsonObj.get("longMinimum").isJsonNull()) { 
