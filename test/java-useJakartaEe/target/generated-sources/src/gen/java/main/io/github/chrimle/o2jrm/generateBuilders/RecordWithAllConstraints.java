@@ -81,6 +81,10 @@ import java.util.Set;
  * @param longMinimum Non-required, non-nullable Long with minimum: 18.
  * @param longMaximum Non-required, non-nullable Long with maximum: 100.
  * @param longMinimumAndMaximum Non-required, non-nullable Long with minimum: 0 and maximum: 100.
+ * @param bigDecimalStandard Non-required, non-nullable BigDecimal.
+ * @param bigDecimalNullable Non-required, nullable BigDecimal.
+ * @param bigDecimalRequired Required, non-nullable BigDecimal.
+ * @param bigDecimalRequiredNullable Required, nullable BigDecimal.
  * @param bigDecimalMinimum Non-required, non-nullable BigDecimal with minimum: 0.
  * @param bigDecimalMaximum Non-required, non-nullable BigDecimal with maximum: 100.
  * @param bigDecimalMinimumAndMaximum Non-required, non-nullable BigDecimal with minimum: 0 and maximum: 100.
@@ -122,6 +126,10 @@ public record RecordWithAllConstraints(
     Long longMinimum,
     Long longMaximum,
     Long longMinimumAndMaximum,
+    BigDecimal bigDecimalStandard,
+    BigDecimal bigDecimalNullable,
+    BigDecimal bigDecimalRequired,
+    BigDecimal bigDecimalRequiredNullable,
     BigDecimal bigDecimalMinimum,
     BigDecimal bigDecimalMaximum,
     BigDecimal bigDecimalMinimumAndMaximum) {
@@ -165,6 +173,10 @@ public record RecordWithAllConstraints(
               "longMinimum",
               "longMaximum",
               "longMinimumAndMaximum",
+              "bigDecimalStandard",
+              "bigDecimalNullable",
+              "bigDecimalRequired",
+              "bigDecimalRequiredNullable",
               "bigDecimalMinimum",
               "bigDecimalMaximum",
               "bigDecimalMinimumAndMaximum"));
@@ -182,7 +194,9 @@ public record RecordWithAllConstraints(
               "arrayUniqueRequired",
               "arrayUniqueRequiredNullable",
               "longRequired",
-              "longRequiredNullable"));
+              "longRequiredNullable",
+              "bigDecimalRequired",
+              "bigDecimalRequiredNullable"));
 
   public RecordWithAllConstraints(
       final Boolean booleanStandard,
@@ -221,6 +235,10 @@ public record RecordWithAllConstraints(
       final Long longMinimum,
       final Long longMaximum,
       final Long longMinimumAndMaximum,
+      final BigDecimal bigDecimalStandard,
+      final BigDecimal bigDecimalNullable,
+      final BigDecimal bigDecimalRequired,
+      final BigDecimal bigDecimalRequiredNullable,
       final BigDecimal bigDecimalMinimum,
       final BigDecimal bigDecimalMaximum,
       final BigDecimal bigDecimalMinimumAndMaximum) {
@@ -260,6 +278,10 @@ public record RecordWithAllConstraints(
     this.longMinimum = longMinimum;
     this.longMaximum = longMaximum;
     this.longMinimumAndMaximum = longMinimumAndMaximum;
+    this.bigDecimalStandard = bigDecimalStandard;
+    this.bigDecimalNullable = bigDecimalNullable;
+    this.bigDecimalRequired = bigDecimalRequired;
+    this.bigDecimalRequiredNullable = bigDecimalRequiredNullable;
     this.bigDecimalMinimum = bigDecimalMinimum;
     this.bigDecimalMaximum = bigDecimalMaximum;
     this.bigDecimalMinimumAndMaximum = bigDecimalMinimumAndMaximum;
@@ -304,6 +326,10 @@ public record RecordWithAllConstraints(
     private Long longMinimum;
     private Long longMaximum;
     private Long longMinimumAndMaximum;
+    private BigDecimal bigDecimalStandard;
+    private BigDecimal bigDecimalNullable;
+    private BigDecimal bigDecimalRequired;
+    private BigDecimal bigDecimalRequiredNullable;
     private BigDecimal bigDecimalMinimum;
     private BigDecimal bigDecimalMaximum;
     private BigDecimal bigDecimalMinimumAndMaximum;
@@ -777,6 +803,58 @@ public record RecordWithAllConstraints(
     }
 
     /**
+     * Sets the value of {@link RecordWithAllConstraints#bigDecimalStandard }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     *
+     * @param bigDecimalStandard Non-required, non-nullable BigDecimal..
+     * @return this {@link Builder}-instance for method-chaining.
+     */
+    public Builder bigDecimalStandard(final BigDecimal bigDecimalStandard) {
+      this.bigDecimalStandard = bigDecimalStandard;
+      return this;
+    }
+
+    /**
+     * Sets the value of {@link RecordWithAllConstraints#bigDecimalNullable }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     *
+     * @param bigDecimalNullable Non-required, nullable BigDecimal..
+     * @return this {@link Builder}-instance for method-chaining.
+     */
+    public Builder bigDecimalNullable(final BigDecimal bigDecimalNullable) {
+      this.bigDecimalNullable = bigDecimalNullable;
+      return this;
+    }
+
+    /**
+     * Sets the value of {@link RecordWithAllConstraints#bigDecimalRequired }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     *
+     * @param bigDecimalRequired Required, non-nullable BigDecimal..
+     * @return this {@link Builder}-instance for method-chaining.
+     */
+    public Builder bigDecimalRequired(final BigDecimal bigDecimalRequired) {
+      this.bigDecimalRequired = bigDecimalRequired;
+      return this;
+    }
+
+    /**
+     * Sets the value of {@link RecordWithAllConstraints#bigDecimalRequiredNullable }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     *
+     * @param bigDecimalRequiredNullable Required, nullable BigDecimal..
+     * @return this {@link Builder}-instance for method-chaining.
+     */
+    public Builder bigDecimalRequiredNullable(final BigDecimal bigDecimalRequiredNullable) {
+      this.bigDecimalRequiredNullable = bigDecimalRequiredNullable;
+      return this;
+    }
+
+    /**
      * Sets the value of {@link RecordWithAllConstraints#bigDecimalMinimum }.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
@@ -861,6 +939,10 @@ public record RecordWithAllConstraints(
           longMinimum,
           longMaximum,
           longMinimumAndMaximum,
+          bigDecimalStandard,
+          bigDecimalNullable,
+          bigDecimalRequired,
+          bigDecimalRequiredNullable,
           bigDecimalMinimum,
           bigDecimalMaximum,
           bigDecimalMinimumAndMaximum);
@@ -1247,6 +1329,42 @@ public record RecordWithAllConstraints(
                 "Expected the field `longMinimumAndMaximum` to be a primitive type in the JSON string but got `%s`",
                 jsonObj.get("longMinimumAndMaximum")));
       }
+    }
+
+    if (jsonObj.get("bigDecimalStandard") != null && !jsonObj.get("bigDecimalStandard").isJsonNull()) { 
+      if (!jsonObj.get("bigDecimalStandard").isJsonPrimitive()) {
+        throw new IllegalArgumentException(
+            String.format(
+                java.util.Locale.ROOT,
+                "Expected the field `bigDecimalStandard` to be a primitive type in the JSON string but got `%s`",
+                jsonObj.get("bigDecimalStandard")));
+      }
+    }
+
+    if (jsonObj.get("bigDecimalNullable") != null && !jsonObj.get("bigDecimalNullable").isJsonNull()) { 
+      if (!jsonObj.get("bigDecimalNullable").isJsonPrimitive()) {
+        throw new IllegalArgumentException(
+            String.format(
+                java.util.Locale.ROOT,
+                "Expected the field `bigDecimalNullable` to be a primitive type in the JSON string but got `%s`",
+                jsonObj.get("bigDecimalNullable")));
+      }
+    }
+
+    if (!jsonObj.get("bigDecimalRequired").isJsonPrimitive()) {
+      throw new IllegalArgumentException(
+          String.format(
+              java.util.Locale.ROOT,
+              "Expected the field `bigDecimalRequired` to be a primitive type in the JSON string but got `%s`",
+              jsonObj.get("bigDecimalRequired")));
+    }
+
+    if (!jsonObj.get("bigDecimalRequiredNullable").isJsonPrimitive()) {
+      throw new IllegalArgumentException(
+          String.format(
+              java.util.Locale.ROOT,
+              "Expected the field `bigDecimalRequiredNullable` to be a primitive type in the JSON string but got `%s`",
+              jsonObj.get("bigDecimalRequiredNullable")));
     }
 
     if (jsonObj.get("bigDecimalMinimum") != null && !jsonObj.get("bigDecimalMinimum").isJsonNull()) { 

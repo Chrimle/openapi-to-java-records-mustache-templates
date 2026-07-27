@@ -169,6 +169,13 @@ public enum GeneratedRecordImpl implements GeneratedRecord, GeneratedClassImpl {
       GeneratedField.of("longMinimum", Long.class).minimum(18).build(),
       GeneratedField.of("longMaximum", Long.class).maximum(100).build(),
       GeneratedField.of("longMinimumAndMaximum", Long.class).minimum(0).maximum(100).build(),
+      GeneratedField.of("bigDecimalStandard", BigDecimal.class).build(),
+      GeneratedField.of("bigDecimalNullable", BigDecimal.class).isNullable().build(),
+      GeneratedField.of("bigDecimalRequired", BigDecimal.class).isRequired().build(),
+      GeneratedField.of("bigDecimalRequiredNullable", BigDecimal.class)
+          .isRequired()
+          .isNullable()
+          .build(),
       GeneratedField.of("bigDecimalMinimum", BigDecimal.class).decimalMin("0").build(),
       GeneratedField.of("bigDecimalMaximum", BigDecimal.class).decimalMax("100").build(),
       GeneratedField.of("bigDecimalMinimumAndMaximum", BigDecimal.class)

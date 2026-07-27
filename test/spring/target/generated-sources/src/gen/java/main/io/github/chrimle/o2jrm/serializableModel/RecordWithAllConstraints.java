@@ -66,6 +66,10 @@ import jakarta.annotation.Generated;
  * @param longMinimum Non-required, non-nullable Long with minimum: 18.
  * @param longMaximum Non-required, non-nullable Long with maximum: 100.
  * @param longMinimumAndMaximum Non-required, non-nullable Long with minimum: 0 and maximum: 100.
+ * @param bigDecimalStandard Non-required, non-nullable BigDecimal.
+ * @param bigDecimalNullable Non-required, nullable BigDecimal.
+ * @param bigDecimalRequired Required, non-nullable BigDecimal.
+ * @param bigDecimalRequiredNullable Required, nullable BigDecimal.
  * @param bigDecimalMinimum Non-required, non-nullable BigDecimal with minimum: 0.
  * @param bigDecimalMaximum Non-required, non-nullable BigDecimal with maximum: 100.
  * @param bigDecimalMinimumAndMaximum Non-required, non-nullable BigDecimal with minimum: 0 and maximum: 100.
@@ -107,6 +111,10 @@ public record RecordWithAllConstraints(
     @Min(18L) Long longMinimum,
     @Max(100L) Long longMaximum,
     @Min(0L) @Max(100L) Long longMinimumAndMaximum,
+    BigDecimal bigDecimalStandard,
+    BigDecimal bigDecimalNullable,
+    @NotNull BigDecimal bigDecimalRequired,
+    BigDecimal bigDecimalRequiredNullable,
     @DecimalMin("0") BigDecimal bigDecimalMinimum,
     @DecimalMax("100") BigDecimal bigDecimalMaximum,
     @DecimalMin("0") @DecimalMax("100") BigDecimal bigDecimalMinimumAndMaximum)
@@ -150,6 +158,10 @@ public record RecordWithAllConstraints(
       final Long longMinimum,
       final Long longMaximum,
       final Long longMinimumAndMaximum,
+      final BigDecimal bigDecimalStandard,
+      final BigDecimal bigDecimalNullable,
+      final BigDecimal bigDecimalRequired,
+      final BigDecimal bigDecimalRequiredNullable,
       final BigDecimal bigDecimalMinimum,
       final BigDecimal bigDecimalMaximum,
       final BigDecimal bigDecimalMinimumAndMaximum) {
@@ -189,6 +201,10 @@ public record RecordWithAllConstraints(
     this.longMinimum = longMinimum;
     this.longMaximum = longMaximum;
     this.longMinimumAndMaximum = longMinimumAndMaximum;
+    this.bigDecimalStandard = bigDecimalStandard;
+    this.bigDecimalNullable = bigDecimalNullable;
+    this.bigDecimalRequired = bigDecimalRequired;
+    this.bigDecimalRequiredNullable = bigDecimalRequiredNullable;
     this.bigDecimalMinimum = bigDecimalMinimum;
     this.bigDecimalMaximum = bigDecimalMaximum;
     this.bigDecimalMinimumAndMaximum = bigDecimalMinimumAndMaximum;

@@ -363,6 +363,8 @@ components:
         - arrayUniqueRequiredNullable
         - longRequired
         - longRequiredNullable
+        - bigDecimalRequired
+        - bigDecimalRequiredNullable
       properties:
         ### BOOLEAN FIELDS ###
         booleanStandard:
@@ -540,6 +542,20 @@ components:
           minimum: 0
           maximum: 100
         ### NUMBER FIELDS ###
+        bigDecimalStandard:
+          description: "Non-required, non-nullable BigDecimal."
+          type: number
+        bigDecimalNullable:
+          description: "Non-required, nullable BigDecimal."
+          type: number
+          nullable: true
+        bigDecimalRequired:
+          description: "Required, non-nullable BigDecimal."
+          type: number
+        bigDecimalRequiredNullable:
+          description: "Required, nullable BigDecimal."
+          type: number
+          nullable: true
         bigDecimalMinimum:
           description: "Non-required, non-nullable BigDecimal with minimum: 0."
           type: number
