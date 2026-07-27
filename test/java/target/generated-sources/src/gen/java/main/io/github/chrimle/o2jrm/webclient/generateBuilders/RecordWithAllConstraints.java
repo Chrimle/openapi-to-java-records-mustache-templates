@@ -25,10 +25,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -60,6 +63,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  * @param arrayMinItems Non-required, non-nullable List with minItems: 1.
  * @param arrayMaxItems Non-required, non-nullable List with maxItems: 10.
  * @param arrayMinAndMaxItems Non-required, non-nullable List with minItems: 1 and maxItems: 10.
+ * @param arrayUniqueStandard Non-required, non-nullable Set.
+ * @param arrayUniqueRequired Required, non-nullable Set.
+ * @param arrayUniqueNullable Non-required, nullable Set.
+ * @param arrayUniqueRequiredNullable Required, nullable Set.
  * @param intMinimum Non-required, non-nullable Integer with minimum: 18.
  * @param intMaximum Non-required, non-nullable Integer with maximum: 100.
  * @param intMinimumAndMaximum Non-required, non-nullable Integer with minimum: 0 and maximum: 100.
@@ -91,6 +98,10 @@ public record RecordWithAllConstraints(
     List<String> arrayMinItems,
     List<String> arrayMaxItems,
     List<String> arrayMinAndMaxItems,
+    Set<String> arrayUniqueStandard,
+    Set<String> arrayUniqueRequired,
+    Set<String> arrayUniqueNullable,
+    Set<String> arrayUniqueRequiredNullable,
     Integer intMinimum,
     Integer intMaximum,
     Integer intMinimumAndMaximum,
@@ -123,6 +134,10 @@ public record RecordWithAllConstraints(
       final List<String> arrayMinItems,
       final List<String> arrayMaxItems,
       final List<String> arrayMinAndMaxItems,
+      final Set<String> arrayUniqueStandard,
+      final Set<String> arrayUniqueRequired,
+      final Set<String> arrayUniqueNullable,
+      final Set<String> arrayUniqueRequiredNullable,
       final Integer intMinimum,
       final Integer intMaximum,
       final Integer intMinimumAndMaximum,
@@ -152,6 +167,10 @@ public record RecordWithAllConstraints(
     this.arrayMinItems = Objects.requireNonNullElseGet(arrayMinItems, () -> new ArrayList<>());
     this.arrayMaxItems = Objects.requireNonNullElseGet(arrayMaxItems, () -> new ArrayList<>());
     this.arrayMinAndMaxItems = Objects.requireNonNullElseGet(arrayMinAndMaxItems, () -> new ArrayList<>());
+    this.arrayUniqueStandard = Objects.requireNonNullElseGet(arrayUniqueStandard, () -> new LinkedHashSet<>());
+    this.arrayUniqueRequired = Objects.requireNonNullElseGet(arrayUniqueRequired, () -> new LinkedHashSet<>());
+    this.arrayUniqueNullable = arrayUniqueNullable;
+    this.arrayUniqueRequiredNullable = arrayUniqueRequiredNullable;
     this.intMinimum = intMinimum;
     this.intMaximum = intMaximum;
     this.intMinimumAndMaximum = intMinimumAndMaximum;
@@ -186,6 +205,10 @@ public record RecordWithAllConstraints(
     private List<String> arrayMinItems;
     private List<String> arrayMaxItems;
     private List<String> arrayMinAndMaxItems;
+    private Set<String> arrayUniqueStandard;
+    private Set<String> arrayUniqueRequired;
+    private Set<String> arrayUniqueNullable;
+    private Set<String> arrayUniqueRequiredNullable;
     private Integer intMinimum;
     private Integer intMaximum;
     private Integer intMinimumAndMaximum;
@@ -457,6 +480,58 @@ public record RecordWithAllConstraints(
     }
 
     /**
+     * Sets the value of {@link RecordWithAllConstraints#arrayUniqueStandard }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     *
+     * @param arrayUniqueStandard Non-required, non-nullable Set..
+     * @return this {@link Builder}-instance for method-chaining.
+     */
+    public Builder arrayUniqueStandard(final Set<String> arrayUniqueStandard) {
+      this.arrayUniqueStandard = arrayUniqueStandard;
+      return this;
+    }
+
+    /**
+     * Sets the value of {@link RecordWithAllConstraints#arrayUniqueRequired }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     *
+     * @param arrayUniqueRequired Required, non-nullable Set..
+     * @return this {@link Builder}-instance for method-chaining.
+     */
+    public Builder arrayUniqueRequired(final Set<String> arrayUniqueRequired) {
+      this.arrayUniqueRequired = arrayUniqueRequired;
+      return this;
+    }
+
+    /**
+     * Sets the value of {@link RecordWithAllConstraints#arrayUniqueNullable }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     *
+     * @param arrayUniqueNullable Non-required, nullable Set..
+     * @return this {@link Builder}-instance for method-chaining.
+     */
+    public Builder arrayUniqueNullable(final Set<String> arrayUniqueNullable) {
+      this.arrayUniqueNullable = arrayUniqueNullable;
+      return this;
+    }
+
+    /**
+     * Sets the value of {@link RecordWithAllConstraints#arrayUniqueRequiredNullable }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     *
+     * @param arrayUniqueRequiredNullable Required, nullable Set..
+     * @return this {@link Builder}-instance for method-chaining.
+     */
+    public Builder arrayUniqueRequiredNullable(final Set<String> arrayUniqueRequiredNullable) {
+      this.arrayUniqueRequiredNullable = arrayUniqueRequiredNullable;
+      return this;
+    }
+
+    /**
      * Sets the value of {@link RecordWithAllConstraints#intMinimum }.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
@@ -603,6 +678,10 @@ public record RecordWithAllConstraints(
           arrayMinItems,
           arrayMaxItems,
           arrayMinAndMaxItems,
+          arrayUniqueStandard,
+          arrayUniqueRequired,
+          arrayUniqueNullable,
+          arrayUniqueRequiredNullable,
           intMinimum,
           intMaximum,
           intMinimumAndMaximum,

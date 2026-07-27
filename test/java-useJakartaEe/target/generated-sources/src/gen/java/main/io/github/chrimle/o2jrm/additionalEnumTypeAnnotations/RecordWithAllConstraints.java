@@ -28,7 +28,9 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -63,6 +65,10 @@ import java.util.Set;
  * @param arrayMinItems Non-required, non-nullable List with minItems: 1.
  * @param arrayMaxItems Non-required, non-nullable List with maxItems: 10.
  * @param arrayMinAndMaxItems Non-required, non-nullable List with minItems: 1 and maxItems: 10.
+ * @param arrayUniqueStandard Non-required, non-nullable Set.
+ * @param arrayUniqueRequired Required, non-nullable Set.
+ * @param arrayUniqueNullable Non-required, nullable Set.
+ * @param arrayUniqueRequiredNullable Required, nullable Set.
  * @param intMinimum Non-required, non-nullable Integer with minimum: 18.
  * @param intMaximum Non-required, non-nullable Integer with maximum: 100.
  * @param intMinimumAndMaximum Non-required, non-nullable Integer with minimum: 0 and maximum: 100.
@@ -94,6 +100,10 @@ public record RecordWithAllConstraints(
     List<String> arrayMinItems,
     List<String> arrayMaxItems,
     List<String> arrayMinAndMaxItems,
+    Set<String> arrayUniqueStandard,
+    Set<String> arrayUniqueRequired,
+    Set<String> arrayUniqueNullable,
+    Set<String> arrayUniqueRequiredNullable,
     Integer intMinimum,
     Integer intMaximum,
     Integer intMinimumAndMaximum,
@@ -127,6 +137,10 @@ public record RecordWithAllConstraints(
               "arrayMinItems",
               "arrayMaxItems",
               "arrayMinAndMaxItems",
+              "arrayUniqueStandard",
+              "arrayUniqueRequired",
+              "arrayUniqueNullable",
+              "arrayUniqueRequiredNullable",
               "intMinimum",
               "intMaximum",
               "intMinimumAndMaximum",
@@ -144,7 +158,9 @@ public record RecordWithAllConstraints(
               "stringRequired",
               "stringRequiredNullable",
               "stringRequiredPattern",
-              "arrayRequiredNullable"));
+              "arrayRequiredNullable",
+              "arrayUniqueRequired",
+              "arrayUniqueRequiredNullable"));
 
   public RecordWithAllConstraints(
       final Boolean booleanStandard,
@@ -167,6 +183,10 @@ public record RecordWithAllConstraints(
       final List<String> arrayMinItems,
       final List<String> arrayMaxItems,
       final List<String> arrayMinAndMaxItems,
+      final Set<String> arrayUniqueStandard,
+      final Set<String> arrayUniqueRequired,
+      final Set<String> arrayUniqueNullable,
+      final Set<String> arrayUniqueRequiredNullable,
       final Integer intMinimum,
       final Integer intMaximum,
       final Integer intMinimumAndMaximum,
@@ -196,6 +216,10 @@ public record RecordWithAllConstraints(
     this.arrayMinItems = Objects.requireNonNullElseGet(arrayMinItems, () -> new ArrayList<>());
     this.arrayMaxItems = Objects.requireNonNullElseGet(arrayMaxItems, () -> new ArrayList<>());
     this.arrayMinAndMaxItems = Objects.requireNonNullElseGet(arrayMinAndMaxItems, () -> new ArrayList<>());
+    this.arrayUniqueStandard = Objects.requireNonNullElseGet(arrayUniqueStandard, () -> new LinkedHashSet<>());
+    this.arrayUniqueRequired = Objects.requireNonNullElseGet(arrayUniqueRequired, () -> new LinkedHashSet<>());
+    this.arrayUniqueNullable = arrayUniqueNullable;
+    this.arrayUniqueRequiredNullable = arrayUniqueRequiredNullable;
     this.intMinimum = intMinimum;
     this.intMaximum = intMaximum;
     this.intMinimumAndMaximum = intMinimumAndMaximum;
@@ -434,6 +458,42 @@ public record RecordWithAllConstraints(
                 "Expected the field `arrayMinAndMaxItems` to be an array in the JSON string but got `%s`",
                 jsonObj.get("arrayMinAndMaxItems")));
       }
+    }
+
+    if (jsonObj.get("arrayUniqueStandard") != null && !jsonObj.get("arrayUniqueStandard").isJsonNull()) { 
+      if (!jsonObj.get("arrayUniqueStandard").isJsonArray()) {
+        throw new IllegalArgumentException(
+            String.format(
+                java.util.Locale.ROOT,
+                "Expected the field `arrayUniqueStandard` to be an array in the JSON string but got `%s`",
+                jsonObj.get("arrayUniqueStandard")));
+      }
+    }
+
+    if (!jsonObj.get("arrayUniqueRequired").isJsonArray()) {
+      throw new IllegalArgumentException(
+          String.format(
+              java.util.Locale.ROOT,
+              "Expected the field `arrayUniqueRequired` to be an array in the JSON string but got `%s`",
+              jsonObj.get("arrayUniqueRequired")));
+    }
+
+    if (jsonObj.get("arrayUniqueNullable") != null && !jsonObj.get("arrayUniqueNullable").isJsonNull()) { 
+      if (!jsonObj.get("arrayUniqueNullable").isJsonArray()) {
+        throw new IllegalArgumentException(
+            String.format(
+                java.util.Locale.ROOT,
+                "Expected the field `arrayUniqueNullable` to be an array in the JSON string but got `%s`",
+                jsonObj.get("arrayUniqueNullable")));
+      }
+    }
+
+    if (!jsonObj.get("arrayUniqueRequiredNullable").isJsonArray()) {
+      throw new IllegalArgumentException(
+          String.format(
+              java.util.Locale.ROOT,
+              "Expected the field `arrayUniqueRequiredNullable` to be an array in the JSON string but got `%s`",
+              jsonObj.get("arrayUniqueRequiredNullable")));
     }
 
     if (jsonObj.get("intMinimum") != null && !jsonObj.get("intMinimum").isJsonNull()) { 

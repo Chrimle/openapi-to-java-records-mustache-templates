@@ -360,6 +360,8 @@ components:
         - stringRequiredNullable
         - stringRequiredPattern
         - arrayRequiredNullable
+        - arrayUniqueRequired
+        - arrayUniqueRequiredNullable
       properties:
         ### BOOLEAN FIELDS ###
         booleanStandard:
@@ -459,6 +461,33 @@ components:
           type: array
           minItems: 1
           maxItems: 10
+          items:
+            type: string
+        ### SET FIELDS ###
+        arrayUniqueStandard:
+          description: "Non-required, non-nullable Set."
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        arrayUniqueRequired:
+          description: "Required, non-nullable Set."
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        arrayUniqueNullable:
+          description: "Non-required, nullable Set."
+          type: array
+          nullable: true
+          uniqueItems: true
+          items:
+            type: string
+        arrayUniqueRequiredNullable:
+          description: "Required, nullable Set."
+          type: array
+          nullable: true
+          uniqueItems: true
           items:
             type: string
         ### INTEGER FIELDS ###

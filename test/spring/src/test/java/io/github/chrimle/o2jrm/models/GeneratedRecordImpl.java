@@ -163,6 +163,16 @@ public enum GeneratedRecordImpl implements GeneratedRecord, GeneratedClassImpl {
           .minItems(1)
           .maxItems(10)
           .build(),
+      GeneratedField.of("arrayUniqueStandard", Set.class, String.class).build(),
+      GeneratedField.of("arrayUniqueRequired", Set.class, String.class)
+          .isRequired(true)
+          .isBeanValidationNullable(false)
+          .build(),
+      GeneratedField.of("arrayUniqueNullable", Set.class, String.class).isNullable(true).build(),
+      GeneratedField.of("arrayUniqueRequiredNullable", Set.class, String.class)
+          .isRequired(true)
+          .isNullable(true)
+          .build(),
       GeneratedField.of("intMinimum", Integer.class).minimum(18).build(),
       GeneratedField.of("intMaximum", Integer.class).maximum(100).build(),
       GeneratedField.of("intMinimumAndMaximum", Integer.class).minimum(0).maximum(100).build(),
