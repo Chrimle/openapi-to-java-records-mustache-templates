@@ -121,25 +121,19 @@ public enum GeneratedRecordImpl implements GeneratedRecord, GeneratedClassImpl {
       GeneratedField.of("booleanStandard", Boolean.class).build(),
       GeneratedField.of("booleanDefault", Boolean.class).defaultValue(Boolean.TRUE).build(),
       GeneratedField.of("booleanNullable", Boolean.class).isNullable().build(),
-      GeneratedField.of("booleanRequired", Boolean.class).isRequired(true).build(),
+      GeneratedField.of("booleanRequired", Boolean.class).isRequired().build(),
       GeneratedField.of("booleanRequiredDefault", Boolean.class)
-          .isRequired(true)
+          .isRequired()
           .defaultValue(Boolean.TRUE)
           .build(),
-      GeneratedField.of("booleanRequiredNullable", Boolean.class)
-          .isRequired(true)
-          .isNullable()
-          .build(),
+      GeneratedField.of("booleanRequiredNullable", Boolean.class).isRequired().isNullable().build(),
       GeneratedField.of("stringStandard", String.class).build(),
       GeneratedField.of("stringDefault", String.class).defaultValue("someDefaultValue").build(),
       GeneratedField.of("stringNullable", String.class).isNullable().build(),
-      GeneratedField.of("stringRequired", String.class).isRequired(true).build(),
-      GeneratedField.of("stringRequiredNullable", String.class)
-          .isNullable()
-          .isRequired(true)
-          .build(),
+      GeneratedField.of("stringRequired", String.class).isRequired().build(),
+      GeneratedField.of("stringRequiredNullable", String.class).isNullable().isRequired().build(),
       GeneratedField.of("stringRequiredPattern", String.class)
-          .isRequired(true)
+          .isRequired()
           .pattern("^\\d{3}-\\d{2}-\\d{4}$")
           .build(),
       GeneratedField.of("stringEmailFormat", String.class).isEmail(true).build(),
@@ -149,7 +143,7 @@ public enum GeneratedRecordImpl implements GeneratedRecord, GeneratedClassImpl {
       GeneratedField.of("stringMinAndMaxLength", String.class).minLength(3).maxLength(7).build(),
       GeneratedField.of("arrayNullable", List.class, String.class).isNullable().build(),
       GeneratedField.of("arrayRequiredNullable", List.class, String.class)
-          .isRequired(true)
+          .isRequired()
           .isNullable()
           .build(),
       GeneratedField.of("arrayMinItems", List.class, String.class).minItems(1).build(),
@@ -159,10 +153,10 @@ public enum GeneratedRecordImpl implements GeneratedRecord, GeneratedClassImpl {
           .maxItems(10)
           .build(),
       GeneratedField.of("arrayUniqueStandard", Set.class, String.class).build(),
-      GeneratedField.of("arrayUniqueRequired", Set.class, String.class).isRequired(true).build(),
+      GeneratedField.of("arrayUniqueRequired", Set.class, String.class).isRequired().build(),
       GeneratedField.of("arrayUniqueNullable", Set.class, String.class).isNullable().build(),
       GeneratedField.of("arrayUniqueRequiredNullable", Set.class, String.class)
-          .isRequired(true)
+          .isRequired()
           .isNullable()
           .build(),
       GeneratedField.of("intMinimum", Integer.class).minimum(18).build(),
@@ -170,8 +164,8 @@ public enum GeneratedRecordImpl implements GeneratedRecord, GeneratedClassImpl {
       GeneratedField.of("intMinimumAndMaximum", Integer.class).minimum(0).maximum(100).build(),
       GeneratedField.of("longStandard", Long.class).build(),
       GeneratedField.of("longNullable", Long.class).isNullable().build(),
-      GeneratedField.of("longRequired", Long.class).isRequired(true).build(),
-      GeneratedField.of("longRequiredNullable", Long.class).isRequired(true).isNullable().build(),
+      GeneratedField.of("longRequired", Long.class).isRequired().build(),
+      GeneratedField.of("longRequiredNullable", Long.class).isRequired().isNullable().build(),
       GeneratedField.of("longMinimum", Long.class).minimum(18).build(),
       GeneratedField.of("longMaximum", Long.class).maximum(100).build(),
       GeneratedField.of("longMinimumAndMaximum", Long.class).minimum(0).maximum(100).build(),
@@ -309,50 +303,45 @@ public enum GeneratedRecordImpl implements GeneratedRecord, GeneratedClassImpl {
               .toArray(new GeneratedField[] {});
       case RECORD_WITH_REQUIRED_FIELDS_OF_EACH_TYPE ->
           List.of(
-                  GeneratedField.of("field1", Boolean.class).isRequired(true).build(),
-                  GeneratedField.of("field2", String.class).isRequired(true).build(),
-                  GeneratedField.of("field3", Integer.class).isRequired(true).build(),
-                  GeneratedField.of("field4", BigDecimal.class).isRequired(true).build(),
-                  GeneratedField.of("field5", List.class, Boolean.class).isRequired(true).build(),
-                  GeneratedField.of("field6", Set.class, Boolean.class).isRequired(true).build(),
+                  GeneratedField.of("field1", Boolean.class).isRequired().build(),
+                  GeneratedField.of("field2", String.class).isRequired().build(),
+                  GeneratedField.of("field3", Integer.class).isRequired().build(),
+                  GeneratedField.of("field4", BigDecimal.class).isRequired().build(),
+                  GeneratedField.of("field5", List.class, Boolean.class).isRequired().build(),
+                  GeneratedField.of("field6", Set.class, Boolean.class).isRequired().build(),
                   GeneratedField.of(
                           "field7", GeneratedRecordImpl.EXAMPLE_RECORD.getClass(pluginExecution))
-                      .isRequired(true)
+                      .isRequired()
                       .isCustomClass(true)
                       .build(),
                   GeneratedField.of(
                           "field8", GeneratedEnumImpl.EXAMPLE_ENUM.getClass(pluginExecution))
-                      .isRequired(true)
+                      .isRequired()
                       .build())
               .toArray(new GeneratedField[] {});
       case RECORD_WITH_NULLABLE_FIELDS_OF_EACH_TYPE ->
           List.of(
-                  GeneratedField.of("field1", Boolean.class).isNullable().isRequired(true).build(),
-                  GeneratedField.of("field2", String.class).isNullable().isRequired(true).build(),
-                  GeneratedField.of("field3", Integer.class).isNullable().isRequired(true).build(),
-                  GeneratedField.of("field4", BigDecimal.class)
-                      .isNullable()
-                      .isRequired(true)
-                      .build(),
+                  GeneratedField.of("field1", Boolean.class).isNullable().isRequired().build(),
+                  GeneratedField.of("field2", String.class).isNullable().isRequired().build(),
+                  GeneratedField.of("field3", Integer.class).isNullable().isRequired().build(),
+                  GeneratedField.of("field4", BigDecimal.class).isNullable().isRequired().build(),
                   GeneratedField.of("field5", List.class, Boolean.class)
                       .isNullable()
-                      .isRequired(true)
+                      .isRequired()
                       .build(),
                   GeneratedField.of("field6", Set.class, Boolean.class)
                       .isNullable()
-                      .isRequired(true)
+                      .isRequired()
                       .build(),
                   GeneratedField.of(
                           "field7",
                           GeneratedRecordImpl.EXAMPLE_NULLABLE_RECORD.getClass(pluginExecution))
-                      .isRequired(false)
                       .isNullable()
                       .isCustomClass(true)
                       .build(),
                   GeneratedField.of(
                           "field8",
                           GeneratedEnumImpl.EXAMPLE_NULLABLE_ENUM.getClass(pluginExecution))
-                      .isRequired(false)
                       .isNullable()
                       .build())
               .toArray(new GeneratedField[] {});
@@ -367,7 +356,7 @@ public enum GeneratedRecordImpl implements GeneratedRecord, GeneratedClassImpl {
                           "requiredRecordList",
                           List.class,
                           GeneratedRecordImpl.EXAMPLE_RECORD.getClass(pluginExecution))
-                      .isRequired(true)
+                      .isRequired()
                       .build(),
                   GeneratedField.of(
                           "optionalRecordSet",
@@ -378,7 +367,7 @@ public enum GeneratedRecordImpl implements GeneratedRecord, GeneratedClassImpl {
                           "requiredRecordSet",
                           Set.class,
                           GeneratedRecordImpl.EXAMPLE_RECORD.getClass(pluginExecution))
-                      .isRequired(true)
+                      .isRequired()
                       .build())
               .toArray(new GeneratedField[] {});
       default -> generatedRecord.getGeneratedFields();
