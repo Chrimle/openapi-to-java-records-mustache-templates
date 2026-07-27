@@ -121,12 +121,11 @@ public enum GeneratedRecordImpl implements GeneratedRecord, GeneratedClassImpl {
       GeneratedField.of("booleanStandard", Boolean.class).build(),
       GeneratedField.of("booleanDefault", Boolean.class).defaultValue(Boolean.TRUE).build(),
       GeneratedField.of("booleanNullable", Boolean.class).isNullable(true).build(),
-      // FIXME: BUG, gets annotated @NotNull
-      // GeneratedField.of("booleanRequired", Boolean.class).isRequired(true).build(),
-      // GeneratedField.of("booleanRequiredDefault", Boolean.class)
-      //     .isRequired(true)
-      //     .defaultValue(Boolean.TRUE)
-      //     .build(),
+      GeneratedField.of("booleanRequired", Boolean.class).isRequired(true).build(),
+      GeneratedField.of("booleanRequiredDefault", Boolean.class)
+          .isRequired(true)
+          .defaultValue(Boolean.TRUE)
+          .build(),
       GeneratedField.of("booleanRequiredNullable", Boolean.class)
           .isRequired(true)
           .isNullable(true)

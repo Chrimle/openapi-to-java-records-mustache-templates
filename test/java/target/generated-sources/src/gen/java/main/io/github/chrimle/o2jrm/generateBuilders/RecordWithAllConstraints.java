@@ -48,6 +48,8 @@ import java.util.Set;
  * @param booleanStandard Non-required, non-nullable Boolean field.
  * @param booleanDefault Non-required, non-nullable Boolean with a default value.
  * @param booleanNullable Non-required, nullable Boolean field.
+ * @param booleanRequired Required, non-nullable Boolean field.
+ * @param booleanRequiredDefault Required, non-nullable Boolean field with a default value.
  * @param booleanRequiredNullable Required, nullable Boolean field.
  * @param stringStandard Non-required, non-nullable String field.
  * @param stringDefault Non-required, non-nullable String field with a default value.
@@ -83,6 +85,8 @@ public record RecordWithAllConstraints(
     Boolean booleanStandard,
     Boolean booleanDefault,
     Boolean booleanNullable,
+    Boolean booleanRequired,
+    Boolean booleanRequiredDefault,
     Boolean booleanRequiredNullable,
     String stringStandard,
     String stringDefault,
@@ -120,6 +124,8 @@ public record RecordWithAllConstraints(
           Set.of("booleanStandard",
               "booleanDefault",
               "booleanNullable",
+              "booleanRequired",
+              "booleanRequiredDefault",
               "booleanRequiredNullable",
               "stringStandard",
               "stringDefault",
@@ -154,7 +160,9 @@ public record RecordWithAllConstraints(
   /** A set containing the names of all required fields defined in this class. */
   public static final HashSet<String> openapiRequiredFields =
       new HashSet<>(
-          Set.of("booleanRequiredNullable",
+          Set.of("booleanRequired",
+              "booleanRequiredDefault",
+              "booleanRequiredNullable",
               "stringRequired",
               "stringRequiredNullable",
               "stringRequiredPattern",
@@ -166,6 +174,8 @@ public record RecordWithAllConstraints(
       final Boolean booleanStandard,
       final Boolean booleanDefault,
       final Boolean booleanNullable,
+      final Boolean booleanRequired,
+      final Boolean booleanRequiredDefault,
       final Boolean booleanRequiredNullable,
       final String stringStandard,
       final String stringDefault,
@@ -199,6 +209,8 @@ public record RecordWithAllConstraints(
     this.booleanStandard = booleanStandard;
     this.booleanDefault = Objects.requireNonNullElse(booleanDefault, true);
     this.booleanNullable = booleanNullable;
+    this.booleanRequired = booleanRequired;
+    this.booleanRequiredDefault = Objects.requireNonNullElse(booleanRequiredDefault, true);
     this.booleanRequiredNullable = booleanRequiredNullable;
     this.stringStandard = stringStandard;
     this.stringDefault = Objects.requireNonNullElse(stringDefault, "someDefaultValue");
@@ -237,6 +249,8 @@ public record RecordWithAllConstraints(
     private Boolean booleanStandard;
     private Boolean booleanDefault;
     private Boolean booleanNullable;
+    private Boolean booleanRequired;
+    private Boolean booleanRequiredDefault;
     private Boolean booleanRequiredNullable;
     private String stringStandard;
     private String stringDefault;
@@ -304,6 +318,32 @@ public record RecordWithAllConstraints(
      */
     public Builder booleanNullable(final Boolean booleanNullable) {
       this.booleanNullable = booleanNullable;
+      return this;
+    }
+
+    /**
+     * Sets the value of {@link RecordWithAllConstraints#booleanRequired }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     *
+     * @param booleanRequired Required, non-nullable Boolean field..
+     * @return this {@link Builder}-instance for method-chaining.
+     */
+    public Builder booleanRequired(final Boolean booleanRequired) {
+      this.booleanRequired = booleanRequired;
+      return this;
+    }
+
+    /**
+     * Sets the value of {@link RecordWithAllConstraints#booleanRequiredDefault }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     *
+     * @param booleanRequiredDefault Required, non-nullable Boolean field with a default value..
+     * @return this {@link Builder}-instance for method-chaining.
+     */
+    public Builder booleanRequiredDefault(final Boolean booleanRequiredDefault) {
+      this.booleanRequiredDefault = booleanRequiredDefault;
       return this;
     }
 
@@ -710,6 +750,8 @@ public record RecordWithAllConstraints(
           booleanStandard,
           booleanDefault,
           booleanNullable,
+          booleanRequired,
+          booleanRequiredDefault,
           booleanRequiredNullable,
           stringStandard,
           stringDefault,
@@ -815,6 +857,22 @@ public record RecordWithAllConstraints(
                 "Expected the field `booleanNullable` to be a primitive type in the JSON string but got `%s`",
                 jsonObj.get("booleanNullable")));
       }
+    }
+
+    if (!jsonObj.get("booleanRequired").isJsonPrimitive()) {
+      throw new IllegalArgumentException(
+          String.format(
+              java.util.Locale.ROOT,
+              "Expected the field `booleanRequired` to be a primitive type in the JSON string but got `%s`",
+              jsonObj.get("booleanRequired")));
+    }
+
+    if (!jsonObj.get("booleanRequiredDefault").isJsonPrimitive()) {
+      throw new IllegalArgumentException(
+          String.format(
+              java.util.Locale.ROOT,
+              "Expected the field `booleanRequiredDefault` to be a primitive type in the JSON string but got `%s`",
+              jsonObj.get("booleanRequiredDefault")));
     }
 
     if (!jsonObj.get("booleanRequiredNullable").isJsonPrimitive()) {

@@ -352,9 +352,8 @@ components:
       type: object
       description: Example of a Record which has fields with constraints
       required:
-        # FIXME: BUG, gets annotated @NotNull
-        #- booleanRequired
-        #- booleanRequiredDefault
+        - booleanRequired
+        - booleanRequiredDefault
         - booleanRequiredNullable
         - stringRequired
         - stringRequiredNullable
@@ -375,14 +374,13 @@ components:
           description: "Non-required, nullable Boolean field."
           type: boolean
           nullable: true
-        # FIXME: BUG, gets annotated @NotNull
-        # booleanRequired:
-        #   description: "Required, non-nullable Boolean field."
-        #   type: boolean
-        # booleanRequiredDefault:
-        #  description: "Required, non-nullable Boolean field with a default value."
-        #  type: boolean
-        #  default: true
+        booleanRequired:
+          description: "Required, non-nullable Boolean field."
+          type: boolean
+        booleanRequiredDefault:
+          description: "Required, non-nullable Boolean field with a default value."
+          type: boolean
+          default: true
         booleanRequiredNullable:
           description: "Required, nullable Boolean field."
           type: boolean

@@ -33,6 +33,8 @@ import jakarta.annotation.Generated;
  * @param booleanStandard Non-required, non-nullable Boolean field.
  * @param booleanDefault Non-required, non-nullable Boolean with a default value.
  * @param booleanNullable Non-required, nullable Boolean field.
+ * @param booleanRequired Required, non-nullable Boolean field.
+ * @param booleanRequiredDefault Required, non-nullable Boolean field with a default value.
  * @param booleanRequiredNullable Required, nullable Boolean field.
  * @param stringStandard Non-required, non-nullable String field.
  * @param stringDefault Non-required, non-nullable String field with a default value.
@@ -68,6 +70,8 @@ public record RecordWithAllConstraints(
     Boolean booleanStandard,
     Boolean booleanDefault,
     Boolean booleanNullable,
+    @NotNull Boolean booleanRequired,
+    @NotNull Boolean booleanRequiredDefault,
     Boolean booleanRequiredNullable,
     String stringStandard,
     String stringDefault,
@@ -105,6 +109,8 @@ public record RecordWithAllConstraints(
       final Boolean booleanStandard,
       final Boolean booleanDefault,
       final Boolean booleanNullable,
+      final Boolean booleanRequired,
+      final Boolean booleanRequiredDefault,
       final Boolean booleanRequiredNullable,
       final String stringStandard,
       final String stringDefault,
@@ -138,6 +144,8 @@ public record RecordWithAllConstraints(
     this.booleanStandard = booleanStandard;
     this.booleanDefault = Objects.requireNonNullElse(booleanDefault, true);
     this.booleanNullable = booleanNullable;
+    this.booleanRequired = booleanRequired;
+    this.booleanRequiredDefault = Objects.requireNonNullElse(booleanRequiredDefault, true);
     this.booleanRequiredNullable = booleanRequiredNullable;
     this.stringStandard = stringStandard;
     this.stringDefault = Objects.requireNonNullElse(stringDefault, "someDefaultValue");
