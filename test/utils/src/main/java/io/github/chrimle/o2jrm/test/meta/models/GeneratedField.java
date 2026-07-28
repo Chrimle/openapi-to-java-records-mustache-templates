@@ -175,26 +175,25 @@ public record GeneratedField<T>(
     return new Builder<>(name, type, enumValue, null);
   }
 
-  @SuppressWarnings("OptionalUsedAsFieldOrParameterType")
   public static class Builder<T> {
     private final String name;
     private final Class<T> type;
-    private final Optional<Class<?>> compositeType;
+    private final @Nullable Class<?> compositeType;
     private boolean isRequired = false;
     private boolean isNullable = false;
     private boolean isCustomClass = false;
     private boolean isEmail = false;
     private final @Nullable T enumValue;
-    private Optional<T> defaultValue = Optional.empty();
-    private Optional<String> pattern = Optional.empty();
-    private Optional<Integer> minLength = Optional.empty();
-    private Optional<Integer> maxLength = Optional.empty();
-    private Optional<Integer> minItems = Optional.empty();
-    private Optional<Integer> maxItems = Optional.empty();
-    private Optional<Long> minimum = Optional.empty();
-    private Optional<Long> maximum = Optional.empty();
-    private Optional<String> decimalMin = Optional.empty();
-    private Optional<String> decimalMax = Optional.empty();
+    private @Nullable T defaultValue;
+    private @Nullable String pattern;
+    private @Nullable Integer minLength;
+    private @Nullable Integer maxLength;
+    private @Nullable Integer minItems;
+    private @Nullable Integer maxItems;
+    private @Nullable Long minimum;
+    private @Nullable Long maximum;
+    private @Nullable String decimalMin;
+    private @Nullable String decimalMax;
     private final List<Class<? extends Annotation>> extraFieldAnnotations = new ArrayList<>();
 
     public Builder(
@@ -204,7 +203,7 @@ public record GeneratedField<T>(
         final @Nullable Class<?> compositeType) {
       this.name = name;
       this.type = type;
-      this.compositeType = Optional.ofNullable(compositeType);
+      this.compositeType = compositeType;
       this.enumValue = enumValue;
     }
 
@@ -229,52 +228,52 @@ public record GeneratedField<T>(
     }
 
     public Builder<T> defaultValue(final @Nullable T defaultValue) {
-      this.defaultValue = Optional.ofNullable(defaultValue);
+      this.defaultValue = defaultValue;
       return this;
     }
 
     public Builder<T> pattern(final @Nullable String pattern) {
-      this.pattern = Optional.ofNullable(pattern);
+      this.pattern = pattern;
       return this;
     }
 
     public Builder<T> minLength(final int minLength) {
-      this.minLength = Optional.of(minLength);
+      this.minLength = minLength;
       return this;
     }
 
     public Builder<T> maxLength(final int maxLength) {
-      this.maxLength = Optional.of(maxLength);
+      this.maxLength = maxLength;
       return this;
     }
 
     public Builder<T> minItems(final int minItems) {
-      this.minItems = Optional.of(minItems);
+      this.minItems = minItems;
       return this;
     }
 
     public Builder<T> maxItems(final int maxItems) {
-      this.maxItems = Optional.of(maxItems);
+      this.maxItems = maxItems;
       return this;
     }
 
     public Builder<T> minimum(final long minimum) {
-      this.minimum = Optional.of(minimum);
+      this.minimum = minimum;
       return this;
     }
 
     public Builder<T> maximum(final long maximum) {
-      this.maximum = Optional.of(maximum);
+      this.maximum = maximum;
       return this;
     }
 
     public Builder<T> decimalMin(final @Nullable String decimalMin) {
-      this.decimalMin = Optional.ofNullable(decimalMin);
+      this.decimalMin = decimalMin;
       return this;
     }
 
     public Builder<T> decimalMax(final @Nullable String decimalMax) {
-      this.decimalMax = Optional.ofNullable(decimalMax);
+      this.decimalMax = decimalMax;
       return this;
     }
 
@@ -289,23 +288,23 @@ public record GeneratedField<T>(
       return new GeneratedField<T>(
           name,
           type,
-          compositeType,
+          Optional.ofNullable(compositeType),
           isRequired,
           isNullable,
           isNullable || !isRequired,
           isCustomClass,
           isEmail,
           enumValue,
-          defaultValue,
-          pattern,
-          minLength,
-          maxLength,
-          minItems,
-          maxItems,
-          minimum,
-          maximum,
-          decimalMin,
-          decimalMax,
+          Optional.ofNullable(defaultValue),
+          Optional.ofNullable(pattern),
+          Optional.ofNullable(minLength),
+          Optional.ofNullable(maxLength),
+          Optional.ofNullable(minItems),
+          Optional.ofNullable(maxItems),
+          Optional.ofNullable(minimum),
+          Optional.ofNullable(maximum),
+          Optional.ofNullable(decimalMin),
+          Optional.ofNullable(decimalMax),
           extraFieldAnnotations);
     }
   }
