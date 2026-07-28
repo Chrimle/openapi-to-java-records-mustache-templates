@@ -213,8 +213,8 @@ public record GeneratedField<T>(
       return this;
     }
 
-    public Builder<T> isNullable(final boolean isNullable) {
-      this.isNullable = isNullable;
+    public Builder<T> isNullable() {
+      this.isNullable = true;
       return this;
     }
 

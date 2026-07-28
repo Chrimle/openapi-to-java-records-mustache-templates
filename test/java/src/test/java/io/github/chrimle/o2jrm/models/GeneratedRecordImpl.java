@@ -126,12 +126,9 @@ public enum GeneratedRecordImpl implements GeneratedRecord, GeneratedClassImpl {
       List.of(),
       GeneratedField.of("stringStandard", String.class).build(),
       GeneratedField.of("stringDefault", String.class).defaultValue("someDefaultValue").build(),
-      GeneratedField.of("stringNullable", String.class).isNullable(true).build(),
+      GeneratedField.of("stringNullable", String.class).isNullable().build(),
       GeneratedField.of("stringRequired", String.class).isRequired().build(),
-      GeneratedField.of("stringRequiredNullable", String.class)
-          .isNullable(true)
-          .isRequired()
-          .build(),
+      GeneratedField.of("stringRequiredNullable", String.class).isNullable().isRequired().build(),
       GeneratedField.of("stringRequiredPattern", String.class)
           .isRequired()
           .pattern("^\\d{3}-\\d{2}-\\d{4}$")
@@ -305,31 +302,28 @@ public enum GeneratedRecordImpl implements GeneratedRecord, GeneratedClassImpl {
               .toArray(new GeneratedField[] {});
       case RECORD_WITH_NULLABLE_FIELDS_OF_EACH_TYPE ->
           List.of(
-                  GeneratedField.of("field1", Boolean.class).isNullable(true).isRequired().build(),
-                  GeneratedField.of("field2", String.class).isNullable(true).isRequired().build(),
-                  GeneratedField.of("field3", Integer.class).isNullable(true).isRequired().build(),
-                  GeneratedField.of("field4", BigDecimal.class)
-                      .isNullable(true)
-                      .isRequired()
-                      .build(),
+                  GeneratedField.of("field1", Boolean.class).isNullable().isRequired().build(),
+                  GeneratedField.of("field2", String.class).isNullable().isRequired().build(),
+                  GeneratedField.of("field3", Integer.class).isNullable().isRequired().build(),
+                  GeneratedField.of("field4", BigDecimal.class).isNullable().isRequired().build(),
                   GeneratedField.of("field5", List.class, Boolean.class)
-                      .isNullable(true)
+                      .isNullable()
                       .isRequired()
                       .build(),
                   GeneratedField.of("field6", Set.class, Boolean.class)
-                      .isNullable(true)
+                      .isNullable()
                       .isRequired()
                       .build(),
                   GeneratedField.of(
                           "field7",
                           GeneratedRecordImpl.EXAMPLE_NULLABLE_RECORD.getClass(pluginExecution))
-                      .isNullable(true)
+                      .isNullable()
                       .isCustomClass(true)
                       .build(),
                   GeneratedField.of(
                           "field8",
                           GeneratedEnumImpl.EXAMPLE_NULLABLE_ENUM.getClass(pluginExecution))
-                      .isNullable(true)
+                      .isNullable()
                       .build())
               .toArray(new GeneratedField[] {});
       case RECORD_WITH_COLLECTIONS_OF_RECORDS ->
