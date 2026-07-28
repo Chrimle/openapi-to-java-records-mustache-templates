@@ -30,9 +30,21 @@ import org.jspecify.annotations.Nullable;
 import org.junit.jupiter.api.Assertions;
 
 /** Generalized Test-class for testing Generated Record-classes */
-@SuppressWarnings("java:S5960")
+@SuppressWarnings({"java:S5960", "MismatchedQueryAndUpdateOfCollection"})
 @NullMarked
 public class GeneratedRecordTestUtils {
+
+  private static final List<Object> DEFAULT_ARRAY_VALUE = Collections.emptyList();
+  private static final LinkedHashSet<Object> DEFAULT_SET_VALUE = new LinkedHashSet<>();
+  private static final ArrayList<Object> DEFAULT_LIST_VALUE = new ArrayList<>();
+  private static final Boolean TEST_BOOLEAN = Boolean.TRUE;
+  private static final String TEST_STRING = "testString";
+  private static final int TEST_INTEGER = 42;
+  private static final BigDecimal TEST_BIG_DECIMAL = BigDecimal.valueOf(123.456);
+  private static final ArrayList<Boolean> TEST_ARRAY_LIST =
+      new ArrayList<>(List.of(Boolean.TRUE, Boolean.FALSE));
+  private static final LinkedHashSet<Boolean> TEST_LINKED_LIST =
+      new LinkedHashSet<>(List.of(Boolean.TRUE, Boolean.FALSE));
 
   private GeneratedRecordTestUtils() {}
 
@@ -112,13 +124,13 @@ public class GeneratedRecordTestUtils {
    */
   private static <T> @Nullable T getClassSpecificDefaultValue(final Class<? extends T> fieldClass) {
     if (Arrays.class.equals(fieldClass)) {
-      return fieldClass.cast(Collections.emptyList());
+      return fieldClass.cast(DEFAULT_ARRAY_VALUE);
     }
     if (Set.class.equals(fieldClass)) {
-      return fieldClass.cast(new LinkedHashSet<>());
+      return fieldClass.cast(DEFAULT_SET_VALUE);
     }
     if (List.class.equals(fieldClass)) {
-      return fieldClass.cast(new ArrayList<>());
+      return fieldClass.cast(DEFAULT_LIST_VALUE);
     }
     return null;
   }
@@ -133,22 +145,22 @@ public class GeneratedRecordTestUtils {
   @SuppressWarnings("BooleanLiteral")
   private static <T> @Nullable T getClassSpecificTestingValue(final Class<? extends T> fieldClass) {
     if (Boolean.class.equals(fieldClass)) {
-      return fieldClass.cast(Boolean.TRUE);
+      return fieldClass.cast(TEST_BOOLEAN);
     }
     if (String.class.equals(fieldClass)) {
-      return fieldClass.cast("testString");
+      return fieldClass.cast(TEST_STRING);
     }
     if (Integer.class.equals(fieldClass)) {
-      return fieldClass.cast(42);
+      return fieldClass.cast(TEST_INTEGER);
     }
     if (BigDecimal.class.equals(fieldClass)) {
-      return fieldClass.cast(BigDecimal.valueOf(123.456));
+      return fieldClass.cast(TEST_BIG_DECIMAL);
     }
     if (List.class.equals(fieldClass)) {
-      return fieldClass.cast(new ArrayList<>(List.of(Boolean.TRUE, Boolean.FALSE)));
+      return fieldClass.cast(TEST_ARRAY_LIST);
     }
     if (Set.class.equals(fieldClass)) {
-      return fieldClass.cast(new LinkedHashSet<>(List.of(Boolean.TRUE, Boolean.FALSE)));
+      return fieldClass.cast(TEST_LINKED_LIST);
     }
     return null;
   }
