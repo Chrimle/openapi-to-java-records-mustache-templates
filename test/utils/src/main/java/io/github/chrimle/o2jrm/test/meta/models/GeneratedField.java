@@ -184,7 +184,7 @@ public record GeneratedField<T>(
     private boolean isNullable = false;
     private boolean isCustomClass = false;
     private boolean isEmail = false;
-    private @Nullable T enumValue;
+    private final @Nullable T enumValue;
     private Optional<T> defaultValue = Optional.empty();
     private Optional<String> pattern = Optional.empty();
     private Optional<Integer> minLength = Optional.empty();
@@ -225,11 +225,6 @@ public record GeneratedField<T>(
 
     public Builder<T> isEmail(final boolean isEmail) {
       this.isEmail = isEmail;
-      return this;
-    }
-
-    public Builder<T> enumValue(final @Nullable T enumValue) {
-      this.enumValue = enumValue;
       return this;
     }
 
