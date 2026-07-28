@@ -208,8 +208,8 @@ public record GeneratedField<T>(
       this.enumValue = enumValue;
     }
 
-    public Builder<T> isRequired(final boolean isRequired) {
-      this.isRequired = isRequired;
+    public Builder<T> isRequired() {
+      this.isRequired = true;
       return this;
     }
 
