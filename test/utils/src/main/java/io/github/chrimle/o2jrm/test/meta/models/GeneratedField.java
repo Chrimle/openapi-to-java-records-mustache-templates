@@ -175,13 +175,13 @@ public record GeneratedField<T>(
     return new Builder<>(name, type, enumValue, null);
   }
 
+  @SuppressWarnings("OptionalUsedAsFieldOrParameterType")
   public static class Builder<T> {
     private final String name;
     private final Class<T> type;
     private final Optional<Class<?>> compositeType;
     private boolean isRequired = false;
     private boolean isNullable = false;
-    private boolean isBeanValidationNullable = true;
     private boolean isCustomClass = false;
     private boolean isEmail = false;
     private @Nullable T enumValue;
@@ -215,11 +215,6 @@ public record GeneratedField<T>(
 
     public Builder<T> isNullable(final boolean isNullable) {
       this.isNullable = isNullable;
-      return this;
-    }
-
-    public Builder<T> isBeanValidationNullable(final boolean isBeanValidationNullable) {
-      this.isBeanValidationNullable = isBeanValidationNullable;
       return this;
     }
 
@@ -302,7 +297,7 @@ public record GeneratedField<T>(
           compositeType,
           isRequired,
           isNullable,
-          isBeanValidationNullable,
+          isNullable || !isRequired,
           isCustomClass,
           isEmail,
           enumValue,
