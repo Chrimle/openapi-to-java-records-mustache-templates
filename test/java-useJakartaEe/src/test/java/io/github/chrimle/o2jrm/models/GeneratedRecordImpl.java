@@ -33,7 +33,7 @@ import java.util.UUID;
 
 /** Enum class listing all expected {@code record} classes to be generated from the OpenAPI spec. */
 @SuppressWarnings("ImmutableEnumChecker")
-public enum GeneratedRecordImpl implements GeneratedRecord, GeneratedClass {
+public enum GeneratedRecordImpl implements GeneratedRecord {
   DEPRECATED_EXAMPLE_RECORD(
       "DeprecatedExampleRecord",
       true,

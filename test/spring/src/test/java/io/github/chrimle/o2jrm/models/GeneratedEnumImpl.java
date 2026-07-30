@@ -17,7 +17,6 @@ package io.github.chrimle.o2jrm.models;
 
 import io.github.chrimle.o2jrm.test.interfaces.TestInterfaceOne;
 import io.github.chrimle.o2jrm.test.interfaces.TestInterfaceTwo;
-import io.github.chrimle.o2jrm.test.meta.models.GeneratedClass;
 import io.github.chrimle.o2jrm.test.meta.models.GeneratedEnum;
 import io.github.chrimle.o2jrm.test.meta.models.GeneratedField;
 import java.net.URI;
@@ -25,7 +24,7 @@ import java.util.List;
 
 /** Enum class listing all expected {@code enum} classes to be generated from the OpenAPI spec. */
 @SuppressWarnings("ImmutableEnumChecker")
-public enum GeneratedEnumImpl implements GeneratedEnum, GeneratedClass {
+public enum GeneratedEnumImpl implements GeneratedEnum {
   DEPRECATED_EXAMPLE_ENUM(
       "DeprecatedExampleEnum",
       true,
