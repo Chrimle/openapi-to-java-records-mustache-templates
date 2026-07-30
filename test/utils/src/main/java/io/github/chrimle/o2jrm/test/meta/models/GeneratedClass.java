@@ -120,19 +120,6 @@ public interface GeneratedClass {
   }
 
   /**
-   * Returns the collection of {@link GeneratedField}s which are expected to be generated within the
-   * {@link GeneratedClass}. Corresponds to each {@code properties}-item.
-   *
-   * @apiNote Intended to be used in a {@code static}-context, such as {@link
-   *     org.junit.jupiter.params.provider.ArgumentsProvider}s.
-   * @return the collection of generatedFields.
-   */
-  static GeneratedField<?>[] resolveGeneratedFields(
-      final GeneratedClass generatedClass, final PluginExecution pluginExecution) {
-    return generatedClass.getGeneratedFields(generatedClass, pluginExecution);
-  }
-
-  /**
    * Returns the {@link Class}, <i>resolved via Java Reflection API</i>, with the package name
    * provided by {@code pluginExecution}.
    *

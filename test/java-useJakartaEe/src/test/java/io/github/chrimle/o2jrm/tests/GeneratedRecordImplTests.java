@@ -56,7 +56,7 @@ final class GeneratedRecordImplTests extends GeneratedRecordTests {
                             new GeneratedSource(
                                 pluginExecution,
                                 generatedRecord,
-                                GeneratedClass.resolveGeneratedFields(
+                                generatedRecord.getGeneratedFields(
                                     generatedRecord, pluginExecution),
                                 GeneratedClass.getClass(generatedRecord, pluginExecution),
                                 Map.of(

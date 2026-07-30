@@ -50,8 +50,7 @@ final class GeneratedEnumImplTests extends GeneratedEnumTests {
                             new GeneratedSource(
                                 pluginExecution,
                                 generatedEnum,
-                                GeneratedClass.resolveGeneratedFields(
-                                    generatedEnum, pluginExecution),
+                                generatedEnum.getGeneratedFields(generatedEnum, pluginExecution),
                                 GeneratedClass.getClass(generatedEnum, pluginExecution),
                                 Map.of(
                                     BeanValidationAnnotation.VALID,
