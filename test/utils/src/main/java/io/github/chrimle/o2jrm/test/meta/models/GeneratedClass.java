@@ -96,6 +96,20 @@ public interface GeneratedClass {
   GeneratedField<?>[] getGeneratedFields();
 
   /**
+   * Returns the collection of {@link GeneratedField}s which are expected to be generated within the
+   * class. Corresponds to each {@code properties}-item. Primarily used for dynamic {@code
+   * record}-classes.
+   *
+   * @param generatedClass to be used as base.
+   * @param pluginExecution to be used to resolve the effective fields.
+   * @return the collection of generatedFields.
+   */
+  default GeneratedField<?>[] getGeneratedFields(
+      final GeneratedClass generatedClass, final PluginExecution pluginExecution) {
+    return getGeneratedFields();
+  }
+
+  /**
    * Returns the canonical class name of this instance - including the package name.
    *
    * @param pluginExecution from which the package name is retrieved.
@@ -103,6 +117,19 @@ public interface GeneratedClass {
    */
   default String getCanonicalClassName(final PluginExecution pluginExecution) {
     return GeneratedClass.getCanonicalClassName(pluginExecution.getPackageName(), this);
+  }
+
+  /**
+   * Returns the collection of {@link GeneratedField}s which are expected to be generated within the
+   * {@link GeneratedClass}. Corresponds to each {@code properties}-item.
+   *
+   * @apiNote Intended to be used in a {@code static}-context, such as {@link
+   *     org.junit.jupiter.params.provider.ArgumentsProvider}s.
+   * @return the collection of generatedFields.
+   */
+  static GeneratedField<?>[] resolveGeneratedFields(
+      final GeneratedClass generatedClass, final PluginExecution pluginExecution) {
+    return generatedClass.getGeneratedFields(generatedClass, pluginExecution);
   }
 
   /**

@@ -16,7 +16,6 @@
 package io.github.chrimle.o2jrm.tests;
 
 import io.github.chrimle.o2jrm.PluginExecutionImpl;
-import io.github.chrimle.o2jrm.models.GeneratedClassImpl;
 import io.github.chrimle.o2jrm.models.GeneratedRecordImpl;
 import io.github.chrimle.o2jrm.test.meta.models.BeanValidationAnnotation;
 import io.github.chrimle.o2jrm.test.meta.models.GeneratedClass;
@@ -57,7 +56,7 @@ final class GeneratedRecordImplTests extends GeneratedRecordTests {
                             new GeneratedSource(
                                 pluginExecution,
                                 generatedRecord,
-                                GeneratedClassImpl.getGeneratedFields(
+                                GeneratedClass.resolveGeneratedFields(
                                     generatedRecord, pluginExecution),
                                 GeneratedClass.getClass(generatedRecord, pluginExecution),
                                 Map.of(
