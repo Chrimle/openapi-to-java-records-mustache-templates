@@ -96,6 +96,20 @@ public interface GeneratedClass {
   GeneratedField<?>[] getGeneratedFields();
 
   /**
+   * Returns the collection of {@link GeneratedField}s which are expected to be generated within the
+   * class. Corresponds to each {@code properties}-item. Primarily used for dynamic {@code
+   * record}-classes.
+   *
+   * @param generatedClass to be used as base.
+   * @param pluginExecution to be used to resolve the effective fields.
+   * @return the collection of generatedFields.
+   */
+  default GeneratedField<?>[] getGeneratedFields(
+      final GeneratedClass generatedClass, final PluginExecution pluginExecution) {
+    return getGeneratedFields();
+  }
+
+  /**
    * Returns the canonical class name of this instance - including the package name.
    *
    * @param pluginExecution from which the package name is retrieved.

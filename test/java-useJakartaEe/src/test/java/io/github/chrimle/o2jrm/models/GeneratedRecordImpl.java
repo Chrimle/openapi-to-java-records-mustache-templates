@@ -33,7 +33,7 @@ import java.util.UUID;
 
 /** Enum class listing all expected {@code record} classes to be generated from the OpenAPI spec. */
 @SuppressWarnings("ImmutableEnumChecker")
-public enum GeneratedRecordImpl implements GeneratedRecord, GeneratedClassImpl {
+public enum GeneratedRecordImpl implements GeneratedRecord {
   DEPRECATED_EXAMPLE_RECORD(
       "DeprecatedExampleRecord",
       true,
@@ -126,18 +126,11 @@ public enum GeneratedRecordImpl implements GeneratedRecord, GeneratedClassImpl {
       List.of(),
       GeneratedField.of("stringStandard", String.class).build(),
       GeneratedField.of("stringDefault", String.class).defaultValue("someDefaultValue").build(),
-      GeneratedField.of("stringNullable", String.class).isNullable(true).build(),
-      GeneratedField.of("stringRequired", String.class)
-          .isBeanValidationNullable(false)
-          .isRequired(true)
-          .build(),
-      GeneratedField.of("stringRequiredNullable", String.class)
-          .isNullable(true)
-          .isRequired(true)
-          .build(),
+      GeneratedField.of("stringNullable", String.class).isNullable().build(),
+      GeneratedField.of("stringRequired", String.class).isRequired().build(),
+      GeneratedField.of("stringRequiredNullable", String.class).isNullable().isRequired().build(),
       GeneratedField.of("stringRequiredPattern", String.class)
-          .isRequired(true)
-          .isBeanValidationNullable(false)
+          .isRequired()
           .pattern("^\\d{3}-\\d{2}-\\d{4}$")
           .build(),
       GeneratedField.of("stringEmailFormat", String.class).isEmail(true).build(),
@@ -272,9 +265,10 @@ public enum GeneratedRecordImpl implements GeneratedRecord, GeneratedClassImpl {
     return extraAnnotations;
   }
 
-  public static GeneratedField<?>[] getGeneratedFields(
-      final GeneratedRecordImpl generatedRecord, final PluginExecution pluginExecution) {
-    return switch (generatedRecord) {
+  @Override
+  public GeneratedField<?>[] getGeneratedFields(
+      final GeneratedClass generatedRecord, final PluginExecution pluginExecution) {
+    return switch ((GeneratedRecordImpl) generatedRecord) {
       case RECORD_WITH_INNER_ENUMS ->
           List.of(
                   GeneratedField.of(
@@ -292,80 +286,46 @@ public enum GeneratedRecordImpl implements GeneratedRecord, GeneratedClassImpl {
               .toArray(new GeneratedField[] {});
       case RECORD_WITH_REQUIRED_FIELDS_OF_EACH_TYPE ->
           List.of(
-                  GeneratedField.of("field1", Boolean.class)
-                      .isRequired(true)
-                      .isBeanValidationNullable(false)
-                      .build(),
-                  GeneratedField.of("field2", String.class)
-                      .isRequired(true)
-                      .isBeanValidationNullable(false)
-                      .build(),
-                  GeneratedField.of("field3", Integer.class)
-                      .isRequired(true)
-                      .isBeanValidationNullable(false)
-                      .build(),
-                  GeneratedField.of("field4", BigDecimal.class)
-                      .isRequired(true)
-                      .isBeanValidationNullable(false)
-                      .build(),
-                  GeneratedField.of("field5", List.class, Boolean.class)
-                      .isRequired(true)
-                      .isBeanValidationNullable(false)
-                      .build(),
-                  GeneratedField.of("field6", Set.class, Boolean.class)
-                      .isRequired(true)
-                      .isBeanValidationNullable(false)
-                      .build(),
+                  GeneratedField.of("field1", Boolean.class).isRequired().build(),
+                  GeneratedField.of("field2", String.class).isRequired().build(),
+                  GeneratedField.of("field3", Integer.class).isRequired().build(),
+                  GeneratedField.of("field4", BigDecimal.class).isRequired().build(),
+                  GeneratedField.of("field5", List.class, Boolean.class).isRequired().build(),
+                  GeneratedField.of("field6", Set.class, Boolean.class).isRequired().build(),
                   GeneratedField.of(
                           "field7", GeneratedRecordImpl.EXAMPLE_RECORD.getClass(pluginExecution))
-                      .isRequired(true)
-                      .isBeanValidationNullable(false)
+                      .isRequired()
                       .isCustomClass(true)
                       .build(),
                   GeneratedField.of(
                           "field8", GeneratedEnumImpl.EXAMPLE_ENUM.getClass(pluginExecution))
-                      .isRequired(true)
-                      .isBeanValidationNullable(false)
+                      .isRequired()
                       .build())
               .toArray(new GeneratedField[] {});
       case RECORD_WITH_NULLABLE_FIELDS_OF_EACH_TYPE ->
           List.of(
-                  GeneratedField.of("field1", Boolean.class)
-                      .isNullable(true)
-                      .isRequired(true)
-                      .build(),
-                  GeneratedField.of("field2", String.class)
-                      .isNullable(true)
-                      .isRequired(true)
-                      .build(),
-                  GeneratedField.of("field3", Integer.class)
-                      .isNullable(true)
-                      .isRequired(true)
-                      .build(),
-                  GeneratedField.of("field4", BigDecimal.class)
-                      .isNullable(true)
-                      .isRequired(true)
-                      .build(),
+                  GeneratedField.of("field1", Boolean.class).isNullable().isRequired().build(),
+                  GeneratedField.of("field2", String.class).isNullable().isRequired().build(),
+                  GeneratedField.of("field3", Integer.class).isNullable().isRequired().build(),
+                  GeneratedField.of("field4", BigDecimal.class).isNullable().isRequired().build(),
                   GeneratedField.of("field5", List.class, Boolean.class)
-                      .isNullable(true)
-                      .isRequired(true)
+                      .isNullable()
+                      .isRequired()
                       .build(),
                   GeneratedField.of("field6", Set.class, Boolean.class)
-                      .isNullable(true)
-                      .isRequired(true)
+                      .isNullable()
+                      .isRequired()
                       .build(),
                   GeneratedField.of(
                           "field7",
                           GeneratedRecordImpl.EXAMPLE_NULLABLE_RECORD.getClass(pluginExecution))
-                      .isRequired(false)
-                      .isNullable(true)
+                      .isNullable()
                       .isCustomClass(true)
                       .build(),
                   GeneratedField.of(
                           "field8",
                           GeneratedEnumImpl.EXAMPLE_NULLABLE_ENUM.getClass(pluginExecution))
-                      .isRequired(false)
-                      .isNullable(true)
+                      .isNullable()
                       .build())
               .toArray(new GeneratedField[] {});
       case RECORD_WITH_COLLECTIONS_OF_RECORDS ->
@@ -379,8 +339,7 @@ public enum GeneratedRecordImpl implements GeneratedRecord, GeneratedClassImpl {
                           "requiredRecordList",
                           List.class,
                           GeneratedRecordImpl.EXAMPLE_RECORD.getClass(pluginExecution))
-                      .isBeanValidationNullable(false)
-                      .isRequired(true)
+                      .isRequired()
                       .build(),
                   GeneratedField.of(
                           "optionalRecordSet",
@@ -391,8 +350,7 @@ public enum GeneratedRecordImpl implements GeneratedRecord, GeneratedClassImpl {
                           "requiredRecordSet",
                           Set.class,
                           GeneratedRecordImpl.EXAMPLE_RECORD.getClass(pluginExecution))
-                      .isBeanValidationNullable(false)
-                      .isRequired(true)
+                      .isRequired()
                       .build())
               .toArray(new GeneratedField[] {});
       default -> generatedRecord.getGeneratedFields();
