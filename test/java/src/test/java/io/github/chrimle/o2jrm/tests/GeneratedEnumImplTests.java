@@ -16,7 +16,6 @@
 package io.github.chrimle.o2jrm.tests;
 
 import io.github.chrimle.o2jrm.PluginExecutionImpl;
-import io.github.chrimle.o2jrm.models.GeneratedClassImpl;
 import io.github.chrimle.o2jrm.models.GeneratedEnumImpl;
 import io.github.chrimle.o2jrm.test.meta.models.BeanValidationAnnotation;
 import io.github.chrimle.o2jrm.test.meta.models.GeneratedClass;
@@ -51,8 +50,7 @@ final class GeneratedEnumImplTests extends GeneratedEnumTests {
                             new GeneratedSource(
                                 pluginExecution,
                                 generatedEnum,
-                                GeneratedClassImpl.getGeneratedFields(
-                                    generatedEnum, pluginExecution),
+                                generatedEnum.getGeneratedFields(generatedEnum, pluginExecution),
                                 GeneratedClass.getClass(generatedEnum, pluginExecution),
                                 Map.of(
                                     BeanValidationAnnotation.VALID,

@@ -33,7 +33,7 @@ import java.util.UUID;
 
 /** Enum class listing all expected {@code record} classes to be generated from the OpenAPI spec. */
 @SuppressWarnings("ImmutableEnumChecker")
-public enum GeneratedRecordImpl implements GeneratedRecord, GeneratedClassImpl {
+public enum GeneratedRecordImpl implements GeneratedRecord {
   DEPRECATED_EXAMPLE_RECORD(
       "DeprecatedExampleRecord",
       true,
@@ -294,9 +294,10 @@ public enum GeneratedRecordImpl implements GeneratedRecord, GeneratedClassImpl {
     return extraAnnotations;
   }
 
-  public static GeneratedField<?>[] getGeneratedFields(
-      final GeneratedRecordImpl generatedRecord, final PluginExecution pluginExecution) {
-    return switch (generatedRecord) {
+  @Override
+  public GeneratedField<?>[] getGeneratedFields(
+      final GeneratedClass generatedRecord, final PluginExecution pluginExecution) {
+    return switch ((GeneratedRecordImpl) generatedRecord) {
       case RECORD_WITH_INNER_ENUMS ->
           List.of(
                   GeneratedField.of(

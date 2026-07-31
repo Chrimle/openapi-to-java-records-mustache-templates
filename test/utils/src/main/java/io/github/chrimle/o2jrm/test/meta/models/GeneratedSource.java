@@ -142,16 +142,12 @@ public class GeneratedSource {
 
   @Override
   public String toString() {
-    return "GeneratedSource{"
-        + "pluginExecution="
-        + pluginExecution
-        + ", generatedClass="
-        + generatedClass
-        + ", classUnderTest="
-        + classUnderTest.getName()
-        + ", generatedFields="
-        + Arrays.toString(generatedFields)
-        + '}';
+    return "GeneratedSource{pluginExecution=%s, generatedClass=%s, classUnderTest=%s, generatedFields=%s}"
+        .formatted(
+            pluginExecution,
+            generatedClass,
+            classUnderTest.getName(),
+            Arrays.toString(generatedFields));
   }
 
   public Map<BeanValidationAnnotation, Class<? extends Annotation>> getBeanValidationAnnotations() {
