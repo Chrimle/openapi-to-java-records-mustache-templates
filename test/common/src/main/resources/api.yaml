@@ -356,6 +356,40 @@ components:
           enum:
             - "https://github.com/Chrimle/openapi-to-java-records-mustache-templates"
             - "https://chrimle.github.io/openapi-to-java-records-mustache-templates/"
+    RecordWithInnerEnumArrays:
+      type: object
+      description: Example of a Record with arrays of inner enums
+      properties:
+        stringEnumArray:
+          description: Example of an array of string enums
+          type: array
+          items:
+            type: string
+            description: Example of a nested string enum within an array.
+            enum:
+              - ENUM1
+              - ENUM2
+              - ENUM3
+        integerEnumArray:
+          description: Example of an array of number enums
+          type: array
+          items:
+            type: integer
+            description: Example of a nested integer enum within an array.
+            enum:
+              - 404
+              - 501
+              - 503
+        uriEnumArray:
+          description: Example of an array of URI enums
+          type: array
+          items:
+            type: string
+            format: uri
+            description: Example of a nested URI enum within an array.
+            enum:
+              - "https://github.com/Chrimle/openapi-to-java-records-mustache-templates"
+              - "https://chrimle.github.io/openapi-to-java-records-mustache-templates/"
     RecordWithAllConstraints:
       type: object
       description: Example of a Record which has fields with constraints
