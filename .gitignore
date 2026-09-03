@@ -65,6 +65,7 @@ ApiClient$*.java
 ApiException.java
 ApiResponse.java
 Configuration.java
+ExceptionProvider.java
 GzipRequestInterceptor.java
 GzipRequestInterceptor$*.java
 JavaTimeFormatter.java
