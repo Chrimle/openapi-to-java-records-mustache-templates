@@ -46,6 +46,8 @@
             **/ApiException.class,
             **/ApiResponse.class,
             **/Configuration.class,
+            **/ExceptionProvider.class,
+            **/ExceptionProvider$*.class,
             **/GzipRequestInterceptor.class,
             **/GzipRequestInterceptor$*.class,
             **/JavaTimeFormatter.class,
