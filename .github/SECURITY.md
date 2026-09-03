@@ -112,3 +112,25 @@ flowchart TB
     generated_code ==> downstream_dependent
 
 ```
+
+# STRIDE Assessment
+
+> [!IMPORTANT]
+> The scope of this project is the provided `.mustache`-files, and in the context of their intended purpose(s) **ONLY**.
+> It is therefore not in-scope, to assess the surrounding enviroment, actors, tools and/or configurations.
+>
+>
+> The `.mustache` files are directly dependent on the data provided by `openapi-generator`, which may _fully or partially_ originate from an OpenAPI Specification or `openapi-generator`-configurations (CLI-arguments, Maven-/Grade-configuration, etc.).
+> However, the contents of the `.mustache`-files _MAY_ contain oversights, issues or bugs, which introduces security vulnerabilities for the downstream/dependent system, context and/or user.
+
+## Spoofing
+
+## Tampering
+
+## Repudiation
+
+## Information Disclosure
+
+## Denial of Service
+
+## Elevation of Privilege
