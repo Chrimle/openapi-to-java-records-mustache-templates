@@ -27,12 +27,7 @@ import com.google.gson.stream.JsonWriter;
 import io.github.chrimle.o2jrm.generateBuilders.ExampleEnum;
 import io.github.chrimle.o2jrm.generateBuilders.ExampleRecord;
 import java.io.IOException;
-import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Set;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
@@ -45,64 +40,34 @@ import java.util.Set;
 /**
  * Example of a Record with fields of each type
  *
- * @param field1 a Boolean field
- * @param field2 a String field
  * @param field3 an Integer field
- * @param field4 a Number field
- * @param field5 an Array of Boolean field
- * @param field6 a Set field
  * @param field7 ExampleRecord.
  * @param field8 ExampleEnum.
  */
 public record RecordWithRequiredFieldsOfEachType(
-    Boolean field1,
-    String field2,
     Integer field3,
-    BigDecimal field4,
-    List<Boolean> field5,
-    Set<Boolean> field6,
     ExampleRecord field7,
     ExampleEnum field8) {
 
   /** A set containing the names of all instance fields defined in this class. */
   public static final HashSet<String> openapiFields =
       new HashSet<>(
-          Set.of("field1",
-              "field2",
-              "field3",
-              "field4",
-              "field5",
-              "field6",
+          Set.of("field3",
               "field7",
               "field8"));
 
   /** A set containing the names of all required fields defined in this class. */
   public static final HashSet<String> openapiRequiredFields =
       new HashSet<>(
-          Set.of("field1",
-              "field2",
-              "field3",
-              "field4",
-              "field5",
-              "field6",
+          Set.of("field3",
               "field7",
               "field8"));
 
   public RecordWithRequiredFieldsOfEachType(
-      final Boolean field1,
-      final String field2,
       final Integer field3,
-      final BigDecimal field4,
-      final List<Boolean> field5,
-      final Set<Boolean> field6,
       final ExampleRecord field7,
       final ExampleEnum field8) {
-    this.field1 = field1;
-    this.field2 = field2;
     this.field3 = field3;
-    this.field4 = field4;
-    this.field5 = Objects.requireNonNullElseGet(field5, () -> new ArrayList<>());
-    this.field6 = Objects.requireNonNullElseGet(field6, () -> new LinkedHashSet<>());
     this.field7 = field7;
     this.field8 = field8;
   }
@@ -110,40 +75,9 @@ public record RecordWithRequiredFieldsOfEachType(
   /** Builder class for {@link RecordWithRequiredFieldsOfEachType }. */
   public static class Builder {
 
-    private Boolean field1;
-    private String field2;
     private Integer field3;
-    private BigDecimal field4;
-    private List<Boolean> field5;
-    private Set<Boolean> field6;
     private ExampleRecord field7;
     private ExampleEnum field8;
-
-    /**
-     * Sets the value of {@link RecordWithRequiredFieldsOfEachType#field1 }.
-     *
-     * <p><b>NOTE:</b> Pass-by-reference is used!
-     *
-     * @param field1 a Boolean field.
-     * @return this {@link Builder}-instance for method-chaining.
-     */
-    public Builder field1(final Boolean field1) {
-      this.field1 = field1;
-      return this;
-    }
-
-    /**
-     * Sets the value of {@link RecordWithRequiredFieldsOfEachType#field2 }.
-     *
-     * <p><b>NOTE:</b> Pass-by-reference is used!
-     *
-     * @param field2 a String field.
-     * @return this {@link Builder}-instance for method-chaining.
-     */
-    public Builder field2(final String field2) {
-      this.field2 = field2;
-      return this;
-    }
 
     /**
      * Sets the value of {@link RecordWithRequiredFieldsOfEachType#field3 }.
@@ -155,45 +89,6 @@ public record RecordWithRequiredFieldsOfEachType(
      */
     public Builder field3(final Integer field3) {
       this.field3 = field3;
-      return this;
-    }
-
-    /**
-     * Sets the value of {@link RecordWithRequiredFieldsOfEachType#field4 }.
-     *
-     * <p><b>NOTE:</b> Pass-by-reference is used!
-     *
-     * @param field4 a Number field.
-     * @return this {@link Builder}-instance for method-chaining.
-     */
-    public Builder field4(final BigDecimal field4) {
-      this.field4 = field4;
-      return this;
-    }
-
-    /**
-     * Sets the value of {@link RecordWithRequiredFieldsOfEachType#field5 }.
-     *
-     * <p><b>NOTE:</b> Pass-by-reference is used!
-     *
-     * @param field5 an Array of Boolean field.
-     * @return this {@link Builder}-instance for method-chaining.
-     */
-    public Builder field5(final List<Boolean> field5) {
-      this.field5 = field5;
-      return this;
-    }
-
-    /**
-     * Sets the value of {@link RecordWithRequiredFieldsOfEachType#field6 }.
-     *
-     * <p><b>NOTE:</b> Pass-by-reference is used!
-     *
-     * @param field6 a Set field.
-     * @return this {@link Builder}-instance for method-chaining.
-     */
-    public Builder field6(final Set<Boolean> field6) {
-      this.field6 = field6;
       return this;
     }
 
@@ -233,12 +128,7 @@ public record RecordWithRequiredFieldsOfEachType(
      */
     public RecordWithRequiredFieldsOfEachType build() {
       return new RecordWithRequiredFieldsOfEachType(
-          field1,
-          field2,
           field3,
-          field4,
-          field5,
-          field6,
           field7,
           field8);
     }
@@ -288,52 +178,12 @@ public record RecordWithRequiredFieldsOfEachType(
 
     final JsonObject jsonObj = jsonElement.getAsJsonObject();
 
-    if (!jsonObj.get("field1").isJsonPrimitive()) {
-      throw new IllegalArgumentException(
-          String.format(
-              java.util.Locale.ROOT,
-              "Expected the field `field1` to be a primitive type in the JSON string but got `%s`",
-              jsonObj.get("field1")));
-    }
-
-    if (!jsonObj.get("field2").isJsonPrimitive()) {
-      throw new IllegalArgumentException(
-          String.format(
-              java.util.Locale.ROOT,
-              "Expected the field `field2` to be a primitive type in the JSON string but got `%s`",
-              jsonObj.get("field2")));
-    }
-
     if (!jsonObj.get("field3").isJsonPrimitive()) {
       throw new IllegalArgumentException(
           String.format(
               java.util.Locale.ROOT,
               "Expected the field `field3` to be a primitive type in the JSON string but got `%s`",
               jsonObj.get("field3")));
-    }
-
-    if (!jsonObj.get("field4").isJsonPrimitive()) {
-      throw new IllegalArgumentException(
-          String.format(
-              java.util.Locale.ROOT,
-              "Expected the field `field4` to be a primitive type in the JSON string but got `%s`",
-              jsonObj.get("field4")));
-    }
-
-    if (!jsonObj.get("field5").isJsonArray()) {
-      throw new IllegalArgumentException(
-          String.format(
-              java.util.Locale.ROOT,
-              "Expected the field `field5` to be an array in the JSON string but got `%s`",
-              jsonObj.get("field5")));
-    }
-
-    if (!jsonObj.get("field6").isJsonArray()) {
-      throw new IllegalArgumentException(
-          String.format(
-              java.util.Locale.ROOT,
-              "Expected the field `field6` to be an array in the JSON string but got `%s`",
-              jsonObj.get("field6")));
     }
 
     ExampleRecord.validateJsonElement(jsonObj.get("field7"));
