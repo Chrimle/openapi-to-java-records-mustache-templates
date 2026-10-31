@@ -175,6 +175,7 @@ public record GeneratedField<T>(
     return new Builder<>(name, type, enumValue, null);
   }
 
+  @SuppressWarnings("OptionalUsedAsFieldOrParameterType")
   public static class Builder<T> {
     private final String name;
     private final Class<T> type;
