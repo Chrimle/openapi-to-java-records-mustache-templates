@@ -28,7 +28,9 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -43,31 +45,61 @@ import java.util.Set;
 /**
  * Example of a Record which has fields with constraints
  *
- * @param stringStandard String.
- * @param stringDefault String.
- * @param stringNullable String.
- * @param stringRequired String.
- * @param stringRequiredNullable String.
- * @param stringRequiredPattern String.
- * @param stringEmailFormat String.
- * @param stringUuidFormat UUID.
- * @param stringMinLength String.
- * @param stringMaxLength String.
- * @param stringMinAndMaxLength String.
- * @param arrayMinItems List<String>.
- * @param arrayMaxItems List<String>.
- * @param arrayMinAndMaxItems List<String>.
- * @param intMinimum Integer.
- * @param intMaximum Integer.
- * @param intMinimumAndMaximum Integer.
- * @param longMinimum Long.
- * @param longMaximum Long.
- * @param longMinimumAndMaximum Long.
- * @param bigDecimalMinimum BigDecimal.
- * @param bigDecimalMaximum BigDecimal.
- * @param bigDecimalMinimumAndMaximum BigDecimal.
+ * @param booleanStandard Non-required, non-nullable Boolean field.
+ * @param booleanDefault Non-required, non-nullable Boolean with a default value.
+ * @param booleanNullable Non-required, nullable Boolean field.
+ * @param booleanRequired Required, non-nullable Boolean field.
+ * @param booleanRequiredDefault Required, non-nullable Boolean field with a default value.
+ * @param booleanRequiredNullable Required, nullable Boolean field.
+ * @param stringStandard Non-required, non-nullable String field.
+ * @param stringDefault Non-required, non-nullable String field with a default value.
+ * @param stringNullable Non-required, nullable String field.
+ * @param stringRequired Required, non-nullable String field.
+ * @param stringRequiredNullable Required, nullable String field.
+ * @param stringRequiredPattern Required, non-nullable String field with a RegEx-pattern.
+ * @param stringEmailFormat Non-required, non-nullable String field with Email format.
+ * @param stringUuidFormat Non-required, non-nullable UUID field.
+ * @param stringMinLength Non-required, non-nullable String field with minLength: 3.
+ * @param stringMaxLength Non-required, non-nullable String field with maxLength: 7.
+ * @param stringMinAndMaxLength Non-required, non-nullable String with minLength: 3 and maxLength: 7.
+ * @param arrayNullable Non-required, nullable List.
+ * @param arrayRequiredNullable Required, nullable List.
+ * @param arrayMinItems Non-required, non-nullable List with minItems: 1.
+ * @param arrayMaxItems Non-required, non-nullable List with maxItems: 10.
+ * @param arrayMinAndMaxItems Non-required, non-nullable List with minItems: 1 and maxItems: 10.
+ * @param arrayUniqueStandard Non-required, non-nullable Set.
+ * @param arrayUniqueRequired Required, non-nullable Set.
+ * @param arrayUniqueNullable Non-required, nullable Set.
+ * @param arrayUniqueRequiredNullable Required, nullable Set.
+ * @param intStandard Non-required, non-nullable Integer.
+ * @param intNullable Non-required, nullable Integer.
+ * @param intRequired Required, non-nullable Integer.
+ * @param intRequiredNullable Required, nullable Integer.
+ * @param intMinimum Non-required, non-nullable Integer with minimum: 18.
+ * @param intMaximum Non-required, non-nullable Integer with maximum: 100.
+ * @param intMinimumAndMaximum Non-required, non-nullable Integer with minimum: 0 and maximum: 100.
+ * @param longStandard Non-required, non-nullable Long.
+ * @param longNullable Non-required, nullable Long.
+ * @param longRequired Required, non-nullable Long.
+ * @param longRequiredNullable Required, nullable Long.
+ * @param longMinimum Non-required, non-nullable Long with minimum: 18.
+ * @param longMaximum Non-required, non-nullable Long with maximum: 100.
+ * @param longMinimumAndMaximum Non-required, non-nullable Long with minimum: 0 and maximum: 100.
+ * @param bigDecimalStandard Non-required, non-nullable BigDecimal.
+ * @param bigDecimalNullable Non-required, nullable BigDecimal.
+ * @param bigDecimalRequired Required, non-nullable BigDecimal.
+ * @param bigDecimalRequiredNullable Required, nullable BigDecimal.
+ * @param bigDecimalMinimum Non-required, non-nullable BigDecimal with minimum: 0.
+ * @param bigDecimalMaximum Non-required, non-nullable BigDecimal with maximum: 100.
+ * @param bigDecimalMinimumAndMaximum Non-required, non-nullable BigDecimal with minimum: 0 and maximum: 100.
  */
 public record RecordWithAllConstraints(
+    Boolean booleanStandard,
+    Boolean booleanDefault,
+    Boolean booleanNullable,
+    Boolean booleanRequired,
+    Boolean booleanRequiredDefault,
+    Boolean booleanRequiredNullable,
     String stringStandard,
     String stringDefault,
     String stringNullable,
@@ -79,15 +111,33 @@ public record RecordWithAllConstraints(
     String stringMinLength,
     String stringMaxLength,
     String stringMinAndMaxLength,
+    List<String> arrayNullable,
+    List<String> arrayRequiredNullable,
     List<String> arrayMinItems,
     List<String> arrayMaxItems,
     List<String> arrayMinAndMaxItems,
+    Set<String> arrayUniqueStandard,
+    Set<String> arrayUniqueRequired,
+    Set<String> arrayUniqueNullable,
+    Set<String> arrayUniqueRequiredNullable,
+    Integer intStandard,
+    Integer intNullable,
+    Integer intRequired,
+    Integer intRequiredNullable,
     Integer intMinimum,
     Integer intMaximum,
     Integer intMinimumAndMaximum,
+    Long longStandard,
+    Long longNullable,
+    Long longRequired,
+    Long longRequiredNullable,
     Long longMinimum,
     Long longMaximum,
     Long longMinimumAndMaximum,
+    BigDecimal bigDecimalStandard,
+    BigDecimal bigDecimalNullable,
+    BigDecimal bigDecimalRequired,
+    BigDecimal bigDecimalRequiredNullable,
     BigDecimal bigDecimalMinimum,
     BigDecimal bigDecimalMaximum,
     BigDecimal bigDecimalMinimumAndMaximum) {
@@ -95,7 +145,13 @@ public record RecordWithAllConstraints(
   /** A set containing the names of all instance fields defined in this class. */
   public static final HashSet<String> openapiFields =
       new HashSet<>(
-          Set.of("stringStandard",
+          Set.of("booleanStandard",
+              "booleanDefault",
+              "booleanNullable",
+              "booleanRequired",
+              "booleanRequiredDefault",
+              "booleanRequiredNullable",
+              "stringStandard",
               "stringDefault",
               "stringNullable",
               "stringRequired",
@@ -106,15 +162,33 @@ public record RecordWithAllConstraints(
               "stringMinLength",
               "stringMaxLength",
               "stringMinAndMaxLength",
+              "arrayNullable",
+              "arrayRequiredNullable",
               "arrayMinItems",
               "arrayMaxItems",
               "arrayMinAndMaxItems",
+              "arrayUniqueStandard",
+              "arrayUniqueRequired",
+              "arrayUniqueNullable",
+              "arrayUniqueRequiredNullable",
+              "intStandard",
+              "intNullable",
+              "intRequired",
+              "intRequiredNullable",
               "intMinimum",
               "intMaximum",
               "intMinimumAndMaximum",
+              "longStandard",
+              "longNullable",
+              "longRequired",
+              "longRequiredNullable",
               "longMinimum",
               "longMaximum",
               "longMinimumAndMaximum",
+              "bigDecimalStandard",
+              "bigDecimalNullable",
+              "bigDecimalRequired",
+              "bigDecimalRequiredNullable",
               "bigDecimalMinimum",
               "bigDecimalMaximum",
               "bigDecimalMinimumAndMaximum"));
@@ -122,11 +196,29 @@ public record RecordWithAllConstraints(
   /** A set containing the names of all required fields defined in this class. */
   public static final HashSet<String> openapiRequiredFields =
       new HashSet<>(
-          Set.of("stringRequired",
+          Set.of("booleanRequired",
+              "booleanRequiredDefault",
+              "booleanRequiredNullable",
+              "stringRequired",
               "stringRequiredNullable",
-              "stringRequiredPattern"));
+              "stringRequiredPattern",
+              "arrayRequiredNullable",
+              "arrayUniqueRequired",
+              "arrayUniqueRequiredNullable",
+              "intRequired",
+              "intRequiredNullable",
+              "longRequired",
+              "longRequiredNullable",
+              "bigDecimalRequired",
+              "bigDecimalRequiredNullable"));
 
   public RecordWithAllConstraints(
+      final Boolean booleanStandard,
+      final Boolean booleanDefault,
+      final Boolean booleanNullable,
+      final Boolean booleanRequired,
+      final Boolean booleanRequiredDefault,
+      final Boolean booleanRequiredNullable,
       final String stringStandard,
       final String stringDefault,
       final String stringNullable,
@@ -138,18 +230,42 @@ public record RecordWithAllConstraints(
       final String stringMinLength,
       final String stringMaxLength,
       final String stringMinAndMaxLength,
+      final List<String> arrayNullable,
+      final List<String> arrayRequiredNullable,
       final List<String> arrayMinItems,
       final List<String> arrayMaxItems,
       final List<String> arrayMinAndMaxItems,
+      final Set<String> arrayUniqueStandard,
+      final Set<String> arrayUniqueRequired,
+      final Set<String> arrayUniqueNullable,
+      final Set<String> arrayUniqueRequiredNullable,
+      final Integer intStandard,
+      final Integer intNullable,
+      final Integer intRequired,
+      final Integer intRequiredNullable,
       final Integer intMinimum,
       final Integer intMaximum,
       final Integer intMinimumAndMaximum,
+      final Long longStandard,
+      final Long longNullable,
+      final Long longRequired,
+      final Long longRequiredNullable,
       final Long longMinimum,
       final Long longMaximum,
       final Long longMinimumAndMaximum,
+      final BigDecimal bigDecimalStandard,
+      final BigDecimal bigDecimalNullable,
+      final BigDecimal bigDecimalRequired,
+      final BigDecimal bigDecimalRequiredNullable,
       final BigDecimal bigDecimalMinimum,
       final BigDecimal bigDecimalMaximum,
       final BigDecimal bigDecimalMinimumAndMaximum) {
+    this.booleanStandard = booleanStandard;
+    this.booleanDefault = Objects.requireNonNullElse(booleanDefault, true);
+    this.booleanNullable = booleanNullable;
+    this.booleanRequired = booleanRequired;
+    this.booleanRequiredDefault = Objects.requireNonNullElse(booleanRequiredDefault, true);
+    this.booleanRequiredNullable = booleanRequiredNullable;
     this.stringStandard = stringStandard;
     this.stringDefault = Objects.requireNonNullElse(stringDefault, "someDefaultValue");
     this.stringNullable = stringNullable;
@@ -161,15 +277,33 @@ public record RecordWithAllConstraints(
     this.stringMinLength = stringMinLength;
     this.stringMaxLength = stringMaxLength;
     this.stringMinAndMaxLength = stringMinAndMaxLength;
+    this.arrayNullable = arrayNullable;
+    this.arrayRequiredNullable = arrayRequiredNullable;
     this.arrayMinItems = Objects.requireNonNullElseGet(arrayMinItems, () -> new ArrayList<>());
     this.arrayMaxItems = Objects.requireNonNullElseGet(arrayMaxItems, () -> new ArrayList<>());
     this.arrayMinAndMaxItems = Objects.requireNonNullElseGet(arrayMinAndMaxItems, () -> new ArrayList<>());
+    this.arrayUniqueStandard = Objects.requireNonNullElseGet(arrayUniqueStandard, () -> new LinkedHashSet<>());
+    this.arrayUniqueRequired = Objects.requireNonNullElseGet(arrayUniqueRequired, () -> new LinkedHashSet<>());
+    this.arrayUniqueNullable = arrayUniqueNullable;
+    this.arrayUniqueRequiredNullable = arrayUniqueRequiredNullable;
+    this.intStandard = intStandard;
+    this.intNullable = intNullable;
+    this.intRequired = intRequired;
+    this.intRequiredNullable = intRequiredNullable;
     this.intMinimum = intMinimum;
     this.intMaximum = intMaximum;
     this.intMinimumAndMaximum = intMinimumAndMaximum;
+    this.longStandard = longStandard;
+    this.longNullable = longNullable;
+    this.longRequired = longRequired;
+    this.longRequiredNullable = longRequiredNullable;
     this.longMinimum = longMinimum;
     this.longMaximum = longMaximum;
     this.longMinimumAndMaximum = longMinimumAndMaximum;
+    this.bigDecimalStandard = bigDecimalStandard;
+    this.bigDecimalNullable = bigDecimalNullable;
+    this.bigDecimalRequired = bigDecimalRequired;
+    this.bigDecimalRequiredNullable = bigDecimalRequiredNullable;
     this.bigDecimalMinimum = bigDecimalMinimum;
     this.bigDecimalMaximum = bigDecimalMaximum;
     this.bigDecimalMinimumAndMaximum = bigDecimalMinimumAndMaximum;
@@ -178,6 +312,12 @@ public record RecordWithAllConstraints(
   /** Builder class for {@link RecordWithAllConstraints }. */
   public static class Builder {
 
+    private Boolean booleanStandard;
+    private Boolean booleanDefault;
+    private Boolean booleanNullable;
+    private Boolean booleanRequired;
+    private Boolean booleanRequiredDefault;
+    private Boolean booleanRequiredNullable;
     private String stringStandard;
     private String stringDefault;
     private String stringNullable;
@@ -189,25 +329,121 @@ public record RecordWithAllConstraints(
     private String stringMinLength;
     private String stringMaxLength;
     private String stringMinAndMaxLength;
+    private List<String> arrayNullable;
+    private List<String> arrayRequiredNullable;
     private List<String> arrayMinItems;
     private List<String> arrayMaxItems;
     private List<String> arrayMinAndMaxItems;
+    private Set<String> arrayUniqueStandard;
+    private Set<String> arrayUniqueRequired;
+    private Set<String> arrayUniqueNullable;
+    private Set<String> arrayUniqueRequiredNullable;
+    private Integer intStandard;
+    private Integer intNullable;
+    private Integer intRequired;
+    private Integer intRequiredNullable;
     private Integer intMinimum;
     private Integer intMaximum;
     private Integer intMinimumAndMaximum;
+    private Long longStandard;
+    private Long longNullable;
+    private Long longRequired;
+    private Long longRequiredNullable;
     private Long longMinimum;
     private Long longMaximum;
     private Long longMinimumAndMaximum;
+    private BigDecimal bigDecimalStandard;
+    private BigDecimal bigDecimalNullable;
+    private BigDecimal bigDecimalRequired;
+    private BigDecimal bigDecimalRequiredNullable;
     private BigDecimal bigDecimalMinimum;
     private BigDecimal bigDecimalMaximum;
     private BigDecimal bigDecimalMinimumAndMaximum;
+
+    /**
+     * Sets the value of {@link RecordWithAllConstraints#booleanStandard }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     *
+     * @param booleanStandard Non-required, non-nullable Boolean field..
+     * @return this {@link Builder}-instance for method-chaining.
+     */
+    public Builder booleanStandard(final Boolean booleanStandard) {
+      this.booleanStandard = booleanStandard;
+      return this;
+    }
+
+    /**
+     * Sets the value of {@link RecordWithAllConstraints#booleanDefault }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     *
+     * @param booleanDefault Non-required, non-nullable Boolean with a default value..
+     * @return this {@link Builder}-instance for method-chaining.
+     */
+    public Builder booleanDefault(final Boolean booleanDefault) {
+      this.booleanDefault = booleanDefault;
+      return this;
+    }
+
+    /**
+     * Sets the value of {@link RecordWithAllConstraints#booleanNullable }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     *
+     * @param booleanNullable Non-required, nullable Boolean field..
+     * @return this {@link Builder}-instance for method-chaining.
+     */
+    public Builder booleanNullable(final Boolean booleanNullable) {
+      this.booleanNullable = booleanNullable;
+      return this;
+    }
+
+    /**
+     * Sets the value of {@link RecordWithAllConstraints#booleanRequired }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     *
+     * @param booleanRequired Required, non-nullable Boolean field..
+     * @return this {@link Builder}-instance for method-chaining.
+     */
+    public Builder booleanRequired(final Boolean booleanRequired) {
+      this.booleanRequired = booleanRequired;
+      return this;
+    }
+
+    /**
+     * Sets the value of {@link RecordWithAllConstraints#booleanRequiredDefault }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     *
+     * @param booleanRequiredDefault Required, non-nullable Boolean field with a default value..
+     * @return this {@link Builder}-instance for method-chaining.
+     */
+    public Builder booleanRequiredDefault(final Boolean booleanRequiredDefault) {
+      this.booleanRequiredDefault = booleanRequiredDefault;
+      return this;
+    }
+
+    /**
+     * Sets the value of {@link RecordWithAllConstraints#booleanRequiredNullable }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     *
+     * @param booleanRequiredNullable Required, nullable Boolean field..
+     * @return this {@link Builder}-instance for method-chaining.
+     */
+    public Builder booleanRequiredNullable(final Boolean booleanRequiredNullable) {
+      this.booleanRequiredNullable = booleanRequiredNullable;
+      return this;
+    }
 
     /**
      * Sets the value of {@link RecordWithAllConstraints#stringStandard }.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
      *
-     * @param stringStandard sets the value of stringStandard.
+     * @param stringStandard Non-required, non-nullable String field..
      * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder stringStandard(final String stringStandard) {
@@ -220,7 +456,7 @@ public record RecordWithAllConstraints(
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
      *
-     * @param stringDefault sets the value of stringDefault.
+     * @param stringDefault Non-required, non-nullable String field with a default value..
      * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder stringDefault(final String stringDefault) {
@@ -233,7 +469,7 @@ public record RecordWithAllConstraints(
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
      *
-     * @param stringNullable sets the value of stringNullable.
+     * @param stringNullable Non-required, nullable String field..
      * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder stringNullable(final String stringNullable) {
@@ -246,7 +482,7 @@ public record RecordWithAllConstraints(
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
      *
-     * @param stringRequired sets the value of stringRequired.
+     * @param stringRequired Required, non-nullable String field..
      * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder stringRequired(final String stringRequired) {
@@ -259,7 +495,7 @@ public record RecordWithAllConstraints(
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
      *
-     * @param stringRequiredNullable sets the value of stringRequiredNullable.
+     * @param stringRequiredNullable Required, nullable String field..
      * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder stringRequiredNullable(final String stringRequiredNullable) {
@@ -272,7 +508,7 @@ public record RecordWithAllConstraints(
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
      *
-     * @param stringRequiredPattern sets the value of stringRequiredPattern.
+     * @param stringRequiredPattern Required, non-nullable String field with a RegEx-pattern..
      * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder stringRequiredPattern(final String stringRequiredPattern) {
@@ -285,7 +521,7 @@ public record RecordWithAllConstraints(
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
      *
-     * @param stringEmailFormat sets the value of stringEmailFormat.
+     * @param stringEmailFormat Non-required, non-nullable String field with Email format..
      * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder stringEmailFormat(final String stringEmailFormat) {
@@ -298,7 +534,7 @@ public record RecordWithAllConstraints(
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
      *
-     * @param stringUuidFormat sets the value of stringUuidFormat.
+     * @param stringUuidFormat Non-required, non-nullable UUID field..
      * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder stringUuidFormat(final UUID stringUuidFormat) {
@@ -311,7 +547,7 @@ public record RecordWithAllConstraints(
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
      *
-     * @param stringMinLength sets the value of stringMinLength.
+     * @param stringMinLength Non-required, non-nullable String field with minLength: 3..
      * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder stringMinLength(final String stringMinLength) {
@@ -324,7 +560,7 @@ public record RecordWithAllConstraints(
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
      *
-     * @param stringMaxLength sets the value of stringMaxLength.
+     * @param stringMaxLength Non-required, non-nullable String field with maxLength: 7..
      * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder stringMaxLength(final String stringMaxLength) {
@@ -337,7 +573,7 @@ public record RecordWithAllConstraints(
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
      *
-     * @param stringMinAndMaxLength sets the value of stringMinAndMaxLength.
+     * @param stringMinAndMaxLength Non-required, non-nullable String with minLength: 3 and maxLength: 7..
      * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder stringMinAndMaxLength(final String stringMinAndMaxLength) {
@@ -346,11 +582,37 @@ public record RecordWithAllConstraints(
     }
 
     /**
+     * Sets the value of {@link RecordWithAllConstraints#arrayNullable }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     *
+     * @param arrayNullable Non-required, nullable List..
+     * @return this {@link Builder}-instance for method-chaining.
+     */
+    public Builder arrayNullable(final List<String> arrayNullable) {
+      this.arrayNullable = arrayNullable;
+      return this;
+    }
+
+    /**
+     * Sets the value of {@link RecordWithAllConstraints#arrayRequiredNullable }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     *
+     * @param arrayRequiredNullable Required, nullable List..
+     * @return this {@link Builder}-instance for method-chaining.
+     */
+    public Builder arrayRequiredNullable(final List<String> arrayRequiredNullable) {
+      this.arrayRequiredNullable = arrayRequiredNullable;
+      return this;
+    }
+
+    /**
      * Sets the value of {@link RecordWithAllConstraints#arrayMinItems }.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
      *
-     * @param arrayMinItems sets the value of arrayMinItems.
+     * @param arrayMinItems Non-required, non-nullable List with minItems: 1..
      * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder arrayMinItems(final List<String> arrayMinItems) {
@@ -363,7 +625,7 @@ public record RecordWithAllConstraints(
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
      *
-     * @param arrayMaxItems sets the value of arrayMaxItems.
+     * @param arrayMaxItems Non-required, non-nullable List with maxItems: 10..
      * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder arrayMaxItems(final List<String> arrayMaxItems) {
@@ -376,7 +638,7 @@ public record RecordWithAllConstraints(
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
      *
-     * @param arrayMinAndMaxItems sets the value of arrayMinAndMaxItems.
+     * @param arrayMinAndMaxItems Non-required, non-nullable List with minItems: 1 and maxItems: 10..
      * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder arrayMinAndMaxItems(final List<String> arrayMinAndMaxItems) {
@@ -385,11 +647,115 @@ public record RecordWithAllConstraints(
     }
 
     /**
+     * Sets the value of {@link RecordWithAllConstraints#arrayUniqueStandard }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     *
+     * @param arrayUniqueStandard Non-required, non-nullable Set..
+     * @return this {@link Builder}-instance for method-chaining.
+     */
+    public Builder arrayUniqueStandard(final Set<String> arrayUniqueStandard) {
+      this.arrayUniqueStandard = arrayUniqueStandard;
+      return this;
+    }
+
+    /**
+     * Sets the value of {@link RecordWithAllConstraints#arrayUniqueRequired }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     *
+     * @param arrayUniqueRequired Required, non-nullable Set..
+     * @return this {@link Builder}-instance for method-chaining.
+     */
+    public Builder arrayUniqueRequired(final Set<String> arrayUniqueRequired) {
+      this.arrayUniqueRequired = arrayUniqueRequired;
+      return this;
+    }
+
+    /**
+     * Sets the value of {@link RecordWithAllConstraints#arrayUniqueNullable }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     *
+     * @param arrayUniqueNullable Non-required, nullable Set..
+     * @return this {@link Builder}-instance for method-chaining.
+     */
+    public Builder arrayUniqueNullable(final Set<String> arrayUniqueNullable) {
+      this.arrayUniqueNullable = arrayUniqueNullable;
+      return this;
+    }
+
+    /**
+     * Sets the value of {@link RecordWithAllConstraints#arrayUniqueRequiredNullable }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     *
+     * @param arrayUniqueRequiredNullable Required, nullable Set..
+     * @return this {@link Builder}-instance for method-chaining.
+     */
+    public Builder arrayUniqueRequiredNullable(final Set<String> arrayUniqueRequiredNullable) {
+      this.arrayUniqueRequiredNullable = arrayUniqueRequiredNullable;
+      return this;
+    }
+
+    /**
+     * Sets the value of {@link RecordWithAllConstraints#intStandard }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     *
+     * @param intStandard Non-required, non-nullable Integer..
+     * @return this {@link Builder}-instance for method-chaining.
+     */
+    public Builder intStandard(final Integer intStandard) {
+      this.intStandard = intStandard;
+      return this;
+    }
+
+    /**
+     * Sets the value of {@link RecordWithAllConstraints#intNullable }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     *
+     * @param intNullable Non-required, nullable Integer..
+     * @return this {@link Builder}-instance for method-chaining.
+     */
+    public Builder intNullable(final Integer intNullable) {
+      this.intNullable = intNullable;
+      return this;
+    }
+
+    /**
+     * Sets the value of {@link RecordWithAllConstraints#intRequired }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     *
+     * @param intRequired Required, non-nullable Integer..
+     * @return this {@link Builder}-instance for method-chaining.
+     */
+    public Builder intRequired(final Integer intRequired) {
+      this.intRequired = intRequired;
+      return this;
+    }
+
+    /**
+     * Sets the value of {@link RecordWithAllConstraints#intRequiredNullable }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     *
+     * @param intRequiredNullable Required, nullable Integer..
+     * @return this {@link Builder}-instance for method-chaining.
+     */
+    public Builder intRequiredNullable(final Integer intRequiredNullable) {
+      this.intRequiredNullable = intRequiredNullable;
+      return this;
+    }
+
+    /**
      * Sets the value of {@link RecordWithAllConstraints#intMinimum }.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
      *
-     * @param intMinimum sets the value of intMinimum.
+     * @param intMinimum Non-required, non-nullable Integer with minimum: 18..
      * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder intMinimum(final Integer intMinimum) {
@@ -402,7 +768,7 @@ public record RecordWithAllConstraints(
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
      *
-     * @param intMaximum sets the value of intMaximum.
+     * @param intMaximum Non-required, non-nullable Integer with maximum: 100..
      * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder intMaximum(final Integer intMaximum) {
@@ -415,7 +781,7 @@ public record RecordWithAllConstraints(
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
      *
-     * @param intMinimumAndMaximum sets the value of intMinimumAndMaximum.
+     * @param intMinimumAndMaximum Non-required, non-nullable Integer with minimum: 0 and maximum: 100..
      * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder intMinimumAndMaximum(final Integer intMinimumAndMaximum) {
@@ -424,11 +790,63 @@ public record RecordWithAllConstraints(
     }
 
     /**
+     * Sets the value of {@link RecordWithAllConstraints#longStandard }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     *
+     * @param longStandard Non-required, non-nullable Long..
+     * @return this {@link Builder}-instance for method-chaining.
+     */
+    public Builder longStandard(final Long longStandard) {
+      this.longStandard = longStandard;
+      return this;
+    }
+
+    /**
+     * Sets the value of {@link RecordWithAllConstraints#longNullable }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     *
+     * @param longNullable Non-required, nullable Long..
+     * @return this {@link Builder}-instance for method-chaining.
+     */
+    public Builder longNullable(final Long longNullable) {
+      this.longNullable = longNullable;
+      return this;
+    }
+
+    /**
+     * Sets the value of {@link RecordWithAllConstraints#longRequired }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     *
+     * @param longRequired Required, non-nullable Long..
+     * @return this {@link Builder}-instance for method-chaining.
+     */
+    public Builder longRequired(final Long longRequired) {
+      this.longRequired = longRequired;
+      return this;
+    }
+
+    /**
+     * Sets the value of {@link RecordWithAllConstraints#longRequiredNullable }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     *
+     * @param longRequiredNullable Required, nullable Long..
+     * @return this {@link Builder}-instance for method-chaining.
+     */
+    public Builder longRequiredNullable(final Long longRequiredNullable) {
+      this.longRequiredNullable = longRequiredNullable;
+      return this;
+    }
+
+    /**
      * Sets the value of {@link RecordWithAllConstraints#longMinimum }.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
      *
-     * @param longMinimum sets the value of longMinimum.
+     * @param longMinimum Non-required, non-nullable Long with minimum: 18..
      * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder longMinimum(final Long longMinimum) {
@@ -441,7 +859,7 @@ public record RecordWithAllConstraints(
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
      *
-     * @param longMaximum sets the value of longMaximum.
+     * @param longMaximum Non-required, non-nullable Long with maximum: 100..
      * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder longMaximum(final Long longMaximum) {
@@ -454,7 +872,7 @@ public record RecordWithAllConstraints(
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
      *
-     * @param longMinimumAndMaximum sets the value of longMinimumAndMaximum.
+     * @param longMinimumAndMaximum Non-required, non-nullable Long with minimum: 0 and maximum: 100..
      * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder longMinimumAndMaximum(final Long longMinimumAndMaximum) {
@@ -463,11 +881,63 @@ public record RecordWithAllConstraints(
     }
 
     /**
+     * Sets the value of {@link RecordWithAllConstraints#bigDecimalStandard }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     *
+     * @param bigDecimalStandard Non-required, non-nullable BigDecimal..
+     * @return this {@link Builder}-instance for method-chaining.
+     */
+    public Builder bigDecimalStandard(final BigDecimal bigDecimalStandard) {
+      this.bigDecimalStandard = bigDecimalStandard;
+      return this;
+    }
+
+    /**
+     * Sets the value of {@link RecordWithAllConstraints#bigDecimalNullable }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     *
+     * @param bigDecimalNullable Non-required, nullable BigDecimal..
+     * @return this {@link Builder}-instance for method-chaining.
+     */
+    public Builder bigDecimalNullable(final BigDecimal bigDecimalNullable) {
+      this.bigDecimalNullable = bigDecimalNullable;
+      return this;
+    }
+
+    /**
+     * Sets the value of {@link RecordWithAllConstraints#bigDecimalRequired }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     *
+     * @param bigDecimalRequired Required, non-nullable BigDecimal..
+     * @return this {@link Builder}-instance for method-chaining.
+     */
+    public Builder bigDecimalRequired(final BigDecimal bigDecimalRequired) {
+      this.bigDecimalRequired = bigDecimalRequired;
+      return this;
+    }
+
+    /**
+     * Sets the value of {@link RecordWithAllConstraints#bigDecimalRequiredNullable }.
+     *
+     * <p><b>NOTE:</b> Pass-by-reference is used!
+     *
+     * @param bigDecimalRequiredNullable Required, nullable BigDecimal..
+     * @return this {@link Builder}-instance for method-chaining.
+     */
+    public Builder bigDecimalRequiredNullable(final BigDecimal bigDecimalRequiredNullable) {
+      this.bigDecimalRequiredNullable = bigDecimalRequiredNullable;
+      return this;
+    }
+
+    /**
      * Sets the value of {@link RecordWithAllConstraints#bigDecimalMinimum }.
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
      *
-     * @param bigDecimalMinimum sets the value of bigDecimalMinimum.
+     * @param bigDecimalMinimum Non-required, non-nullable BigDecimal with minimum: 0..
      * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder bigDecimalMinimum(final BigDecimal bigDecimalMinimum) {
@@ -480,7 +950,7 @@ public record RecordWithAllConstraints(
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
      *
-     * @param bigDecimalMaximum sets the value of bigDecimalMaximum.
+     * @param bigDecimalMaximum Non-required, non-nullable BigDecimal with maximum: 100..
      * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder bigDecimalMaximum(final BigDecimal bigDecimalMaximum) {
@@ -493,7 +963,7 @@ public record RecordWithAllConstraints(
      *
      * <p><b>NOTE:</b> Pass-by-reference is used!
      *
-     * @param bigDecimalMinimumAndMaximum sets the value of bigDecimalMinimumAndMaximum.
+     * @param bigDecimalMinimumAndMaximum Non-required, non-nullable BigDecimal with minimum: 0 and maximum: 100..
      * @return this {@link Builder}-instance for method-chaining.
      */
     public Builder bigDecimalMinimumAndMaximum(final BigDecimal bigDecimalMinimumAndMaximum) {
@@ -511,6 +981,12 @@ public record RecordWithAllConstraints(
      */
     public RecordWithAllConstraints build() {
       return new RecordWithAllConstraints(
+          booleanStandard,
+          booleanDefault,
+          booleanNullable,
+          booleanRequired,
+          booleanRequiredDefault,
+          booleanRequiredNullable,
           stringStandard,
           stringDefault,
           stringNullable,
@@ -522,15 +998,33 @@ public record RecordWithAllConstraints(
           stringMinLength,
           stringMaxLength,
           stringMinAndMaxLength,
+          arrayNullable,
+          arrayRequiredNullable,
           arrayMinItems,
           arrayMaxItems,
           arrayMinAndMaxItems,
+          arrayUniqueStandard,
+          arrayUniqueRequired,
+          arrayUniqueNullable,
+          arrayUniqueRequiredNullable,
+          intStandard,
+          intNullable,
+          intRequired,
+          intRequiredNullable,
           intMinimum,
           intMaximum,
           intMinimumAndMaximum,
+          longStandard,
+          longNullable,
+          longRequired,
+          longRequiredNullable,
           longMinimum,
           longMaximum,
           longMinimumAndMaximum,
+          bigDecimalStandard,
+          bigDecimalNullable,
+          bigDecimalRequired,
+          bigDecimalRequiredNullable,
           bigDecimalMinimum,
           bigDecimalMaximum,
           bigDecimalMinimumAndMaximum);
@@ -580,6 +1074,60 @@ public record RecordWithAllConstraints(
     }
 
     final JsonObject jsonObj = jsonElement.getAsJsonObject();
+
+    if (jsonObj.get("booleanStandard") != null && !jsonObj.get("booleanStandard").isJsonNull()) { 
+      if (!jsonObj.get("booleanStandard").isJsonPrimitive()) {
+        throw new IllegalArgumentException(
+            String.format(
+                java.util.Locale.ROOT,
+                "Expected the field `booleanStandard` to be a primitive type in the JSON string but got `%s`",
+                jsonObj.get("booleanStandard")));
+      }
+    }
+
+    if (jsonObj.get("booleanDefault") != null && !jsonObj.get("booleanDefault").isJsonNull()) { 
+      if (!jsonObj.get("booleanDefault").isJsonPrimitive()) {
+        throw new IllegalArgumentException(
+            String.format(
+                java.util.Locale.ROOT,
+                "Expected the field `booleanDefault` to be a primitive type in the JSON string but got `%s`",
+                jsonObj.get("booleanDefault")));
+      }
+    }
+
+    if (jsonObj.get("booleanNullable") != null && !jsonObj.get("booleanNullable").isJsonNull()) { 
+      if (!jsonObj.get("booleanNullable").isJsonPrimitive()) {
+        throw new IllegalArgumentException(
+            String.format(
+                java.util.Locale.ROOT,
+                "Expected the field `booleanNullable` to be a primitive type in the JSON string but got `%s`",
+                jsonObj.get("booleanNullable")));
+      }
+    }
+
+    if (!jsonObj.get("booleanRequired").isJsonPrimitive()) {
+      throw new IllegalArgumentException(
+          String.format(
+              java.util.Locale.ROOT,
+              "Expected the field `booleanRequired` to be a primitive type in the JSON string but got `%s`",
+              jsonObj.get("booleanRequired")));
+    }
+
+    if (!jsonObj.get("booleanRequiredDefault").isJsonPrimitive()) {
+      throw new IllegalArgumentException(
+          String.format(
+              java.util.Locale.ROOT,
+              "Expected the field `booleanRequiredDefault` to be a primitive type in the JSON string but got `%s`",
+              jsonObj.get("booleanRequiredDefault")));
+    }
+
+    if (!jsonObj.get("booleanRequiredNullable").isJsonPrimitive()) {
+      throw new IllegalArgumentException(
+          String.format(
+              java.util.Locale.ROOT,
+              "Expected the field `booleanRequiredNullable` to be a primitive type in the JSON string but got `%s`",
+              jsonObj.get("booleanRequiredNullable")));
+    }
 
     if (jsonObj.get("stringStandard") != null && !jsonObj.get("stringStandard").isJsonNull()) { 
       if (!jsonObj.get("stringStandard").isJsonPrimitive()) {
@@ -685,6 +1233,24 @@ public record RecordWithAllConstraints(
       }
     }
 
+    if (jsonObj.get("arrayNullable") != null && !jsonObj.get("arrayNullable").isJsonNull()) { 
+      if (!jsonObj.get("arrayNullable").isJsonArray()) {
+        throw new IllegalArgumentException(
+            String.format(
+                java.util.Locale.ROOT,
+                "Expected the field `arrayNullable` to be an array in the JSON string but got `%s`",
+                jsonObj.get("arrayNullable")));
+      }
+    }
+
+    if (!jsonObj.get("arrayRequiredNullable").isJsonArray()) {
+      throw new IllegalArgumentException(
+          String.format(
+              java.util.Locale.ROOT,
+              "Expected the field `arrayRequiredNullable` to be an array in the JSON string but got `%s`",
+              jsonObj.get("arrayRequiredNullable")));
+    }
+
     if (jsonObj.get("arrayMinItems") != null && !jsonObj.get("arrayMinItems").isJsonNull()) { 
       if (!jsonObj.get("arrayMinItems").isJsonArray()) {
         throw new IllegalArgumentException(
@@ -713,6 +1279,78 @@ public record RecordWithAllConstraints(
                 "Expected the field `arrayMinAndMaxItems` to be an array in the JSON string but got `%s`",
                 jsonObj.get("arrayMinAndMaxItems")));
       }
+    }
+
+    if (jsonObj.get("arrayUniqueStandard") != null && !jsonObj.get("arrayUniqueStandard").isJsonNull()) { 
+      if (!jsonObj.get("arrayUniqueStandard").isJsonArray()) {
+        throw new IllegalArgumentException(
+            String.format(
+                java.util.Locale.ROOT,
+                "Expected the field `arrayUniqueStandard` to be an array in the JSON string but got `%s`",
+                jsonObj.get("arrayUniqueStandard")));
+      }
+    }
+
+    if (!jsonObj.get("arrayUniqueRequired").isJsonArray()) {
+      throw new IllegalArgumentException(
+          String.format(
+              java.util.Locale.ROOT,
+              "Expected the field `arrayUniqueRequired` to be an array in the JSON string but got `%s`",
+              jsonObj.get("arrayUniqueRequired")));
+    }
+
+    if (jsonObj.get("arrayUniqueNullable") != null && !jsonObj.get("arrayUniqueNullable").isJsonNull()) { 
+      if (!jsonObj.get("arrayUniqueNullable").isJsonArray()) {
+        throw new IllegalArgumentException(
+            String.format(
+                java.util.Locale.ROOT,
+                "Expected the field `arrayUniqueNullable` to be an array in the JSON string but got `%s`",
+                jsonObj.get("arrayUniqueNullable")));
+      }
+    }
+
+    if (!jsonObj.get("arrayUniqueRequiredNullable").isJsonArray()) {
+      throw new IllegalArgumentException(
+          String.format(
+              java.util.Locale.ROOT,
+              "Expected the field `arrayUniqueRequiredNullable` to be an array in the JSON string but got `%s`",
+              jsonObj.get("arrayUniqueRequiredNullable")));
+    }
+
+    if (jsonObj.get("intStandard") != null && !jsonObj.get("intStandard").isJsonNull()) { 
+      if (!jsonObj.get("intStandard").isJsonPrimitive()) {
+        throw new IllegalArgumentException(
+            String.format(
+                java.util.Locale.ROOT,
+                "Expected the field `intStandard` to be a primitive type in the JSON string but got `%s`",
+                jsonObj.get("intStandard")));
+      }
+    }
+
+    if (jsonObj.get("intNullable") != null && !jsonObj.get("intNullable").isJsonNull()) { 
+      if (!jsonObj.get("intNullable").isJsonPrimitive()) {
+        throw new IllegalArgumentException(
+            String.format(
+                java.util.Locale.ROOT,
+                "Expected the field `intNullable` to be a primitive type in the JSON string but got `%s`",
+                jsonObj.get("intNullable")));
+      }
+    }
+
+    if (!jsonObj.get("intRequired").isJsonPrimitive()) {
+      throw new IllegalArgumentException(
+          String.format(
+              java.util.Locale.ROOT,
+              "Expected the field `intRequired` to be a primitive type in the JSON string but got `%s`",
+              jsonObj.get("intRequired")));
+    }
+
+    if (!jsonObj.get("intRequiredNullable").isJsonPrimitive()) {
+      throw new IllegalArgumentException(
+          String.format(
+              java.util.Locale.ROOT,
+              "Expected the field `intRequiredNullable` to be a primitive type in the JSON string but got `%s`",
+              jsonObj.get("intRequiredNullable")));
     }
 
     if (jsonObj.get("intMinimum") != null && !jsonObj.get("intMinimum").isJsonNull()) { 
@@ -745,6 +1383,42 @@ public record RecordWithAllConstraints(
       }
     }
 
+    if (jsonObj.get("longStandard") != null && !jsonObj.get("longStandard").isJsonNull()) { 
+      if (!jsonObj.get("longStandard").isJsonPrimitive()) {
+        throw new IllegalArgumentException(
+            String.format(
+                java.util.Locale.ROOT,
+                "Expected the field `longStandard` to be a primitive type in the JSON string but got `%s`",
+                jsonObj.get("longStandard")));
+      }
+    }
+
+    if (jsonObj.get("longNullable") != null && !jsonObj.get("longNullable").isJsonNull()) { 
+      if (!jsonObj.get("longNullable").isJsonPrimitive()) {
+        throw new IllegalArgumentException(
+            String.format(
+                java.util.Locale.ROOT,
+                "Expected the field `longNullable` to be a primitive type in the JSON string but got `%s`",
+                jsonObj.get("longNullable")));
+      }
+    }
+
+    if (!jsonObj.get("longRequired").isJsonPrimitive()) {
+      throw new IllegalArgumentException(
+          String.format(
+              java.util.Locale.ROOT,
+              "Expected the field `longRequired` to be a primitive type in the JSON string but got `%s`",
+              jsonObj.get("longRequired")));
+    }
+
+    if (!jsonObj.get("longRequiredNullable").isJsonPrimitive()) {
+      throw new IllegalArgumentException(
+          String.format(
+              java.util.Locale.ROOT,
+              "Expected the field `longRequiredNullable` to be a primitive type in the JSON string but got `%s`",
+              jsonObj.get("longRequiredNullable")));
+    }
+
     if (jsonObj.get("longMinimum") != null && !jsonObj.get("longMinimum").isJsonNull()) { 
       if (!jsonObj.get("longMinimum").isJsonPrimitive()) {
         throw new IllegalArgumentException(
@@ -773,6 +1447,42 @@ public record RecordWithAllConstraints(
                 "Expected the field `longMinimumAndMaximum` to be a primitive type in the JSON string but got `%s`",
                 jsonObj.get("longMinimumAndMaximum")));
       }
+    }
+
+    if (jsonObj.get("bigDecimalStandard") != null && !jsonObj.get("bigDecimalStandard").isJsonNull()) { 
+      if (!jsonObj.get("bigDecimalStandard").isJsonPrimitive()) {
+        throw new IllegalArgumentException(
+            String.format(
+                java.util.Locale.ROOT,
+                "Expected the field `bigDecimalStandard` to be a primitive type in the JSON string but got `%s`",
+                jsonObj.get("bigDecimalStandard")));
+      }
+    }
+
+    if (jsonObj.get("bigDecimalNullable") != null && !jsonObj.get("bigDecimalNullable").isJsonNull()) { 
+      if (!jsonObj.get("bigDecimalNullable").isJsonPrimitive()) {
+        throw new IllegalArgumentException(
+            String.format(
+                java.util.Locale.ROOT,
+                "Expected the field `bigDecimalNullable` to be a primitive type in the JSON string but got `%s`",
+                jsonObj.get("bigDecimalNullable")));
+      }
+    }
+
+    if (!jsonObj.get("bigDecimalRequired").isJsonPrimitive()) {
+      throw new IllegalArgumentException(
+          String.format(
+              java.util.Locale.ROOT,
+              "Expected the field `bigDecimalRequired` to be a primitive type in the JSON string but got `%s`",
+              jsonObj.get("bigDecimalRequired")));
+    }
+
+    if (!jsonObj.get("bigDecimalRequiredNullable").isJsonPrimitive()) {
+      throw new IllegalArgumentException(
+          String.format(
+              java.util.Locale.ROOT,
+              "Expected the field `bigDecimalRequiredNullable` to be a primitive type in the JSON string but got `%s`",
+              jsonObj.get("bigDecimalRequiredNullable")));
     }
 
     if (jsonObj.get("bigDecimalMinimum") != null && !jsonObj.get("bigDecimalMinimum").isJsonNull()) { 

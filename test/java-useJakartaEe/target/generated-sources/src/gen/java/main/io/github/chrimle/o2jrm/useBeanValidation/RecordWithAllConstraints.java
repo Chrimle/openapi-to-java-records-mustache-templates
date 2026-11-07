@@ -28,7 +28,9 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 import org.openapitools.jackson.nullable.JsonNullable;
 import jakarta.validation.constraints.*;
@@ -45,31 +47,61 @@ import java.util.Set;
 /**
  * Example of a Record which has fields with constraints
  *
- * @param stringStandard String.
- * @param stringDefault String.
- * @param stringNullable String.
- * @param stringRequired String.
- * @param stringRequiredNullable String.
- * @param stringRequiredPattern String.
- * @param stringEmailFormat String.
- * @param stringUuidFormat UUID.
- * @param stringMinLength String.
- * @param stringMaxLength String.
- * @param stringMinAndMaxLength String.
- * @param arrayMinItems List<String>.
- * @param arrayMaxItems List<String>.
- * @param arrayMinAndMaxItems List<String>.
- * @param intMinimum Integer.
- * @param intMaximum Integer.
- * @param intMinimumAndMaximum Integer.
- * @param longMinimum Long.
- * @param longMaximum Long.
- * @param longMinimumAndMaximum Long.
- * @param bigDecimalMinimum BigDecimal.
- * @param bigDecimalMaximum BigDecimal.
- * @param bigDecimalMinimumAndMaximum BigDecimal.
+ * @param booleanStandard Non-required, non-nullable Boolean field.
+ * @param booleanDefault Non-required, non-nullable Boolean with a default value.
+ * @param booleanNullable Non-required, nullable Boolean field.
+ * @param booleanRequired Required, non-nullable Boolean field.
+ * @param booleanRequiredDefault Required, non-nullable Boolean field with a default value.
+ * @param booleanRequiredNullable Required, nullable Boolean field.
+ * @param stringStandard Non-required, non-nullable String field.
+ * @param stringDefault Non-required, non-nullable String field with a default value.
+ * @param stringNullable Non-required, nullable String field.
+ * @param stringRequired Required, non-nullable String field.
+ * @param stringRequiredNullable Required, nullable String field.
+ * @param stringRequiredPattern Required, non-nullable String field with a RegEx-pattern.
+ * @param stringEmailFormat Non-required, non-nullable String field with Email format.
+ * @param stringUuidFormat Non-required, non-nullable UUID field.
+ * @param stringMinLength Non-required, non-nullable String field with minLength: 3.
+ * @param stringMaxLength Non-required, non-nullable String field with maxLength: 7.
+ * @param stringMinAndMaxLength Non-required, non-nullable String with minLength: 3 and maxLength: 7.
+ * @param arrayNullable Non-required, nullable List.
+ * @param arrayRequiredNullable Required, nullable List.
+ * @param arrayMinItems Non-required, non-nullable List with minItems: 1.
+ * @param arrayMaxItems Non-required, non-nullable List with maxItems: 10.
+ * @param arrayMinAndMaxItems Non-required, non-nullable List with minItems: 1 and maxItems: 10.
+ * @param arrayUniqueStandard Non-required, non-nullable Set.
+ * @param arrayUniqueRequired Required, non-nullable Set.
+ * @param arrayUniqueNullable Non-required, nullable Set.
+ * @param arrayUniqueRequiredNullable Required, nullable Set.
+ * @param intStandard Non-required, non-nullable Integer.
+ * @param intNullable Non-required, nullable Integer.
+ * @param intRequired Required, non-nullable Integer.
+ * @param intRequiredNullable Required, nullable Integer.
+ * @param intMinimum Non-required, non-nullable Integer with minimum: 18.
+ * @param intMaximum Non-required, non-nullable Integer with maximum: 100.
+ * @param intMinimumAndMaximum Non-required, non-nullable Integer with minimum: 0 and maximum: 100.
+ * @param longStandard Non-required, non-nullable Long.
+ * @param longNullable Non-required, nullable Long.
+ * @param longRequired Required, non-nullable Long.
+ * @param longRequiredNullable Required, nullable Long.
+ * @param longMinimum Non-required, non-nullable Long with minimum: 18.
+ * @param longMaximum Non-required, non-nullable Long with maximum: 100.
+ * @param longMinimumAndMaximum Non-required, non-nullable Long with minimum: 0 and maximum: 100.
+ * @param bigDecimalStandard Non-required, non-nullable BigDecimal.
+ * @param bigDecimalNullable Non-required, nullable BigDecimal.
+ * @param bigDecimalRequired Required, non-nullable BigDecimal.
+ * @param bigDecimalRequiredNullable Required, nullable BigDecimal.
+ * @param bigDecimalMinimum Non-required, non-nullable BigDecimal with minimum: 0.
+ * @param bigDecimalMaximum Non-required, non-nullable BigDecimal with maximum: 100.
+ * @param bigDecimalMinimumAndMaximum Non-required, non-nullable BigDecimal with minimum: 0 and maximum: 100.
  */
 public record RecordWithAllConstraints(
+    Boolean booleanStandard,
+    Boolean booleanDefault,
+    Boolean booleanNullable,
+    @NotNull Boolean booleanRequired,
+    @NotNull Boolean booleanRequiredDefault,
+    Boolean booleanRequiredNullable,
     String stringStandard,
     String stringDefault,
     String stringNullable,
@@ -81,15 +113,33 @@ public record RecordWithAllConstraints(
     @Size(min = 3) String stringMinLength,
     @Size(max = 7) String stringMaxLength,
     @Size(min = 3, max = 7) String stringMinAndMaxLength,
+    List<String> arrayNullable,
+    List<String> arrayRequiredNullable,
     @Size(min = 1) List<String> arrayMinItems,
     @Size(max = 10) List<String> arrayMaxItems,
     @Size(min = 1, max = 10) List<String> arrayMinAndMaxItems,
+    Set<String> arrayUniqueStandard,
+    @NotNull Set<String> arrayUniqueRequired,
+    Set<String> arrayUniqueNullable,
+    Set<String> arrayUniqueRequiredNullable,
+    Integer intStandard,
+    Integer intNullable,
+    @NotNull Integer intRequired,
+    Integer intRequiredNullable,
     @Min(18) Integer intMinimum,
     @Max(100) Integer intMaximum,
     @Min(0) @Max(100) Integer intMinimumAndMaximum,
+    Long longStandard,
+    Long longNullable,
+    @NotNull Long longRequired,
+    Long longRequiredNullable,
     @Min(18L) Long longMinimum,
     @Max(100L) Long longMaximum,
     @Min(0L) @Max(100L) Long longMinimumAndMaximum,
+    BigDecimal bigDecimalStandard,
+    BigDecimal bigDecimalNullable,
+    @NotNull BigDecimal bigDecimalRequired,
+    BigDecimal bigDecimalRequiredNullable,
     @DecimalMin("0") BigDecimal bigDecimalMinimum,
     @DecimalMax("100") BigDecimal bigDecimalMaximum,
     @DecimalMin("0") @DecimalMax("100") BigDecimal bigDecimalMinimumAndMaximum) {
@@ -97,7 +147,13 @@ public record RecordWithAllConstraints(
   /** A set containing the names of all instance fields defined in this class. */
   public static final HashSet<String> openapiFields =
       new HashSet<>(
-          Set.of("stringStandard",
+          Set.of("booleanStandard",
+              "booleanDefault",
+              "booleanNullable",
+              "booleanRequired",
+              "booleanRequiredDefault",
+              "booleanRequiredNullable",
+              "stringStandard",
               "stringDefault",
               "stringNullable",
               "stringRequired",
@@ -108,15 +164,33 @@ public record RecordWithAllConstraints(
               "stringMinLength",
               "stringMaxLength",
               "stringMinAndMaxLength",
+              "arrayNullable",
+              "arrayRequiredNullable",
               "arrayMinItems",
               "arrayMaxItems",
               "arrayMinAndMaxItems",
+              "arrayUniqueStandard",
+              "arrayUniqueRequired",
+              "arrayUniqueNullable",
+              "arrayUniqueRequiredNullable",
+              "intStandard",
+              "intNullable",
+              "intRequired",
+              "intRequiredNullable",
               "intMinimum",
               "intMaximum",
               "intMinimumAndMaximum",
+              "longStandard",
+              "longNullable",
+              "longRequired",
+              "longRequiredNullable",
               "longMinimum",
               "longMaximum",
               "longMinimumAndMaximum",
+              "bigDecimalStandard",
+              "bigDecimalNullable",
+              "bigDecimalRequired",
+              "bigDecimalRequiredNullable",
               "bigDecimalMinimum",
               "bigDecimalMaximum",
               "bigDecimalMinimumAndMaximum"));
@@ -124,11 +198,29 @@ public record RecordWithAllConstraints(
   /** A set containing the names of all required fields defined in this class. */
   public static final HashSet<String> openapiRequiredFields =
       new HashSet<>(
-          Set.of("stringRequired",
+          Set.of("booleanRequired",
+              "booleanRequiredDefault",
+              "booleanRequiredNullable",
+              "stringRequired",
               "stringRequiredNullable",
-              "stringRequiredPattern"));
+              "stringRequiredPattern",
+              "arrayRequiredNullable",
+              "arrayUniqueRequired",
+              "arrayUniqueRequiredNullable",
+              "intRequired",
+              "intRequiredNullable",
+              "longRequired",
+              "longRequiredNullable",
+              "bigDecimalRequired",
+              "bigDecimalRequiredNullable"));
 
   public RecordWithAllConstraints(
+      final Boolean booleanStandard,
+      final Boolean booleanDefault,
+      final Boolean booleanNullable,
+      final Boolean booleanRequired,
+      final Boolean booleanRequiredDefault,
+      final Boolean booleanRequiredNullable,
       final String stringStandard,
       final String stringDefault,
       final String stringNullable,
@@ -140,18 +232,42 @@ public record RecordWithAllConstraints(
       final String stringMinLength,
       final String stringMaxLength,
       final String stringMinAndMaxLength,
+      final List<String> arrayNullable,
+      final List<String> arrayRequiredNullable,
       final List<String> arrayMinItems,
       final List<String> arrayMaxItems,
       final List<String> arrayMinAndMaxItems,
+      final Set<String> arrayUniqueStandard,
+      final Set<String> arrayUniqueRequired,
+      final Set<String> arrayUniqueNullable,
+      final Set<String> arrayUniqueRequiredNullable,
+      final Integer intStandard,
+      final Integer intNullable,
+      final Integer intRequired,
+      final Integer intRequiredNullable,
       final Integer intMinimum,
       final Integer intMaximum,
       final Integer intMinimumAndMaximum,
+      final Long longStandard,
+      final Long longNullable,
+      final Long longRequired,
+      final Long longRequiredNullable,
       final Long longMinimum,
       final Long longMaximum,
       final Long longMinimumAndMaximum,
+      final BigDecimal bigDecimalStandard,
+      final BigDecimal bigDecimalNullable,
+      final BigDecimal bigDecimalRequired,
+      final BigDecimal bigDecimalRequiredNullable,
       final BigDecimal bigDecimalMinimum,
       final BigDecimal bigDecimalMaximum,
       final BigDecimal bigDecimalMinimumAndMaximum) {
+    this.booleanStandard = booleanStandard;
+    this.booleanDefault = Objects.requireNonNullElse(booleanDefault, true);
+    this.booleanNullable = booleanNullable;
+    this.booleanRequired = booleanRequired;
+    this.booleanRequiredDefault = Objects.requireNonNullElse(booleanRequiredDefault, true);
+    this.booleanRequiredNullable = booleanRequiredNullable;
     this.stringStandard = stringStandard;
     this.stringDefault = Objects.requireNonNullElse(stringDefault, "someDefaultValue");
     this.stringNullable = stringNullable;
@@ -163,15 +279,33 @@ public record RecordWithAllConstraints(
     this.stringMinLength = stringMinLength;
     this.stringMaxLength = stringMaxLength;
     this.stringMinAndMaxLength = stringMinAndMaxLength;
+    this.arrayNullable = arrayNullable;
+    this.arrayRequiredNullable = arrayRequiredNullable;
     this.arrayMinItems = Objects.requireNonNullElseGet(arrayMinItems, () -> new ArrayList<>());
     this.arrayMaxItems = Objects.requireNonNullElseGet(arrayMaxItems, () -> new ArrayList<>());
     this.arrayMinAndMaxItems = Objects.requireNonNullElseGet(arrayMinAndMaxItems, () -> new ArrayList<>());
+    this.arrayUniqueStandard = Objects.requireNonNullElseGet(arrayUniqueStandard, () -> new LinkedHashSet<>());
+    this.arrayUniqueRequired = Objects.requireNonNullElseGet(arrayUniqueRequired, () -> new LinkedHashSet<>());
+    this.arrayUniqueNullable = arrayUniqueNullable;
+    this.arrayUniqueRequiredNullable = arrayUniqueRequiredNullable;
+    this.intStandard = intStandard;
+    this.intNullable = intNullable;
+    this.intRequired = intRequired;
+    this.intRequiredNullable = intRequiredNullable;
     this.intMinimum = intMinimum;
     this.intMaximum = intMaximum;
     this.intMinimumAndMaximum = intMinimumAndMaximum;
+    this.longStandard = longStandard;
+    this.longNullable = longNullable;
+    this.longRequired = longRequired;
+    this.longRequiredNullable = longRequiredNullable;
     this.longMinimum = longMinimum;
     this.longMaximum = longMaximum;
     this.longMinimumAndMaximum = longMinimumAndMaximum;
+    this.bigDecimalStandard = bigDecimalStandard;
+    this.bigDecimalNullable = bigDecimalNullable;
+    this.bigDecimalRequired = bigDecimalRequired;
+    this.bigDecimalRequiredNullable = bigDecimalRequiredNullable;
     this.bigDecimalMinimum = bigDecimalMinimum;
     this.bigDecimalMaximum = bigDecimalMaximum;
     this.bigDecimalMinimumAndMaximum = bigDecimalMinimumAndMaximum;
@@ -215,6 +349,60 @@ public record RecordWithAllConstraints(
     }
 
     final JsonObject jsonObj = jsonElement.getAsJsonObject();
+
+    if (jsonObj.get("booleanStandard") != null && !jsonObj.get("booleanStandard").isJsonNull()) { 
+      if (!jsonObj.get("booleanStandard").isJsonPrimitive()) {
+        throw new IllegalArgumentException(
+            String.format(
+                java.util.Locale.ROOT,
+                "Expected the field `booleanStandard` to be a primitive type in the JSON string but got `%s`",
+                jsonObj.get("booleanStandard")));
+      }
+    }
+
+    if (jsonObj.get("booleanDefault") != null && !jsonObj.get("booleanDefault").isJsonNull()) { 
+      if (!jsonObj.get("booleanDefault").isJsonPrimitive()) {
+        throw new IllegalArgumentException(
+            String.format(
+                java.util.Locale.ROOT,
+                "Expected the field `booleanDefault` to be a primitive type in the JSON string but got `%s`",
+                jsonObj.get("booleanDefault")));
+      }
+    }
+
+    if (jsonObj.get("booleanNullable") != null && !jsonObj.get("booleanNullable").isJsonNull()) { 
+      if (!jsonObj.get("booleanNullable").isJsonPrimitive()) {
+        throw new IllegalArgumentException(
+            String.format(
+                java.util.Locale.ROOT,
+                "Expected the field `booleanNullable` to be a primitive type in the JSON string but got `%s`",
+                jsonObj.get("booleanNullable")));
+      }
+    }
+
+    if (!jsonObj.get("booleanRequired").isJsonPrimitive()) {
+      throw new IllegalArgumentException(
+          String.format(
+              java.util.Locale.ROOT,
+              "Expected the field `booleanRequired` to be a primitive type in the JSON string but got `%s`",
+              jsonObj.get("booleanRequired")));
+    }
+
+    if (!jsonObj.get("booleanRequiredDefault").isJsonPrimitive()) {
+      throw new IllegalArgumentException(
+          String.format(
+              java.util.Locale.ROOT,
+              "Expected the field `booleanRequiredDefault` to be a primitive type in the JSON string but got `%s`",
+              jsonObj.get("booleanRequiredDefault")));
+    }
+
+    if (!jsonObj.get("booleanRequiredNullable").isJsonPrimitive()) {
+      throw new IllegalArgumentException(
+          String.format(
+              java.util.Locale.ROOT,
+              "Expected the field `booleanRequiredNullable` to be a primitive type in the JSON string but got `%s`",
+              jsonObj.get("booleanRequiredNullable")));
+    }
 
     if (jsonObj.get("stringStandard") != null && !jsonObj.get("stringStandard").isJsonNull()) { 
       if (!jsonObj.get("stringStandard").isJsonPrimitive()) {
@@ -320,6 +508,24 @@ public record RecordWithAllConstraints(
       }
     }
 
+    if (jsonObj.get("arrayNullable") != null && !jsonObj.get("arrayNullable").isJsonNull()) { 
+      if (!jsonObj.get("arrayNullable").isJsonArray()) {
+        throw new IllegalArgumentException(
+            String.format(
+                java.util.Locale.ROOT,
+                "Expected the field `arrayNullable` to be an array in the JSON string but got `%s`",
+                jsonObj.get("arrayNullable")));
+      }
+    }
+
+    if (!jsonObj.get("arrayRequiredNullable").isJsonArray()) {
+      throw new IllegalArgumentException(
+          String.format(
+              java.util.Locale.ROOT,
+              "Expected the field `arrayRequiredNullable` to be an array in the JSON string but got `%s`",
+              jsonObj.get("arrayRequiredNullable")));
+    }
+
     if (jsonObj.get("arrayMinItems") != null && !jsonObj.get("arrayMinItems").isJsonNull()) { 
       if (!jsonObj.get("arrayMinItems").isJsonArray()) {
         throw new IllegalArgumentException(
@@ -348,6 +554,78 @@ public record RecordWithAllConstraints(
                 "Expected the field `arrayMinAndMaxItems` to be an array in the JSON string but got `%s`",
                 jsonObj.get("arrayMinAndMaxItems")));
       }
+    }
+
+    if (jsonObj.get("arrayUniqueStandard") != null && !jsonObj.get("arrayUniqueStandard").isJsonNull()) { 
+      if (!jsonObj.get("arrayUniqueStandard").isJsonArray()) {
+        throw new IllegalArgumentException(
+            String.format(
+                java.util.Locale.ROOT,
+                "Expected the field `arrayUniqueStandard` to be an array in the JSON string but got `%s`",
+                jsonObj.get("arrayUniqueStandard")));
+      }
+    }
+
+    if (!jsonObj.get("arrayUniqueRequired").isJsonArray()) {
+      throw new IllegalArgumentException(
+          String.format(
+              java.util.Locale.ROOT,
+              "Expected the field `arrayUniqueRequired` to be an array in the JSON string but got `%s`",
+              jsonObj.get("arrayUniqueRequired")));
+    }
+
+    if (jsonObj.get("arrayUniqueNullable") != null && !jsonObj.get("arrayUniqueNullable").isJsonNull()) { 
+      if (!jsonObj.get("arrayUniqueNullable").isJsonArray()) {
+        throw new IllegalArgumentException(
+            String.format(
+                java.util.Locale.ROOT,
+                "Expected the field `arrayUniqueNullable` to be an array in the JSON string but got `%s`",
+                jsonObj.get("arrayUniqueNullable")));
+      }
+    }
+
+    if (!jsonObj.get("arrayUniqueRequiredNullable").isJsonArray()) {
+      throw new IllegalArgumentException(
+          String.format(
+              java.util.Locale.ROOT,
+              "Expected the field `arrayUniqueRequiredNullable` to be an array in the JSON string but got `%s`",
+              jsonObj.get("arrayUniqueRequiredNullable")));
+    }
+
+    if (jsonObj.get("intStandard") != null && !jsonObj.get("intStandard").isJsonNull()) { 
+      if (!jsonObj.get("intStandard").isJsonPrimitive()) {
+        throw new IllegalArgumentException(
+            String.format(
+                java.util.Locale.ROOT,
+                "Expected the field `intStandard` to be a primitive type in the JSON string but got `%s`",
+                jsonObj.get("intStandard")));
+      }
+    }
+
+    if (jsonObj.get("intNullable") != null && !jsonObj.get("intNullable").isJsonNull()) { 
+      if (!jsonObj.get("intNullable").isJsonPrimitive()) {
+        throw new IllegalArgumentException(
+            String.format(
+                java.util.Locale.ROOT,
+                "Expected the field `intNullable` to be a primitive type in the JSON string but got `%s`",
+                jsonObj.get("intNullable")));
+      }
+    }
+
+    if (!jsonObj.get("intRequired").isJsonPrimitive()) {
+      throw new IllegalArgumentException(
+          String.format(
+              java.util.Locale.ROOT,
+              "Expected the field `intRequired` to be a primitive type in the JSON string but got `%s`",
+              jsonObj.get("intRequired")));
+    }
+
+    if (!jsonObj.get("intRequiredNullable").isJsonPrimitive()) {
+      throw new IllegalArgumentException(
+          String.format(
+              java.util.Locale.ROOT,
+              "Expected the field `intRequiredNullable` to be a primitive type in the JSON string but got `%s`",
+              jsonObj.get("intRequiredNullable")));
     }
 
     if (jsonObj.get("intMinimum") != null && !jsonObj.get("intMinimum").isJsonNull()) { 
@@ -380,6 +658,42 @@ public record RecordWithAllConstraints(
       }
     }
 
+    if (jsonObj.get("longStandard") != null && !jsonObj.get("longStandard").isJsonNull()) { 
+      if (!jsonObj.get("longStandard").isJsonPrimitive()) {
+        throw new IllegalArgumentException(
+            String.format(
+                java.util.Locale.ROOT,
+                "Expected the field `longStandard` to be a primitive type in the JSON string but got `%s`",
+                jsonObj.get("longStandard")));
+      }
+    }
+
+    if (jsonObj.get("longNullable") != null && !jsonObj.get("longNullable").isJsonNull()) { 
+      if (!jsonObj.get("longNullable").isJsonPrimitive()) {
+        throw new IllegalArgumentException(
+            String.format(
+                java.util.Locale.ROOT,
+                "Expected the field `longNullable` to be a primitive type in the JSON string but got `%s`",
+                jsonObj.get("longNullable")));
+      }
+    }
+
+    if (!jsonObj.get("longRequired").isJsonPrimitive()) {
+      throw new IllegalArgumentException(
+          String.format(
+              java.util.Locale.ROOT,
+              "Expected the field `longRequired` to be a primitive type in the JSON string but got `%s`",
+              jsonObj.get("longRequired")));
+    }
+
+    if (!jsonObj.get("longRequiredNullable").isJsonPrimitive()) {
+      throw new IllegalArgumentException(
+          String.format(
+              java.util.Locale.ROOT,
+              "Expected the field `longRequiredNullable` to be a primitive type in the JSON string but got `%s`",
+              jsonObj.get("longRequiredNullable")));
+    }
+
     if (jsonObj.get("longMinimum") != null && !jsonObj.get("longMinimum").isJsonNull()) { 
       if (!jsonObj.get("longMinimum").isJsonPrimitive()) {
         throw new IllegalArgumentException(
@@ -408,6 +722,42 @@ public record RecordWithAllConstraints(
                 "Expected the field `longMinimumAndMaximum` to be a primitive type in the JSON string but got `%s`",
                 jsonObj.get("longMinimumAndMaximum")));
       }
+    }
+
+    if (jsonObj.get("bigDecimalStandard") != null && !jsonObj.get("bigDecimalStandard").isJsonNull()) { 
+      if (!jsonObj.get("bigDecimalStandard").isJsonPrimitive()) {
+        throw new IllegalArgumentException(
+            String.format(
+                java.util.Locale.ROOT,
+                "Expected the field `bigDecimalStandard` to be a primitive type in the JSON string but got `%s`",
+                jsonObj.get("bigDecimalStandard")));
+      }
+    }
+
+    if (jsonObj.get("bigDecimalNullable") != null && !jsonObj.get("bigDecimalNullable").isJsonNull()) { 
+      if (!jsonObj.get("bigDecimalNullable").isJsonPrimitive()) {
+        throw new IllegalArgumentException(
+            String.format(
+                java.util.Locale.ROOT,
+                "Expected the field `bigDecimalNullable` to be a primitive type in the JSON string but got `%s`",
+                jsonObj.get("bigDecimalNullable")));
+      }
+    }
+
+    if (!jsonObj.get("bigDecimalRequired").isJsonPrimitive()) {
+      throw new IllegalArgumentException(
+          String.format(
+              java.util.Locale.ROOT,
+              "Expected the field `bigDecimalRequired` to be a primitive type in the JSON string but got `%s`",
+              jsonObj.get("bigDecimalRequired")));
+    }
+
+    if (!jsonObj.get("bigDecimalRequiredNullable").isJsonPrimitive()) {
+      throw new IllegalArgumentException(
+          String.format(
+              java.util.Locale.ROOT,
+              "Expected the field `bigDecimalRequiredNullable` to be a primitive type in the JSON string but got `%s`",
+              jsonObj.get("bigDecimalRequiredNullable")));
     }
 
     if (jsonObj.get("bigDecimalMinimum") != null && !jsonObj.get("bigDecimalMinimum").isJsonNull()) { 

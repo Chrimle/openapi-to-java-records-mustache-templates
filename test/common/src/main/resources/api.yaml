@@ -23,38 +23,13 @@ components:
       type: object
       description: Example of a Record with fields of each type
       required:
-        - field1
-        - field2
         - field3
-        - field4
-        - field5
-        - field6
         - field7
         - field8
       properties:
-        field1:
-          type: boolean
-          description: a Boolean field
-        field2:
-          type: string
-          description: a String field
         field3:
           type: integer
           description: an Integer field
-        field4:
-          type: number
-          description: a Number field
-        field5:
-          type: array
-          description: an Array of Boolean field
-          items:
-            type: boolean
-        field6:
-          type: array
-          description: a Set field
-          uniqueItems: true
-          items:
-            type: boolean
         field7:
           description: an ExampleRecord field
           $ref: '#/components/schemas/ExampleRecord'
@@ -65,42 +40,12 @@ components:
       type: object
       description: Example of a Record with fields of each type
       required:
-        - field1
-        - field2
         - field3
-        - field4
-        - field5
-        - field6
       properties:
-        field1:
-          type: boolean
-          description: a Boolean field
-          nullable: true
-        field2:
-          type: string
-          description: a String field
-          nullable: true
         field3:
           type: integer
           description: an Integer field
           nullable: true
-        field4:
-          type: number
-          description: a Number field
-          nullable: true
-        field5:
-          type: array
-          description: an Array of Boolean field
-          nullable: true
-          items:
-            type: boolean
-        field6:
-          type: array
-          description: a Set field
-          uniqueItems: true
-          nullable: true
-          items:
-            type: boolean
         field7:
           description: an ExampleNullableRecord field
           $ref: '#/components/schemas/ExampleNullableRecord'
@@ -247,14 +192,6 @@ components:
         field1:
           type: boolean
           description: a boolean field
-    ExampleRecordWithDefaultFields:
-      type: object
-      description: Example of a Record with default fields
-      properties:
-        field1:
-          type: string
-          description: a String field with a default value
-          default: someDefaultValue
     ExampleImplementsEnum:
       type: string
       description: Example of an Enum which implements an interface.
@@ -360,88 +297,236 @@ components:
       type: object
       description: Example of a Record which has fields with constraints
       required:
+        - booleanRequired
+        - booleanRequiredDefault
+        - booleanRequiredNullable
         - stringRequired
         - stringRequiredNullable
         - stringRequiredPattern
+        - arrayRequiredNullable
+        - arrayUniqueRequired
+        - arrayUniqueRequiredNullable
+        - intRequired
+        - intRequiredNullable
+        - longRequired
+        - longRequiredNullable
+        - bigDecimalRequired
+        - bigDecimalRequiredNullable
       properties:
+        ### BOOLEAN FIELDS ###
+        booleanStandard:
+          description: "Non-required, non-nullable Boolean field."
+          type: boolean
+        booleanDefault:
+          description: "Non-required, non-nullable Boolean with a default value."
+          type: boolean
+          default: true
+        booleanNullable:
+          description: "Non-required, nullable Boolean field."
+          type: boolean
+          nullable: true
+        booleanRequired:
+          description: "Required, non-nullable Boolean field."
+          type: boolean
+        booleanRequiredDefault:
+          description: "Required, non-nullable Boolean field with a default value."
+          type: boolean
+          default: true
+        booleanRequiredNullable:
+          description: "Required, nullable Boolean field."
+          type: boolean
+          nullable: true
+        ### STRING FIELDS ###
         stringStandard:
+          description: "Non-required, non-nullable String field."
           type: string
         stringDefault:
+          description: "Non-required, non-nullable String field with a default value."
           type: string
           default: 'someDefaultValue'
         stringNullable:
+          description: "Non-required, nullable String field."
           type: string
           nullable: true
         stringRequired:
+          description: "Required, non-nullable String field."
           type: string
         stringRequiredNullable:
+          description: "Required, nullable String field."
           type: string
           nullable: true
         stringRequiredPattern:
+          description: "Required, non-nullable String field with a RegEx-pattern."
           type: string
           pattern: '^\d{3}-\d{2}-\d{4}$'
         stringEmailFormat:
+          description: "Non-required, non-nullable String field with Email format."
           type: string
           format: email
         stringUuidFormat:
+          description: "Non-required, non-nullable UUID field."
           type: string
           format: uuid
         stringMinLength:
+          description: "Non-required, non-nullable String field with minLength: 3."
           type: string
           minLength: 3
         stringMaxLength:
+          description: "Non-required, non-nullable String field with maxLength: 7."
           type: string
           maxLength: 7
         stringMinAndMaxLength:
+          description: "Non-required, non-nullable String with minLength: 3 and maxLength: 7."
           type: string
           minLength: 3
           maxLength: 7
+        ### ARRAY FIELDS ###
+        arrayNullable:
+          description: "Non-required, nullable List."
+          type: array
+          nullable: true
+          items:
+            type: string
+        arrayRequiredNullable:
+          description: "Required, nullable List."
+          type: array
+          nullable: true
+          items:
+            type: string
         arrayMinItems:
+          description: "Non-required, non-nullable List with minItems: 1."
           type: array
           minItems: 1
           items:
             type: string
         arrayMaxItems:
+          description: "Non-required, non-nullable List with maxItems: 10."
           type: array
           maxItems: 10
           items:
             type: string
         arrayMinAndMaxItems:
+          description: "Non-required, non-nullable List with minItems: 1 and maxItems: 10."
           type: array
           minItems: 1
           maxItems: 10
           items:
             type: string
+        ### SET FIELDS ###
+        arrayUniqueStandard:
+          description: "Non-required, non-nullable Set."
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        arrayUniqueRequired:
+          description: "Required, non-nullable Set."
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        arrayUniqueNullable:
+          description: "Non-required, nullable Set."
+          type: array
+          nullable: true
+          uniqueItems: true
+          items:
+            type: string
+        arrayUniqueRequiredNullable:
+          description: "Required, nullable Set."
+          type: array
+          nullable: true
+          uniqueItems: true
+          items:
+            type: string
+        ### INTEGER FIELDS ###
+        intStandard:
+          description: "Non-required, non-nullable Integer."
+          type: integer
+        intNullable:
+          description: "Non-required, nullable Integer."
+          type: integer
+          nullable: true
+        intRequired:
+          description: "Required, non-nullable Integer."
+          type: integer
+        intRequiredNullable:
+          description: "Required, nullable Integer."
+          type: integer
+          nullable: true
         intMinimum:
+          description: "Non-required, non-nullable Integer with minimum: 18."
           type: integer
           minimum: 18
         intMaximum:
+          description: "Non-required, non-nullable Integer with maximum: 100."
           type: integer
           maximum: 100
         intMinimumAndMaximum:
+          description: "Non-required, non-nullable Integer with minimum: 0 and maximum: 100."
           type: integer
           minimum: 0
           maximum: 100
+        ### int64 / LONG FIELDS ###
+        longStandard:
+          description: "Non-required, non-nullable Long."
+          type: integer
+          format: int64
+        longNullable:
+          description: "Non-required, nullable Long."
+          type: integer
+          format: int64
+          nullable: true
+        longRequired:
+          description: "Required, non-nullable Long."
+          type: integer
+          format: int64
+        longRequiredNullable:
+          description: "Required, nullable Long."
+          type: integer
+          format: int64
+          nullable: true
         longMinimum:
+          description: "Non-required, non-nullable Long with minimum: 18."
           type: integer
           format: int64
           minimum: 18
         longMaximum:
+          description: "Non-required, non-nullable Long with maximum: 100."
           type: integer
           format: int64
           maximum: 100
         longMinimumAndMaximum:
+          description: "Non-required, non-nullable Long with minimum: 0 and maximum: 100."
           type: integer
           format: int64
           minimum: 0
           maximum: 100
+        ### NUMBER FIELDS ###
+        bigDecimalStandard:
+          description: "Non-required, non-nullable BigDecimal."
+          type: number
+        bigDecimalNullable:
+          description: "Non-required, nullable BigDecimal."
+          type: number
+          nullable: true
+        bigDecimalRequired:
+          description: "Required, non-nullable BigDecimal."
+          type: number
+        bigDecimalRequiredNullable:
+          description: "Required, nullable BigDecimal."
+          type: number
+          nullable: true
         bigDecimalMinimum:
+          description: "Non-required, non-nullable BigDecimal with minimum: 0."
           type: number
           minimum: 0
         bigDecimalMaximum:
+          description: "Non-required, non-nullable BigDecimal with maximum: 100."
           type: number
           maximum: 100
         bigDecimalMinimumAndMaximum:
+          description: "Non-required, non-nullable BigDecimal with minimum: 0 and maximum: 100."
           type: number
           minimum: 0
           maximum: 100
