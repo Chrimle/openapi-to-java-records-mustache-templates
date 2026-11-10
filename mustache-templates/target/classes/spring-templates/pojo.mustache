@@ -91,9 +91,9 @@ import java.util.Set;
 {{#additionalEnumTypeAnnotations}}  {{{.}}}
 {{/additionalEnumTypeAnnotations}}{{!
 }}{{#gson}}{{!
-}}  @JsonAdapter({{{datatypeWithEnum}}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}}.Adapter.class)
+}}  @JsonAdapter({{#mostInnerItems}}{{datatypeWithEnum}}{{/mostInnerItems}}{{^mostInnerItems}}{{datatypeWithEnum}}{{/mostInnerItems}}.Adapter.class)
 {{/gson}}{{!
-}}  public enum {{datatypeWithEnum}} {
+}}  public enum {{#mostInnerItems}}{{datatypeWithEnum}}{{/mostInnerItems}}{{^mostInnerItems}}{{datatypeWithEnum}}{{/mostInnerItems}} {
     {{#allowableValues}}{{#enumVars}}{{!
   }}{{#enumDescription}}{{!
   }}/**
@@ -104,34 +104,50 @@ import java.util.Set;
     {{/-last}}{{#-last}};{{/-last}}{{!
     }}{{/enumVars}}{{/allowableValues}}
 
-    private static final java.util.Map<{{{dataType}}}, {{datatypeWithEnum}}> VALUE_MAP;
+    private static final java.util.Map<{{!
+        }}{{#mostInnerItems}}{{{dataType}}}, {{datatypeWithEnum}}{{/mostInnerItems}}{{!
+        }}{{^mostInnerItems}}{{{dataType}}}, {{datatypeWithEnum}}{{/mostInnerItems}}{{!
+      }}> VALUE_MAP;
 
     static {
       final var map ={{!
         }}{{#useEnumCaseInsensitive}}{{!
           }}{{#isString}}{{!
             }}{{^isUri}}
-          new java.util.TreeMap<{{{dataType}}}, {{datatypeWithEnum}}>(
+          new java.util.TreeMap<{{!
+            }}{{#mostInnerItems}}{{{dataType}}}, {{datatypeWithEnum}}{{/mostInnerItems}}{{!
+            }}{{^mostInnerItems}}{{{dataType}}}, {{datatypeWithEnum}}{{/mostInnerItems}}>(
               java.util.Comparator.nullsFirst(String.CASE_INSENSITIVE_ORDER));{{!
             }}{{/isUri}}{{!
             }}{{#isUri}}{{!
-              }} new java.util.HashMap<{{{dataType}}}, {{datatypeWithEnum}}>();{{!
+              }} new java.util.HashMap<{{!
+                }}{{#mostInnerItems}}{{{dataType}}}, {{datatypeWithEnum}}{{/mostInnerItems}}{{!
+                }}{{^mostInnerItems}}{{{dataType}}}, {{datatypeWithEnum}}{{/mostInnerItems}}>();{{!
             }}{{/isUri}}{{!
           }}{{/isString}}{{!
           }}{{^isString}}{{!
-            }} new java.util.HashMap<{{{dataType}}}, {{datatypeWithEnum}}>();{{!
+            }} new java.util.HashMap<{{!
+                }}{{#mostInnerItems}}{{{dataType}}}, {{datatypeWithEnum}}{{/mostInnerItems}}{{!
+                }}{{^mostInnerItems}}{{{dataType}}}, {{datatypeWithEnum}}{{/mostInnerItems}}>();{{!
           }}{{/isString}}{{!
         }}{{/useEnumCaseInsensitive}}{{!
         }}{{^useEnumCaseInsensitive}}{{!
-          }} new java.util.HashMap<{{{dataType}}}, {{datatypeWithEnum}}>();{{!
+          }} new java.util.HashMap<{{!
+            }}{{#mostInnerItems}}{{{dataType}}}, {{datatypeWithEnum}}{{/mostInnerItems}}{{!
+            }}{{^mostInnerItems}}{{{dataType}}}, {{datatypeWithEnum}}{{/mostInnerItems}}>();{{!
         }}{{/useEnumCaseInsensitive}}
       for (final var e : values()) map.putIfAbsent(e.getValue(), e);
       VALUE_MAP = java.util.Collections.unmodifiableMap(map);
     }
 
-    private final {{{dataType}}} value;
+    private final {{#mostInnerItems}}{{{dataType}}}{{/mostInnerItems}}{{^mostInnerItems}}{{{dataType}}}{{/mostInnerItems}} value;
 
-    {{datatypeWithEnum}}(final {{{dataType}}} value) {
+    {{#mostInnerItems}}{{!
+        }}{{datatypeWithEnum}}(final {{{dataType}}} value){{!
+    }}{{/mostInnerItems}}{{!
+    }}{{^mostInnerItems}}{{!
+        }}{{datatypeWithEnum}}(final {{{dataType}}} value){{!
+    }}{{/mostInnerItems}} {
       this.value = value;
     }
 
@@ -142,7 +158,7 @@ import java.util.Set;
      */
 {{#jackson}}    @JsonValue
 {{/jackson}}
-    public {{{dataType}}} getValue() {
+    public {{#mostInnerItems}}{{{dataType}}}{{/mostInnerItems}}{{^mostInnerItems}}{{{dataType}}}{{/mostInnerItems}} getValue() {
       return value;
     }
 
@@ -154,13 +170,13 @@ import java.util.Set;
      * enum constant is returned, by the order they are declared.
      *
      * @param value of the enum.
-     * @return a {@link {{datatypeWithEnum}} } with the matching value{{#enumUnknownDefaultCase}}, or
+     * @return a {@link {{#mostInnerItems}}{{datatypeWithEnum}}{{/mostInnerItems}}{{^mostInnerItems}}{{datatypeWithEnum}}{{/mostInnerItems}} } with the matching value{{#enumUnknownDefaultCase}}, or
      *     {@link #{{#allowableValues}}{{#enumVars}}{{#-last}}{{{name}}} }{{/-last}}{{/enumVars}}{{/allowableValues}} if no match is found.{{/enumUnknownDefaultCase}}{{^enumUnknownDefaultCase}}.
      * @throws IllegalArgumentException if no enum has a value matching the given value.{{/enumUnknownDefaultCase}}
      */
 {{#jackson}}    @JsonCreator
 {{/jackson}}
-    public static {{datatypeWithEnum}} fromValue(final {{{dataType}}} value) {
+    public static {{#mostInnerItems}}{{datatypeWithEnum}}{{/mostInnerItems}}{{^mostInnerItems}}{{datatypeWithEnum}}{{/mostInnerItems}} fromValue(final {{#mostInnerItems}}{{{dataType}}}{{/mostInnerItems}}{{^mostInnerItems}}{{{dataType}}}{{/mostInnerItems}} value) {
       final var result = VALUE_MAP.get(value);
       if (result != null) return result;
       {{#enumUnknownDefaultCase}}{{#allowableValues}}{{#enumVars}}{{#-last}}return {{{name}}};{{/-last}}{{/enumVars}}{{/allowableValues}}{{/enumUnknownDefaultCase}}{{^enumUnknownDefaultCase}}throw new IllegalArgumentException("Unexpected value '" + value + "'");{{/enumUnknownDefaultCase}}
@@ -171,19 +187,26 @@ import java.util.Set;
      * Validates the JSON Element and throws an exception if issues are found.
      *
      * @param jsonElement to validate.
-     * @throws IOException if the JSON Element is not a valid {@link {{datatypeWithEnum}} } object.
+     * @throws IOException if the JSON Element is not a valid {@link {{#mostInnerItems}}{{datatypeWithEnum}}{{/mostInnerItems}}{{^mostInnerItems}}{{datatypeWithEnum}}{{/mostInnerItems}} } object.
      */
     public static void validateJsonElement(final JsonElement jsonElement) throws IOException {
-      final {{^isNumber}}{{{dataType}}}{{/isNumber}}{{#isNumber}}String{{/isNumber}} value = {{#isUri}}URI.create({{/isUri}}jsonElement.{{#isNumber}}getAsString(){{/isNumber}}{{#isInteger}}getAsInt(){{/isInteger}}{{#isUri}}getAsString()){{/isUri}}{{^isNumber}}{{^isInteger}}{{^isUri}}getAs{{{dataType}}}(){{/isUri}}{{/isInteger}}{{/isNumber}};
-      {{{datatypeWithEnum}}}{{^datatypeWithEnum}}{{{classname}}}{{/datatypeWithEnum}}.fromValue({{#isNumber}}new BigDecimal({{/isNumber}}value{{#isNumber}}){{/isNumber}});
+      final {{^isNumber}}{{#mostInnerItems}}{{{dataType}}}{{/mostInnerItems}}{{^mostInnerItems}}{{{dataType}}}{{/mostInnerItems}}{{/isNumber}}{{#isNumber}}String{{/isNumber}} value = {{!
+        }}{{#mostInnerItems}}{{!
+            }}{{#isUri}}URI.create({{/isUri}}jsonElement.{{#isNumber}}getAsString(){{/isNumber}}{{#isInteger}}getAsInt(){{/isInteger}}{{#isUri}}getAsString()){{/isUri}}{{^isNumber}}{{^isInteger}}{{^isUri}}getAs{{{dataType}}}(){{/isUri}}{{/isInteger}}{{/isNumber}}{{!
+        }}{{/mostInnerItems}}{{!
+        }}{{^mostInnerItems}}{{!
+            }}{{#isUri}}URI.create({{/isUri}}jsonElement.{{#isNumber}}getAsString(){{/isNumber}}{{#isInteger}}getAsInt(){{/isInteger}}{{#isUri}}getAsString()){{/isUri}}{{^isNumber}}{{^isInteger}}{{^isUri}}getAs{{{dataType}}}(){{/isUri}}{{/isInteger}}{{/isNumber}}{{!
+        }}{{/mostInnerItems}}{{!
+      }};
+      {{#mostInnerItems}}{{datatypeWithEnum}}{{/mostInnerItems}}{{^mostInnerItems}}{{datatypeWithEnum}}{{/mostInnerItems}}.fromValue({{#isNumber}}new BigDecimal({{/isNumber}}value{{#isNumber}}){{/isNumber}});
     }
 
     /**
-     * Converts {@link {{{datatypeWithEnum}}}{{^datatypeWithEnum}}{{{classname}}}{{/datatypeWithEnum}} } objects to and from JSON.
+     * Converts {@link {{#mostInnerItems}}{{datatypeWithEnum}}{{/mostInnerItems}}{{^mostInnerItems}}{{datatypeWithEnum}}{{/mostInnerItems}} } objects to and from JSON.
      *
      * @see com.google.gson.TypeAdapter
      */
-    public static class Adapter extends TypeAdapter<{{{datatypeWithEnum}}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}}> {
+    public static class Adapter extends TypeAdapter<{{#mostInnerItems}}{{datatypeWithEnum}}{{/mostInnerItems}}{{^mostInnerItems}}{{datatypeWithEnum}}{{/mostInnerItems}}> {
 
       /**
        * Writes the {@link #value} of the {@code enumeration} as a JSON-string to the {@code
@@ -195,25 +218,32 @@ import java.util.Set;
        * @throws NullPointerException if {@code jsonWriter} or {@code enumeration} is {@code null}.
        */
       @Override
-      public void write(final JsonWriter jsonWriter, final {{{datatypeWithEnum}}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}} enumeration)
+      public void write(final JsonWriter jsonWriter, final {{#mostInnerItems}}{{datatypeWithEnum}}{{/mostInnerItems}}{{^mostInnerItems}}{{datatypeWithEnum}}{{/mostInnerItems}} enumeration)
           throws IOException {
-        jsonWriter.value(enumeration.getValue(){{#isUri}}.toASCIIString(){{/isUri}});
+        jsonWriter.value(enumeration.getValue(){{#mostInnerItems}}{{#isUri}}.toASCIIString(){{/isUri}}{{/mostInnerItems}}{{^mostInnerItems}}{{#isUri}}.toASCIIString(){{/isUri}}{{/mostInnerItems}});
       }
 
       /**
        * Reads the <i>next</i> JSON-value from the {@code jsonReader} and converts it to a {@link
-       * {{{datatypeWithEnum}}}{{^datatypeWithEnum}}{{{classname}}}{{/datatypeWithEnum}} }.
+       * {{#mostInnerItems}}{{datatypeWithEnum}}{{/mostInnerItems}}{{^mostInnerItems}}{{datatypeWithEnum}}{{/mostInnerItems}} }.
        *
        * @param jsonReader to read the JSON-string from.
-       * @return a {@link {{{datatypeWithEnum}}}{{^datatypeWithEnum}}{{{classname}}}{{/datatypeWithEnum}} }.
+       * @return a {@link {{#mostInnerItems}}{{datatypeWithEnum}}{{/mostInnerItems}}{{^mostInnerItems}}{{datatypeWithEnum}}{{/mostInnerItems}} }.
        * @throws IOException if the {@code jsonReader} fails to read a value.
        * @throws NullPointerException if {@code jsonReader} is {@code null}.
        * @see #fromValue
        */
       @Override
-      public {{{datatypeWithEnum}}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}} read(final JsonReader jsonReader) throws IOException {
-        final {{^isNumber}}{{{dataType}}}{{/isNumber}}{{#isNumber}}String{{/isNumber}} value = {{#isFloat}}(float) {{/isFloat}}{{#isUri}}URI.create({{/isUri}}jsonReader.{{#isNumber}}nextString(){{/isNumber}}{{#isInteger}}nextInt(){{/isInteger}}{{#isUri}}nextString()){{/isUri}}{{^isNumber}}{{^isInteger}}{{^isUri}}{{#isFloat}}nextDouble{{/isFloat}}{{^isFloat}}next{{{dataType}}}{{/isFloat}}(){{/isUri}}{{/isInteger}}{{/isNumber}};
-        return {{{datatypeWithEnum}}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}}.fromValue({{#isNumber}}new BigDecimal({{/isNumber}}value{{#isNumber}}){{/isNumber}});
+      public {{#mostInnerItems}}{{datatypeWithEnum}}{{/mostInnerItems}}{{^mostInnerItems}}{{datatypeWithEnum}}{{/mostInnerItems}} read(final JsonReader jsonReader) throws IOException {
+        final {{^isNumber}}{{#mostInnerItems}}{{{dataType}}}{{/mostInnerItems}}{{^mostInnerItems}}{{{dataType}}}{{/mostInnerItems}}{{/isNumber}}{{#isNumber}}String{{/isNumber}} value = {{!
+            }}{{#mostInnerItems}}{{!
+                }}{{#isFloat}}(float) {{/isFloat}}{{#isUri}}URI.create({{/isUri}}jsonReader.{{#isNumber}}nextString(){{/isNumber}}{{#isInteger}}nextInt(){{/isInteger}}{{#isUri}}nextString()){{/isUri}}{{^isNumber}}{{^isInteger}}{{^isUri}}{{#isFloat}}nextDouble{{/isFloat}}{{^isFloat}}next{{{dataType}}}{{/isFloat}}(){{/isUri}}{{/isInteger}}{{/isNumber}}{{!
+            }}{{/mostInnerItems}}{{!
+            }}{{^mostInnerItems}}{{!
+                }}{{#isFloat}}(float) {{/isFloat}}{{#isUri}}URI.create({{/isUri}}jsonReader.{{#isNumber}}nextString(){{/isNumber}}{{#isInteger}}nextInt(){{/isInteger}}{{#isUri}}nextString()){{/isUri}}{{^isNumber}}{{^isInteger}}{{^isUri}}{{#isFloat}}nextDouble{{/isFloat}}{{^isFloat}}next{{{dataType}}}{{/isFloat}}(){{/isUri}}{{/isInteger}}{{/isNumber}}{{!
+            }}{{/mostInnerItems}}{{!
+        }};
+        return {{#mostInnerItems}}{{datatypeWithEnum}}{{/mostInnerItems}}{{^mostInnerItems}}{{datatypeWithEnum}}{{/mostInnerItems}}.fromValue({{#isNumber}}new BigDecimal({{/isNumber}}value{{#isNumber}}){{/isNumber}});
       }
     }
 {{/gson}}
@@ -284,7 +314,7 @@ import java.util.Set;
 {{^required}}  {{/required}}    {{{dataType}}}.validateJsonElement(jsonObj.get("{{{baseName}}}"));{{!
 }}{{/isModel}}{{/isContainer}}{{!
 }}{{#isEnum}}
-{{^required}}  {{/required}}    {{{datatypeWithEnum}}}.validateJsonElement(jsonObj.get("{{{baseName}}}"));{{!
+{{^required}}  {{/required}}    {{#mostInnerItems}}{{datatypeWithEnum}}{{/mostInnerItems}}{{^mostInnerItems}}{{datatypeWithEnum}}{{/mostInnerItems}}.validateJsonElement(jsonObj.get("{{{baseName}}}"));{{!
 }}{{/isEnum}}{{!
 }}{{#isEnumRef}}
 {{^required}}  {{/required}}    {{{dataType}}}.validateJsonElement(jsonObj.get("{{{baseName}}}"));{{!
