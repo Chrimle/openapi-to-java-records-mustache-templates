@@ -30,7 +30,7 @@
         <okhttp.version>4.12.1</okhttp.version>
         <swagger.version>2.2.55</swagger.version>
         <spring-boot.version>3.5.15</spring-boot.version>
-        <spring-web.version>6.2.19</spring-web.version>
+        <spring-web.version>7.1.0</spring-web.version>
         <!-- / Dependency Versions -->
 
         <!-- Jacoco -->
